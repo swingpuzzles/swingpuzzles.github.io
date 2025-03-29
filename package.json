@@ -3,16 +3,21 @@
   "dependencies": {
     "@babylonjs/core": "^8.0.1",
     "@babylonjs/loaders": "^8.0.1",
+    "@types/earcut": "^3.0.0",
+    "ammojs-typed": "^1.0.6",
     "babylonjs-gltf2interface": "8.0.0",
     "cannon-es": "^0.20.0",
+    "earcut": "^3.0.1",
     "gh-pages": "^6.3.0"
   },
   "scripts": {
-    "build": "tsc",
-    "deploy:prod": "git checkout prod && git pull origin prod && yarn build && gh-pages -d dist -b gh-pages && git checkout main",
-    "deploy:dev": "yarn build && gh-pages -d dist -b dev-gh-pages"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "deploy:prod": "git checkout prod && git pull origin prod && yarn build && gh-pages -d dist -b gh-pages && git checkout main"
   },
   "devDependencies": {
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vite": "^6.2.3"
   }
 }
