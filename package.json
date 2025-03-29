@@ -1,0 +1,18 @@
+{
+  "license": "MIT",
+  "dependencies": {
+    "@babylonjs/core": "^8.0.1",
+    "@babylonjs/loaders": "^8.0.1",
+    "babylonjs-gltf2interface": "8.0.0",
+    "cannon-es": "^0.20.0",
+    "gh-pages": "^6.3.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "deploy:prod": "git checkout prod && git pull origin prod && yarn build && gh-pages -d dist -b gh-pages && git checkout main",
+    "deploy:dev": "yarn build && gh-pages -d dist -b dev-gh-pages"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
