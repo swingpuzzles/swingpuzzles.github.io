@@ -1,74 +1,16 @@
 import { EasingFunction, Mesh, PhysicsImpostor, PointerDragBehavior, QuadraticEase, Quaternion, Scene, Vector3, ArcRotateCamera, Animation } from "@babylonjs/core";
 import puzzleBuilder from "./PuzzleBuilder";
 import meshHelpers from "./MeshHelpers";
+import ctx from "./SceneContext";
 
 class BehaviorManager {
-    private scene: Scene | null = null;
-    private numX: number | null = null;
-    private numZ: number | null = null;
-    private _minX: number | null = null;
-    private _maxX: number | null = null;
-    private _minZ: number | null = null;
-    private _maxZ: number | null = null;
-    private _minY: number | null = null;
-    private jigsawPieces: Mesh[] | null = null;
-    private camera: ArcRotateCamera | null = null;
-
-    private piecesArray: Mesh[][] | null = null;
-    private piecesMap: Map<Mesh, {
-        origPos: Vector3;
-        xIndex: number;
-        zIndex: number;
-        shapeMesh: Mesh;
-    }> | null = null;
-    private piecesCount: number | null = null;
-
     constructor() {
-    }
-
-    init(scene: Scene, camera: ArcRotateCamera, numX: number, numZ: number, xLimit: number, zLimit: number, jigsawPieces: Mesh[], piecesArray: Mesh[][], piecesMap: Map<Mesh, {
-        origPos: Vector3;
-        xIndex: number;
-        zIndex: number;
-        shapeMesh: Mesh;
-    }>): void {
-        this.scene = scene;
-        this.camera = camera;
-        this.numX = numX;
-        this.numZ = numZ;
-        this.jigsawPieces = jigsawPieces;
-        this.piecesArray = piecesArray;
-        this.piecesMap = piecesMap;
-
-        this._minX = -xLimit;
-        this._maxX = xLimit;
-        this._minZ = -zLimit;
-        this._maxZ = zLimit;
-        this._minY = -0.36;
-
-        this.piecesCount = numX * numZ;
-    }
-
-    get minX(): number {
-        return this._minX!;
-    }
-    get maxX(): number {
-        return this._maxX!;
-    }
-    get minZ(): number {
-        return this._minZ!;
-    }
-    get maxZ(): number {
-        return this._maxZ!;
-    }
-    get minY(): number {
-        return this._minY!;
     }
 
     addShakeBehavior(meshes: Mesh[]): void {
         const origPosMap = new Map<Mesh, Vector3>();
-        const origMin = new Vector3(this._minX!, this._minY!, this._minZ!);
-        const origMax = new Vector3(this._maxX!, 0, this._maxZ!);
+        const origMin = new Vector3(ctx.minX, ctx.minY, ctx.minZ);
+        const origMax = new Vector3(ctx.maxX, 0, ctx.maxZ);
     
         for (const m of meshes) {
             origPosMap.set(m, m.position.clone());
@@ -107,11 +49,11 @@ class BehaviorManager {
             }
         }
 
-        this._minX = origMin.x + moveVector.x;
-        this._minY = origMin.y + moveVector.y;
-        this._minZ = origMin.z + moveVector.z;
-        this._maxX = origMax.x + moveVector.x;
-        this._maxZ = origMax.z + moveVector.z;
+        ctx.minX = origMin.x + moveVector.x;
+        ctx.minY = origMin.y + moveVector.y;
+        ctx.minZ = origMin.z + moveVector.z;
+        ctx.maxX = origMax.x + moveVector.x;
+        ctx.maxZ = origMax.z + moveVector.z;
     }
 
     removeDragBehavior(mesh: Mesh): void {
@@ -141,26 +83,26 @@ class BehaviorManager {
     
         dragBehavior.onDragEndObservable.add(() => {
             let draggedNode = dragBehavior.attachedNode as Mesh;
-            this.scene!.stopAnimation(draggedNode);
+            ctx.scene.stopAnimation(draggedNode);
             draggedNode.animations = [];
     
             while (draggedNode.parent) draggedNode = draggedNode.parent as Mesh;
     
             if (draggedNode) {
                 for (const node of meshHelpers.getAllRelated(draggedNode)) {
-                    const data = this.piecesMap!.get(node);
+                    const data = ctx.piecesMap.get(node);
                     if (!data) continue;
     
                     const neighbours: Mesh[] = [];
-                    if (data.xIndex > 0) neighbours.push(this.piecesArray![data.xIndex - 1][data.zIndex]);
-                    if (data.xIndex < this.numX! - 1) neighbours.push(this.piecesArray![data.xIndex + 1][data.zIndex]);
-                    if (data.zIndex > 0) neighbours.push(this.piecesArray![data.xIndex][data.zIndex - 1]);
-                    if (data.zIndex < this.numZ! - 1) neighbours.push(this.piecesArray![data.xIndex][data.zIndex + 1]);
+                    if (data.xIndex > 0) neighbours.push(ctx.piecesArray[data.xIndex - 1][data.zIndex]);
+                    if (data.xIndex < ctx.numX - 1) neighbours.push(ctx.piecesArray[data.xIndex + 1][data.zIndex]);
+                    if (data.zIndex > 0) neighbours.push(ctx.piecesArray[data.xIndex][data.zIndex - 1]);
+                    if (data.zIndex < ctx.numZ - 1) neighbours.push(ctx.piecesArray[data.xIndex][data.zIndex + 1]);
     
                     for (const n of neighbours) {
                         if (meshHelpers.areMeshesRelated(n, node)) continue;
     
-                        const nData = this.piecesMap!.get(n)!;
+                        const nData = ctx.piecesMap.get(n)!;
                         const origRelativePosXZ = new Vector3(
                             data.origPos.x - nData.origPos.x,
                             0,
@@ -185,7 +127,7 @@ class BehaviorManager {
                             Quaternion.Dot(n.rotationQuaternion!, identityQuaternion) > 1 - rotEpsilon;
     
                         if (positionMatch && rotationMatch) {
-                            const topParentData = this.piecesMap!.get(topParent)!;
+                            const topParentData = ctx.piecesMap.get(topParent)!;
                             this.removeDragBehavior(topParent);
     
                             const neighbourTopParent = meshHelpers.getTopParent(n);
@@ -198,7 +140,7 @@ class BehaviorManager {
                             topParent.rotationQuaternion = identityQuaternion;
                             neighbourTopParent.rotationQuaternion = identityQuaternion;
     
-                            const ntData = this.piecesMap!.get(neighbourTopParent)!;
+                            const ntData = ctx.piecesMap.get(neighbourTopParent)!;
                             topParent.position.x = topParentData.origPos.x - ntData.origPos.x;
                             topParent.position.z = topParentData.origPos.z - ntData.origPos.z;
     
@@ -209,7 +151,7 @@ class BehaviorManager {
                             this.removeDragBehavior(neighbourTopParent);
                             let polygon = puzzleBuilder.makePolygon(neighbourTopParent);
     
-                            if (neighbourTopParent.getChildren().length + 1 === this.piecesCount) {
+                            if (neighbourTopParent.getChildren().length + 1 === ctx.piecesCount) {
                                 alert("Job done!");
                             }
                             return;
@@ -222,7 +164,7 @@ class BehaviorManager {
                         draggedNode,
                         PhysicsImpostor.BoxImpostor,
                         { mass: 0.1, friction: 0.7, restitution: 0.01 },
-                        this.scene!
+                        ctx.scene
                     );
                 }
             }
@@ -258,11 +200,11 @@ class BehaviorManager {
     }
     
     togglePhysicsAndShake(): void {
-        this.jigsawPieces!.forEach(piece => {
+        ctx.jigsawPieces!.forEach(piece => {
             meshHelpers.excludeFromParent(piece);
         });
     
-        this.jigsawPieces!.forEach(piece => {
+        ctx.jigsawPieces!.forEach(piece => {
             this.ensureDragBehavior(piece);
     
             if (piece.physicsImpostor) {
@@ -273,11 +215,11 @@ class BehaviorManager {
                 piece,
                 PhysicsImpostor.BoxImpostor,
                 { mass: 0.2, friction: 0.3, restitution: 0.1 },
-                this.scene!
+                ctx.scene
             );
         });
     
-        this.jigsawPieces!.forEach(piece => {
+        ctx.jigsawPieces.forEach(piece => {
             const shakePower = 20;
             const randomImpulse = new Vector3(
                 (Math.random() - 0.5) * shakePower - piece.position.x * 0.01,
@@ -331,7 +273,7 @@ class BehaviorManager {
     
         mesh.animations.push(anim);
     
-        this.scene!.beginAnimation(mesh, 0, 100, false);
+        ctx.scene.beginAnimation(mesh, 0, 100, false);
     }
 
     moveArcRotateCamera(
@@ -358,15 +300,15 @@ class BehaviorManager {
             return animation;
         };
     
-        const alphaAnim = createAnimation("alpha", this.camera!.alpha, newAlpha);
-        const betaAnim = createAnimation("beta", this.camera!.beta, newBeta);
-        const radiusAnim = createAnimation("radius", this.camera!.radius, newRadius);
+        const alphaAnim = createAnimation("alpha", ctx.camera.alpha, newAlpha);
+        const betaAnim = createAnimation("beta", ctx.camera.beta, newBeta);
+        const radiusAnim = createAnimation("radius", ctx.camera.radius, newRadius);
     
-        const targetXAnim = createAnimation("target.x", this.camera!.target.x, newTarget.x);
-        const targetYAnim = createAnimation("target.y", this.camera!.target.y, newTarget.y);
-        const targetZAnim = createAnimation("target.z", this.camera!.target.z, newTarget.z);
+        const targetXAnim = createAnimation("target.x", ctx.camera.target.x, newTarget.x);
+        const targetYAnim = createAnimation("target.y", ctx.camera.target.y, newTarget.y);
+        const targetZAnim = createAnimation("target.z", ctx.camera.target.z, newTarget.z);
     
-        this.camera!.animations = [
+        ctx.camera.animations = [
             alphaAnim,
             betaAnim,
             radiusAnim,
@@ -375,7 +317,7 @@ class BehaviorManager {
             targetZAnim
         ];
     
-        this.scene!.beginAnimation(this.camera!, 0, duration, false);
+        ctx.scene.beginAnimation(ctx.camera, 0, duration, false);
     }
     
     ensureDragBehavior(mesh: Mesh): void {

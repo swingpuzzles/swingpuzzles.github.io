@@ -2,54 +2,31 @@ import { Color3, CSG2, Mesh, MultiMaterial, Path2, PhysicsImpostor, PolygonMeshB
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import * as earcut from "earcut";
 import behaviorManager from "./BehaviorManager";
+import ctx from "./SceneContext";
 (window as any).earcut = earcut;
 
 
 class PuzzleBuilder {
-    private scene: Scene | null = null;
-    private numX: number | null = null;
-    private numZ: number | null = null;
-    private piecesArray: Mesh[][] | null = null;
-    private piecesMap: Map<Mesh, {
-        origPos: Vector3;
-        xIndex: number;
-        zIndex: number;
-        shapeMesh: Mesh;
-    }> | null = null;
-
     constructor() {
     }
 
-    init(scene: Scene, numX: number, numZ: number, piecesArray: Mesh[][], piecesMap: Map<Mesh, {
-        origPos: Vector3;
-        xIndex: number;
-        zIndex: number;
-        shapeMesh: Mesh;
-    }>): void {
-        this.scene = scene;
-        this.numX = numX;
-        this.numZ = numZ;
-        this.piecesArray = piecesArray;
-        this.piecesMap = piecesMap;
-    }
-
     createFlatBox(width: number, height: number, depth: number = 0.1): CSG2 {
-        const box = MeshBuilder.CreateBox("box", { width, height, depth }, this.scene);
+        const box = MeshBuilder.CreateBox("box", { width, height, depth }, ctx.scene);
         box.rotation.x = -Math.PI / 2;
         box.position.y = -0.2;
     
-        const multiMat = new MultiMaterial("multiMat", this.scene!);
+        const multiMat = new MultiMaterial("multiMat", ctx.scene);
     
-        const frontMaterial = new StandardMaterial("frontMat", this.scene!);
-        frontMaterial.diffuseTexture = new Texture("https://m.media-amazon.com/images/I/81BA14xBSAL._AC_SL1500_.jpg", this.scene);
+        const frontMaterial = new StandardMaterial("frontMat", ctx.scene);
+        frontMaterial.diffuseTexture = new Texture("https://m.media-amazon.com/images/I/81BA14xBSAL._AC_SL1500_.jpg", ctx.scene);
     
-        const backMaterial = new StandardMaterial("backMat", this.scene!);
-        const texture = new Texture("https://www.babylonjs-playground.com/textures/floor.png", this.scene);
+        const backMaterial = new StandardMaterial("backMat", ctx.scene);
+        const texture = new Texture("https://www.babylonjs-playground.com/textures/floor.png", ctx.scene);
         texture.uScale = 4;
         texture.vScale = 4;
         backMaterial.diffuseTexture = texture;
     
-        const sideMaterial = new StandardMaterial("sideMat", this.scene!);
+        const sideMaterial = new StandardMaterial("sideMat", ctx.scene);
         sideMaterial.diffuseColor = new Color3(1, 1, 1);
     
         multiMat.subMaterials.push(frontMaterial, backMaterial, sideMaterial);
@@ -83,7 +60,7 @@ class PuzzleBuilder {
             poly_path.addLineTo(-1, 0.2);
             poly_path.addArcTo(-0.5, 0, -1, -0.2, 10);
         }
-        const poly_tri2 = new PolygonMeshBuilder("polytri2", poly_path, this.scene!, earcut.default);
+        const poly_tri2 = new PolygonMeshBuilder("polytri2", poly_path, ctx.scene, earcut.default);
         //poly_tri2.bjsEarcut = earcut;
         const polygon2 = poly_tri2.build(false, 0.4);
         polygon2.visibility = 0;
@@ -128,10 +105,10 @@ class PuzzleBuilder {
         const groupMeshes = [mesh, ...mesh.getChildren()] as Mesh[];
     
         let topLeftMesh = mesh;
-        let topLeftData = this.piecesMap!.get(mesh)!;
+        let topLeftData = ctx.piecesMap.get(mesh)!;
     
         for (const c of groupMeshes) {
-            const cData = this.piecesMap!.get(c);
+            const cData = ctx.piecesMap.get(c);
             if (!cData) continue;
     
             if (
@@ -205,14 +182,14 @@ class PuzzleBuilder {
             );
         } while ((xIndex !== topLeftData.xIndex || zIndex !== topLeftData.zIndex || direction !== TOP) && leakSafe < 100);
     
-        const polygon = new PolygonMeshBuilder("tetris_piece", path.reverse(), this.scene!, earcut.default);
+        const polygon = new PolygonMeshBuilder("tetris_piece", path.reverse(), ctx.scene, earcut.default);
         const extrudedMesh = polygon.build(false, 0.4);
         extrudedMesh.position.y = 5;
         extrudedMesh.physicsImpostor = new PhysicsImpostor(
             extrudedMesh,
             PhysicsImpostor.BoxImpostor,
             { mass: 0.1, friction: 0.7, restitution: 0.01 },
-            this.scene!
+            ctx.scene
         );
     
         behaviorManager.addDragBehavior(extrudedMesh);
@@ -221,8 +198,8 @@ class PuzzleBuilder {
     }
     
     tryGetMesh(x: number, z: number, toContain: Mesh[] | null = null): Mesh | null {
-        if (x >= 0 && z >= 0 && x < this.numX! && z < this.numZ!) {
-            const tryMesh = this.piecesArray![x][z];
+        if (x >= 0 && z >= 0 && x < ctx.numX && z < ctx.numZ) {
+            const tryMesh = ctx.piecesArray![x][z];
             if (!toContain || toContain.includes(tryMesh)) {
                 return tryMesh;
             }

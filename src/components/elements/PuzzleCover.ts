@@ -1,14 +1,15 @@
 import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Texture, Vector3, VertexBuffer, Animation, Scene } from "@babylonjs/core";
+import ctx from "../SceneContext";
 
-function createCover(scene: Scene, coverWidth: number, coverHeight: number, coverDepth: number): void {
+function createCover(): void {
     const box = MeshBuilder.CreateBox("box", {
-        width: coverWidth,
-        height: coverHeight,
-        depth: coverDepth
-    }, scene);
+        width: ctx.coverWidth,
+        height: ctx.coverHeight,
+        depth: ctx.coverDepth
+    }, ctx.scene);
 
-    const mat = new StandardMaterial("mat", scene);
-    const texture = new Texture("https://m.media-amazon.com/images/I/81BA14xBSAL._AC_SL1500_.jpg", scene);
+    const mat = new StandardMaterial("mat", ctx.scene);
+    const texture = new Texture("https://m.media-amazon.com/images/I/81BA14xBSAL._AC_SL1500_.jpg", ctx.scene);
     mat.diffuseTexture = texture;
 
     let cut = 0.1;
@@ -26,7 +27,7 @@ function createCover(scene: Scene, coverWidth: number, coverHeight: number, cove
     box.setVerticesData(VertexBuffer.UVKind, uvs);
     box.material = mat;
 
-    box.actionManager = new ActionManager(scene);
+    box.actionManager = new ActionManager(ctx.scene);
     box.setPivotPoint(new Vector3(-64, 0, 0));
 
     box.rotation.x = 3 * Math.PI / 2;
@@ -37,7 +38,7 @@ function createCover(scene: Scene, coverWidth: number, coverHeight: number, cove
 
     box.actionManager.registerAction(
         new ExecuteCodeAction(ActionManager.OnPickTrigger, () => {
-            openCover(scene, box);
+            openCover(ctx.scene, box);
         })
     );
 }
