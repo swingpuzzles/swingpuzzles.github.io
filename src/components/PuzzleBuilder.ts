@@ -91,7 +91,7 @@ class PuzzleBuilder {
         return polygon2;
     }
     
-    makePolygon(mesh: Mesh): void {
+    makePolygon(mesh: Mesh): Mesh {
         type Dir = {
             after: Dir[];
             step: [number, number];
@@ -205,8 +205,8 @@ class PuzzleBuilder {
             );
         } while ((xIndex !== topLeftData.xIndex || zIndex !== topLeftData.zIndex || direction !== TOP) && leakSafe < 100);
     
-        const polygon = new PolygonMeshBuilder("tetris_piece", path, this.scene!, earcut.default);
-        const extrudedMesh = polygon.build(false, 0.1);
+        const polygon = new PolygonMeshBuilder("tetris_piece", path.reverse(), this.scene!, earcut.default);
+        const extrudedMesh = polygon.build(false, 0.4);
         extrudedMesh.position.y = 5;
         extrudedMesh.physicsImpostor = new PhysicsImpostor(
             extrudedMesh,
@@ -216,6 +216,8 @@ class PuzzleBuilder {
         );
     
         behaviorManager.addDragBehavior(extrudedMesh);
+
+        return extrudedMesh;
     }
     
     tryGetMesh(x: number, z: number, toContain: Mesh[] | null = null): Mesh | null {

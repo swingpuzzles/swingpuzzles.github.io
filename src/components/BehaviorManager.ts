@@ -207,7 +207,7 @@ class BehaviorManager {
     
                             this.makeChildrenSiblings(topParent);
                             this.removeDragBehavior(neighbourTopParent);
-                            puzzleBuilder.makePolygon(neighbourTopParent);
+                            let polygon = puzzleBuilder.makePolygon(neighbourTopParent);
     
                             if (neighbourTopParent.getChildren().length + 1 === this.piecesCount) {
                                 alert("Job done!");
