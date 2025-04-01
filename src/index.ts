@@ -4,6 +4,7 @@ import "@babylonjs/loaders"; // Required if you load external models
 import puzzleBuilder from "./components/PuzzleBuilder";
 import behaviorManager from "./components/BehaviorManager";
 import meshHelpers from "./components/MeshHelpers";
+import createCover from "./components/elements/PuzzleCover";
 
 
 // Get the canvas element
@@ -207,7 +208,7 @@ const createScene = async function (): Promise<BABYLON.Scene> {
 
     scene.onBeforeRenderObservable.add(checkPiecePositions);
 
-    createCover();
+    createCover(scene, coverWidth, coverHeight, coverDepth);
 
     return scene;
 };
@@ -306,16 +307,6 @@ function getEdgePosition(
     return edgePosition;
 }
 
-function getPieceChildren(node: BABYLON.Mesh): BABYLON.Mesh[] {
-    const result: BABYLON.Mesh[] = [];
-    for (const n of node.getChildren()) {
-        if (piecesMap.get(n as BABYLON.Mesh)) {
-            result.push(n as BABYLON.Mesh);
-        }
-    }
-    return result;
-}
-
 function setPiecePos(mesh: BABYLON.Mesh, x: number, z: number): void {
     const size = 2;
     mesh.position = new BABYLON.Vector3(
@@ -337,60 +328,4 @@ function setMeshPositionByLeftTopXZ(mesh: BABYLON.Mesh, left: number, top: numbe
         top - depth / 2
     );
     mesh.position = newPosition;
-}
-
-function createCover(): void {
-    const box = BABYLON.MeshBuilder.CreateBox("box", {
-        width: coverWidth,
-        height: coverHeight,
-        depth: coverDepth
-    }, scene);
-
-    const mat = new BABYLON.StandardMaterial("mat", scene);
-    const texture = new BABYLON.Texture("https://m.media-amazon.com/images/I/81BA14xBSAL._AC_SL1500_.jpg", scene);
-    mat.diffuseTexture = texture;
-
-    let cut = 0.1;
-    let topCut = 1 - cut;
-
-    const uvs = [
-        cut, cut, topCut, cut, topCut, topCut, cut, topCut,
-        0, 0, 1, 0, 1, 1, 0, 1,
-        0, topCut, 0, cut, cut, cut, cut, topCut,
-        topCut, topCut, topCut, cut, 1, cut, 1, topCut,
-        topCut, topCut, topCut, 1, cut, 1, cut, topCut,
-        cut, cut, cut, 0, topCut, 0, topCut, cut
-    ];
-
-    box.setVerticesData(BABYLON.VertexBuffer.UVKind, uvs);
-    box.material = mat;
-
-    box.actionManager = new BABYLON.ActionManager(scene);
-    box.setPivotPoint(new BABYLON.Vector3(-64, 0, 0));
-
-    box.rotation.x = 3 * Math.PI / 2;
-    box.rotation.y = Math.PI / 2;
-    box.rotation.z = Math.PI / 2;
-    box.position = new BABYLON.Vector3(128, 1.2, 0);
-    box.bakeCurrentTransformIntoVertices();
-
-    box.actionManager.registerAction(
-        new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, () => {
-            openCover(box);
-        })
-    );
-}
-
-function openCover(cover: BABYLON.Mesh): void {
-    const anim = new BABYLON.Animation("openAnim", "rotation.z", 30,
-        BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
-
-    const keys = [
-        { frame: 0, value: 0 },
-        { frame: 30, value: Math.PI / 2 }
-    ];
-
-    anim.setKeys(keys);
-    cover.animations = [anim];
-    scene.beginAnimation(cover, 0, 30, false);
 }
