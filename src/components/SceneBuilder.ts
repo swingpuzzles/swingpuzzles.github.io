@@ -4,13 +4,6 @@ import ctx from "./SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
 
 function buildScene() {
-    let pieceWidth: number;
-    let pieceHeight: number;
-    let pieceDepth: number;
-    let pieceWidthHalf: number;
-    let pieceHeightHalf: number;
-    let pieceDepthHalf: number;
-
     const mat = new StandardMaterial("mat", ctx.scene);
     mat.backFaceCulling = false;
 

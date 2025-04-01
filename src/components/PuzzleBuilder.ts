@@ -1,4 +1,4 @@
-import { Color3, CSG2, Mesh, MultiMaterial, Path2, PhysicsImpostor, PolygonMeshBuilder, Scene, StandardMaterial, SubMesh, Texture, Vector2, Vector3 } from "@babylonjs/core";
+import { Color3, CSG2, Mesh, MultiMaterial, Path2, PhysicsImpostor, PolygonMeshBuilder, StandardMaterial, SubMesh, Texture, Vector2, Vector3 } from "@babylonjs/core";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import * as earcut from "earcut";
 import behaviorManager from "./BehaviorManager";
