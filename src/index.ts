@@ -50,8 +50,8 @@ const createScene = async function (): Promise<Scene> {
     await InitializeCSG2Async();
 
     buildScene();
- 
-    scene.onBeforeRenderObservable.add(behaviorManager.checkPiecePositions);
+
+    behaviorManager.init();
 
     createCover();
 

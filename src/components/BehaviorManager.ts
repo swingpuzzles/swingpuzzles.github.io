@@ -7,6 +7,10 @@ class BehaviorManager {
     constructor() {
     }
 
+    init() {
+        ctx.scene.onBeforeRenderObservable.add(() => this.checkPiecePositions());
+    }
+
     addShakeBehavior(meshes: Mesh[]): void {
         const origPosMap = new Map<Mesh, Vector3>();
         const origMin = new Vector3(ctx.minX, ctx.minY, ctx.minZ);
@@ -333,6 +337,7 @@ class BehaviorManager {
             helpBox.rotationQuaternion = groupBox.rotationQuaternion!.clone();
         }
     
+        const helpThis = this;
         ctx.jigsawPieces.forEach(piece => {
             const pieceData = ctx.piecesMap.get(piece);
             if (!pieceData) return;
@@ -354,11 +359,11 @@ class BehaviorManager {
     
             const power = piece.getChildren().length < 1 ? 1.5 : 0.04;
     
-            const edgePosMinX = this.getEdgePosition(piece, (edge, pos) => pos.x - ctx.pieceWidthHalf < edge.x);
-            const edgePosMaxX = this.getEdgePosition(piece, (edge, pos) => pos.x + ctx.pieceWidthHalf > edge.x);
-            const edgePosMinZ = this.getEdgePosition(piece, (edge, pos) => pos.z - ctx.pieceDepthHalf < edge.z);
-            const edgePosMaxZ = this.getEdgePosition(piece, (edge, pos) => pos.z + ctx.pieceDepthHalf > edge.z);
-            const edgePosMinY = this.getEdgePosition(piece, (edge, pos) => pos.y - ctx.pieceHeightHalf < edge.y);
+            const edgePosMinX = helpThis.getEdgePosition(piece, (edge, pos) => pos.x - ctx.pieceWidthHalf < edge.x);
+            const edgePosMaxX = helpThis.getEdgePosition(piece, (edge, pos) => pos.x + ctx.pieceWidthHalf > edge.x);
+            const edgePosMinZ = helpThis.getEdgePosition(piece, (edge, pos) => pos.z - ctx.pieceDepthHalf < edge.z);
+            const edgePosMaxZ = helpThis.getEdgePosition(piece, (edge, pos) => pos.z + ctx.pieceDepthHalf > edge.z);
+            const edgePosMinY = helpThis.getEdgePosition(piece, (edge, pos) => pos.y - ctx.pieceHeightHalf < edge.y);
     
             let edgePos: Vector3 | null = null;
     
