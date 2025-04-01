@@ -183,7 +183,7 @@ class PuzzleBuilder {
         } while ((xIndex !== topLeftData.xIndex || zIndex !== topLeftData.zIndex || direction !== TOP) && leakSafe < 100);
     
         const polygon = new PolygonMeshBuilder("tetris_piece", path.reverse(), ctx.scene, earcut.default);
-        const extrudedMesh = polygon.build(false, 0.4);
+        const extrudedMesh = polygon.build(false, 1);
         extrudedMesh.position.y = 5;
         extrudedMesh.physicsImpostor = new PhysicsImpostor(
             extrudedMesh,
@@ -193,6 +193,8 @@ class PuzzleBuilder {
         );
     
         behaviorManager.addDragBehavior(extrudedMesh);
+
+        extrudedMesh.visibility = 0.5;
 
         return extrudedMesh;
     }

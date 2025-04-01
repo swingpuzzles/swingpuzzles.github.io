@@ -1,23 +1,8 @@
 import { Mesh, Quaternion, Vector3 } from "@babylonjs/core";
+import ctx from "./SceneContext";
 
 class MeshHelpers {
-    private piecesMap: Map<Mesh, {
-        origPos: Vector3;
-        xIndex: number;
-        zIndex: number;
-        shapeMesh: Mesh;
-    }> | null = null;
-
     constructor() {
-    }
-
-    init(piecesMap: Map<Mesh, {
-        origPos: Vector3;
-        xIndex: number;
-        zIndex: number;
-        shapeMesh: Mesh;
-    }>): void {
-        this.piecesMap = piecesMap;
     }
 
     areMeshesRelated(meshA: Mesh, meshB: Mesh): boolean {
@@ -32,7 +17,7 @@ class MeshHelpers {
     }
 
     getTopParent(mesh: Mesh): Mesh {
-        while (mesh.parent && this.piecesMap!.has(mesh.parent as Mesh)) {
+        while (mesh.parent && ctx.piecesMap.has(mesh.parent as Mesh)) {
             mesh = mesh.parent as Mesh;
         }
         return mesh;

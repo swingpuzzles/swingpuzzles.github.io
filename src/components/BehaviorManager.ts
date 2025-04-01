@@ -1,4 +1,4 @@
-import { EasingFunction, Mesh, PhysicsImpostor, PointerDragBehavior, QuadraticEase, Quaternion, Vector3, Animation, Scalar } from "@babylonjs/core";
+import { EasingFunction, Mesh, PhysicsImpostor, PointerDragBehavior, QuadraticEase, Quaternion, Vector3, Animation, Scalar, MeshBuilder } from "@babylonjs/core";
 import puzzleBuilder from "./PuzzleBuilder";
 import meshHelpers from "./MeshHelpers";
 import ctx from "./SceneContext";
@@ -154,7 +154,24 @@ class BehaviorManager {
                             this.makeChildrenSiblings(topParent);
                             this.removeDragBehavior(neighbourTopParent);
                             let polygon = puzzleBuilder.makePolygon(neighbourTopParent);
-    
+
+                            const helpBox = MeshBuilder.CreateBox("box", { width: 0.1, height: 0.1, depth: 0.1 }, ctx.scene);
+
+                            if (neighbourTopParent.parent) {
+                                let parent = neighbourTopParent.parent as Mesh;
+                                let oldPolygon = ctx.helpBoxMap.get(parent)!;
+                                ctx.helpBoxMap.delete(oldPolygon);
+                                oldPolygon.dispose();
+                                meshHelpers.excludeFromParent(neighbourTopParent);
+                                parent.dispose();
+                            }
+
+                            neighbourTopParent.setParent(helpBox, true);
+                
+                            helpBox.position = polygon.position;
+                
+                            ctx.helpBoxMap.set(helpBox, polygon);
+                        
                             if (neighbourTopParent.getChildren().length + 1 === ctx.piecesCount) {
                                 alert("Job done!");
                             }
@@ -352,7 +369,7 @@ class BehaviorManager {
             shapeMesh.rotationQuaternion = absoluteRotation;
     
             if (piece.parent) {
-                piece.position.y = 0;
+                piece.position.y = -0.3;
                 piece.rotationQuaternion = Quaternion.Identity();
                 return;
             }
