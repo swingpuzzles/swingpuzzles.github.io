@@ -2,7 +2,7 @@ import { Mesh, Quaternion, Vector3, Scalar } from "@babylonjs/core";
 import meshHelpers from "../common/MeshHelpers";
 import ctx from "../common/SceneContext";
 
-class BehaviorManager {
+class PiecePositioningManager {
     constructor() {
     }
 
@@ -115,5 +115,5 @@ class BehaviorManager {
     }
 }
 
-const behaviorManager = new BehaviorManager();
-export default behaviorManager;
+const piecePositioningManager = new PiecePositioningManager();
+export default piecePositioningManager;

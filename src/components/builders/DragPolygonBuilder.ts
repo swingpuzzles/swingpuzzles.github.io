@@ -1,6 +1,6 @@
 import { Mesh, PhysicsImpostor, PolygonMeshBuilder, Vector2 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
-import behaviorManager from "../behaviors/BehaviorManager";
+import piecePositioningManager from "../behaviors/PiecePositioningManager";
 import * as earcut from "earcut";
 import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
 import polygonDragManager from "../behaviors/PolygonDragManager";
