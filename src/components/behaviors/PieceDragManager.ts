@@ -30,6 +30,7 @@ class PieceDragManager {
                     if (dragHelpers.arePiecesJoining(draggedNode, n)) {
                         dragHelpers.removeDragBehavior(draggedNode);
 
+                        
                         const neighbourTopParent = dragHelpers.parentUpMeshes(draggedNode, n);
 
                         let polygon = dragPolygonBuilder.makePolygon(neighbourTopParent);
@@ -38,7 +39,18 @@ class PieceDragManager {
             
                         helpBox.position = polygon.getBoundingInfo().boundingBox.centerWorld.clone();
 
-                        neighbourTopParent.setParent(helpBox, true);
+                        const oldParent = neighbourTopParent.parent as Mesh;
+
+                        neighbourTopParent.setParent(helpBox);
+
+                        if (oldParent) {
+                            let oldPolygon = ctx.helpBoxMap.get(oldParent)!;
+                            ctx.helpBoxMap.delete(oldPolygon);
+                            ctx.polygonMap.delete(oldParent);
+                            oldPolygon.dispose();
+                            ctx.jigsawPieces.splice(ctx.jigsawPieces.indexOf(oldPolygon), 1);
+                            oldParent.dispose();
+                        }
             
                         ctx.helpBoxMap.set(helpBox, polygon);
                         ctx.polygonMap.set(polygon, helpBox);
