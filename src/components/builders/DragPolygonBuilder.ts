@@ -3,6 +3,7 @@ import ctx from "../common/SceneContext";
 import behaviorManager from "../behaviors/BehaviorManager";
 import * as earcut from "earcut";
 import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
+import polygonDragManager from "../behaviors/PolygonDragManager";
 (window as any).earcut = earcut;
 
 class DragPolygonBuilder {
@@ -150,7 +151,7 @@ class DragPolygonBuilder {
 
         physicsImpostorBuilder.attachDragPolygonImpostor(extrudedMesh);
     
-        behaviorManager.addDragBehavior(extrudedMesh);
+        polygonDragManager.addDragBehavior(extrudedMesh);
 
         extrudedMesh.visibility = 0.5;
 
