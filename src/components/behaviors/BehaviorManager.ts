@@ -1,7 +1,7 @@
 import { EasingFunction, Mesh, PhysicsImpostor, PointerDragBehavior, QuadraticEase, Quaternion, Vector3, Animation, Scalar, MeshBuilder } from "@babylonjs/core";
-import puzzleBuilder from "./PuzzleBuilder";
-import meshHelpers from "./MeshHelpers";
-import ctx from "./SceneContext";
+import puzzleBuilder from "../builders/PuzzleBuilder";
+import meshHelpers from "../MeshHelpers";
+import ctx from "../SceneContext";
 
 class BehaviorManager {
     constructor() {
@@ -138,7 +138,7 @@ class BehaviorManager {
                             topParent.computeWorldMatrix(true);
                             topParent.refreshBoundingInfo();
     
-                            this.makeChildrenSiblings(topParent);
+                            meshHelpers.makeChildrenSiblings(topParent);
                             this.removeDragBehavior(neighbourTopParent);
                             let polygon = puzzleBuilder.makePolygon(neighbourTopParent);
 
@@ -183,32 +183,6 @@ class BehaviorManager {
         });
     
         mesh.addBehavior(dragBehavior);
-    }
-
-    makeChildrenSiblings(mesh: Mesh): void {
-        if (!mesh.parent) {
-            console.warn("The mesh has no parent. Children cannot become siblings.");
-            return;
-        }
-    
-        const parent = mesh.parent as Mesh;
-        mesh.computeWorldMatrix(true);
-    
-        mesh.getChildMeshes().forEach(child => {
-            child.computeWorldMatrix(true);
-    
-            const worldPosition = child.getAbsolutePosition();
-            const worldRotation = new Quaternion();
-            child.getWorldMatrix().decompose(undefined, worldRotation, undefined);
-    
-            child.parent = parent;
-    
-            const invParentMatrix = parent.getWorldMatrix().invert();
-            child.position = Vector3.TransformCoordinates(worldPosition, invParentMatrix);
-            child.rotationQuaternion = parent.rotationQuaternion
-                ? parent.rotationQuaternion.invert().multiply(worldRotation)
-                : worldRotation;
-        });
     }
     
     animateRotationToZero(mesh: Mesh): void {

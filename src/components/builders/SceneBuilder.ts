@@ -1,8 +1,8 @@
 import { CSG2, Mesh, MeshBuilder, PhysicsImpostor, StandardMaterial, Vector3 } from "@babylonjs/core";
-import behaviorManager from "./BehaviorManager";
-import ctx from "./SceneContext";
+import behaviorManager from "../behaviors/BehaviorManager";
+import ctx from "../SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
-import shakeBehaviorManager from "./behaviors/ShakeBehaviorManager";
+import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 
 function buildScene() {
     const mat = new StandardMaterial("mat", ctx.scene);

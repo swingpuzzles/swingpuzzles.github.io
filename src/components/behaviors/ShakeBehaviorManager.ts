@@ -1,7 +1,7 @@
 import { Mesh, PhysicsImpostor, PointerDragBehavior, Vector3, Animation } from "@babylonjs/core";
 import ctx from "../SceneContext";
 import meshHelpers from "../MeshHelpers";
-import behaviorManager from "../BehaviorManager";
+import behaviorManager from "./BehaviorManager";
 
 class ShakeBehaviorManager {
     addShakeBehavior(meshes: Mesh[]): void {

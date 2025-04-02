@@ -50,6 +50,32 @@ class MeshHelpers {
         parent.computeWorldMatrix(true);
         parent.refreshBoundingInfo();
     }
+
+    makeChildrenSiblings(mesh: Mesh): void {
+        if (!mesh.parent) {
+            console.warn("The mesh has no parent. Children cannot become siblings.");
+            return;
+        }
+    
+        const parent = mesh.parent as Mesh;
+        mesh.computeWorldMatrix(true);
+    
+        mesh.getChildMeshes().forEach(child => {
+            child.computeWorldMatrix(true);
+    
+            const worldPosition = child.getAbsolutePosition();
+            const worldRotation = new Quaternion();
+            child.getWorldMatrix().decompose(undefined, worldRotation, undefined);
+    
+            child.parent = parent;
+    
+            const invParentMatrix = parent.getWorldMatrix().invert();
+            child.position = Vector3.TransformCoordinates(worldPosition, invParentMatrix);
+            child.rotationQuaternion = parent.rotationQuaternion
+                ? parent.rotationQuaternion.invert().multiply(worldRotation)
+                : worldRotation;
+        });
+    }
 }
 
 const meshHelpers = new MeshHelpers();
