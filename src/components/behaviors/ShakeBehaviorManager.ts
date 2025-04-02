@@ -2,6 +2,7 @@ import { Mesh, PhysicsImpostor, PointerDragBehavior, Vector3, Animation } from "
 import ctx from "../common/SceneContext";
 import meshHelpers from "../common/MeshHelpers";
 import behaviorManager from "./BehaviorManager";
+import dragHelpers from "./DragHelpers";
 
 class ShakeBehaviorManager {
     addShakeBehavior(meshes: Mesh[]): void {
@@ -27,7 +28,7 @@ class ShakeBehaviorManager {
                 this.moveArcRotateCamera(3 * Math.PI / 2, 0, 42, dragBehavior.attachedNode.position);
     
                 for (const mesh of meshes) {
-                    behaviorManager.removeDragBehavior(mesh);
+                    dragHelpers.removeDragBehavior(mesh);
                     mesh.isPickable = false;
                 }
             });
