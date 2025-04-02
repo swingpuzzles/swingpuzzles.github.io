@@ -2,6 +2,7 @@ import { EasingFunction, Mesh, PhysicsImpostor, PointerDragBehavior, QuadraticEa
 import puzzleBuilder from "../builders/PuzzleBuilder";
 import meshHelpers from "../MeshHelpers";
 import ctx from "../SceneContext";
+import dragPolygonBuilder from "../builders/DragPolygonBuilder";
 
 class BehaviorManager {
     constructor() {
@@ -140,7 +141,7 @@ class BehaviorManager {
     
                             meshHelpers.makeChildrenSiblings(topParent);
                             this.removeDragBehavior(neighbourTopParent);
-                            let polygon = puzzleBuilder.makePolygon(neighbourTopParent);
+                            let polygon = dragPolygonBuilder.makePolygon(neighbourTopParent);
 
                             const helpBox = MeshBuilder.CreateBox("box", { width: 0.5, height: 0.5, depth: 0.5 }, ctx.scene);
                 
