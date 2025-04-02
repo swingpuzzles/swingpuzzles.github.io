@@ -90,6 +90,8 @@ class DragHelpers {
 
         helpBox.position = polygon.getBoundingInfo().boundingBox.centerWorld.clone();
 
+        helpBox.visibility = 0;
+
         const oldParent = neighbourTopParent.parent as Mesh;
 
         neighbourTopParent.setParent(helpBox);

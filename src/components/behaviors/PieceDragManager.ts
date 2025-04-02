@@ -1,8 +1,4 @@
-import { Mesh, MeshBuilder, PhysicsImpostor, PointerDragBehavior, Vector3 } from "@babylonjs/core";
-import ctx from "../common/SceneContext";
-import dragHelpers from "./DragHelpers";
-import dragPolygonBuilder from "../builders/DragPolygonBuilder";
-import rotationToZeroAnimation from "../animations/RotationToZeroAnimation";
+import { Mesh } from "@babylonjs/core";
 import physicsImpostorBuilder from "../builders/PhysicsImpostorBuilder";
 import AbstractDragManager from "./AbstractDragManager";
 
