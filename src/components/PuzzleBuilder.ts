@@ -1,4 +1,4 @@
-import { Color3, CSG2, Mesh, MultiMaterial, Path2, PhysicsImpostor, PolygonMeshBuilder, StandardMaterial, SubMesh, Texture, Vector2, Vector3 } from "@babylonjs/core";
+import { Color3, CSG2, Mesh, MultiMaterial, Path2, PhysicsImpostor, PolygonMeshBuilder, Space, StandardMaterial, SubMesh, Texture, Vector2, Vector3 } from "@babylonjs/core";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import * as earcut from "earcut";
 import behaviorManager from "./BehaviorManager";
@@ -182,13 +182,37 @@ class PuzzleBuilder {
             );
         } while ((xIndex !== topLeftData.xIndex || zIndex !== topLeftData.zIndex || direction !== TOP) && leakSafe < 100);
     
-        const polygon = new PolygonMeshBuilder("tetris_piece", path.reverse(), ctx.scene, earcut.default);
+        path.reverse();
+
+        let minX = Number.MAX_VALUE;
+        let minZ = Number.MAX_VALUE;
+        let maxX = Number.MIN_VALUE;
+        let maxZ = Number.MIN_VALUE;
+
+        for (let p of path) {
+            minX = Math.min(minX, p.x);
+            minZ = Math.min(minZ, p.y);
+            maxX = Math.max(maxX, p.x);
+            maxZ = Math.max(maxZ, p.y);
+        }
+
+        const centerX = (minX + maxX) / 2;
+        const centerZ = (minZ + maxZ) / 2;
+
+        for (let p of path) {
+            p.x -= centerX;
+            p.y -= centerZ;
+        }
+
+        const polygon = new PolygonMeshBuilder("tetris_piece", path, ctx.scene, earcut.default);
         const extrudedMesh = polygon.build(false, 1);
+        extrudedMesh.position.x = centerX;
+        extrudedMesh.position.z = centerZ;
         extrudedMesh.position.y = 5;
         extrudedMesh.physicsImpostor = new PhysicsImpostor(
             extrudedMesh,
             PhysicsImpostor.BoxImpostor,
-            { mass: 0.1, friction: 0.7, restitution: 0.01 },
+            { mass: 1, friction: 1, restitution: 0 },
             ctx.scene
         );
     

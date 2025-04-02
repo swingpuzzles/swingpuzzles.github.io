@@ -12,8 +12,8 @@ class SceneContext {
     }> = new Map();
     private _helpBoxMap: Map<Mesh, Mesh> = new Map();
     private _polygonMap: Map<Mesh, Mesh> = new Map();
-    private _numX: number = 3;
-    private _numZ: number = 3;
+    private _numX: number = 2;
+    private _numZ: number = 2;
     private _xLimit: number = 22;
     private _zLimit: number = 16.5;
     private _latheMulti: number = 1.455;
@@ -74,7 +74,7 @@ class SceneContext {
     get helpBoxMap(): Map<Mesh, Mesh> {
         return this._helpBoxMap;
     }
-    get polygonMap(): Map<any, any> {
+    get polygonMap(): Map<Mesh, Mesh> {
         return this._polygonMap;
     }
     get numX(): number {

@@ -135,9 +135,20 @@ class BehaviorManager {
                             this.removeDragBehavior(topParent);
     
                             const neighbourTopParent = meshHelpers.getTopParent(n);
+
+                            if (draggedNode.physicsImpostor) {
+                                draggedNode.physicsImpostor.dispose();
+                                draggedNode.physicsImpostor = null;
+                            }
+
                             if (neighbourTopParent.physicsImpostor) {
                                 neighbourTopParent.physicsImpostor.dispose();
                                 neighbourTopParent.physicsImpostor = null;
+                            }
+    
+                            if (topParent.physicsImpostor) {
+                                topParent.physicsImpostor.dispose();
+                                topParent.physicsImpostor = null;
                             }
     
                             topParent.setParent(neighbourTopParent);
@@ -155,23 +166,28 @@ class BehaviorManager {
                             this.removeDragBehavior(neighbourTopParent);
                             let polygon = puzzleBuilder.makePolygon(neighbourTopParent);
 
-                            const helpBox = MeshBuilder.CreateBox("box", { width: 0.1, height: 0.1, depth: 0.1 }, ctx.scene);
+                            const helpBox = MeshBuilder.CreateBox("box", { width: 0.5, height: 0.5, depth: 0.5 }, ctx.scene);
 
                             if (neighbourTopParent.parent) {
                                 let parent = neighbourTopParent.parent as Mesh;
                                 let oldPolygon = ctx.helpBoxMap.get(parent)!;
                                 ctx.helpBoxMap.delete(oldPolygon);
+                                ctx.polygonMap.delete(parent);
                                 oldPolygon.dispose();
+                                ctx.jigsawPieces.splice(ctx.jigsawPieces.indexOf(oldPolygon), 1);
                                 meshHelpers.excludeFromParent(neighbourTopParent);
                                 parent.dispose();
                             }
+                
+                            helpBox.position = polygon.getBoundingInfo().boundingBox.centerWorld.clone();
 
                             neighbourTopParent.setParent(helpBox, true);
                 
-                            helpBox.position = polygon.position;
-                
                             ctx.helpBoxMap.set(helpBox, polygon);
-                        
+                            ctx.polygonMap.set(polygon, helpBox);
+
+                            ctx.jigsawPieces.push(polygon);
+                        console.log('new polygon', polygon);
                             if (neighbourTopParent.getChildren().length + 1 === ctx.piecesCount) {
                                 alert("Job done!");
                             }
@@ -181,12 +197,22 @@ class BehaviorManager {
                 }
     
                 if (!draggedNode.physicsImpostor && !draggedNode.parent) {
-                    draggedNode.physicsImpostor = new PhysicsImpostor(
-                        draggedNode,
-                        PhysicsImpostor.BoxImpostor,
-                        { mass: 0.1, friction: 0.7, restitution: 0.01 },
-                        ctx.scene
-                    );
+                    if (draggedNode.getChildren().length > 0) {
+                        draggedNode.physicsImpostor = new PhysicsImpostor(
+                            draggedNode,
+                            PhysicsImpostor.BoxImpostor,
+                            { mass: 0.1, friction: 0.7, restitution: 0.01 },
+                            ctx.scene
+                        );
+                    } else {
+                        draggedNode.physicsImpostor = new PhysicsImpostor(
+                            draggedNode,
+                            PhysicsImpostor.BoxImpostor,
+                            { mass: 1, friction: 1, restitution: 0 },
+                            ctx.scene
+                        );
+                
+                    }
                 }
             }
         });
@@ -349,54 +375,61 @@ class BehaviorManager {
     }    
 
     checkPiecePositions(): void {
-        for (const [helpBox, groupBox] of ctx.helpBoxMap.entries()) {
-            helpBox.position.copyFrom(groupBox.position);
-            helpBox.rotationQuaternion = groupBox.rotationQuaternion!.clone();
+        for (const [helpBox, polygon] of ctx.helpBoxMap.entries()) {
+            helpBox.position = polygon.getBoundingInfo().boundingBox.centerWorld.clone();
+            helpBox.rotationQuaternion = polygon.rotationQuaternion!.clone();
         }
     
         const helpThis = this;
         ctx.jigsawPieces.forEach(piece => {
             const pieceData = ctx.piecesMap.get(piece);
-            if (!pieceData) return;
-            const shapeMesh = pieceData.shapeMesh;
-    
-            piece.computeWorldMatrix(true);
-            shapeMesh.position.copyFrom(piece.getAbsolutePosition());
-    
-            const worldMatrix = piece.getWorldMatrix();
-            const absoluteRotation = new Quaternion();
-            worldMatrix.decompose(undefined, absoluteRotation, undefined);
-            shapeMesh.rotationQuaternion = absoluteRotation;
+
+            if (pieceData) {
+                const shapeMesh = pieceData.shapeMesh;
+        
+                piece.computeWorldMatrix(true);
+                shapeMesh.position.copyFrom(piece.getAbsolutePosition());
+        
+                const worldMatrix = piece.getWorldMatrix();
+                const absoluteRotation = new Quaternion();
+                worldMatrix.decompose(undefined, absoluteRotation, undefined);
+                shapeMesh.rotationQuaternion = absoluteRotation;
+            }
     
             if (piece.parent) {
-                piece.position.y = -0.3;
+                piece.position.y = -0.1;
                 piece.rotationQuaternion = Quaternion.Identity();
                 return;
             }
+
+            const boundingbox = piece.getBoundingInfo().boundingBox;
+            const widthHalf = (boundingbox.maximum.x - boundingbox.minimum.x) / 2;
+            const depthHalf = (boundingbox.maximum.z - boundingbox.minimum.z) / 2;
+            const heightHalf = (boundingbox.maximum.y - boundingbox.minimum.y) / 2;
     
-            const power = piece.getChildren().length < 1 ? 1.5 : 0.04;
-    
-            const edgePosMinX = helpThis.getEdgePosition(piece, (edge, pos) => pos.x - ctx.pieceWidthHalf < edge.x);
-            const edgePosMaxX = helpThis.getEdgePosition(piece, (edge, pos) => pos.x + ctx.pieceWidthHalf > edge.x);
-            const edgePosMinZ = helpThis.getEdgePosition(piece, (edge, pos) => pos.z - ctx.pieceDepthHalf < edge.z);
-            const edgePosMaxZ = helpThis.getEdgePosition(piece, (edge, pos) => pos.z + ctx.pieceDepthHalf > edge.z);
-            const edgePosMinY = helpThis.getEdgePosition(piece, (edge, pos) => pos.y - ctx.pieceHeightHalf < edge.y);
+            const element = (ctx.polygonMap.get(piece)?.getChildMeshes()[0] || piece) as Mesh;
+
+            const edgePosMinX = helpThis.getEdgePosition(element, (edge, pos) => pos.x - widthHalf < edge.x);
+            const edgePosMaxX = helpThis.getEdgePosition(element, (edge, pos) => pos.x + widthHalf > edge.x);
+            const edgePosMinZ = helpThis.getEdgePosition(element, (edge, pos) => pos.z - depthHalf < edge.z);
+            const edgePosMaxZ = helpThis.getEdgePosition(element, (edge, pos) => pos.z + depthHalf > edge.z);
+            const edgePosMinY = helpThis.getEdgePosition(element, (edge, pos) => pos.y - heightHalf < edge.y);
     
             let edgePos: Vector3 | null = null;
     
-            if (edgePosMinX.x - ctx.pieceWidthHalf < ctx.minX) {
+            if (edgePosMinX.x - widthHalf < ctx.minX) {
                 piece.position.x += 0.2;
                 edgePos = edgePosMinX;
-            } else if (edgePosMaxX.x + ctx.pieceWidthHalf > ctx.maxX) {
+            } else if (edgePosMaxX.x + widthHalf > ctx.maxX) {
                 piece.position.x -= 0.2;
                 edgePos = edgePosMaxX;
-            } else if (edgePosMinZ.z - ctx.pieceDepthHalf < ctx.minZ) {
+            } else if (edgePosMinZ.z - depthHalf < ctx.minZ) {
                 piece.position.z += 0.2;
                 edgePos = edgePosMinZ;
-            } else if (edgePosMaxZ.z + ctx.pieceDepthHalf > ctx.maxZ) {
+            } else if (edgePosMaxZ.z + depthHalf > ctx.maxZ) {
                 piece.position.z -= 0.2;
                 edgePos = edgePosMaxZ;
-            } else if (edgePosMinY.y - ctx.pieceHeightHalf < ctx.minY - 0.1) {
+            } else if (edgePosMinY.y - heightHalf < ctx.minY - 0.1) {
                 piece.position.y += 0.2;
                 edgePos = edgePosMinY;
             } else {
@@ -407,11 +440,13 @@ class BehaviorManager {
             const directionToCenter = centerPoint.subtract(edgePos).normalize();
     
             if (piece.physicsImpostor) {
+                const power = pieceData ? 1.5 : 0.4;
+
                 piece.physicsImpostor.setLinearVelocity(Vector3.Zero());
                 const centerImpulse = directionToCenter.scale(power);
                 piece.physicsImpostor.applyImpulse(centerImpulse, edgePos);
     
-                if (piece.getChildren().length >= 3) {
+                if (pieceData) {
                     const maxAngularSpeed = 1;
                     const angularVelocity = piece.physicsImpostor.getAngularVelocity();
     
