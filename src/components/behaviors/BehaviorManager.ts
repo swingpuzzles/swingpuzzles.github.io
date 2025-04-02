@@ -2,6 +2,7 @@ import { EasingFunction, Mesh, PhysicsImpostor, PointerDragBehavior, QuadraticEa
 import meshHelpers from "../common/MeshHelpers";
 import ctx from "../common/SceneContext";
 import dragPolygonBuilder from "../builders/DragPolygonBuilder";
+import dragHelpers from "./DragHelpers";
 
 class BehaviorManager {
     constructor() {
@@ -9,15 +10,6 @@ class BehaviorManager {
 
     init() {
         ctx.scene.onBeforeRenderObservable.add(() => this.checkPiecePositions());
-    }
-    
-    removeDragBehavior(mesh: Mesh): void {
-        const behaviors = mesh.behaviors.slice();
-        for (const behavior of behaviors) {
-            if (behavior instanceof PointerDragBehavior) {
-                mesh.removeBehavior(behavior);
-            }
-        }
     }
     
     addDragBehavior(mesh: Mesh): void {
@@ -85,7 +77,7 @@ class BehaviorManager {
     
                         if (positionMatch && rotationMatch) {
                             const topParentData = ctx.piecesMap.get(topParent)!;
-                            this.removeDragBehavior(topParent);
+                            dragHelpers.removeDragBehavior(topParent);
     
                             const neighbourTopParent = meshHelpers.getTopParent(n);
 
@@ -138,7 +130,7 @@ class BehaviorManager {
                             topParent.refreshBoundingInfo();
     
                             meshHelpers.makeChildrenSiblings(topParent);
-                            this.removeDragBehavior(neighbourTopParent);
+                            dragHelpers.removeDragBehavior(neighbourTopParent);
                             let polygon = dragPolygonBuilder.makePolygon(neighbourTopParent);
 
                             const helpBox = MeshBuilder.CreateBox("box", { width: 0.5, height: 0.5, depth: 0.5 }, ctx.scene);
