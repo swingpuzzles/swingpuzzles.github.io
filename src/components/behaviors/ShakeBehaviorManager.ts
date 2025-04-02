@@ -1,4 +1,4 @@
-import { Mesh, PhysicsImpostor, PointerDragBehavior, Vector3, Animation } from "@babylonjs/core";
+import { Mesh, PointerDragBehavior, Vector3, Animation } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import meshHelpers from "../common/MeshHelpers";
 import dragHelpers from "./DragHelpers";

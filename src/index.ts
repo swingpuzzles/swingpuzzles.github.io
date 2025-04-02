@@ -3,8 +3,8 @@ import "@babylonjs/loaders"; // Required if you load external models
 import piecePositioningManager from "./components/behaviors/PiecePositioningManager";
 import ctx from "./components/common/SceneContext";
 import { AmmoJSPlugin, ArcRotateCamera, Engine, HemisphericLight, InitializeCSG2Async, Scene, Vector3 } from "@babylonjs/core";
-import buildScene from "./components/builders/SceneBuilder";
 import puzzleCoverBuilder from "./components/builders/PuzzleCoverBuilder";
+import sceneBuilder from "./components/builders/SceneBuilder";
 
 
 // Get the canvas element
@@ -49,7 +49,7 @@ const createScene = async function (): Promise<Scene> {
 
     await InitializeCSG2Async();
 
-    buildScene();
+    sceneBuilder.buildScene();
 
     piecePositioningManager.init();
 
