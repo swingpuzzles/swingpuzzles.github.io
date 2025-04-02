@@ -2,6 +2,7 @@ import { CSG2, Mesh, MeshBuilder, PhysicsImpostor, StandardMaterial, Vector3 } f
 import behaviorManager from "./BehaviorManager";
 import ctx from "./SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
+import shakeBehaviorManager from "./behaviors/ShakeBehaviorManager";
 
 function buildScene() {
     const mat = new StandardMaterial("mat", ctx.scene);
@@ -39,7 +40,7 @@ function buildScene() {
     groundCover.visibility = 0;
     groundCover.position.y = ctx.minY + 1;
 
-    behaviorManager.addShakeBehavior([lathe, ground, groundVis, groundCover]);
+    shakeBehaviorManager.addShakeBehavior([lathe, ground, groundVis, groundCover]);
 
     const startX = -ctx.kitWidth / 2;
     const startZ = ctx.kitHeight / 2;
