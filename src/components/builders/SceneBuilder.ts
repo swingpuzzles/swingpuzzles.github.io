@@ -2,6 +2,7 @@ import { CSG2, Mesh, MeshBuilder, PhysicsImpostor, StandardMaterial, Vector3 } f
 import ctx from "../common/SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
+import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
 
 function buildScene() {
     const mat = new StandardMaterial("mat", ctx.scene);
@@ -25,12 +26,8 @@ function buildScene() {
     const ground = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
     ground.position.y = -0.1;
     ground.visibility = 0;
-    ground.physicsImpostor = new PhysicsImpostor(
-        ground,
-        PhysicsImpostor.BoxImpostor,
-        { mass: 0, friction: 0.5, restitution: 0.2 },
-        ctx.scene
-    );
+    
+    physicsImpostorBuilder.attachGroundImpostor(ground);
 
     const groundVis = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
     groundVis.position.y = ctx.minY - 0.1;

@@ -1,9 +1,9 @@
-import { Mesh, MeshBuilder, PhysicsImpostor, PointerDragBehavior, QuadraticEase, Quaternion, Vector3, Animation, EasingFunction } from "@babylonjs/core";
+import { Mesh, MeshBuilder, PhysicsImpostor, PointerDragBehavior, Vector3 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
-import meshHelpers from "../common/MeshHelpers";
 import dragHelpers from "./DragHelpers";
 import dragPolygonBuilder from "../builders/DragPolygonBuilder";
 import rotationToZeroAnimation from "../animations/RotationToZeroAnimation";
+import physicsImpostorBuilder from "../builders/PhysicsImpostorBuilder";
 
 class PieceDragManager {
     addDragBehavior(mesh: Mesh): void {
@@ -66,12 +66,7 @@ class PieceDragManager {
                 }
     
                 if (!draggedNode.physicsImpostor && !draggedNode.parent) {
-                    draggedNode.physicsImpostor = new PhysicsImpostor(
-                        draggedNode,
-                        PhysicsImpostor.BoxImpostor,
-                        { mass: 0.1, friction: 0.7, restitution: 0.01 },
-                        ctx.scene
-                    );
+                    physicsImpostorBuilder.attachPuzzlePieceImpostor(draggedNode);
                 }
             }
         });

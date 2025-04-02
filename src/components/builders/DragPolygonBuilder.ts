@@ -2,6 +2,7 @@ import { Mesh, PhysicsImpostor, PolygonMeshBuilder, Vector2 } from "@babylonjs/c
 import ctx from "../common/SceneContext";
 import behaviorManager from "../behaviors/BehaviorManager";
 import * as earcut from "earcut";
+import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
 (window as any).earcut = earcut;
 
 class DragPolygonBuilder {
@@ -146,12 +147,8 @@ class DragPolygonBuilder {
         extrudedMesh.position.x = centerX;
         extrudedMesh.position.z = centerZ;
         extrudedMesh.position.y = 5;
-        extrudedMesh.physicsImpostor = new PhysicsImpostor(
-            extrudedMesh,
-            PhysicsImpostor.BoxImpostor,
-            { mass: 1, friction: 0.7, restitution: 0.01 },
-            ctx.scene
-        );
+
+        physicsImpostorBuilder.attachDragPolygonImpostor(extrudedMesh);
     
         behaviorManager.addDragBehavior(extrudedMesh);
 

@@ -3,6 +3,7 @@ import ctx from "../common/SceneContext";
 import meshHelpers from "../common/MeshHelpers";
 import dragHelpers from "./DragHelpers";
 import pieceDragManager from "./PieceDragManager"; // Ensure this path is correct
+import physicsImpostorBuilder from "../builders/PhysicsImpostorBuilder";
 
 class ShakeBehaviorManager {
     addShakeBehavior(meshes: Mesh[]): void {
@@ -49,12 +50,7 @@ class ShakeBehaviorManager {
                 piece.physicsImpostor.dispose();
             }
     
-            piece.physicsImpostor = new PhysicsImpostor(
-                piece,
-                PhysicsImpostor.BoxImpostor,
-                { mass: 0.2, friction: 0.3, restitution: 0.1 },
-                ctx.scene
-            );
+            physicsImpostorBuilder.attachInitialPuzzlePieceImpostor(piece);
         });
     
         ctx.jigsawPieces.forEach(piece => {
