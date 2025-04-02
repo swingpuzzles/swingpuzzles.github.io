@@ -90,6 +90,8 @@ class BehaviorManager {
             ctx.scene.stopAnimation(draggedNode);
             draggedNode.animations = [];
     
+            draggedNode = ctx.polygonMap.get(draggedNode)?.getChildMeshes()[0] as Mesh || draggedNode;
+
             while (draggedNode.parent) draggedNode = draggedNode.parent as Mesh;
     
             if (draggedNode) {
@@ -150,6 +152,28 @@ class BehaviorManager {
                                 topParent.physicsImpostor.dispose();
                                 topParent.physicsImpostor = null;
                             }
+
+                            if (neighbourTopParent.parent) {
+                                let parent = neighbourTopParent.parent as Mesh;
+                                meshHelpers.excludeFromParent(neighbourTopParent);
+                                let oldPolygon = ctx.helpBoxMap.get(parent)!;
+                                ctx.helpBoxMap.delete(oldPolygon);
+                                ctx.polygonMap.delete(parent);
+                                oldPolygon.dispose();
+                                ctx.jigsawPieces.splice(ctx.jigsawPieces.indexOf(oldPolygon), 1);
+                                parent.dispose();
+                            }
+
+                            if (topParent.parent) {
+                                let parent = topParent.parent as Mesh;
+                                meshHelpers.excludeFromParent(topParent);
+                                let oldPolygon = ctx.helpBoxMap.get(parent)!;
+                                ctx.helpBoxMap.delete(oldPolygon);
+                                ctx.polygonMap.delete(parent);
+                                oldPolygon.dispose();
+                                ctx.jigsawPieces.splice(ctx.jigsawPieces.indexOf(oldPolygon), 1);
+                                parent.dispose();
+                            }
     
                             topParent.setParent(neighbourTopParent);
                             topParent.rotationQuaternion = identityQuaternion;
@@ -167,17 +191,6 @@ class BehaviorManager {
                             let polygon = puzzleBuilder.makePolygon(neighbourTopParent);
 
                             const helpBox = MeshBuilder.CreateBox("box", { width: 0.5, height: 0.5, depth: 0.5 }, ctx.scene);
-
-                            if (neighbourTopParent.parent) {
-                                let parent = neighbourTopParent.parent as Mesh;
-                                let oldPolygon = ctx.helpBoxMap.get(parent)!;
-                                ctx.helpBoxMap.delete(oldPolygon);
-                                ctx.polygonMap.delete(parent);
-                                oldPolygon.dispose();
-                                ctx.jigsawPieces.splice(ctx.jigsawPieces.indexOf(oldPolygon), 1);
-                                meshHelpers.excludeFromParent(neighbourTopParent);
-                                parent.dispose();
-                            }
                 
                             helpBox.position = polygon.getBoundingInfo().boundingBox.centerWorld.clone();
 
@@ -208,7 +221,7 @@ class BehaviorManager {
                         draggedNode.physicsImpostor = new PhysicsImpostor(
                             draggedNode,
                             PhysicsImpostor.BoxImpostor,
-                            { mass: 1, friction: 1, restitution: 0 },
+                            { mass: 1, friction: 0.7, restitution: 0.01 },
                             ctx.scene
                         );
                 

@@ -212,7 +212,7 @@ class PuzzleBuilder {
         extrudedMesh.physicsImpostor = new PhysicsImpostor(
             extrudedMesh,
             PhysicsImpostor.BoxImpostor,
-            { mass: 1, friction: 1, restitution: 0 },
+            { mass: 1, friction: 0.7, restitution: 0.01 },
             ctx.scene
         );
     
