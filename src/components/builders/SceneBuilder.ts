@@ -1,6 +1,5 @@
 import { CSG2, Mesh, MeshBuilder, PhysicsImpostor, StandardMaterial, Vector3 } from "@babylonjs/core";
-import behaviorManager from "../behaviors/BehaviorManager";
-import ctx from "../SceneContext";
+import ctx from "../common/SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 

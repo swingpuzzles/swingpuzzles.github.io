@@ -1,4 +1,4 @@
-import { ArcRotateCamera, Camera, Mesh, Scene, Vector3 } from "@babylonjs/core";
+import { ArcRotateCamera, Mesh, Scene, Vector3 } from "@babylonjs/core";
 
 class SceneContext {
     private _scene: Scene | null = null;

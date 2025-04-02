@@ -1,10 +1,10 @@
 import ammo from "ammojs-typed";
 import "@babylonjs/loaders"; // Required if you load external models
 import behaviorManager from "./components/behaviors/BehaviorManager";
-import createCover from "./components/elements/PuzzleCover";
-import ctx from "./components/SceneContext";
-import { AmmoJSPlugin, ArcRotateCamera, Engine, HemisphericLight, InitializeCSG2Async, Mesh, Quaternion, Scalar, Scene, Vector3 } from "@babylonjs/core";
+import ctx from "./components/common/SceneContext";
+import { AmmoJSPlugin, ArcRotateCamera, Engine, HemisphericLight, InitializeCSG2Async, Scene, Vector3 } from "@babylonjs/core";
 import buildScene from "./components/builders/SceneBuilder";
+import puzzleCoverBuilder from "./components/builders/PuzzleCoverBuilder";
 
 
 // Get the canvas element
@@ -53,7 +53,7 @@ const createScene = async function (): Promise<Scene> {
 
     behaviorManager.init();
 
-    createCover();
+    puzzleCoverBuilder.createCover();
 
     return scene;
 };

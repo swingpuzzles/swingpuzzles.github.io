@@ -1,5 +1,5 @@
 import { Mesh, PhysicsImpostor, PolygonMeshBuilder, Vector2 } from "@babylonjs/core";
-import ctx from "../SceneContext";
+import ctx from "../common/SceneContext";
 import behaviorManager from "../behaviors/BehaviorManager";
 import * as earcut from "earcut";
 (window as any).earcut = earcut;

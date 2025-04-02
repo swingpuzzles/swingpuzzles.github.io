@@ -1,7 +1,6 @@
 import { EasingFunction, Mesh, PhysicsImpostor, PointerDragBehavior, QuadraticEase, Quaternion, Vector3, Animation, Scalar, MeshBuilder } from "@babylonjs/core";
-import puzzleBuilder from "../builders/PuzzleBuilder";
-import meshHelpers from "../MeshHelpers";
-import ctx from "../SceneContext";
+import meshHelpers from "../common/MeshHelpers";
+import ctx from "../common/SceneContext";
 import dragPolygonBuilder from "../builders/DragPolygonBuilder";
 
 class BehaviorManager {
@@ -12,7 +11,6 @@ class BehaviorManager {
         ctx.scene.onBeforeRenderObservable.add(() => this.checkPiecePositions());
     }
     
-
     removeDragBehavior(mesh: Mesh): void {
         const behaviors = mesh.behaviors.slice();
         for (const behavior of behaviors) {

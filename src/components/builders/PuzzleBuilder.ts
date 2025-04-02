@@ -1,7 +1,7 @@
 import { Color3, CSG2, Mesh, MultiMaterial, Path2, PolygonMeshBuilder, StandardMaterial, SubMesh, Texture } from "@babylonjs/core";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import * as earcut from "earcut";
-import ctx from "../SceneContext";
+import ctx from "../common/SceneContext";
 (window as any).earcut = earcut;
 
 
