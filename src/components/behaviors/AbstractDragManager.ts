@@ -32,11 +32,11 @@ abstract class AbstractDragManager {
         mesh.addBehavior(dragBehavior);
     }
 
-    tryJoin(draggedNode: Mesh, topPiece: Mesh): boolean {
-        for (const n of dragHelpers.getNeighbours(draggedNode)) {
-            if (meshHelpers.areMeshesRelated(n, draggedNode)) continue;
+    tryJoin(toJoin: Mesh, topPiece: Mesh): boolean {
+        for (const n of dragHelpers.getNeighbours(toJoin)) {
+            if (meshHelpers.areMeshesRelated(n, toJoin)) continue;
 
-            if (dragHelpers.arePiecesJoining(draggedNode, n)) {
+            if (dragHelpers.arePiecesJoining(toJoin, n)) {
                 dragHelpers.joinPieces(topPiece, n);
 
                 return true;

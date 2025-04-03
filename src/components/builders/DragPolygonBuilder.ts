@@ -65,6 +65,8 @@ class DragPolygonBuilder {
         let xOffset = (boundingBox.maximum.x - boundingBox.minimum.x) * topLeftMesh.scaling.x / 2;
         let zOffset = (boundingBox.maximum.z - boundingBox.minimum.z) * topLeftMesh.scaling.z / 2;
     
+        topLeftMesh.computeWorldMatrix(true);
+        topLeftMesh.refreshBoundingInfo();
         let meshPos = topLeftMesh.getAbsolutePosition();
         let startPoint = new Vector2(meshPos.x - xOffset, meshPos.z + zOffset);
         path.push(startPoint);
@@ -88,6 +90,8 @@ class DragPolygonBuilder {
                     boundingBox = tryMesh2.getBoundingInfo().boundingBox;
                     xOffset = (boundingBox.maximum.x - boundingBox.minimum.x) * tryMesh2.scaling.x / 2;
                     zOffset = (boundingBox.maximum.z - boundingBox.minimum.z) * tryMesh2.scaling.z / 2;
+                    tryMesh2.computeWorldMatrix(true);
+                    tryMesh2.refreshBoundingInfo();
                     meshPos = tryMesh2.getAbsolutePosition();
     
                     direction = direction.after[0];
@@ -95,15 +99,17 @@ class DragPolygonBuilder {
                     zIndex = zTry2;
     
                     if (direction.vertical) {
-                        nextPoint.x = meshPos.x + direction.after[0].point[0] * xOffset;
+                        nextPoint.x = meshPos.x + direction.point[0] * xOffset;
                     } else {
-                        nextPoint.y = meshPos.z + direction.after[0].point[1] * zOffset;
+                        nextPoint.y = meshPos.z + direction.point[1] * zOffset;
                     }
                     path.push(nextPoint);
                 } else {
                     boundingBox = tryMesh.getBoundingInfo().boundingBox;
                     xOffset = (boundingBox.maximum.x - boundingBox.minimum.x) * tryMesh.scaling.x / 2;
                     zOffset = (boundingBox.maximum.z - boundingBox.minimum.z) * tryMesh.scaling.z / 2;
+                    tryMesh.computeWorldMatrix(true);
+                    tryMesh.refreshBoundingInfo();
                     meshPos = tryMesh.getAbsolutePosition();
     
                     direction = direction.after[1];
@@ -154,7 +160,7 @@ class DragPolygonBuilder {
     
         polygonDragManager.addDragBehavior(extrudedMesh);
 
-        extrudedMesh.visibility = 0.5;
+        extrudedMesh.visibility = 0;
 
         return extrudedMesh;
     }
