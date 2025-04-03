@@ -22,16 +22,16 @@ class SceneBuilder {
         lathe.rotation.y = Math.PI / 4;
         lathe.bakeCurrentTransformIntoVertices();
         lathe.scaling = new Vector3(ctx.latheWidth, ctx.latheHeight, ctx.latheDepth);
-        lathe.position.y = -0.44;
+        lathe.position.y = ctx.minY - 0.48;
 
         const ground = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
-        ground.position.y = -0.1;
+        ground.position.y = ctx.minY + 0.26;
         ground.visibility = 0;
         
         physicsImpostorBuilder.attachGroundImpostor(ground);
 
         const groundVis = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
-        groundVis.position.y = ctx.minY - 0.1;
+        groundVis.position.y = ctx.minY - 0.5;
 
         const groundCover = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
         groundCover.visibility = 0;

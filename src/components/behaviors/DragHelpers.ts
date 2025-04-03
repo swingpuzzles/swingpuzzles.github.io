@@ -79,7 +79,7 @@ class DragHelpers {
         return neighbours;
     }
 
-    joinPieces(draggedTop: Mesh, matchedNeighbour: Mesh): void {
+    joinPieces(draggedTop: Mesh, matchedNeighbour: Mesh): Mesh {
         dragHelpers.removeDragBehavior(draggedTop);
                 
         const neighbourTopParent = dragHelpers.parentUpMeshes(draggedTop, matchedNeighbour);
@@ -113,6 +113,8 @@ class DragHelpers {
         if (neighbourTopParent.getChildren().length + 1 === ctx.piecesCount) {
             alert("Job done!");
         }
+
+        return polygon;
     }
 }
 

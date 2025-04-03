@@ -1,4 +1,4 @@
-import { Mesh, PointerDragBehavior, Vector3 } from "@babylonjs/core";
+import { Mesh, PointerDragBehavior, Vector2, Vector3 } from "@babylonjs/core";
 import rotationToZeroAnimation from "../animations/RotationToZeroAnimation";
 import ctx from "../common/SceneContext";
 import dragHelpers from "./DragHelpers";
@@ -32,18 +32,72 @@ abstract class AbstractDragManager {
         mesh.addBehavior(dragBehavior);
     }
 
-    tryJoin(toJoin: Mesh, topPiece: Mesh): boolean {
+    tryJoin(toJoin: Mesh, topPiece: Mesh): Mesh | null {
         for (const n of dragHelpers.getNeighbours(toJoin)) {
             if (meshHelpers.areMeshesRelated(n, toJoin)) continue;
 
             if (dragHelpers.arePiecesJoining(toJoin, n)) {
-                dragHelpers.joinPieces(topPiece, n);
-
-                return true;
+                return dragHelpers.joinPieces(topPiece, n);
             }
         }
 
-        return false;
+        return null;
+    }
+
+    reorderPieces(polygon: Mesh, newMatch : boolean): void {
+        const helpBox = ctx.polygonMap.get(polygon)!;
+        const topPiece = helpBox.getChildMeshes()[0] as Mesh;
+        const childrenCount = topPiece.getChildMeshes().length;
+    
+        polygon.computeWorldMatrix(true);
+        polygon.refreshBoundingInfo();
+    
+        const boundingInfo = polygon.getBoundingInfo();
+        const boundingBox = boundingInfo.boundingBox;
+        const min = boundingBox.minimumWorld;
+        const max = boundingBox.maximumWorld;
+    
+        const minXZ = new Vector2(min.x, min.z);
+        const maxXZ = new Vector2(max.x, max.z);
+
+        if (newMatch) {
+            polygon.position.y = Math.min(ctx.minY + 1.5, polygon.position.y);
+        }
+
+        const flippedOf = polygon.position.y - ctx.minY;
+    
+        ctx.jigsawPieces.forEach(piece => {
+            if (piece.parent) {
+                return;
+            }
+            
+            const element = (ctx.polygonMap.get(piece)?.getChildMeshes()[0] || piece) as Mesh;
+
+            if (element.getChildMeshes().length < childrenCount) {
+                //const shapeMesh = pieceData.shapeMesh;
+    
+                piece.computeWorldMatrix(true);
+                piece.refreshBoundingInfo();
+    
+                const pieceBounds = piece.getBoundingInfo().boundingBox;
+                const pieceMin = pieceBounds.minimumWorld;
+                const pieceMax = pieceBounds.maximumWorld;
+    
+                const pieceMinXZ = new Vector2(pieceMin.x, pieceMin.z);
+                const pieceMaxXZ = new Vector2(pieceMax.x, pieceMax.z);
+    
+                // Check XZ plane overlap
+                const intersectsXZ =
+                    pieceMaxXZ.x >= minXZ.x &&
+                    pieceMinXZ.x <= maxXZ.x &&
+                    pieceMaxXZ.y >= minXZ.y &&
+                    pieceMinXZ.y <= maxXZ.y;
+    
+                if (intersectsXZ) {
+                    piece.position.y += flippedOf + 1;
+                }
+            }
+        });
     }
 
     abstract doDrop(draggedNode: Mesh) : void;

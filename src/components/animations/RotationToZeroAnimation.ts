@@ -38,7 +38,7 @@ class RotationToZeroAnimation {
     
         let keys2 = [
             { frame: 0, value: mesh.position.y },
-            { frame: 100, value: 3 }
+            { frame: 100, value: ctx.minY + 5 }
         ];
     
         anim.setKeys(keys2);

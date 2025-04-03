@@ -37,11 +37,6 @@ class PiecePositioningManager {
                 piece.rotationQuaternion = Quaternion.Identity();
                 return;
             }
-
-            /*const boundingbox = piece.getBoundingInfo().boundingBox;
-            const widthHalf = (boundingbox.maximum.x - boundingbox.minimum.x) / 2;
-            const depthHalf = (boundingbox.maximum.z - boundingbox.minimum.z) / 2;
-            const heightHalf = (boundingbox.maximum.y - boundingbox.minimum.y) / 2;*/
     
             const element = (ctx.polygonMap.get(piece)?.getChildMeshes()[0] || piece) as Mesh;
 

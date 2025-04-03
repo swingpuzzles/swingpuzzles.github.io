@@ -5,7 +5,10 @@ import AbstractDragManager from "./AbstractDragManager";
 class PieceDragManager extends AbstractDragManager {
 
     doDrop(draggedNode: Mesh): void {
-        if (this.tryJoin(draggedNode, draggedNode)) {
+        const polygon = this.tryJoin(draggedNode, draggedNode);
+        
+        if (polygon) {
+            this.reorderPieces(polygon, true);
             return;
         }
 
