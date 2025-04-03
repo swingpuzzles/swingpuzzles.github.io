@@ -19,7 +19,7 @@ class RotationToZeroAnimation {
     
         let keys = [
             { frame: 0, value: mesh.rotationQuaternion.clone() },
-            { frame: 100, value: Quaternion.Identity() }
+            { frame: 30, value: Quaternion.Identity() }
         ];
     
         anim.setKeys(keys);
@@ -38,7 +38,7 @@ class RotationToZeroAnimation {
     
         let keys2 = [
             { frame: 0, value: mesh.position.y },
-            { frame: 100, value: ctx.minY + 5 }
+            { frame: 30, value: ctx.minY + 5 }
         ];
     
         anim.setKeys(keys2);
@@ -46,7 +46,7 @@ class RotationToZeroAnimation {
     
         mesh.animations.push(anim);
     
-        ctx.scene.beginAnimation(mesh, 0, 100, false);
+        ctx.scene.beginAnimation(mesh, 0, 30, false);
     }
 
 }
