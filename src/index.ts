@@ -35,14 +35,23 @@ window.addEventListener("resize", () => {
 // ✅ Converted createScene function to TypeScript
 const createScene = async function (): Promise<Scene> {
     let scene = new Scene(engine);
-    let camera = new ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 4, 60, Vector3.Zero(), scene);
+    //let camera = new ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 4, 60, Vector3.Zero(), scene);
+    var camera = new ArcRotateCamera("arcCamera", Math.PI / 2, 17 * Math.PI / 32, 4 * 45, Vector3.Zero(), scene);
+    camera.attachControl(canvas, true);
+
+    camera.upperBetaLimit = 9 * Math.PI / 16;  
+    camera.lowerBetaLimit = 14 * Math.PI / 32;
 
     ctx.init(scene, camera);
 
-    const light1 = new HemisphericLight("light1", new Vector3(0, 10, 0), scene);
+    var light = new HemisphericLight("light1", new Vector3(0, 1, 0), scene);
+    var light2 = new HemisphericLight("light1", new Vector3(0, 0, 1), scene);
+    light2.intensity = 0.2;
+
+    /*const light1 = new HemisphericLight("light1", new Vector3(0, 10, 0), scene);
     const light2 = new HemisphericLight("light2", new Vector3(0, -10, 5), scene);
     light1.intensity = 0.5;
-    light2.intensity = 0.5;
+    light2.intensity = 0.5;*/
 
     const physicsPlugin = new AmmoJSPlugin(true);
     scene.enablePhysics(new Vector3(0, -9.81, 0), physicsPlugin);
@@ -51,7 +60,7 @@ const createScene = async function (): Promise<Scene> {
 
     sceneBuilder.buildScene();
 
-    piecePositioningManager.init();
+    piecePositioningManager.init(); // TODO not here
 
     puzzleCoverBuilder.createCover();
 
