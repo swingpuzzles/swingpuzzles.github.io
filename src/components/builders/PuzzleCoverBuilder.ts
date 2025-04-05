@@ -1,16 +1,18 @@
 import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Texture, Vector3, VertexBuffer, Animation, Scene } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
+import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 
 class PuzzleCoverBuilder {
-    createCover(): void {
+    createCover(imgSmallUrl: string, imgBigUrl: string): Mesh {
         const box = MeshBuilder.CreateBox("box", {
             width: ctx.coverWidth,
             height: ctx.coverHeight,
             depth: ctx.coverDepth
         }, ctx.scene);
 
+        const texture = puzzleAssetsManager.addTexture(imgSmallUrl, imgBigUrl);
+
         const mat = new StandardMaterial("mat", ctx.scene);
-        const texture = new Texture("https://m.media-amazon.com/images/I/81BA14xBSAL._AC_SL1500_.jpg", ctx.scene);
         mat.diffuseTexture = texture;
 
         let cut = 0.1;
@@ -29,12 +31,12 @@ class PuzzleCoverBuilder {
         box.material = mat;
 
         box.actionManager = new ActionManager(ctx.scene);
-        box.setPivotPoint(new Vector3(-64, 0, 0));
+        //box.setPivotPoint(new Vector3(-64, 0, 0));    // TODO
 
         box.rotation.x = 3 * Math.PI / 2;
         box.rotation.y = Math.PI / 2;
         box.rotation.z = Math.PI / 2;
-        box.position = new Vector3(128, 1.2, 0);
+        //box.position = new Vector3(128, 1.2, 0);
         box.bakeCurrentTransformIntoVertices();
 
         box.actionManager.registerAction(
@@ -42,6 +44,8 @@ class PuzzleCoverBuilder {
                 this.openCover(ctx.scene, box);
             })
         );
+
+        return box;
     }
 
     private openCover(scene: Scene, cover: Mesh): void {

@@ -4,6 +4,7 @@ import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
 import gameModeManager from "../behaviors/GameModeManager";
+import puzzleCircleBuilder from "./PuzzleCircleBuilder";
 
 class SceneBuilder {
     buildScene() {
@@ -111,8 +112,10 @@ class SceneBuilder {
             ctx.camera.setTarget(targetPos);
         });
 
-
-
+        puzzleCircleBuilder.build();
+        /** 
+        // TODO: MOVE ALL BELOW!!!
+        **/
         const mat = new StandardMaterial("mat", ctx.scene);
         mat.backFaceCulling = false;
 

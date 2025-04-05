@@ -5,6 +5,7 @@ import ctx from "./components/common/SceneContext";
 import { AmmoJSPlugin, ArcRotateCamera, Engine, HemisphericLight, InitializeCSG2Async, Scene, Vector3 } from "@babylonjs/core";
 import puzzleCoverBuilder from "./components/builders/PuzzleCoverBuilder";
 import sceneBuilder from "./components/builders/SceneBuilder";
+import puzzleAssetsManager from "./components/behaviors/PuzzleAssetsManager";
 
 
 // Get the canvas element
@@ -43,6 +44,7 @@ const createScene = async function (): Promise<Scene> {
     camera.lowerBetaLimit = 14 * Math.PI / 32;*/
 
     ctx.init(scene, camera, canvas, engine);
+    puzzleAssetsManager.init();
 
     var light = new HemisphericLight("light1", new Vector3(0, 1, 0), scene);
     var light2 = new HemisphericLight("light1", new Vector3(0, 0, 1), scene);
@@ -60,9 +62,7 @@ const createScene = async function (): Promise<Scene> {
 
     sceneBuilder.buildScene();
 
-    piecePositioningManager.init(); // TODO not here
-
-    puzzleCoverBuilder.createCover();
+    //puzzleCoverBuilder.createCover();
 
     return scene;
 };

@@ -1,54 +1,76 @@
-import { Scene, Texture, AssetsManager, AbstractAssetTask } from "@babylonjs/core";
+import {
+    Scene,
+    Texture,
+    CubeTexture,
+    AssetsManager
+} from "@babylonjs/core";
+import ctx from "../common/SceneContext";
 
-type TexturePair = {
+type TextureReplacement = {
     placeholder: Texture;
     finalUrl: string;
 };
 
-export class PuzzleAssetsManager {
-    private scene: Scene;
-    private manager: AssetsManager;
-    private textureMap: Map<string, TexturePair> = new Map();
+type CubeTextureReplacement = {
+    placeholder: CubeTexture;
+    finalUrl: string;
+    target: { reflectionTexture: CubeTexture | null };
+};
 
-    constructor(scene: Scene) {
-        this.scene = scene;
-        this.manager = new AssetsManager(scene);
+class PuzzleAssetsManager {
+    private manager: AssetsManager | null = null;
+    private textures: Map<Texture, TextureReplacement> = new Map();
+    private cubeTextures: CubeTextureReplacement[] = [];
+
+    init() {
+        this.manager = new AssetsManager(ctx.scene);
     }
 
-    // Register a texture with a lightweight placeholder and a final high-res URL
-    public addTexture(id: string, placeholderUrl: string, finalUrl: string): Texture {
-        const placeholder = new Texture(placeholderUrl, this.scene, true, false);
-        this.textureMap.set(id, { placeholder, finalUrl });
+    // Add a regular texture with a placeholder and a URL to the high-res version
+    public addTexture(placeholderUrl: string, highResUrl: string): Texture {
+        const placeholder = new Texture(placeholderUrl, ctx.scene, true, false);
+        this.textures.set(placeholder, { placeholder, finalUrl: highResUrl });
 
-        // Queue high-res loading
-        const task = this.manager.addTextureTask(`${id}_task`, finalUrl);
-        task.onSuccess = (task) => {
-            const pair = this.textureMap.get(id);
-            if (pair) {
-                pair.placeholder.updateURL(finalUrl);
-                // Optionally: pair.placeholder.dispose(); to replace with a new one instead
-                // Or notify subscribers if you're using an event-driven pattern
-            }
+        const task = this.manager!.addTextureTask(`texture_${Date.now()}`, highResUrl);
+        task.onSuccess = () => {
+            placeholder.updateURL(highResUrl);
         };
-        task.onError = (task, message, exception) => {
-            console.error(`Failed to load high-res texture for '${id}': ${message}`, exception);
+        task.onError = (_, msg, ex) => {
+            console.warn(`Failed to load high-res texture '${highResUrl}': ${msg}`, ex);
         };
 
         return placeholder;
     }
 
-    public load(): Promise<void> {
-        return new Promise((resolve, reject) => {
-            this.manager.onFinish = () => resolve();
-            this.manager.onTaskErrorObservable.add((task) => {
-                console.warn(`Error loading task: ${task.name}`);
-            });
-            this.manager.load();
-        });
+    // Add a skybox (CubeTexture) replacement
+    public addSkybox(reflectionTarget: { reflectionTexture: CubeTexture | null }, lowResUrl: string, highResUrl: string): CubeTexture {
+        const placeholder = new CubeTexture(lowResUrl, ctx.scene);
+        reflectionTarget.reflectionTexture = placeholder;
+
+        this.cubeTextures.push({ placeholder, finalUrl: highResUrl, target: reflectionTarget });
+
+        const task = this.manager!.addCubeTextureTask(`skybox_${Date.now()}`, highResUrl);
+        task.onSuccess = (task) => {
+            reflectionTarget.reflectionTexture = task.texture!;
+        };
+        task.onError = (_, msg, ex) => {
+            console.warn(`Failed to load high-res cube texture '${highResUrl}': ${msg}`, ex);
+        };
+
+        return placeholder;
     }
 
-    public getTexture(id: string): Texture | undefined {
-        const pair = this.textureMap.get(id);
-        return pair?.placeholder;
+    // Start loading all queued high-res assets
+    public load(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            this.manager!.onFinish = () => resolve();
+            this.manager!.onTaskErrorObservable.add((task) => {
+                console.warn(`Error loading task: ${task.name}`);
+            });
+            this.manager!.load();
+        });
     }
 }
+
+const puzzleAssetsManager = new PuzzleAssetsManager();
+export default puzzleAssetsManager;
