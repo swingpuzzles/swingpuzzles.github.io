@@ -1,4 +1,4 @@
-import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Texture, Vector3, VertexBuffer, Animation, Scene } from "@babylonjs/core";
+import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Texture, Vector3, VertexBuffer, Animation, Scene, Matrix, CubicEase, EasingFunction } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 
@@ -41,26 +41,53 @@ class PuzzleCoverBuilder {
 
         box.actionManager.registerAction(
             new ExecuteCodeAction(ActionManager.OnPickTrigger, () => {
-                this.openCover(ctx.scene, box);
+                this.openCover(box);
             })
         );
 
         return box;
     }
 
-    private openCover(scene: Scene, cover: Mesh): void {
-        const anim = new Animation("openAnim", "rotation.z", 30,
+    private openCover(cover: Mesh): void {
+        // Rotation animation (rotation.z)
+        const rotationAnim = new Animation("openRotation", "rotation.z", 30,
             Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_CONSTANT);
-
-        const keys = [
+    
+        const rotationKeys = [
             { frame: 0, value: 0 },
-            { frame: 30, value: Math.PI / 2 }
+            { frame: 20, value: -Math.PI / 2 }
         ];
-
-        anim.setKeys(keys);
-        cover.animations = [anim];
-        scene.beginAnimation(cover, 0, 30, false);
+        rotationAnim.setKeys(rotationKeys);
+    
+        // Compute direction: "left" relative to current Y-rotation
+        const localLeft = new Vector3(1, 0, 0); // left in local space
+        const rotationY = cover.rotation.y;
+        const worldLeft = Vector3.TransformCoordinates(localLeft, Matrix.RotationY(rotationY));
+    
+        const moveDistanceUp = 100; // adjust this value
+        const moveDistanceSide = 50; // adjust this value
+        const moveOffset = worldLeft.scale(moveDistanceSide).add(new Vector3(0, moveDistanceUp, 0)); // left + up
+    
+        const startPos = cover.position.clone();
+        const endPos = startPos.add(moveOffset);
+    
+        // Position animation (Vector3)
+        const positionAnim = new Animation("movePosition", "position", 30,
+            Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_CONSTANT);
+    
+        const positionKeys = [
+            { frame: 0, value: startPos },
+            { frame: 20, value: endPos }
+        ];
+        positionAnim.setKeys(positionKeys);
+    
+        // Assign animations
+        cover.animations = [rotationAnim, positionAnim];
+    
+        // Start animation
+        ctx.scene.beginAnimation(cover, 0, 30, false);
     }
+                            
 }
 
 const puzzleCoverBuilder = new PuzzleCoverBuilder();
