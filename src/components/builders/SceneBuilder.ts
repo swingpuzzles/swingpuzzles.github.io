@@ -1,4 +1,4 @@
-import { CSG2, HDRCubeTexture, Mesh, MeshBuilder, PBRMaterial, StandardMaterial, Texture, Vector3, VertexBuffer } from "@babylonjs/core";
+import { CSG2, CubeTexture, Mesh, MeshBuilder, PBRMaterial, StandardMaterial, Texture, Vector3, VertexBuffer } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
@@ -10,19 +10,33 @@ class SceneBuilder {
         gameModeManager.enterInitialMode();
 
         // Načítaj HDR textúru
-        var hdrTexture = new HDRCubeTexture("assets/room.hdr", ctx.scene, 512);
+        //var hdrTexture = new HDRCubeTexture("assets/room.hdr", ctx.scene, 512);
 
         // Nastav HDR ako prostredie
-        ctx.scene.environmentTexture = hdrTexture;
+        //ctx.scene.environmentTexture = hdrTexture;
 
         // Vytvor skybox z HDR textúry
         var skybox = Mesh.CreateBox("skyBox", 400.0, ctx.scene);
         var skyboxMaterial = new PBRMaterial("skyBoxMaterial", ctx.scene);
         skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = hdrTexture.clone();
-        skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
+        //skyboxMaterial.reflectionTexture = hdrTexture.clone();
+        //skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
         skyboxMaterial.microSurface = 1.0;
         skyboxMaterial.disableLighting = true;
+        skyboxMaterial.reflectionTexture = new CubeTexture(
+            "assets/room", 
+            //"assets/skybox2", 
+            ctx.scene/*, 
+            [
+              "_px.webp", // +X (right)
+              "_py.webp", // +Y (top)
+              "_pz.webp", // +Z (front)
+              "_nx.webp", // -X (left)
+              "_ny.webp", // -Y (bottom)
+              "_nz.webp"  // -Z (back)
+            ]*/
+          );
+        skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
         skybox.material = skyboxMaterial;
 
 
