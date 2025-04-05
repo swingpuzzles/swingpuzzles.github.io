@@ -30,6 +30,11 @@ class SceneBuilder {
             new Vector3(0.9, 2, 0),
             new Vector3(0.3, 6.8, 0),
             new Vector3(2.7, 6.9, 0),
+            new Vector3(2.72, 6.91, 0),
+            new Vector3(2.73, 6.93, 0),
+            new Vector3(2.732, 6.95, 0),
+            new Vector3(2.73, 6.97, 0),
+            new Vector3(2.72, 6.99, 0),
             new Vector3(2.7, 7, 0),
             new Vector3(0, 7, 0)
         ];
