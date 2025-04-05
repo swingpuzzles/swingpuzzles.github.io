@@ -3,9 +3,11 @@ import ctx from "../common/SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
+import gameModeManager from "../behaviors/GameModeManager";
 
 class SceneBuilder {
     buildScene() {
+        gameModeManager.enterInitialMode();
 
         // Načítaj HDR textúru
         var hdrTexture = new HDRCubeTexture("assets/room.hdr", ctx.scene, 512);
@@ -34,7 +36,7 @@ class SceneBuilder {
         
         //Create lathe
         const table = MeshBuilder.CreateLathe("fountain", {shape: fountainProfile, sideOrientation: Mesh.DOUBLESIDE, closed: true, updatable: true}, ctx.scene);
-        const tableScale = 40;
+        const tableScale = 50;
 
         const positions = table.getVerticesData(VertexBuffer.PositionKind)!;
         const uvs = table.getVerticesData(VertexBuffer.UVKind)!;
@@ -67,7 +69,7 @@ class SceneBuilder {
         table.updateVerticesData(VertexBuffer.UVKind, uvs);
     
         table.scaling = new Vector3(tableScale, tableScale, tableScale);
-        table.position.y = -78 * 4;
+        table.position.y = -78 * 5;
 
         const textureScale = 4;
         var tableMaterial = new StandardMaterial("groundMaterial", ctx.scene);
@@ -82,10 +84,13 @@ class SceneBuilder {
 
         table.material = tableMaterial;
         
-        /*scene.onBeforeRenderObservable.add(() => {
-            targetPos.y = 2 * (camera.beta - 18 * Math.PI / 32);
-            camera.setTarget(targetPos);
-        });*/
+        const targetPos = Vector3.Zero().clone(); 
+
+        ctx.scene.onBeforeRenderObservable.add(() => {
+            targetPos.y = 140 * (ctx.camera.beta - 18 * Math.PI / 32);
+            ctx.camera.radius = 4 * 45 + 40 * (-ctx.camera.beta + 18 * Math.PI / 32);
+            ctx.camera.setTarget(targetPos);
+        });
 
 
 

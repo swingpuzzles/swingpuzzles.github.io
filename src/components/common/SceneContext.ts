@@ -1,4 +1,4 @@
-import { ArcRotateCamera, Mesh, Scene, Vector3 } from "@babylonjs/core";
+import { ArcRotateCamera, Engine, Mesh, Scene, Vector3 } from "@babylonjs/core";
 
 class SceneContext {
     private _scene: Scene | null = null;
@@ -26,6 +26,8 @@ class SceneContext {
     private _coverHeight: number = this._zLimit * this._coverMulti;
     private _coverDepth: number = this._xLimit * 1 / 6;
     private _camera: ArcRotateCamera | null = null;
+    private _canvas: HTMLCanvasElement | null = null;
+    private _engine: Engine | null = null;
     private _pieceEdge: number = 2;
     private _kitWidth: number = this._xLimit * 1.4;
     private _kitHeight: number = this._zLimit * 1.4;
@@ -46,9 +48,11 @@ class SceneContext {
     private _minY: number = -0.36;
     private _piecesCount = this._numX * this._numZ;
 
-    init(scene: Scene, camera: ArcRotateCamera): void {
+    init(scene: Scene, camera: ArcRotateCamera, canvas: HTMLCanvasElement, engine: Engine): void {
         this._scene = scene;
         this._camera = camera;
+        this._canvas = canvas;
+        this._engine = engine;
     }
 
     get scene(): Scene {
@@ -56,6 +60,12 @@ class SceneContext {
     }
     get camera(): ArcRotateCamera {
         return this._camera!;
+    }
+    get canvas(): HTMLCanvasElement {
+        return this._canvas!;
+    }
+    get engine(): Engine {
+        return this._engine!;
     }
     get jigsawPieces(): Mesh[] {
         return this._jigsawPieces;
