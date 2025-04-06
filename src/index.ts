@@ -6,6 +6,7 @@ import { AmmoJSPlugin, ArcRotateCamera, Engine, HemisphericLight, InitializeCSG2
 import puzzleCoverBuilder from "./components/builders/PuzzleCoverBuilder";
 import sceneBuilder from "./components/builders/SceneBuilder";
 import puzzleAssetsManager from "./components/behaviors/PuzzleAssetsManager";
+import guiManager from "./gui/GuiManager";
 
 
 // Get the canvas element
@@ -61,6 +62,8 @@ const createScene = async function (): Promise<Scene> {
     await InitializeCSG2Async();
 
     sceneBuilder.buildScene();
+
+    guiManager.init();
 
     //puzzleCoverBuilder.createCover();
 

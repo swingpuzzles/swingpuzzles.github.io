@@ -2,6 +2,7 @@
   "license": "MIT",
   "dependencies": {
     "@babylonjs/core": "^8.0.1",
+    "@babylonjs/gui": "^8.1.1",
     "@babylonjs/loaders": "^8.0.1",
     "@types/earcut": "^3.0.0",
     "ammojs-typed": "^1.0.6",

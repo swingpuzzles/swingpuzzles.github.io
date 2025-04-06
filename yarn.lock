@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-8.0.1.tgz#9569e65e9dd90ca865c87185ab55ce8607c2aed4"
   integrity sha512-00XJJgKJSLPY9eOE4MPZWqSxtifZS0oiKZyHKmybnXdYDtXCmh4ehyL2vguaE8MP1lqQEJ7RTC7gqP7ru/7vjw==
 
+"@babylonjs/gui@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@babylonjs/gui/-/gui-8.1.1.tgz#98a7aa707515db6379c8d0db817fb76bf8952b62"
+  integrity sha512-+/7WETW1u6zyIivs6Z6RjF6jI6mC7tfXan40mi4qcRKrVdyat6neU9kmO/qdectNXVo0Qs7lvW/8/PCGY5q0bw==
+
 "@babylonjs/loaders@^8.0.1":
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/@babylonjs/loaders/-/loaders-8.0.1.tgz#f78337f1d9bccb4ce2c9bd4e1b3e44f91e1799ca"
