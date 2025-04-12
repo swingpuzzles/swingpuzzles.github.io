@@ -1,8 +1,8 @@
 import {
-    Scene,
     Texture,
     CubeTexture,
-    AssetsManager
+    AssetsManager,
+    SpriteManager
 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 
@@ -17,10 +17,18 @@ type CubeTextureReplacement = {
     target: { reflectionTexture: CubeTexture | null };
 };
 
+type SpriteManagerReplacement = {
+    manager: SpriteManager;
+    highResUrl: string;
+    highResCellWidth: number;
+    highResCellHeight: number;
+};
+
 class PuzzleAssetsManager {
     private manager: AssetsManager | null = null;
     private textures: Map<Texture, TextureReplacement> = new Map();
     private cubeTextures: CubeTextureReplacement[] = [];
+    private spriteManagers: SpriteManagerReplacement[] = [];
 
     init() {
         this.manager = new AssetsManager(ctx.scene);
@@ -58,6 +66,41 @@ class PuzzleAssetsManager {
         };
 
         return placeholder;
+    }
+
+    public addSpriteManager(
+        name: string,
+        lowResUrl: string,
+        highResUrl: string,
+        capacity: number,
+        lowResCellWidth: number,
+        lowResCellHeight: number,
+        highResCellWidth: number,
+        highResCellHeight: number
+    ): SpriteManager {
+        const spriteManager = new SpriteManager(name, lowResUrl, capacity, {
+            width: lowResCellWidth,
+            height: lowResCellHeight
+        }, ctx.scene);
+
+        this.spriteManagers.push({
+            manager: spriteManager,
+            highResUrl,
+            highResCellWidth,
+            highResCellHeight
+        });
+
+        const task = this.manager!.addTextureTask(`sprite_${name}_${Date.now()}`, highResUrl);
+        task.onSuccess = () => {
+            spriteManager.texture.updateURL(highResUrl);
+            spriteManager.cellWidth = highResCellWidth;
+            spriteManager.cellHeight = highResCellHeight;
+        };
+        task.onError = (_, msg, ex) => {
+            console.warn(`Failed to load high-res sprite sheet '${highResUrl}': ${msg}`, ex);
+        };
+
+        return spriteManager;
     }
 
     // Start loading all queued high-res assets

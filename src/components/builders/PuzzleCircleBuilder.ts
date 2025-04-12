@@ -13,7 +13,7 @@ class PuzzleCircleBuilder {
             //const scale = 10;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);
-            const position = new Vector3(x, -39, z);
+            const position = new Vector3(x, -38, z);
 
             const cover = puzzleCoverBuilder.createCover(obj.imgSmallUrl, obj.imgBigUrl);
             cover.position = position;
