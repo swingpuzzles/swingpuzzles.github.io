@@ -2,6 +2,8 @@ import { AdvancedDynamicTexture, Button, Control, StackPanel } from "@babylonjs/
 import ctx from "../components/common/SceneContext";
 import PiecesCountDropdown from "./PiecesCountDropdown";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
+import puzzleCoverBuilder from "../components/builders/PuzzleCoverBuilder";
+import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 
 class GuiManager {
     private advancedTexture!: AdvancedDynamicTexture;
@@ -29,6 +31,9 @@ class GuiManager {
         button1.thickness = 0;
         button1.background = "";
         button1.hoverCursor = "pointer";
+        button1.onPointerClickObservable.add(() => {
+            puzzleCoverBuilder.openCover(puzzleCircleBuilder.selectedCover);
+        });
         this.bottomButtonPanel.addControl(button1);
 
         const button2 = Button.CreateImageOnlyButton("btn2", "assets/banner.png");
@@ -37,6 +42,9 @@ class GuiManager {
         button2.thickness = 0;
         button2.background = "";
         button2.hoverCursor = "pointer";
+        button2.onPointerClickObservable.add(() => {
+            window.open(puzzleCircleBuilder.selectedLink, "_blank");
+        });
         this.bottomButtonPanel.addControl(button2);
 
         this.advancedTexture.addControl(this.bottomButtonPanel);

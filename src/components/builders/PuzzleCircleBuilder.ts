@@ -4,11 +4,21 @@ import puzzleCoverBuilder from './PuzzleCoverBuilder';
 import ctx from '../common/SceneContext';
 
 class PuzzleCircleBuilder {
-    private covers: Mesh[] = [];
+    private covers: Map<Mesh, string> = new Map();
     private highlightedCover: Mesh | null = null;
     private highlightLayer!: HighlightLayer;
+    private closestMesh: Mesh | null = null;
+    private closestLink: string | null = null;
 
     constructor() {
+    }
+
+    public get selectedLink(): string {
+        return this.closestLink!;
+    }
+
+    public get selectedCover(): Mesh {
+        return this.closestMesh!;
     }
 
     build() {
@@ -23,16 +33,17 @@ class PuzzleCircleBuilder {
         const count = amazonData.length;
 
         amazonData.forEach((obj, index) => {
+            const link = obj.link;
             const angle = (2 * Math.PI * index) / count;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);
             const position = new Vector3(x, -38, z);
 
-            const cover = puzzleCoverBuilder.createCover(obj.imgSmallUrl, obj.imgBigUrl);
+            const cover = puzzleCoverBuilder.createCover(obj.imgSmallUrl, obj.imgBigUrl, obj.imgCoverUrl);
             cover.position = position;
             cover.rotation.y = -angle + Math.PI / 2;
 
-            this.covers.push(cover);
+            this.covers.set(cover, link);
         });
 
         ctx.scene.onBeforeRenderObservable.add(() => {
@@ -41,29 +52,29 @@ class PuzzleCircleBuilder {
     }
 
     private highlightClosestCover() {
-        if (!ctx.camera || this.covers.length === 0) return;
+        if (!ctx.camera) return;
 
-        let closest: Mesh | null = null;
         let minDistance = Infinity;
 
-        for (const cover of this.covers) {
+        for (const [cover, link] of this.covers) {
             const dist = Vector3.Distance(cover.position, ctx.camera.position);
             if (dist < minDistance) {
                 minDistance = dist;
-                closest = cover;
+                this.closestMesh = cover;
+                this.closestLink = link;
             }
         }
 
-        if (closest !== this.highlightedCover) {
+        if (this.closestMesh !== this.highlightedCover) {
             if (this.highlightedCover) {
                 this.highlightLayer.removeMesh(this.highlightedCover);
             }
 
-            if (closest) {
-                this.highlightLayer.addMesh(closest, new Color3(0.5, 1, 0));
+            if (this.closestMesh) {
+                this.highlightLayer.addMesh(this.closestMesh, new Color3(0.5, 1, 0));
             }
 
-            this.highlightedCover = closest;
+            this.highlightedCover = this.closestMesh;
         }
     }
 }

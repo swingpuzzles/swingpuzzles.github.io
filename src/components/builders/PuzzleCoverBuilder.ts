@@ -3,7 +3,7 @@ import ctx from "../common/SceneContext";
 import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 
 class PuzzleCoverBuilder {
-    createCover(imgSmallUrl: string, imgBigUrl: string): Mesh {
+    createCover(imgSmallUrl: string, imgBigUrl: string, imgCoverUrl: string): Mesh {
         const box = MeshBuilder.CreateBox("box", {
             width: ctx.coverWidth,
             height: ctx.coverHeight,
@@ -48,7 +48,7 @@ class PuzzleCoverBuilder {
         return box;
     }
 
-    private openCover(cover: Mesh): void {
+    public openCover(cover: Mesh): void {
         // Rotation animation (rotation.z)
         const rotationAnim = new Animation("openRotation", "rotation.z", 30,
             Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_CONSTANT);
