@@ -39,6 +39,8 @@ const createScene = async function (): Promise<Scene> {
     let scene = new Scene(engine);
     //let camera = new ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 4, 60, Vector3.Zero(), scene);
     var camera = new ArcRotateCamera("arcCamera", Math.PI / 2, 17 * Math.PI / 32, 4 * 45, Vector3.Zero(), scene);
+    camera.angularSensibilityX = 4000; // higher = slower
+    camera.angularSensibilityY = 4000;
     /*camera.attachControl(canvas, true);
 
     camera.upperBetaLimit = 9 * Math.PI / 16;  

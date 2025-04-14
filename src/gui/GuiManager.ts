@@ -28,6 +28,7 @@ class GuiManager {
         button1.height = "120px";
         button1.thickness = 0;
         button1.background = "";
+        button1.hoverCursor = "pointer";
         this.bottomButtonPanel.addControl(button1);
 
         const button2 = Button.CreateImageOnlyButton("btn2", "assets/banner.png");
@@ -35,6 +36,7 @@ class GuiManager {
         button2.height = "60px";
         button2.thickness = 0;
         button2.background = "";
+        button2.hoverCursor = "pointer";
         this.bottomButtonPanel.addControl(button2);
 
         this.advancedTexture.addControl(this.bottomButtonPanel);
