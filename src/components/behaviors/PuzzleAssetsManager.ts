@@ -115,16 +115,12 @@ class PuzzleAssetsManager {
         });
     }
 
-    public addGuiImageButtonSource(button: Button, lowResUrl: string, highResUrl: string): void {
+    public addGuiImageButtonSource(button: Button, highResUrl: string): void {
         if (!button.image) {
-            console.warn(`Button '${button.name}' has no image to replace.`);
+            console.warn(`Button '${button.name}' has no image.`);
             return;
         }
     
-        // Set low-res image immediately
-        button.image.source = lowResUrl;
-    
-        // Queue high-res image loading
         const task = this.manager!.addTextureTask(`gui_image_${Date.now()}`, highResUrl);
         task.onSuccess = () => {
             button.image!.source = highResUrl;
