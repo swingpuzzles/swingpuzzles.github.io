@@ -5,6 +5,7 @@ import {
     SpriteManager
 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
+import { Button } from "@babylonjs/gui";
 
 type TextureReplacement = {
     placeholder: Texture;
@@ -112,6 +113,25 @@ class PuzzleAssetsManager {
             });
             this.manager!.load();
         });
+    }
+
+    public addGuiImageButtonSource(button: Button, lowResUrl: string, highResUrl: string): void {
+        if (!button.image) {
+            console.warn(`Button '${button.name}' has no image to replace.`);
+            return;
+        }
+    
+        // Set low-res image immediately
+        button.image.source = lowResUrl;
+    
+        // Queue high-res image loading
+        const task = this.manager!.addTextureTask(`gui_image_${Date.now()}`, highResUrl);
+        task.onSuccess = () => {
+            button.image!.source = highResUrl;
+        };
+        task.onError = (_, msg, ex) => {
+            console.warn(`Failed to load high-res GUI image: ${msg}`, ex);
+        };
     }
 }
 
