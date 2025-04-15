@@ -4,6 +4,7 @@ import PiecesCountDropdown from "./PiecesCountDropdown";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import puzzleCoverBuilder from "../components/builders/PuzzleCoverBuilder";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
+import gameModeManager from "../components/behaviors/GameModeManager";
 
 class GuiManager {
     private advancedTexture!: AdvancedDynamicTexture;
@@ -52,6 +53,16 @@ class GuiManager {
         // Register buttons for high-res replacement
         puzzleAssetsManager.addGuiImageButtonSource(button1, "assets/play-button.webp");
         //puzzleAssetsManager.addGuiImageButtonSource(button2, "textures/gui/icon2.png");
+
+        gameModeManager.addObserver(() => {
+            if (gameModeManager.initialMode) {
+                button1.isVisible = true;
+            } else {
+                button1.isVisible = false;
+            }
+                button2.width = "244px";
+                button2.height = "61px";
+            });
     }
 }
 

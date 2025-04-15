@@ -1,21 +1,35 @@
 import ctx from "../common/SceneContext";
 import piecePositioningManager from "./PiecePositioningManager";
 
+enum GameMode {
+    Initial,
+    OpenCover,
+    Solve
+}
 class GameModeManager {
-    private _cameraAdjust = true;
+    private _currentMode: GameMode = GameMode.Initial;
+    private _observers: (() => void)[] = [];
 
-    get cameraAdjust() {
-        return this._cameraAdjust;
+    get initialMode() {
+        return this._currentMode == GameMode.Initial;
     }
 
-    private resetAll() {
+    private resetAll(currentMode: GameMode) {
+        this._currentMode = currentMode;
 
+        for (let observer of this._observers) {
+            observer();
+        }
+    }
+
+    public addObserver(observer: () => void) {
+        this._observers.push(observer);
     }
 
     enterInitialMode() {
-        this.resetAll();
+        this.resetAll(GameMode.Initial);
 
-        ctx.camera.beta = 17 * Math.PI / 32;//. = new ArcRotateCamera("arcCamera", Math.PI / 2, 17 * Math.PI / 32, 4 * 45, Vector3.Zero(), scene);
+        ctx.camera.beta = 17 * Math.PI / 32;
         ctx.camera.attachControl(ctx.canvas, true);
 
         ctx.camera.upperBetaLimit = 14 * Math.PI / 32;  
@@ -23,15 +37,13 @@ class GameModeManager {
     }
 
     enterOpenCoverMode() {
-        this.resetAll();
+        this.resetAll(GameMode.OpenCover);
 
         ctx.camera.detachControl();
-        
-        this._cameraAdjust = false;
     }
 
     enterSolveMode() {
-        this.resetAll();
+        this.resetAll(GameMode.Solve);
         
         piecePositioningManager.init();
     }

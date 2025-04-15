@@ -55,7 +55,7 @@ class PuzzleCircleBuilder {
     private highlightClosestCover() {
         if (!ctx.camera) return;
 
-        if (!gameModeManager.cameraAdjust) {
+        if (!gameModeManager.initialMode) {
             if (this.highlightedCover) {
                 this.highlightLayer.removeMesh(this.highlightedCover);
             }

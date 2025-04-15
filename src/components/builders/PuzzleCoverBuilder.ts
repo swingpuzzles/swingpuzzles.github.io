@@ -102,6 +102,16 @@ class PuzzleCoverBuilder {
             { frame: animFrames, value: targetTarget }
         ]);
 
+        // Create easing function
+        const easingFunction = new CubicEase();
+        easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEOUT);
+
+        // Apply easing to radius animation
+        animRadius.setEasingFunction(easingFunction);
+
+        // Apply easing to target animation
+        animTarget.setEasingFunction(easingFunction);
+        
         // Start animations
         ctx.scene.beginDirectAnimation(ctx.camera, [animAlpha, animBeta, animRadius, animTarget], 0, animFrames, false);
     }

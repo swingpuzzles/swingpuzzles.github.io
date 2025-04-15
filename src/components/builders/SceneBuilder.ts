@@ -107,7 +107,7 @@ class SceneBuilder {
         const targetPos = Vector3.Zero().clone(); 
 
         ctx.scene.onBeforeRenderObservable.add(() => {
-            if (gameModeManager.cameraAdjust) {
+            if (gameModeManager.initialMode) {
                 targetPos.y = 140 * (ctx.camera.beta - 18 * Math.PI / 32);
                 ctx.camera.radius = 4 * 45 + 40 * (-ctx.camera.beta + 18 * Math.PI / 32);
                 ctx.camera.setTarget(targetPos);
