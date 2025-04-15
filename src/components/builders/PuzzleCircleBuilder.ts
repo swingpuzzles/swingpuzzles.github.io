@@ -2,6 +2,7 @@ import { Vector3, Mesh, HighlightLayer, Color3 } from '@babylonjs/core';
 import amazonData from '../../assets/amazon-jigsaw.json';
 import puzzleCoverBuilder from './PuzzleCoverBuilder';
 import ctx from '../common/SceneContext';
+import gameModeManager from '../behaviors/GameModeManager';
 
 class PuzzleCircleBuilder {
     private covers: Map<Mesh, string> = new Map();
@@ -53,6 +54,14 @@ class PuzzleCircleBuilder {
 
     private highlightClosestCover() {
         if (!ctx.camera) return;
+
+        if (!gameModeManager.cameraAdjust) {
+            if (this.highlightedCover) {
+                this.highlightLayer.removeMesh(this.highlightedCover);
+            }
+
+            return;
+        }
 
         let minDistance = Infinity;
 

@@ -2,6 +2,7 @@ import { Color3, CSG2, Mesh, MultiMaterial, Path2, PolygonMeshBuilder, StandardM
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import * as earcut from "earcut";
 import ctx from "../common/SceneContext";
+import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 (window as any).earcut = earcut;
 
 
@@ -9,7 +10,7 @@ class PuzzleBuilder {
     constructor() {
     }
 
-    createFlatBox(width: number, height: number, depth: number = 0.1): CSG2 {
+    createFlatBox(width: number, height: number, depth: number = 0.1, puzzleTexture: Texture): CSG2 {
         const box = MeshBuilder.CreateBox("box", { width, height, depth }, ctx.scene);
         box.rotation.x = -Math.PI / 2;
         box.position.y = -0.2;
@@ -17,10 +18,10 @@ class PuzzleBuilder {
         const multiMat = new MultiMaterial("multiMat", ctx.scene);
     
         const frontMaterial = new StandardMaterial("frontMat", ctx.scene);
-        frontMaterial.diffuseTexture = new Texture("https://m.media-amazon.com/images/I/81BA14xBSAL._AC_SL1500_.jpg", ctx.scene);
+        frontMaterial.diffuseTexture = puzzleTexture;
     
         const backMaterial = new StandardMaterial("backMat", ctx.scene);
-        const texture = new Texture("https://www.babylonjs-playground.com/textures/floor.png", ctx.scene);
+        const texture = puzzleAssetsManager.addTexture("assets/floor-small.webp", "assets/floor.webp");
         texture.uScale = 4;
         texture.vScale = 4;
         backMaterial.diffuseTexture = texture;
