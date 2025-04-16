@@ -60,5 +60,7 @@ const createScene = async function (): Promise<Scene> {
 
     gameModeManager.enterInitialMode();
 
+    gameModeManager.leaveWaiting();
+
     return scene;
 };

@@ -1,8 +1,9 @@
-import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Vector3, VertexBuffer, Animation, Matrix, CubicEase, EasingFunction, Tools } from "@babylonjs/core";
+import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Vector3, VertexBuffer, Animation, Matrix, CubicEase, EasingFunction, Tools, Texture } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 import gameModeManager from "../behaviors/GameModeManager";
 import { PuzzleTools } from "../common/PuzzleTools";
+import puzzleGameBuilder from "./PuzzleGameBuilder";
 
 class PuzzleCoverBuilder {
     private originalCoverState: { position: Vector3; rotation: Vector3 } | null = null;
@@ -112,6 +113,10 @@ class PuzzleCoverBuilder {
     }
 
     public openCover(cover: Mesh): void {
+        if (!gameModeManager.initialMode) {
+            return;
+        }
+
         gameModeManager.enterOpenCoverMode();
 
         this._currentCover = cover;
@@ -172,43 +177,53 @@ class PuzzleCoverBuilder {
         cover.animations = [rotationAnim, positionAnim];
 
         ctx.scene.beginAnimation(cover, 0, 20, false, 1.0, () => {
-            const startPos = cover.position.clone();
-            // ===== Second animation: your original one =====
-    
-            // Rotation animation
-            const rotationAnim = new Animation("openRotation", "rotation.z", 30,
-                Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);
-    
-            const rotationKeys = [
-                { frame: 0, value: 0 },
-                { frame: 20, value: -Math.PI / 2 }
-            ];
-            rotationAnim.setKeys(rotationKeys);
-    
-            // Compute direction
-            const localLeft = new Vector3(1, 0, 0);
-            const rotationY = cover.rotation.y;
-            const worldLeft = Vector3.TransformCoordinates(localLeft, Matrix.RotationY(rotationY));
-    
-            const moveDistanceUp = 100;
-            const moveDistanceSide = 50;
-            const moveOffset = worldLeft.scale(moveDistanceSide).add(new Vector3(0, moveDistanceUp, 0));
-    
-            const endPos = startPos.add(moveOffset);
-    
-            // Position animation
-            const positionAnim = new Animation("movePosition", "position", 30,
-                Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_RELATIVE);
-    
-            const positionKeys = [
-                { frame: 0, value: startPos },
-                { frame: 20, value: endPos }
-            ];
-            positionAnim.setKeys(positionKeys);
-    
-            // Assign and play second animation
-            cover.animations = [rotationAnim, positionAnim];
-            ctx.scene.beginAnimation(cover, 0, 30, false);
+            gameModeManager.enterWaiting();
+
+            setTimeout(async () => {
+                const texture = (cover.material as StandardMaterial).diffuseTexture as Texture;
+                puzzleGameBuilder.build(texture);
+
+                setTimeout(async () => {
+                    const startPos = cover.position.clone();
+                    // ===== Second animation: your original one =====
+            
+                    // Rotation animation
+                    const rotationAnim = new Animation("openRotation", "rotation.z", 30,
+                        Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);
+            
+                    const rotationKeys = [
+                        { frame: 0, value: 0 },
+                        { frame: 20, value: -Math.PI / 2 }
+                    ];
+                    rotationAnim.setKeys(rotationKeys);
+            
+                    // Compute direction
+                    const localLeft = new Vector3(1, 0, 0);
+                    const rotationY = cover.rotation.y;
+                    const worldLeft = Vector3.TransformCoordinates(localLeft, Matrix.RotationY(rotationY));
+            
+                    const moveDistanceUp = 100;
+                    const moveDistanceSide = 50;
+                    const moveOffset = worldLeft.scale(moveDistanceSide).add(new Vector3(0, moveDistanceUp, 0));
+            
+                    const endPos = startPos.add(moveOffset);
+            
+                    // Position animation
+                    const positionAnim = new Animation("movePosition", "position", 30,
+                        Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_RELATIVE);
+            
+                    const positionKeys = [
+                        { frame: 0, value: startPos },
+                        { frame: 20, value: endPos }
+                    ];
+                    positionAnim.setKeys(positionKeys);
+            
+                    // Assign and play second animation
+                    cover.animations = [rotationAnim, positionAnim];
+                    ctx.scene.beginAnimation(cover, 0, 30, false);
+                    gameModeManager.leaveWaiting();
+                }, 0);
+            }, 0);
         });
     }
 

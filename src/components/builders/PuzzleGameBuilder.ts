@@ -5,8 +5,19 @@ import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
 
 class PuzzleGameBuilder {
+    private _texture: Texture | null = null;
+    private _building: boolean = false;
 
+    get texture(): Texture | null {
+        return this._texture;
+    }
+    get building(): boolean {
+        return this._building;
+    }
+    
     public build(puzzleTexture: Texture) {
+        this._building = true;
+        this._texture = puzzleTexture;
         const mat = new StandardMaterial("mat", ctx.scene);
         mat.backFaceCulling = false;
 
@@ -99,6 +110,8 @@ class PuzzleGameBuilder {
                 });
             }
         }
+
+        this._building = false;
     }
 
     private setPiecePos(mesh: Mesh, x: number, z: number): void {

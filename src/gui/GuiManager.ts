@@ -1,4 +1,4 @@
-import { AdvancedDynamicTexture, Button, Control, StackPanel } from "@babylonjs/gui";
+import { AdvancedDynamicTexture, Button, Control, StackPanel, Image } from "@babylonjs/gui";
 import ctx from "../components/common/SceneContext";
 import PiecesCountDropdown from "./PiecesCountDropdown";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
@@ -12,13 +12,13 @@ class GuiManager {
 
     init() {
         this.advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
-
+    
         const piecesCountDropdown = new PiecesCountDropdown(this.advancedTexture);
 
-        this._createBottomButtons();
+        this._createButtons();
     }
 
-    private _createBottomButtons() {
+    private _createButtons() {
         this.bottomButtonPanel = new StackPanel();
         this.bottomButtonPanel.isVertical = true;
         this.bottomButtonPanel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;

@@ -13,6 +13,12 @@ class GameModeManager {
     get initialMode() {
         return this._currentMode == GameMode.Initial;
     }
+    get openCoverMode() {
+        return this._currentMode == GameMode.OpenCover;
+    }
+    get solveMode() {
+        return this._currentMode == GameMode.Solve;
+    }
 
     private resetAll(currentMode: GameMode) {
         this._currentMode = currentMode;
@@ -42,6 +48,16 @@ class GameModeManager {
         this.resetAll(GameMode.Solve);
         
         piecePositioningManager.init();
+    }
+
+    enterWaiting() {
+        const overlay = document.getElementById("loadingOverlay");
+        overlay!.style.display = "flex";
+    }
+
+    leaveWaiting() {
+        const overlay = document.getElementById("loadingOverlay");
+        overlay!.style.display = "none";
     }
 }
 

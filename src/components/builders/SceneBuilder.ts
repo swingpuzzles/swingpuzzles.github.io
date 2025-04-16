@@ -2,6 +2,8 @@ import { CubeTexture, HemisphericLight, Mesh, MeshBuilder, PBRMaterial, Standard
 import ctx from "../common/SceneContext";
 import gameModeManager from "../behaviors/GameModeManager";
 import puzzleCircleBuilder from "./PuzzleCircleBuilder";
+import puzzleGameBuilder from "./PuzzleGameBuilder";
+import puzzleCoverBuilder from "./PuzzleCoverBuilder";
 
 class SceneBuilder {
     buildScene() {
@@ -103,6 +105,16 @@ class SceneBuilder {
                 targetPos.y = 140 * (ctx.camera.beta - 18 * Math.PI / 32);
                 ctx.camera.radius = 4 * 45 + 40 * (-ctx.camera.beta + 18 * Math.PI / 32);
                 ctx.camera.setTarget(targetPos);
+            /*} else if (gameModeManager.openCoverMode) {
+                if (!puzzleGameBuilder.building) {
+                    const texture = (puzzleCoverBuilder.currentCover.material as StandardMaterial).diffuseTexture as Texture;
+
+                    if (puzzleGameBuilder.texture !== texture) {
+                        setTimeout(async () => {
+                            puzzleGameBuilder.build(texture);
+                        });
+                    }
+                }*/
             }
         });
 
