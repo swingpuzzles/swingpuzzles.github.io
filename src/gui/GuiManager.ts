@@ -38,8 +38,6 @@ class GuiManager {
         this.bottomButtonPanel.addControl(button1);
 
         const button2 = Button.CreateImageOnlyButton("btn2", "assets/banner.png");
-        button2.width = "240px";
-        button2.height = "60px";
         button2.thickness = 0;
         button2.background = "";
         button2.hoverCursor = "pointer";
@@ -54,15 +52,50 @@ class GuiManager {
         puzzleAssetsManager.addGuiImageButtonSource(button1, "assets/play-button.webp");
         //puzzleAssetsManager.addGuiImageButtonSource(button2, "textures/gui/icon2.png");
 
+        const xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button.webp");
+        xButton.width = "80px";
+        xButton.height = "80px";
+        xButton.thickness = 0;
+        xButton.background = "";
+        xButton.hoverCursor = "pointer";
+        xButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        xButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        xButton.paddingTop = "10px";
+        xButton.paddingRight = "10px";
+        xButton.onPointerClickObservable.add(() => {
+            puzzleCoverBuilder.animBackToOrigin(puzzleCoverBuilder.currentCover);
+        });
+
+        this.advancedTexture.addControl(xButton);
+
+        const menuButton = Button.CreateImageOnlyButton("xButton", "assets/menu-button.webp");
+        menuButton.width = "80px";
+        menuButton.height = "93px";
+        menuButton.thickness = 0;
+        menuButton.background = "";
+        menuButton.hoverCursor = "pointer";
+        menuButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        menuButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        menuButton.paddingTop = "10px";
+        menuButton.paddingRight = "10px";
+
+        this.advancedTexture.addControl(menuButton);
+
         gameModeManager.addObserver(() => {
             if (gameModeManager.initialMode) {
                 button1.isVisible = true;
+                menuButton.isVisible = true;
+                xButton.isVisible = false;
+                button2.width = "240px";
+                button2.height = "60px";
             } else {
                 button1.isVisible = false;
+                menuButton.isVisible = false;
+                xButton.isVisible = true;
+                button2.width = "248px";
+                button2.height = "62px";
             }
-                button2.width = "244px";
-                button2.height = "61px";
-            });
+        });
     }
 }
 

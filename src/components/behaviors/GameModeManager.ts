@@ -28,12 +28,8 @@ class GameModeManager {
 
     enterInitialMode() {
         this.resetAll(GameMode.Initial);
-
-        ctx.camera.beta = 17 * Math.PI / 32;
+        
         ctx.camera.attachControl(ctx.canvas, true);
-
-        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;  
-        ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
     }
 
     enterOpenCoverMode() {

@@ -58,6 +58,7 @@ class PuzzleCircleBuilder {
         if (!gameModeManager.initialMode) {
             if (this.highlightedCover) {
                 this.highlightLayer.removeMesh(this.highlightedCover);
+                this.highlightedCover = null;
             }
 
             return;

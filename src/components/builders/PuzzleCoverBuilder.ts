@@ -1,9 +1,18 @@
-import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Texture, Vector3, VertexBuffer, Animation, Scene, Matrix, CubicEase, EasingFunction } from "@babylonjs/core";
+import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Vector3, VertexBuffer, Animation, Matrix, CubicEase, EasingFunction, Tools } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 import gameModeManager from "../behaviors/GameModeManager";
+import { PuzzleTools } from "../common/PuzzleTools";
 
 class PuzzleCoverBuilder {
+    private originalCoverState: { position: Vector3; rotation: Vector3 } | null = null;
+    private originalCameraState: { alpha: number; beta: number; radius: number; target: Vector3 } | null = null;
+    private _currentCover: Mesh | null = null;
+
+    public get currentCover(): Mesh {
+        return this._currentCover!;
+    }
+
     createCover(imgSmallUrl: string, imgBigUrl: string, imgCoverUrl: string): Mesh {
         const box = MeshBuilder.CreateBox("box", {
             width: ctx.coverWidth,
@@ -48,20 +57,6 @@ class PuzzleCoverBuilder {
 
         return box;
     }
-
-    /*private simpleAnimCamera() {
-        // 1. Store direction the camera is looking
-        const forward = ctx.camera.getTarget().subtract(ctx.camera.position);//.normalize();
-
-        // 2. Choose how much you want to reduce the radius
-        const delta = 0.1; // move 5 units closer
-
-        // 3. Move the target in the same direction
-        ctx.camera.target = ctx.camera.target.add(forward.scale(delta - 1));
-
-        // 4. Reduce the radius
-        ctx.camera.radius *= delta;
-    }*/
 
     private animCamera(targetPos: Vector3) {
         // Define the animation parameters
@@ -111,55 +106,36 @@ class PuzzleCoverBuilder {
 
         // Apply easing to target animation
         animTarget.setEasingFunction(easingFunction);
-        
+
         // Start animations
         ctx.scene.beginDirectAnimation(ctx.camera, [animAlpha, animBeta, animRadius, animTarget], 0, animFrames, false);
     }
 
-    /*private animCameraOrig() {
-                // Current values
-                const oldTarget = ctx.camera.target.clone();
-                const newY = -38;
-        
-                // Direction the camera is looking
-                const forward = ctx.camera.getTarget().subtract(ctx.camera.position).normalize();
-        
-                // Compute how far the target is moving in Y
-                const deltaY = newY - oldTarget.y;
-        
-                // Shift the target by deltaY along Y
-                const newTarget = oldTarget.clone();
-                newTarget.y = newY;
-        
-                // Adjust the radius: project the shift onto the forward vector
-                // We only want to know how much the target moved *along* the view direction
-                const targetShift = newTarget.subtract(oldTarget);
-                const projection = Vector3.Dot(targetShift, forward);
-        
-                // Update camera
-                ctx.camera.radius -= projection;
-                ctx.camera.target = newTarget;
-                console.log(newTarget);
-        
-    }*/
-
     public openCover(cover: Mesh): void {
         gameModeManager.enterOpenCoverMode();
 
-        //this.simpleAnimCamera();
+        this._currentCover = cover;
+
+        this.originalCoverState = {
+            position: cover.position.clone(),
+            rotation: cover.rotation.clone()
+        };
+
+        ctx.camera.alpha = PuzzleTools.normalizeAngle(ctx.camera.alpha);
+
+        this.originalCameraState = {
+            alpha: ctx.camera.alpha,
+            beta: ctx.camera.beta,
+            radius: ctx.camera.radius,
+            target: ctx.camera.target.clone()
+        };
 
         const startPos = cover.position.clone();
 
         const rotationAnim = new Animation("openRotation", "rotation.y", 30,
             Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);
 
-        while (cover.rotation.y > 2 * Math.PI) {
-            cover.rotation.y -= Math.PI * 2;
-        }
-
-        while (cover.rotation.y < 0) {
-            cover.rotation.y += Math.PI * 2;
-        }
+        cover.rotation.y = PuzzleTools.normalizeAngle(cover.rotation.y);
 
         const endAngle = Math.PI;// / 2;//cover.rotation.y < Math.PI ? Math.PI * 2 : 0;
 
@@ -233,6 +209,66 @@ class PuzzleCoverBuilder {
             // Assign and play second animation
             cover.animations = [rotationAnim, positionAnim];
             ctx.scene.beginAnimation(cover, 0, 30, false);
+        });
+    }
+
+    public animBackToOrigin(cover: Mesh): void {
+        if (!this.originalCoverState || !this.originalCameraState) {
+            console.warn("Original state not stored.");
+            return;
+        }
+
+        const animSpeed = 30;
+        const animFrames = 30;
+
+        // === Animate cover back ===
+
+        const positionAnim = new Animation("backPosition", "position", animSpeed, Animation.ANIMATIONTYPE_VECTOR3);
+        positionAnim.setKeys([
+            { frame: 0, value: cover.position.clone() },
+            { frame: animFrames, value: this.originalCoverState.position.clone() }
+        ]);
+
+        const rotationAnim = new Animation("backRotation", "rotation", animSpeed, Animation.ANIMATIONTYPE_VECTOR3);
+        rotationAnim.setKeys([
+            { frame: 0, value: cover.rotation.clone() },
+            { frame: animFrames, value: this.originalCoverState.rotation.clone() }
+        ]);
+
+        cover.animations = [positionAnim, rotationAnim];
+        ctx.scene.beginAnimation(cover, 0, animFrames, false);
+
+        // === Animate camera back ===
+
+        const cam = ctx.camera;
+        const orig = this.originalCameraState;
+
+        const easingFunction = new CubicEase();
+        easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEIN);
+
+        const alphaAnim = new Animation("camAlpha", "alpha", animSpeed, Animation.ANIMATIONTYPE_FLOAT);
+        alphaAnim.setKeys([{ frame: 0, value: cam.alpha }, { frame: animFrames, value: orig.alpha }]);
+
+        const betaAnim = new Animation("camBeta", "beta", animSpeed, Animation.ANIMATIONTYPE_FLOAT);
+        betaAnim.setKeys([{ frame: 0, value: cam.beta }, { frame: animFrames, value: orig.beta }]);
+
+        const radiusAnim = new Animation("camRadius", "radius", animSpeed, Animation.ANIMATIONTYPE_FLOAT);
+        radiusAnim.setKeys([{ frame: 0, value: cam.radius }, { frame: animFrames, value: orig.radius }]);
+        radiusAnim.setEasingFunction(easingFunction);
+
+        const targetAnim = new Animation("camTarget", "target", animSpeed, Animation.ANIMATIONTYPE_VECTOR3);
+        targetAnim.setKeys([{ frame: 0, value: cam.target.clone() }, { frame: animFrames, value: orig.target.clone() }]);
+        targetAnim.setEasingFunction(easingFunction);
+
+        ctx.scene.beginDirectAnimation(cam, [alphaAnim, betaAnim, radiusAnim, targetAnim], 0, animFrames, false, 1.0, () => {
+            // Final snap to correct alpha/beta/radius/target
+            cam.alpha = orig.alpha;
+            cam.beta = orig.beta;
+            cam.radius = orig.radius;
+            cam.target = orig.target.clone();
+        
+            // ✅ Safe to re-enter initial mode now
+            gameModeManager.enterInitialMode();
         });
     }
 }

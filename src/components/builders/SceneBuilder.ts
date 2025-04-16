@@ -1,22 +1,14 @@
-import { CSG2, CubeTexture, Mesh, MeshBuilder, PBRMaterial, StandardMaterial, Texture, Vector3, VertexBuffer } from "@babylonjs/core";
+import { CubeTexture, HemisphericLight, Mesh, MeshBuilder, PBRMaterial, StandardMaterial, Texture, Vector3, VertexBuffer } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
-import puzzleBuilder from "./PuzzleBuilder";
-import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
-import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
 import gameModeManager from "../behaviors/GameModeManager";
 import puzzleCircleBuilder from "./PuzzleCircleBuilder";
 
 class SceneBuilder {
     buildScene() {
-        gameModeManager.enterInitialMode();
-
-        // Načítaj HDR textúru
-        //var hdrTexture = new HDRCubeTexture("assets/room.hdr", ctx.scene, 512);
-
-        // Nastav HDR ako prostredie
-        //ctx.scene.environmentTexture = hdrTexture;
-
-        // Vytvor skybox z HDR textúry
+        var light = new HemisphericLight("light1", new Vector3(0, 1, 0), ctx.scene);
+        var light2 = new HemisphericLight("light1", new Vector3(0, 0, 1), ctx.scene);
+        light2.intensity = 0.2;
+    
         var skybox = Mesh.CreateBox("skyBox", 400.0, ctx.scene);
         var skyboxMaterial = new PBRMaterial("skyBoxMaterial", ctx.scene);
         skyboxMaterial.backFaceCulling = false;
