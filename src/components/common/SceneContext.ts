@@ -159,8 +159,6 @@ class SceneContext {
     get piecesCount(): number {
         return this._piecesCount;
     }
-
-
     get minX(): number {
         return this._minX;
     }
@@ -190,6 +188,14 @@ class SceneContext {
     }
     set minY(value: number) {
         this._minY = value;
+    }
+
+    public resetBoundings(centerPos: Vector3): void {
+        this._minX = centerPos.x - this._xLimit;
+        this._maxX = centerPos.x + this._xLimit;
+        this._minZ = centerPos.z - this._zLimit;
+        this._maxZ = centerPos.z + this._zLimit;
+        this._minY = centerPos.y - 0.36;
     }
 }
 

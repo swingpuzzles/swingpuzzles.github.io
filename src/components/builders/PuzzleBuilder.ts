@@ -10,10 +10,13 @@ class PuzzleBuilder {
     constructor() {
     }
 
-    createFlatBox(width: number, height: number, depth: number = 0.1, puzzleTexture: Texture): CSG2 {
+    createFlatBox(width: number, height: number, depth: number = 0.1, cover: Mesh): CSG2 {
+        const puzzleTexture = (cover.material as StandardMaterial).diffuseTexture as Texture;
+
         const box = MeshBuilder.CreateBox("box", { width, height, depth }, ctx.scene);
         box.rotation.x = -Math.PI / 2;
-        box.position.y = -0.2;
+        box.position = cover.position.clone();
+        box.position.y += -0.2;
     
         const multiMat = new MultiMaterial("multiMat", ctx.scene);
     

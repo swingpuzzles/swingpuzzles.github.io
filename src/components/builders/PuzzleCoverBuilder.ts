@@ -180,8 +180,7 @@ class PuzzleCoverBuilder {
             gameModeManager.enterWaiting();
 
             setTimeout(async () => {
-                const texture = (cover.material as StandardMaterial).diffuseTexture as Texture;
-                puzzleGameBuilder.build(texture);
+                puzzleGameBuilder.build(cover);
 
                 setTimeout(async () => {
                     const startPos = cover.position.clone();
@@ -234,7 +233,7 @@ class PuzzleCoverBuilder {
         }
 
         const animSpeed = 30;
-        const animFrames = 30;
+        const animFrames = 20;
 
         // === Animate cover back ===
 

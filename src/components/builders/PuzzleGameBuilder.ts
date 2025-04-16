@@ -14,8 +14,11 @@ class PuzzleGameBuilder {
     get building(): boolean {
         return this._building;
     }
-    
-    public build(puzzleTexture: Texture) {
+
+    public build(cover: Mesh) {
+        const puzzleTexture = (cover.material as StandardMaterial).diffuseTexture as Texture;
+        ctx.resetBoundings(cover.position);
+
         this._building = true;
         this._texture = puzzleTexture;
         const mat = new StandardMaterial("mat", ctx.scene);
@@ -34,32 +37,40 @@ class PuzzleGameBuilder {
         lathe.rotation.y = Math.PI / 4;
         lathe.bakeCurrentTransformIntoVertices();
         lathe.scaling = new Vector3(ctx.latheWidth, ctx.latheHeight, ctx.latheDepth);
+        lathe.position = cover.position.clone();
         lathe.position.y = ctx.minY - 0.48;
 
         const ground = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
+        ground.position = cover.position.clone();
         ground.position.y = ctx.minY + 0.26;
         ground.visibility = 0;
         
         physicsImpostorBuilder.attachGroundImpostor(ground);
 
         const groundVis = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
+        groundVis.position = cover.position.clone();
         groundVis.position.y = ctx.minY - 0.5;
 
         const groundCover = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
         groundCover.visibility = 0;
+        groundCover.position = cover.position.clone();
         groundCover.position.y = ctx.minY + 1;
 
         shakeBehaviorManager.addShakeBehavior([lathe, ground, groundVis, groundCover]);
 
-        const startX = -ctx.kitWidth / 2;
-        const startZ = ctx.kitHeight / 2;
+        const startX = -ctx.kitWidth / 2 + cover.position.x;
+        const startZ = ctx.kitHeight / 2 + cover.position.z;
 
         const topLeft = puzzleBuilder.createPuzzlePiece(true, true, 0);
+        topLeft.position = cover.position.clone();
         const top = puzzleBuilder.createPuzzlePiece(true, false, 1);
+        top.position = cover.position.clone();
         const left = puzzleBuilder.createPuzzlePiece(false, true, 2);
+        left.position = cover.position.clone();
         const middle = puzzleBuilder.createPuzzlePiece(false, false, 3);
+        middle.position = cover.position.clone();
 
-        const box = puzzleBuilder.createFlatBox(ctx.kitWidth, ctx.kitHeight, 0.1, puzzleTexture);
+        const box = puzzleBuilder.createFlatBox(ctx.kitWidth, ctx.kitHeight, 0.1, cover);
 
         let usePiece: Mesh;
         for (let i = 0; i < ctx.numX; i++) {
