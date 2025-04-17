@@ -1,6 +1,7 @@
 import { Mesh, Quaternion, Vector3, Scalar } from "@babylonjs/core";
 import meshHelpers from "../common/MeshHelpers";
 import ctx from "../common/SceneContext";
+import gameModeManager from "./GameModeManager";
 
 class PiecePositioningManager {
     constructor() {
@@ -11,6 +12,10 @@ class PiecePositioningManager {
     }
 
     checkPiecePositions(): void {
+        if (!gameModeManager.solveMode) {
+            return;
+        }
+
         for (const [helpBox, polygon] of ctx.helpBoxMap.entries()) {
             helpBox.position = polygon.getBoundingInfo().boundingBox.centerWorld.clone();
             helpBox.rotationQuaternion = polygon.rotationQuaternion!.clone();

@@ -1,8 +1,9 @@
-import { Mesh, Animation, EasingFunction, CubicEase } from "@babylonjs/core";
+import { Mesh, Animation, EasingFunction, CubicEase, Vector3 } from "@babylonjs/core";
 import IPuzzleAnimation from "./IPuzzleAnimation";
 import gameModeManager from "../behaviors/GameModeManager";
 import ctx from "../common/SceneContext";
 import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
+import meshHelpers from "../common/MeshHelpers";
 
 class BackToInitialAnimation implements IPuzzleAnimation {
 
@@ -54,6 +55,8 @@ class BackToInitialAnimation implements IPuzzleAnimation {
         targetAnim.setKeys([{ frame: 0, value: cam.target.clone() }, { frame: animFrames, value: orig.target.clone() }]);
         targetAnim.setEasingFunction(easingFunction);
 
+        gameModeManager.enterOpenCoverMode();
+
         ctx.scene.beginDirectAnimation(cam, [alphaAnim, betaAnim, radiusAnim, targetAnim], 0, animFrames, false, 1.0, () => {
             // Final snap to correct alpha/beta/radius/target
             cam.alpha = orig.alpha;
@@ -63,6 +66,8 @@ class BackToInitialAnimation implements IPuzzleAnimation {
         
             // ✅ Safe to re-enter initial mode now
             gameModeManager.enterInitialMode();
+
+            console.log(ctx.minY);
         });
 
         this.animUnderCover();
@@ -75,13 +80,39 @@ class BackToInitialAnimation implements IPuzzleAnimation {
             const anim = new Animation("animUnderCover", "position.y", 30, Animation.ANIMATIONTYPE_FLOAT);
             anim.setKeys([
                 { frame: 0, value: mesh.position.y },
-                { frame: 10, value: ctx.originalCoverState!.position.y + 100 }
+                { frame: 10, value: mesh.position.y + 100 }
             ]);
 
             mesh.animations = [anim];
             ctx.scene.beginAnimation(mesh, 0, 10, false);
         }
 
+        ctx.jigsawPieces.forEach(piece => {
+            const pieceData = ctx.piecesMap.get(piece);
+
+            if (pieceData) {
+                const shapeMesh = pieceData.shapeMesh;
+                const startY = shapeMesh.position.y;
+                const endY = shapeMesh.position.y + 100; // move up by 1 unit (adjust as needed)
+            
+                const animation = new Animation(
+                    "moveUp",
+                    "position.y",
+                    30, // frames per second
+                    Animation.ANIMATIONTYPE_FLOAT,
+                    Animation.ANIMATIONLOOPMODE_CONSTANT
+                );
+            
+                const keys = [
+                    { frame: 0, value: startY },
+                    { frame: 10, value: endY } // move up over 15 frames (0.25s)
+                ];
+            
+                animation.setKeys(keys);
+                shapeMesh.animations = [animation];
+                ctx.scene.beginAnimation(shapeMesh, 0, 10, false);
+            }
+        });
     }
 }
 
