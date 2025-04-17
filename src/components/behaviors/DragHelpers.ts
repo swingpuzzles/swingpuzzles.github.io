@@ -13,6 +13,10 @@ class DragHelpers {
         }
     }
 
+    disableDragBehavior(dragBehavior: PointerDragBehavior) {
+        //dragBehavior.enabled = false;
+    }
+
     arePiecesJoining(meshA: Mesh, meshB: Mesh): boolean {
         const dataA = ctx.piecesMap.get(meshA)!;
         const dataB = ctx.piecesMap.get(meshB)!;

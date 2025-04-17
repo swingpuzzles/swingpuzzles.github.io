@@ -7,15 +7,21 @@ import physicsImpostorBuilder from "../builders/PhysicsImpostorBuilder";
 import gameModeManager from "./GameModeManager";
 
 class ShakeBehaviorManager {
+    private _dragBehaviors: PointerDragBehavior[] = [];
+    private _dragMeshes: Mesh[] = [];
+
     addShakeBehavior(meshes: Mesh[]): void {
         const origPosMap = new Map<Mesh, Vector3>();
         const origMin = new Vector3(ctx.minX, ctx.minY, ctx.minZ);
         const origMax = new Vector3(ctx.maxX, 0, ctx.maxZ);
+
+        this._dragMeshes = meshes;
     
         for (const m of meshes) {
             origPosMap.set(m, m.position.clone());
     
             const dragBehavior = new PointerDragBehavior();
+            this._dragBehaviors.push(dragBehavior);
     
             dragBehavior.onDragStartObservable.add(() => {
                 this.togglePhysicsAndShake();
@@ -30,12 +36,22 @@ class ShakeBehaviorManager {
                 this.moveArcRotateCamera(3 * Math.PI / 2, 0, 42, dragBehavior.attachedNode.position);
     
                 for (const mesh of meshes) {
-                    dragHelpers.removeDragBehavior(mesh);
+                    dragHelpers.disableDragBehavior(dragBehavior);
                     mesh.isPickable = false;
                 }
             });
     
             m.addBehavior(dragBehavior);
+        }
+    }
+
+    public enableDragBehaviors() {
+        for (let db of this._dragBehaviors) {
+            db.enabled = true;
+        }
+        
+        for (let m of this._dragMeshes) {
+            m.isPickable = true;
         }
     }
     

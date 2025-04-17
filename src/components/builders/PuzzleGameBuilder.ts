@@ -82,6 +82,8 @@ class PuzzleGameBuilder {
     public build(cover: Mesh) {
         this._building = true;
 
+        shakeBehaviorManager.enableDragBehaviors();
+
         const puzzleTexture = (cover.material as StandardMaterial).diffuseTexture as Texture;
         this._texture = puzzleTexture;
 
