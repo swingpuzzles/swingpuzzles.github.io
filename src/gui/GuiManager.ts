@@ -52,7 +52,6 @@ class GuiManager {
 
         // Register buttons for high-res replacement
         puzzleAssetsManager.addGuiImageButtonSource(button1, "assets/play-button.webp");
-        //puzzleAssetsManager.addGuiImageButtonSource(button2, "textures/gui/icon2.png");
 
         const xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button.webp");
         xButton.width = "80px";

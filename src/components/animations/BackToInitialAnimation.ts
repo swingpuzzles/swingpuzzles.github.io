@@ -2,6 +2,7 @@ import { Mesh, Animation, EasingFunction, CubicEase } from "@babylonjs/core";
 import IPuzzleAnimation from "./IPuzzleAnimation";
 import gameModeManager from "../behaviors/GameModeManager";
 import ctx from "../common/SceneContext";
+import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
 
 class BackToInitialAnimation implements IPuzzleAnimation {
 
@@ -63,6 +64,24 @@ class BackToInitialAnimation implements IPuzzleAnimation {
             // ✅ Safe to re-enter initial mode now
             gameModeManager.enterInitialMode();
         });
+
+        this.animUnderCover();
+    }
+
+    private animUnderCover() {
+        const underCoverMeshes = puzzleGameBuilder.underCoverMeshes;
+
+        for (const mesh of underCoverMeshes) {
+            const anim = new Animation("animUnderCover", "position.y", 30, Animation.ANIMATIONTYPE_FLOAT);
+            anim.setKeys([
+                { frame: 0, value: mesh.position.y },
+                { frame: 10, value: ctx.originalCoverState!.position.y + 100 }
+            ]);
+
+            mesh.animations = [anim];
+            ctx.scene.beginAnimation(mesh, 0, 10, false);
+        }
+
     }
 }
 

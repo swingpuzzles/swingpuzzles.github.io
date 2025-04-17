@@ -18,6 +18,10 @@ class PuzzleGameBuilder {
     get building(): boolean {
         return this._building;
     }
+    get underCoverMeshes(): Mesh[] {
+        return [this._lathe, this._ground, this._groundVis, this._groundCover];
+    }
+    
 
     public init() {
         const mat = new StandardMaterial("mat", ctx.scene);
