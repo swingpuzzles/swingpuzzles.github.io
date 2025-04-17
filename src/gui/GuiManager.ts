@@ -4,16 +4,17 @@ import PiecesCountDropdown from "./PiecesCountDropdown";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import puzzleCoverBuilder from "../components/builders/PuzzleCoverBuilder";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
-import gameModeManager from "../components/behaviors/GameModeManager";
+import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 
 class GuiManager {
     private advancedTexture!: AdvancedDynamicTexture;
     private bottomButtonPanel!: StackPanel;
+    private piecesCountDropdown!: PiecesCountDropdown
 
     init() {
         this.advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
-        const piecesCountDropdown = new PiecesCountDropdown(this.advancedTexture);
+        this.piecesCountDropdown = new PiecesCountDropdown(this.advancedTexture);
 
         this._createButtons();
     }
@@ -23,7 +24,6 @@ class GuiManager {
         this.bottomButtonPanel.isVertical = true;
         this.bottomButtonPanel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.bottomButtonPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
-        this.bottomButtonPanel.paddingBottom = "20px";
         this.bottomButtonPanel.spacing = 10;
 
         const button1 = Button.CreateImageOnlyButton("btn1", "assets/play-button-small.webp");
@@ -82,18 +82,34 @@ class GuiManager {
         this.advancedTexture.addControl(menuButton);
 
         gameModeManager.addObserver(() => {
-            if (gameModeManager.initialMode) {
-                button1.isVisible = true;
-                menuButton.isVisible = true;
-                xButton.isVisible = false;
-                button2.width = "240px";
-                button2.height = "60px";
-            } else {
-                button1.isVisible = false;
-                menuButton.isVisible = false;
-                xButton.isVisible = true;
-                button2.width = "248px";
-                button2.height = "62px";
+            switch (gameModeManager.currentMode) {
+                case GameMode.Initial:
+                    button1.isVisible = true;
+                    menuButton.isVisible = true;
+                    xButton.isVisible = false;
+                    button2.width = "240px";
+                    button2.height = "60px";
+                    this.piecesCountDropdown.isVisible = true;
+                    this.bottomButtonPanel.paddingBottom = "20px";
+                    break;
+                case GameMode.OpenCover:
+                    button1.isVisible = false;
+                    menuButton.isVisible = false;
+                    xButton.isVisible = true;
+                    button2.width = "248px";
+                    button2.height = "62px";
+                    this.piecesCountDropdown.isVisible = false;
+                    this.bottomButtonPanel.paddingBottom = "20px";
+                    break;
+                case GameMode.Solve:
+                    button1.isVisible = false;
+                    menuButton.isVisible = false;
+                    xButton.isVisible = true;
+                    button2.width = "124px";
+                    button2.height = "31px";
+                    this.piecesCountDropdown.isVisible = false;
+                    this.bottomButtonPanel.paddingBottom = "5px";
+                    break;
             }
         });
     }

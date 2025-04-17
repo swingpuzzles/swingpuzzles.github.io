@@ -85,6 +85,10 @@ export default class Dropdown {
         this.container.left = value;
     }
 
+    set isVisible(value: boolean) {
+        this.container.isVisible = value;
+    }
+
     setText(text: string) {
         this.button.textBlock!.text = text;
     }

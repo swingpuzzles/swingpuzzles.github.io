@@ -1,7 +1,7 @@
 import ctx from "../common/SceneContext";
 import piecePositioningManager from "./PiecePositioningManager";
 
-enum GameMode {
+export enum GameMode {
     Initial,
     OpenCover,
     Solve
@@ -18,6 +18,9 @@ class GameModeManager {
     }
     get solveMode() {
         return this._currentMode == GameMode.Solve;
+    }
+    get currentMode() {
+        return this._currentMode;
     }
 
     private resetAll(currentMode: GameMode) {
