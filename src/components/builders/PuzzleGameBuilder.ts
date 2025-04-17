@@ -92,7 +92,7 @@ class PuzzleGameBuilder {
         this._lathe.position = cover.position.clone();
         this._lathe.position.y = ctx.minY - 0.48;
         this._ground.position = cover.position.clone();
-        this._ground.position.y = ctx.minY + 0.26;
+        this._ground.position.y = ctx.minY + 0.5;
         this._groundVis.position = cover.position.clone();
         this._groundVis.position.y = ctx.minY - 0.5;
         this._groundCover.position = cover.position.clone();
