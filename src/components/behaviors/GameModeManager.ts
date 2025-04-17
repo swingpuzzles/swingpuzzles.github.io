@@ -26,6 +26,9 @@ class GameModeManager {
     private resetAll(currentMode: GameMode) {
         this._currentMode = currentMode;
 
+        ctx.camera.upperBetaLimit = null;
+        ctx.camera.lowerBetaLimit = null;
+
         for (let observer of this._observers) {
             observer();
         }
@@ -37,7 +40,10 @@ class GameModeManager {
 
     enterInitialMode() {
         this.resetAll(GameMode.Initial);
-        
+
+        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;  
+        ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
+            
         ctx.camera.attachControl(ctx.canvas, true);
     }
 

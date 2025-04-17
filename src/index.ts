@@ -44,8 +44,6 @@ const createScene = async function (): Promise<Scene> {
     camera.angularSensibilityY = 8000;
 
     camera.beta = 17 * Math.PI / 32;
-    camera.upperBetaLimit = 14 * Math.PI / 32;  
-    camera.lowerBetaLimit = 9 * Math.PI / 32;
 
     ctx.init(scene, camera, canvas, engine);
     puzzleAssetsManager.init();
