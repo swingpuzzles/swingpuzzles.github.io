@@ -22,13 +22,17 @@ class PuzzleBuilder {
     
         const frontMaterial = new StandardMaterial("frontMat", ctx.scene);
         frontMaterial.diffuseTexture = puzzleTexture;
-    
+        frontMaterial.emissiveColor = new Color3(1, 1, 1); // full white
+        frontMaterial.disableLighting = true;
+
         const backMaterial = new StandardMaterial("backMat", ctx.scene);
         const texture = puzzleAssetsManager.addTexture("assets/floor-small.webp", "assets/floor.webp");
         texture.uScale = 4;
         texture.vScale = 4;
         backMaterial.diffuseTexture = texture;
-    
+        backMaterial.emissiveColor = new Color3(1, 1, 1); // full white
+        backMaterial.disableLighting = true;
+
         const sideMaterial = new StandardMaterial("sideMat", ctx.scene);
         sideMaterial.diffuseColor = new Color3(1, 1, 1);
     

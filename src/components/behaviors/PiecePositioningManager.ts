@@ -66,7 +66,7 @@ class PiecePositioningManager {
                 piece.position.z -= 0.2;
                 edgePos = edgePosMaxZ;
             } else if (edgePosMinY.y - ctx.pieceHeightHalf < ctx.minY - 0.1) {
-                piece.position.y += 0.2;
+                piece.position.y += Math.max(0.2, ctx.minY - edgePosMinY.y + ctx.pieceHeightHalf + 0.2);
                 edgePos = edgePosMinY;
             } else {
                 return;

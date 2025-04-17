@@ -90,11 +90,11 @@ class PuzzleGameBuilder {
         ctx.resetBoundings(cover.position);
 
         this._lathe.position = cover.position.clone();
-        this._lathe.position.y = ctx.minY - 0.48;
+        this._lathe.position.y = ctx.minY - 3.48;
         this._ground.position = cover.position.clone();
-        this._ground.position.y = ctx.minY + 0.5;
+        this._ground.position.y = ctx.minY + 0.26;
         this._groundVis.position = cover.position.clone();
-        this._groundVis.position.y = ctx.minY - 0.5;
+        this._groundVis.position.y = ctx.minY - 3.5;
         this._groundCover.position = cover.position.clone();
         this._groundCover.position.y = ctx.minY + 1;
 
@@ -139,6 +139,7 @@ class PuzzleGameBuilder {
                 }, ctx.scene);
 
                 newMeshHolePlate.position.addInPlace(cover.position);
+                newMeshHolePlate.position.y -= 2;
                 boundingBox.position = newMeshHolePlate.position.clone();
                 boundingBox.visibility = 0;
                 boundingBox.isPickable = true;

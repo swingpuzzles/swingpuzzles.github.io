@@ -2,13 +2,12 @@ import { CubeTexture, HemisphericLight, Mesh, MeshBuilder, PBRMaterial, Standard
 import ctx from "../common/SceneContext";
 import gameModeManager from "../behaviors/GameModeManager";
 import puzzleCircleBuilder from "./PuzzleCircleBuilder";
-import puzzleGameBuilder from "./PuzzleGameBuilder";
-import puzzleCoverBuilder from "./PuzzleCoverBuilder";
 
 class SceneBuilder {
     buildScene() {
-        var light = new HemisphericLight("light1", new Vector3(0, 1, 0), ctx.scene);
+        var light = new HemisphericLight("light1", new Vector3(1, 1, 0), ctx.scene);
         var light2 = new HemisphericLight("light1", new Vector3(0, 0, 1), ctx.scene);
+        light.intensity = 1;
         light2.intensity = 0.2;
     
         var skybox = Mesh.CreateBox("skyBox", 400.0, ctx.scene);

@@ -16,7 +16,7 @@ class SceneContext {
     private _numZ: number = 20;
     private _xLimit: number = 22;
     private _zLimit: number = 16.5;
-    private _latheMulti: number = 1.455;
+    private _latheMulti: number = 1.454;
     private _latheMultiY: number = 1 / 6;
     private _latheWidth = this._xLimit * this._latheMulti;
     private _latheHeight = this._zLimit * this._latheMultiY;
