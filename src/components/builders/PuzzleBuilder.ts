@@ -15,7 +15,7 @@ class PuzzleBuilder {
 
         const box = MeshBuilder.CreateBox("box", { width, height, depth }, ctx.scene);
         box.rotation.x = -Math.PI / 2;
-        box.position = cover.position.clone();
+        box.rotation.y = Math.PI;
         box.position.y += -0.2;
     
         const multiMat = new MultiMaterial("multiMat", ctx.scene);

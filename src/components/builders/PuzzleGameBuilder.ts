@@ -58,17 +58,13 @@ class PuzzleGameBuilder {
 
         shakeBehaviorManager.addShakeBehavior([lathe, ground, groundVis, groundCover]);
 
-        const startX = -ctx.kitWidth / 2 + cover.position.x;
-        const startZ = ctx.kitHeight / 2 + cover.position.z;
+        const startX = -ctx.kitWidth / 2;
+        const startZ = ctx.kitHeight / 2;
 
         const topLeft = puzzleBuilder.createPuzzlePiece(true, true, 0);
-        topLeft.position = cover.position.clone();
         const top = puzzleBuilder.createPuzzlePiece(true, false, 1);
-        top.position = cover.position.clone();
         const left = puzzleBuilder.createPuzzlePiece(false, true, 2);
-        left.position = cover.position.clone();
         const middle = puzzleBuilder.createPuzzlePiece(false, false, 3);
-        middle.position = cover.position.clone();
 
         const box = puzzleBuilder.createFlatBox(ctx.kitWidth, ctx.kitHeight, 0.1, cover);
 
@@ -107,6 +103,7 @@ class PuzzleGameBuilder {
                     depth: j < ctx.numZ - 1 ? ctx.pieceDepth : ctx.pieceDepth * 0.8
                 }, ctx.scene);
 
+                newMeshHolePlate.position.addInPlace(cover.position);
                 boundingBox.position = newMeshHolePlate.position.clone();
                 boundingBox.visibility = 0;
                 boundingBox.isPickable = true;
