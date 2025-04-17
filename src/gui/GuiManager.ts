@@ -5,6 +5,8 @@ import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import puzzleCoverBuilder from "../components/builders/PuzzleCoverBuilder";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
+import backToInitialAnimation from "../components/animations/BackToInitialAnimation";
+import openCoverAnimation from "../components/animations/OpenCoverAnimation";
 
 class GuiManager {
     private advancedTexture!: AdvancedDynamicTexture;
@@ -33,7 +35,7 @@ class GuiManager {
         button1.background = "";
         button1.hoverCursor = "pointer";
         button1.onPointerClickObservable.add(() => {
-            puzzleCoverBuilder.openCover(puzzleCircleBuilder.selectedCover);
+            openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
         });
         this.bottomButtonPanel.addControl(button1);
 
@@ -63,7 +65,7 @@ class GuiManager {
         xButton.paddingTop = "10px";
         xButton.paddingRight = "10px";
         xButton.onPointerClickObservable.add(() => {
-            puzzleCoverBuilder.animBackToOrigin(puzzleCoverBuilder.currentCover);
+            backToInitialAnimation.animate(ctx.currentCover);
         });
 
         this.advancedTexture.addControl(xButton);

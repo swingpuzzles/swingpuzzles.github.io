@@ -205,6 +205,11 @@ class SceneContext {
         this._pieceDepth = 2.5 * this._pieceScaleZ;
     }
 
+    public originalCoverState: { position: Vector3; rotation: Vector3 } | null = null;
+    public originalCameraState: { alpha: number; beta: number; radius: number; target: Vector3 } | null = null;
+
+    public currentCover!: Mesh;
+
     public resetBoundings(centerPos: Vector3): void {
         this._minX = centerPos.x - this._xLimit;
         this._maxX = centerPos.x + this._xLimit;

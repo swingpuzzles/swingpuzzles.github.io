@@ -1,8 +1,9 @@
 import { Mesh, QuadraticEase, Animation, EasingFunction, Quaternion } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
+import IPuzzleAnimation from "./IPuzzleAnimation";
 
-class RotationToZeroAnimation {
-
+class RotationToZeroAnimation implements IPuzzleAnimation {
+    
     animate(mesh: Mesh): void {
         if (!mesh.rotationQuaternion) return;
     
