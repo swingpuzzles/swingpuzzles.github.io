@@ -174,6 +174,7 @@ class SceneContext {
     get minY(): number {
         return this._minY;
     }
+
     set minX(value: number) {
         this._minX = value;
     }
@@ -188,6 +189,20 @@ class SceneContext {
     }
     set minY(value: number) {
         this._minY = value;
+    }
+    set numX(value: number) {
+        this._numX = value;
+        this._piecesCount = this._numX * this._numZ;
+        this._pieceStepX = this._kitWidth / this._numX;
+        this._pieceScaleX = this._pieceStepX / this._pieceEdge;
+        this._pieceWidth = 2.5 * this._pieceScaleX;
+    }
+    set numZ(value: number) {
+        this._numZ = value;
+        this._piecesCount = this._numX * this._numZ;
+        this._pieceStepZ = this._kitHeight / this._numZ;
+        this._pieceScaleZ = this._pieceStepZ / this._pieceEdge;
+        this._pieceDepth = 2.5 * this._pieceScaleZ;
     }
 
     public resetBoundings(centerPos: Vector3): void {

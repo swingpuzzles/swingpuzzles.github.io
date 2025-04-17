@@ -1,3 +1,4 @@
+import ctx from "../components/common/SceneContext";
 import Dropdown from "./Dropdown";
 
 export default class PiecesCountDropdown extends Dropdown {
@@ -27,17 +28,20 @@ export default class PiecesCountDropdown extends Dropdown {
     addPiecesNums(xCount: number, zCount: number, selected: boolean = false) {
         const count = xCount * zCount;
         const text = `${xCount} x ${zCount} = ${count} pieces`;
-        this.addOption(text, () => { this.selectAction(text); });
+        this.addOption(text, () => { this.selectAction(xCount, zCount, text); });
 
         if (selected) {
-            this.selectAction(text);
+            this.selectAction(xCount, zCount, text);
         }
     }
 
-    selectAction(text: string) {
+    selectAction(xCount: number, zCount: number, text: string) {
         const maxLength = 25; // set this to your desired fixed length
         const paddedText = text/*.padEnd(maxLength - 2, " ")*/ + "     ▼"; // keep room for " ▼"
         this.setText(paddedText);
+
+        ctx.numX = xCount;
+        ctx.numZ = zCount;
     }
 
     addPiecesCount(count: number) {
