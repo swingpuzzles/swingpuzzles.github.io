@@ -14,7 +14,7 @@ class DragHelpers {
     }
 
     disableDragBehavior(dragBehavior: PointerDragBehavior) {
-        //dragBehavior.enabled = false;
+        dragBehavior.enabled = false;
     }
 
     arePiecesJoining(meshA: Mesh, meshB: Mesh): boolean {
