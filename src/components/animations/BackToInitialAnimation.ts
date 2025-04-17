@@ -3,7 +3,6 @@ import IPuzzleAnimation from "./IPuzzleAnimation";
 import gameModeManager from "../behaviors/GameModeManager";
 import ctx from "../common/SceneContext";
 import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
-import meshHelpers from "../common/MeshHelpers";
 
 class BackToInitialAnimation implements IPuzzleAnimation {
 
@@ -66,8 +65,6 @@ class BackToInitialAnimation implements IPuzzleAnimation {
         
             // ✅ Safe to re-enter initial mode now
             gameModeManager.enterInitialMode();
-
-            console.log(ctx.minY);
         });
 
         this.animUnderCover();
@@ -110,9 +107,15 @@ class BackToInitialAnimation implements IPuzzleAnimation {
             
                 animation.setKeys(keys);
                 shapeMesh.animations = [animation];
-                ctx.scene.beginAnimation(shapeMesh, 0, 10, false);
+                ctx.scene.beginAnimation(shapeMesh, 0, 10, false, 1.0, () => {
+                    shapeMesh.dispose();
+                });
             }
+
+            piece.dispose();
         });
+
+        puzzleGameBuilder.clear();
     }
 }
 

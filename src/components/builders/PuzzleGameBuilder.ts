@@ -11,6 +11,10 @@ class PuzzleGameBuilder {
     private _ground!: Mesh;
     private _groundVis!: Mesh;
     private _groundCover!: Mesh;
+    private _topLeft!: Mesh;
+    private _top!: Mesh;
+    private _left!: Mesh;
+    private _middle!: Mesh;
 
     get texture(): Texture | null {
         return this._texture;
@@ -51,7 +55,28 @@ class PuzzleGameBuilder {
         this._groundCover = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
         this._groundCover.visibility = 0;
 
+        this._topLeft = puzzleBuilder.createPuzzlePiece(true, true, 0);
+        this._top = puzzleBuilder.createPuzzlePiece(true, false, 1);
+        this._left = puzzleBuilder.createPuzzlePiece(false, true, 2);
+        this._middle = puzzleBuilder.createPuzzlePiece(false, false, 3);
+
         shakeBehaviorManager.addShakeBehavior([this._lathe, this._ground, this._groundVis, this._groundCover]);
+    }
+
+    public clear() {
+        ctx.jigsawPieces.forEach(piece => piece.dispose());
+        ctx.jigsawPieces = [];
+        ctx.piecesArray = [];
+
+        ctx.piecesMap.clear();
+
+        ctx.polygonMap.forEach((polygon, mesh) => {
+            polygon.dispose();
+            mesh.dispose();
+        })
+        
+        ctx.polygonMap.clear();
+        ctx.helpBoxMap.clear();
     }
 
     public build(cover: Mesh) {
@@ -74,11 +99,6 @@ class PuzzleGameBuilder {
         const startX = -ctx.kitWidth / 2;
         const startZ = ctx.kitHeight / 2;
 
-        const topLeft = puzzleBuilder.createPuzzlePiece(true, true, 0);
-        const top = puzzleBuilder.createPuzzlePiece(true, false, 1);
-        const left = puzzleBuilder.createPuzzlePiece(false, true, 2);
-        const middle = puzzleBuilder.createPuzzlePiece(false, false, 3);
-
         const box = puzzleBuilder.createFlatBox(ctx.kitWidth, ctx.kitHeight, 0.1, cover);
 
         let usePiece: Mesh;
@@ -88,13 +108,13 @@ class PuzzleGameBuilder {
 
             for (let j = 0; j < ctx.numZ; j++) {
                 if (i === 0 && j === 0) {
-                    usePiece = topLeft;
+                    usePiece = this._topLeft;
                 } else if (i === 0) {
-                    usePiece = left;
+                    usePiece = this._left;
                 } else if (j === 0) {
-                    usePiece = top;
+                    usePiece = this._top;
                 } else {
-                    usePiece = middle;
+                    usePiece = this._middle;
                 }
 
                 usePiece.scaling = new Vector3(ctx.pieceScaleX, 1, ctx.pieceScaleZ);

@@ -204,7 +204,27 @@ class SceneContext {
         this._pieceScaleZ = this._pieceStepZ / this._pieceEdge;
         this._pieceDepth = 2.5 * this._pieceScaleZ;
     }
-
+    set jigsawPieces(value: Mesh[]) {
+        this._jigsawPieces = value;
+    }
+    set piecesArray(value: Mesh[][]) {
+        this._piecesArray = value;
+    }
+    set piecesMap(value: Map<Mesh, {
+        origPos: Vector3;
+        xIndex: number;
+        zIndex: number;
+        shapeMesh: Mesh;
+    }>) {
+        this._piecesMap = value;
+    }
+    set helpBoxMap(value: Map<Mesh, Mesh>) {
+        this._helpBoxMap = value;
+    }
+    set polygonMap(value: Map<Mesh, Mesh>) {
+        this._polygonMap = value;
+    }
+    
     public originalCoverState: { position: Vector3; rotation: Vector3 } | null = null;
     public originalCameraState: { alpha: number; beta: number; radius: number; target: Vector3 } | null = null;
 
