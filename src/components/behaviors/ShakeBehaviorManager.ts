@@ -4,6 +4,7 @@ import meshHelpers from "../common/MeshHelpers";
 import dragHelpers from "./DragHelpers";
 import pieceDragManager from "./PieceDragManager"; // Ensure this path is correct
 import physicsImpostorBuilder from "../builders/PhysicsImpostorBuilder";
+import gameModeManager from "./GameModeManager";
 
 class ShakeBehaviorManager {
     addShakeBehavior(meshes: Mesh[]): void {
@@ -39,6 +40,8 @@ class ShakeBehaviorManager {
     }
     
     private togglePhysicsAndShake(): void {
+        gameModeManager.enterSolveMode();
+        
         ctx.jigsawPieces!.forEach(piece => {
             meshHelpers.excludeFromParent(piece);
         });
