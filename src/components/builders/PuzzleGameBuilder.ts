@@ -7,6 +7,10 @@ import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
 class PuzzleGameBuilder {
     private _texture: Texture | null = null;
     private _building: boolean = false;
+    private _lathe!: Mesh;
+    private _ground!: Mesh;
+    private _groundVis!: Mesh;
+    private _groundCover!: Mesh;
 
     get texture(): Texture | null {
         return this._texture;
@@ -15,12 +19,7 @@ class PuzzleGameBuilder {
         return this._building;
     }
 
-    public build(cover: Mesh) {
-        const puzzleTexture = (cover.material as StandardMaterial).diffuseTexture as Texture;
-        ctx.resetBoundings(cover.position);
-
-        this._building = true;
-        this._texture = puzzleTexture;
+    public init() {
         const mat = new StandardMaterial("mat", ctx.scene);
         mat.backFaceCulling = false;
 
@@ -31,32 +30,42 @@ class PuzzleGameBuilder {
             new Vector3(0.975, 1, 0)
         ];
 
-        const lathe = MeshBuilder.CreateLathe("lathe", { shape: myShape, radius: 1, tessellation: 4, sideOrientation: Mesh.DOUBLESIDE }, ctx.scene);
-        lathe.convertToFlatShadedMesh();
-        lathe.material = mat;
-        lathe.rotation.y = Math.PI / 4;
-        lathe.bakeCurrentTransformIntoVertices();
-        lathe.scaling = new Vector3(ctx.latheWidth, ctx.latheHeight, ctx.latheDepth);
-        lathe.position = cover.position.clone();
-        lathe.position.y = ctx.minY - 0.48;
+        this._lathe = MeshBuilder.CreateLathe("lathe", { shape: myShape, radius: 1, tessellation: 4, sideOrientation: Mesh.DOUBLESIDE }, ctx.scene);
+        this._lathe.convertToFlatShadedMesh();
+        this._lathe.material = mat;
+        this._lathe.rotation.y = Math.PI / 4;
+        this._lathe.bakeCurrentTransformIntoVertices();
+        this._lathe.scaling = new Vector3(ctx.latheWidth, ctx.latheHeight, ctx.latheDepth);
 
-        const ground = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
-        ground.position = cover.position.clone();
-        ground.position.y = ctx.minY + 0.26;
-        ground.visibility = 0;
+        this._ground = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
+        this._ground.visibility = 0;
         
-        physicsImpostorBuilder.attachGroundImpostor(ground);
+        physicsImpostorBuilder.attachGroundImpostor(this._ground);
 
-        const groundVis = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
-        groundVis.position = cover.position.clone();
-        groundVis.position.y = ctx.minY - 0.5;
+        this._groundVis = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
 
-        const groundCover = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
-        groundCover.visibility = 0;
-        groundCover.position = cover.position.clone();
-        groundCover.position.y = ctx.minY + 1;
+        this._groundCover = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
+        this._groundCover.visibility = 0;
 
-        shakeBehaviorManager.addShakeBehavior([lathe, ground, groundVis, groundCover]);
+        shakeBehaviorManager.addShakeBehavior([this._lathe, this._ground, this._groundVis, this._groundCover]);
+    }
+
+    public build(cover: Mesh) {
+        this._building = true;
+
+        const puzzleTexture = (cover.material as StandardMaterial).diffuseTexture as Texture;
+        this._texture = puzzleTexture;
+
+        ctx.resetBoundings(cover.position);
+
+        this._lathe.position = cover.position.clone();
+        this._lathe.position.y = ctx.minY - 0.48;
+        this._ground.position = cover.position.clone();
+        this._ground.position.y = ctx.minY + 0.26;
+        this._groundVis.position = cover.position.clone();
+        this._groundVis.position.y = ctx.minY - 0.5;
+        this._groundCover.position = cover.position.clone();
+        this._groundCover.position.y = ctx.minY + 1;
 
         const startX = -ctx.kitWidth / 2;
         const startZ = ctx.kitHeight / 2;

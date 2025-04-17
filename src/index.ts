@@ -8,6 +8,7 @@ import sceneBuilder from "./components/builders/SceneBuilder";
 import puzzleAssetsManager from "./components/behaviors/PuzzleAssetsManager";
 import guiManager from "./gui/GuiManager";
 import gameModeManager from "./components/behaviors/GameModeManager";
+import puzzleGameBuilder from "./components/builders/PuzzleGameBuilder";
 
 
 // Get the canvas element
@@ -59,6 +60,8 @@ const createScene = async function (): Promise<Scene> {
     guiManager.init();
 
     gameModeManager.enterInitialMode();
+
+    puzzleGameBuilder.init();
 
     gameModeManager.leaveWaiting();
 

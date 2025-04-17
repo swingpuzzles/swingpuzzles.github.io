@@ -2,7 +2,7 @@ import { GroundMesh, Mesh, PhysicsImpostor } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 
 class PhysicsImpostorBuilder {
-    attachGroundImpostor(ground: GroundMesh) {
+    attachGroundImpostor(ground: Mesh) {
         ground.physicsImpostor = new PhysicsImpostor(
             ground,
             PhysicsImpostor.BoxImpostor,
