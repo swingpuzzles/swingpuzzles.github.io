@@ -4,11 +4,12 @@ import piecePositioningManager from "./PiecePositioningManager";
 export enum GameMode {
     Initial,
     OpenCover,
-    Solve
+    Solve,
+    Celebration
 }
 class GameModeManager {
     private _currentMode: GameMode = GameMode.Initial;
-    private _observers: (() => void)[] = [];
+    private _observers: ((prevMode: GameMode) => void)[] = [];
 
     get initialMode() {
         return this._currentMode == GameMode.Initial;
@@ -19,22 +20,26 @@ class GameModeManager {
     get solveMode() {
         return this._currentMode == GameMode.Solve;
     }
+    get celebrationMode() {
+        return this._currentMode == GameMode.Celebration;
+    }
     get currentMode() {
         return this._currentMode;
     }
 
     private resetAll(currentMode: GameMode) {
+        let prevMode = this._currentMode;
         this._currentMode = currentMode;
 
         ctx.camera.upperBetaLimit = null;
         ctx.camera.lowerBetaLimit = null;
 
         for (let observer of this._observers) {
-            observer();
+            observer(prevMode);
         }
     }
 
-    public addObserver(observer: () => void) {
+    public addObserver(observer: (prevMode: GameMode) => void) {
         this._observers.push(observer);
     }
 
@@ -55,6 +60,12 @@ class GameModeManager {
 
     enterSolveMode() {
         this.resetAll(GameMode.Solve);
+        
+        piecePositioningManager.init();
+    }
+
+    enterCelebrationMode() {
+        this.resetAll(GameMode.Celebration);
         
         piecePositioningManager.init();
     }

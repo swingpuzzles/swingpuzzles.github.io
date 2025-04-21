@@ -148,8 +148,6 @@ class DragPolygonBuilder {
             p.y -= centerZ;
         }
 
-        console.log(path);
-
         const polygon = new PolygonMeshBuilder("tetris_piece", path, ctx.scene, earcut.default);
         const extrudedMesh = polygon.build(false, 1);
         extrudedMesh.position.x = centerX;

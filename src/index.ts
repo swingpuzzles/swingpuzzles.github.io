@@ -9,6 +9,7 @@ import puzzleAssetsManager from "./components/behaviors/PuzzleAssetsManager";
 import guiManager from "./gui/GuiManager";
 import gameModeManager from "./components/behaviors/GameModeManager";
 import puzzleGameBuilder from "./components/builders/PuzzleGameBuilder";
+import celebrationAnimation from "./components/animations/CelebrationAnimation";
 
 
 // Get the canvas element
@@ -62,6 +63,8 @@ const createScene = async function (): Promise<Scene> {
     puzzleGameBuilder.init();
 
     gameModeManager.leaveWaiting();
+
+    celebrationAnimation.init();
 
     return scene;
 };

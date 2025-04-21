@@ -2,6 +2,9 @@ import { Mesh, MeshBuilder, PointerDragBehavior, Quaternion, Vector3 } from "@ba
 import ctx from "../common/SceneContext";
 import meshHelpers from "../common/MeshHelpers";
 import dragPolygonBuilder from "../builders/DragPolygonBuilder";
+import celebrationAnimation from "../animations/CelebrationAnimation";
+import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
+import gameModeManager from "./GameModeManager";
 
 class DragHelpers {
     removeDragBehavior(mesh: Mesh): void {
@@ -115,7 +118,12 @@ class DragHelpers {
         ctx.jigsawPieces.push(polygon);
 
         if (neighbourTopParent.getChildren().length + 1 === ctx.piecesCount) {
-            alert("Job done!");
+            const delayModeSwitchCoroutine = function* () {
+                yield;
+                gameModeManager.enterCelebrationMode();
+                celebrationAnimation.animate(puzzleGameBuilder.underCoverMeshes[0]);
+            };
+            ctx.scene.onBeforeRenderObservable.runCoroutineAsync(delayModeSwitchCoroutine());
         }
 
         return polygon;
