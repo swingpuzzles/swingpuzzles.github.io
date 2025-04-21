@@ -5,7 +5,7 @@ import puzzleCircleBuilder from "./PuzzleCircleBuilder";
 
 class SceneBuilder {
     buildScene() {
-        var light = new HemisphericLight("light1", new Vector3(1, 1, 0), ctx.scene);
+        var light = new HemisphericLight("light1", new Vector3(0, 1, -1), ctx.scene);
         var light2 = new HemisphericLight("light1", new Vector3(0, 0, 1), ctx.scene);
         light.intensity = 1;
         light2.intensity = 0.2;
