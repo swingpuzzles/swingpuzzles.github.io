@@ -10,6 +10,7 @@ import guiManager from "./gui/GuiManager";
 import gameModeManager from "./components/behaviors/GameModeManager";
 import puzzleGameBuilder from "./components/builders/PuzzleGameBuilder";
 import celebrationAnimation from "./components/animations/CelebrationAnimation";
+import timerDisplay from "./components/misc/TimerDisplay";
 
 
 // Get the canvas element
@@ -65,6 +66,8 @@ const createScene = async function (): Promise<Scene> {
     gameModeManager.leaveWaiting();
 
     celebrationAnimation.init();
+
+    timerDisplay.init();
 
     return scene;
 };

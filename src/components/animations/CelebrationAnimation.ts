@@ -7,14 +7,11 @@ class CelebrationAnimation implements IPuzzleAnimation {
     private particleSystem!: ParticleSystem;
 
     animate(mesh: Mesh): void {
-        // Auto-dispose after 2 seconds
         this.particleSystem.emitter = mesh.position.clone();
-        //this.particleSystem.emitter.y += 2;
         this.particleSystem.start();
-        /*setTimeout(() => {
-            this.particleSystem.stop();
-            //this.particleSystem.dispose();
-        }, 5000);*/
+        setTimeout(() => {
+            alert('kúp si to!')
+        }, 2000);
 
         ctx.jigsawPieces.forEach(piece => {
             const pieceData = ctx.piecesMap.get(piece);
