@@ -10,7 +10,9 @@ class CelebrationAnimation implements IPuzzleAnimation {
         this.particleSystem.emitter = mesh.position.clone();
         this.particleSystem.start();
         setTimeout(() => {
-            alert('kúp si to!')
+            if (gameModeManager.celebrationMode) {
+                alert('kúp si to!')
+            }
         }, 2000);
 
         ctx.jigsawPieces.forEach(piece => {
