@@ -21,7 +21,7 @@ class PopupHint {
         const mainRect = new Rectangle("Rectangle");
         mainRect.width = "800px";
         mainRect.height = "800px";
-        mainRect.background = "#FFE2B8FF";
+        //mainRect.background = "#FFE2B8FF";
         mainRect.color = "#B15E0AFF";
         mainRect.cornerRadius = 50;
         mainRect.thickness = 1;
@@ -41,7 +41,7 @@ class PopupHint {
         const topRect = new Rectangle("Rectangle");
         topRect.width = "800px";
         topRect.height = "200px";
-        topRect.background = "#F6E8D0FF";
+        topRect.background = "#FAF0E5FF";
         topRect.color = "#AAAAAA";
         mainStack.addControl(topRect);
 
@@ -58,18 +58,33 @@ class PopupHint {
         const welcomeText = new TextBlock("Textblock", "Welcome!");
         welcomeText.width = "598px";
         welcomeText.height = "100%";
-        welcomeText.fontSize = "80px";
+        welcomeText.fontSize = "100px";
         welcomeText.color = "#000000";
         welcomeText.fontWeight = "bold";
         welcomeText.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
         welcomeText.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
         topStack.addControl(welcomeText);
 
+        // Top Rectangle (with Welcome text and Image)
+        const centerRect = new Rectangle("Rectangle");
+        centerRect.width = "100%";
+        centerRect.height = "500px";
+        centerRect.background = "#FAF0E5FF";
+        centerRect.color = "#AAAAAA";
+        mainStack.addControl(centerRect);
+
+        const centerImage = new Image("Image", "assets/popup-bg.webp");
+        centerImage.width = "100%";
+        centerImage.height = "100%";
+        centerRect.addControl(centerImage);
+
+        puzzleAssetsManager.addGuiImageSource(centerImage, "assets/popup-bg.webp");
+
         // Middle Rectangle (with InputTextArea)
         const middleStack = new StackPanel("StackPanel");
-        middleStack.height = "500px";
+        middleStack.height = "100%";
         middleStack.isVertical = false;
-        mainStack.addControl(middleStack);
+        centerRect.addControl(middleStack);
 
         const middleImage = new Image("Image", "assets/mascot-avatar-small.webp");
         middleImage.width = "90px";
@@ -101,12 +116,8 @@ class PopupHint {
         this.inputTextArea.width = "95%";
         this.inputTextArea.height = "680px";
         this.inputTextArea.color = "#000000";
-        //this.inputTextArea.thickness = 0;
-        //this.inputTextArea.background = "#00000000";
-        //this.inputTextArea.focusedBackground = "#00000000";
         this.inputTextArea.fontSize = "26px";
         this.inputTextArea.resizeToFit = true;
-        //this.inputTextArea.autoStretchHeight = true;
         this.inputTextArea.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.inputTextArea.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.inputTextArea.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
@@ -114,12 +125,6 @@ class PopupHint {
         this.inputTextArea.paddingLeftInPixels = 15;
         this.inputTextArea.paddingRightInPixels = 15;
         this.inputTextArea.paddingTopInPixels = 10;
-        /*this.inputTextArea.onAfterDrawObservable.add((eventData, eventState) => {
-            const h = this.inputTextArea._currentMeasure.height;
-            console.log(eventData, eventState);
-            this.textAreaRect.height = h + "px";
-        });*/
-        //this.inputTextArea.text
         this.textAreaRect.addControl(this.inputTextArea);
 
         // Bottom Rectangle (with Buttons)
@@ -155,7 +160,7 @@ class PopupHint {
 
     }
 
-    public typeTextLetterByLetter(fullText: string, delay = 15, wrapLimit = 55) {
+    public typeTextLetterByLetter(fullText: string, delay = 0, wrapLimit = 55) {
         let index = 0;
         const target = this.inputTextArea;
     

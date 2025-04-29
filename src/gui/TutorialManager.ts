@@ -2,7 +2,7 @@ import { Sprite, SpriteManager, Animation } from "@babylonjs/core";
 import ctx from "../components/common/SceneContext";
 
 class TutorialManager {
-    private _sprite: Sprite;
+    /*private _sprite: Sprite;
     private _pendingHint: boolean;
     
     constructor() {
@@ -44,7 +44,7 @@ class TutorialManager {
 
         // Start the animation
         ctx.scene.beginAnimation(this._sprite, 0, frameRate, true, 0.4);
-    }
+    }*/
 
     /*switched() {
         if (this._pendingHint) {
