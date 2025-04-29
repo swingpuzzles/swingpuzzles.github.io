@@ -5,7 +5,7 @@ import {
     SpriteManager
 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
-import { Button } from "@babylonjs/gui";
+import { Button, Image } from "@babylonjs/gui";
 
 type TextureReplacement = {
     placeholder: Texture;
@@ -124,6 +124,38 @@ class PuzzleAssetsManager {
         const task = this.manager!.addTextureTask(`gui_image_${Date.now()}`, highResUrl);
         task.onSuccess = () => {
             button.image!.source = highResUrl;
+        };
+        task.onError = (_, msg, ex) => {
+            console.warn(`Failed to load high-res GUI image: ${msg}`, ex);
+        };
+    }
+
+    public addGuiImageSource(image: Image, highResUrl: string): void {
+        if (!image) {
+            console.warn(`Image is undefined.`);
+            return;
+        }
+    
+        const task = this.manager!.addTextureTask(`gui_image_${Date.now()}`, highResUrl);
+        task.onSuccess = () => {
+            image.source = highResUrl;
+        };
+        task.onError = (_, msg, ex) => {
+            console.warn(`Failed to load high-res GUI image: ${msg}`, ex);
+        };
+    }
+
+    public addGuiImageSourceForMultiple(images: Image[], highResUrl: string): void {
+        if (!images.length) {
+            console.warn(`No images provided.`);
+            return;
+        }
+    
+        const task = this.manager!.addTextureTask(`gui_image_${Date.now()}`, highResUrl);
+        task.onSuccess = () => {
+            for (const img of images) {
+                img.source = highResUrl;
+            }
         };
         task.onError = (_, msg, ex) => {
             console.warn(`Failed to load high-res GUI image: ${msg}`, ex);

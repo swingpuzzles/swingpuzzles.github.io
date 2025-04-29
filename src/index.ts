@@ -9,6 +9,7 @@ import gameModeManager from "./components/behaviors/GameModeManager";
 import puzzleGameBuilder from "./components/builders/PuzzleGameBuilder";
 import celebrationAnimation from "./components/animations/CelebrationAnimation";
 import timerDisplay from "./components/misc/TimerDisplay";
+import popupHint from "./gui/PopupHint";
 
 let hasEverEnteredFullscreen = false;
 
@@ -67,6 +68,8 @@ const createScene = async function (): Promise<Scene> {
     celebrationAnimation.init();
 
     timerDisplay.init();
+
+    popupHint.init();
 
     return scene;
 };
