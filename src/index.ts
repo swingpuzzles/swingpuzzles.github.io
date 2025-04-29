@@ -11,7 +11,7 @@ import celebrationAnimation from "./components/animations/CelebrationAnimation";
 import timerDisplay from "./components/misc/TimerDisplay";
 import popupHint from "./gui/PopupHint";
 
-let hasEverEnteredFullscreen = false;
+//let hasEverEnteredFullscreen = false;
 
 // Get the canvas element
 const canvas = document.createElement("canvas");
@@ -70,12 +70,28 @@ const createScene = async function (): Promise<Scene> {
     timerDisplay.init();
 
     popupHint.init();
-    popupHint.typeTextLetterByLetter("Vitaj doma huraa!");
+    let message = `Welcome to PuzzleVerse 3D! 🧩
+
+Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. 
+Every piece fits into a world of adventure!
+    
+By continuing, you agree to our use of cookies to ensure the best experience.
+    
+Let's start building!`;
+    
+    /*if (isMobileDevice()) {
+      message += `
+    
+📱 This app will enter fullscreen mode.
+You can exit anytime by tapping the ⬜ button in the top-left corner.`;
+    }*/
+    
+    popupHint.typeTextLetterByLetter(message);
 
     return scene;
 };
 
-function requestFullscreen(element: HTMLElement) {
+/*function requestFullscreen(element: HTMLElement) {
     if (element.requestFullscreen) {
         element.requestFullscreen();
     } else if ((element as any).webkitRequestFullscreen) {
@@ -83,36 +99,36 @@ function requestFullscreen(element: HTMLElement) {
     } else if ((element as any).msRequestFullscreen) {
         (element as any).msRequestFullscreen();
     }
-}
+}*/
 
 function isMobileDevice(): boolean {
-    //return true;
-    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+    return true;
+    //return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 }
 
-function showForceFullscreenDialog() {
+/*function showForceFullscreenDialog() {
     (document.getElementById("fullscreen-required-dialog") as HTMLElement).style.display = "flex";
 }
 
 function hideForceFullscreenDialog() {
     (document.getElementById("fullscreen-required-dialog") as HTMLElement).style.display = "none";
-}
+}*/
 
-function enterFullscreenAgain() {
+/*function enterFullscreenAgain() {
     requestFullscreen(document.getElementById("game-container") ?? document.body);
     hideForceFullscreenDialog();
-}
+}*/
 
 // Expose it to the global window object so HTML can call it
-(window as any).enterFullscreenAgain = enterFullscreenAgain;
+//(window as any).enterFullscreenAgain = enterFullscreenAgain;
 
-function updateExitButtonVisibility() {
+/*function updateExitButtonVisibility() {
     const isFullscreen = document.fullscreenElement || (document as any).webkitFullscreenElement || (document as any).msFullscreenElement;
     const btn = document.getElementById("exitFullscreenBtn") as HTMLElement;
     btn.style.display = isFullscreen ? "block" : "none";
-}
+}*/
 
-function handleFullscreenChange() {
+/*function handleFullscreenChange() {
     const isFullscreen = document.fullscreenElement || (document as any).webkitFullscreenElement || (document as any).msFullscreenElement;
 
     if (isFullscreen) {
@@ -125,14 +141,14 @@ function handleFullscreenChange() {
     }
 
     updateExitButtonVisibility();
-}
+}*/
 
-document.addEventListener("fullscreenchange", handleFullscreenChange);
+/*document.addEventListener("fullscreenchange", handleFullscreenChange);
 document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
-document.addEventListener("msfullscreenchange", handleFullscreenChange);
+document.addEventListener("msfullscreenchange", handleFullscreenChange);*/
 
 // Exit Fullscreen
-(document.getElementById("exitFullscreenBtn") as HTMLElement).addEventListener("click", () => {
+/*(document.getElementById("exitFullscreenBtn") as HTMLElement).addEventListener("click", () => {
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if ((document as any).webkitExitFullscreen) {
@@ -140,9 +156,9 @@ document.addEventListener("msfullscreenchange", handleFullscreenChange);
     } else if ((document as any).msExitFullscreen) {
         (document as any).msExitFullscreen();
     }
-});
+});*/
 
-window.addEventListener("load", () => {
+/*window.addEventListener("load", () => {
     (document.getElementById("fullscreen-required-dialog") as HTMLElement).style.display = "none";
     const hasAcceptedCookies = localStorage.getItem("cookiesAccepted") === "true";
     const isMobile = isMobileDevice();
@@ -167,9 +183,9 @@ window.addEventListener("load", () => {
             maybePromptFullscreen();
         }    
     }
-});
+});*/
 
-function maybePromptFullscreen() {
+/*function maybePromptFullscreen() {
     (document.getElementById("fullscreen-required-dialog") as HTMLElement).style.display = "flex";
 }
 
@@ -178,4 +194,4 @@ function maybePromptFullscreen() {
     requestFullscreen(container);
     localStorage.setItem("fullscreenAccepted", "true");
     hideForceFullscreenDialog();
-});
+});*/

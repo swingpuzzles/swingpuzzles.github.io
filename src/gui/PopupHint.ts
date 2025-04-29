@@ -2,7 +2,8 @@ import { AdvancedDynamicTexture, Container, Control, Rectangle, StackPanel, Text
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 
 class PopupHint {
-    private inputTextArea!: InputTextArea;
+    private inputTextArea!: TextBlock;
+    private textAreaRect!: Rectangle;
 
     init() {
         // Create full screen UI
@@ -82,26 +83,44 @@ class PopupHint {
 
         puzzleAssetsManager.addGuiImageSourceForMultiple([ topImage, middleImage ], "assets/mascot-avatar.webp");
 
-        const textAreaRect = new Rectangle("Rectangle");
-        textAreaRect.width = "695px";
-        textAreaRect.height = "490px";
-        textAreaRect.background = "#F9F6F1FF";
-        textAreaRect.color = "#000000";
-        textAreaRect.thickness = 0;
-        textAreaRect.cornerRadius = 50;
-        middleStack.addControl(textAreaRect);
+        this.textAreaRect = new Rectangle("Rectangle");
+        this.textAreaRect.width = "695px";
+        this.textAreaRect.height = "auto";
+        this.textAreaRect.background = "#F9F6F1FF";
+        this.textAreaRect.color = "#000000";
+        this.textAreaRect.thickness = 0;
+        this.textAreaRect.cornerRadius = 20;
+        this.textAreaRect.adaptHeightToChildren = true;
+        this.textAreaRect.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+        this.textAreaRect.paddingBottomInPixels = 5;
+        middleStack.addControl(this.textAreaRect);
 
-        this.inputTextArea = new InputTextArea("InputText");
+        this.inputTextArea = new TextBlock("InputText");
         this.inputTextArea.isReadOnly = true;
         this.inputTextArea.text = "";
         this.inputTextArea.width = "95%";
-        this.inputTextArea.height = "95%";
+        this.inputTextArea.height = "680px";
         this.inputTextArea.color = "#000000";
-        this.inputTextArea.thickness = 0;
-        this.inputTextArea.background = "#00000000";
-        this.inputTextArea.focusedBackground = "#00000000";
+        //this.inputTextArea.thickness = 0;
+        //this.inputTextArea.background = "#00000000";
+        //this.inputTextArea.focusedBackground = "#00000000";
         this.inputTextArea.fontSize = "26px";
-        textAreaRect.addControl(this.inputTextArea);
+        this.inputTextArea.resizeToFit = true;
+        //this.inputTextArea.autoStretchHeight = true;
+        this.inputTextArea.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+        this.inputTextArea.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+        this.inputTextArea.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+        this.inputTextArea.paddingBottomInPixels = 10;
+        this.inputTextArea.paddingLeftInPixels = 15;
+        this.inputTextArea.paddingRightInPixels = 15;
+        this.inputTextArea.paddingTopInPixels = 10;
+        /*this.inputTextArea.onAfterDrawObservable.add((eventData, eventState) => {
+            const h = this.inputTextArea._currentMeasure.height;
+            console.log(eventData, eventState);
+            this.textAreaRect.height = h + "px";
+        });*/
+        //this.inputTextArea.text
+        this.textAreaRect.addControl(this.inputTextArea);
 
         // Bottom Rectangle (with Buttons)
         const bottomRect = new Rectangle("Rectangle");
@@ -136,20 +155,51 @@ class PopupHint {
 
     }
 
-    public typeTextLetterByLetter(fullText: string, delay = 50) {
+    public typeTextLetterByLetter(fullText: string, delay = 15, wrapLimit = 55) {
         let index = 0;
-    
         const target = this.inputTextArea;
-
+    
+        function smartWrap(text: string, limit: number): string {
+            const lines = text.split("\n");
+            const wrappedLines: string[] = [];
+    
+            for (const line of lines) {
+                if (line.trim() === "") {
+                    wrappedLines.push(""); // preserve empty line
+                    continue;
+                }
+    
+                let i = 0;
+                while (i < line.length) {
+                    let nextBreak = i + limit;
+    
+                    if (nextBreak >= line.length) {
+                        wrappedLines.push(line.substring(i));
+                        break;
+                    }
+    
+                    let spaceIndex = line.lastIndexOf(" ", nextBreak);
+                    if (spaceIndex <= i) spaceIndex = nextBreak;
+    
+                    wrappedLines.push(line.substring(i, spaceIndex));
+                    i = spaceIndex + 1;
+                }
+            }
+    
+            return wrappedLines.join("\n");
+        }
+    
         function addNextChar() {
             if (index <= fullText.length) {
-                target.text = fullText.substring(0, index);
-     
+                const currentRaw = fullText.substring(0, index);
+                const currentWrapped = smartWrap(currentRaw, wrapLimit);
+                target.text = currentWrapped;
+    
                 index++;
                 setTimeout(addNextChar, delay);
             }
         }
-        
+    
         addNextChar();
     }
 }
