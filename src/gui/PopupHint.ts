@@ -2,6 +2,8 @@ import { AdvancedDynamicTexture, Container, Control, Rectangle, StackPanel, Text
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 
 class PopupHint {
+    private inputTextArea!: InputTextArea;
+
     init() {
         // Create full screen UI
         const advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
@@ -22,7 +24,8 @@ class PopupHint {
         mainRect.color = "#B15E0AFF";
         mainRect.cornerRadius = 50;
         mainRect.thickness = 1;
-        mainRect.shadowOffsetX = 5;
+        mainRect.shadowOffsetX = 2;
+        mainRect.shadowOffsetY = 2;
         mainRect.shadowColor = "#B15E0AFF";
         root.addControl(mainRect);
 
@@ -68,12 +71,13 @@ class PopupHint {
         mainStack.addControl(middleStack);
 
         const middleImage = new Image("Image", "assets/mascot-avatar-small.webp");
-        middleImage.width = "95px";
-        middleImage.height = "90px";
+        middleImage.width = "90px";
+        middleImage.height = "85px";
         middleImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         //middleImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         middleImage.paddingBottom = "5px";
         middleImage.paddingLeft = "5px";
+        middleImage.paddingRight = "5px";
         middleStack.addControl(middleImage);
 
         puzzleAssetsManager.addGuiImageSourceForMultiple([ topImage, middleImage ], "assets/mascot-avatar.webp");
@@ -87,16 +91,17 @@ class PopupHint {
         textAreaRect.cornerRadius = 50;
         middleStack.addControl(textAreaRect);
 
-        const inputTextArea = new InputTextArea("InputText");
-        inputTextArea.text = "Input Text";
-        inputTextArea.width = "95%";
-        inputTextArea.height = "95%";
-        inputTextArea.color = "#000000";
-        inputTextArea.thickness = 0;
-        inputTextArea.background = "#00000000";
-        inputTextArea.focusedBackground = "#00000000";
-        inputTextArea.fontSize = "26px";
-        textAreaRect.addControl(inputTextArea);
+        this.inputTextArea = new InputTextArea("InputText");
+        this.inputTextArea.isReadOnly = true;
+        this.inputTextArea.text = "";
+        this.inputTextArea.width = "95%";
+        this.inputTextArea.height = "95%";
+        this.inputTextArea.color = "#000000";
+        this.inputTextArea.thickness = 0;
+        this.inputTextArea.background = "#00000000";
+        this.inputTextArea.focusedBackground = "#00000000";
+        this.inputTextArea.fontSize = "26px";
+        textAreaRect.addControl(this.inputTextArea);
 
         // Bottom Rectangle (with Buttons)
         const bottomRect = new Rectangle("Rectangle");
@@ -129,6 +134,23 @@ class PopupHint {
         nextButton.paddingLeft = "20px";
         bottomStack.addControl(nextButton);
 
+    }
+
+    public typeTextLetterByLetter(fullText: string, delay = 50) {
+        let index = 0;
+    
+        const target = this.inputTextArea;
+
+        function addNextChar() {
+            if (index <= fullText.length) {
+                target.text = fullText.substring(0, index);
+     
+                index++;
+                setTimeout(addNextChar, delay);
+            }
+        }
+        
+        addNextChar();
     }
 }
 

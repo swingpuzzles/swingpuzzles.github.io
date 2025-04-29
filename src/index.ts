@@ -70,6 +70,7 @@ const createScene = async function (): Promise<Scene> {
     timerDisplay.init();
 
     popupHint.init();
+    popupHint.typeTextLetterByLetter("Vitaj doma huraa!");
 
     return scene;
 };
