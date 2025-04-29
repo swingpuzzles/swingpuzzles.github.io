@@ -38,7 +38,7 @@ export default class PiecesCountDropdown extends Dropdown {
 
     selectAction(xCount: number, zCount: number, text: string) {
         const maxLength = 25; // set this to your desired fixed length
-        const paddedText = text/*.padEnd(maxLength - 2, " ")*/ + "     ▼"; // keep room for " ▼"
+        const paddedText = "🧩 " + text + "   ▼"; // keep room for " ▼"
         this.setText(paddedText);
 
         ctx.numX = xCount;
