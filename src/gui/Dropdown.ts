@@ -77,13 +77,13 @@ export default class Dropdown {
         });
     }
 
-    get top(): string | number {
+    /*get top(): string | number {
         return this.container.top;
     }
 
     set top(value: string | number) {
         this.container.top = value;
-    }
+    }*/
 
     get left(): string | number {
         return this.container.left;
@@ -101,6 +101,7 @@ export default class Dropdown {
         this.container.width = this.width + "px";
         this.button.height = this.height + "px";
         this.options.top = this.height + "px";
+        this.container.top = this.height / 4 + "px";
         this.button.textBlock!.paddingRight = this.height / 4 + "px";
         this.button.textBlock!.fontSize = this.height / 2 + "px";
 

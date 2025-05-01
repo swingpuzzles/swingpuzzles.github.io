@@ -12,7 +12,7 @@ export default class PiecesCountDropdown extends Dropdown {
             valign: 0.5,
         }*/);
 
-        this.top = "10px";
+        //this.top = "10px";
 
         //this.addPiecesNums(3, 2, true);
         this.addPiecesNums(5, 3, true);
