@@ -1,4 +1,5 @@
 import { AdvancedDynamicTexture, Button, Container, Control, StackPanel } from "@babylonjs/gui";
+import sceneInitializer from "../components/SceneInitializer";
 
 interface DropdownOptions {
     width?: number;
@@ -13,7 +14,8 @@ export default class Dropdown {
     private container: Container;
     private button: Button;
     private options: StackPanel;
-    private height: string;
+    private width!: number;
+    private height!: number;
     private color: string;
     private background: string;
 
@@ -21,32 +23,31 @@ export default class Dropdown {
         private advancedTexture: AdvancedDynamicTexture,
         options: DropdownOptions = {}
     ) {
-        const width = (options.width || 240) + "px";
-        this.height = (options.height || 40) + "px";
+        /*this.width = (options.width || 240) + "px";
+        this.height = (options.height || 40) + "px";*/
         this.color = options.color || "black";
         this.background = options.background || "white";
 
         // Container
         this.container = new Container();
-        this.container.width = width;
+        //this.container.width = this.width;
         this.container.verticalAlignment = options.align ?? Control.VERTICAL_ALIGNMENT_TOP;
         this.container.horizontalAlignment = options.valign ?? Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.container.isHitTestVisible = false;
 
         // Primary button
         this.button = Button.CreateSimpleButton("Please Select", "Please Select ▼");
-        this.button.height = this.height;
+        //this.button.height = this.height;
         this.button.background = this.background;
         this.button.color = this.color;
         this.button.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         
-        this.button.textBlock!.paddingRight = "10px";
         this.button.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
 
         // Options panel
         this.options = new StackPanel();
         this.options.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        this.options.top = this.height;
+        //this.options.top = this.height;
         this.options.isVisible = false;
         this.options.isVertical = true;
 
@@ -67,6 +68,13 @@ export default class Dropdown {
         this.advancedTexture.addControl(this.container);
         this.container.addControl(this.button);
         this.container.addControl(this.options);
+
+        sceneInitializer.addResizeObserver((width, height) => {
+            this.height = height / 20;
+            this.width = this.height * 7;
+
+            this.resize();
+        });
     }
 
     get top(): string | number {
@@ -89,13 +97,26 @@ export default class Dropdown {
         this.container.isVisible = value;
     }
 
+    private resize() {
+        this.container.width = this.width + "px";
+        this.button.height = this.height + "px";
+        this.options.top = this.height + "px";
+        this.button.textBlock!.paddingRight = this.height / 4 + "px";
+        this.button.textBlock!.fontSize = this.height / 2 + "px";
+
+        for (let o of this.options.children) {
+            o.height = this.height + "px";
+            (o as Button).textBlock!.fontSize = this.height / 2 + "px";
+        }
+    }
+
     setText(text: string) {
         this.button.textBlock!.text = text;
     }
 
     addOption(text: string, callback: () => void): void {
         const button = Button.CreateSimpleButton(text, text);
-        button.height = this.height;
+        button.height = this.height + "px";
         button.paddingTop = "-1px";
         button.background = this.background;
         button.color = this.color;

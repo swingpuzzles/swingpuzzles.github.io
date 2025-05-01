@@ -1,95 +1,6 @@
-import ammo from "ammojs-typed";
-import "@babylonjs/loaders"; // Required if you load external models
-import ctx from "./components/common/SceneContext";
-import { AmmoJSPlugin, ArcRotateCamera, Engine, HemisphericLight, InitializeCSG2Async, Scene, Vector3 } from "@babylonjs/core";
-import sceneBuilder from "./components/builders/SceneBuilder";
-import puzzleAssetsManager from "./components/behaviors/PuzzleAssetsManager";
-import guiManager from "./gui/GuiManager";
-import gameModeManager from "./components/behaviors/GameModeManager";
-import puzzleGameBuilder from "./components/builders/PuzzleGameBuilder";
-import celebrationAnimation from "./components/animations/CelebrationAnimation";
-import timerDisplay from "./components/misc/TimerDisplay";
-import popupHint from "./gui/PopupHint";
+import sceneInitializer from "./components/SceneInitializer";
 
-//let hasEverEnteredFullscreen = false;
-
-// Get the canvas element
-const canvas = document.createElement("canvas");
-document.body.appendChild(canvas);
-
-// Create the js engine
-const engine = new Engine(canvas, true);
-
-window.addEventListener("DOMContentLoaded", async () => {
-    const Ammo = await ammo.bind(window)()
-  
-    await createScene(); // Assuming createScene is already defined globally or imported
-
-    engine.resize();
-
-
-    engine.runRenderLoop(() => {
-        ctx.scene.render();
-    });
-});
-
-// Handle window resizing
-window.addEventListener("resize", () => {
-    engine.resize();
-});
-
-// ✅ Converted createScene function to TypeScript
-const createScene = async function (): Promise<Scene> {
-    let scene = new Scene(engine);
-    var camera = new ArcRotateCamera("arcCamera", Math.PI / 2, 17 * Math.PI / 32, 4 * 45, Vector3.Zero(), scene);
-    camera.angularSensibilityX = 4000; // higher = slower
-    camera.angularSensibilityY = 8000;
-
-    camera.beta = 17 * Math.PI / 32;
-
-    ctx.init(scene, camera, canvas, engine);
-    puzzleAssetsManager.init();
-
-    const physicsPlugin = new AmmoJSPlugin(true);
-    scene.enablePhysics(new Vector3(0, -9.81, 0), physicsPlugin);
-
-    await InitializeCSG2Async();
-
-    sceneBuilder.buildScene();
-
-    guiManager.init();
-
-    gameModeManager.enterInitialMode();
-
-    puzzleGameBuilder.init();
-
-    gameModeManager.leaveWaiting();
-
-    celebrationAnimation.init();
-
-    timerDisplay.init();
-
-    popupHint.init();
-    let message = `Welcome to PuzzleVerse 3D! 🧩
-
-Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. 
-Every piece fits into a world of adventure!
-    
-By continuing, you agree to our use of cookies to ensure the best experience.
-    
-Let's start building!`;
-    
-    /*if (isMobileDevice()) {
-      message += `
-    
-📱 This app will enter fullscreen mode.
-You can exit anytime by tapping the ⬜ button in the top-left corner.`;
-    }*/
-    
-    popupHint.typeTextLetterByLetter(message);
-
-    return scene;
-};
+sceneInitializer.init();
 
 /*function requestFullscreen(element: HTMLElement) {
     if (element.requestFullscreen) {
@@ -101,10 +12,10 @@ You can exit anytime by tapping the ⬜ button in the top-left corner.`;
     }
 }*/
 
-function isMobileDevice(): boolean {
-    return true;
-    //return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-}
+/*function isMobileDevice(): boolean {
+    //return true;
+    return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+}*/
 
 /*function showForceFullscreenDialog() {
     (document.getElementById("fullscreen-required-dialog") as HTMLElement).style.display = "flex";

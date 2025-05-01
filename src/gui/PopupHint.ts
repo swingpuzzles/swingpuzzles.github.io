@@ -32,14 +32,14 @@ class PopupHint {
 
         // Vertical StackPanel inside Rectangle
         const mainStack = new StackPanel("StackPanel");
-        mainStack.width = "800px";
-        mainStack.height = "800px";
+        mainStack.width = "100%";
+        mainStack.height = "100%";
         mainStack.isVertical = true;
         mainRect.addControl(mainStack);
 
         // Top Rectangle (with Welcome text and Image)
         const topRect = new Rectangle("Rectangle");
-        topRect.width = "800px";
+        topRect.width = "100%";
         topRect.height = "200px";
         topRect.background = "#FAF0E5FF";
         topRect.color = "#AAAAAA";
@@ -157,7 +157,6 @@ class PopupHint {
         nextButton.fontSize = "18px";
         nextButton.paddingLeft = "20px";
         bottomStack.addControl(nextButton);
-
     }
 
     public typeTextLetterByLetter(fullText: string, delay = 0, wrapLimit = 55) {
