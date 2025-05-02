@@ -16,6 +16,8 @@ class PopupHint {
         root.height = "100%";
         root.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
         root.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
+        root.isHitTestVisible = true;
+        root.isPointerBlocker = true;
         advancedTexture.addControl(root);
 
         // Main Rectangle
@@ -120,9 +122,12 @@ class PopupHint {
         gotItButton.hoverCursor = "pointer";
         gotItButton.width = "40%";
         gotItButton.height = "90%";
-        gotItButton.onPointerClickObservable.add(() => {
+        gotItButton.isHitTestVisible = true;
+        gotItButton.isPointerBlocker = true;
+
+        /*gotItButton.onPointerClickObservable.add(() => {
             //openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
-        });
+        });*/
         bottomRect.addControl(gotItButton);
 
         puzzleAssetsManager.addGuiImageButtonSource(gotItButton, "assets/got-it-button.webp");
