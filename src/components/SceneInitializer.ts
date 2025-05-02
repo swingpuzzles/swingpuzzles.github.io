@@ -10,6 +10,7 @@ import puzzleGameBuilder from "./builders/PuzzleGameBuilder";
 import celebrationAnimation from "./animations/CelebrationAnimation";
 import timerDisplay from "./misc/TimerDisplay";
 import popupHint from "../gui/PopupHint";
+import screenShader from "../gui/ScreenShader";
 
 class SceneInitializer {
     private resizeObservers: ((width: number, height: number) => void)[] = [];
@@ -94,6 +95,8 @@ class SceneInitializer {
             }*/
             
             popupHint.typeTextLetterByLetter(message);
+
+            screenShader.init();
 
             return scene;
         };
