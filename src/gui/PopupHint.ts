@@ -20,11 +20,7 @@ class PopupHint {
 
         // Main Rectangle
         const mainRect = new Rectangle("Rectangle");
-        //mainRect.width = "800px";
-        //mainRect.height = "800px";
-        //mainRect.background = "#FFE2B8FF";
         mainRect.color = "#B15E0AFF";
-        //mainRect.cornerRadius = 50;
         mainRect.thickness = 1;
         mainRect.shadowOffsetX = 2;
         mainRect.shadowOffsetY = 2;
@@ -41,7 +37,6 @@ class PopupHint {
         // Top Rectangle (with Welcome text and Image)
         const topRect = new Rectangle("Rectangle");
         topRect.width = "100%";
-        //topRect.height = "200px";
         topRect.background = "#FAF0E5FF";
         topRect.color = "#AAAAAA";
         mainStack.addControl(topRect);
@@ -52,14 +47,10 @@ class PopupHint {
         topRect.addControl(topStack);
 
         const topImage = new Image("Image", "assets/mascot-avatar-small.webp");
-        //topImage.width = "185px";
-        //topImage.height = "180px";
         topStack.addControl(topImage);
 
         const welcomeText = new TextBlock("Textblock", "Welcome!");
-        //welcomeText.width = "598px";
         welcomeText.height = "100%";
-        //welcomeText.fontSize = "100px";
         welcomeText.color = "#000000";
         welcomeText.fontWeight = "bold";
         welcomeText.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
@@ -88,10 +79,7 @@ class PopupHint {
         centerRect.addControl(middleStack);
 
         const middleImage = new Image("Image", "assets/mascot-avatar-small.webp");
-        //middleImage.width = "90px";
-        //middleImage.height = "85px";
         middleImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
-        //middleImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         middleImage.paddingBottom = "5px";
         middleImage.paddingLeft = "5px";
         middleImage.paddingRight = "5px";
@@ -100,64 +88,44 @@ class PopupHint {
         puzzleAssetsManager.addGuiImageSourceForMultiple([ topImage, middleImage ], "assets/mascot-avatar.webp");
 
         this.textAreaRect = new Rectangle("Rectangle");
-        //this.textAreaRect.width = "695px";
         this.textAreaRect.height = "auto";
         this.textAreaRect.background = "#F9F6F1FF";
         this.textAreaRect.color = "#000000";
         this.textAreaRect.thickness = 0;
-        //this.textAreaRect.cornerRadius = 20;
         this.textAreaRect.adaptHeightToChildren = true;
         this.textAreaRect.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
-        //this.textAreaRect.paddingBottomInPixels = 5;
         middleStack.addControl(this.textAreaRect);
 
         this.inputTextArea = new TextBlock("InputText");
         this.inputTextArea.isReadOnly = true;
         this.inputTextArea.text = "";
         this.inputTextArea.width = "95%";
-        //this.inputTextArea.height = "680px";
         this.inputTextArea.color = "#000000";
-        //this.inputTextArea.fontSize = "26px";
         this.inputTextArea.resizeToFit = true;
         this.inputTextArea.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.inputTextArea.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.inputTextArea.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
-        /*this.inputTextArea.paddingBottomInPixels = 10;
-        this.inputTextArea.paddingLeftInPixels = 15;
-        this.inputTextArea.paddingRightInPixels = 15;
-        this.inputTextArea.paddingTopInPixels = 10;*/
         this.textAreaRect.addControl(this.inputTextArea);
 
         // Bottom Rectangle (with Buttons)
         const bottomRect = new Rectangle("Rectangle");
         bottomRect.width = "100%";
-        bottomRect.height = "100px";
         bottomRect.background = "#FFE6B5FF";
         bottomRect.color = "#AAAAAA";
         mainStack.addControl(bottomRect);
 
-        const bottomStack = new StackPanel("StackPanel");
-        bottomStack.height = "100px";
-        bottomStack.isVertical = false;
-        bottomRect.addControl(bottomStack);
+        const gotItButton = Button.CreateImageOnlyButton("btn1", "assets/got-it-button-small.webp");
+        gotItButton.thickness = 0;
+        gotItButton.background = "";
+        gotItButton.hoverCursor = "pointer";
+        gotItButton.width = "40%";
+        gotItButton.height = "90%";
+        gotItButton.onPointerClickObservable.add(() => {
+            //openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
+        });
+        bottomRect.addControl(gotItButton);
 
-        const skipButton = Button.CreateSimpleButton("Button", "SKIP");
-        skipButton.width = "380px";
-        skipButton.height = "60px";
-        skipButton.background = "#333333";
-        skipButton.color = "#ffffff";
-        skipButton.fontSize = "18px";
-        skipButton.paddingLeft = "20px";
-        bottomStack.addControl(skipButton);
-
-        const nextButton = Button.CreateSimpleButton("Button", "NEXT");
-        nextButton.width = "400px";
-        nextButton.height = "60px";
-        nextButton.background = "#333333";
-        nextButton.color = "#ffffff";
-        nextButton.fontSize = "18px";
-        nextButton.paddingLeft = "20px";
-        bottomStack.addControl(nextButton);
+        puzzleAssetsManager.addGuiImageButtonSource(gotItButton, "assets/got-it-button.webp");
 
         sceneInitializer.addResizeObserver((width, height) => {
             const minSize = Math.min(width, height);
@@ -195,7 +163,7 @@ class PopupHint {
         let index = 0;
         const target = this.inputTextArea;
     
-        function smartWrap(text: string, limit: number): string {
+        function smartWrap(text: string): string {
             const lines = text.split("\n");
             const wrappedLines: string[] = [];
     
@@ -207,7 +175,7 @@ class PopupHint {
     
                 let i = 0;
                 while (i < line.length) {
-                    let nextBreak = i + limit;
+                    let nextBreak = i + wrapLimit;
     
                     if (nextBreak >= line.length) {
                         wrappedLines.push(line.substring(i));
@@ -228,7 +196,7 @@ class PopupHint {
         function addNextChar() {
             if (index <= fullText.length) {
                 const currentRaw = fullText.substring(0, index);
-                const currentWrapped = smartWrap(currentRaw, wrapLimit);
+                const currentWrapped = smartWrap(currentRaw);
                 target.text = currentWrapped;
     
                 index++;
