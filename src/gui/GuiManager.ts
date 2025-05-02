@@ -7,11 +7,16 @@ import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 import backToInitialAnimation from "../components/animations/BackToInitialAnimation";
 import openCoverAnimation from "../components/animations/OpenCoverAnimation";
+import sceneInitializer from "../components/SceneInitializer";
 
 class GuiManager {
     private advancedTexture!: AdvancedDynamicTexture;
     private bottomButtonPanel!: StackPanel;
-    private piecesCountDropdown!: PiecesCountDropdown
+    private piecesCountDropdown!: PiecesCountDropdown;
+    private playButton!: Button;
+    private bannerButton!: Button;
+    private xButton!: Button;
+    private menuButton!: Button;
 
     init() {
         this.advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
@@ -28,91 +33,102 @@ class GuiManager {
         this.bottomButtonPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         this.bottomButtonPanel.spacing = 10;
 
-        const button1 = Button.CreateImageOnlyButton("btn1", "assets/play-button-small.webp");
-        button1.width = "480px";
-        button1.height = "120px";
-        button1.thickness = 0;
-        button1.background = "";
-        button1.hoverCursor = "pointer";
-        button1.onPointerClickObservable.add(() => {
+        this.playButton = Button.CreateImageOnlyButton("btn1", "assets/play-button-small.webp");
+        this.playButton.thickness = 0;
+        this.playButton.background = "";
+        this.playButton.hoverCursor = "pointer";
+        this.playButton.onPointerClickObservable.add(() => {
             openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
         });
-        this.bottomButtonPanel.addControl(button1);
+        this.bottomButtonPanel.addControl(this.playButton);
 
-        const button2 = Button.CreateImageOnlyButton("btn2", "assets/banner.png");
-        button2.thickness = 0;
-        button2.background = "";
-        button2.hoverCursor = "pointer";
-        button2.onPointerClickObservable.add(() => {
+        this.bannerButton = Button.CreateImageOnlyButton("btn2", "assets/banner.png");
+        this.bannerButton.thickness = 0;
+        this.bannerButton.background = "";
+        this.bannerButton.hoverCursor = "pointer";
+        this.bannerButton.onPointerClickObservable.add(() => {
             window.open(puzzleCircleBuilder.selectedLink, "_blank");
         });
-        this.bottomButtonPanel.addControl(button2);
+        this.bottomButtonPanel.addControl(this.bannerButton);
 
         this.advancedTexture.addControl(this.bottomButtonPanel);
 
         // Register buttons for high-res replacement
-        puzzleAssetsManager.addGuiImageButtonSource(button1, "assets/play-button.webp");
+        puzzleAssetsManager.addGuiImageButtonSource(this.playButton, "assets/play-button.webp");
 
-        const xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button.webp");
-        xButton.width = "80px";
-        xButton.height = "80px";
-        xButton.thickness = 0;
-        xButton.background = "";
-        xButton.hoverCursor = "pointer";
-        xButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
-        xButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        xButton.paddingTop = "10px";
-        xButton.paddingRight = "10px";
-        xButton.onPointerClickObservable.add(() => {
+        this.xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button.webp");
+        this.xButton.thickness = 0;
+        this.xButton.background = "";
+        this.xButton.hoverCursor = "pointer";
+        this.xButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.xButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this.xButton.paddingTop = "10px";
+        this.xButton.paddingRight = "10px";
+        this.xButton.onPointerClickObservable.add(() => {
             backToInitialAnimation.animate(ctx.currentCover);
         });
 
-        this.advancedTexture.addControl(xButton);
+        this.advancedTexture.addControl(this.xButton);
 
-        const menuButton = Button.CreateImageOnlyButton("xButton", "assets/menu-button.webp");
-        menuButton.width = "80px";
-        menuButton.height = "93px";
-        menuButton.thickness = 0;
-        menuButton.background = "";
-        menuButton.hoverCursor = "pointer";
-        menuButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
-        menuButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        menuButton.paddingTop = "10px";
-        menuButton.paddingRight = "10px";
+        this.menuButton = Button.CreateImageOnlyButton("xButton", "assets/menu-button.webp");
+        this.menuButton.thickness = 0;
+        this.menuButton.background = "";
+        this.menuButton.hoverCursor = "pointer";
+        this.menuButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.menuButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this.menuButton.paddingTop = "10px";
+        this.menuButton.paddingRight = "10px";
 
-        this.advancedTexture.addControl(menuButton);
+        this.advancedTexture.addControl(this.menuButton);
 
         gameModeManager.addObserver(() => {
-            switch (gameModeManager.currentMode) {
-                case GameMode.Initial:
-                    button1.isVisible = true;
-                    menuButton.isVisible = true;
-                    xButton.isVisible = false;
-                    button2.width = "240px";
-                    button2.height = "60px";
-                    this.piecesCountDropdown.isVisible = true;
-                    this.bottomButtonPanel.paddingBottom = "20px";
-                    break;
-                case GameMode.OpenCover:
-                    button1.isVisible = false;
-                    menuButton.isVisible = false;
-                    xButton.isVisible = true;
-                    button2.width = "248px";
-                    button2.height = "62px";
-                    this.piecesCountDropdown.isVisible = false;
-                    this.bottomButtonPanel.paddingBottom = "20px";
-                    break;
-                case GameMode.Solve:
-                    button1.isVisible = false;
-                    menuButton.isVisible = false;
-                    xButton.isVisible = true;
-                    button2.width = "124px";
-                    button2.height = "31px";
-                    this.piecesCountDropdown.isVisible = false;
-                    this.bottomButtonPanel.paddingBottom = "5px";
-                    break;
-            }
+            this.refreshButtonSizes();
         });
+
+        sceneInitializer.addResizeObserver((width, height) => {
+            this.refreshButtonSizes();
+        });
+    }
+
+    private refreshButtonSizes() {
+        const renderHeight = ctx.engine.getRenderHeight();
+
+        this.playButton.width = renderHeight / 2 + "px";
+        this.playButton.height = renderHeight / 8 + "px";
+        this.xButton.width = renderHeight / 12 + "px";
+        this.xButton.height = renderHeight / 12 + "px";
+        this.menuButton.width = renderHeight / 12 + "px";
+        this.menuButton.height = renderHeight / 10 + "px";
+
+        switch (gameModeManager.currentMode) {
+            case GameMode.Initial:
+                this.playButton.isVisible = true;
+                this.menuButton.isVisible = true;
+                this.xButton.isVisible = false;
+                this.bannerButton.width = renderHeight / 4 + "px";//"240px";
+                this.bannerButton.height = renderHeight / 16 + "px";//"60px";
+                this.piecesCountDropdown.isVisible = true;
+                this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
+                break;
+            case GameMode.OpenCover:
+                this.playButton.isVisible = false;
+                this.menuButton.isVisible = false;
+                this.xButton.isVisible = true;
+                this.bannerButton.width = renderHeight / 3.9 + "px";//"248px";
+                this.bannerButton.height = renderHeight / 15.6 + "px";//"62px";
+                this.piecesCountDropdown.isVisible = false;
+                this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
+                break;
+            case GameMode.Solve:
+                this.playButton.isVisible = false;
+                this.menuButton.isVisible = false;
+                this.xButton.isVisible = true;
+                this.bannerButton.width = renderHeight / 8 + "px";//"124px";
+                this.bannerButton.height = renderHeight / 32 + "px";//"31px";
+                this.piecesCountDropdown.isVisible = false;
+                this.bottomButtonPanel.paddingBottom = renderHeight / 192 + "px";//"5px";
+                break;
+        }
     }
 }
 
