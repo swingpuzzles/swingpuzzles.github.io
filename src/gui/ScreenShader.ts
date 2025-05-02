@@ -1,4 +1,5 @@
 import { AdvancedDynamicTexture, Control, Grid, Image, Rectangle } from "@babylonjs/gui";
+import sceneInitializer from "../components/SceneInitializer";
 
 class ScreenShader {
     constructor() {
@@ -11,7 +12,6 @@ class ScreenShader {
         const topPanel = new Grid();
         topPanel.paddingTopInPixels = 0;
         topPanel.paddingBottom = 0;
-        topPanel.height = "70px";
         topPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
 
         topPanel.addColumnDefinition(1, false); // left flex
@@ -68,12 +68,15 @@ class ScreenShader {
         restPanel.thickness = 0;
         restPanel.background = "black";
         restPanel.alpha = 0.5;
-        restPanel.top = "70px"; // offset from topPanel
         restPanel.height = "100%";
         restPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         advancedTexture.addControl(restPanel);
 
-
+        sceneInitializer.addResizeObserver((width, height) => {
+            topPanel.height = 3 * height / 40 + "px";//"70px";
+            topPanel.setColumnDefinition(1, height / 2, true);
+            restPanel.top = 3 * height / 40 + "px";//"70px"; // offset from topPanel
+        });
     }
 }
 
