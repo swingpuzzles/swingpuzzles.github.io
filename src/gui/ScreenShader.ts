@@ -1,23 +1,41 @@
 import { AdvancedDynamicTexture, Control, Grid, Image, Rectangle } from "@babylonjs/gui";
 import sceneInitializer from "../components/SceneInitializer";
+import ctx from "../components/common/SceneContext";
+
+enum shaderMode {
+    NONE = 0,
+    SHADOW_WINDOW = 1,
+    SHADOW_FULL = 2
+}
 
 class ScreenShader {
+    private _mainContainer!: Rectangle;
+    private _topPanel!: Grid;
+    private _restPanel!: Rectangle;
+    private _shaderMode: shaderMode = shaderMode.NONE;
+
     constructor() {
     }
 
     public init() {
         const advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
-        // Create a top panel using a Grid with 3 columns
-        const topPanel = new Grid();
-        topPanel.paddingTopInPixels = 0;
-        topPanel.paddingBottom = 0;
-        topPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this._mainContainer = new Rectangle("mainContainer");
+        this._mainContainer.width = "100%";
+        this._mainContainer.height = "100%";
+        this._mainContainer.isVisible = false;
+        advancedTexture.addControl(this._mainContainer);
 
-        topPanel.addColumnDefinition(1, false); // left flex
-        topPanel.addColumnDefinition(450, true); // center fixed width
-        topPanel.addColumnDefinition(1, false); // right flex
-        advancedTexture.addControl(topPanel);
+        // Create a top panel using a Grid with 3 columns
+        this._topPanel = new Grid();
+        this._topPanel.paddingTopInPixels = 0;
+        this._topPanel.paddingBottom = 0;
+        this._topPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+
+        this._topPanel.addColumnDefinition(1, false); // left flex
+        this._topPanel.addColumnDefinition(450, true); // center fixed width
+        this._topPanel.addColumnDefinition(1, false); // right flex
+        this._mainContainer.addControl(this._topPanel);
 
         // LEFT panel (black bg, 50% transparent)
         const leftPanel = new Rectangle();
@@ -26,7 +44,7 @@ class ScreenShader {
         leftPanel.alpha = 0.5;
         leftPanel.paddingTop = "0px";
         leftPanel.paddingBottom = "0px";
-        topPanel.addControl(leftPanel, 0, 0);
+        this._topPanel.addControl(leftPanel, 0, 0);
 
         const centerPanel = new Rectangle();
         centerPanel.width = "100%";
@@ -38,7 +56,7 @@ class ScreenShader {
         centerPanel.paddingRight = "0px";
         centerPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
         centerPanel.height = "100%";
-        topPanel.addControl(centerPanel, 0, 1);
+        this._topPanel.addControl(centerPanel, 0, 1);
         
         const img = new Image("img", "assets/shadow-window.webp");
         img.stretch = Image.STRETCH_FILL; // or STRETCH_UNIFORM if you prefer aspect ratio
@@ -61,22 +79,45 @@ class ScreenShader {
         rightPanel.alpha = 0.5;
         rightPanel.paddingTop = "0px";
         rightPanel.paddingBottom = "0px";
-        topPanel.addControl(rightPanel, 0, 2);
+        this._topPanel.addControl(rightPanel, 0, 2);
 
         // REST of the screen
-        const restPanel = new Rectangle();
-        restPanel.thickness = 0;
-        restPanel.background = "black";
-        restPanel.alpha = 0.5;
-        restPanel.height = "100%";
-        restPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        advancedTexture.addControl(restPanel);
+        this._restPanel = new Rectangle();
+        this._restPanel.thickness = 0;
+        this._restPanel.background = "black";
+        this._restPanel.alpha = 0.5;
+        this._restPanel.height = "100%";
+        this._restPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this._mainContainer.addControl(this._restPanel);
 
         sceneInitializer.addResizeObserver((width, height) => {
-            topPanel.height = 3 * height / 40 + "px";//"70px";
-            topPanel.setColumnDefinition(1, height / 2, true);
-            restPanel.top = 3 * height / 40 + "px";//"70px"; // offset from topPanel
+            this._topPanel.height = (this._shaderMode === shaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+            this._topPanel.setColumnDefinition(1, height / 2, true);
+            this._restPanel.top = (this._shaderMode === shaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
         });
+    }
+
+    public enterShadowWindow() {
+        this._setShaderMode(shaderMode.SHADOW_WINDOW);
+    }
+
+    public enterShadowFull() {
+        this._setShaderMode(shaderMode.SHADOW_FULL);
+    }
+
+    public exitShader() {
+        this._setShaderMode(shaderMode.NONE);
+    }
+
+    private _setShaderMode(mode: shaderMode) {
+        if (this._shaderMode !== mode) {
+            this._shaderMode = mode;
+            this._mainContainer.isVisible = mode !== shaderMode.NONE;
+
+            const height = ctx.engine.getRenderHeight();
+            this._topPanel.height = (mode === shaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+            this._restPanel.top = (mode === shaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+        }
     }
 }
 
