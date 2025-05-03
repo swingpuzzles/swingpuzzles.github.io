@@ -1,5 +1,6 @@
 import ctx from "../components/common/SceneContext";
 import Dropdown from "./Dropdown";
+import tutorialManager from "./TutorialManager";
 
 export default class PiecesCountDropdown extends Dropdown {
     constructor(advancedTexture: any) {
@@ -32,20 +33,19 @@ export default class PiecesCountDropdown extends Dropdown {
         this.addOption(text, () => { this.selectAction(xCount, zCount, text); });
 
         if (selected) {
-            this.selectAction(xCount, zCount, text);
+            this.selectAction(xCount, zCount, text, false);
         }
     }
 
-    selectAction(xCount: number, zCount: number, text: string) {
-        const maxLength = 25; // set this to your desired fixed length
+    selectAction(xCount: number, zCount: number, text: string, userAction: boolean = true) {
         const paddedText = "🧩 " + text + "   ▼"; // keep room for " ▼"
         this.setText(paddedText);
 
         ctx.numX = xCount;
         ctx.numZ = zCount;
-    }
 
-    addPiecesCount(count: number) {
-        this.addOption(`${count} pieces`, () => {});
+        if (userAction) {
+            tutorialManager.showPuzzleChooserHint();
+        }
     }
 }

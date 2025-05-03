@@ -9,8 +9,7 @@ class TutorialManager {
 
         let message = `Welcome to PuzzleVerse 3D! 🧩
 
-    Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. 
-    Every piece fits into a world of adventure!
+    Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. Every piece fits into a world of adventure!
         
     By continuing, you agree to our use of cookies to ensure the best experience.
         
@@ -37,26 +36,26 @@ class TutorialManager {
         let dimensionHint = `🧩 Choose Your Challenge!
 
 Use the highlighted dropdown at the top center to pick your desired puzzle dimensions. 
+
 More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
 
-        popupHint.show(dimensionHint, "HINT: SIZE", 0.54, ShaderMode.SHADOW_WINDOW, this.showPuzzleChooserHint);
+        popupHint.show(dimensionHint, "HINT: SIZE", 0.56, ShaderMode.SHADOW_WINDOW, this.showPuzzleChooserHint);
     }
 
-    private showPuzzleChooserHint() {
+    public showPuzzleChooserHint() {
         let browseHint = `📚 Browse and Play!
 
 Swipe left or right to explore different puzzles.
-Each puzzle is shown as a cover box — click or tap on one to select it, 
-or just hit the ▶️ Play button to dive right in!`;
 
-        popupHint.show(browseHint, "HINT: CHOICE", 0.6, ShaderMode.NONE, () => { popupHint.hide() });
+Each puzzle is shown as a cover box — click or tap on one to select it, or just hit the ▶️ Play button to dive right in!`;
+
+        popupHint.show(browseHint, "HINT: CHOICE", 0.56, ShaderMode.NONE, () => { popupHint.hide() });
     }
 
     public showShakeHint() {
         let shakeHint = `🧩 Give it a good shake!
     
-Drag the puzzle box around to shake it — 
-this will mix up the pieces so you can start solving!`;
+Drag the puzzle box around to shake it — this will mix up the pieces so you can start solving!`;
     
         popupHint.show(shakeHint, "SHAKE IT!", 0.47, ShaderMode.NONE, () => { this.finishTutorial() });
     }
