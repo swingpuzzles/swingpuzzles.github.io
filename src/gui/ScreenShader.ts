@@ -2,7 +2,7 @@ import { AdvancedDynamicTexture, Control, Grid, Image, Rectangle } from "@babylo
 import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
 
-enum shaderMode {
+export enum ShaderMode {
     NONE = 0,
     SHADOW_WINDOW = 1,
     SHADOW_FULL = 2
@@ -12,7 +12,7 @@ class ScreenShader {
     private _mainContainer!: Rectangle;
     private _topPanel!: Grid;
     private _restPanel!: Rectangle;
-    private _shaderMode: shaderMode = shaderMode.NONE;
+    private _shaderMode: ShaderMode = ShaderMode.NONE;
 
     constructor() {
     }
@@ -91,32 +91,32 @@ class ScreenShader {
         this._mainContainer.addControl(this._restPanel);
 
         sceneInitializer.addResizeObserver((width, height) => {
-            this._topPanel.height = (this._shaderMode === shaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+            this._topPanel.height = (this._shaderMode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
             this._topPanel.setColumnDefinition(1, height / 2, true);
-            this._restPanel.top = (this._shaderMode === shaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+            this._restPanel.top = (this._shaderMode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
         });
     }
 
     public enterShadowWindow() {
-        this._setShaderMode(shaderMode.SHADOW_WINDOW);
+        this.setShaderMode(ShaderMode.SHADOW_WINDOW);
     }
 
     public enterShadowFull() {
-        this._setShaderMode(shaderMode.SHADOW_FULL);
+        this.setShaderMode(ShaderMode.SHADOW_FULL);
     }
 
     public exitShader() {
-        this._setShaderMode(shaderMode.NONE);
+        this.setShaderMode(ShaderMode.NONE);
     }
 
-    private _setShaderMode(mode: shaderMode) {
+    public setShaderMode(mode: ShaderMode) {
         if (this._shaderMode !== mode) {
             this._shaderMode = mode;
-            this._mainContainer.isVisible = mode !== shaderMode.NONE;
+            this._mainContainer.isVisible = mode !== ShaderMode.NONE;
 
             const height = ctx.engine.getRenderHeight();
-            this._topPanel.height = (mode === shaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
-            this._restPanel.top = (mode === shaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+            this._topPanel.height = (mode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+            this._restPanel.top = (mode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
         }
     }
 }

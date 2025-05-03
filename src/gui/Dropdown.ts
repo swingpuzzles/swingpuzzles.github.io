@@ -130,5 +130,7 @@ export default class Dropdown {
         button.onPointerClickObservable.add(callback);
 
         this.options.addControl(button);
+
+        this.resize();
     }
 }

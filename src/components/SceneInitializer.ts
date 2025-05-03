@@ -11,6 +11,7 @@ import celebrationAnimation from "./animations/CelebrationAnimation";
 import timerDisplay from "./misc/TimerDisplay";
 import popupHint from "../gui/PopupHint";
 import screenShader from "../gui/ScreenShader";
+import tutorialManager from "../gui/TutorialManager";
 
 class SceneInitializer {
     private resizeObservers: ((width: number, height: number) => void)[] = [];
@@ -77,26 +78,7 @@ class SceneInitializer {
 
             timerDisplay.init();
 
-            popupHint.init();
-            let message = `Welcome to PuzzleVerse 3D! 🧩
-
-        Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. 
-        Every piece fits into a world of adventure!
-            
-        By continuing, you agree to our use of cookies to ensure the best experience.
-            
-        Let's start building!`;
-            
-            /*if (isMobileDevice()) {
-            message += `
-            
-        📱 This app will enter fullscreen mode.
-        You can exit anytime by tapping the ⬜ button in the top-left corner.`;
-            }*/
-            
-            popupHint.typeTextLetterByLetter(message);
-
-            screenShader.init();
+            tutorialManager.init();
 
             return scene;
         };

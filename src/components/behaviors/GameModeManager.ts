@@ -1,3 +1,4 @@
+import tutorialManager from "../../gui/TutorialManager";
 import ctx from "../common/SceneContext";
 import piecePositioningManager from "./PiecePositioningManager";
 
@@ -7,6 +8,7 @@ export enum GameMode {
     Solve,
     Celebration
 }
+
 class GameModeManager {
     private _currentMode: GameMode = GameMode.Initial;
     private _observers: ((prevMode: GameMode) => void)[] = [];
@@ -56,6 +58,8 @@ class GameModeManager {
         this.resetAll(GameMode.OpenCover);
 
         ctx.camera.detachControl();
+
+        tutorialManager.showShakeHint();
     }
 
     enterSolveMode() {
