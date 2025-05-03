@@ -1,3 +1,4 @@
+import { Control } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 import popupHint from "./PopupHint";
 import screenShader, { ShaderMode } from "./ScreenShader";
@@ -20,7 +21,7 @@ Let's start building!`;
         if (hasAcceptedCookies) {
             this.afterCookiesAccepted();
         } else {
-            popupHint.show(message, "WELCOME!", 0.66, ShaderMode.SHADOW_FULL, () => { this.afterCookiesAccepted(); });
+            popupHint.show(message, "WELCOME!", 0.68, ShaderMode.SHADOW_FULL, () => { this.afterCookiesAccepted(); });
         }
 
         gameModeManager.addObserver((prevMode) => {
@@ -39,7 +40,8 @@ Use the highlighted dropdown at the top center to pick your desired puzzle dimen
 
 More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
 
-        popupHint.show(dimensionHint, "HINT: SIZE", 0.56, ShaderMode.SHADOW_WINDOW, () => { this.showPuzzleChooserHint(); });
+        popupHint.show(dimensionHint, "HINT: SIZE", 0.59, ShaderMode.SHADOW_WINDOW, () => { this.showPuzzleChooserHint(); },
+            Control.VERTICAL_ALIGNMENT_BOTTOM);
     }
 
     public showPuzzleChooserHint() {
@@ -49,7 +51,8 @@ Swipe left or right to explore different puzzles.
 
 Each puzzle is shown as a cover box — click or tap on one to select it, or just hit the ▶️ Play button to dive right in!`;
 
-        popupHint.show(browseHint, "HINT: CHOICE", 0.56, ShaderMode.NONE, () => { popupHint.hide(); });
+        popupHint.show(browseHint, "HINT: CHOICE", 0.59, ShaderMode.NONE, () => { popupHint.hide(); },
+            Control.VERTICAL_ALIGNMENT_TOP);
     }
 
     public showShakeHint() {
@@ -57,7 +60,8 @@ Each puzzle is shown as a cover box — click or tap on one to select it, or jus
     
 Drag the puzzle box around to shake it — this will mix up the pieces so you can start solving!`;
     
-        popupHint.show(shakeHint, "SHAKE IT!", 0.47, ShaderMode.NONE, () => { this.finishTutorial(); });
+        popupHint.show(shakeHint, "SHAKE IT!", 0.49, ShaderMode.NONE, () => { this.finishTutorial(); },
+            Control.VERTICAL_ALIGNMENT_TOP);
     }
 
     private finishTutorial() {

@@ -17,19 +17,8 @@ class PopupHint {
     private bottomRect!: Rectangle;
     private _sizeCoef = 0.87;
     private _action: () => void = () => {};
-    private _zIndexElement: Control | null = null;
 
     init() {
-        // Root Container
-        /*const root = new Container("root");
-        root.width = "100%";
-        root.height = "100%";
-        root.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-        root.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
-        root.isHitTestVisible = true;
-        root.isPointerBlocker = true;
-        guiManager.advancedTexture.addControl(root);*/
-
         // Main Rectangle
         this.mainRect = new Rectangle("Rectangle");
         this.mainRect.color = "#B15E0AFF";
@@ -156,27 +145,29 @@ class PopupHint {
     private resize() {
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
         const mainHeight = minSize * this._sizeCoef;
-        this.mainRect.width = minSize * 0.87 + "px";
-        this.mainRect.height = mainHeight + "px";
+        this.mainRect.widthInPixels = minSize * 0.87;
+        this.mainRect.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
-        this.topRect.height = minSize * 0.2 + "px";
-        this.centerRect.height = mainHeight - (minSize * 0.3) + "px";
-        this.bottomRect.height = minSize * 0.1 + "px";
-        this.welcomeText.width = minSize * 0.62 + "px";
-        this.welcomeText.fontSize = minSize / 12 + "px";
+        this.mainRect.paddingTopInPixels = minSize / 80;
+        this.mainRect.paddingBottomInPixels = minSize / 80;
+        this.topRect.heightInPixels = minSize * 0.2;
+        this.centerRect.heightInPixels = mainHeight - (minSize * (0.3 + 1 / 40));
+        this.bottomRect.heightInPixels = minSize * 0.1;
+        this.welcomeText.widthInPixels = minSize * 0.62;
+        this.welcomeText.fontSizeInPixels = minSize / 12;
 
         const imageWidth = minSize * 0.2;
         const imageHeight = minSize * 0.185;
-        this.topImage.width = imageWidth + "px";
-        this.topImage.height = imageHeight + "px";
-        this.middleImage.width = imageWidth * 0.45 + "px";
-        this.middleImage.height = imageHeight * 0.45 + "px";
+        this.topImage.widthInPixels = imageWidth;
+        this.topImage.heightInPixels = imageHeight;
+        this.middleImage.widthInPixels = imageWidth * 0.45;
+        this.middleImage.heightInPixels = imageHeight * 0.45;
 
-        this.textAreaRect.width = 0.76 * minSize + "px";
+        this.textAreaRect.widthInPixels = 0.76 * minSize;
         this.textAreaRect.cornerRadius = minSize / 40;
 
         this.textAreaRect.paddingBottomInPixels = minSize / 160;
-        this.inputTextArea.fontSize = minSize / 36 + "px";
+        this.inputTextArea.fontSizeInPixels = minSize / 36;
 
         this.inputTextArea.paddingBottomInPixels = minSize / 80;
         this.inputTextArea.paddingLeftInPixels = 3 * minSize / 160;
@@ -185,21 +176,11 @@ class PopupHint {
     }
     
     public show(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
-            action: () => void = () => {}, zIndexElement: Control | null = null) {
-        
-        if (this._zIndexElement) {
-            this._zIndexElement.zIndex = 0;
-        }
+            action: () => void = () => {}, verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,) {
 
         if (localStorage.getItem("tutorialDone") === "true") {
             this.hide();
             return;
-        }
-        
-        this._zIndexElement = zIndexElement;
-
-        if (this._zIndexElement) {
-            this._zIndexElement.zIndex = 3000;
         }
 
         this.welcomeText.text = heading;
@@ -208,6 +189,7 @@ class PopupHint {
         this._action = action;
         this.resize();
         this.mainRect.zIndex = shaderMode === ShaderMode.SHADOW_WINDOW ? 2 : 5;
+        this.mainRect.verticalAlignment = verticalAlignment;
         screenShader.setShaderMode(shaderMode);
         this.typeTextLetterByLetter(fullText);
         this.mainRect.isVisible = true;

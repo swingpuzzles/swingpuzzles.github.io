@@ -86,16 +86,16 @@ export default class Dropdown {
     }
 
     private resize() {
-        this.container.width = this.width + "px";
-        this.button.height = this.height + "px";
-        this.options.top = this.height + "px";
-        this.container.top = this.height / 4 + "px";
-        this.button.textBlock!.paddingRight = this.height / 4 + "px";
-        this.button.textBlock!.fontSize = this.height / 2 + "px";
+        this.container.widthInPixels = this.width;
+        this.button.heightInPixels = this.height;
+        this.options.topInPixels = this.height;
+        this.container.topInPixels = this.height / 4;
+        this.button.textBlock!.paddingRightInPixels = this.height / 4;
+        this.button.textBlock!.fontSizeInPixels = this.height / 2;
 
         for (let o of this.options.children) {
-            o.height = this.height + "px";
-            (o as Button).textBlock!.fontSize = this.height / 2 + "px";
+            o.heightInPixels = this.height;
+            (o as Button).textBlock!.fontSizeInPixels = this.height / 2;
         }
     }
 
@@ -105,8 +105,8 @@ export default class Dropdown {
 
     addOption(text: string, callback: () => void): void {
         const button = Button.CreateSimpleButton(text, text);
-        button.height = this.height + "px";
-        button.paddingTop = "-1px";
+        button.heightInPixels = this.height;
+        button.paddingTopInPixels = -1;
         button.background = this.background;
         button.color = this.color;
         button.alpha = 1.0;
