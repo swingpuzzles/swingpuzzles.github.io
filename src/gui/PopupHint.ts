@@ -188,7 +188,7 @@ class PopupHint {
         this._sizeCoef = sizeCoef;
         this._action = action;
         this.resize();
-        this.mainRect.zIndex = shaderMode === ShaderMode.SHADOW_WINDOW ? 2 : 5;
+        this.mainRect.zIndex = shaderMode === ShaderMode.SHADOW_WINDOW ? 20 : 50;
         this.mainRect.verticalAlignment = verticalAlignment;
         screenShader.setShaderMode(shaderMode);
         this.typeTextLetterByLetter(fullText);
