@@ -115,6 +115,8 @@ class ScreenShader {
             this._shaderMode = mode;
             this._mainContainer.isVisible = mode !== ShaderMode.NONE;
 
+            this._mainContainer.zIndex = mode === ShaderMode.SHADOW_WINDOW ? 1 : 4;
+
             const height = ctx.engine.getRenderHeight();
             this._topPanel.height = (mode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
             this._restPanel.top = (mode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";

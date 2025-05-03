@@ -31,6 +31,7 @@ export default class Dropdown {
         this.container.verticalAlignment = options.align ?? Control.VERTICAL_ALIGNMENT_TOP;
         this.container.horizontalAlignment = options.valign ?? Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.container.isHitTestVisible = false;
+        this.container.zIndex = 3;
 
         // Primary button
         this.button = Button.CreateSimpleButton("Please Select", "Please Select ▼");
@@ -55,7 +56,7 @@ export default class Dropdown {
         });
 
         this.container.onPointerOutObservable.add(() => {
-            this.container.zIndex = 0;
+            this.container.zIndex = 3;
             this.options.isVisible = false;
         });
 

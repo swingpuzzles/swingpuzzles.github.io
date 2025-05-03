@@ -16,7 +16,8 @@ class PopupHint {
     private centerRect!: Rectangle;
     private bottomRect!: Rectangle;
     private _sizeCoef = 0.87;
-    private _action: () => void = () => {}
+    private _action: () => void = () => {};
+    private _zIndexElement: Control | null = null;
 
     init() {
         // Root Container
@@ -183,17 +184,30 @@ class PopupHint {
         this.inputTextArea.paddingTopInPixels = minSize / 80;
     }
     
-    public show(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE, action: () => void = () => {}) {
+    public show(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
+            action: () => void = () => {}, zIndexElement: Control | null = null) {
+        
+        if (this._zIndexElement) {
+            this._zIndexElement.zIndex = 0;
+        }
+
         if (localStorage.getItem("tutorialDone") === "true") {
             this.hide();
             return;
         }
         
+        this._zIndexElement = zIndexElement;
+
+        if (this._zIndexElement) {
+            this._zIndexElement.zIndex = 3000;
+        }
+
         this.welcomeText.text = heading;
         this.inputTextArea.text = "";
         this._sizeCoef = sizeCoef;
         this._action = action;
         this.resize();
+        this.mainRect.zIndex = shaderMode === ShaderMode.SHADOW_WINDOW ? 2 : 5;
         screenShader.setShaderMode(shaderMode);
         this.typeTextLetterByLetter(fullText);
         this.mainRect.isVisible = true;
