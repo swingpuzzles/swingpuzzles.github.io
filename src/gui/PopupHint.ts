@@ -203,11 +203,16 @@ class PopupHint {
         this.mainRect.isVisible = false;
     }
 
-    public typeTextLetterByLetter(fullText: string, delay = 0, wrapLimit = 55) {
-        let index = 0;
-        const target = this.inputTextArea;
+    private typingSessionId = 0;
     
-        function smartWrap(text: string): string {
+    public typeTextLetterByLetter(fullText: string, delay = 0, wrapLimit = 55) {
+        const target = this.inputTextArea;
+        let index = 0;
+    
+        // Invalidate any previous typing session
+        const currentSessionId = ++this.typingSessionId;
+    
+        const smartWrap = (text: string): string => {
             const lines = text.split("\n");
             const wrappedLines: string[] = [];
     
@@ -235,19 +240,23 @@ class PopupHint {
             }
     
             return wrappedLines.join("\n");
-        }
+        };
     
-        function addNextChar() {
+        const addNextChar = () => {
+            // Stop if a new session has started
+            if (currentSessionId !== this.typingSessionId) return;
+    
             if (index <= fullText.length) {
                 const currentRaw = fullText.substring(0, index);
                 const currentWrapped = smartWrap(currentRaw);
                 target.text = currentWrapped;
     
                 index++;
-                setTimeout(addNextChar, delay);
+                window.setTimeout(addNextChar, delay);
             }
-        }
+        };
     
+        // Start typing
         addNextChar();
     }
 }
