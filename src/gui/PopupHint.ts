@@ -184,6 +184,11 @@ class PopupHint {
     }
     
     public show(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE, action: () => void = () => {}) {
+        if (localStorage.getItem("tutorialDone") === "true") {
+            this.hide();
+            return;
+        }
+        
         this.welcomeText.text = heading;
         this.inputTextArea.text = "";
         this._sizeCoef = sizeCoef;

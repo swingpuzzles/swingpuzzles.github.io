@@ -1,5 +1,4 @@
-import { Sprite, SpriteManager, Animation } from "@babylonjs/core";
-import ctx from "../components/common/SceneContext";
+import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 import popupHint from "./PopupHint";
 import screenShader, { ShaderMode } from "./ScreenShader";
 
@@ -24,9 +23,17 @@ class TutorialManager {
         } else {
             popupHint.show(message, "WELCOME!", 0.66, ShaderMode.SHADOW_FULL, this.afterCookiesAccepted);
         }
+
+        gameModeManager.addObserver((prevMode) => {
+            if (gameModeManager.currentMode === GameMode.Solve) {
+                this.finishTutorial();
+            }
+        });
     }
 
     private afterCookiesAccepted() {
+        localStorage.setItem("cookiesAccepted", "true");
+
         let dimensionHint = `🧩 Choose Your Challenge!
 
 Use the highlighted dropdown at the top center to pick your desired puzzle dimensions. 
@@ -51,7 +58,12 @@ or just hit the ▶️ Play button to dive right in!`;
 Drag the puzzle box around to shake it — 
 this will mix up the pieces so you can start solving!`;
     
-        popupHint.show(shakeHint, "SHAKE IT!", 0.47, ShaderMode.NONE, () => { popupHint.hide(); });
+        popupHint.show(shakeHint, "SHAKE IT!", 0.47, ShaderMode.NONE, () => { this.finishTutorial() });
+    }
+
+    private finishTutorial() {
+        localStorage.setItem("tutorialDone", "true");
+        popupHint.hide();
     }
 }
 
