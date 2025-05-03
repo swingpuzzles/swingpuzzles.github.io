@@ -1,6 +1,7 @@
-import { AdvancedDynamicTexture, Control, Grid, Image, Rectangle } from "@babylonjs/gui";
+import { Control, Grid, Image, Rectangle } from "@babylonjs/gui";
 import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
+import guiManager from "./GuiManager";
 
 export enum ShaderMode {
     NONE = 0,
@@ -18,13 +19,11 @@ class ScreenShader {
     }
 
     public init() {
-        const advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
-
         this._mainContainer = new Rectangle("mainContainer");
         this._mainContainer.width = "100%";
         this._mainContainer.height = "100%";
         this._mainContainer.isVisible = false;
-        advancedTexture.addControl(this._mainContainer);
+        guiManager.advancedTexture.addControl(this._mainContainer);
 
         // Create a top panel using a Grid with 3 columns
         this._topPanel = new Grid();

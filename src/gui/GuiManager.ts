@@ -10,7 +10,7 @@ import openCoverAnimation from "../components/animations/OpenCoverAnimation";
 import sceneInitializer from "../components/SceneInitializer";
 
 class GuiManager {
-    private advancedTexture!: AdvancedDynamicTexture;
+    private _advancedTexture!: AdvancedDynamicTexture;
     private bottomButtonPanel!: StackPanel;
     private piecesCountDropdown!: PiecesCountDropdown;
     private playButton!: Button;
@@ -18,10 +18,14 @@ class GuiManager {
     private xButton!: Button;
     private menuButton!: Button;
 
+    get advancedTexture() {
+        return this._advancedTexture;
+    }
+
     init() {
-        this.advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
+        this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
-        this.piecesCountDropdown = new PiecesCountDropdown(this.advancedTexture);
+        this.piecesCountDropdown = new PiecesCountDropdown();
 
         this._createButtons();
     }
@@ -51,7 +55,7 @@ class GuiManager {
         });
         this.bottomButtonPanel.addControl(this.bannerButton);
 
-        this.advancedTexture.addControl(this.bottomButtonPanel);
+        this._advancedTexture.addControl(this.bottomButtonPanel);
 
         // Register buttons for high-res replacement
         puzzleAssetsManager.addGuiImageButtonSource(this.playButton, "assets/play-button.webp");
@@ -68,7 +72,7 @@ class GuiManager {
             backToInitialAnimation.animate(ctx.currentCover);
         });
 
-        this.advancedTexture.addControl(this.xButton);
+        this._advancedTexture.addControl(this.xButton);
 
         this.menuButton = Button.CreateImageOnlyButton("xButton", "assets/menu-button.webp");
         this.menuButton.thickness = 0;
@@ -79,7 +83,7 @@ class GuiManager {
         this.menuButton.paddingTop = "10px";
         this.menuButton.paddingRight = "10px";
 
-        this.advancedTexture.addControl(this.menuButton);
+        this._advancedTexture.addControl(this.menuButton);
 
         gameModeManager.addObserver(() => {
             this.refreshButtonSizes();

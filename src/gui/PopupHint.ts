@@ -1,8 +1,9 @@
-import { AdvancedDynamicTexture, Container, Control, Rectangle, StackPanel, TextBlock, Image, InputTextArea, Button } from "@babylonjs/gui";
+import { Container, Control, Rectangle, StackPanel, TextBlock, Image, InputTextArea, Button } from "@babylonjs/gui";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
 import screenShader, { ShaderMode } from "./ScreenShader";
+import guiManager from "./GuiManager";
 
 class PopupHint {
     private inputTextArea!: TextBlock;
@@ -18,9 +19,6 @@ class PopupHint {
     private _action: () => void = () => {}
 
     init() {
-        // Create full screen UI
-        const advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
-
         // Root Container
         const root = new Container("root");
         root.width = "100%";
@@ -29,7 +27,7 @@ class PopupHint {
         root.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
         root.isHitTestVisible = true;
         root.isPointerBlocker = true;
-        advancedTexture.addControl(root);
+        guiManager.advancedTexture.addControl(root);
 
         // Main Rectangle
         this.mainRect = new Rectangle("Rectangle");

@@ -1,17 +1,16 @@
-import { AdvancedDynamicTexture, Control, Image } from "@babylonjs/gui";
+import { Control, Image } from "@babylonjs/gui";
+import guiManager from "./GuiManager";
 
 
 class HandImagePool {
     private pool: Image[] = [];
     private inUse: Set<Image> = new Set();
     private readonly textureUrl: string;
-    private readonly advancedTexture: AdvancedDynamicTexture;
     private readonly width = "64px";
     private readonly height = "64px";
 
-    constructor(textureUrl: string, advancedTexture: AdvancedDynamicTexture) {
+    constructor(textureUrl: string) {
         this.textureUrl = textureUrl;
-        this.advancedTexture = advancedTexture;
     }
 
     acquire(x: string, y: string): Image {
@@ -29,7 +28,7 @@ class HandImagePool {
 
         image.left = x;
         image.top = y;
-        this.advancedTexture.addControl(image);
+        guiManager.advancedTexture.addControl(image);
         this.inUse.add(image);
 
         return image;
@@ -38,19 +37,19 @@ class HandImagePool {
     release(image: Image) {
         if (this.inUse.has(image)) {
             this.inUse.delete(image);
-            this.advancedTexture.removeControl(image);
+            guiManager.advancedTexture.removeControl(image);
             this.pool.push(image);
         }
     }
 
     releaseAll() {
         for (const image of this.inUse) {
-            this.advancedTexture.removeControl(image);
+            guiManager.advancedTexture.removeControl(image);
             this.pool.push(image);
         }
         this.inUse.clear();
     }
 }
 
-const handImagePool = new HandImagePool("assets/hand.webp", AdvancedDynamicTexture.CreateFullscreenUI("HandImagePool"));
+const handImagePool = new HandImagePool("assets/hand.webp");
 export default handImagePool;

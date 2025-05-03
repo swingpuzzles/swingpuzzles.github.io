@@ -1,5 +1,6 @@
-import { AdvancedDynamicTexture, Button, Container, Control, StackPanel } from "@babylonjs/gui";
+import { Button, Container, Control, StackPanel } from "@babylonjs/gui";
 import sceneInitializer from "../components/SceneInitializer";
+import guiManager from "./GuiManager";
 
 interface DropdownOptions {
     width?: number;
@@ -20,24 +21,19 @@ export default class Dropdown {
     private background: string;
 
     constructor(
-        private advancedTexture: AdvancedDynamicTexture,
         options: DropdownOptions = {}
     ) {
-        /*this.width = (options.width || 240) + "px";
-        this.height = (options.height || 40) + "px";*/
         this.color = options.color || "black";
         this.background = options.background || "white";
 
         // Container
         this.container = new Container();
-        //this.container.width = this.width;
         this.container.verticalAlignment = options.align ?? Control.VERTICAL_ALIGNMENT_TOP;
         this.container.horizontalAlignment = options.valign ?? Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.container.isHitTestVisible = false;
 
         // Primary button
         this.button = Button.CreateSimpleButton("Please Select", "Please Select ▼");
-        //this.button.height = this.height;
         this.button.background = this.background;
         this.button.color = this.color;
         this.button.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
@@ -47,7 +43,6 @@ export default class Dropdown {
         // Options panel
         this.options = new StackPanel();
         this.options.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        //this.options.top = this.height;
         this.options.isVisible = false;
         this.options.isVertical = true;
 
@@ -65,7 +60,7 @@ export default class Dropdown {
         });
 
         // Add controls
-        this.advancedTexture.addControl(this.container);
+        guiManager.advancedTexture.addControl(this.container);
         this.container.addControl(this.button);
         this.container.addControl(this.options);
 
@@ -76,14 +71,6 @@ export default class Dropdown {
             this.resize();
         });
     }
-
-    /*get top(): string | number {
-        return this.container.top;
-    }
-
-    set top(value: string | number) {
-        this.container.top = value;
-    }*/
 
     get left(): string | number {
         return this.container.left;

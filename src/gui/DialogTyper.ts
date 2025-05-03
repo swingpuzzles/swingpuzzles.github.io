@@ -1,4 +1,5 @@
-import { AdvancedDynamicTexture, Control, TextBlock } from "@babylonjs/gui";
+import { Control, TextBlock } from "@babylonjs/gui";
+import guiManager from "./GuiManager";
 
 interface DialogTyperOptions {
     speed?: number;
@@ -18,7 +19,7 @@ export class DialogTyper {
     private isTyping = false;
     private skipRequested = false;
 
-    constructor(gui: AdvancedDynamicTexture, options: DialogTyperOptions = {}) {
+    constructor(options: DialogTyperOptions = {}) {
         this.speed = options.speed ?? 50;
         this.autoSkipDelay = options.autoSkipDelay ?? null;
 
@@ -32,7 +33,7 @@ export class DialogTyper {
         this.textBlock.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.textBlock.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
 
-        gui.addControl(this.textBlock);
+        guiManager.advancedTexture.addControl(this.textBlock);
 
         this.textBlock.onPointerUpObservable.add(() => {
             if (this.isTyping) {

@@ -3,19 +3,9 @@ import Dropdown from "./Dropdown";
 import tutorialManager from "./TutorialManager";
 
 export default class PiecesCountDropdown extends Dropdown {
-    constructor(advancedTexture: any) {
-        super(advancedTexture, /*{
-            width: 100,
-            height: 30,
-            color: "white",
-            background: "black",
-            align: 0.5,
-            valign: 0.5,
-        }*/);
-
-        //this.top = "10px";
-
-        //this.addPiecesNums(3, 2, true);
+    constructor() {
+        super();
+        
         this.addPiecesNums(5, 3, true);
         this.addPiecesNums(6, 4);
         this.addPiecesNums(8, 5);
