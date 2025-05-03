@@ -2,6 +2,7 @@ import { Control } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 import popupHint from "./PopupHint";
 import screenShader, { ShaderMode } from "./ScreenShader";
+import handImagePool from "./HandImagePool";
 
 class TutorialManager {
     init() {
@@ -19,9 +20,9 @@ Let's start building!`;
         const hasAcceptedCookies = localStorage.getItem("cookiesAccepted") === "true";
 
         if (hasAcceptedCookies) {
-            this.afterCookiesAccepted();
+            this.showSizeChooserHint();
         } else {
-            popupHint.show(message, "WELCOME!", 0.68, ShaderMode.SHADOW_FULL, () => { this.afterCookiesAccepted(); });
+            popupHint.show(message, "WELCOME!", 0.68, ShaderMode.SHADOW_FULL, () => { this.showSizeChooserHint(); });
         }
 
         gameModeManager.addObserver((prevMode) => {
@@ -31,7 +32,7 @@ Let's start building!`;
         });
     }
 
-    private afterCookiesAccepted() {
+    private showSizeChooserHint() {
         localStorage.setItem("cookiesAccepted", "true");
 
         let dimensionHint = `🧩 Choose Your Challenge!
@@ -40,8 +41,10 @@ Use the highlighted dropdown at the top center to pick your desired puzzle dimen
 
 More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
 
-        popupHint.show(dimensionHint, "HINT: SIZE", 0.59, ShaderMode.SHADOW_WINDOW, () => { this.showPuzzleChooserHint(); },
-            Control.VERTICAL_ALIGNMENT_BOTTOM);
+        if (popupHint.show(dimensionHint, "HINT: SIZE", 0.59, ShaderMode.SHADOW_WINDOW, () => { this.showPuzzleChooserHint(); },
+                Control.VERTICAL_ALIGNMENT_BOTTOM)) {
+            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_TOP, 0, 10, 0, false);
+        }
     }
 
     public showPuzzleChooserHint() {

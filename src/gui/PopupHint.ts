@@ -4,6 +4,7 @@ import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
 import screenShader, { ShaderMode } from "./ScreenShader";
 import guiManager from "./GuiManager";
+import handImagePool from "./HandImagePool";
 
 class PopupHint {
     private inputTextArea!: TextBlock;
@@ -176,11 +177,12 @@ class PopupHint {
     }
     
     public show(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
-            action: () => void = () => {}, verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,) {
+            action: () => void = () => {}, verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER) : boolean {
+
+        this.hide();
 
         if (localStorage.getItem("tutorialDone") === "true") {
-            this.hide();
-            return;
+            return false;
         }
 
         this.welcomeText.text = heading;
@@ -193,10 +195,13 @@ class PopupHint {
         screenShader.setShaderMode(shaderMode);
         this.typeTextLetterByLetter(fullText);
         this.mainRect.isVisible = true;
+
+        return true;
     }
 
     public hide() {
         this.mainRect.isVisible = false;
+        handImagePool.releaseAll();
     }
 
     private typingSessionId = 0;
