@@ -23,6 +23,8 @@ class ScreenShader {
         this._mainContainer.width = "100%";
         this._mainContainer.height = "100%";
         this._mainContainer.isVisible = false;
+        this._mainContainer.isHitTestVisible = true;
+        this._mainContainer.isPointerBlocker = true;
         guiManager.advancedTexture.addControl(this._mainContainer);
 
         // Create a top panel using a Grid with 3 columns

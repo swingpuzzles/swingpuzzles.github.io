@@ -20,14 +20,14 @@ class PopupHint {
 
     init() {
         // Root Container
-        const root = new Container("root");
+        /*const root = new Container("root");
         root.width = "100%";
         root.height = "100%";
         root.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
         root.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
         root.isHitTestVisible = true;
         root.isPointerBlocker = true;
-        guiManager.advancedTexture.addControl(root);
+        guiManager.advancedTexture.addControl(root);*/
 
         // Main Rectangle
         this.mainRect = new Rectangle("Rectangle");
@@ -37,7 +37,9 @@ class PopupHint {
         this.mainRect.shadowOffsetY = 2;
         this.mainRect.shadowColor = "#B15E0AFF";
         this.mainRect.isVisible = false;
-        root.addControl(this.mainRect);
+        this.mainRect.isHitTestVisible = true;
+        this.mainRect.isPointerBlocker = true;
+        guiManager.advancedTexture.addControl(this.mainRect);
 
         // Vertical StackPanel inside Rectangle
         const mainStack = new StackPanel("StackPanel");
