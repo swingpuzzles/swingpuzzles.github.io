@@ -19,6 +19,8 @@ class ScreenShader {
     }
 
     public init() {
+        const shadeCoef = 0.75;
+
         this._mainContainer = new Rectangle("mainContainer");
         this._mainContainer.width = "100%";
         this._mainContainer.height = "100%";
@@ -42,7 +44,7 @@ class ScreenShader {
         const leftPanel = new Rectangle();
         leftPanel.thickness = 0;
         leftPanel.background = "black";
-        leftPanel.alpha = 0.5;
+        leftPanel.alpha = shadeCoef;
         leftPanel.paddingTop = "0px";
         leftPanel.paddingBottom = "0px";
         this._topPanel.addControl(leftPanel, 0, 0);
@@ -61,7 +63,7 @@ class ScreenShader {
         
         const img = new Image("img", "assets/shadow-window.webp");
         img.stretch = Image.STRETCH_FILL; // or STRETCH_UNIFORM if you prefer aspect ratio
-        img.alpha = 0.5;
+        img.alpha = shadeCoef;
         img.height = "100%";
         img.width = "100%";
         img.paddingTop = "0px";
@@ -77,7 +79,7 @@ class ScreenShader {
         const rightPanel = new Rectangle();
         rightPanel.thickness = 0;
         rightPanel.background = "black";
-        rightPanel.alpha = 0.5;
+        rightPanel.alpha = shadeCoef;
         rightPanel.paddingTop = "0px";
         rightPanel.paddingBottom = "0px";
         this._topPanel.addControl(rightPanel, 0, 2);
@@ -86,7 +88,7 @@ class ScreenShader {
         this._restPanel = new Rectangle();
         this._restPanel.thickness = 0;
         this._restPanel.background = "black";
-        this._restPanel.alpha = 0.5;
+        this._restPanel.alpha = shadeCoef;
         this._restPanel.height = "100%";
         this._restPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this._mainContainer.addControl(this._restPanel);

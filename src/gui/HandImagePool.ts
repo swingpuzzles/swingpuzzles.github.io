@@ -1,16 +1,32 @@
 import { Control, Image } from "@babylonjs/gui";
 import guiManager from "./GuiManager";
+import sceneInitializer from "../components/SceneInitializer";
+import ctx from "../components/common/SceneContext";
 
 
 class HandImagePool {
     private pool: Image[] = [];
     private inUse: Set<Image> = new Set();
     private readonly textureUrl: string;
-    private readonly width = "6";
-    private readonly height = "4";
+    private readonly widthPerc: number = 8;
+    private readonly heightPerc: number = 12;
 
     constructor(textureUrl: string) {
         this.textureUrl = textureUrl;
+    }
+
+    init() {
+        sceneInitializer.addResizeObserver((width, height) => {
+            for (const image of this.inUse) {
+                this.resizeImage(image, height);
+            }
+        });
+    }
+
+    resizeImage(image: Image, height: number) {
+        const widthPx = this.widthPerc * height / 100;
+        image.widthInPixels = widthPx;
+        image.height = this.heightPerc + "%";
     }
 
     acquire(
@@ -29,8 +45,6 @@ class HandImagePool {
             image = this.pool.pop()!;
         } else {
             image = new Image("handIcon", this.textureUrl);
-            image.width = this.width + "%";
-            image.height = this.height + "%";
             image.zIndex = 25;
         }
     
@@ -52,6 +66,8 @@ class HandImagePool {
     
         // Rotation
         image.rotation = rotationInDegrees * Math.PI / 180;
+
+        this.resizeImage(image, ctx.engine.getRenderHeight());
     
         advTex.addControl(image);
         this.inUse.add(image);
@@ -72,11 +88,11 @@ class HandImagePool {
             if (horizontal) {
                 image.paddingLeft = paddingLeftPercent + delta + "%";
                 image.paddingRight = paddingLeftPercent + delta + "%";
-                image.width = this.width + 2 * delta + "%";
+                image.width = this.widthPerc + 2 * delta + "%";
             } else {
                 image.paddingTop = paddingTopPercent + delta + "%";
                 image.paddingBottom = paddingTopPercent + delta + "%";
-                image.height = this.height + 2 * delta + "%";
+                image.height = this.heightPerc + 2 * (paddingTopPercent + delta) + "%";
             }
     
             requestAnimationFrame(update);

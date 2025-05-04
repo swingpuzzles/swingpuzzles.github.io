@@ -9,9 +9,8 @@ import gameModeManager from "./behaviors/GameModeManager";
 import puzzleGameBuilder from "./builders/PuzzleGameBuilder";
 import celebrationAnimation from "./animations/CelebrationAnimation";
 import timerDisplay from "./misc/TimerDisplay";
-import popupHint from "../gui/PopupHint";
-import screenShader from "../gui/ScreenShader";
 import tutorialManager from "../gui/TutorialManager";
+import handImagePool from "../gui/HandImagePool";
 
 class SceneInitializer {
     private resizeObservers: ((width: number, height: number) => void)[] = [];
@@ -77,6 +76,8 @@ class SceneInitializer {
             celebrationAnimation.init();
 
             timerDisplay.init();
+
+            handImagePool.init();
 
             tutorialManager.init();
 
