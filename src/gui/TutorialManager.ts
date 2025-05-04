@@ -43,7 +43,7 @@ More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
 
         if (popupHint.show(dimensionHint, "HINT: SIZE", 0.59, ShaderMode.SHADOW_WINDOW, () => { this.showPuzzleChooserHint(); },
                 Control.VERTICAL_ALIGNMENT_BOTTOM)) {
-            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_TOP, 0, 10, 0, false);
+            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_TOP, 0, 0.1, 0, false);
         }
     }
 
@@ -54,8 +54,11 @@ Swipe left or right to explore different puzzles.
 
 Each puzzle is shown as a cover box — click or tap on one to select it, or just hit the ▶️ Play button to dive right in!`;
 
-        popupHint.show(browseHint, "HINT: CHOICE", 0.59, ShaderMode.NONE, () => { popupHint.hide(); },
-            Control.VERTICAL_ALIGNMENT_TOP);
+        if (popupHint.show(browseHint, "HINT: CHOICE", 0.59, ShaderMode.NONE, () => { popupHint.hide(); },
+                Control.VERTICAL_ALIGNMENT_TOP)) {
+            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.3, 30, true, 0.2, 0.01);
+            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.15, 150, false);
+        }
     }
 
     public showShakeHint() {

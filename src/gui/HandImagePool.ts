@@ -3,13 +3,24 @@ import guiManager from "./GuiManager";
 import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
 
+interface MotionData {
+    paddingHoriz: number;
+    paddingVert: number;
+    horizontal: boolean;
+    radius: number;
+    speed: number;
+    angle: number;
+}
 
 class HandImagePool {
     private pool: Image[] = [];
     private inUse: Set<Image> = new Set();
     private readonly textureUrl: string;
-    private readonly widthPerc: number = 8;
-    private readonly heightPerc: number = 12;
+    //private readonly widthPerc: number = 8;
+    //private readonly heightPerc: number = 12;
+    private readonly width: number = 0.08;
+    private readonly height: number = 0.12;
+    private motionMap: Map<Image, MotionData> = new Map();
 
     constructor(textureUrl: string) {
         this.textureUrl = textureUrl;
@@ -24,19 +35,20 @@ class HandImagePool {
     }
 
     resizeImage(image: Image, height: number) {
-        const widthPx = this.widthPerc * height / 100;
+        const data = this.motionMap.get(image)!;
+        const widthPx = this.width * height;
         image.widthInPixels = widthPx;
-        image.height = this.heightPerc + "%";
+        image.height = this.height + 2 * data.paddingVert;
     }
 
     acquire(
         horizontalAlignment: number,
         verticalAlignment: number,
-        paddingLeftPercent: number,
-        paddingTopPercent: number,
+        paddingHoriz: number,
+        paddingVert: number,
         rotationInDegrees: number,
         horizontal: boolean = true,
-        radius = 2,
+        radius = 0.02,
         speed = 0.05
     ): Image {
         let image: Image;
@@ -55,62 +67,76 @@ class HandImagePool {
         // Base padding values from percent of screen
         const advTex = guiManager.advancedTexture;
     
-        const basePaddingLeft = paddingLeftPercent + "%";
-        const basePaddingTop = paddingTopPercent + "%";
+        const basePaddingLeft = paddingHoriz;
+        const basePaddingTop = paddingVert;
     
         // Set initial paddings
-        image.paddingLeft = basePaddingLeft;
-        image.paddingTop = basePaddingTop;
-        image.paddingRight = basePaddingLeft;
-        image.paddingBottom = basePaddingTop;
+        image.paddingLeft = basePaddingLeft * 100 + "%";
+        image.paddingTop = basePaddingTop * 100 + "%";
+        image.paddingRight = basePaddingLeft * 100 + "%";
+        image.paddingBottom = basePaddingTop * 100 + "%";
     
         // Rotation
         image.rotation = rotationInDegrees * Math.PI / 180;
-
-        this.resizeImage(image, ctx.engine.getRenderHeight());
     
         advTex.addControl(image);
         this.inUse.add(image);
     
-        // Start circular motion by adjusting padding
-        let angle = 0;
-    
+        const motionData: MotionData = {
+            paddingHoriz,
+            paddingVert,
+            horizontal,
+            radius,
+            speed,
+            angle: 0
+        };
+        
+        this.motionMap.set(image, motionData);
+
+        this.resizeImage(image, ctx.engine.getRenderHeight());
+        
         const update = () => {
             if (!this.inUse.has(image)) return;
-    
-            angle += speed;
-    
-            const offset = radius;
-            const delta = offset * (1 + (horizontal
-                ? Math.cos(angle)
-                : Math.sin(angle)));
-    
-            if (horizontal) {
-                image.paddingLeft = paddingLeftPercent + delta + "%";
-                image.paddingRight = paddingLeftPercent + delta + "%";
-                image.width = this.widthPerc + 2 * delta + "%";
+        
+            const data = this.motionMap.get(image);
+            if (!data) return;
+        
+            data.angle += data.speed;
+        
+            if (data.horizontal) {
+                const delta = data.radius * Math.sin(data.angle);
+        
+                image.left = delta * 100 + "%";
+                /*const newPadding = data.paddingHorizPercent + delta;
+                image.paddingLeft = newPadding + "%";
+                image.paddingRight = newPadding + "%";
+                image.width = this.widthPerc + 2 * newPadding + "%";*/
             } else {
-                image.paddingTop = paddingTopPercent + delta + "%";
-                image.paddingBottom = paddingTopPercent + delta + "%";
-                image.height = this.heightPerc + 2 * (paddingTopPercent + delta) + "%";
+                const delta = data.radius * (1 - Math.cos(data.angle));
+        
+                const newPadding = data.paddingVert + delta;
+                image.paddingTop = newPadding * 100 + "%";
+                image.paddingBottom = newPadding * 100 + "%";
+                image.height = this.height + 2 * newPadding;
             }
-    
+        
             requestAnimationFrame(update);
         };
-    
+        
         update();
-    
+
         return image;
     }
     
     release(image: Image) {
         if (this.inUse.has(image)) {
             this.inUse.delete(image);
+            this.motionMap.delete(image);
             guiManager.advancedTexture.removeControl(image);
             this.pool.push(image);
         }
     }
-
+    
     releaseAll() {
         for (const image of this.inUse) {
             guiManager.advancedTexture.removeControl(image);
