@@ -82,18 +82,16 @@ class PiecePositioningManager {
                 const centerImpulse = directionToCenter.scale(power);
                 piece.physicsImpostor.applyImpulse(centerImpulse, edgePos);
     
-                if (pieceData) {
-                    const maxAngularSpeed = 1;
-                    const angularVelocity = piece.physicsImpostor.getAngularVelocity();
-    
-                    if (angularVelocity) {
-                        angularVelocity.x = Scalar.Clamp(angularVelocity.x, -maxAngularSpeed, maxAngularSpeed);
-                        angularVelocity.y = Scalar.Clamp(angularVelocity.y, -maxAngularSpeed, maxAngularSpeed);
-                        angularVelocity.z = Scalar.Clamp(angularVelocity.z, -maxAngularSpeed, maxAngularSpeed);
-                    }
-    
-                    piece.physicsImpostor.setAngularVelocity(angularVelocity);
+                const maxAngularSpeed = 1;
+                const angularVelocity = piece.physicsImpostor.getAngularVelocity();
+
+                if (angularVelocity) {
+                    angularVelocity.x = Scalar.Clamp(angularVelocity.x, -maxAngularSpeed, maxAngularSpeed);
+                    angularVelocity.y = Scalar.Clamp(angularVelocity.y, -maxAngularSpeed, maxAngularSpeed);
+                    angularVelocity.z = Scalar.Clamp(angularVelocity.z, -maxAngularSpeed, maxAngularSpeed);
                 }
+
+                piece.physicsImpostor.setAngularVelocity(angularVelocity);
             }
         });
     }

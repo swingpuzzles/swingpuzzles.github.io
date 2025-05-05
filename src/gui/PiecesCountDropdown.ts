@@ -6,7 +6,9 @@ export default class PiecesCountDropdown extends Dropdown {
     constructor() {
         super();
         
-        this.addPiecesNums(5, 3, true);
+        localStorage.getItem("cookiesAccepted") === "true";
+
+        this.addPiecesNums(5, 3);
         this.addPiecesNums(6, 4);
         this.addPiecesNums(8, 5);
         this.addPiecesNums(10, 6);
@@ -17,17 +19,24 @@ export default class PiecesCountDropdown extends Dropdown {
         this.addPiecesNums(25, 20);
     }
 
-    addPiecesNums(xCount: number, zCount: number, selected: boolean = false) {
+    addPiecesNums(xCount: number, zCount: number) {
         const count = xCount * zCount;
         const text = `${xCount} x ${zCount} = ${count} pieces`;
         this.addOption(text, () => { this.selectAction(xCount, zCount, text); });
 
-        if (selected) {
+        if (!localStorage.getItem("numPieces") || isNaN(Number(localStorage.getItem("numPieces")))) {
+            localStorage.setItem("numPieces", count.toString());
+        }
+
+        if (count === Number(localStorage.getItem("numPieces"))) {
             this.selectAction(xCount, zCount, text, false);
         }
     }
 
     selectAction(xCount: number, zCount: number, text: string, userAction: boolean = true) {
+        const count = xCount * zCount;
+        localStorage.setItem("numPieces", count.toString());
+
         const paddedText = "🧩 " + text + "   ▼"; // keep room for " ▼"
         this.setText(paddedText);
 
