@@ -53,6 +53,39 @@ class SceneContext {
         this._camera = camera;
         this._canvas = canvas;
         this._engine = engine;
+
+        const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+
+        if (isPortrait) {
+            let help = this._xLimit;
+            this._xLimit = this._zLimit;
+            this._zLimit = help;
+
+            this._latheWidth = this._xLimit * this._latheMulti;
+            this._latheHeight = this._zLimit * this._latheMultiY;
+            this._latheDepth = this._zLimit * this._latheMulti;
+            this._coverWidth = this._xLimit * this._coverMulti;
+            this._coverHeight = this._zLimit * this._coverMulti;
+            this._coverDepth = this._xLimit * 1 / 6;
+            this._kitWidth = this._xLimit * 1.4;
+            this._kitHeight = this._zLimit * 1.4;
+            this._pieceStepX = this._kitWidth / this._numX;
+            this._pieceStepZ = this._kitHeight / this._numZ;
+            this._pieceScaleX = this._pieceStepX / this._pieceEdge;
+            this._pieceScaleZ = this._pieceStepZ / this._pieceEdge;
+            this._pieceWidth = 2.5 * this._pieceScaleX;
+            this._pieceDepth = 2.5 * this._pieceScaleZ;
+            this._pieceHeight = 0.4;
+            this._pieceHeightHalf = this._pieceHeight / 2;
+            this._pieceWidthHalf = this._pieceWidth / 2;
+            this._pieceDepthHalf = this._pieceDepth / 2;
+            this._minX = -this._xLimit;
+            this._maxX = this._xLimit;
+            this._minZ = -this._zLimit;
+            this._maxZ = this._zLimit;
+            this._minY = -0.36;
+            this._piecesCount = this._numX * this._numZ;
+        }
     }
 
     get scene(): Scene {

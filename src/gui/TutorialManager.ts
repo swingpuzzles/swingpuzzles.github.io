@@ -85,7 +85,7 @@ Great job putting all the pieces together!
 
 Did you enjoy solving it?`;
     
-        popupHint.show(message, "PUZZLE SOLVED!", 0.55, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(message, "PUZZLE SOLVED!", 0.57, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 this.showBuyOfferMessage();
             },

@@ -33,7 +33,18 @@ class ShakeBehaviorManager {
     
             dragBehavior.onDragEndObservable.add(() => {
                 this.dragMovements(meshes, dragBehavior, origPosMap, origMin, origMax);
-                this.moveArcRotateCamera(3 * Math.PI / 2, 0, 42, dragBehavior.attachedNode.position);
+
+                const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+
+                // Base radius for landscape
+                let baseRadius = 42;
+                
+                // Adjust camera radius proportionally in portrait
+                let targetRadius = isPortrait
+                ? baseRadius * (ctx.engine.getRenderHeight() / ctx.engine.getRenderWidth())
+                : baseRadius;
+
+                this.moveArcRotateCamera(3 * Math.PI / 2, 0, targetRadius, dragBehavior.attachedNode.position);
     
                 for (const mesh of meshes) {
                     dragHelpers.disableDragBehavior(dragBehavior);

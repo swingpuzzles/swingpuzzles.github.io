@@ -129,8 +129,9 @@ class OpenCoverAnimation implements IPuzzleAnimation {
         // Target values
         const targetAlpha = 3 * Math.PI / 2;
         const targetBeta = Math.PI / 4;
-        const targetRadius = 60;
         const targetTarget = targetPos;
+
+        const targetRadius = 60;
 
         // Animation for alpha
         const animAlpha = new Animation("alphaAnim", "alpha", animSpeed, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);

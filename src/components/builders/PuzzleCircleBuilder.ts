@@ -1,5 +1,6 @@
 import { Vector3, Mesh, HighlightLayer, Color3 } from '@babylonjs/core';
-import amazonData from '../../assets/amazon-jigsaw.json';
+import amazonDataHoriz from '../../assets/amazon-jigsaw-horiz.json';
+import amazonDataVert from '../../assets/amazon-jigsaw-vert.json';
 import puzzleCoverBuilder from './PuzzleCoverBuilder';
 import ctx from '../common/SceneContext';
 import gameModeManager from '../behaviors/GameModeManager';
@@ -38,10 +39,13 @@ class PuzzleCircleBuilder {
             alphaBlendingMode: 2, // Use alpha blending mode for better performance
         });
 
-        const radius = 100;
-        const count = amazonData.length;
+        const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+        const data = isPortrait ? amazonDataVert : amazonDataHoriz;
 
-        amazonData.forEach((obj, index) => {
+        const radius = 100;
+        const count = data.length;
+
+        data.forEach((obj, index) => {
             const angle = (2 * Math.PI * index) / count;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);

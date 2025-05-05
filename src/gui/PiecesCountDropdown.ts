@@ -20,6 +20,14 @@ export default class PiecesCountDropdown extends Dropdown {
     }
 
     addPiecesNums(xCount: number, zCount: number) {
+        const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+
+        if (isPortrait) {
+            let help = xCount;
+            xCount = zCount;
+            zCount = help;
+        }
+
         const count = xCount * zCount;
         const text = `${xCount} x ${zCount} = ${count} pieces`;
         this.addOption(text, () => { this.selectAction(xCount, zCount, text); });
