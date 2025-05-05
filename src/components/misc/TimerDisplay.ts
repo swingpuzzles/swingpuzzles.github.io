@@ -35,6 +35,10 @@ class TimerDisplay {
             }
         });
     }
+
+    public getElapsedTime(): string {
+        return this.element.textContent!;
+    }
     
     private updateDisplay(): void {
         const totalSeconds = Math.floor(this.elapsed / 1000);
@@ -49,26 +53,29 @@ class TimerDisplay {
         this.element.style.display = 'block';
         this.updateDisplay();
 
-        if (this.interval) window.clearInterval(this.interval);
+        if (this.interval) {
+            window.clearInterval(this.interval);
+        }
+
         this.interval = window.setInterval(() => {
-        this.elapsed = Date.now() - this.startTime;
-        this.updateDisplay();
+            this.elapsed = Date.now() - this.startTime;
+            this.updateDisplay();
         }, 500);
     }
 
     public pause(): void {
         if (this.interval !== null) {
-        window.clearInterval(this.interval);
-        this.interval = null;
-        this.elapsed = Date.now() - this.startTime;
+            window.clearInterval(this.interval);
+            this.interval = null;
+            this.elapsed = Date.now() - this.startTime;
         }
     }
 
     public hide(): void {
         this.element.style.display = 'none';
         if (this.interval !== null) {
-        window.clearInterval(this.interval);
-        this.interval = null;
+            window.clearInterval(this.interval);
+            this.interval = null;
         }
     }
 }

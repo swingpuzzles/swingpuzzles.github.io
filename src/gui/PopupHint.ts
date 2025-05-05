@@ -12,25 +12,33 @@ class PopupHint {
     private topImage!: Image;
     private middleImage!: Image;
     private textAreaRect!: Rectangle;
+    private mainContainer!: Container;
     private mainRect!: Rectangle;
     private topRect!: Rectangle;
     private centerRect!: Rectangle;
     private bottomRect!: Rectangle;
+    private xButton!: Button;
     private _sizeCoef = 0.87;
     private _action: () => void = () => {};
+    private _closeAction: () => void = () => {};
 
     init() {
+        this.mainContainer = new Container("PopupHintContainer");
+        this.mainContainer.isVisible = false;
+        guiManager.advancedTexture.addControl(this.mainContainer);
+
         // Main Rectangle
-        this.mainRect = new Rectangle("Rectangle");
+        this.mainRect = new Rectangle("Container");
         this.mainRect.color = "#B15E0AFF";
         this.mainRect.thickness = 1;
         this.mainRect.shadowOffsetX = 2;
         this.mainRect.shadowOffsetY = 2;
         this.mainRect.shadowColor = "#B15E0AFF";
-        this.mainRect.isVisible = false;
         this.mainRect.isHitTestVisible = true;
         this.mainRect.isPointerBlocker = true;
-        guiManager.advancedTexture.addControl(this.mainRect);
+        this.mainRect.width = "100%";
+        this.mainRect.height = "100%";
+        this.mainContainer.addControl(this.mainRect);
 
         // Vertical StackPanel inside Rectangle
         const mainStack = new StackPanel("StackPanel");
@@ -95,6 +103,7 @@ class PopupHint {
         this.textAreaRect = new Rectangle("Rectangle");
         this.textAreaRect.height = "auto";
         this.textAreaRect.background = "#F9F6F1FF";
+        //this.textAreaRect.alpha = 0.5;
         this.textAreaRect.color = "#000000";
         this.textAreaRect.thickness = 0;
         this.textAreaRect.adaptHeightToChildren = true;
@@ -119,7 +128,7 @@ class PopupHint {
         this.bottomRect.color = "#AAAAAA";
         mainStack.addControl(this.bottomRect);
 
-        const gotItButton = Button.CreateImageOnlyButton("btn1", "assets/got-it-button-small.webp");
+        const gotItButton = Button.CreateImageOnlyButton("gotItButton", "assets/got-it-button-small.webp");
         gotItButton.thickness = 0;
         gotItButton.background = "";
         gotItButton.hoverCursor = "pointer";
@@ -138,6 +147,23 @@ class PopupHint {
 
         puzzleAssetsManager.addGuiImageButtonSource(gotItButton, "assets/got-it-button.webp");
 
+        this.xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button-trans.webp");
+        this.xButton.thickness = 0;
+        this.xButton.background = "";
+        this.xButton.hoverCursor = "pointer";
+        this.xButton.isHitTestVisible = true;
+        this.xButton.isPointerBlocker = true;
+        this.xButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this.xButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+
+        this.xButton.onPointerClickObservable.add(() => {
+            if (this._closeAction) {
+                this._closeAction();
+            }
+        });
+
+        this.mainContainer.addControl(this.xButton);
+
         sceneInitializer.addResizeObserver((width, height) => {
             this.resize();
         });
@@ -146,11 +172,11 @@ class PopupHint {
     private resize() {
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
         const mainHeight = minSize * this._sizeCoef;
-        this.mainRect.widthInPixels = minSize * 0.87;
-        this.mainRect.heightInPixels = mainHeight;
+        this.mainContainer.widthInPixels = minSize * 0.87;
+        this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
-        this.mainRect.paddingTopInPixels = minSize / 80;
-        this.mainRect.paddingBottomInPixels = minSize / 80;
+        this.mainContainer.paddingTopInPixels = minSize / 80;
+        this.mainContainer.paddingBottomInPixels = minSize / 80;
         this.topRect.heightInPixels = minSize * 0.2;
         this.centerRect.heightInPixels = mainHeight - (minSize * (0.3 + 1 / 40));
         this.bottomRect.heightInPixels = minSize * 0.1;
@@ -174,10 +200,17 @@ class PopupHint {
         this.inputTextArea.paddingLeftInPixels = 3 * minSize / 160;
         this.inputTextArea.paddingRightInPixels = 3 * minSize / 160;
         this.inputTextArea.paddingTopInPixels = minSize / 80;
+
+        this.xButton.widthInPixels = minSize / 15;
+        this.xButton.heightInPixels = minSize / 15;
+        this.xButton.paddingTopInPixels = minSize / 240;
+        this.xButton.paddingRightInPixels = minSize / 240;
     }
     
     public show(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
-            action: () => void = () => {}, verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER) : boolean {
+            verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
+            action: () => void = () => {},
+            closeAction: (() => void) | null = null) : boolean {
 
         this.hide();
 
@@ -189,18 +222,26 @@ class PopupHint {
         this.inputTextArea.text = "";
         this._sizeCoef = sizeCoef;
         this._action = action;
+
+        if (closeAction) {
+            this._closeAction = closeAction;
+            this.xButton.isVisible = true;
+        } else {
+            this.xButton.isVisible = false;
+        }
+        
         this.resize();
-        this.mainRect.zIndex = shaderMode === ShaderMode.SHADOW_WINDOW ? 20 : 50;
-        this.mainRect.verticalAlignment = verticalAlignment;
+        this.mainContainer.zIndex = shaderMode === ShaderMode.SHADOW_WINDOW ? 20 : 50;
+        this.mainContainer.verticalAlignment = verticalAlignment;
         screenShader.setShaderMode(shaderMode);
         this.typeTextLetterByLetter(fullText);
-        this.mainRect.isVisible = true;
+        this.mainContainer.isVisible = true;
 
         return true;
     }
 
     public hide() {
-        this.mainRect.isVisible = false;
+        this.mainContainer.isVisible = false;
         handImagePool.releaseAll();
     }
 
