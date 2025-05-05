@@ -5,7 +5,6 @@ import dragPolygonBuilder from "../builders/DragPolygonBuilder";
 import celebrationAnimation from "../animations/CelebrationAnimation";
 import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
 import gameModeManager from "./GameModeManager";
-import tutorialManager from "../../gui/TutorialManager";
 
 class DragHelpers {
     removeDragBehavior(mesh: Mesh): void {
@@ -123,7 +122,7 @@ class DragHelpers {
                 yield;
                 gameModeManager.enterCelebrationMode();
                 celebrationAnimation.animate(puzzleGameBuilder.underCoverMeshes[0]);
-                tutorialManager.showCongratsMessage();
+                //tutorialManager.showCongratsMessage();
             };
             ctx.scene.onBeforeRenderObservable.runCoroutineAsync(delayModeSwitchCoroutine());
         }

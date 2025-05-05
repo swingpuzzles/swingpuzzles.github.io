@@ -5,11 +5,20 @@ import ctx from "../components/common/SceneContext";
 import screenShader, { ShaderMode } from "./ScreenShader";
 import guiManager from "./GuiManager";
 import handImagePool from "./HandImagePool";
+import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
+
+export enum PopupMode {
+    Normal,
+    PreSell,
+    Sell
+}
 
 class PopupHint {
     private inputTextArea!: TextBlock;
     private welcomeText!: TextBlock;
     private topImage!: Image;
+    private centerImage!: Image;
+    private coverImage!: Image;
     private middleImage!: Image;
     private textAreaRect!: Rectangle;
     private mainContainer!: Container;
@@ -17,6 +26,10 @@ class PopupHint {
     private topRect!: Rectangle;
     private centerRect!: Rectangle;
     private bottomRect!: Rectangle;
+    private gotItButton!: Button;
+    private yesIDidButton!: Button;
+    private getItButton!: Button;
+    private notNowButton!: Button;
     private xButton!: Button;
     private _sizeCoef = 0.87;
     private _action: () => void = () => {};
@@ -74,16 +87,19 @@ class PopupHint {
         this.centerRect = new Rectangle("Rectangle");
         this.centerRect.width = "100%";
         this.centerRect.height = "100%";
-        this.centerRect.background = "#FAF0E5FF";
+        this.centerRect.background = "#FFFFFFFF";
         this.centerRect.color = "#AAAAAA";
         mainStack.addControl(this.centerRect);
 
-        const centerImage = new Image("Image", "assets/popup-bg.webp");
-        centerImage.width = "100%";
-        centerImage.height = "100%";
-        this.centerRect.addControl(centerImage);
+        this.centerImage = new Image("Image", "assets/popup-bg.webp");
+        this.centerImage.width = "100%";
+        this.centerImage.height = "100%";
+        this.centerRect.addControl(this.centerImage);
 
-        puzzleAssetsManager.addGuiImageSource(centerImage, "assets/popup-bg.webp");
+        this.coverImage = new Image("Image", "");
+        this.coverImage.stretch = Image.STRETCH_UNIFORM;
+        this.coverImage.isVisible = false;
+        this.centerRect.addControl(this.coverImage);
 
         // Middle Rectangle (with InputTextArea)
         const middleStack = new StackPanel("StackPanel");
@@ -103,7 +119,6 @@ class PopupHint {
         this.textAreaRect = new Rectangle("Rectangle");
         this.textAreaRect.height = "auto";
         this.textAreaRect.background = "#F9F6F1FF";
-        //this.textAreaRect.alpha = 0.5;
         this.textAreaRect.color = "#000000";
         this.textAreaRect.thickness = 0;
         this.textAreaRect.adaptHeightToChildren = true;
@@ -128,24 +143,77 @@ class PopupHint {
         this.bottomRect.color = "#AAAAAA";
         mainStack.addControl(this.bottomRect);
 
-        const gotItButton = Button.CreateImageOnlyButton("gotItButton", "assets/got-it-button-small.webp");
-        gotItButton.thickness = 0;
-        gotItButton.background = "";
-        gotItButton.hoverCursor = "pointer";
-        gotItButton.width = "40%";
-        gotItButton.height = "90%";
-        gotItButton.isHitTestVisible = true;
-        gotItButton.isPointerBlocker = true;
+        this.gotItButton = Button.CreateImageOnlyButton("gotItButton", "assets/got-it-button-small.webp");
+        this.gotItButton.thickness = 0;
+        this.gotItButton.background = "";
+        this.gotItButton.hoverCursor = "pointer";
+        this.gotItButton.width = "40%";
+        this.gotItButton.height = "90%";
+        this.gotItButton.isHitTestVisible = true;
+        this.gotItButton.isPointerBlocker = true;
 
-        gotItButton.onPointerClickObservable.add(() => {
+        this.gotItButton.onPointerClickObservable.add(() => {
             if (this._action) {
                 this._action();
             }
         });
 
-        this.bottomRect.addControl(gotItButton);
+        this.bottomRect.addControl(this.gotItButton);
 
-        puzzleAssetsManager.addGuiImageButtonSource(gotItButton, "assets/got-it-button.webp");
+        puzzleAssetsManager.addGuiImageButtonSource(this.gotItButton, "assets/got-it-button.webp");
+
+        this.yesIDidButton = Button.CreateImageOnlyButton("yesIDidButton", "assets/yes-i-did-button.webp");
+        this.yesIDidButton.thickness = 0;
+        this.yesIDidButton.background = "";
+        this.yesIDidButton.hoverCursor = "pointer";
+        this.yesIDidButton.width = "40%";
+        this.yesIDidButton.height = "90%";
+        this.yesIDidButton.isHitTestVisible = true;
+        this.yesIDidButton.isPointerBlocker = true;
+
+        this.yesIDidButton.onPointerClickObservable.add(() => {
+            if (this._action) {
+                this._action();
+            }
+        });
+
+        this.bottomRect.addControl(this.yesIDidButton);
+
+        this.notNowButton = Button.CreateImageOnlyButton("notNowButton", "assets/not-now-button.webp");
+        this.notNowButton.thickness = 0;
+        this.notNowButton.background = "";
+        this.notNowButton.hoverCursor = "pointer";
+        this.notNowButton.paddingLeft = "5%";
+        this.notNowButton.width = "45%";
+        this.notNowButton.height = "90%";
+        this.notNowButton.isHitTestVisible = true;
+        this.notNowButton.isPointerBlocker = true;
+        this.notNowButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+
+        this.notNowButton.onPointerClickObservable.add(() => {
+            this.hide();
+        });
+
+        this.bottomRect.addControl(this.notNowButton);
+
+        this.getItButton = Button.CreateImageOnlyButton("getItButton", "assets/banner.png");
+        this.getItButton.thickness = 0;
+        this.getItButton.background = "";
+        this.getItButton.hoverCursor = "pointer";
+        this.getItButton.paddingRight = "5%";
+        this.getItButton.width = "50%";
+        this.getItButton.height = "92%";
+        this.getItButton.isHitTestVisible = true;
+        this.getItButton.isPointerBlocker = true;
+        this.getItButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+
+        this.getItButton.onPointerClickObservable.add(() => {
+            if (this._action) {
+                this._action();
+            }
+        });
+
+        this.bottomRect.addControl(this.getItButton);
 
         this.xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button-trans.webp");
         this.xButton.thickness = 0;
@@ -181,7 +249,7 @@ class PopupHint {
         this.centerRect.heightInPixels = mainHeight - (minSize * (0.3 + 1 / 40));
         this.bottomRect.heightInPixels = minSize * 0.1;
         this.welcomeText.widthInPixels = minSize * 0.62;
-        this.welcomeText.fontSizeInPixels = minSize / 12;
+        this.welcomeText.fontSizeInPixels = minSize / 14;
 
         const imageWidth = minSize * 0.2;
         const imageHeight = minSize * 0.185;
@@ -210,12 +278,43 @@ class PopupHint {
     public show(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
             verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
             action: () => void = () => {},
-            closeAction: (() => void) | null = null) : boolean {
+            closeAction: (() => void) | null = null,
+            mode: PopupMode = PopupMode.Normal) : boolean {
 
         this.hide();
 
-        if (localStorage.getItem("tutorialDone") === "true") {
-            return false;
+        switch (mode) {
+            case PopupMode.PreSell:
+                this.gotItButton.isVisible = false;
+                this.yesIDidButton.isVisible = true;
+                this.getItButton.isVisible = false;
+                this.notNowButton.isVisible = false;
+                this.centerImage.isVisible = true;
+                this.coverImage.isVisible = false;
+                this.textAreaRect.alpha = 1;
+                this.coverImage.source = puzzleCircleBuilder.selectedCoverUrl;
+                break;
+            case PopupMode.Sell:
+                this.gotItButton.isVisible = false;
+                this.yesIDidButton.isVisible = false;
+                this.getItButton.isVisible = true;
+                this.notNowButton.isVisible = true;
+                this.centerImage.isVisible = false;
+                this.coverImage.isVisible = true;
+                this.textAreaRect.alpha = 0.8;
+                break;
+            default:
+                if (localStorage.getItem("tutorialDone") === "true") {
+                    return false;
+                }
+
+                this.gotItButton.isVisible = true;
+                this.yesIDidButton.isVisible = false;
+                this.getItButton.isVisible = false;
+                this.notNowButton.isVisible = false;
+                this.centerImage.isVisible = true;
+                this.coverImage.isVisible = false;
+                this.textAreaRect.alpha = 1;
         }
 
         this.welcomeText.text = heading;

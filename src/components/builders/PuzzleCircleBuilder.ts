@@ -4,18 +4,26 @@ import puzzleCoverBuilder from './PuzzleCoverBuilder';
 import ctx from '../common/SceneContext';
 import gameModeManager from '../behaviors/GameModeManager';
 
+interface CoverData {
+    imgCoverUrl: string;
+    link: string;
+}
+
 class PuzzleCircleBuilder {
-    private covers: Map<Mesh, string> = new Map();
+    private covers: Map<Mesh, CoverData> = new Map();
     private highlightedCover: Mesh | null = null;
     private highlightLayer!: HighlightLayer;
     private closestMesh: Mesh | null = null;
-    private closestLink: string | null = null;
 
     constructor() {
     }
 
     public get selectedLink(): string {
-        return this.closestLink!;
+        return this.covers.get(this.closestMesh!)!.link;
+    }
+
+    public get selectedCoverUrl(): string {
+        return this.covers.get(this.closestMesh!)!.imgCoverUrl;
     }
 
     public get selectedCover(): Mesh {
@@ -34,17 +42,15 @@ class PuzzleCircleBuilder {
         const count = amazonData.length;
 
         amazonData.forEach((obj, index) => {
-            const link = obj.link;
             const angle = (2 * Math.PI * index) / count;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);
             const position = new Vector3(x, -38, z);
-
-            const cover = puzzleCoverBuilder.createCover(obj.imgSmallUrl, obj.imgBigUrl, obj.imgCoverUrl);
+            const cover = puzzleCoverBuilder.createCover(obj.imgSmallUrl, obj.imgBigUrl);
             cover.position = position;
             cover.rotation.y = -angle + Math.PI / 2;
 
-            this.covers.set(cover, link);
+            this.covers.set(cover, { imgCoverUrl: obj.imgCoverUrl, link: obj.link });
         });
 
         ctx.scene.onBeforeRenderObservable.add(() => {
@@ -71,7 +77,6 @@ class PuzzleCircleBuilder {
             if (dist < minDistance) {
                 minDistance = dist;
                 this.closestMesh = cover;
-                this.closestLink = link;
             }
         }
 

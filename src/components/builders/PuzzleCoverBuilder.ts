@@ -4,7 +4,7 @@ import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
 
 class PuzzleCoverBuilder {
-    createCover(imgSmallUrl: string, imgBigUrl: string, imgCoverUrl: string): Mesh {
+    createCover(imgSmallUrl: string, imgBigUrl: string): Mesh {
         const box = MeshBuilder.CreateBox("box", {
             width: ctx.coverWidth,
             height: ctx.coverHeight,

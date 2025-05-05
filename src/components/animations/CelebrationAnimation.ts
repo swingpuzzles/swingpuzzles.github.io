@@ -2,6 +2,7 @@ import { Color4, Mesh, ParticleSystem, Animation, Texture, Vector3, SineEase, Ea
 import IPuzzleAnimation from "./IPuzzleAnimation";
 import ctx from "../common/SceneContext";
 import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
+import tutorialManager from "../../gui/TutorialManager";
 
 class CelebrationAnimation implements IPuzzleAnimation {
     private particleSystem!: ParticleSystem;
@@ -11,9 +12,9 @@ class CelebrationAnimation implements IPuzzleAnimation {
         this.particleSystem.start();
         setTimeout(() => {
             if (gameModeManager.celebrationMode) {
-                alert('kúp si to!')
+                tutorialManager.showCongratsMessage();
             }
-        }, 2000);
+        }, 1500);
 
         ctx.jigsawPieces.forEach(piece => {
             const pieceData = ctx.piecesMap.get(piece);

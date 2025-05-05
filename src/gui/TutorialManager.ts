@@ -1,9 +1,10 @@
 import { Control } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
-import popupHint from "./PopupHint";
+import popupHint, { PopupMode } from "./PopupHint";
 import screenShader, { ShaderMode } from "./ScreenShader";
 import handImagePool from "./HandImagePool";
 import timerDisplay from "../components/misc/TimerDisplay";
+import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 
 class TutorialManager {
     init() {
@@ -84,26 +85,32 @@ Great job putting all the pieces together!
 
 Did you enjoy solving it?`;
     
-        popupHint.show(message, "PUZZLE SOLVED!", 0.65, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(message, "PUZZLE SOLVED!", 0.55, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 this.showBuyOfferMessage();
             },
             () => {
                 popupHint.hide();
-            });
+            },
+            PopupMode.PreSell);
     }
 
     public showBuyOfferMessage() {
         const message = `🧩 Love that puzzle?
     
-    If you'd like to own it in real life, you can order a high-quality physical version — perfect for your coffee table or as a gift.
+If you'd like to own it in real life, you can order a high-quality physical version — perfect for your coffee table or as a gift.
+
+Available now on Amazon!`;
     
-    Available now on Amazon!`;
-    
-        popupHint.show(message, "TAKE IT HOME?", 0.7, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER, () => {
-            // Insert logic to open Amazon product page
-            popupHint.hide();
-        });
+        popupHint.show(message, "TAKE IT HOME?", 0.8, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
+            () => {
+                window.open(puzzleCircleBuilder.selectedLink, "_blank");
+                popupHint.hide();
+            },
+            () => {
+                popupHint.hide();
+            },
+            PopupMode.Sell);
     }
 
     private finishTutorial() {
