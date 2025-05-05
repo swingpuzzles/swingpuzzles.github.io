@@ -12,6 +12,7 @@ class PuzzleCoverBuilder {
         }, ctx.scene);
 
         const texture = puzzleAssetsManager.addTexture(imgSmallUrl, imgBigUrl);
+        texture.uScale = -1;
 
         const mat = new StandardMaterial("mat", ctx.scene);
         mat.diffuseTexture = texture;

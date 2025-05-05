@@ -5,7 +5,6 @@ import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
 
 class PuzzleGameBuilder {
-    private _texture: Texture | null = null;
     private _building: boolean = false;
     private _lathe!: Mesh;
     private _ground!: Mesh;
@@ -16,9 +15,6 @@ class PuzzleGameBuilder {
     private _left!: Mesh;
     private _middle!: Mesh;
 
-    get texture(): Texture | null {
-        return this._texture;
-    }
     get building(): boolean {
         return this._building;
     }
@@ -83,9 +79,6 @@ class PuzzleGameBuilder {
         this._building = true;
 
         shakeBehaviorManager.enableDragBehaviors();
-
-        const puzzleTexture = (cover.material as StandardMaterial).diffuseTexture as Texture;
-        this._texture = puzzleTexture;
 
         ctx.resetBoundings(cover.position);
 
