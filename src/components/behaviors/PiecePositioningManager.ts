@@ -12,7 +12,7 @@ class PiecePositioningManager {
     }
 
     checkPiecePositions(): void {
-        if (!gameModeManager.solveMode) {
+        if (!gameModeManager.solveMode && !gameModeManager.shakeMode) {
             return;
         }
 
@@ -72,6 +72,10 @@ class PiecePositioningManager {
                 return;
             }
     
+            if (gameModeManager.shakeMode) {
+                return;
+            }
+                
             const centerPoint = new Vector3((ctx.maxX + ctx.minX) / 2, 20 - ctx.minY, (ctx.maxZ + ctx.minZ) / 2);
             const directionToCenter = centerPoint.subtract(edgePos).normalize();
     

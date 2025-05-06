@@ -32,6 +32,8 @@ class ShakeBehaviorManager {
             });
     
             dragBehavior.onDragEndObservable.add(() => {
+                gameModeManager.enterSolveMode();
+
                 this.dragMovements(meshes, dragBehavior, origPosMap, origMin, origMax);
 
                 const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
@@ -67,7 +69,7 @@ class ShakeBehaviorManager {
     }
     
     private togglePhysicsAndShake(): void {
-        gameModeManager.enterSolveMode();
+        gameModeManager.enterShakeMode();
         
         ctx.jigsawPieces!.forEach(piece => {
             meshHelpers.excludeFromParent(piece);

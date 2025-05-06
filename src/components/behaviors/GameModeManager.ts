@@ -5,6 +5,7 @@ import piecePositioningManager from "./PiecePositioningManager";
 export enum GameMode {
     Initial,
     OpenCover,
+    Shake,
     Solve,
     Celebration
 }
@@ -18,6 +19,9 @@ class GameModeManager {
     }
     get openCoverMode() {
         return this._currentMode == GameMode.OpenCover;
+    }
+    get shakeMode() {
+        return this._currentMode == GameMode.Shake;
     }
     get solveMode() {
         return this._currentMode == GameMode.Solve;
@@ -60,6 +64,12 @@ class GameModeManager {
         ctx.camera.detachControl();
 
         tutorialManager.showShakeHint();
+    }
+
+    enterShakeMode() {
+        this.resetAll(GameMode.Shake);
+        
+        piecePositioningManager.init();
     }
 
     enterSolveMode() {
