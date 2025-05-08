@@ -1,8 +1,8 @@
-import { CSG2, Mesh, MeshBuilder, StandardMaterial, Texture, Vector3 } from "@babylonjs/core";
+import { Color3, CSG2, Mesh, MeshBuilder, PhysicsBody, PhysicsMotionType, StandardMaterial, Texture, Vector3 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
-import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
+import physicsAggregateBuilder from "./PhysicsAggregateBuilder";
 
 class PuzzleGameBuilder {
     private _building: boolean = false;
@@ -22,7 +22,6 @@ class PuzzleGameBuilder {
         return [this._lathe, this._ground, this._groundVis, this._groundCover];
     }
     
-
     public init() {
         const mat = new StandardMaterial("mat", ctx.scene);
         mat.backFaceCulling = false;
@@ -41,10 +40,17 @@ class PuzzleGameBuilder {
         this._lathe.bakeCurrentTransformIntoVertices();
         this._lathe.scaling = new Vector3(ctx.latheWidth, ctx.latheHeight, ctx.latheDepth);
 
-        this._ground = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
-        this._ground.visibility = 0;
+        this._ground = MeshBuilder.CreateBox("ground", {
+            width: ctx.xLimit * 2,
+            height: 0.5, // thin, but has volume
+            depth: ctx.zLimit * 2,
+        }, ctx.scene);
         
-        physicsImpostorBuilder.attachGroundImpostor(this._ground);
+        this._ground.visibility = 0;
+
+        const body = new PhysicsBody(this._ground, PhysicsMotionType.STATIC, false, ctx.scene);
+        
+        //physicsAggregateBuilder.attachGroundAggregate(this._ground);
 
         this._groundVis = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
 
@@ -55,8 +61,6 @@ class PuzzleGameBuilder {
         this._top = puzzleBuilder.createPuzzlePiece(true, false, 1);
         this._left = puzzleBuilder.createPuzzlePiece(false, true, 2);
         this._middle = puzzleBuilder.createPuzzlePiece(false, false, 3);
-
-        shakeBehaviorManager.addShakeBehavior([this._lathe, this._ground, this._groundVis, this._groundCover]);
     }
 
     public clear() {
@@ -83,13 +87,31 @@ class PuzzleGameBuilder {
         ctx.resetBoundings(cover.position);
 
         this._lathe.position = cover.position.clone();
-        this._lathe.position.y = ctx.minY - 3.48;
-        this._ground.position = cover.position.clone();
-        this._ground.position.y = ctx.minY + 0.26;
+        this._lathe.position.y = ctx.minY - 0.48;
         this._groundVis.position = cover.position.clone();
-        this._groundVis.position.y = ctx.minY - 3.5;
+        this._groundVis.position.y = ctx.minY - 0.5;
+
+        this._ground.position = cover.position.clone();
+        this._ground.position.y = ctx.minY + 0.15;
+        this._ground.computeWorldMatrix(true); // important: update world matrix
+
+        //physicsAggregateBuilder.attachGroundAggregate(this._ground);
+        if (this._ground.physicsAggregate) {
+            this._ground.physicsAggregate.dispose();
+            this._ground.physicsAggregate = undefined;
+        }
+
+        physicsAggregateBuilder.attachGroundAggregate(this._ground);
+
+        //const position = cover.position.clone();
+        //position.y = ctx.minY + 0.26;
+        
+        //this._ground.physicsAggregate?.body?.transformNode.computeWorldMatrix(true); // ensures physics uses new transform
+        
         this._groundCover.position = cover.position.clone();
         this._groundCover.position.y = ctx.minY + 1;
+
+        shakeBehaviorManager.addShakeBehavior([this._lathe, this._ground, this._groundVis, this._groundCover]);
 
         const startX = -ctx.kitWidth / 2;
         const startZ = ctx.kitHeight / 2;
@@ -132,7 +154,7 @@ class PuzzleGameBuilder {
                 }, ctx.scene);
 
                 newMeshHolePlate.position.addInPlace(cover.position);
-                newMeshHolePlate.position.y -= 2;
+                //newMeshHolePlate.position.y -= 2;
                 boundingBox.position = newMeshHolePlate.position.clone();
                 boundingBox.visibility = 0;
                 boundingBox.isPickable = true;

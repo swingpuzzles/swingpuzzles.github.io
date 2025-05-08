@@ -1,5 +1,5 @@
 import { Mesh } from "@babylonjs/core";
-import physicsImpostorBuilder from "../builders/PhysicsImpostorBuilder";
+import physicsAggregateBuilder from "../builders/PhysicsAggregateBuilder";
 import AbstractDragManager from "./AbstractDragManager";
 
 class PieceDragManager extends AbstractDragManager {
@@ -12,8 +12,8 @@ class PieceDragManager extends AbstractDragManager {
             return;
         }
 
-        if (!draggedNode.physicsImpostor && !draggedNode.parent) {
-            physicsImpostorBuilder.attachDragPolygonImpostor(draggedNode);
+        if (!draggedNode.physicsAggregate && !draggedNode.parent) {
+            physicsAggregateBuilder.attachPuzzlePieceAggregate(draggedNode);
         }
     }
 }

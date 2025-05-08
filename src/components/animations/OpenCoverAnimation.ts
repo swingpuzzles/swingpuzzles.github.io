@@ -51,7 +51,7 @@ class OpenCoverAnimation implements IPuzzleAnimation {
         const worldFront = Vector3.TransformCoordinates(localFront, Matrix.RotationY(rotationY));
 
         const moveDistanceUp = 10;
-        const moveDistanceSide = 50;
+        const moveDistanceSide = 80 - 15 * (1 - Math.cos(rotationY));
         const moveOffset = worldFront.scale(moveDistanceSide).add(new Vector3(0, moveDistanceUp, 0));
 
         const endPos = startPos.add(moveOffset);

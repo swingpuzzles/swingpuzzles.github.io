@@ -1,7 +1,7 @@
-import ammo from "ammojs-typed";
+import HavokPhysics from "@babylonjs/havok";
 import "@babylonjs/loaders"; // Required if you load external models
 import ctx from "./common/SceneContext";
-import { AmmoJSPlugin, ArcRotateCamera, Engine, HemisphericLight, InitializeCSG2Async, Scene, Vector3 } from "@babylonjs/core";
+import { HavokPlugin, ArcRotateCamera, Engine, InitializeCSG2Async, Scene, Vector3 } from "@babylonjs/core";
 import sceneBuilder from "./builders/SceneBuilder";
 import puzzleAssetsManager from "./behaviors/PuzzleAssetsManager";
 import guiManager from "../gui/GuiManager";
@@ -12,6 +12,13 @@ import timerDisplay from "./misc/TimerDisplay";
 import tutorialManager from "../gui/TutorialManager";
 import handImagePool from "../gui/HandImagePool";
 
+
+declare global {
+    interface GlobalThis {
+      HK: any;
+    }
+  }
+  
 class SceneInitializer {
     private resizeObservers: ((width: number, height: number) => void)[] = [];
 
@@ -26,9 +33,18 @@ class SceneInitializer {
         const engine = new Engine(canvas, true);
 
         window.addEventListener("DOMContentLoaded", async () => {
-            await ammo.bind(window)()
+         
+            //const havokPlugin = new HavokPlugin(true, havokInstance);
+            await createScene();
+                      /*const buffer = await response.arrayBuffer();
+            const module = await WebAssembly.compile(buffer);
+            
+            const havok = await HavokPhysics({ wasmModule: module });*/
+                        // ✅ Load Havok WASM
+            /*(window as any).BABYLON_HAVOK_WASM_URL = "/havok/HavokPhysics.wasm";
+            (globalThis as any).HK = await HavokPhysics();
         
-            await createScene(); // Assuming createScene is already defined globally or imported
+            await createScene((globalThis as any).HK);*/ // Assuming createScene is already defined globally or imported
 
             engine.resize();
 
@@ -56,12 +72,22 @@ class SceneInitializer {
             camera.beta = 17 * Math.PI / 32;
 
             ctx.init(scene, camera, canvas, engine);
-            puzzleAssetsManager.init();
 
-            const physicsPlugin = new AmmoJSPlugin(true);
+            (window as any).BABYLON_HAVOK_WASM_URL = "/havok/HavokPhysics.wasm";
+
+            const response = await fetch("/havok/HavokPhysics.wasm");
+            const wasmBinaryArrayBuffer = await response.arrayBuffer();
+
+            const havokInstance = await HavokPhysics({
+              wasmBinary: wasmBinaryArrayBuffer,
+            });
+
+            const physicsPlugin = new HavokPlugin(true, havokInstance);
             scene.enablePhysics(new Vector3(0, -9.81, 0), physicsPlugin);
 
             await InitializeCSG2Async();
+
+            puzzleAssetsManager.init();
 
             sceneBuilder.buildScene();
 
@@ -71,8 +97,6 @@ class SceneInitializer {
 
             puzzleGameBuilder.init();
 
-            gameModeManager.leaveWaiting();
-
             celebrationAnimation.init();
 
             timerDisplay.init();
@@ -80,6 +104,8 @@ class SceneInitializer {
             handImagePool.init();
 
             tutorialManager.init();
+
+            gameModeManager.leaveWaiting();
 
             return scene;
         };

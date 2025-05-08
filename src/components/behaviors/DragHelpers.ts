@@ -51,9 +51,14 @@ class DragHelpers {
     parentUpMeshes(mesh: Mesh, parent: Mesh): Mesh {
         const neighbourTopParent = meshHelpers.getTopParent(parent);
 
-        if (neighbourTopParent.physicsImpostor) {
-            neighbourTopParent.physicsImpostor.dispose();
-            neighbourTopParent.physicsImpostor = null;
+        if (neighbourTopParent.physicsAggregate) {
+            neighbourTopParent.physicsAggregate.dispose();
+            neighbourTopParent.physicsAggregate = undefined;
+        }
+
+        if (mesh.physicsAggregate) {
+            mesh.physicsAggregate.dispose();
+            mesh.physicsAggregate = undefined;
         }
 
         mesh.setParent(neighbourTopParent);
@@ -70,6 +75,7 @@ class DragHelpers {
 
         meshHelpers.makeChildrenSiblings(mesh);
         dragHelpers.removeDragBehavior(neighbourTopParent);
+        dragHelpers.removeDragBehavior(mesh);
 
         return neighbourTopParent;
     }

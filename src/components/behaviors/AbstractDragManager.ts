@@ -13,9 +13,9 @@ abstract class AbstractDragManager {
             let draggedNode = dragBehavior.attachedNode as Mesh;
             rotationToZeroAnimation.animate(draggedNode);
     
-            if (draggedNode.physicsImpostor) {
-                draggedNode.physicsImpostor.dispose();
-                draggedNode.physicsImpostor = null;
+            if (draggedNode.physicsAggregate) {
+                draggedNode.physicsAggregate.dispose();
+                draggedNode.physicsAggregate = undefined;
             }
         });
     

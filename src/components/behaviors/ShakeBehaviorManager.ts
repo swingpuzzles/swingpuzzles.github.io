@@ -1,9 +1,9 @@
-import { Mesh, PointerDragBehavior, Vector3, Animation } from "@babylonjs/core";
+import { Mesh, PointerDragBehavior, Vector3, Animation, Scalar } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import meshHelpers from "../common/MeshHelpers";
 import dragHelpers from "./DragHelpers";
 import pieceDragManager from "./PieceDragManager"; // Ensure this path is correct
-import physicsImpostorBuilder from "../builders/PhysicsImpostorBuilder";
+import physicsAggregateBuilder from "../builders/PhysicsAggregateBuilder";
 import gameModeManager from "./GameModeManager";
 
 class ShakeBehaviorManager {
@@ -78,11 +78,12 @@ class ShakeBehaviorManager {
         ctx.jigsawPieces!.forEach(piece => {
             this.ensureDragBehavior(piece);
     
-            if (piece.physicsImpostor) {
-                piece.physicsImpostor.dispose();
+            if (piece.physicsAggregate) {
+                piece.physicsAggregate.dispose();
+                piece.physicsAggregate = undefined;
             }
     
-            physicsImpostorBuilder.attachInitialPuzzlePieceImpostor(piece);
+            physicsAggregateBuilder.attachInitialPuzzlePieceAggregate(piece);
         });
     
         ctx.jigsawPieces.forEach(piece => {
@@ -92,17 +93,35 @@ class ShakeBehaviorManager {
                 (Math.random() - 0.5) * shakePower,
                 (Math.random() - 0.5) * shakePower - piece.position.z * 0.01
             );
-            piece.physicsImpostor!.applyImpulse(randomImpulse, piece.getAbsolutePosition());
+            piece.physicsAggregate!.body.applyImpulse(randomImpulse, piece.getAbsolutePosition());
         });
     }
 
     private dragMovements(meshes: Mesh[], dragBehavior: PointerDragBehavior, origPosMap: Map<Mesh, Vector3>, origMin: Vector3, origMax: Vector3): void {
         const attachedNode = dragBehavior.attachedNode as Mesh;
+
+        const limit = 175;
+        const minX = -limit, maxX = limit;
+        const minZ = -limit, maxZ = limit;
+        const minY = -38;
+        const maxY = 38;
+
+        attachedNode.position.x = Scalar.Clamp(attachedNode.position.x, minX, maxX);
+        attachedNode.position.y = Scalar.Clamp(attachedNode.position.y, minY, maxY);
+        attachedNode.position.z = Scalar.Clamp(attachedNode.position.z, minZ, maxZ);
+        
         const moveVector = attachedNode.position.subtract(origPosMap.get(attachedNode)!);
 
         for (const mesh of meshes) {
             if (mesh !== attachedNode) {
-                mesh.position.copyFrom(origPosMap.get(mesh)!.add(moveVector));
+                if (mesh.physicsAggregate) {
+                    mesh.physicsAggregate.dispose();
+                    mesh.physicsAggregate = undefined;
+                    mesh.position.copyFrom(origPosMap.get(mesh)!.add(moveVector));
+                    physicsAggregateBuilder.attachGroundAggregate(mesh);
+                } else {
+                    mesh.position.copyFrom(origPosMap.get(mesh)!.add(moveVector));
+                }
             }
         }
 

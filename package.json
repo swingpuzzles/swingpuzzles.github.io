@@ -1,8 +1,9 @@
 {
   "license": "MIT",
   "dependencies": {
-    "@babylonjs/core": "^8.0.1",
+    "@babylonjs/core": "^8.6.1",
     "@babylonjs/gui": "^8.1.1",
+    "@babylonjs/havok": "^1.3.10",
     "@babylonjs/loaders": "^8.0.1",
     "@types/earcut": "^3.0.0",
     "ammojs-typed": "^1.0.6",
@@ -15,10 +16,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "deploy:prod": "git checkout prod && git pull origin prod && yarn build && gh-pages -d dist -b gh-pages && git checkout main"
+    "deploy:prod": "git checkout prod && git pull origin prod && yarn build && gh-pages -d dist -b gh-pages && git checkout main",
+    "postinstall": "cpx node_modules/@babylonjs/havok/lib/esm/HavokPhysics.wasm dist/havok"
   },
   "devDependencies": {
+    "@types/node": "^22.15.14",
+    "cpx": "^1.5.0",
     "typescript": "^5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "vite-plugin-static-copy": "^2.3.1"
   }
 }

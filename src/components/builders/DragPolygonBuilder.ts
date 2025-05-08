@@ -1,7 +1,7 @@
 import { Mesh, PolygonMeshBuilder, Vector2 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import * as earcut from "earcut";
-import physicsImpostorBuilder from "./PhysicsImpostorBuilder";
+import physicsAggregateBuilder from "./PhysicsAggregateBuilder";
 import polygonDragManager from "../behaviors/PolygonDragManager";
 (window as any).earcut = earcut;
 
@@ -152,9 +152,9 @@ class DragPolygonBuilder {
         const extrudedMesh = polygon.build(false, 1);
         extrudedMesh.position.x = centerX;
         extrudedMesh.position.z = centerZ;
-        extrudedMesh.position.y = 5;
+        extrudedMesh.position.y = ctx.minY + 2;
 
-        physicsImpostorBuilder.attachDragPolygonImpostor(extrudedMesh);
+        physicsAggregateBuilder.attachDragPolygonAggregate(extrudedMesh);
     
         polygonDragManager.addDragBehavior(extrudedMesh);
 
