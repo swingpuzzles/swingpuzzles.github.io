@@ -132,7 +132,16 @@ class GuiManager {
                 this.piecesCountDropdown.isVisible = false;
                 this.bottomButtonPanel.paddingBottom = renderHeight / 192 + "px";//"5px";
                 break;
-        }
+            case GameMode.Celebration:
+                this.playButton.isVisible = false;
+                this.menuButton.isVisible = false;
+                this.xButton.isVisible = true;
+                this.bannerButton.width = renderHeight / 3.7 + "px";//"248px";
+                this.bannerButton.height = renderHeight / 14.8 + "px";//"62px";
+                this.piecesCountDropdown.isVisible = false;
+                this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
+                break;
+            }
     }
 }
 

@@ -78,15 +78,11 @@ class PiecePositioningManager {
             } else {
                 return;
             }
-    
-            /*if (gameModeManager.shakeMode) {
-                return;
-            }*/
                 
             const centerPoint = new Vector3((ctx.maxX + ctx.minX) / 2, 20 - ctx.minY, (ctx.maxZ + ctx.minZ) / 2);
             const directionToCenter = centerPoint.subtract(edgePos).normalize();
     
-            if (element.physicsAggregate) {
+            if (element.physicsAggregate && !isPolygon) {
                 const power = 1.5;
             
                 const body = element.physicsAggregate.body;
@@ -100,13 +96,13 @@ class PiecePositioningManager {
                 const maxAngularSpeed = 1;
                 const angularVelocity = body.getAngularVelocity();
             
-                /*if (angularVelocity) {
+                if (angularVelocity) {
                     angularVelocity.x = Scalar.Clamp(angularVelocity.x, -maxAngularSpeed, maxAngularSpeed);
                     angularVelocity.y = Scalar.Clamp(angularVelocity.y, -maxAngularSpeed, maxAngularSpeed);
                     angularVelocity.z = Scalar.Clamp(angularVelocity.z, -maxAngularSpeed, maxAngularSpeed);
             
                     body.setAngularVelocity(angularVelocity);
-                }*/
+                }
             }
         });
     }

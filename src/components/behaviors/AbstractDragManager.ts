@@ -64,7 +64,7 @@ abstract class AbstractDragManager {
         if (newMatch) {
             polygon.physicsAggregate?.dispose();
             polygon.physicsAggregate = undefined;
-            polygon.position.y = Math.min(ctx.minY + 1.5, polygon.position.y);
+            polygon.position.y = Math.min(ctx.minY + 1, polygon.position.y);
             physicsAggregateBuilder.attachDragPolygonAggregate(polygon);
         }
 
