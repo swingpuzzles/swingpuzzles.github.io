@@ -3,6 +3,7 @@ import rotationToZeroAnimation from "../animations/RotationToZeroAnimation";
 import ctx from "../common/SceneContext";
 import dragHelpers from "./DragHelpers";
 import meshHelpers from "../common/MeshHelpers";
+import physicsAggregateBuilder from "../builders/PhysicsAggregateBuilder";
 
 abstract class AbstractDragManager {
     addDragBehavior(mesh: Mesh): void {
@@ -61,7 +62,10 @@ abstract class AbstractDragManager {
         const maxXZ = new Vector2(max.x, max.z);
 
         if (newMatch) {
+            polygon.physicsAggregate?.dispose();
+            polygon.physicsAggregate = undefined;
             polygon.position.y = Math.min(ctx.minY + 1.5, polygon.position.y);
+            physicsAggregateBuilder.attachDragPolygonAggregate(polygon);
         }
 
         const flippedOf = polygon.position.y - ctx.minY;
@@ -94,7 +98,12 @@ abstract class AbstractDragManager {
                     pieceMinXZ.y <= maxXZ.y;
     
                 if (intersectsXZ) {
+                    piece.physicsAggregate?.dispose();
+                    piece.physicsAggregate = undefined;
                     piece.position.y += flippedOf + 1;
+                    piece.computeWorldMatrix(true);
+                    piece.refreshBoundingInfo();
+                    physicsAggregateBuilder.attachPuzzlePieceAggregate(piece);
                 }
             }
         });
