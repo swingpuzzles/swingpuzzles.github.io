@@ -3,6 +3,7 @@ import ctx from "../common/SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 import physicsAggregateBuilder from "./PhysicsAggregateBuilder";
+import meshHelpers from "../common/MeshHelpers";
 
 class PuzzleGameBuilder {
     private _building: boolean = false;
@@ -50,7 +51,7 @@ class PuzzleGameBuilder {
 
         const body = new PhysicsBody(this._ground, PhysicsMotionType.STATIC, false, ctx.scene);
         
-        //physicsAggregateBuilder.attachGroundAggregate(this._ground);
+        physicsAggregateBuilder.attachGroundAggregate(this._ground);
 
         this._groundVis = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
 
@@ -91,22 +92,10 @@ class PuzzleGameBuilder {
         this._groundVis.position = cover.position.clone();
         this._groundVis.position.y = ctx.minY - 0.5;
 
-        this._ground.position = cover.position.clone();
-        this._ground.position.y = ctx.minY + 0.15;
-        this._ground.computeWorldMatrix(true); // important: update world matrix
+        const groundPos = cover.position.clone();
+        groundPos.y = ctx.minY + 0.15;
 
-        //physicsAggregateBuilder.attachGroundAggregate(this._ground);
-        if (this._ground.physicsAggregate) {
-            this._ground.physicsAggregate.dispose();
-            this._ground.physicsAggregate = undefined;
-        }
-
-        physicsAggregateBuilder.attachGroundAggregate(this._ground);
-
-        //const position = cover.position.clone();
-        //position.y = ctx.minY + 0.26;
-        
-        //this._ground.physicsAggregate?.body?.transformNode.computeWorldMatrix(true); // ensures physics uses new transform
+        meshHelpers.teleportMesh(this._ground, groundPos);
         
         this._groundCover.position = cover.position.clone();
         this._groundCover.position.y = ctx.minY + 1;
@@ -154,7 +143,6 @@ class PuzzleGameBuilder {
                 }, ctx.scene);
 
                 newMeshHolePlate.position.addInPlace(cover.position);
-                //newMeshHolePlate.position.y -= 2;
                 boundingBox.position = newMeshHolePlate.position.clone();
                 boundingBox.visibility = 0;
                 boundingBox.isPickable = true;

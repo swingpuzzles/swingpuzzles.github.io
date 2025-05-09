@@ -50,30 +50,30 @@ class PiecePositioningManager {
                 console.error("Piece has a child mesh, but is not a polygon. This should not happen.");
             }
     
-            const element = (ctx.polygonMap.get(piece)?.getChildMeshes()[0] || piece) as Mesh;
+            const basicPiece = (ctx.polygonMap.get(piece)?.getChildMeshes()[0] || piece) as Mesh;
 
-            const edgePosMinX = helpThis.getEdgePosition(element, (edge, pos) => pos.x - ctx.pieceWidthHalf < edge.x);
-            const edgePosMaxX = helpThis.getEdgePosition(element, (edge, pos) => pos.x + ctx.pieceWidthHalf > edge.x);
-            const edgePosMinZ = helpThis.getEdgePosition(element, (edge, pos) => pos.z - ctx.pieceDepthHalf < edge.z);
-            const edgePosMaxZ = helpThis.getEdgePosition(element, (edge, pos) => pos.z + ctx.pieceDepthHalf > edge.z);
-            const edgePosMinY = helpThis.getEdgePosition(element, (edge, pos) => pos.y - ctx.pieceHeightHalf < edge.y);
+            const edgePosMinX = helpThis.getEdgePosition(basicPiece, (edge, pos) => pos.x - ctx.pieceWidthHalf < edge.x);
+            const edgePosMaxX = helpThis.getEdgePosition(basicPiece, (edge, pos) => pos.x + ctx.pieceWidthHalf > edge.x);
+            const edgePosMinZ = helpThis.getEdgePosition(basicPiece, (edge, pos) => pos.z - ctx.pieceDepthHalf < edge.z);
+            const edgePosMaxZ = helpThis.getEdgePosition(basicPiece, (edge, pos) => pos.z + ctx.pieceDepthHalf > edge.z);
+            const edgePosMinY = helpThis.getEdgePosition(basicPiece, (edge, pos) => pos.y - ctx.pieceHeightHalf < edge.y);
     
             let edgePos: Vector3 | null = null;
     
             if (edgePosMinX.x - ctx.pieceWidthHalf < ctx.minX) {
-                this.handleElementMove(element, () => { element.position.x += 0.2; }, isPolygon);
+                this.handleElementMove(piece, (el) => { el.position.x += 0.2; }, isPolygon);
                 edgePos = edgePosMinX;
             } else if (edgePosMaxX.x + ctx.pieceWidthHalf > ctx.maxX) {
-                this.handleElementMove(element, () => { element.position.x -= 0.2; }, isPolygon);
+                this.handleElementMove(piece, (el) => { el.position.x -= 0.2; }, isPolygon);
                 edgePos = edgePosMaxX;
             } else if (edgePosMinZ.z - ctx.pieceDepthHalf < ctx.minZ) {
-                this.handleElementMove(element, () => { element.position.z += 0.2; }, isPolygon);
+                this.handleElementMove(piece, (el) => { el.position.z += 0.2; }, isPolygon);
                 edgePos = edgePosMinZ;
             } else if (edgePosMaxZ.z + ctx.pieceDepthHalf > ctx.maxZ) {
-                this.handleElementMove(element, () => { element.position.z -= 0.2; }, isPolygon);
+                this.handleElementMove(piece, (el) => { el.position.z -= 0.2; }, isPolygon);
                 edgePos = edgePosMaxZ;
             } else if (edgePosMinY.y - ctx.pieceHeightHalf < ctx.minY - 0.1) {
-                this.handleElementMove(element, () => { element.position.y += Math.max(0.2, ctx.minY - edgePosMinY.y + ctx.pieceHeightHalf + 0.2); }, isPolygon);
+                this.handleElementMove(piece, (el) => { el.position.y += Math.max(0.2, ctx.minY - edgePosMinY.y + ctx.pieceHeightHalf + 0.2); }, isPolygon);
                 edgePos = edgePosMinY;
             } else {
                 return;
@@ -82,10 +82,10 @@ class PiecePositioningManager {
             const centerPoint = new Vector3((ctx.maxX + ctx.minX) / 2, 20 - ctx.minY, (ctx.maxZ + ctx.minZ) / 2);
             const directionToCenter = centerPoint.subtract(edgePos).normalize();
     
-            if (element.physicsAggregate && !isPolygon) {
+            if (piece.physicsAggregate) {
                 const power = 1.5;
             
-                const body = element.physicsAggregate.body;
+                const body = piece.physicsAggregate.body;
                 if (!body) return;
             
                 body.setLinearVelocity(Vector3.Zero());
@@ -107,21 +107,12 @@ class PiecePositioningManager {
         });
     }
 
-    private handleElementMove(element: Mesh, posChangeFunction: (() => void), isPolygon: boolean): void {
-        element.physicsAggregate?.dispose();
-        element.physicsAggregate = undefined;
-
-        element.computeWorldMatrix(true);
-        element.refreshBoundingInfo();
-        posChangeFunction();
-        element.computeWorldMatrix(true);
-        element.refreshBoundingInfo();
-        
+    private handleElementMove(element: Mesh, posChangeFunction: ((el: Mesh) => void), isPolygon: boolean): void {
         if (isPolygon) {
-            physicsAggregateBuilder.attachDragPolygonAggregate(element);
-        } else {
-            physicsAggregateBuilder.attachPuzzlePieceAggregate(element);
+            console.log("Moving element", element.name, "position:", element.position, "posChangeFunction:", posChangeFunction);
         }
+
+        meshHelpers.teleportMeshWithFunction(element, posChangeFunction);
     }
     
     getEdgePosition(

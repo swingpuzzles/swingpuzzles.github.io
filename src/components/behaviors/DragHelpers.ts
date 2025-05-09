@@ -51,15 +51,8 @@ class DragHelpers {
     parentUpMeshes(mesh: Mesh, parent: Mesh): Mesh {
         const neighbourTopParent = meshHelpers.getTopParent(parent);
 
-        if (neighbourTopParent.physicsAggregate) {
-            neighbourTopParent.physicsAggregate.dispose();
-            neighbourTopParent.physicsAggregate = undefined;
-        }
-
-        if (mesh.physicsAggregate) {
-            mesh.physicsAggregate.dispose();
-            mesh.physicsAggregate = undefined;
-        }
+        this.clearPhysics(neighbourTopParent);
+        this.clearPhysics(mesh);
 
         mesh.setParent(neighbourTopParent);
         mesh.rotationQuaternion = Quaternion.Identity();
@@ -78,6 +71,23 @@ class DragHelpers {
         dragHelpers.removeDragBehavior(mesh);
 
         return neighbourTopParent;
+    }
+
+    clearPhysics(mesh: Mesh) {
+        if ((mesh as any).physicsAggregate) {
+            (mesh as any).physicsAggregate.dispose();
+            (mesh as any).physicsAggregate = undefined;
+        }
+    
+        if ((mesh as any).physicsBody) {
+            (mesh as any).physicsBody.dispose();
+            (mesh as any).physicsBody = undefined;
+        }
+    
+        if ((mesh as any).physicsShape) {
+            (mesh as any).physicsShape.dispose();
+            (mesh as any).physicsShape = undefined;
+        }
     }
 
     getNeighbours(mesh: Mesh): Mesh[] {
@@ -128,7 +138,6 @@ class DragHelpers {
                 yield;
                 gameModeManager.enterCelebrationMode();
                 celebrationAnimation.animate(puzzleGameBuilder.underCoverMeshes[0]);
-                //tutorialManager.showCongratsMessage();
             };
             ctx.scene.onBeforeRenderObservable.runCoroutineAsync(delayModeSwitchCoroutine());
         }

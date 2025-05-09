@@ -1,4 +1,4 @@
-import { Mesh, Quaternion, Vector3 } from "@babylonjs/core";
+import { HavokPlugin, Mesh, Quaternion, Vector3 } from "@babylonjs/core";
 import ctx from "./SceneContext";
 
 class MeshHelpers {
@@ -75,6 +75,34 @@ class MeshHelpers {
                 ? parent.rotationQuaternion.invert().multiply(worldRotation)
                 : worldRotation;
         });
+    }
+
+    teleportMesh(mesh: Mesh, newPosition: Vector3) {
+        const body = mesh.physicsAggregate?.body;
+        if (!body) return;
+
+        // Enable pre-step to allow the physics engine to update the body's transform
+        body.disablePreStep = true;
+
+        // Set the new position
+        mesh.position.copyFrom(newPosition);
+
+        // Disable pre-step after the update
+        body.disablePreStep = false;
+    }
+
+    teleportMeshWithFunction(mesh: Mesh, posChangeFunction: ((el: Mesh) => void)) {
+        const body = mesh.physicsAggregate?.body;
+        if (!body) return;
+
+        // Enable pre-step to allow the physics engine to update the body's transform
+        body.disablePreStep = true;
+
+        // Set the new position
+        posChangeFunction(mesh);
+
+        // Disable pre-step after the update
+        body.disablePreStep = false;
     }
 }
 

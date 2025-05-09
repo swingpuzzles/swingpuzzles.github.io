@@ -62,11 +62,10 @@ abstract class AbstractDragManager {
         const maxXZ = new Vector2(max.x, max.z);
 
         if (newMatch) {
-            polygon.physicsAggregate?.dispose();
-            polygon.physicsAggregate = undefined;
-            polygon.position.y = Math.min(ctx.minY + 1, polygon.position.y);
-            physicsAggregateBuilder.attachDragPolygonAggregate(polygon);
-        }
+            const newPos = polygon.position.clone();
+            newPos.y = Math.min(ctx.minY + 1, polygon.position.y);
+            meshHelpers.teleportMesh(polygon, newPos);
+         }
 
         const flippedOf = polygon.position.y - ctx.minY;
     
@@ -78,7 +77,6 @@ abstract class AbstractDragManager {
             const element = (ctx.polygonMap.get(piece)?.getChildMeshes()[0] || piece) as Mesh;
 
             if (element.getChildMeshes().length < childrenCount) {
-                //const shapeMesh = pieceData.shapeMesh;
     
                 piece.computeWorldMatrix(true);
                 piece.refreshBoundingInfo();
@@ -98,12 +96,9 @@ abstract class AbstractDragManager {
                     pieceMinXZ.y <= maxXZ.y;
     
                 if (intersectsXZ) {
-                    piece.physicsAggregate?.dispose();
-                    piece.physicsAggregate = undefined;
-                    piece.position.y += flippedOf + 1;
-                    piece.computeWorldMatrix(true);
-                    piece.refreshBoundingInfo();
-                    physicsAggregateBuilder.attachPuzzlePieceAggregate(piece);
+                    const newPos = piece.position.clone();
+                    newPos.y += flippedOf + 1;
+                    meshHelpers.teleportMesh(piece, newPos);
                 }
             }
         });

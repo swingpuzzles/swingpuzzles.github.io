@@ -114,11 +114,8 @@ class ShakeBehaviorManager {
 
         for (const mesh of meshes) {
             if (mesh !== attachedNode) {
-                if (mesh.physicsAggregate) {
-                    mesh.physicsAggregate.dispose();
-                    mesh.physicsAggregate = undefined;
-                    mesh.position.copyFrom(origPosMap.get(mesh)!.add(moveVector));
-                    physicsAggregateBuilder.attachGroundAggregate(mesh);
+                if (mesh.physicsBody) {
+                    meshHelpers.teleportMesh(mesh, origPosMap.get(mesh)!.add(moveVector));
                 } else {
                     mesh.position.copyFrom(origPosMap.get(mesh)!.add(moveVector));
                 }
