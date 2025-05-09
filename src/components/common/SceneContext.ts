@@ -229,6 +229,7 @@ class SceneContext {
         this._pieceStepX = this._kitWidth / this._numX;
         this._pieceScaleX = this._pieceStepX / this._pieceEdge;
         this._pieceWidth = 2.5 * this._pieceScaleX;
+        this._pieceWidthHalf = this._pieceWidth / 2;
     }
     set numZ(value: number) {
         this._numZ = value;
@@ -236,6 +237,7 @@ class SceneContext {
         this._pieceStepZ = this._kitHeight / this._numZ;
         this._pieceScaleZ = this._pieceStepZ / this._pieceEdge;
         this._pieceDepth = 2.5 * this._pieceScaleZ;
+        this._pieceDepthHalf = this._pieceDepth / 2;
     }
     set jigsawPieces(value: Mesh[]) {
         this._jigsawPieces = value;
