@@ -79,20 +79,38 @@ Drag the puzzle box around to shake it — this will mix up the pieces so you ca
         const solvedTime = timerDisplay.getElapsedTime();
 
         const message = `🎉 Congratulations!
-    
-You’ve completed the puzzle in ${solvedTime}.
-Great job putting all the pieces together!
 
-Did you enjoy solving it?`;
-    
+You’ve completed the puzzle in ${solvedTime}.
+Great job putting all the pieces together!`;
+
+        let seconds = 5;
+        const countdownLabel = () => `Continue (${seconds}s)`;
+
+        // Show initial popup
         popupHint.show(message, "PUZZLE SOLVED!", 0.57, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
+                clearInterval(timerId);
                 this.showBuyOfferMessage();
             },
             () => {
-                popupHint.hide();
+                clearInterval(timerId);
+                this.showBuyOfferMessage();
             },
-            PopupMode.PreSell);
+            PopupMode.PreSell
+        );
+
+        // Update the button label manually
+        popupHint.updateConfirmButtonText(countdownLabel());
+
+        const timerId = window.setInterval(() => {
+            seconds--;
+            popupHint.updateConfirmButtonText(countdownLabel());
+
+            if (seconds <= 0) {
+                clearInterval(timerId);
+                this.showBuyOfferMessage();
+            }
+        }, 1000);
     }
 
     public showBuyOfferMessage() {

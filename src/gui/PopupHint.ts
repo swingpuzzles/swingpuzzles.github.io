@@ -1,4 +1,5 @@
-import { Container, Control, Rectangle, StackPanel, TextBlock, Image, InputTextArea, Button } from "@babylonjs/gui";
+import { Container, Control, Rectangle, StackPanel, TextBlock, Image, Button } from "@babylonjs/gui";
+import { Animation, Animatable } from "@babylonjs/core"
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
@@ -27,17 +28,20 @@ class PopupHint {
     private centerRect!: Rectangle;
     private bottomRect!: Rectangle;
     private gotItButton!: Button;
-    private yesIDidButton!: Button;
+    private emptyGreenButton!: Button;
     private getItButton!: Button;
     private notNowButton!: Button;
     private xButton!: Button;
     private _sizeCoef = 0.87;
     private _action: () => void = () => {};
     private _closeAction: () => void = () => {};
+    private _currentAnimation: Animatable | null = null;
+    private readonly _fadeDuration = 10;
 
     init() {
         this.mainContainer = new Container("PopupHintContainer");
         this.mainContainer.isVisible = false;
+        this.mainContainer.alpha = 0;
         guiManager.advancedTexture.addControl(this.mainContainer);
 
         // Main Rectangle
@@ -162,22 +166,23 @@ class PopupHint {
 
         puzzleAssetsManager.addGuiImageButtonSource(this.gotItButton, "assets/got-it-button.webp");
 
-        this.yesIDidButton = Button.CreateImageOnlyButton("yesIDidButton", "assets/yes-i-did-button.webp");
-        this.yesIDidButton.thickness = 0;
-        this.yesIDidButton.background = "";
-        this.yesIDidButton.hoverCursor = "pointer";
-        this.yesIDidButton.width = "40%";
-        this.yesIDidButton.height = "90%";
-        this.yesIDidButton.isHitTestVisible = true;
-        this.yesIDidButton.isPointerBlocker = true;
+        this.emptyGreenButton = Button.CreateImageWithCenterTextButton("yesIDidButton", "Continue", "assets/empty-green-button.webp");
+        this.emptyGreenButton.thickness = 0;
+        this.emptyGreenButton.background = "";
+        this.emptyGreenButton.hoverCursor = "pointer";
+        this.emptyGreenButton.width = "40%";
+        this.emptyGreenButton.height = "90%";
+        this.emptyGreenButton.isHitTestVisible = true;
+        this.emptyGreenButton.isPointerBlocker = true;
+        this.emptyGreenButton.textBlock!.color = "#F8EDB8FF";
 
-        this.yesIDidButton.onPointerClickObservable.add(() => {
+        this.emptyGreenButton.onPointerClickObservable.add(() => {
             if (this._action) {
                 this._action();
             }
         });
 
-        this.bottomRect.addControl(this.yesIDidButton);
+        this.bottomRect.addControl(this.emptyGreenButton);
 
         this.notNowButton = Button.CreateImageOnlyButton("notNowButton", "assets/not-now-button.webp");
         this.notNowButton.thickness = 0;
@@ -273,20 +278,47 @@ class PopupHint {
         this.xButton.heightInPixels = minSize / 15;
         this.xButton.paddingTopInPixels = minSize / 240;
         this.xButton.paddingRightInPixels = minSize / 240;
+
+        this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24;
     }
     
-    public show(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
+    public updateConfirmButtonText(text: string) {
+        if (this.emptyGreenButton && this.emptyGreenButton.textBlock) {
+            this.emptyGreenButton.textBlock.text = text;
+        }
+    }
+
+    public show(
+        fullText: string,
+        heading = "Welcome!",
+        sizeCoef: number = 0.87,
+        shaderMode: ShaderMode = ShaderMode.NONE,
+        verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
+        action: () => void = () => {},
+        closeAction: (() => void) | null = null,
+        mode: PopupMode = PopupMode.Normal
+    ): boolean {
+        if (this.mainContainer.isVisible) {
+            this.fadeOut(() => {
+                this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, mode);
+            });
+        } else {
+            this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, mode);
+        }
+
+        return mode == PopupMode.PreSell || mode == PopupMode.Sell || localStorage.getItem("tutorialDone") !== "true";
+    }
+
+    private internalShow(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
             verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
             action: () => void = () => {},
             closeAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal) : boolean {
 
-        this.hide();
-
         switch (mode) {
             case PopupMode.PreSell:
                 this.gotItButton.isVisible = false;
-                this.yesIDidButton.isVisible = true;
+                this.emptyGreenButton.isVisible = true;
                 this.getItButton.isVisible = false;
                 this.notNowButton.isVisible = false;
                 this.centerImage.isVisible = true;
@@ -296,7 +328,7 @@ class PopupHint {
                 break;
             case PopupMode.Sell:
                 this.gotItButton.isVisible = false;
-                this.yesIDidButton.isVisible = false;
+                this.emptyGreenButton.isVisible = false;
                 this.getItButton.isVisible = true;
                 this.notNowButton.isVisible = true;
                 this.centerImage.isVisible = false;
@@ -309,7 +341,7 @@ class PopupHint {
                 }
 
                 this.gotItButton.isVisible = true;
-                this.yesIDidButton.isVisible = false;
+                this.emptyGreenButton.isVisible = false;
                 this.getItButton.isVisible = false;
                 this.notNowButton.isVisible = false;
                 this.centerImage.isVisible = true;
@@ -336,12 +368,73 @@ class PopupHint {
         this.typeTextLetterByLetter(fullText);
         this.mainContainer.isVisible = true;
 
+        this.fadeIn();
+
         return true;
     }
 
-    public hide() {
-        this.mainContainer.isVisible = false;
-        handImagePool.releaseAll();
+    public hide(onComplete?: () => void) {
+        if (!this.mainContainer.isVisible) {
+            return;
+        }
+
+        this.fadeOut(() => {
+            onComplete?.();
+        });
+    }
+
+    private stopCurrentAnim() {
+        if (this._currentAnimation) {
+            this._currentAnimation.stop();
+            this._currentAnimation = null;
+        }
+    }
+
+    private fadeIn() {
+        this.stopCurrentAnim();
+
+        const anim = new Animation(
+            "fade in",
+            "alpha",
+            30,
+            Animation.ANIMATIONTYPE_FLOAT,
+            Animation.ANIMATIONLOOPMODE_CONSTANT
+        );
+
+        const keys = [
+            { frame: 0, value: 0 },
+            { frame: this._fadeDuration, value: 1 }
+        ];
+        anim.setKeys(keys);
+        this.mainContainer.animations = [anim];
+
+        ctx.scene.beginAnimation(this.mainContainer, 0, this._fadeDuration, false, 1);
+    }
+
+    private fadeOut(onComplete: () => void) {
+        this.stopCurrentAnim();
+
+        const anim = new Animation(
+            "fade out",
+            "alpha",
+            30,
+            Animation.ANIMATIONTYPE_FLOAT,
+            Animation.ANIMATIONLOOPMODE_CONSTANT
+        );
+
+        const keys = [
+            { frame: 0, value: 1 },
+            { frame: this._fadeDuration, value: 0 }
+        ];
+        anim.setKeys(keys);
+        this.mainContainer.animations = [anim];
+
+        ctx.scene.beginAnimation(this.mainContainer, 0, this._fadeDuration, false, 1, () => {
+            this.mainContainer.isVisible = false;
+            this.mainContainer.alpha = 1;
+            handImagePool.releaseAll();
+            onComplete();
+        });
     }
 
     private typingSessionId = 0;

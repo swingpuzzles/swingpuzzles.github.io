@@ -5,8 +5,10 @@ import tutorialManager from "./TutorialManager";
 export default class PiecesCountDropdown extends Dropdown {
     constructor() {
         super();
-        
-        localStorage.getItem("cookiesAccepted") === "true";
+
+        //if (debug) {  // TODO
+            this.addPiecesNums(3, 2);
+        //}
 
         this.addPiecesNums(5, 3);
         this.addPiecesNums(6, 4);
