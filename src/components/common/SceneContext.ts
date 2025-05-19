@@ -1,6 +1,7 @@
 import { ArcRotateCamera, Engine, Mesh, Scene, Vector3 } from "@babylonjs/core";
 
 class SceneContext {
+    private _debugMode = true; // TODO from properties
     private _scene: Scene | null = null;
     private _jigsawPieces: Mesh[] = [];
     private _piecesArray: Mesh[][] = [];
@@ -88,6 +89,9 @@ class SceneContext {
         }
     }
 
+    get debugMode() {
+        return this._debugMode;
+    }
     get scene(): Scene {
         return this._scene!;
     }

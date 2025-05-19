@@ -7,6 +7,7 @@ import gameModeManager, { GameMode } from "../components/behaviors/GameModeManag
 import backToInitialAnimation from "../components/animations/BackToInitialAnimation";
 import openCoverAnimation from "../components/animations/OpenCoverAnimation";
 import sceneInitializer from "../components/SceneInitializer";
+import CategoryDropdown from "./CategoryDropdown";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -16,8 +17,7 @@ class GuiManager {
     private bannerButton!: Button;
     private xButton!: Button;
     private menuButton!: Button;
-    private categoryButton!: Button;
-    private categoryIcon!: Image;
+    private categoryDropdown!: CategoryDropdown;
 
     get advancedTexture() {
         return this._advancedTexture;
@@ -27,6 +27,8 @@ class GuiManager {
         this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
         this.piecesCountDropdown = new PiecesCountDropdown();
+
+        this.categoryDropdown = new CategoryDropdown();
 
         this._createButtons();
     }
@@ -81,26 +83,6 @@ class GuiManager {
 
         this._advancedTexture.addControl(this.menuButton);
 
-        this.categoryButton = Button.CreateImageOnlyButton("xButton", "assets/category-button.webp");
-        this.categoryButton.thickness = 0;
-        this.categoryButton.background = "";
-        this.categoryButton.hoverCursor = "pointer";
-        this.categoryButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
-        this.categoryButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-
-        this._advancedTexture.addControl(this.categoryButton);
-
-        // Create and store the nested image (category icon)
-        this.categoryIcon = new Image("categoryIcon", "assets/category-general.webp");
-        this.categoryIcon.width = "75%";
-        this.categoryIcon.height = "75%";
-        this.categoryIcon.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-        this.categoryIcon.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
-        this.categoryIcon.paddingRight = "5%";
-        this.categoryIcon.paddingBottom = "20%";
-
-        this.categoryButton.addControl(this.categoryIcon);
-
         gameModeManager.addObserver(() => {
             this.refreshButtonSizes();
         });
@@ -124,16 +106,16 @@ class GuiManager {
         this.menuButton.height = renderHeight / 10 + "px";
         this.menuButton.paddingTopInPixels = renderHeight / 80;
         this.menuButton.paddingRightInPixels = renderHeight / 80;
-        this.categoryButton.width = renderHeight / 12 + "px";
+        /*this.categoryButton.width = renderHeight / 12 + "px";
         this.categoryButton.height = renderHeight / 10 + "px";
         this.categoryButton.paddingTopInPixels = renderHeight / 80;
-        this.categoryButton.paddingLeftInPixels = renderHeight / 80;
+        this.categoryButton.paddingLeftInPixels = renderHeight / 80;*/
 
         switch (gameModeManager.currentMode) {
             case GameMode.Initial:
                 this.playButton.isVisible = true;
                 this.menuButton.isVisible = true;
-                this.categoryButton.isVisible = true;
+                this.categoryDropdown.isVisible = true;
                 this.xButton.isVisible = false;
                 this.bannerButton.width = renderHeight / 4 + "px";//"240px";
                 this.bannerButton.height = renderHeight / 16 + "px";//"60px";
@@ -143,7 +125,7 @@ class GuiManager {
             case GameMode.OpenCover:
                 this.playButton.isVisible = false;
                 this.menuButton.isVisible = false;
-                this.categoryButton.isVisible = false;
+                this.categoryDropdown.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 3.9 + "px";//"248px";
                 this.bannerButton.height = renderHeight / 15.6 + "px";//"62px";
@@ -153,7 +135,7 @@ class GuiManager {
             case GameMode.Solve:
                 this.playButton.isVisible = false;
                 this.menuButton.isVisible = false;
-                this.categoryButton.isVisible = false;
+                this.categoryDropdown.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 8 + "px";//"124px";
                 this.bannerButton.height = renderHeight / 32 + "px";//"31px";
@@ -163,7 +145,7 @@ class GuiManager {
             case GameMode.Celebration:
                 this.playButton.isVisible = false;
                 this.menuButton.isVisible = false;
-                this.categoryButton.isVisible = false;
+                this.categoryDropdown.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 3.7 + "px";//"248px";
                 this.bannerButton.height = renderHeight / 14.8 + "px";//"62px";

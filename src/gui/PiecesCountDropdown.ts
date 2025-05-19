@@ -3,12 +3,14 @@ import Dropdown from "./Dropdown";
 import tutorialManager from "./TutorialManager";
 
 export default class PiecesCountDropdown extends Dropdown {
+    private _optionSelected: boolean = false;
+
     constructor() {
         super();
 
-        //if (debug) {  // TODO
+        if (ctx.debugMode) {
             this.addPiecesNums(3, 2);
-        //}
+        }
 
         this.addPiecesNums(5, 3);
         this.addPiecesNums(6, 4);
@@ -18,10 +20,10 @@ export default class PiecesCountDropdown extends Dropdown {
         this.addPiecesNums(16, 10);
         this.addPiecesNums(19, 12);
         this.addPiecesNums(24, 15);
-        this.addPiecesNums(25, 20);
+        this.addPiecesNums(25, 20, true);
     }
 
-    addPiecesNums(xCount: number, zCount: number) {
+    addPiecesNums(xCount: number, zCount: number, last: boolean = false) {
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
 
         if (isPortrait) {
@@ -38,8 +40,9 @@ export default class PiecesCountDropdown extends Dropdown {
             localStorage.setItem("numPieces", count.toString());
         }
 
-        if (count === Number(localStorage.getItem("numPieces"))) {
+        if (count <= Number(localStorage.getItem("numPieces")) || last && !this._optionSelected) {
             this.selectAction(xCount, zCount, text, false);
+            this._optionSelected = true;
         }
     }
 
@@ -48,7 +51,7 @@ export default class PiecesCountDropdown extends Dropdown {
         localStorage.setItem("numPieces", count.toString());
 
         const paddedText = "🧩 " + text + "   ▼"; // keep room for " ▼"
-        this.setText(paddedText);
+        this.setContent(paddedText);
 
         ctx.numX = xCount;
         ctx.numZ = zCount;
