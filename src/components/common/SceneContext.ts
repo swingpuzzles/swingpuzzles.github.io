@@ -1,5 +1,14 @@
 import { ArcRotateCamera, Engine, Mesh, Scene, Vector3 } from "@babylonjs/core";
 
+export const Categories = {
+    General: { key: "General", text: "General", tags: [ "General" ], url: "assets/category-general.webp" },
+    Animals: { key: "Animals", text: "Animals", tags: [ "Theme_Animals" ], url: "assets/category-animal.webp" },
+    Beach: { key: "Beach", text: "Beach", tags: [ "Theme_Beach" ], url: "assets/category-beach.webp" },
+    Flowers: { key: "Flowers", text: "Flowers", tags: [ "Theme_Floral" ], url: "assets/category-floral.webp" },
+}
+
+export type Category = (typeof Categories)[keyof typeof Categories];
+
 class SceneContext {
     private _debugMode = true; // TODO from properties
     private _scene: Scene | null = null;
@@ -48,6 +57,7 @@ class SceneContext {
     private _maxZ: number = this._zLimit;
     private _minY: number = -0.36;
     private _piecesCount = this._numX * this._numZ;
+    private _category: Category = Categories.General;
 
     init(scene: Scene, camera: ArcRotateCamera, canvas: HTMLCanvasElement, engine: Engine): void {
         this._scene = scene;
@@ -211,6 +221,9 @@ class SceneContext {
     get minY(): number {
         return this._minY;
     }
+    get category(): Category {
+        return this._category;
+    }
 
     set minX(value: number) {
         this._minX = value;
@@ -262,6 +275,9 @@ class SceneContext {
     }
     set polygonMap(value: Map<Mesh, Mesh>) {
         this._polygonMap = value;
+    }
+    set category(value: Category) {
+        this._category = value;
     }
     
     public originalCoverState: { position: Vector3; rotation: Vector3 } | null = null;

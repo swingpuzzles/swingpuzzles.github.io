@@ -1,15 +1,7 @@
 import { Control } from "@babylonjs/gui";
 import Dropdown from "./Dropdown";
 import tutorialManager from "./TutorialManager";
-
-const Categories = {
-    General: { key: "General", text: "General", url: "assets/category-general.webp" },
-    Animals: { key: "Animals", text: "Animals", url: "assets/category-animal.webp" },
-    Beach: { key: "Beach", text: "Beach", url: "assets/category-beach.webp" },
-    Flowers: { key: "Flowers", text: "Flowers", url: "assets/category-floral.webp" },
-}
-
-export type Category = (typeof Categories)[keyof typeof Categories];
+import ctx, { Categories, Category } from "../components/common/SceneContext";
 
 export default class CategoryDropdown extends Dropdown {
     private _optionSelected: boolean = false;
@@ -40,6 +32,8 @@ export default class CategoryDropdown extends Dropdown {
         localStorage.setItem("category", category.key);
 
         this.setContent(category.text, category.url);
+
+        ctx.category = category;
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();    // TODO action?

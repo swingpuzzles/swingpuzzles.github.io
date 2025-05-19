@@ -4,6 +4,7 @@ import amazonDataVert from '../../assets/amazon-jigsaw-vert.json';
 import puzzleCoverBuilder from './PuzzleCoverBuilder';
 import ctx from '../common/SceneContext';
 import gameModeManager from '../behaviors/GameModeManager';
+import { PuzzleTools } from '../common/PuzzleTools';
 
 interface CoverData {
     imgCoverUrl: string;
@@ -43,9 +44,23 @@ class PuzzleCircleBuilder {
         const data = isPortrait ? amazonDataVert : amazonDataHoriz;
 
         const radius = 100;
-        const count = data.length;
+
+        let filteredData = data;    // just to reuse the type
+        filteredData = [];
 
         data.forEach((obj, index) => {
+            if (PuzzleTools.hasIntersection(ctx.category.tags, obj.tags)) {
+                filteredData.push(obj);
+            }
+        });
+
+        const count = filteredData.length;
+
+        filteredData.forEach((obj, index) => {
+            if (!PuzzleTools.hasIntersection(ctx.category.tags, obj.tags)) {
+                return;
+            }
+
             const angle = (2 * Math.PI * index) / count;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);

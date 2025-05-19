@@ -89,9 +89,9 @@ class SceneInitializer {
 
             puzzleAssetsManager.init();
 
-            sceneBuilder.buildScene();
-
             guiManager.init();
+
+            sceneBuilder.buildScene();
 
             gameModeManager.enterInitialMode();
 
