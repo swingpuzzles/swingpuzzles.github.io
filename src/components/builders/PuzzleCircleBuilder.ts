@@ -32,13 +32,25 @@ class PuzzleCircleBuilder {
         return this.closestMesh!;
     }
 
-    build() {
+    init() {
         // Create the highlight layer when the builder is constructed
         this.highlightLayer = new HighlightLayer("coverHighlightLayer", ctx.scene, {
             blurHorizontalSize: 10,
             blurVerticalSize: 10,
             alphaBlendingMode: 2, // Use alpha blending mode for better performance
         });
+
+        ctx.scene.onBeforeRenderObservable.add(() => {
+            this.highlightClosestCover();
+        });
+    }
+
+    build() {
+        // Dispose previous covers and clear the map
+        this.covers.forEach((_, mesh) => {
+            mesh.dispose();
+        });
+        this.covers.clear();
 
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         const data = isPortrait ? amazonDataVert : amazonDataHoriz;
@@ -70,10 +82,6 @@ class PuzzleCircleBuilder {
             cover.rotation.y = -angle + Math.PI / 2;
 
             this.covers.set(cover, { imgCoverUrl: obj.imgCoverUrl, link: obj.link });
-        });
-
-        ctx.scene.onBeforeRenderObservable.add(() => {
-            this.highlightClosestCover();
         });
     }
 

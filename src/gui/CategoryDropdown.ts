@@ -2,6 +2,7 @@ import { Control } from "@babylonjs/gui";
 import Dropdown from "./Dropdown";
 import tutorialManager from "./TutorialManager";
 import ctx, { Categories, Category } from "../components/common/SceneContext";
+import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 
 export default class CategoryDropdown extends Dropdown {
     private _optionSelected: boolean = false;
@@ -33,7 +34,10 @@ export default class CategoryDropdown extends Dropdown {
 
         this.setContent(category.text, category.url);
 
-        ctx.category = category;
+        if (ctx.category !== category) {
+            ctx.category = category;
+            puzzleCircleBuilder.build();
+        }
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();    // TODO action?

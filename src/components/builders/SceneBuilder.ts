@@ -118,6 +118,7 @@ class SceneBuilder {
         });
 
         puzzleCircleBuilder.build();
+        puzzleCircleBuilder.init();
     }
 }
 
