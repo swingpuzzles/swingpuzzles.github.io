@@ -108,10 +108,6 @@ class PiecePositioningManager {
     }
 
     private handleElementMove(element: Mesh, posChangeFunction: ((el: Mesh) => void), isPolygon: boolean): void {
-        if (isPolygon) {
-            console.log("Moving element", element.name, "position:", element.position, "posChangeFunction:", posChangeFunction);
-        }
-
         meshHelpers.teleportMeshWithFunction(element, posChangeFunction);
     }
     

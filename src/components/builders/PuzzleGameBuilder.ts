@@ -1,4 +1,4 @@
-import { Color3, CSG2, Mesh, MeshBuilder, PhysicsBody, PhysicsMotionType, StandardMaterial, Texture, Vector3 } from "@babylonjs/core";
+import { Color3, CSG2, DynamicTexture, Mesh, MeshBuilder, PhysicsBody, PhysicsMotionType, StandardMaterial, Texture, Vector3 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
@@ -105,60 +105,90 @@ class PuzzleGameBuilder {
         const startX = -ctx.kitWidth / 2;
         const startZ = ctx.kitHeight / 2;
 
-        const box = puzzleBuilder.createFlatBox(ctx.kitWidth, ctx.kitHeight, 0.1, cover);
+        const originalTexture = (cover.material as StandardMaterial).diffuseTexture as Texture;
 
-        let usePiece: Mesh;
-        for (let i = 0; i < ctx.numX; i++) {
-            const rowArray: Mesh[] = [];
-            ctx.piecesArray.push(rowArray);
+        const url = originalTexture.name; // this should be the image URL
 
-            for (let j = 0; j < ctx.numZ; j++) {
-                if (i === 0 && j === 0) {
-                    usePiece = this._topLeft;
-                } else if (i === 0) {
-                    usePiece = this._left;
-                } else if (j === 0) {
-                    usePiece = this._top;
-                } else {
-                    usePiece = this._middle;
+        const img = new Image();
+        img.crossOrigin = "anonymous"; // Required for CORS
+        img.src = url;
+
+        img.onload = () => {
+            const width = img.width;
+            const height = img.height;
+
+            // Create DynamicTexture with same size
+            const dynamicTexture = new DynamicTexture("dynamicTexture", { width, height }, ctx.scene, true);
+            const ctx2d = dynamicTexture.getContext() as CanvasRenderingContext2D;
+            console.log(ctx2d);
+
+            // Draw original image
+            ctx2d.drawImage(img, 0, 0, width, height);
+
+            // TODO fill text HERE!
+            // Draw text (adjust coordinates or size as needed)
+            /*ctx2d.font = `${Math.floor(height / 12)}px Arial`; // font size relative to texture height
+            ctx2d.fillStyle = "white";
+            ctx2d.textBaseline = "middle";
+            ctx2d.fillText("Test Text", width / 2, height / 2);*/
+
+            dynamicTexture.update();
+
+            const box = puzzleBuilder.createFlatBox(ctx.kitWidth, ctx.kitHeight, 0.1, dynamicTexture);
+
+            let usePiece: Mesh;
+            for (let i = 0; i < ctx.numX; i++) {
+                const rowArray: Mesh[] = [];
+                ctx.piecesArray.push(rowArray);
+
+                for (let j = 0; j < ctx.numZ; j++) {
+                    if (i === 0 && j === 0) {
+                        usePiece = this._topLeft;
+                    } else if (i === 0) {
+                        usePiece = this._left;
+                    } else if (j === 0) {
+                        usePiece = this._top;
+                    } else {
+                        usePiece = this._middle;
+                    }
+
+                    usePiece.scaling = new Vector3(ctx.pieceScaleX, 1, ctx.pieceScaleZ);
+                    this.setPiecePos(usePiece, startX + i * ctx.pieceStepX, startZ - j * ctx.pieceStepZ);
+
+                    const polyCSG = CSG2.FromMesh(usePiece);
+                    const newHolePlate = polyCSG.intersect(box);
+                    polyCSG.dispose();
+
+                    const newMeshHolePlate = newHolePlate.toMesh("puzzle_piece", ctx.scene);
+                    newMeshHolePlate.bakeCurrentTransformIntoVertices();
+                    newHolePlate.dispose();
+
+                    this.setMeshPositionByLeftTopXZ(newMeshHolePlate, startX + i * ctx.pieceStepX, startZ - j * ctx.pieceStepZ);
+
+                    const boundingBox = MeshBuilder.CreateBox("boundingBox", {
+                        width: i < ctx.numX - 1 ? ctx.pieceWidth : ctx.pieceWidth * 0.8,
+                        height: ctx.pieceHeight,
+                        depth: j < ctx.numZ - 1 ? ctx.pieceDepth : ctx.pieceDepth * 0.8
+                    }, ctx.scene);
+
+                    newMeshHolePlate.position.addInPlace(cover.position);
+                    boundingBox.position = newMeshHolePlate.position.clone();
+                    boundingBox.visibility = 0;
+                    boundingBox.isPickable = true;
+
+                    ctx.jigsawPieces.push(boundingBox);
+                    rowArray.push(boundingBox);
+                    ctx.piecesMap.set(boundingBox, {
+                        origPos: boundingBox.position.clone(),
+                        xIndex: i,
+                        zIndex: j,
+                        shapeMesh: newMeshHolePlate
+                    });
                 }
-
-                usePiece.scaling = new Vector3(ctx.pieceScaleX, 1, ctx.pieceScaleZ);
-                this.setPiecePos(usePiece, startX + i * ctx.pieceStepX, startZ - j * ctx.pieceStepZ);
-
-                const polyCSG = CSG2.FromMesh(usePiece);
-                const newHolePlate = polyCSG.intersect(box);
-                polyCSG.dispose();
-
-                const newMeshHolePlate = newHolePlate.toMesh("puzzle_piece", ctx.scene);
-                newMeshHolePlate.bakeCurrentTransformIntoVertices();
-                newHolePlate.dispose();
-
-                this.setMeshPositionByLeftTopXZ(newMeshHolePlate, startX + i * ctx.pieceStepX, startZ - j * ctx.pieceStepZ);
-
-                const boundingBox = MeshBuilder.CreateBox("boundingBox", {
-                    width: i < ctx.numX - 1 ? ctx.pieceWidth : ctx.pieceWidth * 0.8,
-                    height: ctx.pieceHeight,
-                    depth: j < ctx.numZ - 1 ? ctx.pieceDepth : ctx.pieceDepth * 0.8
-                }, ctx.scene);
-
-                newMeshHolePlate.position.addInPlace(cover.position);
-                boundingBox.position = newMeshHolePlate.position.clone();
-                boundingBox.visibility = 0;
-                boundingBox.isPickable = true;
-
-                ctx.jigsawPieces.push(boundingBox);
-                rowArray.push(boundingBox);
-                ctx.piecesMap.set(boundingBox, {
-                    origPos: boundingBox.position.clone(),
-                    xIndex: i,
-                    zIndex: j,
-                    shapeMesh: newMeshHolePlate
-                });
             }
-        }
 
-        this._building = false;
+            this._building = false;
+        };
     }
 
     private setPiecePos(mesh: Mesh, x: number, z: number): void {
