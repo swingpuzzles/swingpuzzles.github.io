@@ -5,6 +5,7 @@ export const Categories = {
     Animals: { key: "Animals", text: "Animals", tags: [ "Theme_Animals" ], url: "assets/category-animal.webp" },
     Beach: { key: "Beach", text: "Beach", tags: [ "Theme_Beach" ], url: "assets/category-beach.webp" },
     Flowers: { key: "Flowers", text: "Flowers", tags: [ "Theme_Floral" ], url: "assets/category-floral.webp" },
+    Gift: { key: "Gift", text: "Make a Gift", tags: [ ], url: "assets/giftbox.webp" },
 }
 
 export type Category = (typeof Categories)[keyof typeof Categories];

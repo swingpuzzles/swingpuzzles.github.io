@@ -147,6 +147,12 @@ export default class Dropdown {
         
         if (imageUrl != null) {
             button = Button.CreateImageButton(text, text, imageUrl);
+            button.image!.width = "22%";
+            button.image!.stretch = Image.STRETCH_UNIFORM;
+            button.image!.paddingTop = "1%";
+            button.image!.paddingBottom = "1%";
+            button.image!.paddingLeft = "5%";
+            button.image!.paddingRight = "5%";
         } else {
             button = Button.CreateSimpleButton(text, text);
         }

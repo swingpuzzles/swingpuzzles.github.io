@@ -13,7 +13,8 @@ export default class CategoryDropdown extends Dropdown {
         this.addImageOption(Categories.General);
         this.addImageOption(Categories.Animals);
         this.addImageOption(Categories.Beach);
-        this.addImageOption(Categories.Flowers, true);
+        this.addImageOption(Categories.Flowers);
+        this.addImageOption(Categories.Gift, true);
     }
 
     addImageOption(category: Category, last: boolean = false) {
@@ -36,7 +37,12 @@ export default class CategoryDropdown extends Dropdown {
 
         if (ctx.category !== category) {
             ctx.category = category;
-            puzzleCircleBuilder.build();
+
+            if (category == Categories.Gift) {
+                console.log('GIFT!'); // TODO
+            } else {
+                puzzleCircleBuilder.build();
+            }
         }
 
         if (userAction) {
