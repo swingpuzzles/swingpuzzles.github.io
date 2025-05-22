@@ -44,10 +44,10 @@ Use the highlighted dropdown at the top center to pick your desired puzzle dimen
 
 More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
 
-        if (popupHint.show(dimensionHint, "HINT: SIZE", 0.6, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
-                () => { this.showPuzzleChooserHint(); }, () => { this.showPuzzleChooserHint(); })) {
-            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_TOP, 0, 0.1, 0, false);
-        }
+        popupHint.show(dimensionHint, "HINT: SIZE", 0.6, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+                () => { this.showPuzzleChooserHint(); }, () => { this.showPuzzleChooserHint(); },
+                () => {
+                    handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_TOP, 0, 0.1, 0, false); });
     }
 
     public showPuzzleChooserHint() {
@@ -57,11 +57,12 @@ Swipe left or right to explore different puzzles.
 
 Each puzzle is shown as a cover box — click or tap on one to select it, or just hit the ▶️ Play button to dive right in!`;
 
-        if (popupHint.show(browseHint, "HINT: CHOICE", 0.6, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
-                () => { popupHint.hide(); }, () => { popupHint.hide(); })) {
+        popupHint.show(browseHint, "HINT: CHOICE", 0.6, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
+                () => { popupHint.hide(); }, () => { popupHint.hide(); },
+                () => { 
             handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.28, 30, true, 0.2, 0.01);
             handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.15, 150, false);
-        }
+        });
     }
 
     public showShakeHint() {
@@ -69,10 +70,10 @@ Each puzzle is shown as a cover box — click or tap on one to select it, or jus
     
 Drag the puzzle box around to shake it — this will mix up the pieces so you can start solving!`;
     
-        if (popupHint.show(shakeHint, "SHAKE IT!", 0.5, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
-                () => { this.finishTutorial(); }, () => { this.finishTutorial(); })) {
-            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.1, 30, true, 0.02, 0.1);
-        }
+        popupHint.show(shakeHint, "SHAKE IT!", 0.5, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
+                () => { this.finishTutorial(); }, () => { this.finishTutorial(); },
+                () => { 
+                    handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.1, 30, true, 0.02, 0.1); });
     }
 
     public showCongratsMessage() {
@@ -96,6 +97,7 @@ Great job putting all the pieces together!`;
                 clearInterval(timerId);
                 this.showBuyOfferMessage();
             },
+            null,
             PopupMode.PreSell
         );
 
@@ -128,6 +130,7 @@ Available now on Amazon!`;
             () => {
                 popupHint.hide();
             },
+            null,
             PopupMode.Sell);
     }
 

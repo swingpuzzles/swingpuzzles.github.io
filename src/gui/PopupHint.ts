@@ -296,17 +296,27 @@ class PopupHint {
         verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
         action: () => void = () => {},
         closeAction: (() => void) | null = null,
+        afterShowAction: (() => void) | null = null,
         mode: PopupMode = PopupMode.Normal
-    ): boolean {
+    ): void {
         if (this.mainContainer.isVisible) {
             this.fadeOut(() => {
-                this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, mode);
+                this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, afterShowAction, mode);
             });
         } else {
-            this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, mode);
+            this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, afterShowAction, mode);
         }
+    }
 
-        return mode == PopupMode.PreSell || mode == PopupMode.Sell || localStorage.getItem("tutorialDone") !== "true";
+    private showWrapper(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
+            verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
+            action: () => void = () => {},
+            closeAction: (() => void) | null = null,
+            afterShowAction: (() => void) | null = null,
+            mode: PopupMode = PopupMode.Normal) : void {
+        if (this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, mode) && afterShowAction) {
+            afterShowAction();
+        }
     }
 
     private internalShow(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
