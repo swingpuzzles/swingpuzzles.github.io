@@ -7,7 +7,7 @@ import screenShader, { ShaderMode } from "./ScreenShader";
 import guiManager from "./GuiManager";
 import handImagePool from "./HandImagePool";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
-import FormInputModel from "../model/FormInputModel";
+import { FormInputModel } from "../model/FormInputModel";
 
 export enum PopupMode {
     Normal,
@@ -271,7 +271,7 @@ class PopupHint {
 
     // Helper to create styled labeled input fields
     private createLabeledInput(formInputModel: FormInputModel) {
-        const labelText = formInputModel.defaultLabel;
+        const labelText = formInputModel.label;
         const placeholder = formInputModel.placeHolder;
         const container = new StackPanel();
 
@@ -281,12 +281,41 @@ class PopupHint {
         label.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
 
         const input = new InputText();
-        input.width = "100%";
         input.color = "#222";
+        input.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         input.background = "#f0f0f0";
         input.focusedBackground = "#e6e6e6"; // Slightly darker when focused
-        input.placeholderText = placeholder;
         input.thickness = 1;
+
+        if (placeholder) {
+            input.placeholderText = placeholder;
+        }
+
+        switch (formInputModel.type) {
+            case "text":
+                input.width = formInputModel.maxLength ? (Math.min(100, Math.max(formInputModel.maxLength, input.placeholderText.length) * 2.5) + "%") : "100%";
+                input.onTextChangedObservable.add(() => {
+                    if (formInputModel.maxLength && input.text.length > formInputModel.maxLength) {
+                        input.text = input.text.slice(0, formInputModel.maxLength);
+                    }
+                });
+                break;
+            case "number":
+                const maxLength = formInputModel.max ? Math.max(formInputModel.max.toString().length, input.placeholderText.length) : null;
+                input.width = maxLength ? (Math.min(100, maxLength * 2.5) + "%") : "100%";
+                input.onTextChangedObservable.add(() => {
+                    input.text = input.text.replace(/\D/g, "");
+                    const value = parseInt(input.text, 10);
+                    if (isNaN(value)) {
+                        input.text = "";
+                    } else if (formInputModel.min && value < formInputModel.min) {
+                        input.text = "" + formInputModel.min;
+                    } else if (formInputModel.max && value > formInputModel.max) {
+                        input.text = "" + formInputModel.max;
+                    }
+                });
+                break;
+        }
 
         container.addControl(label);
         container.addControl(input);

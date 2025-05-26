@@ -1,7 +1,7 @@
 import { Control } from "@babylonjs/gui";
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
-import FormInputModel from "../model/FormInputModel";
+import { FormInputModel } from "../model/FormInputModel";
 
 class GiftMaker {
     constructor() {
@@ -16,29 +16,34 @@ Fill in the details below to personalize your custom puzzle.`;
         const formInputModel: FormInputModel[] = [
             {
                 id: "Name",
-                defaultLabel: "Friend's Name",
-                placeHolder: "e.g. Alex"
+                label: "Friend's Name",
+                placeHolder: "e.g. Alex",
+                type: "text",
+                maxLength: 30
             },
             {
                 id: "Age",
-                defaultLabel: "Coming Age",
-                placeHolder: "e.g. 30"
+                label: "Coming Age",
+                placeHolder: "e.g. 30",
+                type: "number",
+                min: 0,
+                max: 150
             },
-            {
+            /*{
                 id: "Language",
-                defaultLabel: "Wish Language",
+                label: "Wish Language",
                 placeHolder: "e.g. English"
             },
             {
                 id: "Text",
-                defaultLabel: "Wish Text",
+                label: "Wish Text",
                 placeHolder: "e.g. Happy Birthday!"
             },
             {
                 id: "Font",
-                defaultLabel: "Font",
+                label: "Font",
                 placeHolder: "e.g. Comic Sans MS"
-            },
+            },*/
         ];
 
         popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
