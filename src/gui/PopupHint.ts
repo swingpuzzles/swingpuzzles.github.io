@@ -1,4 +1,4 @@
-import { Container, Control, Rectangle, StackPanel, TextBlock, Image, Button } from "@babylonjs/gui";
+import { Container, Control, Rectangle, StackPanel, TextBlock, Image, Button, InputText } from "@babylonjs/gui";
 import { Animation, Animatable } from "@babylonjs/core"
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import sceneInitializer from "../components/SceneInitializer";
@@ -7,11 +7,13 @@ import screenShader, { ShaderMode } from "./ScreenShader";
 import guiManager from "./GuiManager";
 import handImagePool from "./HandImagePool";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
+import FormInputModel from "../model/FormInputModel";
 
 export enum PopupMode {
     Normal,
     PreSell,
-    Sell
+    Sell,
+    Gift
 }
 
 class PopupHint {
@@ -27,6 +29,8 @@ class PopupHint {
     private topRect!: Rectangle;
     private centerRect!: Rectangle;
     private bottomRect!: Rectangle;
+    private middleTopStack!: StackPanel;
+    private formPanel!: StackPanel;
     private gotItButton!: Button;
     private emptyGreenButton!: Button;
     private getItButton!: Button;
@@ -58,7 +62,7 @@ class PopupHint {
         this.mainContainer.addControl(this.mainRect);
 
         // Vertical StackPanel inside Rectangle
-        const mainStack = new StackPanel("StackPanel");
+        const mainStack = new StackPanel("mainStack");
         mainStack.width = "100%";
         mainStack.height = "100%";
         mainStack.isVertical = true;
@@ -71,7 +75,7 @@ class PopupHint {
         this.topRect.color = "#AAAAAA";
         mainStack.addControl(this.topRect);
 
-        const topStack = new StackPanel("StackPanel");
+        const topStack = new StackPanel("topStack");
         topStack.height = "100%";
         topStack.isVertical = false;
         this.topRect.addControl(topStack);
@@ -106,17 +110,23 @@ class PopupHint {
         this.centerRect.addControl(this.coverImage);
 
         // Middle Rectangle (with InputTextArea)
-        const middleStack = new StackPanel("StackPanel");
+        const middleStack = new StackPanel("middleStack");
+        middleStack.width = "100%";
         middleStack.height = "100%";
-        middleStack.isVertical = false;
+        middleStack.isVertical = true;
         this.centerRect.addControl(middleStack);
+
+        this.middleTopStack = new StackPanel("middleTopStack");
+        this.middleTopStack.width = "100%";
+        this.middleTopStack.isVertical = false;
+        middleStack.addControl(this.middleTopStack);
 
         this.middleImage = new Image("Image", "assets/mascot-avatar-small.webp");
         this.middleImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         this.middleImage.paddingBottom = "5px";
         this.middleImage.paddingLeft = "5px";
         this.middleImage.paddingRight = "5px";
-        middleStack.addControl(this.middleImage);
+        this.middleTopStack.addControl(this.middleImage);
 
         puzzleAssetsManager.addGuiImageSourceForMultiple([ this.topImage, this.middleImage ], "assets/mascot-avatar.webp");
 
@@ -127,7 +137,7 @@ class PopupHint {
         this.textAreaRect.thickness = 0;
         this.textAreaRect.adaptHeightToChildren = true;
         this.textAreaRect.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
-        middleStack.addControl(this.textAreaRect);
+        this.middleTopStack.addControl(this.textAreaRect);
 
         this.inputTextArea = new TextBlock("InputText");
         this.inputTextArea.isReadOnly = true;
@@ -139,6 +149,13 @@ class PopupHint {
         this.inputTextArea.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.inputTextArea.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         this.textAreaRect.addControl(this.inputTextArea);
+
+        this.formPanel = new StackPanel("formPanel");
+        this.formPanel.width = "100%";
+        this.formPanel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+        this.formPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
+        this.formPanel.color = "#dddddd";
+        middleStack.addControl(this.formPanel);
 
         // Bottom Rectangle (with Buttons)
         this.bottomRect = new Rectangle("Rectangle");
@@ -242,16 +259,52 @@ class PopupHint {
         });
     }
 
+    private clearForm() {
+        if (this.formPanel.children) { 
+            for (let i = this.formPanel.children.length - 1; i >= 0; i--) {
+                const child = this.formPanel.children[i];
+                this.formPanel.removeControl(child);
+                child.dispose();
+            }
+        }
+    }
+
+    // Helper to create styled labeled input fields
+    private createLabeledInput(formInputModel: FormInputModel) {
+        const labelText = formInputModel.defaultLabel;
+        const placeholder = formInputModel.placeHolder;
+        const container = new StackPanel();
+
+        const label = new TextBlock();
+        label.text = labelText;
+        label.color = "#222";
+        label.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+
+        const input = new InputText();
+        input.width = "100%";
+        input.color = "#222";
+        input.background = "#f0f0f0";
+        input.focusedBackground = "#e6e6e6"; // Slightly darker when focused
+        input.placeholderText = placeholder;
+        input.thickness = 1;
+
+        container.addControl(label);
+        container.addControl(input);
+        this.formPanel.addControl(container);
+        return input;
+    }
+
     private resize() {
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
         const mainHeight = minSize * this._sizeCoef;
+        const middleHeight = mainHeight - (minSize * (0.3 + 1 / 40));
         this.mainContainer.widthInPixels = minSize * 0.87;
         this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
         this.mainContainer.paddingTopInPixels = minSize / 80;
         this.mainContainer.paddingBottomInPixels = minSize / 80;
         this.topRect.heightInPixels = minSize * 0.2;
-        this.centerRect.heightInPixels = mainHeight - (minSize * (0.3 + 1 / 40));
+        this.centerRect.heightInPixels = middleHeight;
         this.bottomRect.heightInPixels = minSize * 0.1;
         this.welcomeText.widthInPixels = minSize * 0.62;
         this.welcomeText.fontSizeInPixels = minSize / 14;
@@ -280,6 +333,30 @@ class PopupHint {
         this.xButton.paddingRightInPixels = minSize / 240;
 
         this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24;
+
+        if (this.formPanel.isVisible) {
+            this.middleTopStack.heightInPixels = 0.3 * middleHeight;
+            this.formPanel.heightInPixels = 0.7 * middleHeight;
+
+            this.formPanel.paddingLeftInPixels = minSize / 80;
+            this.formPanel.paddingRightInPixels = minSize / 80;
+
+            for (const container of this.formPanel.children) {
+                container.heightInPixels = 0.14 * middleHeight;
+
+                for (const child of (container as Container).children) {
+                    child.fontSize = 0.036 * middleHeight;
+                    if (child instanceof TextBlock) {
+                        child.heightInPixels = 0.06 * middleHeight;
+                    } else if (child instanceof InputText) {
+                        child.heightInPixels = 0.08 * middleHeight;
+                    }
+                }
+            }
+        } else {
+            this.middleTopStack.heightInPixels = middleHeight;
+            this.formPanel.heightInPixels = 0;
+        }
     }
     
     public updateConfirmButtonText(text: string) {
@@ -297,14 +374,22 @@ class PopupHint {
         action: () => void = () => {},
         closeAction: (() => void) | null = null,
         afterShowAction: (() => void) | null = null,
-        mode: PopupMode = PopupMode.Normal
+        mode: PopupMode = PopupMode.Normal,
+        formInputModel: FormInputModel[] | null = null
     ): void {
+
+        if (mode === PopupMode.Normal && localStorage.getItem("tutorialDone") === "true") {
+            return;
+        }
+
+        this.clearForm();
+
         if (this.mainContainer.isVisible) {
             this.fadeOut(() => {
-                this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, afterShowAction, mode);
+                this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, afterShowAction, mode, formInputModel);
             });
         } else {
-            this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, afterShowAction, mode);
+            this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, afterShowAction, mode, formInputModel);
         }
     }
 
@@ -313,8 +398,10 @@ class PopupHint {
             action: () => void = () => {},
             closeAction: (() => void) | null = null,
             afterShowAction: (() => void) | null = null,
-            mode: PopupMode = PopupMode.Normal) : void {
-        if (this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, mode) && afterShowAction) {
+            mode: PopupMode = PopupMode.Normal,
+            formInputModel: FormInputModel[] | null = null) : void {
+
+        if (this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, mode, formInputModel) && afterShowAction) {
             afterShowAction();
         }
     }
@@ -323,7 +410,8 @@ class PopupHint {
             verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
             action: () => void = () => {},
             closeAction: (() => void) | null = null,
-            mode: PopupMode = PopupMode.Normal) : boolean {
+            mode: PopupMode = PopupMode.Normal,
+            formInputModel: FormInputModel[] | null = null) : boolean {
 
         switch (mode) {
             case PopupMode.PreSell:
@@ -345,11 +433,15 @@ class PopupHint {
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;
                 break;
-            default:
-                if (localStorage.getItem("tutorialDone") === "true") {
-                    return false;
-                }
-
+            case PopupMode.Normal:
+                this.gotItButton.isVisible = true;
+                this.emptyGreenButton.isVisible = false;
+                this.getItButton.isVisible = false;
+                this.notNowButton.isVisible = false;
+                this.centerImage.isVisible = true;
+                this.coverImage.isVisible = false;
+                this.textAreaRect.alpha = 1;
+            case PopupMode.Gift:
                 this.gotItButton.isVisible = true;
                 this.emptyGreenButton.isVisible = false;
                 this.getItButton.isVisible = false;
@@ -369,6 +461,16 @@ class PopupHint {
             this.xButton.isVisible = true;
         } else {
             this.xButton.isVisible = false;
+        }
+
+        if (formInputModel) {
+            for (let m of formInputModel) {
+                this.createLabeledInput(m);
+            }
+
+            this.formPanel.isVisible = true;
+        } else {
+            this.formPanel.isVisible = false;
         }
         
         this.resize();

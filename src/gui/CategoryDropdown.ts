@@ -3,6 +3,7 @@ import Dropdown from "./Dropdown";
 import tutorialManager from "./TutorialManager";
 import ctx, { Categories, Category } from "../components/common/SceneContext";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
+import giftMaker from "./GiftMaker";
 
 export default class CategoryDropdown extends Dropdown {
     private _optionSelected: boolean = false;
@@ -39,7 +40,7 @@ export default class CategoryDropdown extends Dropdown {
             ctx.category = category;
 
             if (category == Categories.Gift) {
-                console.log('GIFT!'); // TODO
+                giftMaker.start();
             } else {
                 puzzleCircleBuilder.build();
             }

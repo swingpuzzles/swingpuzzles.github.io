@@ -1,16 +1,13 @@
 import { Control } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 import popupHint, { PopupMode } from "./PopupHint";
-import screenShader, { ShaderMode } from "./ScreenShader";
+import { ShaderMode } from "./ScreenShader";
 import handImagePool from "./HandImagePool";
 import timerDisplay from "../components/misc/TimerDisplay";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 
 class TutorialManager {
     init() {
-        screenShader.init();
-        popupHint.init();
-
         let message = `Welcome to PuzzleVerse 3D! 🧩
 
 Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. Every piece fits into a world of adventure!

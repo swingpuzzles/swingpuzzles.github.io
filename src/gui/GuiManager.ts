@@ -8,6 +8,8 @@ import backToInitialAnimation from "../components/animations/BackToInitialAnimat
 import openCoverAnimation from "../components/animations/OpenCoverAnimation";
 import sceneInitializer from "../components/SceneInitializer";
 import CategoryDropdown from "./CategoryDropdown";
+import screenShader from "./ScreenShader";
+import popupHint from "./PopupHint";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -27,6 +29,10 @@ class GuiManager {
         this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
         this.piecesCountDropdown = new PiecesCountDropdown();
+
+        screenShader.init();
+        
+        popupHint.init();
 
         this.categoryDropdown = new CategoryDropdown();
 
