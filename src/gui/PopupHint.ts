@@ -279,48 +279,54 @@ class PopupHint {
         label.text = labelText;
         label.color = "#222";
         label.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
-
-        const input = new InputText();
-        input.color = "#222";
-        input.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
-        input.background = "#f0f0f0";
-        input.focusedBackground = "#e6e6e6"; // Slightly darker when focused
-        input.thickness = 1;
-
-        if (placeholder) {
-            input.placeholderText = placeholder;
-        }
+        container.addControl(label);
 
         switch (formInputModel.type) {
-            case "text":
-                input.width = formInputModel.maxLength ? (Math.min(100, Math.max(formInputModel.maxLength, input.placeholderText.length) * 2.5) + "%") : "100%";
-                input.onTextChangedObservable.add(() => {
-                    if (formInputModel.maxLength && input.text.length > formInputModel.maxLength) {
-                        input.text = input.text.slice(0, formInputModel.maxLength);
-                    }
-                });
+            case "selection":
+                container.addControl(formInputModel.selector.ui);
                 break;
-            case "number":
-                const maxLength = formInputModel.max ? Math.max(formInputModel.max.toString().length, input.placeholderText.length) : null;
-                input.width = maxLength ? (Math.min(100, maxLength * 2.5) + "%") : "100%";
-                input.onTextChangedObservable.add(() => {
-                    input.text = input.text.replace(/\D/g, "");
-                    const value = parseInt(input.text, 10);
-                    if (isNaN(value)) {
-                        input.text = "";
-                    } else if (formInputModel.min && value < formInputModel.min) {
-                        input.text = "" + formInputModel.min;
-                    } else if (formInputModel.max && value > formInputModel.max) {
-                        input.text = "" + formInputModel.max;
-                    }
-                });
-                break;
+            default:
+                const input = new InputText();
+                input.color = "#222";
+                input.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+                input.background = "#f0f0f0";
+                input.focusedBackground = "#e6e6e6"; // Slightly darker when focused
+                input.thickness = 1;
+
+                if (placeholder) {
+                    input.placeholderText = placeholder;
+                }
+
+                switch (formInputModel.type) {
+                    case "text":
+                        input.width = formInputModel.maxLength ? (Math.min(100, Math.max(formInputModel.maxLength, input.placeholderText.length) * 2.5) + "%") : "100%";
+                        input.onTextChangedObservable.add(() => {
+                            if (formInputModel.maxLength && input.text.length > formInputModel.maxLength) {
+                                input.text = input.text.slice(0, formInputModel.maxLength);
+                            }
+                        });
+                        break;
+                    case "number":
+                        const maxLength = formInputModel.max ? Math.max(formInputModel.max.toString().length, input.placeholderText.length) : null;
+                        input.width = maxLength ? (Math.min(100, maxLength * 2.5) + "%") : "100%";
+                        input.onTextChangedObservable.add(() => {
+                            input.text = input.text.replace(/\D/g, "");
+                            const value = parseInt(input.text, 10);
+                            if (isNaN(value)) {
+                                input.text = "";
+                            } else if (formInputModel.min && value < formInputModel.min) {
+                                input.text = "" + formInputModel.min;
+                            } else if (formInputModel.max && value > formInputModel.max) {
+                                input.text = "" + formInputModel.max;
+                            }
+                        });
+                        break;
+                }
+
+                container.addControl(input);
         }
 
-        container.addControl(label);
-        container.addControl(input);
         this.formPanel.addControl(container);
-        return input;
     }
 
     private resize() {

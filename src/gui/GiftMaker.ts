@@ -2,16 +2,26 @@ import { Control } from "@babylonjs/gui";
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormInputModel } from "../model/FormInputModel";
+import LanguageSelector from "./LanguageSelector";
 
 class GiftMaker {
-    constructor() {
+    private _languageSelector!: LanguageSelector;
 
+    constructor() {
+    }
+
+    init() {
+        this._languageSelector = new LanguageSelector();
     }
 
     start() {
         const introText = `Create a unique gift for someone special.
             
 Fill in the details below to personalize your custom puzzle.`;
+
+        this._languageSelector.selectionObserver = () => {
+            console.log('selected');
+        }
 
         const formInputModel: FormInputModel[] = [
             {
@@ -29,12 +39,14 @@ Fill in the details below to personalize your custom puzzle.`;
                 min: 0,
                 max: 150
             },
-            /*{
+            {
                 id: "Language",
                 label: "Wish Language",
-                placeHolder: "e.g. English"
+                placeHolder: "e.g. English",
+                type: "selection",
+                selector: this._languageSelector
             },
-            {
+            /*{
                 id: "Text",
                 label: "Wish Text",
                 placeHolder: "e.g. Happy Birthday!"

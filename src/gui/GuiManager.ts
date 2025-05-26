@@ -10,6 +10,7 @@ import sceneInitializer from "../components/SceneInitializer";
 import CategoryDropdown from "./CategoryDropdown";
 import screenShader from "./ScreenShader";
 import popupHint from "./PopupHint";
+import giftMaker from "./GiftMaker";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -33,6 +34,8 @@ class GuiManager {
         screenShader.init();
         
         popupHint.init();
+
+        giftMaker.init();
 
         this.categoryDropdown = new CategoryDropdown();
 

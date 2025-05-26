@@ -1,6 +1,9 @@
+import ISelector from "../interfaces/ISelector";
+
 export type FormInputModel =
   | TextInputModel
-  | NumericInputModel;
+  | NumericInputModel
+  | SelectionInputModel;
 
 interface BaseInputModel {
   id: string;
@@ -20,4 +23,9 @@ interface NumericInputModel extends BaseInputModel {
   min?: number;
   max?: number;
   defaultValue?: number;
+}
+
+interface SelectionInputModel extends BaseInputModel {
+  type: "selection";
+  selector: ISelector;
 }

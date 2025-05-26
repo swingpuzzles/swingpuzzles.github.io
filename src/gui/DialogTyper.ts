@@ -35,7 +35,7 @@ export class DialogTyper {
 
         guiManager.advancedTexture.addControl(this.textBlock);
 
-        this.textBlock.onPointerUpObservable.add(() => {
+        this.textBlock.onPointerClickObservable.add(() => {
             if (this.isTyping) {
                 this.skipRequested = true;
             }
@@ -58,7 +58,7 @@ export class DialogTyper {
             if (this.autoSkipDelay !== null) {
                 setTimeout(() => this._nextMessage(onComplete), this.autoSkipDelay);
             } else {
-                this.textBlock.onPointerUpObservable.addOnce(() => {
+                this.textBlock.onPointerClickObservable.addOnce(() => {
                     this._nextMessage(onComplete);
                 });
             }

@@ -11,6 +11,7 @@ import celebrationAnimation from "./animations/CelebrationAnimation";
 import timerDisplay from "./misc/TimerDisplay";
 import tutorialManager from "../gui/TutorialManager";
 import handImagePool from "../gui/HandImagePool";
+import giftMaker from "../gui/GiftMaker";
 
 
 declare global {
@@ -36,15 +37,6 @@ class SceneInitializer {
          
             //const havokPlugin = new HavokPlugin(true, havokInstance);
             await createScene();
-                      /*const buffer = await response.arrayBuffer();
-            const module = await WebAssembly.compile(buffer);
-            
-            const havok = await HavokPhysics({ wasmModule: module });*/
-                        // ✅ Load Havok WASM
-            /*(window as any).BABYLON_HAVOK_WASM_URL = "/havok/HavokPhysics.wasm";
-            (globalThis as any).HK = await HavokPhysics();
-        
-            await createScene((globalThis as any).HK);*/ // Assuming createScene is already defined globally or imported
 
             engine.resize();
 

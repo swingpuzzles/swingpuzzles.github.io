@@ -74,7 +74,7 @@ export default class Dropdown {
         this.options.isVisible = false;
         this.options.isVertical = true;
 
-        this.button.onPointerUpObservable.add(() => {
+        this.button.onPointerClickObservable.add(() => {
             this.options.isVisible = !this.options.isVisible;
         });
 
@@ -163,7 +163,7 @@ export default class Dropdown {
         button.color = this.color;
         button.alpha = 1.0;
 
-        button.onPointerUpObservable.add(() => {
+        button.onPointerClickObservable.add(() => {
             this.options.isVisible = false;
         });
 
