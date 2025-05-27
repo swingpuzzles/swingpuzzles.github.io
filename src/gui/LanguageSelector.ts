@@ -1,15 +1,16 @@
 import { Button, Control, StackPanel } from "@babylonjs/gui";
 import ISelector from "../interfaces/ISelector";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
+import Constants from "../components/common/Constants";
 
 export default class LanguageSelector extends StackPanel implements ISelector {
     private _selectionObserver: ((code: string) => void) | null = null;
+    private flagButtons: Record<string, Button> = {};
+    private selectedLanguage: string;
 
     constructor() {
-        super();
+        super(Constants.ISELECTOR);
         this.isVertical = false;
-        this.height = "30px";
-        //this.spacing = "10px";
         this.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
 
@@ -23,45 +24,56 @@ export default class LanguageSelector extends StackPanel implements ISelector {
             { code: "sk", flag: "assets/flags/sk.webp", flagSmall: "assets/flags/sk-small.webp" },
         ];
 
-        let selectedLanguage = "en";
-
-        const flagButtons: Record<string, Button> = {};
+        this.selectedLanguage = "en";
 
         languages.forEach(lang => {
             const btn = Button.CreateImageOnlyButton(`lang_${lang.code}`, lang.flagSmall);
-            btn.width = "40px";
-            btn.height = "30px";
-            btn.cornerRadius = 6;
-            btn.thickness = lang.code === selectedLanguage ? 5 : 0;
-            btn.color = lang.code === selectedLanguage ? "#AF504C" : "#cccccc"; // selection border
-            btn.paddingTopInPixels = lang.code === selectedLanguage ? 0 : 5;
-            btn.paddingBottomInPixels = lang.code === selectedLanguage ? 0 : 5;
-            btn.paddingLeftInPixels = lang.code === selectedLanguage ? 0 : 5;
-            btn.paddingRightInPixels = lang.code === selectedLanguage ? 0 : 5;
-            btn.background = "#ffffff";
+            btn.color = lang.code === this.selectedLanguage ? "#EA6A15" : "#cccccc"; // selection border
 
             btn.onPointerClickObservable.add(() => {
-                selectedLanguage = lang.code;
+                this.selectedLanguage = lang.code;
+
+                const border = this.heightInPixels / 6;
 
                 // Update visual state of all buttons
-                Object.entries(flagButtons).forEach(([code, button]) => {
-                    button.thickness = code === selectedLanguage ? 5 : 0;
-                    button.color = code === selectedLanguage ? "#AF504C" : "#cccccc";
-                    button.paddingTopInPixels = code === selectedLanguage ? 0 : 5;
-                    button.paddingBottomInPixels = code === selectedLanguage ? 0 : 5;
-                    button.paddingLeftInPixels = code === selectedLanguage ? 0 : 5;
-                    button.paddingRightInPixels = code === selectedLanguage ? 0 : 5;
+                Object.entries(this.flagButtons).forEach(([code, button]) => {
+                    button.thickness = code === this.selectedLanguage ? border : 0;
+                    button.color = code === this.selectedLanguage ? "#EA6A15" : "#cccccc";
+                    button.paddingTopInPixels = code === this.selectedLanguage ? 0 : border;
+                    button.paddingBottomInPixels = code === this.selectedLanguage ? 0 : border;
+                    button.paddingLeftInPixels = code === this.selectedLanguage ? 0 : border;
+                    button.paddingRightInPixels = code === this.selectedLanguage ? 0 : border;
                 });
 
                 if (this._selectionObserver) {
-                    this._selectionObserver(selectedLanguage);
+                    this._selectionObserver(this.selectedLanguage);
                 }
             });
 
-            flagButtons[lang.code] = btn;
+            this.flagButtons[lang.code] = btn;
             this.addControl(btn);
 
             puzzleAssetsManager.addGuiImageButtonSource(btn, lang.flag);
+        });
+
+        console.log(this.name);
+    }
+
+    resize(height: number): void {
+        this.heightInPixels = height;
+        const buttonwidth = height * 4 / 3;
+        const border = height / 6;
+        const cornerRadius = height / 5;
+        // Update visual state of all buttons
+        Object.entries(this.flagButtons).forEach(([code, button]) => {
+            button.widthInPixels = buttonwidth;
+            button.heightInPixels = height;
+            button.cornerRadius = cornerRadius;
+            button.thickness = code === this.selectedLanguage ? border : 0;
+            button.paddingTopInPixels = code === this.selectedLanguage ? 0 : border;
+            button.paddingBottomInPixels = code === this.selectedLanguage ? 0 : border;
+            button.paddingLeftInPixels = code === this.selectedLanguage ? 0 : border;
+            button.paddingRightInPixels = code === this.selectedLanguage ? 0 : border;
         });
     }
 

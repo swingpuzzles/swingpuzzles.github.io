@@ -16,8 +16,10 @@ class GiftMaker {
 
     start() {
         const introText = `Create a unique gift for someone special.
-            
-Fill in the details below to personalize your custom puzzle.`;
+
+At the top, choose the puzzle dimensions to match your preferred difficulty.
+
+Then, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.`;
 
         this._languageSelector.selectionObserver = () => {
             console.log('selected');
@@ -50,15 +52,17 @@ Fill in the details below to personalize your custom puzzle.`;
                 id: "Text",
                 label: "Wish Text",
                 placeHolder: "e.g. Happy Birthday!"
+                type: "selection",
             },
             {
                 id: "Font",
                 label: "Font",
                 placeHolder: "e.g. Comic Sans MS"
+                type: "selection",
             },*/
         ];
 
-        popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { alert('go next'); },
             () => { alert('close') },
             null,

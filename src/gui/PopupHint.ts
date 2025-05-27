@@ -8,6 +8,8 @@ import guiManager from "./GuiManager";
 import handImagePool from "./HandImagePool";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 import { FormInputModel } from "../model/FormInputModel";
+import ISelector from "../interfaces/ISelector";
+import Constants from "../components/common/Constants";
 
 export enum PopupMode {
     Normal,
@@ -370,21 +372,31 @@ class PopupHint {
         this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24;
 
         if (this.formPanel.isVisible) {
-            this.middleTopStack.heightInPixels = 0.3 * middleHeight;
-            this.formPanel.heightInPixels = 0.7 * middleHeight;
+            const middleTopPanelRatio = 0.5;
+            const formPanelRatio = 1 - middleTopPanelRatio;
+            const formPanelheight = formPanelRatio * middleHeight;
+
+            this.middleTopStack.heightInPixels = middleTopPanelRatio * middleHeight;
+            this.formPanel.heightInPixels = formPanelheight;
 
             this.formPanel.paddingLeftInPixels = minSize / 80;
             this.formPanel.paddingRightInPixels = minSize / 80;
 
-            for (const container of this.formPanel.children) {
-                container.heightInPixels = 0.14 * middleHeight;
+            const containerHeight = formPanelheight / this.formPanel.children.length;
 
+            for (const container of this.formPanel.children) {
+                container.heightInPixels = containerHeight;
                 for (const child of (container as Container).children) {
-                    child.fontSize = 0.036 * middleHeight;
+                    child.fontSize = 0.26 * containerHeight;
                     if (child instanceof TextBlock) {
-                        child.heightInPixels = 0.06 * middleHeight;
+                        child.heightInPixels = 0.43 * containerHeight;
                     } else if (child instanceof InputText) {
-                        child.heightInPixels = 0.08 * middleHeight;
+                        child.heightInPixels = 0.57 * containerHeight;
+                    } else if (child.name === Constants.ISELECTOR) {
+                        console.log('isel res');
+                        (child as unknown as ISelector)!.resize(0.57 * containerHeight);
+                    } else {
+                        console.log(child);
                     }
                 }
             }
