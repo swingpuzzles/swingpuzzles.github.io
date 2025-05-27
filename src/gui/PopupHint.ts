@@ -37,6 +37,8 @@ class PopupHint {
     private emptyGreenButton!: Button;
     private getItButton!: Button;
     private notNowButton!: Button;
+    private backButton!: Button;
+    private nextButton!: Button;
     private xButton!: Button;
     private _sizeCoef = 0.87;
     private _action: () => void = () => {};
@@ -237,7 +239,45 @@ class PopupHint {
             }
         });
 
-        this.bottomRect.addControl(this.getItButton);
+        this.backButton = Button.CreateImageOnlyButton("backButton", "assets/back-button-small.webp");
+        this.backButton.thickness = 0;
+        this.backButton.background = "";
+        this.backButton.hoverCursor = "pointer";
+        this.backButton.paddingLeft = "5%";
+        this.backButton.width = "45%";
+        this.backButton.height = "90%";
+        this.backButton.isHitTestVisible = true;
+        this.backButton.isPointerBlocker = true;
+        this.backButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+
+        this.backButton.onPointerClickObservable.add(() => {
+            //this.hide();// TODO back action
+        });
+
+        puzzleAssetsManager.addGuiImageButtonSource(this.backButton, "assets/back-button.webp");
+
+        this.bottomRect.addControl(this.backButton);
+
+        this.nextButton = Button.CreateImageOnlyButton("nextButton", "assets/next-button-small.webp");
+        this.nextButton.thickness = 0;
+        this.nextButton.background = "";
+        this.nextButton.hoverCursor = "pointer";
+        this.nextButton.paddingRight = "5%";
+        this.nextButton.width = "50%";
+        this.nextButton.height = "92%";
+        this.nextButton.isHitTestVisible = true;
+        this.nextButton.isPointerBlocker = true;
+        this.nextButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+
+        this.nextButton.onPointerClickObservable.add(() => {
+            if (this._action) {
+                this._action();
+            }
+        });
+
+        puzzleAssetsManager.addGuiImageButtonSource(this.backButton, "assets/next-button.webp");
+
+        this.bottomRect.addControl(this.nextButton);
 
         this.xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button-trans.webp");
         this.xButton.thickness = 0;
@@ -381,11 +421,15 @@ class PopupHint {
 
             this.formPanel.paddingLeftInPixels = minSize / 80;
             this.formPanel.paddingRightInPixels = minSize / 80;
+            this.formPanel.paddingTopInPixels = formPanelheight / 80;
+            this.formPanel.paddingBottomInPixels = formPanelheight / 80;
 
-            const containerHeight = formPanelheight / this.formPanel.children.length;
+            const containerHeight = 39 / 40 * formPanelheight / this.formPanel.children.length;
 
             for (const container of this.formPanel.children) {
+
                 container.heightInPixels = containerHeight;
+
                 for (const child of (container as Container).children) {
                     child.fontSize = 0.26 * containerHeight;
                     if (child instanceof TextBlock) {
@@ -466,6 +510,8 @@ class PopupHint {
                 this.emptyGreenButton.isVisible = true;
                 this.getItButton.isVisible = false;
                 this.notNowButton.isVisible = false;
+                this.backButton.isVisible = false;
+                this.nextButton.isVisible = false;
                 this.centerImage.isVisible = true;
                 this.coverImage.isVisible = false;
                 this.textAreaRect.alpha = 1;
@@ -476,6 +522,8 @@ class PopupHint {
                 this.emptyGreenButton.isVisible = false;
                 this.getItButton.isVisible = true;
                 this.notNowButton.isVisible = true;
+                this.backButton.isVisible = false;
+                this.nextButton.isVisible = false;
                 this.centerImage.isVisible = false;
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;
@@ -485,14 +533,18 @@ class PopupHint {
                 this.emptyGreenButton.isVisible = false;
                 this.getItButton.isVisible = false;
                 this.notNowButton.isVisible = false;
+                this.backButton.isVisible = false;
+                this.nextButton.isVisible = false;
                 this.centerImage.isVisible = true;
                 this.coverImage.isVisible = false;
                 this.textAreaRect.alpha = 1;
             case PopupMode.Gift:
-                this.gotItButton.isVisible = true;
+                this.gotItButton.isVisible = false;
                 this.emptyGreenButton.isVisible = false;
                 this.getItButton.isVisible = false;
                 this.notNowButton.isVisible = false;
+                this.backButton.isVisible = true;
+                this.nextButton.isVisible = true;
                 this.centerImage.isVisible = true;
                 this.coverImage.isVisible = false;
                 this.textAreaRect.alpha = 1;
