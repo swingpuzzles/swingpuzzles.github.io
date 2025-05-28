@@ -1,11 +1,11 @@
 import { Control } from "@babylonjs/gui";
-import Dropdown from "./Dropdown";
 import tutorialManager from "../TutorialManager";
 import ctx, { Categories, Category } from "../../components/common/SceneContext";
 import puzzleCircleBuilder from "../../components/builders/PuzzleCircleBuilder";
 import giftMaker from "../GiftMaker";
+import DropdownBuilder from "./DropdownBuilder";
 
-export default class CategoryDropdown extends Dropdown {
+export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
@@ -34,7 +34,7 @@ export default class CategoryDropdown extends Dropdown {
     selectAction(category: Category, userAction: boolean = true) {
         localStorage.setItem("category", category.key);
 
-        this.setContent(category.text, category.url);
+        this.dropdown.setContent(category.text, category.url);
 
         if (ctx.category !== category) {
             ctx.category = category;

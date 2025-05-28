@@ -1,26 +1,29 @@
 import { AdvancedDynamicTexture, Button, Control, StackPanel, Image } from "@babylonjs/gui";
 import ctx from "../components/common/SceneContext";
-import PiecesCountDropdown from "./dropdowns/PiecesCountDropdown";
+import PiecesCountDropdown from "./dropdowns/PiecesCountDropdownBuilder";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 import backToInitialAnimation from "../components/animations/BackToInitialAnimation";
 import openCoverAnimation from "../components/animations/OpenCoverAnimation";
 import sceneInitializer from "../components/SceneInitializer";
-import CategoryDropdown from "./dropdowns/CategoryDropdown";
+import CategoryDropdown from "./dropdowns/CategoryDropdownBuilder";
 import screenShader from "./ScreenShader";
 import popupHint from "./PopupHint";
 import giftMaker from "./GiftMaker";
+import { Dropdown } from "./dropdowns/Dropdown";
+import CategoryDropdownBuilder from "./dropdowns/CategoryDropdownBuilder";
+import PiecesCountDropdownBuilder from "./dropdowns/PiecesCountDropdownBuilder";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
     private bottomButtonPanel!: StackPanel;
-    private piecesCountDropdown!: PiecesCountDropdown;
+    private piecesCountDropdown!: Dropdown;
     private playButton!: Button;
     private bannerButton!: Button;
     private xButton!: Button;
     private menuButton!: Button;
-    private categoryDropdown!: CategoryDropdown;
+    private categoryDropdown!: Dropdown;
 
     get advancedTexture() {
         return this._advancedTexture;
@@ -29,7 +32,7 @@ class GuiManager {
     init() {
         this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
-        this.piecesCountDropdown = new PiecesCountDropdown();
+        this.piecesCountDropdown = new PiecesCountDropdownBuilder().build();
 
         screenShader.init();
         
@@ -37,7 +40,7 @@ class GuiManager {
 
         giftMaker.init();
 
-        this.categoryDropdown = new CategoryDropdown();
+        this.categoryDropdown = new CategoryDropdownBuilder().build();
 
         this._createButtons();
     }

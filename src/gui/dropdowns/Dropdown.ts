@@ -1,44 +1,34 @@
 import { Button, Container, Control, StackPanel, Image } from "@babylonjs/gui";
-import sceneInitializer from "../../components/SceneInitializer";
-import guiManager from "../GuiManager";
 
-interface DropdownOptions {
-    width?: number;
-    height?: number;
-    color?: string;
-    background?: string;
-    thickness?: number;
-    halign?: number;
-    valign?: number;
-    icon?: string;
-}
-
-export default class Dropdown {
-    private container: Container;
+export class Dropdown extends Container {
     private button: Button;
     private options: StackPanel;
-    private width!: number;
-    private height!: number;
-    private color: string;
-    private background: string;
-    private categoryIcon: Image | null;
+    private categoryIcon: Image | null = null;
+    private buttonBackground: string;
+    private buttonColor: string;
+    private itemHeight = 0;
+    //private width = 0;
 
-    constructor(
-        options: DropdownOptions = {}
-    ) {
-        this.color = options.color || "black";
-        this.background = options.background || "white";
+    constructor(config: {
+        background: string;
+        color: string;
+        thickness?: number;
+        icon?: string;
+        valign?: number;
+        halign?: number;
+    }) {
+        super();
+        this.buttonBackground = config.background;
+        this.buttonColor = config.color;
 
-        // Container
-        this.container = new Container();
-        this.container.verticalAlignment = options.valign ?? Control.VERTICAL_ALIGNMENT_TOP;
-        this.container.horizontalAlignment = options.halign ?? Control.HORIZONTAL_ALIGNMENT_CENTER;
-        this.container.isHitTestVisible = false;
-        this.container.zIndex = 30;
+        this.verticalAlignment = config.valign ?? Control.VERTICAL_ALIGNMENT_TOP;
+        this.horizontalAlignment = config.halign ?? Control.HORIZONTAL_ALIGNMENT_CENTER;
+        this.isHitTestVisible = false;
+        this.zIndex = 30;
 
-        // Primary button
-        if (options.icon) {
-            this.button = Button.CreateImageOnlyButton("Please Select", options.icon)
+        // Create button
+        if (config.icon) {
+            this.button = Button.CreateImageOnlyButton("Please Select", config.icon)
             
             this.button.background = "";
             this.button.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
@@ -56,19 +46,16 @@ export default class Dropdown {
             this.button.addControl(this.categoryIcon);
         } else {
             this.button = Button.CreateSimpleButton("Please Select", "Please Select ▼");
-            this.categoryIcon = null;
-
-            this.button.background = this.background;
-        
+            this.button.background = this.buttonBackground;
             this.button.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         }
 
         this.button.hoverCursor = "pointer";
-        this.button.thickness = options.thickness ?? 1;
-        this.button.color = this.color;
+        this.button.thickness = config.thickness ?? 1;
+        this.button.color = this.buttonColor;
         this.button.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
 
-        // Options panel
+        // Create options
         this.options = new StackPanel();
         this.options.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.options.isVisible = false;
@@ -78,57 +65,39 @@ export default class Dropdown {
             this.options.isVisible = !this.options.isVisible;
         });
 
-        this.container.onPointerEnterObservable.add(() => {
-            this.container.zIndex = 555;
+        this.onPointerEnterObservable.add(() => {
+            this.zIndex = 555;
         });
 
-        this.container.onPointerOutObservable.add(() => {
-            this.container.zIndex = 30;
+        this.onPointerOutObservable.add(() => {
+            this.zIndex = 30;
             this.options.isVisible = false;
         });
 
-        // Add controls
-        guiManager.advancedTexture.addControl(this.container);
-        this.container.addControl(this.button);
-        this.container.addControl(this.options);
-
-        sceneInitializer.addResizeObserver((width, height) => {
-            this.height = height / 20;
-            this.width = this.height * 7;
-
-            this.resize();
-        });
+        this.addControl(this.button);
+        this.addControl(this.options);
     }
 
-    get left(): string | number {
-        return this.container.left;
-    }
+    resize(height: number) {
+        this.itemHeight = height;
+        const width = height * 7;
 
-    set left(value: string | number) {
-        this.container.left = value;
-    }
-
-    set isVisible(value: boolean) {
-        this.container.isVisible = value;
-    }
-
-    private resize() {
-        this.container.widthInPixels = this.width;
-        this.options.topInPixels = this.height;
-        this.container.topInPixels = this.height / 4;
+        this.widthInPixels = width;
+        this.topInPixels = this.itemHeight / 4;
+        this.options.topInPixels = this.itemHeight;
 
         if (this.button.textBlock) {
-            this.button.textBlock.paddingRightInPixels = this.height / 4;
-            this.button.textBlock.fontSizeInPixels = this.height / 2;
-            this.button.heightInPixels = this.height;
+            this.button.textBlock.paddingRightInPixels = this.itemHeight / 4;
+            this.button.textBlock.fontSizeInPixels = this.itemHeight / 2;
+            this.button.heightInPixels = this.itemHeight;
         } else {
-            this.container.leftInPixels = this.height / 4;
-            this.button.heightInPixels = this.height * 1.8;
+            this.leftInPixels = this.itemHeight / 4;
+            this.button.heightInPixels = this.itemHeight * 1.8;
         }
 
-        for (let o of this.options.children) {
-            o.heightInPixels = this.height;
-            (o as Button).textBlock!.fontSizeInPixels = this.height / 2;
+        for (const o of this.options.children) {
+            o.heightInPixels = this.itemHeight;
+            (o as Button).textBlock!.fontSizeInPixels = this.itemHeight / 2;
         }
     }
 
@@ -142,10 +111,10 @@ export default class Dropdown {
         }
     }
 
-    addOption(text: string, callback: () => void, imageUrl: string | null = null): void {
-        let button;
-        
-        if (imageUrl != null) {
+    addItem(text: string, callback: () => void, imageUrl: string | null = null): void {
+        let button: Button;
+
+        if (imageUrl) {
             button = Button.CreateImageButton(text, text, imageUrl);
             button.image!.width = "22%";
             button.image!.stretch = Image.STRETCH_UNIFORM;
@@ -157,11 +126,10 @@ export default class Dropdown {
             button = Button.CreateSimpleButton(text, text);
         }
 
-        button.heightInPixels = this.height;
+        button.heightInPixels = this.itemHeight;
         button.paddingTopInPixels = -1;
-        button.background = this.background;
-        button.color = this.color;
-        button.alpha = 1.0;
+        button.background = this.buttonBackground;
+        button.color = this.buttonColor;
 
         button.onPointerClickObservable.add(() => {
             this.options.isVisible = false;
@@ -170,7 +138,5 @@ export default class Dropdown {
         button.onPointerClickObservable.add(callback);
 
         this.options.addControl(button);
-
-        this.resize();
     }
 }

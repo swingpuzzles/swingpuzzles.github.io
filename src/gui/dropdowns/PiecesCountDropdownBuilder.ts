@@ -1,8 +1,9 @@
 import ctx from "../../components/common/SceneContext";
-import Dropdown from "./Dropdown";
+import Dropdown from "./DropdownBuilder";
 import tutorialManager from "../TutorialManager";
+import DropdownBuilder from "./DropdownBuilder";
 
-export default class PiecesCountDropdown extends Dropdown {
+export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
@@ -51,7 +52,7 @@ export default class PiecesCountDropdown extends Dropdown {
         localStorage.setItem("numPieces", count.toString());
 
         const paddedText = "🧩 " + text + "   ▼"; // keep room for " ▼"
-        this.setContent(paddedText);
+        this.dropdown.setContent(paddedText);
 
         ctx.numX = xCount;
         ctx.numZ = zCount;
