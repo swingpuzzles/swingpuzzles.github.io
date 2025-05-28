@@ -1,6 +1,6 @@
-import ctx from "../components/common/SceneContext";
+import ctx from "../../components/common/SceneContext";
 import Dropdown from "./Dropdown";
-import tutorialManager from "./TutorialManager";
+import tutorialManager from "../TutorialManager";
 
 export default class PiecesCountDropdown extends Dropdown {
     private _optionSelected: boolean = false;

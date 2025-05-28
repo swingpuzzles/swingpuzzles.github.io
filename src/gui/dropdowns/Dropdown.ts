@@ -1,6 +1,6 @@
 import { Button, Container, Control, StackPanel, Image } from "@babylonjs/gui";
-import sceneInitializer from "../components/SceneInitializer";
-import guiManager from "./GuiManager";
+import sceneInitializer from "../../components/SceneInitializer";
+import guiManager from "../GuiManager";
 
 interface DropdownOptions {
     width?: number;
