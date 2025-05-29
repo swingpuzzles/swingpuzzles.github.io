@@ -96,7 +96,7 @@ class CelebrationAnimation implements IPuzzleAnimation {
         this.particleSystem.maxEmitPower = 3;
         this.particleSystem.updateSpeed = 0.01;
 
-        gameModeManager.addObserver((prevMode: GameMode) => {
+        gameModeManager.addGameModeChangedObserver((prevMode: GameMode) => {
             if (prevMode == GameMode.Celebration) {
                 this.particleSystem.stop();
             }

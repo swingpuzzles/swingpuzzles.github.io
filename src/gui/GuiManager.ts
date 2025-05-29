@@ -1,13 +1,11 @@
 import { AdvancedDynamicTexture, Button, Control, StackPanel, Image } from "@babylonjs/gui";
 import ctx from "../components/common/SceneContext";
-import PiecesCountDropdown from "./dropdowns/PiecesCountDropdownBuilder";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 import backToInitialAnimation from "../components/animations/BackToInitialAnimation";
 import openCoverAnimation from "../components/animations/OpenCoverAnimation";
 import sceneInitializer from "../components/SceneInitializer";
-import CategoryDropdown from "./dropdowns/CategoryDropdownBuilder";
 import screenShader from "./ScreenShader";
 import popupHint from "./PopupHint";
 import giftMaker from "./GiftMaker";
@@ -95,7 +93,7 @@ class GuiManager {
 
         this._advancedTexture.addControl(this.menuButton);
 
-        gameModeManager.addObserver(() => {
+        gameModeManager.addGameModeChangedObserver(() => {
             this.refreshButtonSizes();
         });
 
@@ -127,41 +125,33 @@ class GuiManager {
             case GameMode.Initial:
                 this.playButton.isVisible = true;
                 this.menuButton.isVisible = true;
-                this.categoryDropdown.isVisible = true;
                 this.xButton.isVisible = false;
                 this.bannerButton.width = renderHeight / 4 + "px";//"240px";
                 this.bannerButton.height = renderHeight / 16 + "px";//"60px";
-                this.piecesCountDropdown.isVisible = true;
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             case GameMode.OpenCover:
                 this.playButton.isVisible = false;
                 this.menuButton.isVisible = false;
-                this.categoryDropdown.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 3.9 + "px";//"248px";
                 this.bannerButton.height = renderHeight / 15.6 + "px";//"62px";
-                this.piecesCountDropdown.isVisible = false;
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             case GameMode.Solve:
                 this.playButton.isVisible = false;
                 this.menuButton.isVisible = false;
-                this.categoryDropdown.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 8 + "px";//"124px";
                 this.bannerButton.height = renderHeight / 32 + "px";//"31px";
-                this.piecesCountDropdown.isVisible = false;
                 this.bottomButtonPanel.paddingBottom = renderHeight / 192 + "px";//"5px";
                 break;
             case GameMode.Celebration:
                 this.playButton.isVisible = false;
                 this.menuButton.isVisible = false;
-                this.categoryDropdown.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 3.7 + "px";//"248px";
                 this.bannerButton.height = renderHeight / 14.8 + "px";//"62px";
-                this.piecesCountDropdown.isVisible = false;
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             }

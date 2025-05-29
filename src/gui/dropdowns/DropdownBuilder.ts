@@ -1,8 +1,10 @@
 import { Dropdown } from "./Dropdown";
 import guiManager from "../GuiManager";
 import sceneInitializer from "../../components/SceneInitializer";
+import { GameMode } from "../../components/behaviors/GameModeManager";
 
 interface DropdownOptions {
+    gameModes: GameMode[];
     width?: number;
     height?: number;
     color?: string;
@@ -17,17 +19,19 @@ interface DropdownItem {
     text: string;
     callback: () => void;
     imageUrl?: string | null;
+    fontFamily?: string | null;
 }
 
 export default class DropdownBuilder {
     private _dropdown: Dropdown;
-    private options: DropdownOptions = {};
+    private options: DropdownOptions;
     private items: DropdownItem[] = [];
 
-    constructor(options: DropdownOptions = {}) {
+    constructor(options: DropdownOptions) {
         this.options = options;
 
         this._dropdown = new Dropdown({
+            gameModes: this.options.gameModes,
             color: this.options.color || "black",
             background: this.options.background || "white",
             thickness: this.options.thickness,
@@ -41,14 +45,14 @@ export default class DropdownBuilder {
         return this._dropdown;
     }
 
-    addOption(text: string, callback: () => void, imageUrl: string | null = null): this {
-        this.items.push({ text, callback, imageUrl });
+    addOption(text: string, callback: () => void, imageUrl: string | null = null, fontFamily: string | null = null): this {
+        this.items.push({ text, callback, imageUrl, fontFamily });
         return this;
     }
 
     build(): Dropdown {
         for (const item of this.items) {
-            this._dropdown.addItem(item.text, item.callback, item.imageUrl);
+            this._dropdown.addItem(item.text, item.callback, item.imageUrl, item.fontFamily);
         }
 
         guiManager.advancedTexture.addControl(this._dropdown);

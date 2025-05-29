@@ -2,14 +2,14 @@ import { Control } from "@babylonjs/gui";
 import tutorialManager from "../TutorialManager";
 import ctx, { Categories, Category } from "../../components/common/SceneContext";
 import puzzleCircleBuilder from "../../components/builders/PuzzleCircleBuilder";
-import giftMaker from "../GiftMaker";
 import DropdownBuilder from "./DropdownBuilder";
+import gameModeManager, { GameMode } from "../../components/behaviors/GameModeManager";
 
 export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
-        super({ halign: Control.HORIZONTAL_ALIGNMENT_LEFT, thickness: 0, icon: "assets/category-button.webp" });
+        super({ gameModes: [ GameMode.Initial ], halign: Control.HORIZONTAL_ALIGNMENT_LEFT, thickness: 0, icon: "assets/category-button.webp" });
 
         this.addImageOption(Categories.General);
         this.addImageOption(Categories.Animals);
@@ -40,14 +40,14 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
             ctx.category = category;
 
             if (category == Categories.Gift) {
-                giftMaker.start();
+                gameModeManager.enterGiftInitialMode();
             } else {
                 puzzleCircleBuilder.build();
             }
         }
 
         if (userAction) {
-            //tutorialManager.showPuzzleChooserHint();    // TODO action?
+            //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?
         }
     }
 }

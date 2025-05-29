@@ -22,7 +22,7 @@ class TimerDisplay {
     }
 
     public init(): void {
-        gameModeManager.addObserver(() => {
+        gameModeManager.addGameModeChangedObserver(() => {
             switch (gameModeManager.currentMode) {
                 case GameMode.Solve:
                     this.resetAndShow();

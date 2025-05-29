@@ -1,4 +1,5 @@
 import { Button, Container, Control, StackPanel, Image } from "@babylonjs/gui";
+import gameModeManager, { GameMode } from "../../components/behaviors/GameModeManager";
 
 export class Dropdown extends Container {
     private button: Button;
@@ -10,6 +11,7 @@ export class Dropdown extends Container {
     //private width = 0;
 
     constructor(config: {
+        gameModes: GameMode[];
         background: string;
         color: string;
         thickness?: number;
@@ -18,6 +20,7 @@ export class Dropdown extends Container {
         halign?: number;
     }) {
         super();
+
         this.buttonBackground = config.background;
         this.buttonColor = config.color;
 
@@ -76,6 +79,10 @@ export class Dropdown extends Container {
 
         this.addControl(this.button);
         this.addControl(this.options);
+        
+        gameModeManager.addGameModeChangedObserver(() => {
+            this.isVisible = config.gameModes.includes(gameModeManager.currentMode);
+        });
     }
 
     resize(height: number) {
@@ -101,9 +108,13 @@ export class Dropdown extends Container {
         }
     }
 
-    setContent(text: string, url: string | null = null) {
+    setContent(text: string, url: string | null = null, fontFamily: string | null = null) {
         if (this.button.textBlock) {
             this.button.textBlock.text = text;
+
+            if (fontFamily) {
+                this.button.textBlock.fontFamily = fontFamily;
+            }
         }
 
         if (url && this.categoryIcon) {
@@ -111,7 +122,7 @@ export class Dropdown extends Container {
         }
     }
 
-    addItem(text: string, callback: () => void, imageUrl: string | null = null): void {
+    addItem(text: string, callback: () => void, imageUrl: string | null = null, fontFamily: string | null = null): void {
         let button: Button;
 
         if (imageUrl) {
@@ -124,6 +135,10 @@ export class Dropdown extends Container {
             button.image!.paddingRight = "5%";
         } else {
             button = Button.CreateSimpleButton(text, text);
+        }
+
+        if (fontFamily && button.textBlock) {
+            button.textBlock.fontFamily = fontFamily;
         }
 
         button.heightInPixels = this.itemHeight;

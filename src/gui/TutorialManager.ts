@@ -25,7 +25,7 @@ Let's start building!`;
                 () => { this.showSizeChooserHint(); });
         }
 
-        gameModeManager.addObserver((prevMode) => {
+        gameModeManager.addGameModeChangedObserver((prevMode) => {
             if (gameModeManager.currentMode === GameMode.Solve) {
                 this.finishTutorial();
             }

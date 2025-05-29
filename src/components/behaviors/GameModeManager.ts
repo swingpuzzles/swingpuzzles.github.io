@@ -1,3 +1,4 @@
+import giftMaker from "../../gui/GiftMaker";
 import tutorialManager from "../../gui/TutorialManager";
 import ctx from "../common/SceneContext";
 import piecePositioningManager from "./PiecePositioningManager";
@@ -7,7 +8,10 @@ export enum GameMode {
     OpenCover,
     Shake,
     Solve,
-    Celebration
+    Celebration,
+    GiftInitial,
+    GiftAdjustment,
+    GiftOverview
 }
 
 class GameModeManager {
@@ -45,7 +49,7 @@ class GameModeManager {
         }
     }
 
-    public addObserver(observer: (prevMode: GameMode) => void) {
+    public addGameModeChangedObserver(observer: (prevMode: GameMode) => void) {
         this._observers.push(observer);
     }
 
@@ -82,6 +86,14 @@ class GameModeManager {
         this.resetAll(GameMode.Celebration);
         
         piecePositioningManager.init();
+    }
+
+    enterGiftInitialMode() {
+        this.resetAll(GameMode.GiftInitial);
+
+        ctx.camera.detachControl();
+
+        giftMaker.start();;
     }
 
     enterWaiting() {

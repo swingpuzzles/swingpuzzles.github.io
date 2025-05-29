@@ -2,12 +2,13 @@ import ctx from "../../components/common/SceneContext";
 import Dropdown from "./DropdownBuilder";
 import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
+import { GameMode } from "../../components/behaviors/GameModeManager";
 
 export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
-        super();
+        super({ gameModes: [ GameMode.Initial ] });
 
         if (ctx.debugMode) {
             this.addPiecesNums(3, 2);
