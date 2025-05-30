@@ -538,6 +538,7 @@ class PopupHint {
                 this.centerImage.isVisible = true;
                 this.coverImage.isVisible = false;
                 this.textAreaRect.alpha = 1;
+                break;
             case PopupMode.Gift:
                 this.gotItButton.isVisible = false;
                 this.emptyGreenButton.isVisible = false;

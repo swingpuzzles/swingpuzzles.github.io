@@ -9,7 +9,7 @@ const FONT_FAMILIES = [ "Segoe Script", "Pacifico", "Comic Sans MS", "Brush Scri
 
 export default class FontFamilyDropdownBuilder extends DropdownBuilder {
     constructor() {
-        super({ gameModes: [ GameMode.Initial ] });
+        super({ gameModes: [ GameMode.GiftAdjustment ] });
 
         let currentFontFamily = localStorage.getItem("giftFontFamily")
         if (!currentFontFamily || !FONT_FAMILIES.includes(currentFontFamily)) {
