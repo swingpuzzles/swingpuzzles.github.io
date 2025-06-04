@@ -8,15 +8,19 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
         super({ gameModes: [ GameMode.GiftAdjustment ],
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
 
-        let currentFontFamily = localStorage.getItem("giftFontFamily")
+        let currentFontFamily = localStorage.getItem(this.storageItemName)
         if (!currentFontFamily || !FONT_FAMILIES.includes(currentFontFamily)) {
             currentFontFamily = FONT_FAMILIES[0];
-            localStorage.setItem("giftFontFamily", currentFontFamily);
+            localStorage.setItem(this.storageItemName, currentFontFamily);
         }
 
         for (let family of FONT_FAMILIES) {
             this.addFamily(family, family == currentFontFamily);
         }
+    }
+
+    protected get storageItemName(): string {
+        return "giftFontFamily";
     }
 
     private selectionCallback(key: string, userAction: boolean = true) {
@@ -32,7 +36,7 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
     }
 
     private selectAction(family: string, userAction: boolean = true) {
-        localStorage.setItem("giftFontFamily", family);
+        localStorage.setItem(this.storageItemName, family);
 
         this.dropdown.setContent(family, null, family);
 

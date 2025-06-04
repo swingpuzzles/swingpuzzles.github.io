@@ -20,6 +20,10 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
         this.addImageOption(Categories.Gift, true);
     }
 
+    protected get storageItemName(): string {
+        return "category";
+    }
+
     private selectionCallback(key: string, userAction: boolean = true) {
         const category = Object.values(Categories).find(c => c.text === key);
 
@@ -31,18 +35,18 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     addImageOption(category: Category, last: boolean = false) {
         this.addOption(category.text, category.url);
 
-        if (!localStorage.getItem("category") || !(localStorage.getItem("category")! in Categories)) {
-            localStorage.setItem("category", category.key);
+        if (!localStorage.getItem(this.storageItemName) || !(localStorage.getItem(this.storageItemName)! in Categories)) {
+            localStorage.setItem(this.storageItemName, category.key);
         }
 
-        if (localStorage.getItem("category") === category.key || last && !this._optionSelected) {
+        if (localStorage.getItem(this.storageItemName) === category.key || last && !this._optionSelected) {
             this.dropdown.doSelectAction(category.text, category.url, null, false);
             this._optionSelected = true;
         }
     }
 
     selectAction(category: Category, userAction: boolean = true) {
-        localStorage.setItem("category", category.key);
+        localStorage.setItem(this.storageItemName, category.key);
 
         if (ctx.category !== category) {
             ctx.category = category;

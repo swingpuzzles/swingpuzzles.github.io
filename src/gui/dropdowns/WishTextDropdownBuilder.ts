@@ -7,16 +7,20 @@ export default class WishTextDropdownBuilder extends DropdownBuilder {
         super({ gameModes: [ GameMode.GiftAdjustment ], translationEntry: wishes.wishes,
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); } });
 
-        let currentIdText = localStorage.getItem("giftWishText");
+        let currentIdText = localStorage.getItem(this.storageItemName);
 
         if (!currentIdText || !Object.values(wishes.wishes).find(c => c.id === currentIdText)) {
             currentIdText = wishes.wishes[0].id;
-            localStorage.setItem("giftWishText", currentIdText);
+            localStorage.setItem(this.storageItemName, currentIdText);
         }
 
         for (let wish of wishes.wishes) {
             this.addWishText(wish.id, wish.id === currentIdText);
         }
+    }
+
+    protected get storageItemName(): string {
+        return "giftWishText";
     }
 
     private selectionCallback(key: string, userAction: boolean = true) {
@@ -32,7 +36,7 @@ export default class WishTextDropdownBuilder extends DropdownBuilder {
     }
 
     private selectAction(idText: string, userAction: boolean = true) {
-        localStorage.setItem("giftWishText", idText);
+        localStorage.setItem(this.storageItemName, idText);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();// TODO tutorial?

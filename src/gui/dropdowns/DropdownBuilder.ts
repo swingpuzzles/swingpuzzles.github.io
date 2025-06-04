@@ -25,7 +25,7 @@ interface DropdownItem {
     fontFamily?: string | null;
 }
 
-export default class DropdownBuilder {
+export default abstract class DropdownBuilder {
     private _dropdown: Dropdown;
     private options: DropdownOptions;
     private items: DropdownItem[] = [];
@@ -50,6 +50,8 @@ export default class DropdownBuilder {
     protected get dropdown() {
         return this._dropdown;
     }
+
+    protected abstract get storageItemName(): string;
 
     addOption(idText: string, imageUrl: string | null = null, fontFamily: string | null = null): this {
         this.items.push({ idText: idText, imageUrl, fontFamily });

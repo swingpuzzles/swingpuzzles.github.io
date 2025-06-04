@@ -24,6 +24,10 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         this.addPiecesNums(25, 20, true);
     }
 
+    protected get storageItemName(): string {
+        return "numPieces";
+    }
+
     private selectionCallback(key: string, userAction: boolean = true) {
         const match = key.match(/(\d+)\s*x\s*(\d+)/);
 
@@ -48,11 +52,11 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         const text = `${xCount} x ${zCount} = ${count} pieces`;
         this.addOption(text);
 
-        if (!localStorage.getItem("numPieces") || isNaN(Number(localStorage.getItem("numPieces")))) {
-            localStorage.setItem("numPieces", count.toString());
+        if (!localStorage.getItem(this.storageItemName) || isNaN(Number(localStorage.getItem(this.storageItemName)))) {
+            localStorage.setItem(this.storageItemName, count.toString());
         }
 
-        if (count <= Number(localStorage.getItem("numPieces")) || last && !this._optionSelected) {
+        if (count <= Number(localStorage.getItem(this.storageItemName)) || last && !this._optionSelected) {
             this.dropdown.doSelectAction(text, null, null, false);
             this._optionSelected = true;
         }
@@ -60,7 +64,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
 
     selectAction(xCount: number, zCount: number, text: string, userAction: boolean = true) {
         const count = xCount * zCount;
-        localStorage.setItem("numPieces", count.toString());
+        localStorage.setItem(this.storageItemName, count.toString());
 
         const paddedText = "🧩 " + text;
         this.dropdown.setContent(paddedText);
