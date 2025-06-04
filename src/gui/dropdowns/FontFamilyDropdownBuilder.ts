@@ -23,10 +23,6 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
         return "giftFontFamily";
     }
 
-    private selectionCallback(key: string, userAction: boolean = true) {
-        this.selectAction(key, userAction);
-    }
-
     private addFamily(family: string, selected: boolean) {
         this.addOption(family, null, family);
 
@@ -35,10 +31,8 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
         }
     }
 
-    private selectAction(family: string, userAction: boolean = true) {
+    private selectionCallback(family: string, userAction: boolean = true) {
         localStorage.setItem(this.storageItemName, family);
-
-        this.dropdown.setContent(family, null, family);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();// TODO tutorial?

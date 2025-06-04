@@ -66,8 +66,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         const count = xCount * zCount;
         localStorage.setItem(this.storageItemName, count.toString());
 
-        const paddedText = "🧩 " + text;
-        this.dropdown.setContent(paddedText);
+//        const paddedText = "🧩 " + text;  // TODO
 
         ctx.numX = xCount;
         ctx.numZ = zCount;

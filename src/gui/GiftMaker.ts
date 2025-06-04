@@ -10,6 +10,7 @@ import WishTextDropdownBuilder from "./dropdowns/WishTextDropdownBuilder";
 import guiManager from "./GuiManager";
 import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
+import ForegroundDropdownBuilder from "./dropdowns/ForegroundDropdownBuilder";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -18,6 +19,7 @@ class GiftMaker {
     private _stack2!: StackPanel;
     private _fontFamilyDropdown!: Dropdown;
     private _wishTextDropdown!: Dropdown;
+    private _foregroundDropdown!: Dropdown;
 
     constructor() {
     }
@@ -27,13 +29,22 @@ class GiftMaker {
 
         this._stack1 = new StackPanel();
         this._stack1.isVertical = false;
+
         this._wishTextDropdown = new WishTextDropdownBuilder().build(true);
         this._stack1.addControl(this._wishTextDropdown);
+
         this._fontFamilyDropdown = new FontFamilyDropdownBuilder().build(true);
         this._stack1.addControl(this._fontFamilyDropdown);
 
+        this._stack2 = new StackPanel();
+        this._stack2.isVertical = false;
+
+        this._foregroundDropdown = new ForegroundDropdownBuilder().build(true);
+        this._stack2.addControl(this._foregroundDropdown);
+
         this._dropdownStack = new StackPanel();
         this._dropdownStack.addControl(this._stack1);
+        this._dropdownStack.addControl(this._stack2);
 
         guiManager.advancedTexture.addControl(this._dropdownStack);
 
@@ -57,6 +68,7 @@ class GiftMaker {
 
         this._wishTextDropdown.resize(dropdownHeight);
         this._fontFamilyDropdown.resize(dropdownHeight);
+        this._foregroundDropdown.resize(dropdownHeight);
 
         /*this._wishTextDropdown.widthInPixels = dropdownWidth;
         this._wishTextDropdown.heightInPixels = dropdownHeight;
