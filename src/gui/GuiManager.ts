@@ -31,6 +31,7 @@ class GuiManager {
         this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
         this.piecesCountDropdown = new PiecesCountDropdownBuilder().build();
+        guiManager.advancedTexture.addControl(this.piecesCountDropdown);
 
         screenShader.init();
         
@@ -39,6 +40,7 @@ class GuiManager {
         giftMaker.init();
 
         this.categoryDropdown = new CategoryDropdownBuilder().build();
+        guiManager.advancedTexture.addControl(this.categoryDropdown);
 
         this._createButtons();
     }

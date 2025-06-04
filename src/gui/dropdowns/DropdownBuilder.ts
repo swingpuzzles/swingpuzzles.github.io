@@ -61,8 +61,6 @@ export default class DropdownBuilder {
             this._dropdown.addItem(item.idText, item.imageUrl, item.fontFamily);
         }
 
-        guiManager.advancedTexture.addControl(this._dropdown);
-
         sceneInitializer.addResizeObserver((w, h) => {
             this._dropdown.resize(h / 20);
         });
