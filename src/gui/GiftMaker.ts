@@ -8,10 +8,14 @@ import { Dropdown } from "./dropdowns/Dropdown";
 import FontFamilyDropdownBuilder from "./dropdowns/FontFamilyDropdownBuilder";
 import WishTextDropdownBuilder from "./dropdowns/WishTextDropdownBuilder";
 import guiManager from "./GuiManager";
+import sceneInitializer from "../components/SceneInitializer";
+import ctx from "../components/common/SceneContext";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
     private _dropdownStack!: StackPanel;
+    private _stack1!: StackPanel;
+    private _stack2!: StackPanel;
     private _fontFamilyDropdown!: Dropdown;
     private _wishTextDropdown!: Dropdown;
 
@@ -21,17 +25,44 @@ class GiftMaker {
     public init() {
         this._languageSelector = new LanguageSelector();
 
-        const stack1 = new StackPanel();
-        stack1.isVertical = false;
-        this._wishTextDropdown = new WishTextDropdownBuilder().build();
-        stack1.addControl(this._wishTextDropdown);
-        this._fontFamilyDropdown = new FontFamilyDropdownBuilder().build();
-        stack1.addControl(this._fontFamilyDropdown);
+        this._stack1 = new StackPanel();
+        this._stack1.isVertical = false;
+        this._wishTextDropdown = new WishTextDropdownBuilder().build(true);
+        this._stack1.addControl(this._wishTextDropdown);
+        this._fontFamilyDropdown = new FontFamilyDropdownBuilder().build(true);
+        this._stack1.addControl(this._fontFamilyDropdown);
 
         this._dropdownStack = new StackPanel();
-        this._dropdownStack.addControl(stack1);
+        this._dropdownStack.addControl(this._stack1);
 
         guiManager.advancedTexture.addControl(this._dropdownStack);
+
+        this.resize();
+
+        sceneInitializer.addResizeObserver((width, height) => {
+            this.resize();
+        });
+    }
+
+    private resize() {
+        const renderWidth = ctx.engine.getRenderWidth();
+        const renderHeight = ctx.engine.getRenderHeight();
+
+        const vertical = renderHeight > renderWidth;
+
+        this._dropdownStack.isVertical = vertical;
+
+        const dropdownWidth = renderWidth * (vertical ? 0.4 : 0.2);
+        const dropdownHeight = dropdownWidth / 7;
+
+        this._wishTextDropdown.resize(dropdownHeight);
+        this._fontFamilyDropdown.resize(dropdownHeight);
+
+        /*this._wishTextDropdown.widthInPixels = dropdownWidth;
+        this._wishTextDropdown.heightInPixels = dropdownHeight;
+
+        this._fontFamilyDropdown.widthInPixels = dropdownWidth;
+        this._fontFamilyDropdown.heightInPixels = dropdownHeight;*/
     }
 
     public start() {

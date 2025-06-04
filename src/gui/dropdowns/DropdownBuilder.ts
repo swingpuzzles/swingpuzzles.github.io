@@ -56,14 +56,16 @@ export default class DropdownBuilder {
         return this;
     }
 
-    build(): Dropdown {
+    build(customResize: boolean = false): Dropdown {
         for (const item of this.items) {
             this._dropdown.addItem(item.idText, item.imageUrl, item.fontFamily);
         }
 
-        sceneInitializer.addResizeObserver((w, h) => {
-            this._dropdown.resize(h / 20);
-        });
+        if (!customResize) {
+            sceneInitializer.addResizeObserver((w, h) => {
+                this._dropdown.resize(h / 20);
+            });
+        }
 
         return this._dropdown;
     }
