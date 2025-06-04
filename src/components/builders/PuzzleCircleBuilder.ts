@@ -1,6 +1,6 @@
 import { Vector3, Mesh, HighlightLayer, Color3 } from '@babylonjs/core';
-import amazonDataHoriz from '../../assets/amazon-jigsaw-horiz.json';
-import amazonDataVert from '../../assets/amazon-jigsaw-vert.json';
+import amazonDataHoriz from '../../assets/data/amazon-jigsaw-horiz.json';
+import amazonDataVert from '../../assets/data/amazon-jigsaw-vert.json';
 import puzzleCoverBuilder from './PuzzleCoverBuilder';
 import ctx from '../common/SceneContext';
 import gameModeManager from '../behaviors/GameModeManager';

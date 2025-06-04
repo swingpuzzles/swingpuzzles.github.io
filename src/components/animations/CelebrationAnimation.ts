@@ -67,7 +67,7 @@ class CelebrationAnimation implements IPuzzleAnimation {
         // Create particle system
         this.particleSystem = new ParticleSystem("celebration", 2000, ctx.scene);
     
-        this.particleSystem.particleTexture = new Texture("assets/Flare.png", ctx.scene);
+        this.particleSystem.particleTexture = new Texture("assets/misc/Flare.png", ctx.scene);
     
         // Emitter settings
         this.particleSystem.minEmitBox = new Vector3(-20, 0, -20);

@@ -61,7 +61,7 @@ class ScreenShader {
         centerPanel.height = "100%";
         this._topPanel.addControl(centerPanel, 0, 1);
         
-        const img = new Image("img", "assets/shadow-window.webp");
+        const img = new Image("img", "assets/misc/shadow-window.webp");
         img.stretch = Image.STRETCH_FILL; // or STRETCH_UNIFORM if you prefer aspect ratio
         img.alpha = shadeCoef;
         img.height = "100%";

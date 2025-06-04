@@ -9,7 +9,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
-        super({ gameModes: [ GameMode.Initial ], halign: Control.HORIZONTAL_ALIGNMENT_LEFT, thickness: 0, icon: "assets/category-button.webp",
+        super({ gameModes: [ GameMode.Initial ], halign: Control.HORIZONTAL_ALIGNMENT_LEFT, thickness: 0, icon: "assets/buttons/category-button.webp",
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }
         });
 

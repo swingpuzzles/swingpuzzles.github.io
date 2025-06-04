@@ -1,6 +1,6 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../components/behaviors/GameModeManager";
-import wishes from '../../assets/wishes.json'
+import wishes from '../../assets/data/wishes.json'
 
 export default class WishTextDropdownBuilder extends DropdownBuilder {
     constructor() {

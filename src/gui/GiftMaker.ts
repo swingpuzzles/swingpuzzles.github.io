@@ -1,4 +1,4 @@
-import { Control } from "@babylonjs/gui";
+import { Control, StackPanel } from "@babylonjs/gui";
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormInputModel } from "../model/FormInputModel";
@@ -6,10 +6,14 @@ import LanguageSelector from "./LanguageSelector";
 import gameModeManager from "../components/behaviors/GameModeManager";
 import { Dropdown } from "./dropdowns/Dropdown";
 import FontFamilyDropdownBuilder from "./dropdowns/FontFamilyDropdownBuilder";
+import WishTextDropdownBuilder from "./dropdowns/WishTextDropdownBuilder";
+import guiManager from "./GuiManager";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
+    private _dropdownStack!: StackPanel;
     private _fontFamilyDropdown!: Dropdown;
+    private _wishTextDropdown!: Dropdown;
 
     constructor() {
     }
@@ -17,7 +21,17 @@ class GiftMaker {
     public init() {
         this._languageSelector = new LanguageSelector();
 
+        const stack1 = new StackPanel();
+        stack1.isVertical = false;
+        this._wishTextDropdown = new WishTextDropdownBuilder().build();
+        stack1.addControl(this._wishTextDropdown);
         this._fontFamilyDropdown = new FontFamilyDropdownBuilder().build();
+        stack1.addControl(this._fontFamilyDropdown);
+
+        this._dropdownStack = new StackPanel();
+        this._dropdownStack.addControl(stack1);
+
+        guiManager.advancedTexture.addControl(this._dropdownStack);
     }
 
     public start() {

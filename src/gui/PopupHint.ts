@@ -84,7 +84,7 @@ class PopupHint {
         topStack.isVertical = false;
         this.topRect.addControl(topStack);
 
-        this.topImage = new Image("Image", "assets/mascot-avatar-small.webp");
+        this.topImage = new Image("Image", "assets/popup/mascot-avatar-small.webp");
         topStack.addControl(this.topImage);
 
         this.welcomeText = new TextBlock("Textblock", "Welcome!");
@@ -103,10 +103,12 @@ class PopupHint {
         this.centerRect.color = "#AAAAAA";
         mainStack.addControl(this.centerRect);
 
-        this.centerImage = new Image("Image", "assets/popup-bg.webp");
+        this.centerImage = new Image("Image", "assets/popup/popup-bg-small.webp");
         this.centerImage.width = "100%";
         this.centerImage.height = "100%";
         this.centerRect.addControl(this.centerImage);
+
+        puzzleAssetsManager.addGuiImageSource(this.centerImage, "assets/popup/popup-bg.webp");
 
         this.coverImage = new Image("Image", "");
         this.coverImage.stretch = Image.STRETCH_UNIFORM;
@@ -125,14 +127,14 @@ class PopupHint {
         this.middleTopStack.isVertical = false;
         middleStack.addControl(this.middleTopStack);
 
-        this.middleImage = new Image("Image", "assets/mascot-avatar-small.webp");
+        this.middleImage = new Image("Image", "assets/popup/mascot-avatar-small.webp");
         this.middleImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         this.middleImage.paddingBottom = "5px";
         this.middleImage.paddingLeft = "5px";
         this.middleImage.paddingRight = "5px";
         this.middleTopStack.addControl(this.middleImage);
 
-        puzzleAssetsManager.addGuiImageSourceForMultiple([ this.topImage, this.middleImage ], "assets/mascot-avatar.webp");
+        puzzleAssetsManager.addGuiImageSourceForMultiple([ this.topImage, this.middleImage ], "assets/popup/mascot-avatar.webp");
 
         this.textAreaRect = new Rectangle("Rectangle");
         this.textAreaRect.height = "auto";
@@ -168,7 +170,7 @@ class PopupHint {
         this.bottomRect.color = "#AAAAAA";
         mainStack.addControl(this.bottomRect);
 
-        this.gotItButton = Button.CreateImageOnlyButton("gotItButton", "assets/got-it-button-small.webp");
+        this.gotItButton = Button.CreateImageOnlyButton("gotItButton", "assets/buttons/got-it-button-small.webp");
         this.gotItButton.thickness = 0;
         this.gotItButton.background = "";
         this.gotItButton.hoverCursor = "pointer";
@@ -185,9 +187,9 @@ class PopupHint {
 
         this.bottomRect.addControl(this.gotItButton);
 
-        puzzleAssetsManager.addGuiImageButtonSource(this.gotItButton, "assets/got-it-button.webp");
+        puzzleAssetsManager.addGuiImageButtonSource(this.gotItButton, "assets/buttons/got-it-button.webp");
 
-        this.emptyGreenButton = Button.CreateImageWithCenterTextButton("yesIDidButton", "Continue", "assets/empty-green-button.webp");
+        this.emptyGreenButton = Button.CreateImageWithCenterTextButton("yesIDidButton", "Continue", "assets/buttons/empty-green-button.webp");
         this.emptyGreenButton.thickness = 0;
         this.emptyGreenButton.background = "";
         this.emptyGreenButton.hoverCursor = "pointer";
@@ -205,7 +207,7 @@ class PopupHint {
 
         this.bottomRect.addControl(this.emptyGreenButton);
 
-        this.notNowButton = Button.CreateImageOnlyButton("notNowButton", "assets/not-now-button.webp");
+        this.notNowButton = Button.CreateImageOnlyButton("notNowButton", "assets/buttons/not-now-button.webp");
         this.notNowButton.thickness = 0;
         this.notNowButton.background = "";
         this.notNowButton.hoverCursor = "pointer";
@@ -222,7 +224,7 @@ class PopupHint {
 
         this.bottomRect.addControl(this.notNowButton);
 
-        this.getItButton = Button.CreateImageOnlyButton("getItButton", "assets/banner.png");
+        this.getItButton = Button.CreateImageOnlyButton("getItButton", "assets/buttons/banner.png");
         this.getItButton.thickness = 0;
         this.getItButton.background = "";
         this.getItButton.hoverCursor = "pointer";
@@ -239,7 +241,7 @@ class PopupHint {
             }
         });
 
-        this.backButton = Button.CreateImageOnlyButton("backButton", "assets/back-button-small.webp");
+        this.backButton = Button.CreateImageOnlyButton("backButton", "assets/buttons/back-button-small.webp");
         this.backButton.thickness = 0;
         this.backButton.background = "";
         this.backButton.hoverCursor = "pointer";
@@ -254,11 +256,11 @@ class PopupHint {
             //this.hide();// TODO back action
         });
 
-        puzzleAssetsManager.addGuiImageButtonSource(this.backButton, "assets/back-button.webp");
+        puzzleAssetsManager.addGuiImageButtonSource(this.backButton, "assets/buttons/back-button.webp");
 
         this.bottomRect.addControl(this.backButton);
 
-        this.nextButton = Button.CreateImageOnlyButton("nextButton", "assets/next-button-small.webp");
+        this.nextButton = Button.CreateImageOnlyButton("nextButton", "assets/buttons/next-button-small.webp");
         this.nextButton.thickness = 0;
         this.nextButton.background = "";
         this.nextButton.hoverCursor = "pointer";
@@ -275,11 +277,11 @@ class PopupHint {
             }
         });
 
-        puzzleAssetsManager.addGuiImageButtonSource(this.backButton, "assets/next-button.webp");
+        puzzleAssetsManager.addGuiImageButtonSource(this.backButton, "assets/buttons/next-button.webp");
 
         this.bottomRect.addControl(this.nextButton);
 
-        this.xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button-trans.webp");
+        this.xButton = Button.CreateImageOnlyButton("xButton", "assets/buttons/x-button-trans.webp");
         this.xButton.thickness = 0;
         this.xButton.background = "";
         this.xButton.hoverCursor = "pointer";

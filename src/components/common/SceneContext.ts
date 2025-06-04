@@ -1,11 +1,11 @@
 import { ArcRotateCamera, Engine, Mesh, Scene, Vector3 } from "@babylonjs/core";
 
 export const Categories = {
-    General: { key: "General", text: "General", tags: [ "General" ], url: "assets/category-general.webp" },
-    Animals: { key: "Animals", text: "Animals", tags: [ "Theme_Animals" ], url: "assets/category-animal.webp" },
-    Beach: { key: "Beach", text: "Beach", tags: [ "Theme_Beach" ], url: "assets/category-beach.webp" },
-    Flowers: { key: "Flowers", text: "Flowers", tags: [ "Theme_Floral" ], url: "assets/category-floral.webp" },
-    Gift: { key: "Gift", text: "Make a Gift", tags: [ ], url: "assets/giftbox.webp" },
+    General: { key: "General", text: "General", tags: [ "General" ], url: "assets/categories/category-general.webp" },
+    Animals: { key: "Animals", text: "Animals", tags: [ "Theme_Animals" ], url: "assets/categories/category-animal.webp" },
+    Beach: { key: "Beach", text: "Beach", tags: [ "Theme_Beach" ], url: "assets/categories/category-beach.webp" },
+    Flowers: { key: "Flowers", text: "Flowers", tags: [ "Theme_Floral" ], url: "assets/categories/category-floral.webp" },
+    Gift: { key: "Gift", text: "Make a Gift", tags: [ ], url: "assets/categories/giftbox.webp" },
 }
 
 export type Category = (typeof Categories)[keyof typeof Categories];

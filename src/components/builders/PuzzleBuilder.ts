@@ -24,7 +24,7 @@ class PuzzleBuilder {
         frontMaterial.disableLighting = true;
 
         const backMaterial = new StandardMaterial("backMat", ctx.scene);
-        const texture = puzzleAssetsManager.addTexture("assets/floor-small.webp", "assets/floor.webp");
+        const texture = puzzleAssetsManager.addTexture("assets/room/floor-small.webp", "assets/floor.webp");
         texture.uScale = 4;
         texture.vScale = 4;
         backMaterial.diffuseTexture = texture;

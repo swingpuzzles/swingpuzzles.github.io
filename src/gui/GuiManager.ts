@@ -51,7 +51,7 @@ class GuiManager {
         this.bottomButtonPanel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.bottomButtonPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
 
-        this.playButton = Button.CreateImageOnlyButton("btn1", "assets/play-button-small.webp");
+        this.playButton = Button.CreateImageOnlyButton("btn1", "assets/buttons/play-button-small.webp");
         this.playButton.thickness = 0;
         this.playButton.background = "";
         this.playButton.hoverCursor = "pointer";
@@ -60,7 +60,7 @@ class GuiManager {
         });
         this.bottomButtonPanel.addControl(this.playButton);
 
-        this.bannerButton = Button.CreateImageOnlyButton("btn2", "assets/banner.png");
+        this.bannerButton = Button.CreateImageOnlyButton("btn2", "assets/buttons/banner.png");
         this.bannerButton.thickness = 0;
         this.bannerButton.background = "";
         this.bannerButton.hoverCursor = "pointer";
@@ -72,9 +72,9 @@ class GuiManager {
         this._advancedTexture.addControl(this.bottomButtonPanel);
 
         // Register buttons for high-res replacement
-        puzzleAssetsManager.addGuiImageButtonSource(this.playButton, "assets/play-button.webp");
+        puzzleAssetsManager.addGuiImageButtonSource(this.playButton, "assets/buttons/play-button.webp");
 
-        this.xButton = Button.CreateImageOnlyButton("xButton", "assets/x-button.webp");
+        this.xButton = Button.CreateImageOnlyButton("xButton", "assets/buttons/x-button.webp");
         this.xButton.thickness = 0;
         this.xButton.background = "";
         this.xButton.hoverCursor = "pointer";
@@ -86,7 +86,7 @@ class GuiManager {
 
         this._advancedTexture.addControl(this.xButton);
 
-        this.menuButton = Button.CreateImageOnlyButton("xButton", "assets/menu-button.webp");
+        this.menuButton = Button.CreateImageOnlyButton("xButton", "assets/buttons/menu-button.webp");
         this.menuButton.thickness = 0;
         this.menuButton.background = "";
         this.menuButton.hoverCursor = "pointer";

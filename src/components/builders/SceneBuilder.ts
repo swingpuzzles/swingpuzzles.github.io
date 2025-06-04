@@ -18,7 +18,7 @@ class SceneBuilder {
         skyboxMaterial.microSurface = 1.0;
         skyboxMaterial.disableLighting = true;
         skyboxMaterial.reflectionTexture = new CubeTexture(
-            "assets/room", 
+            "assets/room/room", 
             //"assets/skybox2", 
             ctx.scene/*, 
             [
@@ -87,8 +87,8 @@ class SceneBuilder {
         const textureScale = 4;
         var tableMaterial = new StandardMaterial("groundMaterial", ctx.scene);
         //groundMaterial.diffuseColor = new Color3(0.8,0.5,0);
-        tableMaterial.diffuseTexture = new Texture("assets/ParallaxDiffuse.png", ctx.scene);
-        tableMaterial.bumpTexture = new Texture("assets/ParallaxNormal.png", ctx.scene);
+        tableMaterial.diffuseTexture = new Texture("assets/room/ParallaxDiffuse.png", ctx.scene);
+        tableMaterial.bumpTexture = new Texture("assets/room/ParallaxNormal.png", ctx.scene);
 
         (tableMaterial.diffuseTexture as Texture).uScale = textureScale;
         (tableMaterial.diffuseTexture as Texture).vScale = textureScale;

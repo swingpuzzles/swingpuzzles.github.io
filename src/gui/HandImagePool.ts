@@ -146,5 +146,5 @@ class HandImagePool {
     }
 }
 
-const handImagePool = new HandImagePool("assets/hand.webp");
+const handImagePool = new HandImagePool("assets/popup/hand.webp"/*, "assets/popup/hand-small.webp"*/);
 export default handImagePool;
