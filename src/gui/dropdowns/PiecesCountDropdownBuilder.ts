@@ -1,5 +1,4 @@
 import ctx from "../../components/common/SceneContext";
-import Dropdown from "./DropdownBuilder";
 import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../components/behaviors/GameModeManager";
@@ -8,7 +7,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
-        super({ gameModes: [ GameMode.Initial ] });
+        super({ gameModes: [ GameMode.Initial ], selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
 
         if (ctx.debugMode) {
             this.addPiecesNums(3, 2);
@@ -25,6 +24,17 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         this.addPiecesNums(25, 20, true);
     }
 
+    private selectionCallback(key: string, userAction: boolean = true) {
+        const match = key.match(/(\d+)\s*x\s*(\d+)/);
+
+        if (match) {
+            const xCount = parseInt(match[1], 10);
+            const zCount = parseInt(match[2], 10);
+
+            this.selectAction(xCount, zCount, key, userAction);
+        }
+    }
+
     addPiecesNums(xCount: number, zCount: number, last: boolean = false) {
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
 
@@ -36,14 +46,14 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
 
         const count = xCount * zCount;
         const text = `${xCount} x ${zCount} = ${count} pieces`;
-        this.addOption(text, () => { this.selectAction(xCount, zCount, text); });
+        this.addOption(text);
 
         if (!localStorage.getItem("numPieces") || isNaN(Number(localStorage.getItem("numPieces")))) {
             localStorage.setItem("numPieces", count.toString());
         }
 
         if (count <= Number(localStorage.getItem("numPieces")) || last && !this._optionSelected) {
-            this.selectAction(xCount, zCount, text, false);
+            this.dropdown.doSelectAction(text, null, null, false);
             this._optionSelected = true;
         }
     }
@@ -52,7 +62,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         const count = xCount * zCount;
         localStorage.setItem("numPieces", count.toString());
 
-        const paddedText = "🧩 " + text + "   ▼"; // keep room for " ▼"
+        const paddedText = "🧩 " + text;
         this.dropdown.setContent(paddedText);
 
         ctx.numX = xCount;

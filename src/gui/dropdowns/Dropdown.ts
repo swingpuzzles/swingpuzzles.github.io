@@ -1,13 +1,18 @@
-import { Button, Container, Control, StackPanel, Image } from "@babylonjs/gui";
+import { Button, Container, Control, StackPanel, Image, TextBlock } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../../components/behaviors/GameModeManager";
+import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 
 export class Dropdown extends Container {
     private button: Button;
     private options: StackPanel;
     private categoryIcon: Image | null = null;
+    private dropDownSign: TextBlock;
     private buttonBackground: string;
     private buttonColor: string;
     private itemHeight = 0;
+    private _lang: string = "en";
+    private translationMap: Map<string, Map<string, string>> = new Map();
+    private selectionCallback?(key: string, userAction: boolean): void;
     //private width = 0;
 
     constructor(config: {
@@ -18,11 +23,28 @@ export class Dropdown extends Container {
         icon?: string;
         valign?: number;
         halign?: number;
+        lang?: string;
+        translationEntry?: ITranslationEntry[];
+        selectionCallback?(key: string, userAction: boolean): void;
     }) {
         super();
 
         this.buttonBackground = config.background;
         this.buttonColor = config.color;
+        this._lang = config.lang ?? this._lang;
+        this.selectionCallback = config.selectionCallback;
+        
+        if (config.translationEntry) {
+            for (let te of config.translationEntry) {
+                let innerMap: Map<string, string> = new Map();
+
+                for (const [lang, text] of Object.entries(te.translations)) {
+                    innerMap.set(lang, text);
+                }
+
+                this.translationMap.set(te.id, innerMap);
+            }
+        }
 
         this.verticalAlignment = config.valign ?? Control.VERTICAL_ALIGNMENT_TOP;
         this.horizontalAlignment = config.halign ?? Control.HORIZONTAL_ALIGNMENT_CENTER;
@@ -48,15 +70,21 @@ export class Dropdown extends Container {
 
             this.button.addControl(this.categoryIcon);
         } else {
-            this.button = Button.CreateSimpleButton("Please Select", "Please Select ▼");
+            this.button = Button.CreateSimpleButton("Please Select", "Please Select");
             this.button.background = this.buttonBackground;
-            this.button.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         }
 
         this.button.hoverCursor = "pointer";
         this.button.thickness = config.thickness ?? 1;
         this.button.color = this.buttonColor;
         this.button.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+
+        this.dropDownSign = new TextBlock("dropDownSign", "▼");
+        this.dropDownSign.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.dropDownSign.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.dropDownSign.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+        this.dropDownSign.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+        this.button.addControl(this.dropDownSign);
 
         // Create options
         this.options = new StackPanel();
@@ -85,6 +113,20 @@ export class Dropdown extends Container {
         });
     }
 
+    public set lang(value: string) {
+        if (value === this._lang) {
+            return;
+        }
+
+        this._lang = value;
+
+        for (const child of this.options.children) {
+            if (child instanceof Button && child.textBlock && child.name) {
+                child.textBlock.text = this.translationMap.get(child.name)?.get(this.lang) ?? child.name
+            }
+        }
+    }
+
     resize(height: number) {
         this.itemHeight = height;
         const width = height * 7;
@@ -94,13 +136,17 @@ export class Dropdown extends Container {
         this.options.topInPixels = this.itemHeight;
 
         if (this.button.textBlock) {
-            this.button.textBlock.paddingRightInPixels = this.itemHeight / 4;
             this.button.textBlock.fontSizeInPixels = this.itemHeight / 2;
             this.button.heightInPixels = this.itemHeight;
+            this.dropDownSign.paddingRightInPixels = this.itemHeight / 10;
+            this.dropDownSign.paddingBottomInPixels = this.itemHeight / 6;
         } else {
             this.leftInPixels = this.itemHeight / 4;
             this.button.heightInPixels = this.itemHeight * 1.8;
+            this.dropDownSign.paddingBottomInPixels = this.itemHeight / 5;
         }
+
+        this.dropDownSign.fontSizeInPixels = this.itemHeight / 2;
 
         for (const o of this.options.children) {
             o.heightInPixels = this.itemHeight;
@@ -122,11 +168,25 @@ export class Dropdown extends Container {
         }
     }
 
-    addItem(text: string, callback: () => void, imageUrl: string | null = null, fontFamily: string | null = null): void {
+    doSelectAction(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, userAction: boolean = true): void {
+        this.options.isVisible = false;
+
+        const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;
+
+        this.setContent(text, imageUrl, fontFamily);
+
+        if (this.selectionCallback) {
+            this.selectionCallback(idText, userAction);
+        }
+    }
+
+    addItem(idText: string, imageUrl: string | null = null, fontFamily: string | null = null): void {
         let button: Button;
 
+        const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;
+
         if (imageUrl) {
-            button = Button.CreateImageButton(text, text, imageUrl);
+            button = Button.CreateImageButton(idText, text, imageUrl);
             button.image!.width = "22%";
             button.image!.stretch = Image.STRETCH_UNIFORM;
             button.image!.paddingTop = "1%";
@@ -134,7 +194,7 @@ export class Dropdown extends Container {
             button.image!.paddingLeft = "5%";
             button.image!.paddingRight = "5%";
         } else {
-            button = Button.CreateSimpleButton(text, text);
+            button = Button.CreateSimpleButton(idText, text);
         }
 
         if (fontFamily && button.textBlock) {
@@ -147,10 +207,8 @@ export class Dropdown extends Container {
         button.color = this.buttonColor;
 
         button.onPointerClickObservable.add(() => {
-            this.options.isVisible = false;
+            this.doSelectAction(idText, imageUrl, fontFamily);
         });
-
-        button.onPointerClickObservable.add(callback);
 
         this.options.addControl(button);
     }

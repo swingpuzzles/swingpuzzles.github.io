@@ -9,7 +9,9 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
-        super({ gameModes: [ GameMode.Initial ], halign: Control.HORIZONTAL_ALIGNMENT_LEFT, thickness: 0, icon: "assets/category-button.webp" });
+        super({ gameModes: [ GameMode.Initial ], halign: Control.HORIZONTAL_ALIGNMENT_LEFT, thickness: 0, icon: "assets/category-button.webp",
+            selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }
+        });
 
         this.addImageOption(Categories.General);
         this.addImageOption(Categories.Animals);
@@ -18,23 +20,29 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
         this.addImageOption(Categories.Gift, true);
     }
 
+    private selectionCallback(key: string, userAction: boolean = true) {
+        const category = Object.values(Categories).find(c => c.text === key);
+
+        if (category) {
+            this.selectAction(category, userAction);
+        }
+    }
+
     addImageOption(category: Category, last: boolean = false) {
-        this.addOption(category.text, () => { this.selectAction(category); }, category.url);
+        this.addOption(category.text, category.url);
 
         if (!localStorage.getItem("category") || !(localStorage.getItem("category")! in Categories)) {
             localStorage.setItem("category", category.key);
         }
 
         if (localStorage.getItem("category") === category.key || last && !this._optionSelected) {
-            this.selectAction(category, false);
+            this.dropdown.doSelectAction(category.text, category.url, null, false);
             this._optionSelected = true;
         }
     }
 
     selectAction(category: Category, userAction: boolean = true) {
         localStorage.setItem("category", category.key);
-
-        this.dropdown.setContent(category.text, category.url);
 
         if (ctx.category !== category) {
             ctx.category = category;

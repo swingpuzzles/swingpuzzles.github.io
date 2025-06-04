@@ -437,10 +437,7 @@ class PopupHint {
                     } else if (child instanceof InputText) {
                         child.heightInPixels = 0.57 * containerHeight;
                     } else if (child.name === Constants.ISELECTOR) {
-                        console.log('isel res');
                         (child as unknown as ISelector)!.resize(0.57 * containerHeight);
-                    } else {
-                        console.log(child);
                     }
                 }
             }
@@ -646,6 +643,7 @@ class PopupHint {
             this.mainContainer.alpha = 1;
             handImagePool.releaseAll();
             onComplete();
+            screenShader.exitShader();
         });
     }
 

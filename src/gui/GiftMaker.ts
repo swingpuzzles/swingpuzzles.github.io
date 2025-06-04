@@ -3,18 +3,24 @@ import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormInputModel } from "../model/FormInputModel";
 import LanguageSelector from "./LanguageSelector";
+import gameModeManager from "../components/behaviors/GameModeManager";
+import { Dropdown } from "./dropdowns/Dropdown";
+import FontFamilyDropdownBuilder from "./dropdowns/FontFamilyDropdownBuilder";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
+    private _fontFamilyDropdown!: Dropdown;
 
     constructor() {
     }
 
-    init() {
+    public init() {
         this._languageSelector = new LanguageSelector();
+
+        this._fontFamilyDropdown = new FontFamilyDropdownBuilder().build();
     }
 
-    start() {
+    public start() {
         const introText = `Create a unique gift for someone special.
 
 At the top, choose the puzzle dimensions to match your preferred difficulty.
@@ -62,13 +68,17 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             },*/
         ];
 
-        popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { alert('go next'); },
+        popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_BOTTOM,
+            () => { popupHint.hide(); gameModeManager.enterGiftAdjustmentMode(); },
             () => { alert('close') },
             null,
             PopupMode.Gift,
             formInputModel
         )
+    }
+
+    public enterAdjustments() {
+
     }
 }
 

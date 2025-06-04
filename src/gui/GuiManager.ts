@@ -124,7 +124,7 @@ class GuiManager {
         switch (gameModeManager.currentMode) {
             case GameMode.Initial:
                 this.playButton.isVisible = true;
-                this.menuButton.isVisible = true;
+                this.menuButton.isVisible = false;//true;   // TODO LATER
                 this.xButton.isVisible = false;
                 this.bannerButton.width = renderHeight / 4 + "px";//"240px";
                 this.bannerButton.height = renderHeight / 16 + "px";//"60px";

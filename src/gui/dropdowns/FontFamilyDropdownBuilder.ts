@@ -1,15 +1,12 @@
-import ctx from "../../components/common/SceneContext";
-import Dropdown from "./DropdownBuilder";
-import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../components/behaviors/GameModeManager";
-import { Control } from "@babylonjs/gui";
 
 const FONT_FAMILIES = [ "Segoe Script", "Pacifico", "Comic Sans MS", "Brush Script MT" ];
 
 export default class FontFamilyDropdownBuilder extends DropdownBuilder {
     constructor() {
-        super({ gameModes: [ GameMode.GiftAdjustment ] });
+        super({ gameModes: [ GameMode.GiftAdjustment ],
+            selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
 
         let currentFontFamily = localStorage.getItem("giftFontFamily")
         if (!currentFontFamily || !FONT_FAMILIES.includes(currentFontFamily)) {
@@ -22,18 +19,22 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
         }
     }
 
+    private selectionCallback(key: string, userAction: boolean = true) {
+        this.selectAction(key, userAction);
+    }
+
     private addFamily(family: string, selected: boolean) {
-        this.addOption(family, () => { this.selectAction(family); }, null, family);
+        this.addOption(family, null, family);
 
         if (selected) {
-            this.selectAction(family, false);
+            this.dropdown.doSelectAction(family, null, null, false);
         }
     }
 
     private selectAction(family: string, userAction: boolean = true) {
         localStorage.setItem("giftFontFamily", family);
 
-        this.dropdown.setContent(family + "   ▼", null, family);
+        this.dropdown.setContent(family, null, family);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();// TODO tutorial?

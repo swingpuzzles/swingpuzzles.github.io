@@ -96,6 +96,12 @@ class GameModeManager {
         giftMaker.start();;
     }
 
+    enterGiftAdjustmentMode() {
+        this.resetAll(GameMode.GiftAdjustment);
+
+        giftMaker.enterAdjustments();
+    }
+
     enterWaiting() {
         const overlay = document.getElementById("loadingOverlay");
         overlay!.style.display = "flex";

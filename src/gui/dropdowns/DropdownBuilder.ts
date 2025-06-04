@@ -2,6 +2,7 @@ import { Dropdown } from "./Dropdown";
 import guiManager from "../GuiManager";
 import sceneInitializer from "../../components/SceneInitializer";
 import { GameMode } from "../../components/behaviors/GameModeManager";
+import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 
 interface DropdownOptions {
     gameModes: GameMode[];
@@ -13,11 +14,13 @@ interface DropdownOptions {
     halign?: number;
     valign?: number;
     icon?: string;
+    lang?: string;
+    translationEntry?: ITranslationEntry[];
+    selectionCallback?(key: string, userAction: boolean): void;
 }
 
 interface DropdownItem {
-    text: string;
-    callback: () => void;
+    idText: string;
     imageUrl?: string | null;
     fontFamily?: string | null;
 }
@@ -38,6 +41,9 @@ export default class DropdownBuilder {
             icon: this.options.icon,
             halign: this.options.halign,
             valign: this.options.valign,
+            lang: this.options.lang,
+            translationEntry: this.options.translationEntry,
+            selectionCallback: this.options.selectionCallback
         });
     }
 
@@ -45,14 +51,14 @@ export default class DropdownBuilder {
         return this._dropdown;
     }
 
-    addOption(text: string, callback: () => void, imageUrl: string | null = null, fontFamily: string | null = null): this {
-        this.items.push({ text, callback, imageUrl, fontFamily });
+    addOption(idText: string, imageUrl: string | null = null, fontFamily: string | null = null): this {
+        this.items.push({ idText: idText, imageUrl, fontFamily });
         return this;
     }
 
     build(): Dropdown {
         for (const item of this.items) {
-            this._dropdown.addItem(item.text, item.callback, item.imageUrl, item.fontFamily);
+            this._dropdown.addItem(item.idText, item.imageUrl, item.fontFamily);
         }
 
         guiManager.advancedTexture.addControl(this._dropdown);
