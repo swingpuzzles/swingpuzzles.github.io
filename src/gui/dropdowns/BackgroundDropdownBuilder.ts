@@ -1,5 +1,6 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../components/behaviors/GameModeManager";
+import giftMaker from "../GiftMaker";
 
 export default class BackgroundDropdownBuilder extends DropdownBuilder {
     private static readonly bgs = [ "confetti", "fireworks", "gifts", "stars" ];
@@ -14,27 +15,32 @@ export default class BackgroundDropdownBuilder extends DropdownBuilder {
     }
 
     protected get storageItemName(): string {
-        return "giftForeground";
+        return "giftBackground";
     }
 
-    addImageOption(index: string) {
-        const imageName = "bg-" + index + "-small.webp";
+    addImageOption(option: string) {
+        const imageName = "bg-" + option + "-small.webp";
         const imageUrl = "assets/gift/bgs/" + imageName;
 
-        this.addOption(imageName, imageUrl);
+        this.addOption(option, imageUrl);
 
         const storedValue = localStorage.getItem(this.storageItemName);
         if (!storedValue || !BackgroundDropdownBuilder.bgs.includes(storedValue)) {
-            localStorage.setItem(this.storageItemName, index);
+            localStorage.setItem(this.storageItemName, option);
         }
 
-        if (localStorage.getItem(this.storageItemName) === index) {
-            this.dropdown.doSelectAction(imageName, imageUrl, null, false);
+        if (localStorage.getItem(this.storageItemName) === option) {
+            this.dropdown.doSelectAction(option, imageUrl, null, false);
         }
     }
 
-    selectionCallback(index: string, userAction: boolean = true) {
-        localStorage.setItem(this.storageItemName, index);
+    selectionCallback(option: string, userAction: boolean = true) {
+        const imageName = "bg-" + option + "-small.webp";
+        const imageUrl = "assets/gift/bgs/" + imageName;
+
+        localStorage.setItem(this.storageItemName, option);
+
+        giftMaker.bgChanged(imageUrl);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?

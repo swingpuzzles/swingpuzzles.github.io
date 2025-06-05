@@ -55,8 +55,6 @@ export default class LanguageSelector extends StackPanel implements ISelector {
 
             puzzleAssetsManager.addGuiImageButtonSource(btn, lang.flag);
         });
-
-        console.log(this.name);
     }
 
     resize(height: number): void {

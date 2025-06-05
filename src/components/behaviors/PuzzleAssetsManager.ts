@@ -116,18 +116,7 @@ class PuzzleAssetsManager {
     }
 
     public addGuiImageButtonSource(button: Button, highResUrl: string): void {
-        if (!button.image) {
-            console.warn(`Button '${button.name}' has no image.`);
-            return;
-        }
-    
-        const task = this.manager!.addTextureTask(`gui_image_${Date.now()}`, highResUrl);
-        task.onSuccess = () => {
-            button.image!.source = highResUrl;
-        };
-        task.onError = (_, msg, ex) => {
-            console.warn(`Failed to load high-res GUI image: ${msg}`, ex);
-        };
+        this.addGuiImageSource(button.image!, highResUrl);
     }
 
     public addGuiImageSource(image: Image, highResUrl: string): void {
@@ -136,13 +125,13 @@ class PuzzleAssetsManager {
             return;
         }
     
-        const task = this.manager!.addTextureTask(`gui_image_${Date.now()}`, highResUrl);
-        task.onSuccess = () => {
+        if (image.isLoaded) {
             image.source = highResUrl;
-        };
-        task.onError = (_, msg, ex) => {
-            console.warn(`Failed to load high-res GUI image: ${msg}`, ex);
-        };
+        } else {
+            image.onImageLoadedObservable.addOnce(() => {
+                image.source = highResUrl;
+            });
+        }
     }
 
     public addGuiImageSourceForMultiple(images: Image[], highResUrl: string): void {
@@ -150,16 +139,10 @@ class PuzzleAssetsManager {
             console.warn(`No images provided.`);
             return;
         }
-    
-        const task = this.manager!.addTextureTask(`gui_image_${Date.now()}`, highResUrl);
-        task.onSuccess = () => {
-            for (const img of images) {
-                img.source = highResUrl;
-            }
-        };
-        task.onError = (_, msg, ex) => {
-            console.warn(`Failed to load high-res GUI image: ${msg}`, ex);
-        };
+
+        for (const img of images) {
+            this.addGuiImageSource(img, highResUrl);
+        }
     }
 }
 

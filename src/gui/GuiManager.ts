@@ -123,36 +123,38 @@ class GuiManager {
         this.categoryButton.paddingTopInPixels = renderHeight / 80;
         this.categoryButton.paddingLeftInPixels = renderHeight / 80;*/
 
+        this.playButton.isVisible = false;
+        this.menuButton.isVisible = false;
+        this.xButton.isVisible = false;
+        this.bannerButton.isVisible = false;
+
         switch (gameModeManager.currentMode) {
             case GameMode.Initial:
                 this.playButton.isVisible = true;
                 this.menuButton.isVisible = false;//true;   // TODO LATER
-                this.xButton.isVisible = false;
+                this.bannerButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 4 + "px";//"240px";
                 this.bannerButton.height = renderHeight / 16 + "px";//"60px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             case GameMode.OpenCover:
-                this.playButton.isVisible = false;
-                this.menuButton.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 3.9 + "px";//"248px";
+                this.bannerButton.isVisible = true;
                 this.bannerButton.height = renderHeight / 15.6 + "px";//"62px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             case GameMode.Solve:
-                this.playButton.isVisible = false;
-                this.menuButton.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 8 + "px";//"124px";
+                this.bannerButton.isVisible = true;
                 this.bannerButton.height = renderHeight / 32 + "px";//"31px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 192 + "px";//"5px";
                 break;
             case GameMode.Celebration:
-                this.playButton.isVisible = false;
-                this.menuButton.isVisible = false;
                 this.xButton.isVisible = true;
                 this.bannerButton.width = renderHeight / 3.7 + "px";//"248px";
+                this.bannerButton.isVisible = true;
                 this.bannerButton.height = renderHeight / 14.8 + "px";//"62px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;

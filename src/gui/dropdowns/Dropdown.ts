@@ -130,14 +130,19 @@ export class Dropdown extends Container {
     }
 
     public set foreground(value: Color3) {
-        // Update target color
-        this.button.color = value.toHexString(); // convert Color3 to CSS hex string
+        const color = value.toHexString();
 
-        // Compute brightness (simple formula)
         const brightness = 0.299 * value.r + 0.587 * value.g + 0.114 * value.b;
+        const bg = brightness > 0.5 ? "black" : "white";
 
-        // Adjust background for contrast
-        this.button.background = brightness > 0.5 ? "black" : "white";
+        this.button.color = color; // convert Color3 to CSS hex string
+
+        this.button.background = bg;
+
+        for (const o of this.options.children) {
+            o.color = color;
+            (o as Button).background = bg;
+        }
     }
 
     resize(height: number) {

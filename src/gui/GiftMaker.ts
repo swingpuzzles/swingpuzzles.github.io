@@ -1,4 +1,4 @@
-import { ColorPicker, Control, StackPanel } from "@babylonjs/gui";
+import { ColorPicker, Control, Image, StackPanel } from "@babylonjs/gui";
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormInputModel } from "../model/FormInputModel";
@@ -13,6 +13,7 @@ import ctx from "../components/common/SceneContext";
 import ForegroundDropdownBuilder from "./dropdowns/ForegroundDropdownBuilder";
 import BackgroundDropdownBuilder from "./dropdowns/BackgroundDropdownBuilder";
 import { Color3 } from "@babylonjs/core";
+import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -24,11 +25,24 @@ class GiftMaker {
     private _foregroundDropdown!: Dropdown;
     private _backgroundDropdown!: Dropdown;
     private _colorPicker!: ColorPicker;
+    private _bgImage!: Image;
+    private _fgImage!: Image;
 
     constructor() {
     }
 
     public init() {
+        this._bgImage = new Image("gift bg");
+        this._bgImage.stretch = Image.STRETCH_EXTEND;
+
+        guiManager.advancedTexture.addControl(this._bgImage);
+
+        this._fgImage = new Image("gift fg");
+        this._fgImage.stretch = Image.STRETCH_UNIFORM;
+        //this._fgImage.height = "auto"; // preserve ratio
+
+        guiManager.advancedTexture.addControl(this._fgImage);
+
         this._languageSelector = new LanguageSelector();
 
         this._stack1 = new StackPanel();
@@ -74,6 +88,16 @@ class GiftMaker {
         this._wishTextDropdown.fontFamily = fontFamily;
     }
 
+    public fgChanged(url: string): void {
+        this._fgImage.source = url;
+        puzzleAssetsManager.addGuiImageSource(this._fgImage, url.replace("-small", ""));
+    }
+
+    public bgChanged(url: string): void {
+        this._bgImage.source = url;
+        puzzleAssetsManager.addGuiImageSource(this._bgImage, url.replace("-small", ""));
+    }
+
     private resize() {
         const renderWidth = ctx.engine.getRenderWidth();
         const renderHeight = ctx.engine.getRenderHeight();
@@ -94,11 +118,25 @@ class GiftMaker {
         this._foregroundDropdown.resize(dropdownHeight);
         this._backgroundDropdown.resize(dropdownHeight);
 
-        /*this._wishTextDropdown.widthInPixels = dropdownWidth;
-        this._wishTextDropdown.heightInPixels = dropdownHeight;
+        let ratio = 1.5;  // TODO do it everywhere
+        const horizMax = 0.9 * renderWidth;
+        const vertMax = 0.8 * renderHeight;
+        let maxRatio = horizMax / vertMax;
 
-        this._fontFamilyDropdown.widthInPixels = dropdownWidth;
-        this._fontFamilyDropdown.heightInPixels = dropdownHeight;*/
+        if (vertical) {
+            ratio = 1 / ratio;
+            maxRatio = 1 / maxRatio;
+        }
+
+        if (maxRatio > ratio) {
+            this._bgImage.widthInPixels = vertMax * ratio;
+            this._bgImage.heightInPixels = vertMax;
+        } else {
+            this._bgImage.widthInPixels = horizMax;
+            this._bgImage.heightInPixels = horizMax / ratio;
+        }
+
+        this._fgImage.widthInPixels = Math.min(this._bgImage.widthInPixels, this._bgImage.heightInPixels) * 0.9;
     }
 
     public start() {
@@ -135,18 +173,6 @@ Then, fill in the details below to personalize your custom puzzle — enter your
                 type: "selection",
                 selector: this._languageSelector
             },
-            /*{
-                id: "Text",
-                label: "Wish Text",
-                placeHolder: "e.g. Happy Birthday!"
-                type: "selection",
-            },
-            {
-                id: "Font",
-                label: "Font",
-                placeHolder: "e.g. Comic Sans MS"
-                type: "selection",
-            },*/
         ];
 
         popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_BOTTOM,

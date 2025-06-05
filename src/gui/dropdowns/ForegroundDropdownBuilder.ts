@@ -1,5 +1,6 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../components/behaviors/GameModeManager";
+import giftMaker from "../GiftMaker";
 
 export default class ForegroundDropdownBuilder extends DropdownBuilder {
     private static readonly fromIndex = 1;
@@ -22,7 +23,7 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
         const imageName = "torte_" + index + "-small.webp";
         const imageUrl = "assets/gift/tortes/" + imageName;
 
-        this.addOption(imageName, imageUrl);
+        this.addOption(index, imageUrl);
 
         const storedValue = Number(localStorage.getItem(this.storageItemName));
         if (!(Number(storedValue) >= ForegroundDropdownBuilder.fromIndex) || !(Number(storedValue) <= ForegroundDropdownBuilder.toIndex)) {
@@ -30,12 +31,17 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
         }
 
         if (localStorage.getItem(this.storageItemName) === index) {
-            this.dropdown.doSelectAction(imageName, imageUrl, null, false);
+            this.dropdown.doSelectAction(index, imageUrl, null, false);
         }
     }
 
     selectionCallback(index: string, userAction: boolean = true) {
+        const imageName = "torte_" + index + "-small.webp";
+        const imageUrl = "assets/gift/tortes/" + imageName;
+
         localStorage.setItem(this.storageItemName, index);
+
+        giftMaker.fgChanged(imageUrl);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?
