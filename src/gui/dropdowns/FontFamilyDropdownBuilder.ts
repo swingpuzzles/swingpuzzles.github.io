@@ -1,5 +1,6 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../components/behaviors/GameModeManager";
+import giftMaker from "../GiftMaker";
 
 const FONT_FAMILIES = [ "Segoe Script", "Pacifico", "Comic Sans MS", "Brush Script MT" ];
 
@@ -27,12 +28,14 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
         this.addOption(family, null, family);
 
         if (selected) {
-            this.dropdown.doSelectAction(family, null, null, false);
+            this.dropdown.doSelectAction(family, null, family, false);
         }
     }
 
     private selectionCallback(family: string, userAction: boolean = true) {
         localStorage.setItem(this.storageItemName, family);
+
+        giftMaker.fontFamilyChanged(family);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();// TODO tutorial?

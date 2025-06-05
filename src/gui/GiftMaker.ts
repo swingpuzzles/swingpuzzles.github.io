@@ -1,4 +1,4 @@
-import { Control, StackPanel } from "@babylonjs/gui";
+import { ColorPicker, Control, StackPanel } from "@babylonjs/gui";
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormInputModel } from "../model/FormInputModel";
@@ -12,6 +12,7 @@ import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
 import ForegroundDropdownBuilder from "./dropdowns/ForegroundDropdownBuilder";
 import BackgroundDropdownBuilder from "./dropdowns/BackgroundDropdownBuilder";
+import { Color3 } from "@babylonjs/core";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -22,6 +23,7 @@ class GiftMaker {
     private _wishTextDropdown!: Dropdown;
     private _foregroundDropdown!: Dropdown;
     private _backgroundDropdown!: Dropdown;
+    private _colorPicker!: ColorPicker;
 
     constructor() {
     }
@@ -40,6 +42,14 @@ class GiftMaker {
 
         this._stack2 = new StackPanel();
         this._stack2.isVertical = false;
+
+        this._colorPicker = new ColorPicker();
+        this._colorPicker.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this._colorPicker.value = new Color3(0, 0, 0);
+        this._colorPicker.onValueChangedObservable.add((color) => {
+            this._wishTextDropdown.foreground = color; // convert Color3 to CSS hex string
+        });
+        this._stack2.addControl(this._colorPicker);
 
         this._foregroundDropdown = new ForegroundDropdownBuilder().build(true);
         this._stack2.addControl(this._foregroundDropdown);
@@ -60,6 +70,10 @@ class GiftMaker {
         });
     }
 
+    public fontFamilyChanged(fontFamily: string): void {
+        this._wishTextDropdown.fontFamily = fontFamily;
+    }
+
     private resize() {
         const renderWidth = ctx.engine.getRenderWidth();
         const renderHeight = ctx.engine.getRenderHeight();
@@ -70,6 +84,10 @@ class GiftMaker {
 
         const dropdownWidth = renderWidth * (vertical ? 0.4 : 0.2);
         const dropdownHeight = dropdownWidth / 7;
+
+        this._colorPicker.widthInPixels = dropdownHeight;
+        this._colorPicker.heightInPixels = dropdownHeight;
+        this._colorPicker.topInPixels = dropdownHeight / 4;
 
         this._wishTextDropdown.resize(dropdownHeight);
         this._fontFamilyDropdown.resize(dropdownHeight);

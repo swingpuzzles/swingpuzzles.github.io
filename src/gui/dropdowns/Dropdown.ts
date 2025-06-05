@@ -1,6 +1,7 @@
 import { Button, Container, Control, StackPanel, Image, TextBlock } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../../components/behaviors/GameModeManager";
 import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
+import { Color3 } from "@babylonjs/core";
 
 export class Dropdown extends Container {
     private button: Button;
@@ -72,6 +73,7 @@ export class Dropdown extends Container {
         } else {
             this.button = Button.CreateSimpleButton("Please Select", "Please Select");
             this.button.background = this.buttonBackground;
+            this.button.textBlock!.lineSpacing = 0;
         }
 
         this.button.hoverCursor = "pointer";
@@ -125,6 +127,17 @@ export class Dropdown extends Container {
                 child.textBlock.text = this.translationMap.get(child.name)?.get(this.lang) ?? child.name
             }
         }
+    }
+
+    public set foreground(value: Color3) {
+        // Update target color
+        this.button.color = value.toHexString(); // convert Color3 to CSS hex string
+
+        // Compute brightness (simple formula)
+        const brightness = 0.299 * value.r + 0.587 * value.g + 0.114 * value.b;
+
+        // Adjust background for contrast
+        this.button.background = brightness > 0.5 ? "black" : "white";
     }
 
     resize(height: number) {
