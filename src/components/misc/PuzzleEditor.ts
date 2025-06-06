@@ -1,6 +1,7 @@
 import { Color3, DynamicTexture, Mesh, MeshBuilder, StandardMaterial, Vector3 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
+import sceneInitializer from "../SceneInitializer";
 
 class PuzzleEditor {
     private _popupPlane!: Mesh;
@@ -9,12 +10,21 @@ class PuzzleEditor {
 
     private _bgImage?: HTMLImageElement;
     private _fgImage?: HTMLImageElement;
+    private _vertical!: boolean;
 
     init() {
-        this.createPopupPlane([30, 20]);
+        this._vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+        this.createPopupPlane(this._vertical ? [10, 15] : [15, 10]);
 
         gameModeManager.addGameModeChangedObserver(() => {
-            //this._popupPlane.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
+            this._popupPlane.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
+        });
+
+        sceneInitializer.addResizeObserver((width, height) => {
+            if (this._vertical != ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth()) {
+                this._vertical = !this._vertical;
+                this.createPopupPlane(this._vertical ? [10, 15] : [15, 10]);
+            }
         });
     }
 
@@ -45,15 +55,23 @@ class PuzzleEditor {
         mat.emissiveColor = new Color3(1, 1, 1);
         this._popupPlane.material = mat;
 
+        this.movePopupPlane();
+        this._drawPopupPlane();
+
+        return this._popupPlane;
+    }
+
+    movePopupPlane() { 
         // Position in front of camera
-        const distance = 25;
+        const distance = 20;
         const forward = ctx.camera.getForwardRay().direction;
         //forward.y = 0;//-forward.y;
         this._popupPlane.position = ctx.camera.position.add(forward.scale(distance));
 
         // Make plane face camera
         //this._popupPlane.rotation = new Vector3(1, 2, 3);
-        this._popupPlane.lookAt(ctx.camera.position, Math.PI, 3.8 * Math.PI / 32);
+        this._popupPlane.lookAt(ctx.camera.position, Math.PI/*, 3.8 * Math.PI / 32*/);
+        this._popupPlane.rotation.x = -Math.asin(forward.y);
         //this._popupPlane.rotation.y += Math.PI;
         //this._popupPlane.rotation.z = 0;*/
         //this._popupPlane.isVisible = false;
@@ -62,8 +80,6 @@ class PuzzleEditor {
 
 
         //console.log(forward);
-
-        return this._popupPlane;
     }
 
     updatePopupPlane(bgUrl: string, fgUrl: string): void {
@@ -72,10 +88,10 @@ class PuzzleEditor {
     }
 
     setPopupBackground(bgUrl: string): void {
-        if (!this._popupPlane || !this._popupDynamicTexture || !this._popupCtx2d) {
+        /*if (!this._popupPlane || !this._popupDynamicTexture || !this._popupCtx2d) {
             console.warn("Popup plane not created. Call createPopupPlane() first.");
             return;
-        }
+        }*/
 
         const bgImage = new Image();
         bgImage.src = bgUrl;
@@ -94,10 +110,10 @@ class PuzzleEditor {
     }
 
     setPopupForeground(fgUrl: string): void {
-        if (!this._popupPlane || !this._popupDynamicTexture || !this._popupCtx2d) {
+        /*if (!this._popupPlane || !this._popupDynamicTexture || !this._popupCtx2d) {
             console.warn("Popup plane not created. Call createPopupPlane() first.");
             return;
-        }
+        }*/
 
         const fgImage = new Image();
         fgImage.src = fgUrl;

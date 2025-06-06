@@ -12,6 +12,7 @@ import timerDisplay from "./misc/TimerDisplay";
 import tutorialManager from "../gui/TutorialManager";
 import handImagePool from "../gui/HandImagePool";
 import giftMaker from "../gui/GiftMaker";
+import puzzleEditor from "./misc/PuzzleEditor";
 
 
 declare global {
@@ -86,6 +87,8 @@ class SceneInitializer {
             sceneBuilder.buildScene();
 
             gameModeManager.enterInitialMode();
+
+            puzzleEditor.init();
 
             puzzleGameBuilder.init();
 

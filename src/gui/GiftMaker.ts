@@ -51,8 +51,6 @@ class GiftMaker {
 
         guiManager.advancedTexture.addControl(this._fgImage);*/
 
-        puzzleEditor.init();
-
         this._languageSelector = new LanguageSelector();
 
         this._stack1 = new StackPanel();
@@ -82,6 +80,7 @@ class GiftMaker {
         this._stack2.addControl(this._backgroundDropdown);
 
         this._dropdownStack = new StackPanel();
+        this._dropdownStack.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this._dropdownStack.addControl(this._stack1);
         this._dropdownStack.addControl(this._stack2);
 
@@ -124,6 +123,14 @@ class GiftMaker {
 
         const dropdownWidth = renderWidth * (vertical ? 0.4 : 0.2);
         const dropdownHeight = dropdownWidth / 7;
+
+        this._dropdownStack.heightInPixels = vertical ? 2 * dropdownHeight : dropdownHeight;
+
+        this._stack1.widthInPixels = dropdownWidth * 2;
+        this._stack1.heightInPixels = dropdownHeight;
+
+        this._stack2.widthInPixels = dropdownWidth * 2;
+        this._stack2.heightInPixels = dropdownHeight;
 
         this._colorPicker.widthInPixels = dropdownHeight;
         this._colorPicker.heightInPixels = dropdownHeight;
