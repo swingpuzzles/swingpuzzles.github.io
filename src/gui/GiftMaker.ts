@@ -1,9 +1,9 @@
-import { ColorPicker, Control, Image, StackPanel } from "@babylonjs/gui";
+import { ColorPicker, Control, Image, Rectangle, StackPanel } from "@babylonjs/gui";
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormInputModel } from "../model/FormInputModel";
 import LanguageSelector from "./LanguageSelector";
-import gameModeManager from "../components/behaviors/GameModeManager";
+import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
 import { Dropdown } from "./dropdowns/Dropdown";
 import FontFamilyDropdownBuilder from "./dropdowns/FontFamilyDropdownBuilder";
 import WishTextDropdownBuilder from "./dropdowns/WishTextDropdownBuilder";
@@ -14,6 +14,7 @@ import ForegroundDropdownBuilder from "./dropdowns/ForegroundDropdownBuilder";
 import BackgroundDropdownBuilder from "./dropdowns/BackgroundDropdownBuilder";
 import { Color3 } from "@babylonjs/core";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
+import puzzleEditor from "../components/misc/PuzzleEditor";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -25,23 +26,32 @@ class GiftMaker {
     private _foregroundDropdown!: Dropdown;
     private _backgroundDropdown!: Dropdown;
     private _colorPicker!: ColorPicker;
-    private _bgImage!: Image;
-    private _fgImage!: Image;
+    /*private _bgImage!: Image;
+    private _bgImageContainer!: Rectangle;
+    private _fgImage!: Image;*/
 
     constructor() {
     }
 
     public init() {
-        this._bgImage = new Image("gift bg");
-        this._bgImage.stretch = Image.STRETCH_EXTEND;
+        /*this._bgImage = new Image("gift bg");
+        this._bgImage.width = "100%";
+        //this._bgImage.height = "auto";
+        this._bgImage.stretch = Image.STRETCH_UNIFORM//STRETCH_NONE//STRETCH_EXTEND;
 
-        guiManager.advancedTexture.addControl(this._bgImage);
+        this._bgImageContainer = new Rectangle();
+        this._bgImageContainer.clipChildren = true;
+
+        this._bgImageContainer.addControl(this._bgImage);
+        guiManager.advancedTexture.addControl(this._bgImageContainer);
 
         this._fgImage = new Image("gift fg");
         this._fgImage.stretch = Image.STRETCH_UNIFORM;
         //this._fgImage.height = "auto"; // preserve ratio
 
-        guiManager.advancedTexture.addControl(this._fgImage);
+        guiManager.advancedTexture.addControl(this._fgImage);*/
+
+        puzzleEditor.init();
 
         this._languageSelector = new LanguageSelector();
 
@@ -82,6 +92,10 @@ class GiftMaker {
         sceneInitializer.addResizeObserver((width, height) => {
             this.resize();
         });
+
+        gameModeManager.addGameModeChangedObserver(() => {
+            this._colorPicker.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
+        });
     }
 
     public fontFamilyChanged(fontFamily: string): void {
@@ -89,13 +103,15 @@ class GiftMaker {
     }
 
     public fgChanged(url: string): void {
-        this._fgImage.source = url;
-        puzzleAssetsManager.addGuiImageSource(this._fgImage, url.replace("-small", ""));
+        puzzleEditor.setPopupForeground(url);
+        //this._fgImage.source = url;
+        //puzzleAssetsManager.addGuiImageSource(this._fgImage, url.replace("-small", ""));
     }
 
     public bgChanged(url: string): void {
-        this._bgImage.source = url;
-        puzzleAssetsManager.addGuiImageSource(this._bgImage, url.replace("-small", ""));
+        puzzleEditor.setPopupBackground(url);
+        //this._bgImage.source = url;
+        //puzzleAssetsManager.addGuiImageSource(this._bgImage, url.replace("-small", ""));
     }
 
     private resize() {
@@ -128,15 +144,15 @@ class GiftMaker {
             maxRatio = 1 / maxRatio;
         }
 
-        if (maxRatio > ratio) {
-            this._bgImage.widthInPixels = vertMax * ratio;
-            this._bgImage.heightInPixels = vertMax;
+        /*if (maxRatio > ratio) {
+            this._bgImageContainer.widthInPixels = vertMax * ratio;
+            this._bgImageContainer.heightInPixels = vertMax;
         } else {
-            this._bgImage.widthInPixels = horizMax;
-            this._bgImage.heightInPixels = horizMax / ratio;
+            this._bgImageContainer.widthInPixels = horizMax;
+            this._bgImageContainer.heightInPixels = horizMax / ratio;
         }
 
-        this._fgImage.widthInPixels = Math.min(this._bgImage.widthInPixels, this._bgImage.heightInPixels) * 0.9;
+        this._fgImage.widthInPixels = Math.min(this._bgImageContainer.widthInPixels, this._bgImageContainer.heightInPixels) * 0.9;*/
     }
 
     public start() {

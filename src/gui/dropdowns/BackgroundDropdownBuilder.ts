@@ -3,7 +3,7 @@ import { GameMode } from "../../components/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
 
 export default class BackgroundDropdownBuilder extends DropdownBuilder {
-    private static readonly bgs = [ "confetti", "fireworks", "gifts", "stars" ];
+    private static readonly bgs = [ "confetti", "fireworks", "gifts", "stars", "people" ];
 
     constructor() {
         super({ gameModes: [ GameMode.GiftAdjustment ], icon: "bubu",
