@@ -75,6 +75,8 @@ class GiftMaker {
         gameModeManager.addGameModeChangedObserver(() => {
             this._colorPicker.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
         });
+
+        puzzleEditor.setTable("assets/gift/tables/table_1-small.webp");// TODO
     }
 
     public fontFamilyChanged(fontFamily: string): void {

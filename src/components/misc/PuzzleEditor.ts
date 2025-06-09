@@ -9,6 +9,7 @@ class PuzzleEditor {
     private _popupCtx2d?: CanvasRenderingContext2D;
 
     private _bgImage?: HTMLImageElement;
+    private _tableImage?: HTMLImageElement;
     private _fgImage?: HTMLImageElement;
     private _vertical!: boolean;
 
@@ -109,6 +110,23 @@ class PuzzleEditor {
         };
     }
 
+    setTable(url: string): void {
+        const image = new Image();
+        image.src = url;
+        image.onload = () => {
+            this._tableImage = image;
+            this._drawPopupPlane();
+
+            const fullImageUrl = url.replace("-small", "");
+            const fullImage = new Image();
+            fullImage.src = fullImageUrl;
+            fullImage.onload = () => {
+                this._tableImage = fullImage;
+                this._drawPopupPlane();
+            };
+        };
+    }
+
     setPopupForeground(fgUrl: string): void {
         /*if (!this._popupPlane || !this._popupDynamicTexture || !this._popupCtx2d) {
             console.warn("Popup plane not created. Call createPopupPlane() first.");
@@ -133,7 +151,7 @@ class PuzzleEditor {
 
     private _drawPopupPlane(): void {
         if (!this._popupDynamicTexture || !this._popupCtx2d) return;
-        if (!this._bgImage || !this._fgImage) return; // wait until both are loaded
+        if (!this._bgImage || !this._fgImage || !this._tableImage) return; // wait until all of them are loaded
 
         const planeWidth = this._popupDynamicTexture.getSize().width;
         const planeHeight = this._popupDynamicTexture.getSize().height;
@@ -157,13 +175,21 @@ class PuzzleEditor {
             bgDrawWidth = planeWidth;
             bgDrawHeight = this._bgImage.height * (planeWidth / this._bgImage.width);
             bgOffsetX = 0;
-            bgOffsetY = (planeHeight - bgDrawHeight) / 2;
+            bgOffsetY = (planeHeight - bgDrawHeight) / 1;
         }
 
         ctx2d.drawImage(this._bgImage, bgOffsetX, bgOffsetY, bgDrawWidth, bgDrawHeight);
 
         // Draw FOREGROUND (centered)
-        const fgDrawWidth = Math.min(planeWidth, planeHeight) * 0.9;//this._fgImage.width;
+        const tableDrawWidth = Math.min(planeWidth, planeHeight) * 1.2;//this._fgImage.width;
+        const tableDrawHeight = tableDrawWidth * this._fgImage.height / this._fgImage.width;
+        const tableOffsetX = (planeWidth - tableDrawWidth) / 2;
+        const tableOffsetY = (planeHeight - tableDrawHeight) / 0.21;
+
+        ctx2d.drawImage(this._tableImage, tableOffsetX, tableOffsetY, tableDrawWidth, tableDrawHeight);
+
+        // Draw FOREGROUND (centered)
+        const fgDrawWidth = Math.min(planeWidth, planeHeight) * 0.8;//this._fgImage.width;
         const fgDrawHeight = fgDrawWidth * this._fgImage.height / this._fgImage.width;
         const fgOffsetX = (planeWidth - fgDrawWidth) / 2;
         const fgOffsetY = (planeHeight - fgDrawHeight) / 1.2;
