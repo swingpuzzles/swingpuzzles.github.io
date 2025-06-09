@@ -163,7 +163,7 @@ class PuzzleEditor {
         ctx2d.drawImage(this._bgImage, bgOffsetX, bgOffsetY, bgDrawWidth, bgDrawHeight);
 
         // Draw FOREGROUND (centered)
-        const fgDrawWidth = Math.min(planeWidth, planeHeight);//this._fgImage.width;
+        const fgDrawWidth = Math.min(planeWidth, planeHeight) * 0.9;//this._fgImage.width;
         const fgDrawHeight = fgDrawWidth * this._fgImage.height / this._fgImage.width;
         const fgOffsetX = (planeWidth - fgDrawWidth) / 2;
         const fgOffsetY = (planeHeight - fgDrawHeight) / 1.2;

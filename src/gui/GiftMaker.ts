@@ -26,31 +26,11 @@ class GiftMaker {
     private _foregroundDropdown!: Dropdown;
     private _backgroundDropdown!: Dropdown;
     private _colorPicker!: ColorPicker;
-    /*private _bgImage!: Image;
-    private _bgImageContainer!: Rectangle;
-    private _fgImage!: Image;*/
 
     constructor() {
     }
 
     public init() {
-        /*this._bgImage = new Image("gift bg");
-        this._bgImage.width = "100%";
-        //this._bgImage.height = "auto";
-        this._bgImage.stretch = Image.STRETCH_UNIFORM//STRETCH_NONE//STRETCH_EXTEND;
-
-        this._bgImageContainer = new Rectangle();
-        this._bgImageContainer.clipChildren = true;
-
-        this._bgImageContainer.addControl(this._bgImage);
-        guiManager.advancedTexture.addControl(this._bgImageContainer);
-
-        this._fgImage = new Image("gift fg");
-        this._fgImage.stretch = Image.STRETCH_UNIFORM;
-        //this._fgImage.height = "auto"; // preserve ratio
-
-        guiManager.advancedTexture.addControl(this._fgImage);*/
-
         this._languageSelector = new LanguageSelector();
 
         this._stack1 = new StackPanel();
@@ -98,19 +78,15 @@ class GiftMaker {
     }
 
     public fontFamilyChanged(fontFamily: string): void {
-        this._wishTextDropdown.fontFamily = fontFamily;
+        this._wishTextDropdown.dropdownFontFamily = fontFamily;
     }
 
     public fgChanged(url: string): void {
         puzzleEditor.setPopupForeground(url);
-        //this._fgImage.source = url;
-        //puzzleAssetsManager.addGuiImageSource(this._fgImage, url.replace("-small", ""));
     }
 
     public bgChanged(url: string): void {
         puzzleEditor.setPopupBackground(url);
-        //this._bgImage.source = url;
-        //puzzleAssetsManager.addGuiImageSource(this._bgImage, url.replace("-small", ""));
     }
 
     private resize() {
@@ -124,7 +100,8 @@ class GiftMaker {
         const dropdownWidth = renderWidth * (vertical ? 0.4 : 0.2);
         const dropdownHeight = dropdownWidth / 7;
 
-        this._dropdownStack.heightInPixels = vertical ? 2 * dropdownHeight : dropdownHeight;
+        this._dropdownStack.top = dropdownHeight / 4;
+        this._dropdownStack.heightInPixels = (vertical ? 2 * dropdownHeight : dropdownHeight) + 1;
 
         this._stack1.widthInPixels = dropdownWidth * 2;
         this._stack1.heightInPixels = dropdownHeight;
@@ -136,10 +113,10 @@ class GiftMaker {
         this._colorPicker.heightInPixels = dropdownHeight;
         this._colorPicker.topInPixels = dropdownHeight / 4;
 
-        this._wishTextDropdown.resize(dropdownHeight);
-        this._fontFamilyDropdown.resize(dropdownHeight);
-        this._foregroundDropdown.resize(dropdownHeight);
-        this._backgroundDropdown.resize(dropdownHeight);
+        this._wishTextDropdown.resize(dropdownHeight, true);
+        this._fontFamilyDropdown.resize(dropdownHeight, true);
+        this._foregroundDropdown.resize(dropdownHeight, true);
+        this._backgroundDropdown.resize(dropdownHeight, true);
 
         let ratio = 1.5;  // TODO do it everywhere
         const horizMax = 0.9 * renderWidth;
@@ -150,16 +127,6 @@ class GiftMaker {
             ratio = 1 / ratio;
             maxRatio = 1 / maxRatio;
         }
-
-        /*if (maxRatio > ratio) {
-            this._bgImageContainer.widthInPixels = vertMax * ratio;
-            this._bgImageContainer.heightInPixels = vertMax;
-        } else {
-            this._bgImageContainer.widthInPixels = horizMax;
-            this._bgImageContainer.heightInPixels = horizMax / ratio;
-        }
-
-        this._fgImage.widthInPixels = Math.min(this._bgImageContainer.widthInPixels, this._bgImageContainer.heightInPixels) * 0.9;*/
     }
 
     public start() {

@@ -2,6 +2,7 @@ import { Button, Container, Control, StackPanel, Image, TextBlock } from "@babyl
 import gameModeManager, { GameMode } from "../../components/behaviors/GameModeManager";
 import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 import { Color3 } from "@babylonjs/core";
+import guiManager from "../GuiManager";
 
 export class Dropdown extends Container {
     private button: Button;
@@ -90,12 +91,22 @@ export class Dropdown extends Container {
 
         // Create options
         this.options = new StackPanel();
+        this.options.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.options.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.options.isVisible = false;
         this.options.isVertical = true;
 
         this.button.onPointerClickObservable.add(() => {
             this.options.isVisible = !this.options.isVisible;
+
+            if (this.options.isVisible) {
+                const measure = this.button._currentMeasure;
+                this.options.leftInPixels = measure.left;
+                this.options.topInPixels = measure.top + measure.height;
+                this.options.widthInPixels = measure.width;
+
+                this.options.zIndex = this.zIndex + 0.1;
+            }
         });
 
         this.onPointerEnterObservable.add(() => {
@@ -108,7 +119,8 @@ export class Dropdown extends Container {
         });
 
         this.addControl(this.button);
-        this.addControl(this.options);
+        ///this.addControl(this.options);
+        guiManager.advancedTexture.addControl(this.options);
         
         gameModeManager.addGameModeChangedObserver(() => {
             this.isVisible = config.gameModes.includes(gameModeManager.currentMode);
@@ -145,13 +157,20 @@ export class Dropdown extends Container {
         }
     }
 
-    resize(height: number) {
+    public set dropdownFontFamily(value: string) {
+        this.button.fontFamily = value;
+        this.options.fontFamily = value;
+    }
+
+    resize(height: number, ignoreTop: boolean = false) {
         this.itemHeight = height;
         const width = height * 7;
 
         this.widthInPixels = width;
-        this.topInPixels = this.itemHeight / 4;
-        this.options.topInPixels = this.itemHeight;
+
+        if (!ignoreTop) {
+            this.topInPixels = this.itemHeight / 4;
+        }
 
         if (this.button.textBlock) {
             this.button.textBlock.fontSizeInPixels = this.itemHeight / 2;
