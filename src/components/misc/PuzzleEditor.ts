@@ -13,6 +13,13 @@ class PuzzleEditor {
     private _fgImage?: HTMLImageElement;
     private _vertical!: boolean;
 
+    private _fontFamily!: string;
+    private _textColor!: string;
+    private _wishText!: string;
+    private _friendsName!: string;
+    private _age!: number;
+    private _lang!: string;
+
     init() {
         this._vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         this.createPopupPlane(this._vertical ? [10, 15] : [15, 10]);
@@ -149,6 +156,28 @@ class PuzzleEditor {
         };
     }
 
+    public setFormData(friendsName: string, age: number, lang: string): void {
+        this._friendsName = friendsName;
+        this._age = age;
+        this._lang = lang;
+        this._drawPopupPlane();
+    }
+
+    public setTextColor(textColor: Color3) {
+        this._textColor = textColor.toHexString();
+        this._drawPopupPlane();
+    }
+
+    public setFontFamily(fontFamily: string) {
+        this._fontFamily = fontFamily;
+        this._drawPopupPlane();
+    }
+
+    public setWishText(wishText: string) {
+        this._wishText = wishText;
+        this._drawPopupPlane();
+    }
+
     private _drawPopupPlane(): void {
         if (!this._popupDynamicTexture || !this._popupCtx2d) return;
         if (!this._bgImage || !this._fgImage || !this._tableImage) return; // wait until all of them are loaded
@@ -195,6 +224,47 @@ class PuzzleEditor {
         const fgOffsetY = (planeHeight - fgDrawHeight) / 1.2;
 
         ctx2d.drawImage(this._fgImage, fgOffsetX, fgOffsetY, fgDrawWidth, fgDrawHeight);
+
+        // draw on torte
+        const centerX = planeWidth / 2;
+        const centerY = 0.41 * planeHeight;
+        const radius = 220;
+        const text = this._friendsName;
+        const textLengthFactor = text.length;
+        const angleSpan = Math.PI * 0.6 - 0.8 * Math.PI / textLengthFactor; // 80% of full semicircle
+
+        const baseFontSize = 100;
+        const minFontSize = 1;
+        const maxFontSize = 1000;
+
+        const fontSize = Math.max(minFontSize, Math.min(maxFontSize, baseFontSize / Math.pow(textLengthFactor, 0.5)));
+
+        ctx2d.font = `${fontSize}px ${this._fontFamily}`;
+        ctx2d.fillStyle = this._textColor;
+        ctx2d.textAlign = "center";
+        ctx2d.textBaseline = "middle";
+
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            const angle = text.length > 1 ? -angleSpan / 2 + (i / (text.length - 1)) * angleSpan : 0;
+
+            // Cylindrical arc distortion: X and Y from angle
+            const x = centerX + Math.sin(angle) * radius;
+            const y = centerY + Math.cos(angle) * 40; // simulate view from above (taller middle)
+
+            // Simulate vertical skew/stretch for fake perspective
+            const skew = Math.cos(angle); // smaller at sides
+            const centerBoost = 1 + 0.3 * (1 - Math.abs(angle) / (angleSpan / 2)); // max at center
+            const scaleX = (1 + 0.2 * (1 - Math.abs(skew))) * centerBoost; // slightly wider in center
+            const scaleY = (1 - 0.3 * Math.abs(skew)) * centerBoost; // shorter at sides
+
+            ctx2d.save();
+            ctx2d.translate(x, y);
+            ctx2d.rotate(-angle / 2);
+            ctx2d.scale(scaleX, scaleY);
+            ctx2d.fillText(char, 0, 0);
+            ctx2d.restore();
+        }
 
         this._popupDynamicTexture.update();
     }

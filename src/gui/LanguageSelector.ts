@@ -57,6 +57,14 @@ export default class LanguageSelector extends StackPanel implements ISelector {
         });
     }
 
+    get id(): string {
+        return "lang";
+    }
+
+    get selectedItem(): any {
+        return this.selectedLanguage;
+    }
+
     resize(height: number): void {
         this.heightInPixels = height;
         const buttonwidth = height * 4 / 3;

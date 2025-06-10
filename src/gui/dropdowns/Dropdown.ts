@@ -15,7 +15,7 @@ export class Dropdown extends Container {
     private _lang: string = "en";
     private translationMap: Map<string, Map<string, string>> = new Map();
     private selectionCallback?(key: string, userAction: boolean): void;
-    //private width = 0;
+    private _selectedItem!: string;
 
     constructor(config: {
         gameModes: GameMode[];
@@ -136,7 +136,11 @@ export class Dropdown extends Container {
 
         for (const child of this.options.children) {
             if (child instanceof Button && child.textBlock && child.name) {
-                child.textBlock.text = this.translationMap.get(child.name)?.get(this.lang) ?? child.name
+                child.textBlock.text = this.translationMap.get(child.name)?.get(this._lang) ?? child.name;
+
+                if (child.name === this._selectedItem) {
+                    this.setContent(child.textBlock.text);
+                }
             }
         }
     }
@@ -206,6 +210,7 @@ export class Dropdown extends Container {
     }
 
     doSelectAction(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, userAction: boolean = true): void {
+        this._selectedItem = idText;
         this.options.isVisible = false;
 
         const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;

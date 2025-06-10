@@ -1,6 +1,7 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../components/behaviors/GameModeManager";
 import wishes from '../../assets/data/wishes.json'
+import giftMaker from "../GiftMaker";
 
 export default class WishTextDropdownBuilder extends DropdownBuilder {
     constructor() {
@@ -37,6 +38,8 @@ export default class WishTextDropdownBuilder extends DropdownBuilder {
 
     private selectAction(idText: string, userAction: boolean = true) {
         localStorage.setItem(this.storageItemName, idText);
+
+        giftMaker.wishTextChanged(idText);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();// TODO tutorial?

@@ -303,6 +303,23 @@ class PopupHint {
         });
     }
 
+    public get formData(): IFormField[] {
+        const formData: IFormField[] = [];
+
+        for (const container of this.formPanel.children) {
+            for (const child of (container as Container).children) {
+                if (child instanceof InputText) {
+                    formData.push({ id: child.name!, value: child.text });
+                } else if (child.name === Constants.ISELECTOR) {
+                    const selector = (child as unknown as ISelector)!;
+                    formData.push({ id: selector.id, value: selector.selectedItem });
+                }
+            }
+        }
+
+        return formData;
+    }
+    
     private clearForm() {
         if (this.formPanel.children) { 
             for (let i = this.formPanel.children.length - 1; i >= 0; i--) {
@@ -330,7 +347,7 @@ class PopupHint {
                 container.addControl(formInputModel.selector.ui);
                 break;
             default:
-                const input = new InputText();
+                const input = new InputText(formInputModel.id);
                 input.color = "#222";
                 input.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
                 input.background = "#f0f0f0";

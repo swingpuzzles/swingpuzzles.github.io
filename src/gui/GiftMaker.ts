@@ -49,7 +49,8 @@ class GiftMaker {
         this._colorPicker.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this._colorPicker.value = new Color3(0, 0, 0);
         this._colorPicker.onValueChangedObservable.add((color) => {
-            this._wishTextDropdown.foreground = color; // convert Color3 to CSS hex string
+            this._wishTextDropdown.foreground = color;
+            puzzleEditor.setTextColor(color);
         });
         this._stack2.addControl(this._colorPicker);
 
@@ -80,7 +81,12 @@ class GiftMaker {
     }
 
     public fontFamilyChanged(fontFamily: string): void {
+        puzzleEditor.setFontFamily(fontFamily);
         this._wishTextDropdown.dropdownFontFamily = fontFamily;
+    }
+
+    public wishTextChanged(wishText: string): void {
+        puzzleEditor.setWishText(wishText);
     }
 
     public fgChanged(url: string): void {
@@ -138,8 +144,8 @@ At the top, choose the puzzle dimensions to match your preferred difficulty.
 
 Then, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.`;
 
-        this._languageSelector.selectionObserver = () => {
-            console.log('selected');
+        this._languageSelector.selectionObserver = (code: string) => {
+            this._wishTextDropdown.lang = code;
         }
 
         const formInputModel: FormInputModel[] = [
@@ -168,7 +174,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         ];
 
         popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { popupHint.hide(); gameModeManager.enterGiftAdjustmentMode(); },
+            () => { this.enterAdjustments(); },
             () => { alert('close') },
             null,
             PopupMode.Gift,
@@ -177,7 +183,22 @@ Then, fill in the details below to personalize your custom puzzle — enter your
     }
 
     public enterAdjustments() {
+        popupHint.hide();
 
+        let friendsName!: string;
+        let age!: number;
+        let lang!: string;
+
+        for (const formRow of popupHint.formData) {
+            switch (formRow.id) {
+                case "Name": friendsName = formRow.value as string; break;
+                case "Age": age = formRow.value as number; break;
+                case "Language": lang = formRow.value as string; break;
+            }
+        }
+
+        puzzleEditor.setFormData(friendsName, age, lang);
+        gameModeManager.enterGiftAdjustmentMode();
     }
 }
 

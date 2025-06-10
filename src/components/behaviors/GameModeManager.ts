@@ -100,8 +100,6 @@ class GameModeManager {
         this.resetAll(GameMode.GiftAdjustment);
 
         ctx.camera.detachControl();
-
-        giftMaker.enterAdjustments();
     }
 
     enterWaiting() {
