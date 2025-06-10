@@ -11,6 +11,7 @@ class PuzzleEditor {
     private _bgImage?: HTMLImageElement;
     private _tableImage?: HTMLImageElement;
     private _fgImage?: HTMLImageElement;
+    private _candleImage?: HTMLImageElement;
     private _vertical!: boolean;
 
     private _fontFamily!: string;
@@ -34,6 +35,12 @@ class PuzzleEditor {
                 this.createPopupPlane(this._vertical ? [10, 15] : [15, 10]);
             }
         });
+
+        const candleImage = new Image();
+        candleImage.src = "assets/gift/candle.webp";
+        candleImage.onload = () => {
+            this._candleImage = candleImage;
+        };
     }
 
     createPopupPlane(planeSize: [number, number]): Mesh {
@@ -227,7 +234,7 @@ class PuzzleEditor {
 
         // draw on torte
         const centerX = planeWidth / 2;
-        const centerY = 0.41 * planeHeight;
+        let centerY = 0.41 * planeHeight;
         const radius = 220;
         const text = this._friendsName;
         const textLengthFactor = text.length;
@@ -266,6 +273,49 @@ class PuzzleEditor {
             ctx2d.restore();
         }
 
+        centerY = 0.338 * planeHeight;
+
+        const radiusX = planeWidth * 0.18;
+        const radiusY = radiusX * 0.25;
+
+        const baseCandleHeight = 60; // base size in pixels for center/front
+        const baseCandleWidth = 20;
+
+        if (this._candleImage) {
+            const candles: {
+                x: number;
+                y: number;
+                width: number;
+                height: number;
+            }[] = [];
+
+            for (let i = 0; i < this._age; i++) {
+                const angle = (i / this._age) * Math.PI * 2;
+
+                const x = centerX + radiusX * Math.cos(angle);
+                const y = centerY + radiusY * Math.sin(angle);
+
+                const scale = 0.5 + 0.5 * (1 - (y + (centerY - radiusY)) / (2 * radiusY));
+                const candleWidth = baseCandleWidth * scale;
+                const candleHeight = baseCandleHeight * scale;
+
+                candles.push({ x, y, width: candleWidth, height: candleHeight });
+            }
+
+            // Sort by y to simulate depth: farther candles first
+            candles.sort((a, b) => a.y - b.y);
+
+            for (const c of candles) {
+                ctx2d.drawImage(
+                    this._candleImage,
+                    c.x - c.width / 2,
+                    c.y - c.height,
+                    c.width,
+                    c.height
+                );
+            }
+        }
+        
         this._popupDynamicTexture.update();
     }
 
