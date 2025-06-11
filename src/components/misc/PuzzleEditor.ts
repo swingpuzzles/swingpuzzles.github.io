@@ -12,6 +12,7 @@ class PuzzleEditor {
     private _tableImage?: HTMLImageElement;
     private _fgImage?: HTMLImageElement;
     private _candleImage?: HTMLImageElement;
+    private _labelImage?: HTMLImageElement;
     private _vertical!: boolean;
 
     private _fontFamily!: string;
@@ -19,7 +20,6 @@ class PuzzleEditor {
     private _wishText!: string;
     private _friendsName!: string;
     private _age!: number;
-    private _lang!: string;
 
     init() {
         this._vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
@@ -41,6 +41,9 @@ class PuzzleEditor {
         candleImage.onload = () => {
             this._candleImage = candleImage;
         };
+
+        //this.setImage("assets/gift/labels/label_1-small.webp", (img) => { this._labelImage = img; });
+        this.setImage("assets/gift/labels/label_1.webp", (img) => { this._labelImage = img; }); // TODO
     }
 
     createPopupPlane(planeSize: [number, number]): Mesh {
@@ -131,10 +134,9 @@ class PuzzleEditor {
         this.setImage(fgUrl, (img) => { this._fgImage = img });
     }
 
-    public setFormData(friendsName: string, age: number, lang: string): void {
+    public setFormData(friendsName: string, age: number): void {
         this._friendsName = friendsName;
         this._age = age;
-        this._lang = lang;
         this._drawPopupPlane();
     }
 
@@ -155,7 +157,7 @@ class PuzzleEditor {
 
     private _drawPopupPlane(): void {
         if (!this._popupDynamicTexture || !this._popupCtx2d) return;
-        if (!this._bgImage || !this._fgImage || !this._tableImage) return; // wait until all of them are loaded
+        if (!this._bgImage || !this._fgImage || !this._tableImage || !this._labelImage) return; // wait until all of them are loaded
 
         const planeWidth = this._popupDynamicTexture.getSize().width;
         const planeHeight = this._popupDynamicTexture.getSize().height;
@@ -200,7 +202,7 @@ class PuzzleEditor {
 
         ctx2d.drawImage(this._fgImage, fgOffsetX, fgOffsetY, fgDrawWidth, fgDrawHeight);
 
-        // draw on torte
+        // draw TEXT on torte
         const centerX = planeWidth / 2;
         let centerY = 0.41 * planeHeight;
         const radius = 220;
@@ -241,6 +243,15 @@ class PuzzleEditor {
             ctx2d.restore();
         }
 
+        // Draw LABEL (centered)
+        const labelDrawWidth = planeWidth * 0.96;//this._fgImage.width;
+        const labelDrawHeight = planeHeight * 0.8;
+        const labelOffsetX = (planeWidth - labelDrawWidth) / 2;
+        const labelOffsetY = -(planeHeight - labelDrawHeight) * 1.6;
+
+        ctx2d.drawImage(this._labelImage, labelOffsetX, labelOffsetY, labelDrawWidth, labelDrawHeight);
+
+        // draw CANDLES
         centerY = 0.442 * planeHeight;
 
         let radiusX = planeWidth * 0.18;
