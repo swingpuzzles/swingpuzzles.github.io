@@ -103,11 +103,6 @@ class PuzzleEditor {
     }
 
     setPopupBackground(bgUrl: string): void {
-        /*if (!this._popupPlane || !this._popupDynamicTexture || !this._popupCtx2d) {
-            console.warn("Popup plane not created. Call createPopupPlane() first.");
-            return;
-        }*/
-
         const bgImage = new Image();
         bgImage.src = bgUrl;
         bgImage.onload = () => {
@@ -142,11 +137,6 @@ class PuzzleEditor {
     }
 
     setPopupForeground(fgUrl: string): void {
-        /*if (!this._popupPlane || !this._popupDynamicTexture || !this._popupCtx2d) {
-            console.warn("Popup plane not created. Call createPopupPlane() first.");
-            return;
-        }*/
-
         const fgImage = new Image();
         fgImage.src = fgUrl;
         fgImage.onload = () => {
@@ -246,7 +236,7 @@ class PuzzleEditor {
 
         const fontSize = Math.max(minFontSize, Math.min(maxFontSize, baseFontSize / Math.pow(textLengthFactor, 0.5)));
 
-        ctx2d.font = `${fontSize}px ${this._fontFamily}`;
+        ctx2d.font = `bold ${fontSize}px ${this._fontFamily}`;
         ctx2d.fillStyle = this._textColor;
         ctx2d.textAlign = "center";
         ctx2d.textBaseline = "middle";
@@ -257,7 +247,7 @@ class PuzzleEditor {
 
             // Cylindrical arc distortion: X and Y from angle
             const x = centerX + Math.sin(angle) * radius;
-            const y = centerY + Math.cos(angle) * 40; // simulate view from above (taller middle)
+            const y = centerY + (1- Math.cos(angle)) * 40; // simulate view from above (taller middle)
 
             // Simulate vertical skew/stretch for fake perspective
             const skew = Math.cos(angle); // smaller at sides
@@ -273,13 +263,22 @@ class PuzzleEditor {
             ctx2d.restore();
         }
 
-        centerY = 0.338 * planeHeight;
+        centerY = 0.442 * planeHeight;
 
-        const radiusX = planeWidth * 0.18;
-        const radiusY = radiusX * 0.25;
+        let radiusX = planeWidth * 0.18;
+        let radiusY = radiusX * 0.3;
 
-        const baseCandleHeight = 60; // base size in pixels for center/front
-        const baseCandleWidth = 20;
+        const sizeFactor = Math.pow(20 / this._age, 0.4);
+        let baseCandleHeight = 60 * sizeFactor; // base size in pixels for center/front
+        let baseCandleWidth = 20 * sizeFactor;
+
+        if (this._age < 2) {
+            radiusX = 0;
+            radiusY = 0;
+        } else if (this._age < 5) {
+            radiusX /= 2;
+            radiusY /= 2;
+        }
 
         if (this._candleImage) {
             const candles: {
@@ -289,15 +288,22 @@ class PuzzleEditor {
                 height: number;
             }[] = [];
 
+            const angleOffset = this._age > 2 ? (0.5 / this._age) * Math.PI : 0;
             for (let i = 0; i < this._age; i++) {
-                const angle = (i / this._age) * Math.PI * 2;
+                const angle = (i / this._age) * Math.PI * 2 + angleOffset;
 
-                const x = centerX + radiusX * Math.cos(angle);
-                const y = centerY + radiusY * Math.sin(angle);
+                let x = radiusX * Math.cos(angle);
+                let y = Math.sin(angle);
 
-                const scale = 0.5 + 0.5 * (1 - (y + (centerY - radiusY)) / (2 * radiusY));
+                x *= Math.pow(1.04, y); 
+
+                x += centerX;
+
+                const scale = (6 + y) / 4;
                 const candleWidth = baseCandleWidth * scale;
                 const candleHeight = baseCandleHeight * scale;
+
+                y = y * radiusY + centerY;
 
                 candles.push({ x, y, width: candleWidth, height: candleHeight });
             }
@@ -315,7 +321,7 @@ class PuzzleEditor {
                 );
             }
         }
-        
+
         this._popupDynamicTexture.update();
     }
 
