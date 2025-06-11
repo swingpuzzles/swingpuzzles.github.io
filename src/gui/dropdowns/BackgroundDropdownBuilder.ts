@@ -6,7 +6,9 @@ export default class BackgroundDropdownBuilder extends DropdownBuilder {
     private static readonly bgs = [ "cartoons", "room", "autumn", "meadow", "trees", "garden", "stars" ];
 
     constructor() {
-        super({ gameModes: [ GameMode.GiftAdjustment ], icon: "bubu",
+        super({
+            gameModes: [ GameMode.GiftAdjustment ],
+            isImageOnly: true,
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
 
         for (let bg of BackgroundDropdownBuilder.bgs) {

@@ -13,7 +13,8 @@ interface DropdownOptions {
     thickness?: number;
     halign?: number;
     valign?: number;
-    icon?: string;
+    isCategory?: boolean;
+    isImageOnly?: boolean;
     lang?: string;
     translationEntry?: ITranslationEntry[];
     selectionCallback?(key: string, userAction: boolean, text: string): void;
@@ -39,7 +40,8 @@ export default abstract class DropdownBuilder {
             color: this.options.color || "black",
             background: this.options.background || "white",
             thickness: this.options.thickness,
-            icon: this.options.icon,
+            isCategory: this.options.isCategory,
+            isImageOnly: this.options.isImageOnly,
             halign: this.options.halign,
             valign: this.options.valign,
             lang: this.options.lang,
@@ -66,7 +68,7 @@ export default abstract class DropdownBuilder {
 
         if (!customResize) {
             sceneInitializer.addResizeObserver((w, h) => {
-                this._dropdown.resize(h / 20);
+                this._dropdown.resize(7 * h / 20, h / 20, 7 * h / 20);
             });
         }
 

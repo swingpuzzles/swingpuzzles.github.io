@@ -106,7 +106,7 @@ class GiftMaker {
         this._dropdownStack.isVertical = vertical;
 
         const dropdownWidth = renderWidth * (vertical ? 0.4 : 0.2);
-        const dropdownHeight = dropdownWidth / 7;
+        const dropdownHeight = dropdownWidth / 5;
 
         this._dropdownStack.top = dropdownHeight / 4;
         this._dropdownStack.heightInPixels = (vertical ? 2 * dropdownHeight : dropdownHeight) + 1;
@@ -119,12 +119,12 @@ class GiftMaker {
 
         this._colorPicker.widthInPixels = dropdownHeight;
         this._colorPicker.heightInPixels = dropdownHeight;
-        this._colorPicker.topInPixels = dropdownHeight / 4;
+        //this._colorPicker.topInPixels = dropdownHeight / 4;
 
-        this._wishTextDropdown.resize(dropdownHeight, true);
-        this._fontFamilyDropdown.resize(dropdownHeight, true);
-        this._foregroundDropdown.resize(dropdownHeight, true);
-        this._backgroundDropdown.resize(dropdownHeight, true);
+        this._wishTextDropdown.resize(dropdownWidth, dropdownHeight, dropdownWidth, true);
+        this._fontFamilyDropdown.resize(dropdownWidth, dropdownHeight, dropdownWidth, true);
+        this._foregroundDropdown.resize(dropdownHeight, dropdownHeight, dropdownHeight, true);
+        this._backgroundDropdown.resize(dropdownHeight, dropdownHeight, dropdownHeight, true);
 
         let ratio = 1.5;  // TODO do it everywhere
         const horizMax = 0.9 * renderWidth;

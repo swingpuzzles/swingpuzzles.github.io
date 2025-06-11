@@ -7,7 +7,9 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
     private static readonly toIndex = 5;
 
     constructor() {
-        super({ gameModes: [ GameMode.GiftAdjustment ], icon: "bubu",
+        super({
+            gameModes: [ GameMode.GiftAdjustment ],
+            isImageOnly: true,
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
 
         for (let i = ForegroundDropdownBuilder.fromIndex; i <= ForegroundDropdownBuilder.toIndex; i++) {

@@ -7,7 +7,7 @@ import guiManager from "../GuiManager";
 export class Dropdown extends Container {
     private button: Button;
     private options: StackPanel;
-    private categoryIcon: Image | null = null;
+    private buttonImage: Image | null = null;
     private dropDownSign: TextBlock;
     private buttonBackground: string;
     private buttonColor: string;
@@ -16,13 +16,16 @@ export class Dropdown extends Container {
     private translationMap: Map<string, Map<string, string>> = new Map();
     private selectionCallback?(key: string, userAction: boolean, text: string): void;
     private _selectedItem!: string;
+    private isCategory: boolean;
+    private isImageOnly: boolean;
 
     constructor(config: {
         gameModes: GameMode[];
         background: string;
         color: string;
         thickness?: number;
-        icon?: string;
+        isCategory?: boolean;
+        isImageOnly?: boolean;
         valign?: number;
         halign?: number;
         lang?: string;
@@ -53,26 +56,33 @@ export class Dropdown extends Container {
         this.isHitTestVisible = false;
         this.zIndex = 30;
 
+        this.isCategory = config.isCategory ?? false;
+        this.isImageOnly = config.isImageOnly ?? false;
+
         // Create button
-        if (config.icon) {
-            this.button = Button.CreateImageOnlyButton("Please Select", config.icon)
+        if (this.isImageOnly) {
+            this.button = Button.CreateImageOnlyButton("Dropdown", "")
             
             this.button.background = "";
             this.button.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
-            this.button.width = "20%"
+
+            this.buttonImage = new Image("buttonImage", "");
+
+            this.buttonImage.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+            this.buttonImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
 
             // Create and store the nested image (category icon)
-            this.categoryIcon = new Image("categoryIcon", "");
-            this.categoryIcon.width = "75%";
-            this.categoryIcon.height = "75%";
-            this.categoryIcon.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-            this.categoryIcon.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
-            this.categoryIcon.paddingRight = "5%";
-            this.categoryIcon.paddingBottom = "20%";
+            if (this.isCategory) {
+                this.button.width = "20%"
+                this.buttonImage.width = "75%";
+                this.buttonImage.height = "75%";
+                this.buttonImage.paddingRight = "5%";
+                this.buttonImage.paddingBottom = "20%";
+            }
 
-            this.button.addControl(this.categoryIcon);
+            this.button.addControl(this.buttonImage);
         } else {
-            this.button = Button.CreateSimpleButton("Please Select", "Please Select");
+            this.button = Button.CreateSimpleButton("Dropdown", "");
             this.button.background = this.buttonBackground;
             this.button.textBlock!.lineSpacing = 0;
         }
@@ -162,11 +172,53 @@ export class Dropdown extends Container {
     }
 
     public set dropdownFontFamily(value: string) {
-        this.button.fontFamily = value;
+        if (this.button.textBlock) {
+            this.button.textBlock.fontFamily = value;
+        }
+
         this.options.fontFamily = value;
     }
 
-    resize(height: number, ignoreTop: boolean = false) {
+    resize(width: number, height: number, optionWidth: number, ignoreTop: boolean = false) {
+        this.itemHeight = height;
+
+        this.widthInPixels = width;
+        this.options.width = optionWidth;
+
+        if (!ignoreTop) {
+            this.topInPixels = this.itemHeight / 4;
+        }
+
+        if (!this.isCategory) {
+            if (this.button.textBlock) {
+                this.button.textBlock.fontSizeInPixels = width / 14;
+            }
+
+            this.button.heightInPixels = this.itemHeight;
+
+            if (this.isImageOnly) {
+                //this.dropDownSign.paddingRightInPixels = this.itemHeight / 10;
+                //this.dropDownSign.paddingBottomInPixels = this.itemHeight / 6;
+            } else {
+                this.dropDownSign.paddingRightInPixels = this.itemHeight / 10;
+                this.dropDownSign.paddingBottomInPixels = this.itemHeight / 6;
+            }
+        } else {
+            this.leftInPixels = this.itemHeight / 4;
+            this.button.heightInPixels = this.itemHeight * 1.8;
+            this.dropDownSign.paddingBottomInPixels = this.itemHeight / 5;
+        }
+
+        this.dropDownSign.fontSizeInPixels = this.itemHeight / 2;
+
+        for (const o of this.options.children) {
+            o.heightInPixels = this.itemHeight;
+            if ((o as Button).textBlock) {
+                (o as Button).textBlock!.fontSizeInPixels = width / 14;
+            }
+        }
+
+        /*
         this.itemHeight = height;
         const width = height * 7;
 
@@ -195,6 +247,7 @@ export class Dropdown extends Container {
                 (o as Button).textBlock!.fontSizeInPixels = this.itemHeight / 2;
             }
         }
+            */
     }
 
     setContent(text: string, url: string | null = null, fontFamily: string | null = null) {
@@ -206,8 +259,8 @@ export class Dropdown extends Container {
             }
         }
 
-        if (url && this.categoryIcon) {
-            this.categoryIcon.source = url;
+        if (url && this.buttonImage) {
+            this.buttonImage.source = url;
         }
     }
 

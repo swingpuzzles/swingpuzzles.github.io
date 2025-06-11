@@ -39,7 +39,7 @@ class GuiManager {
 
         giftMaker.init();
 
-        this.categoryDropdown = new CategoryDropdownBuilder().build();
+        this.categoryDropdown = new CategoryDropdownBuilder().build(false);
         guiManager.advancedTexture.addControl(this.categoryDropdown);
 
         this._createButtons();
