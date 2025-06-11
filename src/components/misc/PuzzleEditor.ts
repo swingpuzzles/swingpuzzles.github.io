@@ -17,8 +17,8 @@ class PuzzleEditor {
 
     private _fontFamily!: string;
     private _textColor!: string;
-    private _wishText!: string;
-    private _friendsName!: string;
+    private _wishText?: string;
+    private _friendsName?: string;
     private _age!: number;
 
     init() {
@@ -203,7 +203,9 @@ class PuzzleEditor {
         ctx2d.drawImage(this._fgImage, fgOffsetX, fgOffsetY, fgDrawWidth, fgDrawHeight);
 
         // draw TEXT on torte
-        this.drawText(this._friendsName, 0.42 * planeHeight, 0.6, -0.5, planeWidth * 0.2, planeWidth * 0.04, 120);
+        if (this._friendsName) {
+            this.drawText(this._friendsName, 0.42 * planeHeight, 0.6, -0.5, planeWidth * 0.2, planeWidth * 0.04, 120);
+        }
 
         // Draw LABEL (centered)
         const labelDrawWidth = planeWidth * 0.96;//this._fgImage.width;
@@ -214,7 +216,9 @@ class PuzzleEditor {
         ctx2d.drawImage(this._labelImage, labelOffsetX, labelOffsetY, labelDrawWidth, labelDrawHeight);
 
         // draw TEXT on label
-        this.drawText(this._wishText, 0.1 * planeHeight, 0.6, 0.3, planeWidth * 0.4, planeWidth * 0.1, 300);
+        if (this._wishText) {
+            this.drawText(this._wishText, 0.1 * planeHeight, 0.6, 0.3, planeWidth * 0.4, planeWidth * 0.1, 300);
+        }
 
         // draw CANDLES
         const centerX = planeWidth / 2;
@@ -301,7 +305,6 @@ class PuzzleEditor {
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
             const angle = text.length > 1 ? -angleSpan / 2 + (i / (text.length - 1)) * angleSpan : 0;
-            console.log(angleSpan, angle);
 
             // Cylindrical arc distortion: X and Y from angle
             const x = centerX + Math.sin(angle) * radius;

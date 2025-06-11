@@ -139,7 +139,7 @@ export class Dropdown extends Container {
                 child.textBlock.text = this.translationMap.get(child.name)?.get(this._lang) ?? child.name;
 
                 if (child.name === this._selectedItem) {
-                    this.doSelectAction(child.textBlock.text, null, null, false);
+                    this.doSelectAction(child.name, null, null, false);
                 }
             }
         }
