@@ -102,55 +102,33 @@ class PuzzleEditor {
         this.setPopupForeground(fgUrl);
     }
 
-    setPopupBackground(bgUrl: string): void {
-        const bgImage = new Image();
-        bgImage.src = bgUrl;
-        bgImage.onload = () => {
-            this._bgImage = bgImage;
-            this._drawPopupPlane();
-
-            const fullImageUrl = bgUrl.replace("-small", "");
-            const fullImage = new Image();
-            fullImage.src = fullImageUrl;
-            fullImage.onload = () => {
-                this._bgImage = fullImage;
-                this._drawPopupPlane();
-            };
-        };
-    }
-
-    setTable(url: string): void {
-        const image = new Image();
-        image.src = url;
-        image.onload = () => {
-            this._tableImage = image;
+    private setImage(url: string, setField: (img: HTMLImageElement) => void) : void {
+        const smallImage = new Image();
+        smallImage.src = url;
+        smallImage.onload = () => {
+            setField(smallImage);
             this._drawPopupPlane();
 
             const fullImageUrl = url.replace("-small", "");
             const fullImage = new Image();
             fullImage.src = fullImageUrl;
             fullImage.onload = () => {
-                this._tableImage = fullImage;
+                setField(fullImage);
                 this._drawPopupPlane();
             };
         };
     }
 
-    setPopupForeground(fgUrl: string): void {
-        const fgImage = new Image();
-        fgImage.src = fgUrl;
-        fgImage.onload = () => {
-            this._fgImage = fgImage;
-            this._drawPopupPlane();
+    setPopupBackground(bgUrl: string): void {
+        this.setImage(bgUrl, (img) => { this._bgImage = img });
+    }
 
-            const fullImageUrl = fgUrl.replace("-small", "");
-            const fullImage = new Image();
-            fullImage.src = fullImageUrl;
-            fullImage.onload = () => {
-                this._fgImage = fullImage;
-                this._drawPopupPlane();
-            };
-        };
+    setTable(url: string): void {
+        this.setImage(url, (img) => { this._tableImage = img });
+    }
+
+    setPopupForeground(fgUrl: string): void {
+        this.setImage(fgUrl, (img) => { this._fgImage = img });
     }
 
     public setFormData(friendsName: string, age: number, lang: string): void {
