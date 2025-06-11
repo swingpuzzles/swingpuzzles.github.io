@@ -23,7 +23,7 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
         const imageName = "torte_" + index + "-small.webp";
         const imageUrl = "assets/gift/tortes/" + imageName;
 
-        this.addOption(index, imageUrl);
+        this.addOption(index, imageUrl, null, true);
 
         const storedValue = Number(localStorage.getItem(this.storageItemName));
         if (!(Number(storedValue) >= ForegroundDropdownBuilder.fromIndex) || !(Number(storedValue) <= ForegroundDropdownBuilder.toIndex)) {

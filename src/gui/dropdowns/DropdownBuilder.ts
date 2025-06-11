@@ -23,6 +23,7 @@ interface DropdownItem {
     idText: string;
     imageUrl?: string | null;
     fontFamily?: string | null;
+    imageOnly?: boolean | null;
 }
 
 export default abstract class DropdownBuilder {
@@ -53,14 +54,14 @@ export default abstract class DropdownBuilder {
 
     protected abstract get storageItemName(): string;
 
-    addOption(idText: string, imageUrl: string | null = null, fontFamily: string | null = null): this {
-        this.items.push({ idText: idText, imageUrl, fontFamily });
+    addOption(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, imageOnly: boolean = false): this {
+        this.items.push({ idText: idText, imageUrl, fontFamily, imageOnly });
         return this;
     }
 
     build(customResize: boolean = false): Dropdown {
         for (const item of this.items) {
-            this._dropdown.addItem(item.idText, item.imageUrl, item.fontFamily);
+            this._dropdown.addItem(item.idText, item.imageUrl, item.fontFamily, item.imageOnly === true);
         }
 
         if (!customResize) {

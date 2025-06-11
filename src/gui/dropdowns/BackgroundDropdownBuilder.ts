@@ -22,7 +22,7 @@ export default class BackgroundDropdownBuilder extends DropdownBuilder {
         const imageName = "bg-" + option + "-small.webp";
         const imageUrl = "assets/gift/bgs/" + imageName;
 
-        this.addOption(option, imageUrl);
+        this.addOption(option, imageUrl, null, true);
 
         const storedValue = localStorage.getItem(this.storageItemName);
         if (!storedValue || !BackgroundDropdownBuilder.bgs.includes(storedValue)) {

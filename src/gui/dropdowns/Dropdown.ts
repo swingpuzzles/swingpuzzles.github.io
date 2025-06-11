@@ -191,7 +191,9 @@ export class Dropdown extends Container {
 
         for (const o of this.options.children) {
             o.heightInPixels = this.itemHeight;
-            (o as Button).textBlock!.fontSizeInPixels = this.itemHeight / 2;
+            if ((o as Button).textBlock) {
+                (o as Button).textBlock!.fontSizeInPixels = this.itemHeight / 2;
+            }
         }
     }
 
@@ -222,12 +224,20 @@ export class Dropdown extends Container {
         }
     }
 
-    addItem(idText: string, imageUrl: string | null = null, fontFamily: string | null = null): void {
+    addItem(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, imageOnly: boolean): void {
         let button: Button;
 
         const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;
 
-        if (imageUrl) {
+        if (imageOnly) {
+            button = Button.CreateImageOnlyButton(idText, imageUrl!);
+            button.image!.width = "100%";
+            button.image!.stretch = Image.STRETCH_UNIFORM;
+            button.image!.paddingTop = "1%";
+            button.image!.paddingBottom = "1%";
+            button.image!.paddingLeft = "5%";
+            button.image!.paddingRight = "5%";
+        } else if (imageUrl) {
             button = Button.CreateImageButton(idText, text, imageUrl);
             button.image!.width = "22%";
             button.image!.stretch = Image.STRETCH_UNIFORM;
