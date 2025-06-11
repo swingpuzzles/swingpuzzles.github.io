@@ -6,7 +6,7 @@ import giftMaker from "../GiftMaker";
 export default class WishTextDropdownBuilder extends DropdownBuilder {
     constructor() {
         super({ gameModes: [ GameMode.GiftAdjustment ], translationEntry: wishes.wishes,
-            selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); } });
+            selectionCallback: (key, userAction, text) => { this.selectionCallback(key, userAction, text); } });
 
         let currentIdText = localStorage.getItem(this.storageItemName);
 
@@ -24,8 +24,8 @@ export default class WishTextDropdownBuilder extends DropdownBuilder {
         return "giftWishText";
     }
 
-    private selectionCallback(key: string, userAction: boolean = true) {
-        this.selectAction(key, userAction);
+    private selectionCallback(key: string, userAction: boolean, text: string) {
+        this.selectAction(key, userAction, text);
     }
 
     private addWishText(idText: string, selected: boolean) {
@@ -36,10 +36,10 @@ export default class WishTextDropdownBuilder extends DropdownBuilder {
         }
     }
 
-    private selectAction(idText: string, userAction: boolean = true) {
+    private selectAction(idText: string, userAction: boolean, text: string) {
         localStorage.setItem(this.storageItemName, idText);
 
-        giftMaker.wishTextChanged(idText);
+        giftMaker.wishTextChanged(text);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();// TODO tutorial?

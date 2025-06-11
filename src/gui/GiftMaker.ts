@@ -197,7 +197,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             }
         }
 
-        puzzleEditor.setFormData(friendsName, age, lang);
+        puzzleEditor.setFormData(friendsName, age);
         gameModeManager.enterGiftAdjustmentMode();
     }
 }

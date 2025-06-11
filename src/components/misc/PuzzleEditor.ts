@@ -203,7 +203,7 @@ class PuzzleEditor {
         ctx2d.drawImage(this._fgImage, fgOffsetX, fgOffsetY, fgDrawWidth, fgDrawHeight);
 
         // draw TEXT on torte
-        this.drawText(this._friendsName);
+        this.drawText(this._friendsName, 0.42 * planeHeight, 0.6, -0.5, planeWidth * 0.2, planeWidth * 0.04, 120);
 
         // Draw LABEL (centered)
         const labelDrawWidth = planeWidth * 0.96;//this._fgImage.width;
@@ -213,9 +213,12 @@ class PuzzleEditor {
 
         ctx2d.drawImage(this._labelImage, labelOffsetX, labelOffsetY, labelDrawWidth, labelDrawHeight);
 
+        // draw TEXT on label
+        this.drawText(this._wishText, 0.1 * planeHeight, 0.6, 0.3, planeWidth * 0.4, planeWidth * 0.1, 300);
+
         // draw CANDLES
         const centerX = planeWidth / 2;
-        let centerY = 0.442 * planeHeight;
+        const centerY = 0.442 * planeHeight;
 
         let radiusX = planeWidth * 0.18;
         let radiusY = radiusX * 0.3;
@@ -277,22 +280,18 @@ class PuzzleEditor {
         this._popupDynamicTexture.update();
     }
 
-    private drawText(text: string) {
+    private drawText(text: string, centerY: number, textViewAngle: number, angleFactor: number, radius: number, yAngleFactor: number, baseFontSize: number) {
         const planeWidth = this._popupDynamicTexture!.getSize().width;
-        const planeHeight = this._popupDynamicTexture!.getSize().height;
         const ctx2d = this._popupCtx2d!;
 
         const centerX = planeWidth / 2;
-        let centerY = 0.41 * planeHeight;
-        const radius = 220;
         const textLengthFactor = text.length;
-        const angleSpan = Math.PI * 0.6 - 0.8 * Math.PI / textLengthFactor; // 80% of full semicircle
+        const angleSpan = textViewAngle * (Math.PI - 4 / 3 * Math.PI / textLengthFactor); // 80% of full semicircle
 
-        const baseFontSize = 100;
         const minFontSize = 1;
         const maxFontSize = 1000;
 
-        const fontSize = Math.max(minFontSize, Math.min(maxFontSize, baseFontSize / Math.pow(textLengthFactor, 0.5)));
+        const fontSize = Math.max(minFontSize, Math.min(maxFontSize, baseFontSize / Math.pow(textLengthFactor, 0.7)));
 
         ctx2d.font = `bold ${fontSize}px ${this._fontFamily}`;
         ctx2d.fillStyle = this._textColor;
@@ -302,10 +301,11 @@ class PuzzleEditor {
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
             const angle = text.length > 1 ? -angleSpan / 2 + (i / (text.length - 1)) * angleSpan : 0;
+            console.log(angleSpan, angle);
 
             // Cylindrical arc distortion: X and Y from angle
             const x = centerX + Math.sin(angle) * radius;
-            const y = centerY + (1- Math.cos(angle)) * 40; // simulate view from above (taller middle)
+            const y = centerY + (1- Math.cos(angle)) * yAngleFactor; // simulate view from above (taller middle)
 
             // Simulate vertical skew/stretch for fake perspective
             const skew = Math.cos(angle); // smaller at sides
@@ -315,7 +315,7 @@ class PuzzleEditor {
 
             ctx2d.save();
             ctx2d.translate(x, y);
-            ctx2d.rotate(-angle / 2);
+            ctx2d.rotate(angleFactor * angle);
             ctx2d.scale(scaleX, scaleY);
             ctx2d.fillText(char, 0, 0);
             ctx2d.restore();

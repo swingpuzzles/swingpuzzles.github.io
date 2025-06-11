@@ -14,7 +14,7 @@ export class Dropdown extends Container {
     private itemHeight = 0;
     private _lang: string = "en";
     private translationMap: Map<string, Map<string, string>> = new Map();
-    private selectionCallback?(key: string, userAction: boolean): void;
+    private selectionCallback?(key: string, userAction: boolean, text: string): void;
     private _selectedItem!: string;
 
     constructor(config: {
@@ -27,7 +27,7 @@ export class Dropdown extends Container {
         halign?: number;
         lang?: string;
         translationEntry?: ITranslationEntry[];
-        selectionCallback?(key: string, userAction: boolean): void;
+        selectionCallback?(key: string, userAction: boolean, text: string): void;
     }) {
         super();
 
@@ -139,7 +139,7 @@ export class Dropdown extends Container {
                 child.textBlock.text = this.translationMap.get(child.name)?.get(this._lang) ?? child.name;
 
                 if (child.name === this._selectedItem) {
-                    this.setContent(child.textBlock.text);
+                    this.doSelectAction(child.textBlock.text, null, null, false);
                 }
             }
         }
@@ -218,7 +218,7 @@ export class Dropdown extends Container {
         this.setContent(text, imageUrl, fontFamily);
 
         if (this.selectionCallback) {
-            this.selectionCallback(idText, userAction);
+            this.selectionCallback(idText, userAction, text);
         }
     }
 

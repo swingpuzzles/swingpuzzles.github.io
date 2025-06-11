@@ -20,7 +20,7 @@ export default class LanguageSelector extends StackPanel implements ISelector {
             { code: "de", flag: "assets/flags/de.webp", flagSmall: "assets/flags/de-small.webp" },
             { code: "fr", flag: "assets/flags/fr.webp", flagSmall: "assets/flags/fr-small.webp" },
             { code: "it", flag: "assets/flags/it.webp", flagSmall: "assets/flags/it-small.webp" },
-            { code: "cz", flag: "assets/flags/cz.webp", flagSmall: "assets/flags/cz-small.webp" },
+            { code: "cs", flag: "assets/flags/cz.webp", flagSmall: "assets/flags/cz-small.webp" },
             { code: "sk", flag: "assets/flags/sk.webp", flagSmall: "assets/flags/sk-small.webp" },
         ];
 

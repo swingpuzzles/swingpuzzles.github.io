@@ -16,7 +16,7 @@ interface DropdownOptions {
     icon?: string;
     lang?: string;
     translationEntry?: ITranslationEntry[];
-    selectionCallback?(key: string, userAction: boolean): void;
+    selectionCallback?(key: string, userAction: boolean, text: string): void;
 }
 
 interface DropdownItem {
