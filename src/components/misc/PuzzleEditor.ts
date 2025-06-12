@@ -204,7 +204,7 @@ class PuzzleEditor {
 
         // draw TEXT on torte
         if (this._friendsName) {
-            this.drawText(this._friendsName, 0.42 * planeHeight, 0.6, -0.5, planeWidth * 0.2, planeWidth * 0.04, 120);
+            this.drawText(this._friendsName, 0.42 * planeHeight, 0.6, -0.1, planeWidth * 0.2, planeWidth * 0.04, 120);
         }
 
         // Draw LABEL (centered)
@@ -270,6 +270,7 @@ class PuzzleEditor {
             // Sort by y to simulate depth: farther candles first
             candles.sort((a, b) => a.y - b.y);
 
+            ctx2d.globalAlpha = 0.7 + (0.2 / Math.pow(this._age, 0.2));
             for (const c of candles) {
                 ctx2d.drawImage(
                     this._candleImage,
@@ -279,6 +280,7 @@ class PuzzleEditor {
                     c.height
                 );
             }
+            ctx2d.globalAlpha = 1;
         }
 
         this._popupDynamicTexture.update();
