@@ -97,6 +97,7 @@ export class Dropdown extends Container {
         this.dropDownSign.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.dropDownSign.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         this.dropDownSign.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+        this.dropDownSign.alpha = 0.7;
         this.button.addControl(this.dropDownSign);
 
         // Create options
@@ -159,10 +160,12 @@ export class Dropdown extends Container {
         const color = value.toHexString();
 
         const brightness = 0.299 * value.r + 0.587 * value.g + 0.114 * value.b;
-        const bg = brightness > 0.5 ? "black" : "white";
+        const bright = brightness > 0.5;
+        const bg = bright ? "black" : "white";
 
-        this.button.color = color; // convert Color3 to CSS hex string
+        this.button.textBlock!.color = color; // convert Color3 to CSS hex string
 
+        this.dropDownSign.color = bright ? "white" : "black";
         this.button.background = bg;
 
         for (const o of this.options.children) {

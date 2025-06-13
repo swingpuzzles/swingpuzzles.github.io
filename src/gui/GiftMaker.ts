@@ -173,17 +173,17 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             },
         ];
 
-        popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { this.enterAdjustments(); },
             () => { alert('close') },
             null,
-            PopupMode.Gift,
+            PopupMode.Gift_Initial,
             formInputModel
         )
     }
 
     public enterAdjustments() {
-        popupHint.hide();
+        //popupHint.hide();
 
         let friendsName!: string;
         let age!: number;
@@ -199,6 +199,13 @@ Then, fill in the details below to personalize your custom puzzle — enter your
 
         puzzleEditor.setFormData(friendsName, age);
         gameModeManager.enterGiftAdjustmentMode();
+
+        popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+            () => { alert('next') },
+            () => { alert('close') },
+            null,
+            PopupMode.Gift_Adjustments_Preview
+        )
     }
 }
 

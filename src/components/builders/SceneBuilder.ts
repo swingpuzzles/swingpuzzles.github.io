@@ -106,7 +106,6 @@ class SceneBuilder {
                 ctx.camera.radius = 4 * 45 + 40 * (-ctx.camera.beta + 18 * Math.PI / 32);
                 ctx.camera.setTarget(targetPos);
 
-                puzzleEditor.movePopupPlane();
             /*} else if (gameModeManager.openCoverMode) {
                 if (!puzzleGameBuilder.building) {
                     const texture = (puzzleCoverBuilder.currentCover.material as StandardMaterial).diffuseTexture as Texture;

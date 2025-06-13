@@ -15,10 +15,14 @@ export enum PopupMode {
     Normal,
     PreSell,
     Sell,
-    Gift
+    Gift_Initial,
+    Gift_Adjustments_Hint,
+    Gift_Adjustments_Preview
 }
 
 class PopupHint {
+    private readonly _fadeDuration = 10;
+
     private inputTextArea!: TextBlock;
     private welcomeText!: TextBlock;
     private topImage!: Image;
@@ -44,7 +48,7 @@ class PopupHint {
     private _action: () => void = () => {};
     private _closeAction: () => void = () => {};
     private _currentAnimation: Animatable | null = null;
-    private readonly _fadeDuration = 10;
+    private _popupMode!: PopupMode;
 
     init() {
         this.mainContainer = new Container("PopupHintContainer");
@@ -241,6 +245,8 @@ class PopupHint {
             }
         });
 
+        this.bottomRect.addControl(this.getItButton);
+
         this.backButton = Button.CreateImageOnlyButton("backButton", "assets/buttons/back-button-small.webp");
         this.backButton.thickness = 0;
         this.backButton.background = "";
@@ -277,7 +283,7 @@ class PopupHint {
             }
         });
 
-        puzzleAssetsManager.addGuiImageButtonSource(this.backButton, "assets/buttons/next-button.webp");
+        puzzleAssetsManager.addGuiImageButtonSource(this.nextButton, "assets/buttons/next-button.webp");
 
         this.bottomRect.addControl(this.nextButton);
 
@@ -318,6 +324,10 @@ class PopupHint {
         }
 
         return formData;
+    }
+
+    public set centerImgUrl(url: string) {
+        this.coverImage.source = url;
     }
     
     private clearForm() {
@@ -393,20 +403,22 @@ class PopupHint {
     private resize() {
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
         const mainHeight = minSize * this._sizeCoef;
-        const middleHeight = mainHeight - (minSize * (0.3 + 1 / 40));
-        this.mainContainer.widthInPixels = minSize * 0.87;
+        const topHeightCoef = this._popupMode === PopupMode.Gift_Adjustments_Preview ? 0.1 : 0.2;
+        const topHeight = minSize * topHeightCoef;
+        const middleHeight = mainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
+        this.mainContainer.widthInPixels = this._popupMode === PopupMode.Gift_Adjustments_Preview ? mainHeight * 1.5 : (minSize * 0.87);
         this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
         this.mainContainer.paddingTopInPixels = minSize / 80;
         this.mainContainer.paddingBottomInPixels = minSize / 80;
-        this.topRect.heightInPixels = minSize * 0.2;
+        this.topRect.heightInPixels = topHeight;
         this.centerRect.heightInPixels = middleHeight;
         this.bottomRect.heightInPixels = minSize * 0.1;
-        this.welcomeText.widthInPixels = minSize * 0.62;
-        this.welcomeText.fontSizeInPixels = minSize / 14;
+        this.welcomeText.widthInPixels = topHeight * 3.1;//0.62;
+        this.welcomeText.fontSizeInPixels = topHeight / 2.8;//14;
 
-        const imageWidth = minSize * 0.2;
-        const imageHeight = minSize * 0.185;
+        const imageWidth = topHeight;
+        const imageHeight = topHeight * 0.925;//0.185;
         this.topImage.widthInPixels = imageWidth;
         this.topImage.heightInPixels = imageHeight;
         this.middleImage.widthInPixels = imageWidth * 0.45;
@@ -520,57 +532,52 @@ class PopupHint {
             mode: PopupMode = PopupMode.Normal,
             formInputModel: FormInputModel[] | null = null) : boolean {
 
+        this.gotItButton.isVisible = false;
+        this.emptyGreenButton.isVisible = false;
+        this.getItButton.isVisible = false;
+        this.notNowButton.isVisible = false;
+        this.backButton.isVisible = false;
+        this.nextButton.isVisible = false;
+        this.centerImage.isVisible = false;
+        this.coverImage.isVisible = false;
+        this.textAreaRect.alpha = 1;
+
         switch (mode) {
             case PopupMode.PreSell:
-                this.gotItButton.isVisible = false;
                 this.emptyGreenButton.isVisible = true;
-                this.getItButton.isVisible = false;
-                this.notNowButton.isVisible = false;
-                this.backButton.isVisible = false;
-                this.nextButton.isVisible = false;
                 this.centerImage.isVisible = true;
-                this.coverImage.isVisible = false;
-                this.textAreaRect.alpha = 1;
                 this.coverImage.source = puzzleCircleBuilder.selectedCoverUrl;
                 break;
             case PopupMode.Sell:
-                this.gotItButton.isVisible = false;
-                this.emptyGreenButton.isVisible = false;
                 this.getItButton.isVisible = true;
                 this.notNowButton.isVisible = true;
-                this.backButton.isVisible = false;
-                this.nextButton.isVisible = false;
-                this.centerImage.isVisible = false;
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;
                 break;
             case PopupMode.Normal:
                 this.gotItButton.isVisible = true;
-                this.emptyGreenButton.isVisible = false;
-                this.getItButton.isVisible = false;
-                this.notNowButton.isVisible = false;
-                this.backButton.isVisible = false;
-                this.nextButton.isVisible = false;
                 this.centerImage.isVisible = true;
-                this.coverImage.isVisible = false;
-                this.textAreaRect.alpha = 1;
                 break;
-            case PopupMode.Gift:
-                this.gotItButton.isVisible = false;
-                this.emptyGreenButton.isVisible = false;
-                this.getItButton.isVisible = false;
-                this.notNowButton.isVisible = false;
-                this.backButton.isVisible = true;
+            case PopupMode.Gift_Initial:
                 this.nextButton.isVisible = true;
                 this.centerImage.isVisible = true;
-                this.coverImage.isVisible = false;
-                this.textAreaRect.alpha = 1;
+                break;
+            case PopupMode.Gift_Adjustments_Hint:
+                this.gotItButton.isVisible = true;
+                break;
+            case PopupMode.Gift_Adjustments_Preview:
+                this.backButton.isVisible = true;
+                this.nextButton.isVisible = true;
+                this.coverImage.isVisible = true;
+                this.textAreaRect.alpha = 0;
+                break;
         }
 
         this.welcomeText.text = heading;
         this.inputTextArea.text = "";
         this._sizeCoef = sizeCoef;
         this._action = action;
+        this._popupMode = mode;
 
         if (closeAction) {
             this._closeAction = closeAction;

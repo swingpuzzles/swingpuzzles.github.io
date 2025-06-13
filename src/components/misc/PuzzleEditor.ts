@@ -1,10 +1,9 @@
 import { Color3, DynamicTexture, Mesh, MeshBuilder, StandardMaterial, Vector3 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
-import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
 import sceneInitializer from "../SceneInitializer";
+import popupHint from "../../gui/PopupHint";
 
 class PuzzleEditor {
-    private _popupPlane!: Mesh;
     private _popupDynamicTexture?: DynamicTexture;
     private _popupCtx2d?: CanvasRenderingContext2D;
 
@@ -25,10 +24,6 @@ class PuzzleEditor {
         this._vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         this.createPopupPlane(this._vertical ? [10, 15] : [15, 10]);
 
-        gameModeManager.addGameModeChangedObserver(() => {
-            this._popupPlane.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
-        });
-
         sceneInitializer.addResizeObserver((width, height) => {
             if (this._vertical != ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth()) {
                 this._vertical = !this._vertical;
@@ -46,17 +41,8 @@ class PuzzleEditor {
         this.setImage("assets/gift/labels/label_1.webp", (img) => { this._labelImage = img; }); // TODO
     }
 
-    createPopupPlane(planeSize: [number, number]): Mesh {
+    createPopupPlane(planeSize: [number, number]): void {
         const [planeWidth, planeHeight] = planeSize;
-
-        // If already exists, dispose
-        if (this._popupPlane) {
-            this._popupPlane.dispose();
-            this._popupDynamicTexture?.dispose();
-        }
-
-        // Create the plane
-        this._popupPlane = MeshBuilder.CreatePlane("popupPlane", { width: planeWidth, height: planeHeight }, ctx.scene);
 
         // Create DynamicTexture matching aspect ratio
         const texSize = 1024; // adjust resolution
@@ -67,37 +53,8 @@ class PuzzleEditor {
 
         this._popupCtx2d = this._popupDynamicTexture.getContext() as CanvasRenderingContext2D;
 
-        // Apply material
-        const mat = new StandardMaterial("popupMat", ctx.scene);
-        mat.diffuseTexture = this._popupDynamicTexture;
-        mat.emissiveColor = new Color3(1, 1, 1);
-        this._popupPlane.material = mat;
-
-        this.movePopupPlane();
         this._drawPopupPlane();
 
-        return this._popupPlane;
-    }
-
-    movePopupPlane() { 
-        // Position in front of camera
-        const distance = 20;
-        const forward = ctx.camera.getForwardRay().direction;
-        //forward.y = 0;//-forward.y;
-        this._popupPlane.position = ctx.camera.position.add(forward.scale(distance));
-
-        // Make plane face camera
-        //this._popupPlane.rotation = new Vector3(1, 2, 3);
-        this._popupPlane.lookAt(ctx.camera.position, Math.PI/*, 3.8 * Math.PI / 32*/);
-        this._popupPlane.rotation.x = -Math.asin(forward.y);
-        //this._popupPlane.rotation.y += Math.PI;
-        //this._popupPlane.rotation.z = 0;*/
-        //this._popupPlane.isVisible = false;
-
-        //MeshBuilder.CreateBox("xxx").position = this._popupPlane.position;
-
-
-        //console.log(forward);
     }
 
     updatePopupPlane(bgUrl: string, fgUrl: string): void {
@@ -284,6 +241,9 @@ class PuzzleEditor {
         }
 
         this._popupDynamicTexture.update();
+
+        const dataUrl = ctx2d.canvas.toDataURL("image/png");
+        popupHint.centerImgUrl = dataUrl;
     }
 
     private drawText(text: string, centerY: number, textViewAngle: number, angleFactor: number, radius: number, yAngleFactor: number, baseFontSize: number) {
@@ -325,18 +285,6 @@ class PuzzleEditor {
             ctx2d.fillText(char, 0, 0);
             ctx2d.restore();
         }
-    }
-
-    /* Optionally: you can still keep disposePopupPlane() if you want */
-    disposePopupPlane(): void {
-        this._popupPlane?.dispose();
-        this._popupDynamicTexture?.dispose();
-
-        this._popupPlane = undefined!;
-        this._popupDynamicTexture = undefined;
-        this._popupCtx2d = undefined;
-        this._bgImage = undefined;
-        this._fgImage = undefined;
     }
 }
 
