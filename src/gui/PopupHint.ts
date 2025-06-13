@@ -117,6 +117,10 @@ class PopupHint {
         this.coverImage = new Image("Image", "");
         this.coverImage.stretch = Image.STRETCH_UNIFORM;
         this.coverImage.isVisible = false;
+        this.coverImage.paddingBottom = "2%";
+        this.coverImage.paddingTop = "2%";
+        this.coverImage.paddingLeft = "2%";
+        this.coverImage.paddingRight = "2%";
         this.centerRect.addControl(this.coverImage);
 
         // Middle Rectangle (with InputTextArea)
@@ -401,12 +405,13 @@ class PopupHint {
     }
 
     private resize() {
+        const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
         const mainHeight = minSize * this._sizeCoef;
         const topHeightCoef = this._popupMode === PopupMode.Gift_Adjustments_Preview ? 0.1 : 0.2;
         const topHeight = minSize * topHeightCoef;
         const middleHeight = mainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
-        this.mainContainer.widthInPixels = this._popupMode === PopupMode.Gift_Adjustments_Preview ? mainHeight * 1.5 : (minSize * 0.87);
+        this.mainContainer.widthInPixels = this._popupMode === PopupMode.Gift_Adjustments_Preview && ! vertical ? mainHeight * 1.1 : (minSize * 0.87);
         this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
         this.mainContainer.paddingTopInPixels = minSize / 80;
