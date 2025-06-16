@@ -13,13 +13,10 @@ import ctx from "../components/common/SceneContext";
 import ForegroundDropdownBuilder from "./dropdowns/ForegroundDropdownBuilder";
 import BackgroundDropdownBuilder from "./dropdowns/BackgroundDropdownBuilder";
 import { Color3 } from "@babylonjs/core";
-import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import puzzleEditor from "../components/misc/PuzzleEditor";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
-    //private _dropdownStack!: StackPanel;
-    //private _stack1!: StackPanel;
     private _stack2!: StackPanel;
     private _fontFamilyDropdown!: Dropdown;
     private _wishTextDropdown!: Dropdown;
@@ -33,18 +30,12 @@ class GiftMaker {
     public init() {
         this._languageSelector = new LanguageSelector();
 
-        /*this._stack1 = new StackPanel();
-        this._stack1.isVertical = false;
-        this._stack1.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;*/
-
         this._wishTextDropdown = new WishTextDropdownBuilder().build(true);
         this._wishTextDropdown.paddingRightInPixels = 1;
-        //this._stack1.addControl(this._wishTextDropdown);
         guiManager.advancedTexture.addControl(this._wishTextDropdown);
 
         this._fontFamilyDropdown = new FontFamilyDropdownBuilder().build(true);
         this._fontFamilyDropdown.paddingRightInPixels = 1;
-        //this._stack1.addControl(this._fontFamilyDropdown);
         guiManager.advancedTexture.addControl(this._fontFamilyDropdown);
 
         this._stack2 = new StackPanel();
@@ -53,7 +44,6 @@ class GiftMaker {
 
         this._colorPicker = new ColorPicker();
         this._colorPicker.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        //this._colorPicker.paddingTopInPixels = 1;
         this._colorPicker.paddingRightInPixels = 1;
         this._colorPicker.value = new Color3(0, 0, 0);
         this._colorPicker.onValueChangedObservable.add((color) => {
@@ -63,23 +53,13 @@ class GiftMaker {
         this._stack2.addControl(this._colorPicker);
 
         this._foregroundDropdown = new ForegroundDropdownBuilder().build(true);
-        //this._foregroundDropdown.paddingTopInPixels = 1;
         this._foregroundDropdown.paddingRightInPixels = 1;
         this._stack2.addControl(this._foregroundDropdown);
 
         this._backgroundDropdown = new BackgroundDropdownBuilder().build(true);
-        //this._backgroundDropdown.paddingTopInPixels = 1;
         this._backgroundDropdown.paddingRightInPixels = 1;
         this._stack2.addControl(this._backgroundDropdown);
 
-        /*this._dropdownStack = new StackPanel();
-        this._dropdownStack.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
-        this._dropdownStack.addControl(this._stack1);
-        this._dropdownStack.addControl(this._stack2);
-
-        guiManager.advancedTexture.addControl(this._dropdownStack);*/
-
-        //guiManager.advancedTexture.addControl(this._stack1);
         guiManager.advancedTexture.addControl(this._stack2);
 
         this.resize();
@@ -121,19 +101,6 @@ class GiftMaker {
         const dropdownWidth = renderWidth * (vertical ? 0.4 : 0.2);
         const dropdownHeight = dropdownWidth / 5;
         const iconHeight = vertical ? dropdownHeight * 1.5 : dropdownHeight;
-        
-        /*this._dropdownStack.isVertical = vertical;
-        this._dropdownStack.markAsDirty();
-
-        this._dropdownStack.top = dropdownHeight / 4;
-        this._dropdownStack.heightInPixels = (vertical ? 2 * dropdownHeight : dropdownHeight) + 1;*/
-
-        /*this._stack1.top = dropdownHeight / 4;
-        this._stack1.widthInPixels = dropdownWidth * 2;
-        this._stack1.heightInPixels = dropdownHeight;*/
-
-        //this._stack2.widthInPixels = dropdownWidth * 2;
-        //this._stack2.heightInPixels = dropdownHeight;
 
         this._wishTextDropdown.top = dropdownHeight / 4;
 
@@ -146,23 +113,16 @@ class GiftMaker {
             this._fontFamilyDropdown.top = dropdownHeight / 4 + dropdownHeight + 1;
             this._stack2.leftInPixels = dropdownWidth / 2;
             this._stack2.widthInPixels = dropdownWidth;
-            //this._stack1.leftInPixels = 0;
-            //this._stack2.leftInPixels = 0;
-            //this._stack2.top = dropdownHeight / 4 + dropdownHeight + 1;
         } else {
             this._wishTextDropdown.leftInPixels = -dropdownWidth;
             this._fontFamilyDropdown.leftInPixels = 0; + dropdownHeight + 1;
             this._fontFamilyDropdown.top = dropdownHeight / 4;
             this._stack2.leftInPixels = dropdownWidth;
             this._stack2.widthInPixels = dropdownWidth;
-            //this._stack1.leftInPixels = -dropdownWidth;
-            //this._stack2.leftInPixels = dropdownWidth;
-            //this._stack2.top = dropdownHeight / 4;
         }
 
         this._colorPicker.widthInPixels = iconHeight;
         this._colorPicker.heightInPixels = iconHeight;
-        //this._colorPicker.topInPixels = dropdownHeight / 4;
 
         this._wishTextDropdown.resize(dropdownWidth, dropdownHeight, dropdownWidth, true);
         this._fontFamilyDropdown.resize(dropdownWidth, dropdownHeight, dropdownWidth, true);
