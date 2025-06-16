@@ -1,5 +1,5 @@
 import { AdvancedDynamicTexture, Button, Control, StackPanel, Image } from "@babylonjs/gui";
-import ctx from "../components/common/SceneContext";
+import ctx, { Categories } from "../components/common/SceneContext";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
@@ -159,6 +159,11 @@ class GuiManager {
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             }
+    }
+
+    public enterGeneralCategory(): void {
+        const generalCat = Categories.General;
+        this.categoryDropdown.doSelectAction(generalCat.text, generalCat.url, null, false);
     }
 }
 

@@ -188,7 +188,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
 
         popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { this.enterAdjustments(); },
-            () => { alert('close') },
+            () => { this.exitGiftMaking() },
             null,
             null,
             PopupMode.Gift_Initial,
@@ -201,7 +201,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         let age!: number;
         let lang!: string;
 
-        for (const formRow of popupHint.formData) {console.log(formRow.id, formRow.value!.toString());
+        for (const formRow of popupHint.formData) {
             localStorage.setItem(formRow.id, formRow.value!.toString());
 
             switch (formRow.id) {
@@ -216,11 +216,16 @@ Then, fill in the details below to personalize your custom puzzle — enter your
 
         popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { alert('next') },
-            () => { alert('close') },
+            () => { this.exitGiftMaking() },
             () => { gameModeManager.enterGiftInitialMode(); },
             null,
             PopupMode.Gift_Adjustments_Preview
         )
+    }
+
+    public exitGiftMaking(): void {
+        popupHint.hide();
+        guiManager.enterGeneralCategory();
     }
 }
 
