@@ -96,7 +96,7 @@ class GiftMaker {
 
         const vertical = renderHeight > renderWidth;
 
-        const dropdownWidth = renderWidth * (vertical ? 0.4 : 0.2);
+        const dropdownWidth = Math.min(renderWidth, renderHeight * (vertical ? 1 / 1.5 : 1.5)) * (vertical ? 0.45 : 0.3);
         const dropdownHeight = dropdownWidth / 5;
         const iconHeight = vertical ? dropdownHeight * 1.5 : dropdownHeight;
 

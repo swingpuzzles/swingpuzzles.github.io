@@ -198,7 +198,7 @@ export class Dropdown extends Container {
                 this.button.textBlock.fontSizeInPixels = width / 14;
             }
 
-            this.button.heightInPixels = this.itemHeight;
+            this.button.heightInPixels = this.itemHeight - 1;
 
             if (this.isImageOnly) {
                 //this.dropDownSign.paddingRightInPixels = this.itemHeight / 10;
