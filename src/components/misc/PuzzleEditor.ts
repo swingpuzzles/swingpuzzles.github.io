@@ -123,6 +123,9 @@ class PuzzleEditor {
         // Clear
         ctx2d.clearRect(0, 0, planeWidth, planeHeight);
 
+        const bigCoor = Math.max(planeWidth, planeHeight);
+        const smallCoor = Math.min(planeWidth, planeHeight);
+
         // Draw BACKGROUND (cover-fit)
         const bgAspect = this._bgImage.width / this._bgImage.height;
         const canvasAspect = planeWidth / planeHeight;
@@ -144,7 +147,7 @@ class PuzzleEditor {
         ctx2d.drawImage(this._bgImage, bgOffsetX, bgOffsetY, bgDrawWidth, bgDrawHeight);
 
         // Draw FOREGROUND (centered)
-        const tableDrawWidth = Math.min(planeWidth, planeHeight) * 1.2;//this._fgImage.width;
+        const tableDrawWidth = smallCoor * 1.2;//this._fgImage.width;
         const tableDrawHeight = tableDrawWidth * this._fgImage.height / this._fgImage.width;
         const tableOffsetX = (planeWidth - tableDrawWidth) / 2;
         const tableOffsetY = (planeHeight - tableDrawHeight) / 0.21;
@@ -152,7 +155,7 @@ class PuzzleEditor {
         ctx2d.drawImage(this._tableImage, tableOffsetX, tableOffsetY, tableDrawWidth, tableDrawHeight);
 
         // Draw FOREGROUND (centered)
-        const fgDrawWidth = Math.min(planeWidth, planeHeight) * 0.8;//this._fgImage.width;
+        const fgDrawWidth = smallCoor * 0.8;//this._fgImage.width;
         const fgDrawHeight = fgDrawWidth * this._fgImage.height / this._fgImage.width;
         const fgOffsetX = (planeWidth - fgDrawWidth) / 2;
         const fgOffsetY = (planeHeight - fgDrawHeight) / 1.2;
@@ -161,7 +164,7 @@ class PuzzleEditor {
 
         // draw TEXT on torte
         if (this._friendsName) {
-            this.drawText(this._friendsName, 0.42 * planeHeight, 0.6, -0.1, planeWidth * 0.2, planeWidth * 0.04, 120);
+            this.drawText(this._friendsName, (this._vertical ? 0.84 : 0.41) * smallCoor, 0.6, -0.1, bigCoor * 0.2, bigCoor * 0.04, 120);
         }
 
         // Draw LABEL (centered)
@@ -179,12 +182,12 @@ class PuzzleEditor {
 
         // draw CANDLES
         const centerX = planeWidth / 2;
-        const centerY = 0.442 * planeHeight;
+        const centerY = (this._vertical ? 0.58 : 0.442) * planeHeight;
 
-        let radiusX = planeWidth * 0.18;
+        let radiusX = bigCoor * 0.18;
         let radiusY = radiusX * 0.3;
 
-        const sizeFactor = Math.pow(20 / this._age, 0.4);
+        const sizeFactor = Math.pow(20 / this._age, 0.4) * (this._vertical ? 1.5 : 1);
         let baseCandleHeight = 60 * sizeFactor; // base size in pixels for center/front
         let baseCandleWidth = 20 * sizeFactor;
 
@@ -215,7 +218,7 @@ class PuzzleEditor {
 
                 x += centerX;
 
-                const scale = (6 + y) / 4;
+                const scale = (8 + y) / 5;
                 const candleWidth = baseCandleWidth * scale;
                 const candleHeight = baseCandleHeight * scale;
 
