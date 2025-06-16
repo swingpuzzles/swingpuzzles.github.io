@@ -19,6 +19,7 @@ class PuzzleEditor {
     private _wishText?: string;
     private _friendsName?: string;
     private _age!: number;
+    private _torteIndex?: number;
 
     init() {
         this._vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
@@ -57,11 +58,6 @@ class PuzzleEditor {
 
     }
 
-    updatePopupPlane(bgUrl: string, fgUrl: string): void {
-        this.setPopupBackground(bgUrl);
-        this.setPopupForeground(fgUrl);
-    }
-
     private setImage(url: string, setField: (img: HTMLImageElement) => void) : void {
         const smallImage = new Image();
         smallImage.src = url;
@@ -79,7 +75,7 @@ class PuzzleEditor {
         };
     }
 
-    setPopupBackground(bgUrl: string): void {
+    setBackgroundImage(bgUrl: string): void {
         this.setImage(bgUrl, (img) => { this._bgImage = img });
     }
 
@@ -87,8 +83,9 @@ class PuzzleEditor {
         this.setImage(url, (img) => { this._tableImage = img });
     }
 
-    setPopupForeground(fgUrl: string): void {
+    setTorte(fgUrl: string, index: number): void {
         this.setImage(fgUrl, (img) => { this._fgImage = img });
+        this._torteIndex = index;
     }
 
     public setFormData(friendsName: string, age: number): void {
@@ -162,9 +159,10 @@ class PuzzleEditor {
 
         ctx2d.drawImage(this._fgImage, fgOffsetX, fgOffsetY, fgDrawWidth, fgDrawHeight);
 
+        //const centerY = fgOffsetY + 0.094 * smallCoor;//(this._vertical ? 0.58 : 0.442) * planeHeight;
         // draw TEXT on torte
-        if (this._friendsName) {
-            this.drawText(this._friendsName, (this._vertical ? 0.84 : 0.41) * smallCoor, 0.6, -0.1, bigCoor * 0.2, bigCoor * 0.04, 120);
+        if (this._friendsName) {//his._vertical ? 0.84 : 0.41
+            this.drawText(this._friendsName, fgOffsetY + 0.06 * smallCoor, 0.6, -0.1, bigCoor * 0.2, bigCoor * 0.04, 120);
         }
 
         // Draw LABEL (centered)
@@ -182,10 +180,16 @@ class PuzzleEditor {
 
         // draw CANDLES
         const centerX = planeWidth / 2;
-        const centerY = (this._vertical ? 0.58 : 0.442) * planeHeight;
+        const centerY = fgOffsetY + 0.091 * smallCoor;//(this._vertical ? 0.58 : 0.442) * planeHeight;
 
         let radiusX = bigCoor * 0.18;
         let radiusY = radiusX * 0.3;
+
+        switch (this._torteIndex) {
+            case 2:
+            case 5:
+                radiusX *= 1.104; break;
+        }
 
         const sizeFactor = Math.pow(20 / this._age, 0.4) * (this._vertical ? 1.5 : 1);
         let baseCandleHeight = 60 * sizeFactor; // base size in pixels for center/front

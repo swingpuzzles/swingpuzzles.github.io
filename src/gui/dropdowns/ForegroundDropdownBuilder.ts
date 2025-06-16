@@ -43,7 +43,7 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
 
         localStorage.setItem(this.storageItemName, index);
 
-        giftMaker.fgChanged(imageUrl);
+        giftMaker.fgChanged(imageUrl, Number(index));
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?

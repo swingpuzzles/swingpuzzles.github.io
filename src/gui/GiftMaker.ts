@@ -84,12 +84,12 @@ class GiftMaker {
         puzzleEditor.setWishText(wishText);
     }
 
-    public fgChanged(url: string): void {
-        puzzleEditor.setPopupForeground(url);
+    public fgChanged(url: string, index: number): void {
+        puzzleEditor.setTorte(url, index);
     }
 
     public bgChanged(url: string): void {
-        puzzleEditor.setPopupBackground(url);
+        puzzleEditor.setBackgroundImage(url);
     }
 
     private resize() {
