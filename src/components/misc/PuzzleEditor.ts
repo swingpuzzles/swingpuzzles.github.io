@@ -147,7 +147,7 @@ class PuzzleEditor {
         const tableDrawWidth = smallCoor * 1.2;//this._fgImage.width;
         const tableDrawHeight = tableDrawWidth * this._tableImage.height / this._tableImage.width;
         const tableOffsetX = (planeWidth - tableDrawWidth) / 2;
-        const tableOffsetY = (planeHeight - tableDrawHeight) / (this._vertical ? 0.66 : 0.31);
+        const tableOffsetY = (planeHeight - tableDrawHeight) / (this._vertical ? 0.64 : 0.31);
 
         ctx2d.drawImage(this._tableImage, tableOffsetX, tableOffsetY, tableDrawWidth, tableDrawHeight);
 
@@ -155,7 +155,7 @@ class PuzzleEditor {
         const fgDrawWidth = smallCoor * 0.8;//this._fgImage.width;
         const fgDrawHeight = fgDrawWidth * this._fgImage.height / this._fgImage.width;
         const fgOffsetX = (planeWidth - fgDrawWidth) / 2;
-        const fgOffsetY = (planeHeight - fgDrawHeight) / 1.2;
+        const fgOffsetY = (planeHeight - fgDrawHeight) / 1.14;
 
         ctx2d.drawImage(this._fgImage, fgOffsetX, fgOffsetY, fgDrawWidth, fgDrawHeight);
 
