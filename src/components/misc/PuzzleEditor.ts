@@ -146,11 +146,11 @@ class PuzzleEditor {
 
         ctx2d.drawImage(this._bgImage, bgOffsetX, bgOffsetY, bgDrawWidth, bgDrawHeight);
 
-        // Draw FOREGROUND (centered)
+        // Draw TABLE (centered)
         const tableDrawWidth = smallCoor * 1.2;//this._fgImage.width;
-        const tableDrawHeight = tableDrawWidth * this._fgImage.height / this._fgImage.width;
+        const tableDrawHeight = tableDrawWidth * this._tableImage.height / this._tableImage.width;
         const tableOffsetX = (planeWidth - tableDrawWidth) / 2;
-        const tableOffsetY = (planeHeight - tableDrawHeight) / 0.21;
+        const tableOffsetY = (planeHeight - tableDrawHeight) / (this._vertical ? 0.68 : 0.33);
 
         ctx2d.drawImage(this._tableImage, tableOffsetX, tableOffsetY, tableDrawWidth, tableDrawHeight);
 
