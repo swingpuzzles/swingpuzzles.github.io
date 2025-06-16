@@ -165,16 +165,16 @@ class PuzzleEditor {
         }
 
         // Draw LABEL (centered)
-        const labelDrawWidth = planeWidth * 0.96;//this._fgImage.width;
-        const labelDrawHeight = planeHeight * 0.8;
+        const labelDrawWidth = planeWidth * (this._vertical ? 1.2 : 0.96);
+        const labelDrawHeight = planeHeight * (this._vertical ? 0.4 : 0.8);
         const labelOffsetX = (planeWidth - labelDrawWidth) / 2;
-        const labelOffsetY = -(planeHeight - labelDrawHeight) * 1.6;
+        const labelOffsetY = this._vertical ? 0 : (-(planeHeight - labelDrawHeight) * 1.6);
 
         ctx2d.drawImage(this._labelImage, labelOffsetX, labelOffsetY, labelDrawWidth, labelDrawHeight);
 
         // draw TEXT on label
         if (this._wishText) {
-            this.drawText(this._wishText, 0.1 * planeHeight, 0.6, 0.3, planeWidth * 0.4, planeWidth * 0.1, 300);
+            this.drawText(this._wishText, (this._vertical ? 0.21 : 0.1) * planeHeight, 0.66, (this._vertical ? 0.3 : 0.3), planeWidth * (this._vertical ? 0.52 : 0.4), planeWidth * (this._vertical ? 0.15 : 0.1), 320);
         }
 
         // draw CANDLES
