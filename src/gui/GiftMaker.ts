@@ -14,6 +14,7 @@ import ForegroundDropdownBuilder from "./dropdowns/ForegroundDropdownBuilder";
 import BackgroundDropdownBuilder from "./dropdowns/BackgroundDropdownBuilder";
 import { Color3 } from "@babylonjs/core";
 import puzzleEditor from "../components/misc/PuzzleEditor";
+import TablesDropdownBuilder from "./dropdowns/TablesDropdownBuilder";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -21,6 +22,7 @@ class GiftMaker {
     private _fontFamilyDropdown!: Dropdown;
     private _wishTextDropdown!: Dropdown;
     private _foregroundDropdown!: Dropdown;
+    private _tableDropdown!: Dropdown;
     private _backgroundDropdown!: Dropdown;
     private _colorPicker!: ColorPicker;
 
@@ -54,6 +56,10 @@ class GiftMaker {
         this._foregroundDropdown.paddingRightInPixels = 1;
         this._stack2.addControl(this._foregroundDropdown);
 
+        this._tableDropdown = new TablesDropdownBuilder().build(true);
+        this._tableDropdown.paddingRightInPixels = 1;
+        this._stack2.addControl(this._tableDropdown);
+
         this._backgroundDropdown = new BackgroundDropdownBuilder().build(true);
         this._backgroundDropdown.paddingRightInPixels = 1;
         this._stack2.addControl(this._backgroundDropdown);
@@ -69,8 +75,6 @@ class GiftMaker {
         gameModeManager.addGameModeChangedObserver(() => {
             this._colorPicker.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
         });
-
-        puzzleEditor.setTable("assets/gift/tables/table_1-small.webp");// TODO
     }
 
     public fontFamilyChanged(fontFamily: string): void {
@@ -86,6 +90,10 @@ class GiftMaker {
         puzzleEditor.setTorte(url, index);
     }
 
+    public tableChanged(url: string, index: number): void {
+        puzzleEditor.setTable(url, index);
+    }
+
     public bgChanged(url: string): void {
         puzzleEditor.setBackgroundImage(url);
     }
@@ -98,11 +106,12 @@ class GiftMaker {
 
         const dropdownWidth = Math.min(renderWidth, renderHeight * (vertical ? 1 / 1.5 : 1.5)) * (vertical ? 0.45 : 0.3);
         const dropdownHeight = dropdownWidth / 5;
-        const iconHeight = vertical ? dropdownHeight * 1.5 : dropdownHeight;
+        const iconHeight = vertical ? dropdownHeight * 1.25 : dropdownHeight;
 
         this._wishTextDropdown.top = dropdownHeight / 4;
 
         this._stack2.top = dropdownHeight / 4;
+        this._stack2.widthInPixels = dropdownWidth;
         this._stack2.heightInPixels = iconHeight;
 
         if (vertical) {
@@ -110,13 +119,11 @@ class GiftMaker {
             this._fontFamilyDropdown.leftInPixels = -dropdownWidth / 2;
             this._fontFamilyDropdown.top = dropdownHeight / 4 + dropdownHeight + 1;
             this._stack2.leftInPixels = dropdownWidth / 2;
-            this._stack2.widthInPixels = dropdownWidth;
         } else {
             this._wishTextDropdown.leftInPixels = -dropdownWidth;
             this._fontFamilyDropdown.leftInPixels = 0; + dropdownHeight + 1;
             this._fontFamilyDropdown.top = dropdownHeight / 4;
             this._stack2.leftInPixels = dropdownWidth;
-            this._stack2.widthInPixels = dropdownWidth;
         }
 
         this._colorPicker.widthInPixels = iconHeight;
@@ -125,6 +132,7 @@ class GiftMaker {
         this._wishTextDropdown.resize(dropdownWidth, dropdownHeight, dropdownWidth, true);
         this._fontFamilyDropdown.resize(dropdownWidth, dropdownHeight, dropdownWidth, true);
         this._foregroundDropdown.resize(iconHeight, iconHeight, iconHeight, true);
+        this._tableDropdown.resize(iconHeight, iconHeight, iconHeight, true);
         this._backgroundDropdown.resize(iconHeight, iconHeight, iconHeight, true);
     }
 

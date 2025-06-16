@@ -79,7 +79,7 @@ class PuzzleEditor {
         this.setImage(bgUrl, (img) => { this._bgImage = img });
     }
 
-    setTable(url: string): void {
+    setTable(url: string, index: number): void {
         this.setImage(url, (img) => { this._tableImage = img });
     }
 
@@ -147,7 +147,7 @@ class PuzzleEditor {
         const tableDrawWidth = smallCoor * 1.2;//this._fgImage.width;
         const tableDrawHeight = tableDrawWidth * this._tableImage.height / this._tableImage.width;
         const tableOffsetX = (planeWidth - tableDrawWidth) / 2;
-        const tableOffsetY = (planeHeight - tableDrawHeight) / (this._vertical ? 0.68 : 0.33);
+        const tableOffsetY = (planeHeight - tableDrawHeight) / (this._vertical ? 0.66 : 0.31);
 
         ctx2d.drawImage(this._tableImage, tableOffsetX, tableOffsetY, tableDrawWidth, tableDrawHeight);
 

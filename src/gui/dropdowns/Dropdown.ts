@@ -195,7 +195,7 @@ export class Dropdown extends Container {
 
         if (!this.isCategory) {
             if (this.button.textBlock) {
-                this.button.textBlock.fontSizeInPixels = width / 14;
+                this.button.textBlock.fontSizeInPixels = width / 13;
             }
 
             this.button.heightInPixels = this.itemHeight - 1;
@@ -216,7 +216,10 @@ export class Dropdown extends Container {
         this.dropDownSign.fontSizeInPixels = this.itemHeight / 2;
 
         for (const o of this.options.children) {
-            o.widthInPixels = this.itemHeight;
+            if (this.isImageOnly) {
+                o.widthInPixels = this.itemHeight;
+            }
+
             o.heightInPixels = this.itemHeight - 1;
             if ((o as Button).textBlock) {
                 (o as Button).textBlock!.fontSizeInPixels = width / 14;
