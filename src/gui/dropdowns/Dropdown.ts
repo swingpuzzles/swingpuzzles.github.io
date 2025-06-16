@@ -7,7 +7,7 @@ import guiManager from "../GuiManager";
 export class Dropdown extends Container {
     private button: Button;
     private options: StackPanel;
-    private buttonImage: Image | null = null;
+    //private buttonImage: Image | null = null;
     private dropDownSign: TextBlock;
     private buttonBackground: string;
     private buttonColor: string;
@@ -62,25 +62,26 @@ export class Dropdown extends Container {
         // Create button
         if (this.isImageOnly) {
             this.button = Button.CreateImageOnlyButton("Dropdown", "")
+            this.button.image!.stretch = Image.STRETCH_UNIFORM;
             
             this.button.background = "";
             this.button.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
 
-            this.buttonImage = new Image("buttonImage", "");
+            //this.buttonImage = new Image("buttonImage", "");
 
-            this.buttonImage.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-            this.buttonImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
+            //this.buttonImage.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+            //this.buttonImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
 
             // Create and store the nested image (category icon)
             if (this.isCategory) {
                 this.button.width = "20%"
-                this.buttonImage.width = "75%";
-                this.buttonImage.height = "75%";
-                this.buttonImage.paddingRight = "5%";
-                this.buttonImage.paddingBottom = "20%";
+                this.button.image!.width = "75%";
+                this.button.image!.height = "75%";
+                this.button.image!.paddingRight = "5%";
+                this.button.image!.paddingBottom = "20%";
             }
 
-            this.button.addControl(this.buttonImage);
+            //this.button.addControl(this.buttonImage);
         } else {
             this.button = Button.CreateSimpleButton("Dropdown", "");
             this.button.background = this.buttonBackground;
@@ -215,42 +216,12 @@ export class Dropdown extends Container {
         this.dropDownSign.fontSizeInPixels = this.itemHeight / 2;
 
         for (const o of this.options.children) {
-            o.heightInPixels = this.itemHeight;
+            o.widthInPixels = this.itemHeight;
+            o.heightInPixels = this.itemHeight - 1;
             if ((o as Button).textBlock) {
                 (o as Button).textBlock!.fontSizeInPixels = width / 14;
             }
         }
-
-        /*
-        this.itemHeight = height;
-        const width = height * 7;
-
-        this.widthInPixels = width;
-
-        if (!ignoreTop) {
-            this.topInPixels = this.itemHeight / 4;
-        }
-
-        if (this.button.textBlock) {
-            this.button.textBlock.fontSizeInPixels = this.itemHeight / 2;
-            this.button.heightInPixels = this.itemHeight;
-            this.dropDownSign.paddingRightInPixels = this.itemHeight / 10;
-            this.dropDownSign.paddingBottomInPixels = this.itemHeight / 6;
-        } else {
-            this.leftInPixels = this.itemHeight / 4;
-            this.button.heightInPixels = this.itemHeight * 1.8;
-            this.dropDownSign.paddingBottomInPixels = this.itemHeight / 5;
-        }
-
-        this.dropDownSign.fontSizeInPixels = this.itemHeight / 2;
-
-        for (const o of this.options.children) {
-            o.heightInPixels = this.itemHeight;
-            if ((o as Button).textBlock) {
-                (o as Button).textBlock!.fontSizeInPixels = this.itemHeight / 2;
-            }
-        }
-            */
     }
 
     setContent(text: string, url: string | null = null, fontFamily: string | null = null) {
@@ -262,8 +233,8 @@ export class Dropdown extends Container {
             }
         }
 
-        if (url && this.buttonImage) {
-            this.buttonImage.source = url;
+        if (url && this.button.image!) {
+            this.button.image!.source = url;
         }
     }
 
@@ -288,11 +259,8 @@ export class Dropdown extends Container {
         if (imageOnly) {
             button = Button.CreateImageOnlyButton(idText, imageUrl!);
             button.image!.width = "100%";
+            button.image!.height = "100%";
             button.image!.stretch = Image.STRETCH_UNIFORM;
-            button.image!.paddingTop = "1%";
-            button.image!.paddingBottom = "1%";
-            button.image!.paddingLeft = "5%";
-            button.image!.paddingRight = "5%";
         } else if (imageUrl) {
             button = Button.CreateImageButton(idText, text, imageUrl);
             button.image!.width = "22%";
