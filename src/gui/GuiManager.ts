@@ -39,7 +39,7 @@ class GuiManager {
 
         giftMaker.init();
 
-        this.categoryDropdown = new CategoryDropdownBuilder().build(false);
+        this.categoryDropdown = new CategoryDropdownBuilder().build();
         guiManager.advancedTexture.addControl(this.categoryDropdown);
 
         this._createButtons();
@@ -118,10 +118,6 @@ class GuiManager {
         this.menuButton.height = renderHeight / 10 + "px";
         this.menuButton.paddingTopInPixels = renderHeight / 80;
         this.menuButton.paddingRightInPixels = renderHeight / 80;
-        /*this.categoryButton.width = renderHeight / 12 + "px";
-        this.categoryButton.height = renderHeight / 10 + "px";
-        this.categoryButton.paddingTopInPixels = renderHeight / 80;
-        this.categoryButton.paddingLeftInPixels = renderHeight / 80;*/
 
         this.playButton.isVisible = false;
         this.menuButton.isVisible = false;

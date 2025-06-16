@@ -56,7 +56,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
             localStorage.setItem(this.storageItemName, count.toString());
         }
 
-        if (count <= Number(localStorage.getItem(this.storageItemName)) || last && !this._optionSelected) {
+        if ((count >= Number(localStorage.getItem(this.storageItemName)) || last) && !this._optionSelected) {
             this.dropdown.doSelectAction(text, null, null, false);
             this._optionSelected = true;
         }

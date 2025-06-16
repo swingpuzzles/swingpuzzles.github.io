@@ -1,5 +1,4 @@
 import { Control } from "@babylonjs/gui";
-import tutorialManager from "../TutorialManager";
 import ctx, { Categories, Category } from "../../components/common/SceneContext";
 import puzzleCircleBuilder from "../../components/builders/PuzzleCircleBuilder";
 import DropdownBuilder from "./DropdownBuilder";

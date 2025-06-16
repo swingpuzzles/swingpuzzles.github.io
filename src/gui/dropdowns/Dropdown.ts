@@ -7,6 +7,7 @@ import ctx from "../../components/common/SceneContext";
 
 export class Dropdown extends Container {
     private button: Button;
+    private categoryIcon: Image | null = null;
     private options: StackPanel;
     private dropDownSign: TextBlock;
     private buttonBackground: string;
@@ -71,10 +72,18 @@ export class Dropdown extends Container {
             // Create and store the nested image (category icon)
             if (this.isCategory) {
                 this.button.width = "20%"
-                this.button.image!.width = "75%";
-                this.button.image!.height = "75%";
-                this.button.image!.paddingRight = "5%";
-                this.button.image!.paddingBottom = "20%";
+                this.button.image!.source = "assets/buttons/category-button.webp";
+
+                // Create and store the nested image (category icon)
+                this.categoryIcon = new Image("categoryIcon", "");
+                this.categoryIcon.width = "75%";
+                this.categoryIcon.height = "75%";
+                this.categoryIcon.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+                this.categoryIcon.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
+                this.categoryIcon.paddingRight = "5%";
+                this.categoryIcon.paddingBottom = "20%";
+
+                this.button.addControl(this.categoryIcon);
             }
 
             //this.button.addControl(this.buttonImage);
@@ -111,7 +120,7 @@ export class Dropdown extends Container {
                 const measure = this.button._currentMeasure;
                 this.options.leftInPixels = measure.left;
                 this.options.topInPixels = measure.top + measure.height;
-                this.options.widthInPixels = measure.width;
+                this.options.widthInPixels = this.isCategory ? 7 * ctx.engine.getRenderHeight() / 20 : measure.width;
 
                 this.options.zIndex = this.zIndex + 0.1;
             }
@@ -201,7 +210,7 @@ export class Dropdown extends Container {
         this.itemHeight = height;
 
         this.widthInPixels = width;
-        this.options.width = optionWidth;
+        this.options.width = this.isCategory ? width : optionWidth;
 
         if (!ignoreTop) {
             this.topInPixels = this.itemHeight / 4;
@@ -227,7 +236,7 @@ export class Dropdown extends Container {
         this.dropDownSign.fontSizeInPixels = this.itemHeight / 2;
 
         for (const o of this.options.children) {
-            if (this.isImageOnly) {
+            if (this.isImageOnly && !this.isCategory) {
                 o.widthInPixels = this.itemHeight;
             }
 
@@ -248,7 +257,11 @@ export class Dropdown extends Container {
         }
 
         if (url && this.button.image!) {
-            this.button.image!.source = url;
+            if (this.isCategory) {
+                this.categoryIcon!.source = url;
+            } else {
+                this.button.image!.source = url;
+            }
         }
     }
 
