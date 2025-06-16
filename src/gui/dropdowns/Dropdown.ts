@@ -34,7 +34,7 @@ export class Dropdown extends Container {
     }) {
         super();
 
-        this.zIndex = 30;
+        this.zIndex = 300;
 
         this.buttonBackground = config.background;
         this.buttonColor = config.color;
