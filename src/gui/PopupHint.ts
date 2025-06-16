@@ -47,6 +47,7 @@ class PopupHint {
     private _sizeCoef = 0.87;
     private _action: () => void = () => {};
     private _closeAction: () => void = () => {};
+    private _backAction: () => void = () => {};
     private _currentAnimation: Animatable | null = null;
     private _popupMode!: PopupMode;
 
@@ -263,7 +264,9 @@ class PopupHint {
         this.backButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
 
         this.backButton.onPointerClickObservable.add(() => {
-            //this.hide();// TODO back action
+            if (this._backAction) {
+                this._backAction();
+            }
         });
 
         puzzleAssetsManager.addGuiImageButtonSource(this.backButton, "assets/buttons/back-button.webp");
@@ -335,10 +338,19 @@ class PopupHint {
     }
     
     private clearForm() {
-        if (this.formPanel.children) { 
-            for (let i = this.formPanel.children.length - 1; i >= 0; i--) {
-                const child = this.formPanel.children[i];
-                this.formPanel.removeControl(child);
+        this.clearRecursive(this.formPanel);
+    }
+
+    private clearRecursive(control: Container) {  // TODO to library
+        if (control.children) { 
+            for (let i = control.children.length - 1; i >= 0; i--) {
+                const child = control.children[i];
+
+                if (child instanceof Container) {
+                    this.clearRecursive(child);
+                }
+
+                control.removeControl(child);
                 child.dispose();
             }
         }
@@ -499,6 +511,7 @@ class PopupHint {
         verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
         action: () => void = () => {},
         closeAction: (() => void) | null = null,
+        backAction: (() => void) | null = null,
         afterShowAction: (() => void) | null = null,
         mode: PopupMode = PopupMode.Normal,
         formInputModel: FormInputModel[] | null = null
@@ -512,10 +525,10 @@ class PopupHint {
 
         if (this.mainContainer.isVisible) {
             this.fadeOut(() => {
-                this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, afterShowAction, mode, formInputModel);
+                this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, afterShowAction, mode, formInputModel);
             });
         } else {
-            this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, afterShowAction, mode, formInputModel);
+            this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, afterShowAction, mode, formInputModel);
         }
     }
 
@@ -523,11 +536,12 @@ class PopupHint {
             verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
             action: () => void = () => {},
             closeAction: (() => void) | null = null,
+            backAction: (() => void) | null = null,
             afterShowAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal,
             formInputModel: FormInputModel[] | null = null) : void {
 
-        if (this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, mode, formInputModel) && afterShowAction) {
+        if (this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, mode, formInputModel) && afterShowAction) {
             afterShowAction();
         }
     }
@@ -536,6 +550,7 @@ class PopupHint {
             verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
             action: () => void = () => {},
             closeAction: (() => void) | null = null,
+            backAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal,
             formInputModel: FormInputModel[] | null = null) : boolean {
 
@@ -543,7 +558,6 @@ class PopupHint {
         this.emptyGreenButton.isVisible = false;
         this.getItButton.isVisible = false;
         this.notNowButton.isVisible = false;
-        this.backButton.isVisible = false;
         this.nextButton.isVisible = false;
         this.centerImage.isVisible = false;
         this.coverImage.isVisible = false;
@@ -573,7 +587,6 @@ class PopupHint {
                 this.gotItButton.isVisible = true;
                 break;
             case PopupMode.Gift_Adjustments_Preview:
-                this.backButton.isVisible = true;
                 this.nextButton.isVisible = true;
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0;
@@ -591,6 +604,13 @@ class PopupHint {
             this.xButton.isVisible = true;
         } else {
             this.xButton.isVisible = false;
+        }
+
+        if (backAction) {
+            this._backAction = backAction;
+            this.backButton.isVisible = true;
+        } else {
+            this.backButton.isVisible = false;
         }
 
         if (formInputModel) {

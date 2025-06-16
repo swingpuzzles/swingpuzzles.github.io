@@ -95,6 +95,7 @@ Great job putting all the pieces together!`;
                 this.showBuyOfferMessage();
             },
             null,
+            null,
             PopupMode.PreSell
         );
 
@@ -127,6 +128,7 @@ Available now on Amazon!`;
             () => {
                 popupHint.hide();
             },
+            null,
             null,
             PopupMode.Sell);
     }

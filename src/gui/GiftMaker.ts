@@ -28,8 +28,6 @@ class GiftMaker {
     }
 
     public init() {
-        this._languageSelector = new LanguageSelector();
-
         this._wishTextDropdown = new WishTextDropdownBuilder().build(true);
         this._wishTextDropdown.paddingRightInPixels = 1;
         guiManager.advancedTexture.addControl(this._wishTextDropdown);
@@ -137,6 +135,8 @@ At the top, choose the puzzle dimensions to match your preferred difficulty.
 
 Then, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.`;
 
+        this._languageSelector = new LanguageSelector();
+
         this._languageSelector.selectionObserver = (code: string) => {
             this._wishTextDropdown.lang = code;
         }
@@ -170,6 +170,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             () => { this.enterAdjustments(); },
             () => { alert('close') },
             null,
+            null,
             PopupMode.Gift_Initial,
             formInputModel
         )
@@ -196,6 +197,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { alert('next') },
             () => { alert('close') },
+            () => { this.start(); },
             null,
             PopupMode.Gift_Adjustments_Preview
         )
