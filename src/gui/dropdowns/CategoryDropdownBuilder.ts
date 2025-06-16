@@ -56,6 +56,10 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
         if (ctx.category !== category) {
             ctx.category = category;
 
+            if (!userAction) {
+                gameModeManager.enterInitialMode();
+            }
+
             if (category == Categories.Gift) {
                 gameModeManager.enterGiftInitialMode();
             } else {

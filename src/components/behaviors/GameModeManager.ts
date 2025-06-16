@@ -93,7 +93,7 @@ class GameModeManager {
 
         ctx.camera.detachControl();
 
-        giftMaker.start();;
+        giftMaker.start();
     }
 
     enterGiftAdjustmentMode() {

@@ -1,13 +1,13 @@
-import { Button, Container, Control, StackPanel, Image, TextBlock } from "@babylonjs/gui";
+import { Button, Container, Control, StackPanel, Image, TextBlock, Rectangle, AdvancedDynamicTexture } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../../components/behaviors/GameModeManager";
 import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 import { Color3 } from "@babylonjs/core";
 import guiManager from "../GuiManager";
+import ctx from "../../components/common/SceneContext";
 
 export class Dropdown extends Container {
     private button: Button;
     private options: StackPanel;
-    //private buttonImage: Image | null = null;
     private dropDownSign: TextBlock;
     private buttonBackground: string;
     private buttonColor: string;
@@ -34,6 +34,8 @@ export class Dropdown extends Container {
     }) {
         super();
 
+        this.zIndex = 30;
+
         this.buttonBackground = config.background;
         this.buttonColor = config.color;
         this._lang = config.lang ?? this._lang;
@@ -54,7 +56,6 @@ export class Dropdown extends Container {
         this.verticalAlignment = config.valign ?? Control.VERTICAL_ALIGNMENT_TOP;
         this.horizontalAlignment = config.halign ?? Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.isHitTestVisible = false;
-        this.zIndex = 30;
 
         this.isCategory = config.isCategory ?? false;
         this.isImageOnly = config.isImageOnly ?? false;
@@ -66,11 +67,6 @@ export class Dropdown extends Container {
             
             this.button.background = "";
             this.button.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
-
-            //this.buttonImage = new Image("buttonImage", "");
-
-            //this.buttonImage.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-            //this.buttonImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
 
             // Create and store the nested image (category icon)
             if (this.isCategory) {
@@ -109,7 +105,7 @@ export class Dropdown extends Container {
         this.options.isVertical = true;
 
         this.button.onPointerClickObservable.add(() => {
-            this.options.isVisible = !this.options.isVisible;
+            this.toggleExpand();
 
             if (this.options.isVisible) {
                 const measure = this.button._currentMeasure;
@@ -121,22 +117,40 @@ export class Dropdown extends Container {
             }
         });
 
-        this.onPointerEnterObservable.add(() => {
-            this.zIndex = 555;
-        });
-
-        this.onPointerOutObservable.add(() => {
-            this.zIndex = 30;
-            this.options.isVisible = false;
-        });
-
         this.addControl(this.button);
-        ///this.addControl(this.options);
         guiManager.advancedTexture.addControl(this.options);
         
+        this.isVisible = config.gameModes.includes(gameModeManager.currentMode);
+
         gameModeManager.addGameModeChangedObserver(() => {
             this.isVisible = config.gameModes.includes(gameModeManager.currentMode);
         });
+    }
+
+    public toggleExpand(): void {
+        if (!this.options.isVisible) {  // we have AdvancedDynamicTexture for auto collapse
+           this.expand();
+        }
+    }
+
+    public expand(): void {
+        this.options.isVisible = true;
+        const advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
+        const clickOutRectangle = new Rectangle("clickOutRectangle");
+        clickOutRectangle.alpha = 0;
+        clickOutRectangle.isPointerBlocker = false;
+        clickOutRectangle.onPointerClickObservable.add(() => {
+            this.collapse();
+            advancedTexture.removeControl(clickOutRectangle);
+            clickOutRectangle.dispose();
+            advancedTexture.dispose();
+        });
+
+        advancedTexture.addControl(clickOutRectangle);
+    }
+
+    public collapse(): void {
+        this.options.isVisible = false;
     }
 
     public set lang(value: string) {
@@ -200,10 +214,7 @@ export class Dropdown extends Container {
 
             this.button.heightInPixels = this.itemHeight - 1;
 
-            if (this.isImageOnly) {
-                //this.dropDownSign.paddingRightInPixels = this.itemHeight / 10;
-                //this.dropDownSign.paddingBottomInPixels = this.itemHeight / 6;
-            } else {
+            if (!this.isImageOnly) {
                 this.dropDownSign.paddingRightInPixels = this.itemHeight / 10;
                 this.dropDownSign.paddingBottomInPixels = this.itemHeight / 6;
             }
@@ -243,7 +254,6 @@ export class Dropdown extends Container {
 
     doSelectAction(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, userAction: boolean = true): void {
         this._selectedItem = idText;
-        this.options.isVisible = false;
 
         const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;
 

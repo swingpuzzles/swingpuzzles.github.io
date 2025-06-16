@@ -526,7 +526,7 @@ class PopupHint {
         if (this.mainContainer.isVisible) {
             this.fadeOut(() => {
                 this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, afterShowAction, mode, formInputModel);
-            });
+            }, false);
         } else {
             this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, afterShowAction, mode, formInputModel);
         }
@@ -673,7 +673,7 @@ class PopupHint {
         ctx.scene.beginAnimation(this.mainContainer, 0, this._fadeDuration, false, 1);
     }
 
-    private fadeOut(onComplete: () => void) {
+    private fadeOut(onComplete: () => void, exitShader: boolean = true) {
         this.stopCurrentAnim();
 
         const anim = new Animation(
@@ -696,7 +696,10 @@ class PopupHint {
             this.mainContainer.alpha = 1;
             handImagePool.releaseAll();
             onComplete();
-            screenShader.exitShader();
+
+            if (exitShader) {
+                screenShader.exitShader();
+            }
         });
     }
 

@@ -202,10 +202,10 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         puzzleEditor.setFormData(friendsName, age);
         gameModeManager.enterGiftAdjustmentMode();
 
-        popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { alert('next') },
             () => { alert('close') },
-            () => { this.start(); },
+            () => { gameModeManager.enterGiftInitialMode(); },
             null,
             PopupMode.Gift_Adjustments_Preview
         )

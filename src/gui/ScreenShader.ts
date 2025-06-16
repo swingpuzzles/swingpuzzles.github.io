@@ -6,7 +6,8 @@ import guiManager from "./GuiManager";
 export enum ShaderMode {
     NONE = 0,
     SHADOW_WINDOW = 1,
-    SHADOW_FULL = 2
+    SHADOW_FULL = 2,
+    SHADOW_WINDOW_WIDE = 3,
 }
 
 class ScreenShader {
@@ -94,34 +95,41 @@ class ScreenShader {
         this._mainContainer.addControl(this._restPanel);
 
         sceneInitializer.addResizeObserver((width, height) => {
-            this._topPanel.height = (this._shaderMode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
-            this._topPanel.setColumnDefinition(1, height / 2, true);
-            this._restPanel.top = (this._shaderMode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+            this.resize();
         });
     }
 
-    public enterShadowWindow() {
-        this.setShaderMode(ShaderMode.SHADOW_WINDOW);
-    }
+    private resize(): void {
+        const width = ctx.engine.getRenderWidth();
+        const height = ctx.engine.getRenderHeight();
 
-    public enterShadowFull() {
-        this.setShaderMode(ShaderMode.SHADOW_FULL);
+        switch (this._shaderMode) {
+            case ShaderMode.SHADOW_WINDOW:
+                this._topPanel.heightInPixels = 3 * height / 40;
+                this._restPanel.topInPixels = 3 * height / 40;
+                this._topPanel.setColumnDefinition(1, height / 2, true);
+                break;
+            case ShaderMode.SHADOW_WINDOW_WIDE:
+                this._topPanel.heightInPixels = 3 * height / 20;
+                this._restPanel.topInPixels = 3 * height / 20;
+                this._topPanel.setColumnDefinition(1, 0.95 * width, true);
+                break;
+            default:
+                this._topPanel.heightInPixels = 0;
+                this._restPanel.topInPixels = 0;
+        }
     }
 
     public exitShader() {
         this.setShaderMode(ShaderMode.NONE);
     }
 
-    public setShaderMode(mode: ShaderMode) {
+    public setShaderMode(mode: ShaderMode) {console.log(mode)
         if (this._shaderMode !== mode) {
             this._shaderMode = mode;
             this._mainContainer.isVisible = mode !== ShaderMode.NONE;
 
-            this._mainContainer.zIndex = mode === ShaderMode.SHADOW_WINDOW ? 10 : 40;
-
-            const height = ctx.engine.getRenderHeight();
-            this._topPanel.height = (mode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
-            this._restPanel.top = (mode === ShaderMode.SHADOW_WINDOW ? 3 * height / 40 : 0) + "px";
+            this.resize();
         }
     }
 }

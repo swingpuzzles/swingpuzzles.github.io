@@ -86,8 +86,6 @@ class SceneInitializer {
 
             sceneBuilder.buildScene();
 
-            gameModeManager.enterInitialMode();
-
             puzzleEditor.init();
 
             puzzleGameBuilder.init();

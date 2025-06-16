@@ -7,7 +7,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
-        super({ gameModes: [ GameMode.Initial ], selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
+        super({ gameModes: [ GameMode.Initial, GameMode.GiftInitial ], selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
 
         if (ctx.debugMode) {
             this.addPiecesNums(3, 2);
