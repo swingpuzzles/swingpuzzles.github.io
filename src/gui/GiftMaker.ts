@@ -18,7 +18,7 @@ import puzzleEditor from "../components/misc/PuzzleEditor";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
-    private _dropdownStack!: StackPanel;
+    //private _dropdownStack!: StackPanel;
     private _stack1!: StackPanel;
     private _stack2!: StackPanel;
     private _fontFamilyDropdown!: Dropdown;
@@ -35,6 +35,7 @@ class GiftMaker {
 
         this._stack1 = new StackPanel();
         this._stack1.isVertical = false;
+        this._stack1.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
 
         this._wishTextDropdown = new WishTextDropdownBuilder().build(true);
         this._stack1.addControl(this._wishTextDropdown);
@@ -44,6 +45,7 @@ class GiftMaker {
 
         this._stack2 = new StackPanel();
         this._stack2.isVertical = false;
+        this._stack2.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
 
         this._colorPicker = new ColorPicker();
         this._colorPicker.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
@@ -60,12 +62,15 @@ class GiftMaker {
         this._backgroundDropdown = new BackgroundDropdownBuilder().build(true);
         this._stack2.addControl(this._backgroundDropdown);
 
-        this._dropdownStack = new StackPanel();
+        /*this._dropdownStack = new StackPanel();
         this._dropdownStack.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this._dropdownStack.addControl(this._stack1);
         this._dropdownStack.addControl(this._stack2);
 
-        guiManager.advancedTexture.addControl(this._dropdownStack);
+        guiManager.advancedTexture.addControl(this._dropdownStack);*/
+
+        guiManager.advancedTexture.addControl(this._stack1);
+        guiManager.advancedTexture.addControl(this._stack2);
 
         this.resize();
 
@@ -103,19 +108,31 @@ class GiftMaker {
 
         const vertical = renderHeight > renderWidth;
 
-        this._dropdownStack.isVertical = vertical;
-
         const dropdownWidth = renderWidth * (vertical ? 0.4 : 0.2);
         const dropdownHeight = dropdownWidth / 5;
+        
+        /*this._dropdownStack.isVertical = vertical;
+        this._dropdownStack.markAsDirty();
 
         this._dropdownStack.top = dropdownHeight / 4;
-        this._dropdownStack.heightInPixels = (vertical ? 2 * dropdownHeight : dropdownHeight) + 1;
+        this._dropdownStack.heightInPixels = (vertical ? 2 * dropdownHeight : dropdownHeight) + 1;*/
 
+        this._stack1.top = dropdownHeight / 4;
         this._stack1.widthInPixels = dropdownWidth * 2;
         this._stack1.heightInPixels = dropdownHeight;
 
         this._stack2.widthInPixels = dropdownWidth * 2;
         this._stack2.heightInPixels = dropdownHeight;
+
+        if (vertical) {
+            this._stack1.leftInPixels = 0;
+            this._stack2.leftInPixels = 0;
+            this._stack2.top = dropdownHeight / 4 + dropdownHeight;
+        } else {
+            this._stack1.leftInPixels = -dropdownWidth;
+            this._stack2.leftInPixels = dropdownWidth;
+            this._stack2.top = dropdownHeight / 4;
+        }
 
         this._colorPicker.widthInPixels = dropdownHeight;
         this._colorPicker.heightInPixels = dropdownHeight;
@@ -125,16 +142,6 @@ class GiftMaker {
         this._fontFamilyDropdown.resize(dropdownWidth, dropdownHeight, dropdownWidth, true);
         this._foregroundDropdown.resize(dropdownHeight, dropdownHeight, dropdownHeight, true);
         this._backgroundDropdown.resize(dropdownHeight, dropdownHeight, dropdownHeight, true);
-
-        let ratio = 1.5;  // TODO do it everywhere
-        const horizMax = 0.9 * renderWidth;
-        const vertMax = 0.8 * renderHeight;
-        let maxRatio = horizMax / vertMax;
-
-        if (vertical) {
-            ratio = 1 / ratio;
-            maxRatio = 1 / maxRatio;
-        }
     }
 
     public start() {
