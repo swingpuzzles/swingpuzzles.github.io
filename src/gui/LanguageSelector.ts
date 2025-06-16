@@ -2,13 +2,14 @@ import { Button, Control, StackPanel } from "@babylonjs/gui";
 import ISelector from "../interfaces/ISelector";
 import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
 import Constants from "../components/common/Constants";
+import ctx from "../components/common/SceneContext";
 
 export default class LanguageSelector extends StackPanel implements ISelector {
     private _selectionObserver: ((code: string) => void) | null = null;
     private flagButtons: Record<string, Button> = {};
     private selectedLanguage: string;
 
-    constructor() {
+    constructor(selectedLanguage: string) {
         super(Constants.ISELECTOR);
         this.isVertical = false;
         this.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
@@ -24,14 +25,14 @@ export default class LanguageSelector extends StackPanel implements ISelector {
             { code: "sk", flag: "assets/flags/sk.webp", flagSmall: "assets/flags/sk-small.webp" },
         ];
 
-        this.selectedLanguage = "en";
+        this.selectedLanguage = selectedLanguage;
 
         languages.forEach(lang => {
             const btn = Button.CreateImageOnlyButton(`lang_${lang.code}`, lang.flagSmall);
             btn.color = lang.code === this.selectedLanguage ? "#EA6A15" : "#cccccc"; // selection border
 
             btn.onPointerClickObservable.add(() => {
-                this.selectedLanguage = lang.code;
+                this.selectedItem = lang.code;
 
                 const border = this.heightInPixels / 6;
 
@@ -58,11 +59,16 @@ export default class LanguageSelector extends StackPanel implements ISelector {
     }
 
     get id(): string {
-        return "lang";
+        return "giftLanguage";  // TODO
     }
 
     get selectedItem(): any {
         return this.selectedLanguage;
+    }
+
+    set selectedItem(value: any) {
+        this.selectedLanguage = value;
+        this.resize(this.heightInPixels);
     }
 
     resize(height: number): void {

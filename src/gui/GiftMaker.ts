@@ -47,9 +47,15 @@ class GiftMaker {
         this._colorPicker.paddingRightInPixels = 1;
         this._colorPicker.value = new Color3(0, 0, 0);
         this._colorPicker.onValueChangedObservable.add((color) => {
-            this._wishTextDropdown.foreground = color;
-            puzzleEditor.setTextColor(color);
+            this.textColorChanged(color);
         });
+        
+        if (localStorage.getItem("giftTextColor")) {
+            this.textColorChanged(Color3.FromHexString(localStorage.getItem("giftTextColor")!));
+        } else {
+            this.textColorChanged(Color3.FromHexString("#FF6F61"));
+        }
+
         this._stack2.addControl(this._colorPicker);
 
         this._foregroundDropdown = new ForegroundDropdownBuilder().build(true);
@@ -75,6 +81,12 @@ class GiftMaker {
         gameModeManager.addGameModeChangedObserver(() => {
             this._colorPicker.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
         });
+    }
+
+    public textColorChanged(color: Color3) {
+        localStorage.setItem("giftTextColor", color.toHexString());
+        this._wishTextDropdown.foreground = color;
+        puzzleEditor.setTextColor(color);
     }
 
     public fontFamilyChanged(fontFamily: string): void {
@@ -143,7 +155,7 @@ At the top, choose the puzzle dimensions to match your preferred difficulty.
 
 Then, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.`;
 
-        this._languageSelector = new LanguageSelector();
+        this._languageSelector = new LanguageSelector(localStorage.getItem("giftLanguage") ?? "en");
 
         this._languageSelector.selectionObserver = (code: string) => {
             this._wishTextDropdown.lang = code;
@@ -151,14 +163,14 @@ Then, fill in the details below to personalize your custom puzzle — enter your
 
         const formInputModel: FormInputModel[] = [
             {
-                id: "Name",
+                id: "giftName",
                 label: "Friend's Name",
                 placeHolder: "e.g. Alex",
                 type: "text",
                 maxLength: 30
             },
             {
-                id: "Age",
+                id: "giftAge",
                 label: "Coming Age",
                 placeHolder: "e.g. 30",
                 type: "number",
@@ -166,7 +178,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
                 max: 150
             },
             {
-                id: "Language",
+                id: "giftLanguage",
                 label: "Wish Language",
                 placeHolder: "e.g. English",
                 type: "selection",
@@ -185,17 +197,17 @@ Then, fill in the details below to personalize your custom puzzle — enter your
     }
 
     public enterAdjustments() {
-        //popupHint.hide();
-
         let friendsName!: string;
         let age!: number;
         let lang!: string;
 
-        for (const formRow of popupHint.formData) {
+        for (const formRow of popupHint.formData) {console.log(formRow.id, formRow.value!.toString());
+            localStorage.setItem(formRow.id, formRow.value!.toString());
+
             switch (formRow.id) {
-                case "Name": friendsName = formRow.value as string; break;
-                case "Age": age = formRow.value as number; break;
-                case "Language": lang = formRow.value as string; break;
+                case "giftName": friendsName = formRow.value as string; break;
+                case "giftAge": age = formRow.value as number; break;
+                case "giftLanguage": lang = formRow.value as string; break;
             }
         }
 

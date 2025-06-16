@@ -5,4 +5,5 @@ export default interface ISelector {
     resize(height: number): void;
     get id(): string;
     get selectedItem(): any;
+    set selectedItem(value: any);
 }

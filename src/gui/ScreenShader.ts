@@ -124,7 +124,7 @@ class ScreenShader {
         this.setShaderMode(ShaderMode.NONE);
     }
 
-    public setShaderMode(mode: ShaderMode) {console.log(mode)
+    public setShaderMode(mode: ShaderMode) {
         if (this._shaderMode !== mode) {
             this._shaderMode = mode;
             this._mainContainer.isVisible = mode !== ShaderMode.NONE;

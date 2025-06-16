@@ -368,6 +368,8 @@ class PopupHint {
         label.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         container.addControl(label);
 
+        const savedValue = localStorage.getItem(formInputModel.id);
+
         switch (formInputModel.type) {
             case "selection":
                 container.addControl(formInputModel.selector.ui);
@@ -384,6 +386,10 @@ class PopupHint {
                     input.placeholderText = placeholder;
                 }
 
+                if (savedValue) {
+                    input.text = savedValue;
+                }
+                
                 switch (formInputModel.type) {
                     case "text":
                         input.width = formInputModel.maxLength ? (Math.min(100, Math.max(formInputModel.maxLength, input.placeholderText.length) * 2.5) + "%") : "100%";
