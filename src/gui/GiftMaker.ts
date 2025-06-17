@@ -12,7 +12,7 @@ import sceneInitializer from "../components/SceneInitializer";
 import ctx from "../components/common/SceneContext";
 import ForegroundDropdownBuilder from "./dropdowns/ForegroundDropdownBuilder";
 import BackgroundDropdownBuilder from "./dropdowns/BackgroundDropdownBuilder";
-import { Color3 } from "@babylonjs/core";
+import { Color3, AbstractMesh } from "@babylonjs/core";
 import puzzleEditor from "../components/misc/PuzzleEditor";
 import TablesDropdownBuilder from "./dropdowns/TablesDropdownBuilder";
 import { GiftBoxBuilder } from "../components/builders/GiftBoxBuilder";
@@ -27,6 +27,7 @@ class GiftMaker {
     private _tableDropdown!: Dropdown;
     private _backgroundDropdown!: Dropdown;
     private _colorPicker!: ColorPicker;
+    private _gift?: AbstractMesh;
 
     private _friendsName!: string;
     private _fontFamily!: string;
@@ -87,6 +88,16 @@ class GiftMaker {
         gameModeManager.addGameModeChangedObserver(() => {
             this._colorPicker.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
         });
+    }
+
+    public get friendsName(): string {
+        return this._friendsName;
+    }
+    public get fontFamily(): string {
+        return this._fontFamily;
+    }
+    public get textColor(): string {
+        return this._textColor;
     }
 
     public textColorChanged(color: Color3) {
@@ -229,11 +240,14 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         )
     }
 
-    public tryGift() {
+    public async tryGift() {
         puzzleCircleBuilder.clear();
-        const builder = new GiftBoxBuilder();
-        const gift = builder.build(this._friendsName, this._fontFamily, this._textColor);
         popupHint.hide();
+
+        if (!this._gift) {
+            const builder = new GiftBoxBuilder();
+            this._gift = await builder.build(this._friendsName, this._fontFamily, this._textColor);
+        }
     }
 
     public exitGiftMaking(): void {
