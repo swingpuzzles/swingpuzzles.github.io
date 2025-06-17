@@ -15,6 +15,8 @@ import BackgroundDropdownBuilder from "./dropdowns/BackgroundDropdownBuilder";
 import { Color3 } from "@babylonjs/core";
 import puzzleEditor from "../components/misc/PuzzleEditor";
 import TablesDropdownBuilder from "./dropdowns/TablesDropdownBuilder";
+import { GiftBoxBuilder } from "../components/builders/GiftBoxBuilder";
+import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -215,12 +217,19 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         gameModeManager.enterGiftAdjustmentMode();
 
         popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { alert('next') },
-            () => { this.exitGiftMaking() },
+            () => { this.tryGift(); },
+            () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },
             null,
             PopupMode.Gift_Adjustments_Preview
         )
+    }
+
+    private tryGift() {
+        puzzleCircleBuilder.clear();
+        const builder = new GiftBoxBuilder();
+        const gift = builder.build();
+        popupHint.hide();
     }
 
     public exitGiftMaking(): void {

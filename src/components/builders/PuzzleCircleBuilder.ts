@@ -45,12 +45,16 @@ class PuzzleCircleBuilder {
         });
     }
 
-    build() {
+    clear() {
         // Dispose previous covers and clear the map
         this.covers.forEach((_, mesh) => {
             mesh.dispose();
         });
         this.covers.clear();
+    }
+
+    build() {
+        this.clear();
 
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         const data = isPortrait ? amazonDataVert : amazonDataHoriz;
