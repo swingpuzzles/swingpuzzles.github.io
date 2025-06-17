@@ -8,7 +8,7 @@ import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
 class OpenCoverAnimation implements IPuzzleAnimation {
     
     public animate(cover: Mesh): void {
-        if (!gameModeManager.initialMode) {
+        if (!gameModeManager.canOpenCover) {
             return;
         }
 

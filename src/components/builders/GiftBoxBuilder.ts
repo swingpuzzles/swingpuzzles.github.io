@@ -1,7 +1,9 @@
 import { ImportMeshAsync } from "@babylonjs/core/Loading/sceneLoader";
 import {
+    ActionManager,
     Color3,
     DynamicTexture,
+    ExecuteCodeAction,
     Material,
     MeshBuilder,
     StandardMaterial,
@@ -12,6 +14,7 @@ import {
 import "@babylonjs/loaders/glTF";
 import ctx from "../common/SceneContext";
 import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
+import openCoverAnimation from "../animations/OpenCoverAnimation";
 
 export class GiftBoxBuilder {
     private _position: Vector3 = Vector3.Zero();
@@ -101,6 +104,14 @@ export class GiftBoxBuilder {
 
         const giftBox = MeshBuilder.CreateBox("giftBox", { width: 29.7, height: 4, depth: 45.6 });
         giftBox.position = new Vector3(basePos, -38.8, 0);
+
+        giftBox.actionManager = new ActionManager(ctx.scene);
+        
+        giftBox.actionManager.registerAction(
+            new ExecuteCodeAction(ActionManager.OnPickTrigger, () => {
+                openCoverAnimation.animate(giftBox);
+            })
+        );
 
         const source = "assets/models/ribbon.glb";
 

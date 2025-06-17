@@ -4,6 +4,7 @@ import puzzleBuilder from "./PuzzleBuilder";
 import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 import physicsAggregateBuilder from "./PhysicsAggregateBuilder";
 import meshHelpers from "../common/MeshHelpers";
+import puzzleEditor from "../misc/PuzzleEditor";
 
 class PuzzleGameBuilder {
     private _building: boolean = false;
@@ -105,7 +106,8 @@ class PuzzleGameBuilder {
         const startX = -ctx.kitWidth / 2;
         const startZ = ctx.kitHeight / 2;
 
-        const originalTexture = (cover.material as StandardMaterial).diffuseTexture as Texture;
+        const coverMat = cover.material as StandardMaterial;
+        const originalTexture = coverMat ? coverMat.diffuseTexture as Texture : puzzleEditor.texture;   // TODO better logic here
 
         const url = originalTexture.name; // this should be the image URL
 

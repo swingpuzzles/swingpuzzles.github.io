@@ -42,6 +42,10 @@ class PuzzleEditor {
         this.setImage("assets/gift/labels/label_1.webp", (img) => { this._labelImage = img; }); // TODO
     }
 
+    get texture(): DynamicTexture {
+        return this._popupDynamicTexture!;
+    }
+
     createPopupPlane(planeSize: [number, number]): void {
         const [planeWidth, planeHeight] = planeSize;
 

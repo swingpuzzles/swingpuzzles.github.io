@@ -40,7 +40,7 @@ class GameModeManager {
     get currentMode() {
         return this._currentMode;
     }
-    get adjustCameraTarget() {
+    get canOpenCover() {
         return this.initialMode || this.giftTryMode;
     }
 
