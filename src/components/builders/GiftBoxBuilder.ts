@@ -51,7 +51,7 @@ export class GiftBoxBuilder {
         const giftTagPlane = MeshBuilder.CreatePlane("giftTagPlane", { width: 21, height: 9.7 });
         giftTagPlane.hasVertexAlpha = true;
         giftTagPlane.material = tagMat;
-        giftTagPlane.position = new Vector3(basePos + 10, -35, 12);
+        giftTagPlane.position = new Vector3(basePos + 10, -36.5, 12);
         giftTagPlane.rotation.x = Math.PI / 2;
         giftTagPlane.rotation.y = -Math.PI / 2 + Math.PI / 4;
 

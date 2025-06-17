@@ -112,13 +112,15 @@ class GameModeManager {
     enterGiftTryMode() {
         this.resetAll(GameMode.GiftTry);
 
-        /*ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
+        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
         ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
+        ctx.camera.upperAlphaLimit = 1 * Math.PI / 32;
+        ctx.camera.lowerAlphaLimit = -1 * Math.PI / 32;
             
-        ctx.camera.attachControl(ctx.canvas, true);*/
+        ctx.camera.attachControl(ctx.canvas, true);
 
         ctx.camera.alpha = 0;
-        ctx.camera.beta = 13 * Math.PI / 32;  
+        //ctx.camera.beta = 12.5 * Math.PI / 32;  
 
         giftMaker.tryGift();
     }
