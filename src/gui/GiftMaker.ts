@@ -28,6 +28,10 @@ class GiftMaker {
     private _backgroundDropdown!: Dropdown;
     private _colorPicker!: ColorPicker;
 
+    private _friendsName!: string;
+    private _fontFamily!: string;
+    private _textColor!: string;
+
     constructor() {
     }
 
@@ -86,12 +90,14 @@ class GiftMaker {
     }
 
     public textColorChanged(color: Color3) {
-        localStorage.setItem("giftTextColor", color.toHexString());
+        this._textColor = color.toHexString();
+        localStorage.setItem("giftTextColor", this._textColor);
         this._wishTextDropdown.foreground = color;
         puzzleEditor.setTextColor(color);
     }
 
     public fontFamilyChanged(fontFamily: string): void {
+        this._fontFamily = fontFamily;
         puzzleEditor.setFontFamily(fontFamily);
         this._wishTextDropdown.dropdownFontFamily = fontFamily;
     }
@@ -189,8 +195,8 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         ];
 
         popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { this.enterAdjustments(); },
-            () => { this.exitGiftMaking() },
+            () => { gameModeManager.enterGiftAdjustmentMode(); },
+            () => { gameModeManager.enterGiftTryMode(); },
             null,
             null,
             PopupMode.Gift_Initial,
@@ -199,7 +205,6 @@ Then, fill in the details below to personalize your custom puzzle — enter your
     }
 
     public enterAdjustments() {
-        let friendsName!: string;
         let age!: number;
         let lang!: string;
 
@@ -207,17 +212,16 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             localStorage.setItem(formRow.id, formRow.value!.toString());
 
             switch (formRow.id) {
-                case "giftName": friendsName = formRow.value as string; break;
+                case "giftName": this._friendsName = formRow.value as string; break;
                 case "giftAge": age = formRow.value as number; break;
                 case "giftLanguage": lang = formRow.value as string; break;
             }
         }
 
-        puzzleEditor.setFormData(friendsName, age);
-        gameModeManager.enterGiftAdjustmentMode();
+        puzzleEditor.setFormData(this._friendsName, age);
 
         popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { this.tryGift(); },
+            () => { gameModeManager.enterGiftTryMode(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },
             null,
@@ -225,10 +229,10 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         )
     }
 
-    private tryGift() {
+    public tryGift() {
         puzzleCircleBuilder.clear();
         const builder = new GiftBoxBuilder();
-        const gift = builder.build();
+        const gift = builder.build(this._friendsName, this._fontFamily, this._textColor);
         popupHint.hide();
     }
 

@@ -87,7 +87,6 @@ class SceneBuilder {
 
         const textureScale = 4;
         var tableMaterial = new StandardMaterial("groundMaterial", ctx.scene);
-        //groundMaterial.diffuseColor = new Color3(0.8,0.5,0);
         tableMaterial.diffuseTexture = new Texture("assets/room/ParallaxDiffuse.png", ctx.scene);
         tableMaterial.bumpTexture = new Texture("assets/room/ParallaxNormal.png", ctx.scene);
 
@@ -101,21 +100,10 @@ class SceneBuilder {
         const targetPos = Vector3.Zero().clone(); 
 
         ctx.scene.onBeforeRenderObservable.add(() => {
-            if (gameModeManager.initialMode) {
+            if (gameModeManager.adjustCameraTarget) {
                 targetPos.y = 140 * (ctx.camera.beta - 18 * Math.PI / 32);
                 ctx.camera.radius = 4 * 45 + 40 * (-ctx.camera.beta + 18 * Math.PI / 32);
                 ctx.camera.setTarget(targetPos);
-
-            /*} else if (gameModeManager.openCoverMode) {
-                if (!puzzleGameBuilder.building) {
-                    const texture = (puzzleCoverBuilder.currentCover.material as StandardMaterial).diffuseTexture as Texture;
-
-                    if (puzzleGameBuilder.texture !== texture) {
-                        setTimeout(async () => {
-                            puzzleGameBuilder.build(texture);
-                        });
-                    }
-                }*/
             }
         });
 

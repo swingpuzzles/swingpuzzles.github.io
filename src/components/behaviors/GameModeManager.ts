@@ -11,7 +11,8 @@ export enum GameMode {
     Celebration,
     GiftInitial,
     GiftAdjustment,
-    GiftOverview
+    GiftOverview,
+    GiftTry,
 }
 
 class GameModeManager {
@@ -33,8 +34,14 @@ class GameModeManager {
     get celebrationMode() {
         return this._currentMode == GameMode.Celebration;
     }
+    get giftTryMode() {
+        return this._currentMode == GameMode.GiftTry;
+    }
     get currentMode() {
         return this._currentMode;
+    }
+    get adjustCameraTarget() {
+        return this.initialMode || this.giftTryMode;
     }
 
     private resetAll(currentMode: GameMode) {
@@ -56,7 +63,7 @@ class GameModeManager {
     enterInitialMode() {
         this.resetAll(GameMode.Initial);
 
-        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;  
+        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
         ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
             
         ctx.camera.attachControl(ctx.canvas, true);
@@ -99,7 +106,21 @@ class GameModeManager {
     enterGiftAdjustmentMode() {
         this.resetAll(GameMode.GiftAdjustment);
 
-        ctx.camera.detachControl();
+        giftMaker.enterAdjustments();
+    }
+
+    enterGiftTryMode() {
+        this.resetAll(GameMode.GiftTry);
+
+        /*ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
+        ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
+            
+        ctx.camera.attachControl(ctx.canvas, true);*/
+
+        ctx.camera.alpha = 0;
+        ctx.camera.beta = 13 * Math.PI / 32;  
+
+        giftMaker.tryGift();
     }
 
     enterWaiting() {
