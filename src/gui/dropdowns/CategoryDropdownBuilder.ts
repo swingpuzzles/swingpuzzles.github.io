@@ -52,12 +52,12 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     selectAction(category: Category, userAction: boolean = true) {
         localStorage.setItem(this.storageItemName, category.key);
 
+        if (!userAction) {
+            gameModeManager.enterInitialMode();
+        }
+
         if (ctx.category !== category) {
             ctx.category = category;
-
-            if (!userAction) {
-                gameModeManager.enterInitialMode();
-            }
 
             if (category == Categories.Gift) {
                 gameModeManager.enterGiftInitialMode();
