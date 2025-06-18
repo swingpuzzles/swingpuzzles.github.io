@@ -48,6 +48,8 @@ class GameModeManager {
         let prevMode = this._currentMode;
         this._currentMode = currentMode;
 
+        ctx.camera.upperAlphaLimit = null;
+        ctx.camera.lowerAlphaLimit = null;
         ctx.camera.upperBetaLimit = null;
         ctx.camera.lowerBetaLimit = null;
 

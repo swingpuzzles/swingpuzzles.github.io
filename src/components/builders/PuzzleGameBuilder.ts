@@ -107,9 +107,14 @@ class PuzzleGameBuilder {
         const startZ = ctx.kitHeight / 2;
 
         const coverMat = cover.material as StandardMaterial;
-        const originalTexture = coverMat ? coverMat.diffuseTexture as Texture : puzzleEditor.texture;   // TODO better logic here
 
-        const url = originalTexture.name; // this should be the image URL
+        let url!: string;
+        if (coverMat) {   // TODO better logic here
+            const originalTexture = coverMat.diffuseTexture as Texture;
+            url = originalTexture.url!; // this should be the image URL
+        } else {
+            url = puzzleEditor.dataUrl;
+        }
 
         const img = new Image();
         img.crossOrigin = "anonymous"; // Required for CORS
