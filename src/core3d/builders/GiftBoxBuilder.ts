@@ -134,8 +134,9 @@ export class GiftBoxBuilder {
     }
 
     private drawText(name: string, fontFamily: string, textColor: string) {
-        // Get 2D drawing context and draw text
+        // Clear and reset transform
         this.ctx2d.clearRect(0, 0, this.texWidth, this.texHeight);
+        this.ctx2d.setTransform(1, 0, 0, 1, 0, 0); // Reset transformation matrix
 
         // Optional: transparent background
         this.ctx2d.fillStyle = "rgba(0, 0, 0, 0)";
@@ -153,8 +154,9 @@ export class GiftBoxBuilder {
 
         this.ctx2d.font = `bold ${realFont}px ${fontFamily}`;
 
+        // Apply rotation AFTER resetting
         this.ctx2d.rotate(-Math.PI / 8);
-        this.ctx2d.fillText(name, this.texWidth * 0.14, this.texHeight); // Centered
+        this.ctx2d.fillText(name, this.texWidth * 0.14, this.texHeight); // Adjust as needed
 
         this.dynamicTex.update();
     }
