@@ -1,5 +1,5 @@
 import { Scene, Sprite, SpriteManager } from "@babylonjs/core";
-import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
+import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
 
 export type MaskotEmotion =
   | "pointLaugh"

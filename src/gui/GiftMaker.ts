@@ -3,20 +3,20 @@ import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormInputModel } from "../model/FormInputModel";
 import LanguageSelector from "./LanguageSelector";
-import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
+import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
 import { Dropdown } from "./dropdowns/Dropdown";
 import FontFamilyDropdownBuilder from "./dropdowns/FontFamilyDropdownBuilder";
 import WishTextDropdownBuilder from "./dropdowns/WishTextDropdownBuilder";
 import guiManager from "./GuiManager";
-import sceneInitializer from "../components/SceneInitializer";
-import ctx from "../components/common/SceneContext";
+import sceneInitializer from "../core3d/SceneInitializer";
+import ctx from "../core3d/common/SceneContext";
 import ForegroundDropdownBuilder from "./dropdowns/ForegroundDropdownBuilder";
 import BackgroundDropdownBuilder from "./dropdowns/BackgroundDropdownBuilder";
 import { Color3, AbstractMesh } from "@babylonjs/core";
-import puzzleEditor from "../components/misc/PuzzleEditor";
+import puzzleEditor from "../core3d/misc/PuzzleEditor";
 import TablesDropdownBuilder from "./dropdowns/TablesDropdownBuilder";
-import { GiftBoxBuilder } from "../components/builders/GiftBoxBuilder";
-import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
+import { GiftBoxBuilder } from "../core3d/builders/GiftBoxBuilder";
+import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;

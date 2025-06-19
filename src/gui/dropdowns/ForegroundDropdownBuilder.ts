@@ -1,5 +1,5 @@
 import DropdownBuilder from "./DropdownBuilder";
-import { GameMode } from "../../components/behaviors/GameModeManager";
+import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
 
 export default class ForegroundDropdownBuilder extends DropdownBuilder {

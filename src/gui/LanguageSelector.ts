@@ -1,8 +1,8 @@
 import { Button, Control, StackPanel } from "@babylonjs/gui";
 import ISelector from "../interfaces/ISelector";
-import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
-import Constants from "../components/common/Constants";
-import ctx from "../components/common/SceneContext";
+import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
+import Constants from "../core3d/common/Constants";
+import ctx from "../core3d/common/SceneContext";
 
 export default class LanguageSelector extends StackPanel implements ISelector {
     private _selectionObserver: ((code: string) => void) | null = null;

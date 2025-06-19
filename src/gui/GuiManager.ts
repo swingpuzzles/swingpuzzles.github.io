@@ -1,11 +1,11 @@
 import { AdvancedDynamicTexture, Button, Control, StackPanel, Image } from "@babylonjs/gui";
-import ctx, { Categories } from "../components/common/SceneContext";
-import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
-import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
-import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
-import backToInitialAnimation from "../components/animations/BackToInitialAnimation";
-import openCoverAnimation from "../components/animations/OpenCoverAnimation";
-import sceneInitializer from "../components/SceneInitializer";
+import ctx, { Categories } from "../core3d/common/SceneContext";
+import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
+import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
+import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
+import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation";
+import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
+import sceneInitializer from "../core3d/SceneInitializer";
 import screenShader from "./ScreenShader";
 import popupHint from "./PopupHint";
 import giftMaker from "./GiftMaker";

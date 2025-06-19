@@ -1,7 +1,7 @@
 import { Dropdown } from "./Dropdown";
 import guiManager from "../GuiManager";
-import sceneInitializer from "../../components/SceneInitializer";
-import { GameMode } from "../../components/behaviors/GameModeManager";
+import sceneInitializer from "../../core3d/SceneInitializer";
+import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 
 interface DropdownOptions {

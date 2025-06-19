@@ -1,8 +1,8 @@
 import { Control } from "@babylonjs/gui";
-import ctx, { Categories, Category } from "../../components/common/SceneContext";
-import puzzleCircleBuilder from "../../components/builders/PuzzleCircleBuilder";
+import ctx, { Categories, Category } from "../../core3d/common/SceneContext";
+import puzzleCircleBuilder from "../../core3d/builders/PuzzleCircleBuilder";
 import DropdownBuilder from "./DropdownBuilder";
-import gameModeManager, { GameMode } from "../../components/behaviors/GameModeManager";
+import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
 
 export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;

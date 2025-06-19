@@ -1,6 +1,6 @@
 import { Control, Grid, Image, Rectangle } from "@babylonjs/gui";
-import sceneInitializer from "../components/SceneInitializer";
-import ctx from "../components/common/SceneContext";
+import sceneInitializer from "../core3d/SceneInitializer";
+import ctx from "../core3d/common/SceneContext";
 import guiManager from "./GuiManager";
 
 export enum ShaderMode {

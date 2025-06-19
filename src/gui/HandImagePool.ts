@@ -1,7 +1,7 @@
 import { Control, Image } from "@babylonjs/gui";
 import guiManager from "./GuiManager";
-import sceneInitializer from "../components/SceneInitializer";
-import ctx from "../components/common/SceneContext";
+import sceneInitializer from "../core3d/SceneInitializer";
+import ctx from "../core3d/common/SceneContext";
 
 interface MotionData {
     paddingHoriz: number;

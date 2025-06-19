@@ -1,7 +1,7 @@
-import ctx from "../../components/common/SceneContext";
+import ctx from "../../core3d/common/SceneContext";
 import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
-import { GameMode } from "../../components/behaviors/GameModeManager";
+import { GameMode } from "../../core3d/behaviors/GameModeManager";
 
 export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;

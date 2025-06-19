@@ -11,7 +11,6 @@ import celebrationAnimation from "./animations/CelebrationAnimation";
 import timerDisplay from "./misc/TimerDisplay";
 import tutorialManager from "../gui/TutorialManager";
 import handImagePool from "../gui/HandImagePool";
-import giftMaker from "../gui/GiftMaker";
 import puzzleEditor from "./misc/PuzzleEditor";
 
 

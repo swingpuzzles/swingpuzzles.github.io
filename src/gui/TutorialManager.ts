@@ -1,10 +1,10 @@
 import { Control } from "@babylonjs/gui";
-import gameModeManager, { GameMode } from "../components/behaviors/GameModeManager";
+import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import handImagePool from "./HandImagePool";
-import timerDisplay from "../components/misc/TimerDisplay";
-import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
+import timerDisplay from "../core3d/misc/TimerDisplay";
+import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 
 class TutorialManager {
     init() {

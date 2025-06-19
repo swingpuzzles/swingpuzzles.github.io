@@ -1,15 +1,15 @@
 import { Container, Control, Rectangle, StackPanel, TextBlock, Image, Button, InputText } from "@babylonjs/gui";
 import { Animation, Animatable } from "@babylonjs/core"
-import puzzleAssetsManager from "../components/behaviors/PuzzleAssetsManager";
-import sceneInitializer from "../components/SceneInitializer";
-import ctx from "../components/common/SceneContext";
+import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
+import sceneInitializer from "../core3d/SceneInitializer";
+import ctx from "../core3d/common/SceneContext";
 import screenShader, { ShaderMode } from "./ScreenShader";
 import guiManager from "./GuiManager";
 import handImagePool from "./HandImagePool";
-import puzzleCircleBuilder from "../components/builders/PuzzleCircleBuilder";
+import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import { FormInputModel } from "../model/FormInputModel";
 import ISelector from "../interfaces/ISelector";
-import Constants from "../components/common/Constants";
+import Constants from "../core3d/common/Constants";
 
 export enum PopupMode {
     Normal,

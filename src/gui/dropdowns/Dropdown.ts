@@ -1,9 +1,9 @@
 import { Button, Container, Control, StackPanel, Image, TextBlock, Rectangle, AdvancedDynamicTexture } from "@babylonjs/gui";
-import gameModeManager, { GameMode } from "../../components/behaviors/GameModeManager";
+import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
 import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 import { Color3 } from "@babylonjs/core";
 import guiManager from "../GuiManager";
-import ctx from "../../components/common/SceneContext";
+import ctx from "../../core3d/common/SceneContext";
 
 export class Dropdown extends Container {
     private button: Button;
