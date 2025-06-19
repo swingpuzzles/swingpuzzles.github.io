@@ -3,6 +3,7 @@ import ctx, { Categories, Category } from "../../core3d/common/SceneContext";
 import puzzleCircleBuilder from "../../core3d/builders/PuzzleCircleBuilder";
 import DropdownBuilder from "./DropdownBuilder";
 import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
+import { CommonStorageKeys } from "../../common/LocalStorageManager";
 
 export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
@@ -25,7 +26,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     }
 
     protected get storageItemName(): string {
-        return "category";
+        return CommonStorageKeys.Category;
     }
 
     private selectionCallback(key: string, userAction: boolean = true) {

@@ -2,6 +2,7 @@ import ctx from "../../core3d/common/SceneContext";
 import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
+import { CommonStorageKeys } from "../../common/LocalStorageManager";
 
 export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
@@ -25,7 +26,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     }
 
     protected get storageItemName(): string {
-        return "numPieces";
+        return CommonStorageKeys.NumPieces;
     }
 
     private selectionCallback(key: string, userAction: boolean = true) {

@@ -5,6 +5,7 @@ import { ShaderMode } from "./ScreenShader";
 import handImagePool from "./HandImagePool";
 import timerDisplay from "../core3d/misc/TimerDisplay";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
+import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
 
 class TutorialManager {
     init() {
@@ -16,7 +17,7 @@ By continuing, you agree to our use of cookies to ensure the best experience.
     
 Let's start building!`;
         
-        const hasAcceptedCookies = localStorage.getItem("cookiesAccepted") === "true";
+        const hasAcceptedCookies = localStorageManager.getBoolean(CommonStorageKeys.CookiesAccepted);
 
         if (hasAcceptedCookies) {
             this.showSizeChooserHint();
@@ -33,7 +34,7 @@ Let's start building!`;
     }
 
     private showSizeChooserHint() {
-        localStorage.setItem("cookiesAccepted", "true");
+        localStorageManager.set(CommonStorageKeys.CookiesAccepted, true);
 
         let dimensionHint = `🧩 Choose Your Challenge!
 
@@ -134,7 +135,7 @@ Available now on Amazon!`;
     }
 
     private finishTutorial() {
-        localStorage.setItem("tutorialDone", "true");
+        localStorageManager.set(CommonStorageKeys.TutorialDone, true);
         popupHint.hide();
     }
 }

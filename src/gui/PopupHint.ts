@@ -10,6 +10,7 @@ import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import { FormInputModel } from "../model/FormInputModel";
 import ISelector from "../interfaces/ISelector";
 import Constants from "../core3d/common/Constants";
+import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
 
 export enum PopupMode {
     Normal,
@@ -368,7 +369,7 @@ class PopupHint {
         label.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         container.addControl(label);
 
-        const savedValue = localStorage.getItem(formInputModel.id);
+        const savedValue = localStorageManager.getString(formInputModel.id);
 
         switch (formInputModel.type) {
             case "selection":
@@ -523,7 +524,7 @@ class PopupHint {
         formInputModel: FormInputModel[] | null = null
     ): void {
 
-        if (mode === PopupMode.Normal && localStorage.getItem("tutorialDone") === "true") {
+        if (mode === PopupMode.Normal && localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
             return;
         }
 

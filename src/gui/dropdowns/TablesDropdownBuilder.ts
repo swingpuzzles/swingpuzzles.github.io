@@ -1,6 +1,7 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
+import { GiftStorageKeys } from "../../common/LocalStorageManager";
 
 export default class TablesDropdownBuilder extends DropdownBuilder {
     private static readonly fromIndex = 1;
@@ -18,7 +19,7 @@ export default class TablesDropdownBuilder extends DropdownBuilder {
     }
 
     protected get storageItemName(): string {
-        return "giftTables";
+        return GiftStorageKeys.GiftTables;
     }
 
     addImageOption(index: string) {

@@ -1,6 +1,7 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
+import { GiftStorageKeys } from "../../common/LocalStorageManager";
 
 const FONT_FAMILIES = [ "Segoe Script", "Pacifico", "Comic Sans MS", "Brush Script MT" ];
 
@@ -21,7 +22,7 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
     }
 
     protected get storageItemName(): string {
-        return "giftFontFamily";
+        return GiftStorageKeys.GiftFontFamily;
     }
 
     private addFamily(family: string, selected: boolean) {

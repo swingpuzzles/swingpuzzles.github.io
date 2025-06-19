@@ -2,6 +2,7 @@ import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import wishes from '../../assets/data/wishes.json'
 import giftMaker from "../GiftMaker";
+import { GiftStorageKeys } from "../../common/LocalStorageManager";
 
 export default class WishTextDropdownBuilder extends DropdownBuilder {
     constructor() {
@@ -21,7 +22,7 @@ export default class WishTextDropdownBuilder extends DropdownBuilder {
     }
 
     protected get storageItemName(): string {
-        return "giftWishText";
+        return GiftStorageKeys.GiftWishText;
     }
 
     private selectionCallback(key: string, userAction: boolean, text: string) {

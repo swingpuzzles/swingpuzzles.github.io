@@ -17,6 +17,7 @@ import puzzleEditor from "../core3d/misc/PuzzleEditor";
 import TablesDropdownBuilder from "./dropdowns/TablesDropdownBuilder";
 import { GiftBoxBuilder } from "../core3d/builders/GiftBoxBuilder";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
+import localStorageManager, { GiftStorageKeys } from "../common/LocalStorageManager";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -57,8 +58,9 @@ class GiftMaker {
             this.textColorChanged(color);
         });
         
-        if (localStorage.getItem("giftTextColor")) {
-            this.textColorChanged(Color3.FromHexString(localStorage.getItem("giftTextColor")!));
+        const giftTextColor = localStorageManager.getString(GiftStorageKeys.GiftTextColor);
+        if (giftTextColor) {
+            this.textColorChanged(Color3.FromHexString(giftTextColor));
         } else {
             this.textColorChanged(Color3.FromHexString("#FF6F61"));
         }
@@ -102,7 +104,7 @@ class GiftMaker {
 
     public textColorChanged(color: Color3) {
         this._textColor = color.toHexString();
-        localStorage.setItem("giftTextColor", this._textColor);
+        localStorageManager.set(GiftStorageKeys.GiftTextColor, this._textColor);
         this._wishTextDropdown.foreground = color;
         puzzleEditor.setTextColor(color);
     }
@@ -174,7 +176,7 @@ At the top, choose the puzzle dimensions to match your preferred difficulty.
 
 Then, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.`;
 
-        this._languageSelector = new LanguageSelector(localStorage.getItem("giftLanguage") ?? "en");
+        this._languageSelector = new LanguageSelector(localStorageManager.getString("giftLanguage") ?? "en");
 
         this._languageSelector.selectionObserver = (code: string) => {
             this._wishTextDropdown.lang = code;
@@ -182,14 +184,14 @@ Then, fill in the details below to personalize your custom puzzle — enter your
 
         const formInputModel: FormInputModel[] = [
             {
-                id: "giftName",
+                id: GiftStorageKeys.GiftName,
                 label: "Friend's Name",
                 placeHolder: "e.g. Alex",
                 type: "text",
                 maxLength: 30
             },
             {
-                id: "giftAge",
+                id: GiftStorageKeys.GiftAge,
                 label: "Coming Age",
                 placeHolder: "e.g. 30",
                 type: "number",
@@ -197,7 +199,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
                 max: 150
             },
             {
-                id: "giftLanguage",
+                id: GiftStorageKeys.GiftLanguage,
                 label: "Wish Language",
                 placeHolder: "e.g. English",
                 type: "selection",
@@ -220,12 +222,12 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         let lang!: string;
 
         for (const formRow of popupHint.formData) {
-            localStorage.setItem(formRow.id, formRow.value!.toString());
+            localStorageManager.set(formRow.id, formRow.value!.toString());
 
             switch (formRow.id) {
-                case "giftName": this._friendsName = formRow.value as string; break;
-                case "giftAge": age = formRow.value as number; break;
-                case "giftLanguage": lang = formRow.value as string; break;
+                case GiftStorageKeys.GiftName: this._friendsName = formRow.value as string; break;
+                case GiftStorageKeys.GiftAge: age = formRow.value as number; break;
+                case GiftStorageKeys.GiftLanguage: lang = formRow.value as string; break;
             }
         }
 

@@ -1,6 +1,7 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
+import { GiftStorageKeys } from "../../common/LocalStorageManager";
 
 export default class ForegroundDropdownBuilder extends DropdownBuilder {
     private static readonly fromIndex = 1;
@@ -18,7 +19,7 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
     }
 
     protected get storageItemName(): string {
-        return "giftForeground";
+        return GiftStorageKeys.GiftForeground;
     }
 
     addImageOption(index: string) {

@@ -1,6 +1,7 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
+import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
 
 export default class BackgroundDropdownBuilder extends DropdownBuilder {
     private static readonly bgs = [ "cartoons", "room", "autumn", "meadow", "trees", "garden", "stars" ];
@@ -17,7 +18,7 @@ export default class BackgroundDropdownBuilder extends DropdownBuilder {
     }
 
     protected get storageItemName(): string {
-        return "giftBackground";
+        return GiftStorageKeys.GiftBackground;
     }
 
     addImageOption(option: string) {
@@ -26,12 +27,12 @@ export default class BackgroundDropdownBuilder extends DropdownBuilder {
 
         this.addOption(option, imageUrl, null, true);
 
-        const storedValue = localStorage.getItem(this.storageItemName);
+        const storedValue = localStorageManager.getString(this.storageItemName);
         if (!storedValue || !BackgroundDropdownBuilder.bgs.includes(storedValue)) {
-            localStorage.setItem(this.storageItemName, option);
+            localStorageManager.set(this.storageItemName, option);
         }
 
-        if (localStorage.getItem(this.storageItemName) === option) {
+        if (localStorageManager.getString(this.storageItemName) === option) {
             this.dropdown.doSelectAction(option, imageUrl, null, false);
         }
     }
@@ -40,7 +41,7 @@ export default class BackgroundDropdownBuilder extends DropdownBuilder {
         const imageName = "bg-" + option + "-small.webp";
         const imageUrl = "assets/gift/bgs/" + imageName;
 
-        localStorage.setItem(this.storageItemName, option);
+        localStorageManager.set(this.storageItemName, option);
 
         giftMaker.bgChanged(imageUrl);
 
