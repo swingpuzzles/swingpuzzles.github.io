@@ -34,6 +34,10 @@ class LocalStorageManager {
         return this.get<string>(key);
     }
 
+    public getNumber(key: string): number | null {
+        return this.get<number>(key);
+    }
+
     public getBoolean(key: string): boolean {
         return this.get<boolean>(key) ?? false;
     }

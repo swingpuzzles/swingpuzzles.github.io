@@ -3,7 +3,7 @@ import ctx, { Categories, Category } from "../../core3d/common/SceneContext";
 import puzzleCircleBuilder from "../../core3d/builders/PuzzleCircleBuilder";
 import DropdownBuilder from "./DropdownBuilder";
 import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
-import { CommonStorageKeys } from "../../common/LocalStorageManager";
+import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
 
 export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
@@ -40,18 +40,18 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     addImageOption(category: Category, last: boolean = false) {
         this.addOption(category.text, category.url);
 
-        if (!localStorage.getItem(this.storageItemName) || !(localStorage.getItem(this.storageItemName)! in Categories)) {
-            localStorage.setItem(this.storageItemName, category.key);
+        if (!localStorageManager.getString(this.storageItemName) || !(localStorageManager.getString(this.storageItemName)! in Categories)) {
+            localStorageManager.set(this.storageItemName, category.key);
         }
 
-        if (localStorage.getItem(this.storageItemName) === category.key || last && !this._optionSelected) {
+        if (localStorageManager.getString(this.storageItemName) === category.key || last && !this._optionSelected) {
             this.dropdown.doSelectAction(category.text, category.url, null, false);
             this._optionSelected = true;
         }
     }
 
     selectAction(category: Category, userAction: boolean = true) {
-        localStorage.setItem(this.storageItemName, category.key);
+        localStorageManager.set(this.storageItemName, category.key);
 
         if (!userAction) {
             gameModeManager.enterInitialMode();

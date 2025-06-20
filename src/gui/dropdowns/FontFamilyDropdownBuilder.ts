@@ -1,7 +1,7 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
-import { GiftStorageKeys } from "../../common/LocalStorageManager";
+import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
 
 const FONT_FAMILIES = [ "Segoe Script", "Pacifico", "Comic Sans MS", "Brush Script MT" ];
 
@@ -10,10 +10,10 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
         super({ gameModes: [ GameMode.GiftAdjustment ],
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
 
-        let currentFontFamily = localStorage.getItem(this.storageItemName)
+        let currentFontFamily = localStorageManager.getString(this.storageItemName)
         if (!currentFontFamily || !FONT_FAMILIES.includes(currentFontFamily)) {
             currentFontFamily = FONT_FAMILIES[0];
-            localStorage.setItem(this.storageItemName, currentFontFamily);
+            localStorageManager.set(this.storageItemName, currentFontFamily);
         }
 
         for (let family of FONT_FAMILIES) {
@@ -34,7 +34,7 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
     }
 
     private selectionCallback(family: string, userAction: boolean = true) {
-        localStorage.setItem(this.storageItemName, family);
+        localStorageManager.set(this.storageItemName, family);
 
         giftMaker.fontFamilyChanged(family);
 

@@ -2,7 +2,7 @@ import ctx from "../../core3d/common/SceneContext";
 import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
-import { CommonStorageKeys } from "../../common/LocalStorageManager";
+import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
 
 export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
@@ -53,11 +53,11 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         const text = `${xCount} x ${zCount} = ${count} pieces`;
         this.addOption(text);
 
-        if (!localStorage.getItem(this.storageItemName) || isNaN(Number(localStorage.getItem(this.storageItemName)))) {
-            localStorage.setItem(this.storageItemName, count.toString());
+        if (!localStorageManager.getString(this.storageItemName) || isNaN(Number(localStorageManager.getString(this.storageItemName)))) {
+            localStorageManager.set(this.storageItemName, count.toString());
         }
 
-        if ((count >= Number(localStorage.getItem(this.storageItemName)) || last) && !this._optionSelected) {
+        if ((count >= Number(localStorageManager.getString(this.storageItemName)) || last) && !this._optionSelected) {
             this.dropdown.doSelectAction(text, null, null, false);
             this._optionSelected = true;
         }
@@ -65,7 +65,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
 
     selectAction(xCount: number, zCount: number, text: string, userAction: boolean = true) {
         const count = xCount * zCount;
-        localStorage.setItem(this.storageItemName, count.toString());
+        localStorageManager.set(this.storageItemName, count.toString());
 
 //        const paddedText = "🧩 " + text;  // TODO
 

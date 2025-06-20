@@ -2,18 +2,18 @@ import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import wishes from '../../assets/data/wishes.json'
 import giftMaker from "../GiftMaker";
-import { GiftStorageKeys } from "../../common/LocalStorageManager";
+import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
 
 export default class WishTextDropdownBuilder extends DropdownBuilder {
     constructor() {
         super({ gameModes: [ GameMode.GiftAdjustment ], translationEntry: wishes.wishes,
             selectionCallback: (key, userAction, text) => { this.selectionCallback(key, userAction, text); } });
 
-        let currentIdText = localStorage.getItem(this.storageItemName);
+        let currentIdText = localStorageManager.getString(this.storageItemName);
 
         if (!currentIdText || !Object.values(wishes.wishes).find(c => c.id === currentIdText)) {
             currentIdText = wishes.wishes[0].id;
-            localStorage.setItem(this.storageItemName, currentIdText);
+            localStorageManager.set(this.storageItemName, currentIdText);
         }
 
         for (let wish of wishes.wishes) {
@@ -38,7 +38,7 @@ export default class WishTextDropdownBuilder extends DropdownBuilder {
     }
 
     private selectAction(idText: string, userAction: boolean, text: string) {
-        localStorage.setItem(this.storageItemName, idText);
+        localStorageManager.set(this.storageItemName, idText);
 
         giftMaker.wishTextChanged(text);
 

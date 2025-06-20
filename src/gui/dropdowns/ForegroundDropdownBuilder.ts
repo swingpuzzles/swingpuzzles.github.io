@@ -1,7 +1,7 @@
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
-import { GiftStorageKeys } from "../../common/LocalStorageManager";
+import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
 
 export default class ForegroundDropdownBuilder extends DropdownBuilder {
     private static readonly fromIndex = 1;
@@ -28,12 +28,12 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
 
         this.addOption(index, imageUrl, null, true);
 
-        const storedValue = Number(localStorage.getItem(this.storageItemName));
+        const storedValue = Number(localStorageManager.getString(this.storageItemName));
         if (!(Number(storedValue) >= ForegroundDropdownBuilder.fromIndex) || !(Number(storedValue) <= ForegroundDropdownBuilder.toIndex)) {
-            localStorage.setItem(this.storageItemName, index);
+            localStorageManager.set(this.storageItemName, index);
         }
 
-        if (localStorage.getItem(this.storageItemName) === index) {
+        if (localStorageManager.getString(this.storageItemName) === index) {
             this.dropdown.doSelectAction(index, imageUrl, null, false);
         }
     }
@@ -42,7 +42,7 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
         const imageName = "torte_" + index + "-small.webp";
         const imageUrl = "assets/gift/tortes/" + imageName;
 
-        localStorage.setItem(this.storageItemName, index);
+        localStorageManager.set(this.storageItemName, index);
 
         giftMaker.fgChanged(imageUrl, Number(index));
 

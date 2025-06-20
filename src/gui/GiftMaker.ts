@@ -234,7 +234,10 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         puzzleEditor.setFormData(this._friendsName, age);
 
         popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { gameModeManager.enterGiftTryMode(); },
+            () => {
+                gameModeManager.enterGiftTryMode();
+                this.makeGiftUrl();
+            },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },
             null,
@@ -255,6 +258,32 @@ Then, fill in the details below to personalize your custom puzzle — enter your
     public exitGiftMaking(): void {
         popupHint.hide();
         guiManager.enterGeneralCategory();
+    }
+
+    private buildGiftDataFromLocalStorage(): Record<string, string> {
+        const data: Record<string, string> = {};
+
+        for (const key of Object.values(GiftStorageKeys)) {
+            const value = localStorageManager.getString(key);
+            if (value !== null) {
+                data[key] = value;
+            }
+        }
+
+        return data;
+    }
+
+    private encodeToCompressedUrlParam(data: object): string {
+        const json = JSON.stringify(data);
+        return btoa(encodeURIComponent(json)); // Simple compression via encodeURIComponent + Base64
+    }
+
+    private makeGiftUrl() {
+        const giftData = this.buildGiftDataFromLocalStorage();
+        const encodedGiftData = this.encodeToCompressedUrlParam(giftData);
+
+        const shareUrl = `https://localhost:3000/?giftData=${encodedGiftData}`;
+        console.log("Compressed Share URL:", shareUrl);
     }
 }
 
