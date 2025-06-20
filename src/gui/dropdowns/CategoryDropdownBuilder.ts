@@ -53,17 +53,19 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     selectAction(category: Category, userAction: boolean = true) {
         localStorageManager.set(this.storageItemName, category.key);
 
-        if (!userAction) {
-            gameModeManager.enterInitialMode();
-        }
-
         if (ctx.category !== category) {
             ctx.category = category;
 
-            if (category == Categories.Gift) {
-                gameModeManager.enterGiftInitialMode();
-            } else {
-                puzzleCircleBuilder.build();
+            if (!gameModeManager.giftReceived) {
+                if (category == Categories.Gift) {
+                    gameModeManager.enterGiftInitialMode();
+                } else {
+                    if (!userAction) {
+                        gameModeManager.enterInitialMode();
+                    }
+
+                    puzzleCircleBuilder.build();
+                }
             }
         }
 

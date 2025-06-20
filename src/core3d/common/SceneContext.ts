@@ -58,7 +58,7 @@ class SceneContext {
     private _maxZ: number = this._zLimit;
     private _minY: number = -0.36;
     private _piecesCount = this._numX * this._numZ;
-    private _category: Category = Categories.General;
+    private _category: Category | null = null;
 
     init(scene: Scene, camera: ArcRotateCamera, canvas: HTMLCanvasElement, engine: Engine): void {
         this._scene = scene;
@@ -222,7 +222,7 @@ class SceneContext {
     get minY(): number {
         return this._minY;
     }
-    get category(): Category {
+    get category(): Category | null{
         return this._category;
     }
 

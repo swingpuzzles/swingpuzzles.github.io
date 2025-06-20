@@ -18,6 +18,7 @@ import TablesDropdownBuilder from "./dropdowns/TablesDropdownBuilder";
 import { GiftBoxBuilder } from "../core3d/builders/GiftBoxBuilder";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import localStorageManager, { GiftStorageKeys } from "../common/LocalStorageManager";
+import translationManager from "../core3d/misc/TranslationManager";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -209,7 +210,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
 
         popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftAdjustmentMode(); },
-            () => { gameModeManager.enterGiftTryMode(); },
+            () => { this.exitGiftMaking(); },
             null,
             null,
             PopupMode.Gift_Initial,
@@ -282,8 +283,73 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         const giftData = this.buildGiftDataFromLocalStorage();
         const encodedGiftData = this.encodeToCompressedUrlParam(giftData);
 
-        const shareUrl = `https://localhost:3000/?giftData=${encodedGiftData}`;
+        const shareUrl = `http://localhost:3000/?giftData=${encodedGiftData}`;
         console.log("Compressed Share URL:", shareUrl);
+    }
+
+    public parseUrlData(giftData: Record<string, string>) {
+        let age = 0;
+        let lang = null;
+        let textId = null;
+
+        let imageName;
+        let imageUrl;
+
+        for (const [key, value] of Object.entries(giftData)) {
+            switch (key) {
+                case GiftStorageKeys.GiftBackground:
+                    imageName = "bg-" + value + "-small.webp";
+                    imageUrl = "assets/gift/bgs/" + imageName;
+
+                    puzzleEditor.setBackgroundImage(imageUrl);
+                    break;
+                case GiftStorageKeys.GiftTables:
+                    imageName = "table_" + value + "-small.webp";
+                    imageUrl = "assets/gift/tables/" + imageName;
+                    puzzleEditor.setTable(imageUrl, Number.parseInt(value));
+                    break;
+
+                case GiftStorageKeys.GiftForeground:
+                    imageName = "torte_" + value + "-small.webp";
+                    imageUrl = "assets/gift/tortes/" + imageName;
+
+                    puzzleEditor.setTorte(imageName, Number.parseInt(value));
+                    break;
+                case GiftStorageKeys.GiftFontFamily:
+                    this._fontFamily = value;
+                    puzzleEditor.setFontFamily(value);
+                    break;
+                case GiftStorageKeys.GiftTextColor:
+                    this._textColor = value;
+                    puzzleEditor.setTextColor(Color3.FromHexString(value));
+                    break;
+                case GiftStorageKeys.GiftWishText:
+                    textId = value;
+                    break;
+                case GiftStorageKeys.GiftName:
+                    this._friendsName = value;
+                    break;
+                case GiftStorageKeys.GiftAge:
+                    age = Number.parseInt(value, 10);
+                    break;
+                case GiftStorageKeys.GiftLanguage:
+                    lang = value;
+                    break;
+                default:
+                    console.warn(`Unhandled gift data key: ${key}`);
+                    break;
+            }
+        }
+
+        puzzleEditor.setFormData(this._friendsName, age);
+
+        if (textId && lang) {
+            const wishText = translationManager.translateWishText(textId, lang);
+
+            if (wishText) {
+                puzzleEditor.setWishText(wishText);
+            }
+        }
     }
 }
 

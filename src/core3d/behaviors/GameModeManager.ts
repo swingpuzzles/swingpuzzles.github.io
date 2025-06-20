@@ -13,6 +13,7 @@ export enum GameMode {
     GiftAdjustment,
     GiftOverview,
     GiftTry,
+    GiftReceived,
 }
 
 class GameModeManager {
@@ -20,28 +21,31 @@ class GameModeManager {
     private _observers: ((prevMode: GameMode) => void)[] = [];
 
     get initialMode() {
-        return this._currentMode == GameMode.Initial;
+        return this._currentMode === GameMode.Initial;
     }
     get openCoverMode() {
-        return this._currentMode == GameMode.OpenCover;
+        return this._currentMode === GameMode.OpenCover;
     }
     get shakeMode() {
-        return this._currentMode == GameMode.Shake;
+        return this._currentMode === GameMode.Shake;
     }
     get solveMode() {
-        return this._currentMode == GameMode.Solve;
+        return this._currentMode === GameMode.Solve;
     }
     get celebrationMode() {
-        return this._currentMode == GameMode.Celebration;
+        return this._currentMode === GameMode.Celebration;
     }
     get giftTryMode() {
-        return this._currentMode == GameMode.GiftTry;
+        return this._currentMode === GameMode.GiftTry;
+    }
+    get giftReceived() {
+        return this._currentMode === GameMode.GiftReceived;
     }
     get currentMode() {
         return this._currentMode;
     }
     get canOpenCover() {
-        return this.initialMode || this.giftTryMode;
+        return this.initialMode || this.giftTryMode || this.giftReceived;
     }
 
     private resetAll(currentMode: GameMode) {
@@ -113,6 +117,22 @@ class GameModeManager {
 
     enterGiftTryMode() {
         this.resetAll(GameMode.GiftTry);
+
+        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
+        ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
+        ctx.camera.upperAlphaLimit = 1 * Math.PI / 32;
+        ctx.camera.lowerAlphaLimit = -1 * Math.PI / 32;
+            
+        ctx.camera.attachControl(ctx.canvas, true);
+
+        ctx.camera.alpha = 0;
+        //ctx.camera.beta = 12.5 * Math.PI / 32;  
+
+        giftMaker.tryGift();
+    }
+
+    enterGiftReceivedMode() {
+        this.resetAll(GameMode.GiftReceived);
 
         ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
         ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;

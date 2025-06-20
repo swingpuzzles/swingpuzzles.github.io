@@ -4,6 +4,7 @@ import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 import { Color3 } from "@babylonjs/core";
 import guiManager from "../GuiManager";
 import ctx from "../../core3d/common/SceneContext";
+import translationManager from "../../core3d/misc/TranslationManager";
 
 export class Dropdown extends Container {
     private button: Button;
@@ -30,7 +31,7 @@ export class Dropdown extends Container {
         valign?: number;
         halign?: number;
         lang?: string;
-        translationEntry?: ITranslationEntry[];
+        translationSectionKey?: string;
         selectionCallback?(key: string, userAction: boolean, text: string): void;
     }) {
         super();
@@ -42,16 +43,8 @@ export class Dropdown extends Container {
         this._lang = config.lang ?? this._lang;
         this.selectionCallback = config.selectionCallback;
         
-        if (config.translationEntry) {
-            for (let te of config.translationEntry) {
-                let innerMap: Map<string, string> = new Map();
-
-                for (const [lang, text] of Object.entries(te.translations)) {
-                    innerMap.set(lang, text);
-                }
-
-                this.translationMap.set(te.id, innerMap);
-            }
+        if (config.translationSectionKey) {
+            this.translationMap = translationManager.getSection(config.translationSectionKey)!;
         }
 
         this.verticalAlignment = config.valign ?? Control.VERTICAL_ALIGNMENT_TOP;

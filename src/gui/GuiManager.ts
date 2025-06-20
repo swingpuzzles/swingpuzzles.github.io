@@ -12,6 +12,7 @@ import giftMaker from "./GiftMaker";
 import { Dropdown } from "./dropdowns/Dropdown";
 import CategoryDropdownBuilder from "./dropdowns/CategoryDropdownBuilder";
 import PiecesCountDropdownBuilder from "./dropdowns/PiecesCountDropdownBuilder";
+import urlDecoder from "../common/UrlDecoder";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -39,6 +40,8 @@ class GuiManager {
 
         giftMaker.init();
 
+        urlDecoder.init();
+        
         this.categoryDropdown = new CategoryDropdownBuilder().build();
         guiManager.advancedTexture.addControl(this.categoryDropdown);
 

@@ -3,10 +3,11 @@ import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import wishes from '../../assets/data/wishes.json'
 import giftMaker from "../GiftMaker";
 import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
+import { TranslationSectionKeys } from "../../core3d/misc/TranslationManager";
 
 export default class WishTextDropdownBuilder extends DropdownBuilder {
     constructor() {
-        super({ gameModes: [ GameMode.GiftAdjustment ], translationEntry: wishes.wishes,
+        super({ gameModes: [ GameMode.GiftAdjustment ], translationSectionKey: TranslationSectionKeys.GiftWishText,
             selectionCallback: (key, userAction, text) => { this.selectionCallback(key, userAction, text); } });
 
         let currentIdText = localStorageManager.getString(this.storageItemName);

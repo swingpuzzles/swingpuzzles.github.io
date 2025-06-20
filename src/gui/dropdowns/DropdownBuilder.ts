@@ -16,7 +16,7 @@ interface DropdownOptions {
     isCategory?: boolean;
     isImageOnly?: boolean;
     lang?: string;
-    translationEntry?: ITranslationEntry[];
+    translationSectionKey?: string;
     selectionCallback?(key: string, userAction: boolean, text: string): void;
 }
 
@@ -45,7 +45,7 @@ export default abstract class DropdownBuilder {
             halign: this.options.halign,
             valign: this.options.valign,
             lang: this.options.lang,
-            translationEntry: this.options.translationEntry,
+            translationSectionKey: this.options.translationSectionKey,
             selectionCallback: this.options.selectionCallback
         });
     }
