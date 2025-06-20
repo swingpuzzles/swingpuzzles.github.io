@@ -126,7 +126,7 @@ If you'd like to own it in real life, you can order a high-quality physical vers
 
 Available now on Amazon!`;
     
-        popupHint.show(message, "TAKE IT HOME?", 0.8, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(message, "TAKE IT HOME?", 0.8, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 window.open(puzzleCircleBuilder.selectedLink, "_blank");
                 popupHint.hide();

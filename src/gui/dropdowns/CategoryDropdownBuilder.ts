@@ -4,6 +4,7 @@ import puzzleCircleBuilder from "../../core3d/builders/PuzzleCircleBuilder";
 import DropdownBuilder from "./DropdownBuilder";
 import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
+import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 
 export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
@@ -17,6 +18,12 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
             isImageOnly: true,
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }
         });
+
+        const urlData = puzzleUrlHelper.readFromUrl();
+
+        if (urlData.category) {
+            localStorageManager.set(this.storageItemName, urlData.category);
+        }
 
         this.addImageOption(Categories.General);
         this.addImageOption(Categories.Animals);
@@ -57,6 +64,8 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
             ctx.category = category;
 
             if (!gameModeManager.giftReceived) {
+                puzzleUrlHelper.setCategory(category.key, userAction);
+
                 if (category == Categories.Gift) {
                     gameModeManager.enterGiftInitialMode();
                 } else {

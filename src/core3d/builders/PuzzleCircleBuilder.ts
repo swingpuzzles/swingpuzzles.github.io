@@ -65,7 +65,7 @@ class PuzzleCircleBuilder {
         filteredData = [];
 
         data.forEach((obj, index) => {
-            if (PuzzleTools.hasIntersection(ctx.category.tags, obj.tags)) {
+            if (PuzzleTools.hasIntersection(ctx.category!.tags, obj.tags)) {
                 filteredData.push(obj);
             }
         });
@@ -73,7 +73,7 @@ class PuzzleCircleBuilder {
         const count = filteredData.length;
 
         filteredData.forEach((obj, index) => {
-            if (!PuzzleTools.hasIntersection(ctx.category.tags, obj.tags)) {
+            if (!PuzzleTools.hasIntersection(ctx.category!.tags, obj.tags)) {
                 return;
             }
 

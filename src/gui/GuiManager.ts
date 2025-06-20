@@ -164,6 +164,14 @@ class GuiManager {
         const generalCat = Categories.General;
         this.categoryDropdown.doSelectAction(generalCat.text, generalCat.url, null, false);
     }
+
+    public enterCategory(category: string): void {
+        const found = Object.values(Categories).find(cat => cat.key === category);
+
+        if (found) {
+            this.categoryDropdown.doSelectAction(found.text, found.url, null, false);
+        }
+    }
 }
 
 const guiManager = new GuiManager();

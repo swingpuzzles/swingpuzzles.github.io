@@ -1,9 +1,10 @@
-import { Mesh, Animation, Vector3, Matrix, CubicEase, EasingFunction } from "@babylonjs/core";
+import { Mesh, Animation, Vector3, Matrix, CubicEase, EasingFunction, StandardMaterial, Texture } from "@babylonjs/core";
 import IPuzzleAnimation from "./IPuzzleAnimation";
 import gameModeManager from "../behaviors/GameModeManager";
 import ctx from "../common/SceneContext";
 import { PuzzleTools } from "../common/PuzzleTools";
 import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
+import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 
 class OpenCoverAnimation implements IPuzzleAnimation {
     
@@ -11,6 +12,14 @@ class OpenCoverAnimation implements IPuzzleAnimation {
         if (!gameModeManager.canOpenCover) {
             return;
         }
+
+        const coverMat = cover.material as StandardMaterial;
+
+        if (coverMat) {   // TODO better logic here
+            const originalTexture = coverMat.diffuseTexture as Texture;
+            const url = originalTexture.url!; // this should be the image URL
+            puzzleUrlHelper.setImgUrl(url);
+        }        
 
         gameModeManager.enterOpenCoverMode();
 
