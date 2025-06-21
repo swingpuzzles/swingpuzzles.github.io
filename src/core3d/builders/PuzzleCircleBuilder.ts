@@ -5,6 +5,7 @@ import puzzleCoverBuilder from './PuzzleCoverBuilder';
 import ctx from '../common/SceneContext';
 import gameModeManager from '../behaviors/GameModeManager';
 import { PuzzleTools } from '../common/PuzzleTools';
+import puzzleUrlHelper from '../../common/PuzzleUrlHelper';
 
 interface CoverData {
     imgCoverUrl: string;
@@ -72,6 +73,9 @@ class PuzzleCircleBuilder {
 
         const count = filteredData.length;
 
+        const urlData = puzzleUrlHelper.readFromUrl();
+        const puzzleId = urlData.puzzleId;
+
         filteredData.forEach((obj, index) => {
             if (!PuzzleTools.hasIntersection(ctx.category!.tags, obj.tags)) {
                 return;
@@ -86,6 +90,12 @@ class PuzzleCircleBuilder {
             cover.rotation.y = -angle + Math.PI / 2;
 
             this.covers.set(cover, { imgCoverUrl: obj.imgCoverUrl, link: obj.link });
+
+            if (puzzleId && obj.imgSmallUrl.includes(puzzleId)) {
+                ctx.camera.alpha = angle;
+            }
+
+            puzzleUrlHelper.insertAngleEntry(obj.imgSmallUrl, angle);
         });
     }
 

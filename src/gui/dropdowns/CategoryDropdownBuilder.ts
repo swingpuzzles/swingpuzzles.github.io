@@ -66,7 +66,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
             if (!gameModeManager.giftReceived) {
                 puzzleUrlHelper.setCategory(category.key, userAction);
 
-                if (category == Categories.Gift) {
+                if (category === Categories.Gift) {
                     gameModeManager.enterGiftInitialMode();
                 } else {
                     if (!userAction) {
