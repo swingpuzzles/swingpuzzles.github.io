@@ -108,6 +108,13 @@ export class GiftBoxBuilder {
         ribbon.position = position;
         ribbon.rotation.x = Math.PI / 2;
 
+        for (let m of result.meshes) {
+            m.actionManager = giftBox.actionManager;
+        }
+
+        giftTagPlane.actionManager = giftBox.actionManager;
+        textPlane.actionManager = giftBox.actionManager;
+
         gameModeManager.addGameModeChangedObserver(() => {
             if (gameModeManager.giftTryMode) {
                 giftTagPlane.isVisible = true;
