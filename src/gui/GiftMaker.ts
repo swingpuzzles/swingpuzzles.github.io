@@ -1,7 +1,7 @@
 import { ColorPicker, Control, Image, Rectangle, StackPanel } from "@babylonjs/gui";
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
-import { FormInputModel } from "../model/FormInputModel";
+import { FormRowModel } from "../model/FormRowModel";
 import LanguageSelector from "./LanguageSelector";
 import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
 import { Dropdown } from "./dropdowns/Dropdown";
@@ -183,7 +183,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             this._wishTextDropdown.lang = code;
         }
 
-        const formInputModel: FormInputModel[] = [
+        const formInputModel: FormRowModel[] = [
             {
                 id: GiftStorageKeys.GiftName,
                 label: "Friend's Name",
@@ -235,14 +235,55 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         puzzleEditor.setFormData(this._friendsName, age);
 
         popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => {
-                gameModeManager.enterGiftTryMode();
-                this.makeGiftUrl();
+            () => { gameModeManager.enterGiftOverviewMode();
+                /*gameModeManager.enterGiftTryMode();
+                this.makeGiftUrl();*/
             },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },
             null,
             PopupMode.Gift_Adjustments_Preview
+        )
+    }
+
+    public enterOverview() {
+        const formModel: FormRowModel[] = [
+            {
+                id: "giftLink",
+                label: "Copy the link or share directly:",
+                type: "share",
+                link: this.makeGiftUrl()
+            },
+            {
+                id: "tryIt",
+                label: "Try the gift first before sending:",
+                type: "button",
+                buttonText: "🎮 Try Now!",
+                background: "#17a2b8",
+                action: () => { gameModeManager.enterGiftTryMode(); }
+            },
+            {
+                id: "orderCustom",
+                label: "Reveal a quick guide on how to turn the puzzle into a real-life surprise:",
+                type: "button",
+                buttonText: "🛍️ Order Physical Puzzle",
+                background: "#28a745",
+                action: () => { /* TODO */ }
+            }
+        ];
+
+        popupHint.show(`🧩 **Puzzle Gift Created with Love!**
+
+You’ve crafted a custom puzzle — now it’s time to share the surprise.
+🎁 Send the link to your friend and let the joy begin.
+🌟 Curious? You can preview it yourself.
+📦 Want to make it even more special? Order a real-life version as a keepsake.`, "GIFT OVERVIEW", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+            () => { this.exitGiftMaking(); },
+            () => { this.exitGiftMaking(); },
+            () => { gameModeManager.enterGiftAdjustmentMode(); },
+            null,
+            PopupMode.Gift_Adjustments_Overview,
+            formModel
         )
     }
 
@@ -279,12 +320,11 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         return btoa(encodeURIComponent(json)); // Simple compression via encodeURIComponent + Base64
     }
 
-    private makeGiftUrl() {
+    private makeGiftUrl(): string {
         const giftData = this.buildGiftDataFromLocalStorage();
         const encodedGiftData = this.encodeToCompressedUrlParam(giftData);
 
-        const shareUrl = `http://localhost:3000/?giftData=${encodedGiftData}`;
-        console.log("Compressed Share URL:", shareUrl);
+        return `http://localhost:3000/?giftData=${encodedGiftData}`;
     }
 
     public parseUrlData(giftData: Record<string, string>) {

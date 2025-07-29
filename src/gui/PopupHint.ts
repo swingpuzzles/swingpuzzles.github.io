@@ -7,7 +7,7 @@ import screenShader, { ShaderMode } from "./ScreenShader";
 import guiManager from "./GuiManager";
 import handImagePool from "./HandImagePool";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
-import { FormInputModel } from "../model/FormInputModel";
+import { FormRowModel as FormRowModel } from "../model/FormRowModel";
 import ISelector from "../interfaces/ISelector";
 import Constants from "../core3d/common/Constants";
 import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
@@ -17,8 +17,9 @@ export enum PopupMode {
     PreSell,
     Sell,
     Gift_Initial,
-    Gift_Adjustments_Hint,
-    Gift_Adjustments_Preview
+    //Gift_Adjustments_Hint,
+    Gift_Adjustments_Preview,
+    Gift_Adjustments_Overview
 }
 
 class PopupHint {
@@ -38,6 +39,7 @@ class PopupHint {
     private bottomRect!: Rectangle;
     private middleTopStack!: StackPanel;
     private formPanel!: StackPanel;
+    private formPanelRect!: Rectangle;
     private gotItButton!: Button;
     private emptyGreenButton!: Button;
     private getItButton!: Button;
@@ -166,12 +168,16 @@ class PopupHint {
         this.inputTextArea.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         this.textAreaRect.addControl(this.inputTextArea);
 
+        this.formPanelRect = new Rectangle("Rectangle");
+        this.formPanelRect.thickness = 0;
+        this.formPanelRect.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+        middleStack.addControl(this.formPanelRect);
+
         this.formPanel = new StackPanel("formPanel");
-        this.formPanel.width = "100%";
         this.formPanel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-        this.formPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
+        this.formPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.formPanel.color = "#dddddd";
-        middleStack.addControl(this.formPanel);
+        this.formPanelRect.addControl(this.formPanel);
 
         // Bottom Rectangle (with Buttons)
         this.bottomRect = new Rectangle("Rectangle");
@@ -358,9 +364,9 @@ class PopupHint {
     }
 
     // Helper to create styled labeled input fields
-    private createLabeledInput(formInputModel: FormInputModel) {
-        const labelText = formInputModel.label;
-        const placeholder = formInputModel.placeHolder;
+    private createLabeledInput(formRowModel: FormRowModel) {
+        const labelText = formRowModel.label;
+        const placeholder = formRowModel.placeHolder;
         const container = new StackPanel();
 
         const label = new TextBlock();
@@ -369,14 +375,32 @@ class PopupHint {
         label.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         container.addControl(label);
 
-        const savedValue = localStorageManager.getString(formInputModel.id);
+        const savedValue = localStorageManager.getString(formRowModel.id);
 
-        switch (formInputModel.type) {
+        switch (formRowModel.type) {
             case "selection":
-                container.addControl(formInputModel.selector.ui);
+                container.addControl(formRowModel.selector.ui);
+
+                break;
+            case "button":
+                const button = Button.CreateSimpleButton(formRowModel.id, formRowModel.buttonText);
+                button.width = "50%";
+                button.background = formRowModel.background; // 👈 a standout green (or choose your brand color)
+                button.color = "#ffffff"; // 👈 white text for contrast
+                button.fontWeight = "bold";
+                button.cornerRadius = 12;
+                button.thickness = 2;
+                button.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+
+                button.onPointerClickObservable.add(() => {
+                    formRowModel.action();
+                });
+
+                container.addControl(button);
+
                 break;
             default:
-                const input = new InputText(formInputModel.id);
+                let input = new InputText(formRowModel.id);
                 input.color = "#222";
                 input.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
                 input.background = "#f0f0f0";
@@ -390,49 +414,133 @@ class PopupHint {
                 if (savedValue) {
                     input.text = savedValue;
                 }
+
+                let rowControl: Control = input;
                 
-                switch (formInputModel.type) {
+                switch (formRowModel.type) {
                     case "text":
-                        input.width = formInputModel.maxLength ? (Math.min(100, Math.max(formInputModel.maxLength, input.placeholderText.length) * 2.5) + "%") : "100%";
+                        input.width = formRowModel.maxLength ? (Math.min(100, Math.max(formRowModel.maxLength, input.placeholderText.length) * 2.5) + "%") : "100%";
                         input.onTextChangedObservable.add(() => {
-                            if (formInputModel.maxLength && input.text.length > formInputModel.maxLength) {
-                                input.text = input.text.slice(0, formInputModel.maxLength);
+                            if (formRowModel.maxLength && input.text.length > formRowModel.maxLength) {
+                                input.text = input.text.slice(0, formRowModel.maxLength);
                             }
                         });
+
                         break;
                     case "number":
-                        const maxLength = formInputModel.max ? Math.max(formInputModel.max.toString().length, input.placeholderText.length) : null;
+                        const maxLength = formRowModel.max ? Math.max(formRowModel.max.toString().length, input.placeholderText.length) : null;
                         input.width = maxLength ? (Math.min(100, maxLength * 2.5) + "%") : "100%";
                         input.onTextChangedObservable.add(() => {
                             input.text = input.text.replace(/\D/g, "");
                             const value = parseInt(input.text, 10);
                             if (isNaN(value)) {
                                 input.text = "";
-                            } else if (formInputModel.min && value < formInputModel.min) {
-                                input.text = "" + formInputModel.min;
-                            } else if (formInputModel.max && value > formInputModel.max) {
-                                input.text = "" + formInputModel.max;
+                            } else if (formRowModel.min && value < formRowModel.min) {
+                                input.text = "" + formRowModel.min;
+                            } else if (formRowModel.max && value > formRowModel.max) {
+                                input.text = "" + formRowModel.max;
                             }
                         });
+
+                        break;
+                    case "share":
+                        input.height = "100%";
+                        const giftLink = formRowModel.link;
+                        input.text = giftLink;
+                        input.onFocusObservable.add(() => {
+                            input.selectAllText();
+                            input.isReadOnly = true;
+                            copyToClipboard();
+                        });
+                        input.onBlurObservable.add(() => {
+                            input.isReadOnly = false;
+                        });
+
+                        const horizPanel = new StackPanel();
+                        horizPanel.width = "100%";
+                        horizPanel.isVertical = false;
+
+                        horizPanel.addControl(input);
+
+                        const copyButton = Button.CreateSimpleButton("copyLinkButton", "🔗 Copy Link");
+                        copyButton.width = "200px";
+                        copyButton.background = "#6c757d"; // 👈 a standout green (or choose your brand color)
+                        copyButton.color = "#ffffff"; // 👈 white text for contrast
+                        copyButton.fontWeight = "bold";
+                        copyButton.cornerRadius = 12;
+                        copyButton.thickness = 2;
+                        copyButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+                        copyButton.onPointerClickObservable.add(() => {
+                            copyToClipboard();
+                        });
+
+                        horizPanel.addControl(copyButton);
+
+                        const shareButton = Button.CreateSimpleButton("shareLinkButton", "📤 Share Link");
+                        shareButton.height = "100%";
+                        shareButton.background = "#007BFF"; // 👈 a standout green (or choose your brand color)
+                        shareButton.color = "#ffffff"; // 👈 white text for contrast
+                        shareButton.fontWeight = "bold";
+                        shareButton.cornerRadius = 12;
+                        shareButton.thickness = 2;
+                        shareButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+
+                        shareButton.onPointerClickObservable.add(async () => {
+                            if (navigator.share) {
+                                try {
+                                    await navigator.share({
+                                        title: "🎁 Puzzle Gift",
+                                        text: "Here’s a puzzle I made for you!",
+                                        url: formRowModel.link
+                                    });
+                                } catch (err) {
+                                    console.error("Sharing failed:", err);
+                                }
+                            } else {
+                                alert("Sharing is not supported on this device.");
+                            }
+                        });
+
+                        horizPanel.addControl(shareButton);
+
+                        function copyToClipboard() {
+                            navigator.clipboard.writeText(giftLink).then(() => {
+                                const original = copyButton.textBlock?.text || "🔗 Copy Link";
+                                copyButton.textBlock!.text = "✅ Copied!";
+                                setTimeout(() => {
+                                    copyButton.textBlock!.text = original;
+                                }, 2000);
+                            }).catch(err => {
+                                console.error("Copy failed:", err);
+                                alert("Failed to copy to clipboard.");
+                            });
+                        }
+
+                        rowControl = horizPanel;
+
                         break;
                 }
 
-                container.addControl(input);
+                container.addControl(rowControl);
         }
 
         this.formPanel.addControl(container);
     }
 
     private resize() {
+        const giftPreviewOverview = this._popupMode === PopupMode.Gift_Adjustments_Preview || this._popupMode === PopupMode.Gift_Adjustments_Overview;
         const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
-        const mainHeight = this._popupMode === PopupMode.Gift_Adjustments_Preview && vertical
-            ? Math.min(minSize * this._sizeCoef * 1.673, 0.88 * ctx.engine.getRenderHeight())
-            : (minSize * this._sizeCoef);
-        const topHeightCoef = this._popupMode === PopupMode.Gift_Adjustments_Preview ? 0.1 : 0.2;
+        const rawMainHeight = minSize * this._sizeCoef;
+        const mainHeight = giftPreviewOverview && vertical
+            ? Math.min(rawMainHeight * 1.673, 0.88 * ctx.engine.getRenderHeight())
+            : rawMainHeight;
+        const topHeightCoef = giftPreviewOverview ? 0.1 : 0.2;
         const topHeight = minSize * topHeightCoef;
         const middleHeight = mainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
-        this.mainContainer.widthInPixels = this._popupMode === PopupMode.Gift_Adjustments_Preview && !vertical ? mainHeight * 1.1 : (minSize * 0.87);
+        const rawMiddleHeight = rawMainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
+        const containerwidth = giftPreviewOverview && !vertical ? mainHeight * 1.1 : (minSize * 0.87);
+        this.mainContainer.widthInPixels = containerwidth;
         this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
         this.mainContainer.paddingTopInPixels = minSize / 80;
@@ -468,39 +576,61 @@ class PopupHint {
 
         this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24;
 
-        if (this.formPanel.isVisible) {
+        if (this.formPanelRect.isVisible) {
             const middleTopPanelRatio = 0.5;
             const formPanelRatio = 1 - middleTopPanelRatio;
-            const formPanelheight = formPanelRatio * middleHeight;
+            const baseFormPanelheight = formPanelRatio * rawMiddleHeight;
 
-            this.middleTopStack.heightInPixels = middleTopPanelRatio * middleHeight;
-            this.formPanel.heightInPixels = formPanelheight;
+            const formPanelheight = this._popupMode === PopupMode.Gift_Adjustments_Overview ? 0.92 * baseFormPanelheight : baseFormPanelheight;
+            const formPanelheightCoef = this._popupMode === PopupMode.Gift_Adjustments_Overview ? 0.96 * formPanelheight : formPanelheight;
+
+            this.middleTopStack.heightInPixels = middleTopPanelRatio * rawMiddleHeight;
+            this.formPanelRect.heightInPixels = formPanelheight;
+            this.formPanelRect.cornerRadius = minSize / 40;
+
+            this.formPanelRect.paddingLeftInPixels = minSize / 75;
+            this.formPanelRect.paddingRightInPixels = minSize / 75;
+            this.formPanelRect.paddingTopInPixels = formPanelheightCoef / 75;
+            this.formPanelRect.paddingBottomInPixels = formPanelheightCoef / 75;
 
             this.formPanel.paddingLeftInPixels = minSize / 80;
             this.formPanel.paddingRightInPixels = minSize / 80;
-            this.formPanel.paddingTopInPixels = formPanelheight / 80;
-            this.formPanel.paddingBottomInPixels = formPanelheight / 80;
+            this.formPanel.paddingTopInPixels = formPanelheightCoef / 80;
+            this.formPanel.paddingBottomInPixels = formPanelheightCoef / 80;
 
-            const containerHeight = 39 / 40 * formPanelheight / this.formPanel.children.length;
+            const containerHeight = 39 / 40 * formPanelheightCoef / this.formPanel.children.length;
 
             for (const container of this.formPanel.children) {
 
                 container.heightInPixels = containerHeight;
+                const formFontSize = 0.26 * containerHeight;
 
                 for (const child of (container as Container).children) {
-                    child.fontSize = 0.26 * containerHeight;
+                    child.fontSize = formFontSize;
                     if (child instanceof TextBlock) {
                         child.heightInPixels = 0.43 * containerHeight;
-                    } else if (child instanceof InputText) {
-                        child.heightInPixels = 0.57 * containerHeight;
                     } else if (child.name === Constants.ISELECTOR) {
                         (child as unknown as ISelector)!.resize(0.57 * containerHeight);
+                    } else {
+                        child.heightInPixels = 0.57 * containerHeight;
+
+                        if (child instanceof StackPanel) {
+                            for (let sChild of child.children) {
+                                if (sChild instanceof InputText) {
+                                    sChild.widthInPixels = containerwidth * 0.4;
+                                } else if (sChild instanceof Button) {
+                                    sChild.widthInPixels = containerwidth * 0.25;
+                                    sChild.paddingLeftInPixels = containerwidth * 0.01;
+                                    sChild.fontSize = formFontSize;
+                                }
+                            }
+                        }
                     }
                 }
             }
         } else {
             this.middleTopStack.heightInPixels = middleHeight;
-            this.formPanel.heightInPixels = 0;
+            this.formPanelRect.heightInPixels = 0;
         }
     }
     
@@ -521,7 +651,7 @@ class PopupHint {
         backAction: (() => void) | null = null,
         afterShowAction: (() => void) | null = null,
         mode: PopupMode = PopupMode.Normal,
-        formInputModel: FormInputModel[] | null = null
+        formInputModel: FormRowModel[] | null = null
     ): void {
 
         if (mode === PopupMode.Normal && localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
@@ -546,7 +676,7 @@ class PopupHint {
             backAction: (() => void) | null = null,
             afterShowAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal,
-            formInputModel: FormInputModel[] | null = null) : void {
+            formInputModel: FormRowModel[] | null = null) : void {
 
         if (this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, mode, formInputModel) && afterShowAction) {
             afterShowAction();
@@ -559,7 +689,7 @@ class PopupHint {
             closeAction: (() => void) | null = null,
             backAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal,
-            formInputModel: FormInputModel[] | null = null) : boolean {
+            formInputModel: FormRowModel[] | null = null) : boolean {
 
         this.gotItButton.isVisible = false;
         this.emptyGreenButton.isVisible = false;
@@ -569,6 +699,10 @@ class PopupHint {
         this.centerImage.isVisible = false;
         this.coverImage.isVisible = false;
         this.textAreaRect.alpha = 1;
+        this.formPanelRect.alpha = 1;
+        this.formPanelRect.background = "#FFFFFF00"
+        this.formPanelRect.width = "100%";
+
 
         switch (mode) {
             case PopupMode.PreSell:
@@ -590,13 +724,21 @@ class PopupHint {
                 this.nextButton.isVisible = true;
                 this.centerImage.isVisible = true;
                 break;
-            case PopupMode.Gift_Adjustments_Hint:
+            /*case PopupMode.Gift_Adjustments_Hint:
                 this.gotItButton.isVisible = true;
-                break;
+                break;*/
             case PopupMode.Gift_Adjustments_Preview:
                 this.nextButton.isVisible = true;
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0;
+                break;
+            case PopupMode.Gift_Adjustments_Overview:
+                //this.nextButton.isVisible = true;
+                this.coverImage.isVisible = true;
+                this.textAreaRect.alpha = 0.8;
+                this.formPanelRect.alpha = 0.8;
+                this.formPanelRect.background = "#F9F6F1FF";
+                this.formPanelRect.width = "97%";
                 break;
         }
 
@@ -625,9 +767,9 @@ class PopupHint {
                 this.createLabeledInput(m);
             }
 
-            this.formPanel.isVisible = true;
+            this.formPanelRect.isVisible = true;
         } else {
-            this.formPanel.isVisible = false;
+            this.formPanelRect.isVisible = false;
         }
         
         this.resize();

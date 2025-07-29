@@ -115,6 +115,12 @@ class GameModeManager {
         giftMaker.enterAdjustments();
     }
 
+    enterGiftOverviewMode() {
+        this.resetAll(GameMode.GiftOverview);
+
+        giftMaker.enterOverview();
+    }
+
     enterGiftTryMode() {
         this.resetAll(GameMode.GiftTry);
 

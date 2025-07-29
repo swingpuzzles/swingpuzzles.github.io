@@ -84,7 +84,7 @@ class PuzzleEditor {
     }
 
     setTable(url: string, index: number): void {
-        this.setImage(url, (img) => { this._tableImage = img });console.log(url);
+        this.setImage(url, (img) => { this._tableImage = img });
     }
 
     setTorte(fgUrl: string, index: number): void {
