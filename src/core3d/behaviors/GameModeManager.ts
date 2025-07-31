@@ -13,6 +13,7 @@ export enum GameMode {
     GiftAdjustment,
     GiftOverview,
     GiftPhysicalOrientation,
+    GiftPhysicalFinal,
     GiftTry,
     GiftReceived,   // TODO
 }
@@ -128,6 +129,12 @@ class GameModeManager {
         this.resetAll(GameMode.GiftPhysicalOrientation);
 
         giftMaker.enterGiftPhysicalOrientation();
+    }
+
+    enterGiftPhysicalFinalMode() {
+        this.resetAll(GameMode.GiftPhysicalFinal);
+
+        giftMaker.enterGiftPhysicalFinal();
     }
 
     enterGiftTryMode() {

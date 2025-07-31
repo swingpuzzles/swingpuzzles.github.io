@@ -2,7 +2,7 @@ import { ColorPicker, Control, Image, Rectangle, StackPanel } from "@babylonjs/g
 import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormRowModel } from "../model/FormRowModel";
-import LanguageSelector from "./LanguageSelector";
+import LanguageSelector from "./selectors/LanguageSelector";
 import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
 import { Dropdown } from "./dropdowns/Dropdown";
 import FontFamilyDropdownBuilder from "./dropdowns/FontFamilyDropdownBuilder";
@@ -19,6 +19,7 @@ import { GiftBoxBuilder } from "../core3d/builders/GiftBoxBuilder";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import localStorageManager, { GiftStorageKeys } from "../common/LocalStorageManager";
 import translationManager from "../core3d/misc/TranslationManager";
+import PiecesCountSelector from "./selectors/PiecesCountSelector";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -177,10 +178,12 @@ At the top, choose the puzzle dimensions to match your preferred difficulty.
 
 Then, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.`;
 
-        this._languageSelector = new LanguageSelector(localStorageManager.getString("giftLanguage") ?? "en");
+        const selectedLang = localStorageManager.getString(GiftStorageKeys.GiftLanguage) ?? "en";
+        this._languageSelector = new LanguageSelector(selectedLang);
+        this._wishTextDropdown.lang = selectedLang;
 
-        this._languageSelector.selectionObserver = (code: string) => {
-            this._wishTextDropdown.lang = code;
+        this._languageSelector.selectionObserver = (id: string) => {
+            this._wishTextDropdown.lang = id;
         }
 
         const formInputModel: FormRowModel[] = [
@@ -202,7 +205,6 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             {
                 id: GiftStorageKeys.GiftLanguage,
                 label: "Wish Language",
-                placeHolder: "e.g. English",
                 type: "selection",
                 selector: this._languageSelector
             },
@@ -315,11 +317,66 @@ When you tap Next, your custom puzzle image will be automatically downloaded.
 Then we’ll guide you to Amazon, where you can upload it and complete your gift order.
 
 Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { /* TODO physical final */ },
+            () => {
+                // TODO download
+                gameModeManager.enterGiftPhysicalFinalMode();
+            },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftOverviewMode(); },
             null,
-            PopupMode.Gift_Physical,
+            PopupMode.Gift_Physical_Initial,
+            formModel
+        )
+    }
+
+    public enterGiftPhysicalFinal() {
+        const vertMap = new Map();
+        const horizMap = new Map();
+        vertMap.set("300", "https://amzn.to/4l1UOs5");
+        vertMap.set("500", "https://amzn.to/3UBvGNM");
+        vertMap.set("1000", "https://amzn.to/3UFp4xW");
+        horizMap.set("300", "https://amzn.to/4la3QmS");
+        horizMap.set("500", "https://amzn.to/40JAhBe");
+        horizMap.set("1000", "https://amzn.to/4fq6kw3");
+
+        const vertical = popupHint.vertical;
+
+        const selectedPiecesCount = localStorageManager.getString(GiftStorageKeys.GiftPiecesCount) ?? "1000";
+        const piecesSelector = new PiecesCountSelector(selectedPiecesCount);
+
+        let link = vertical ? vertMap.get(selectedPiecesCount) : horizMap.get(selectedPiecesCount);
+        piecesSelector.selectionObserver = (id: string) => {
+            link = vertical ? vertMap.get(id) : horizMap.get(id);
+        }
+
+        const formModel: FormRowModel[] = [
+            {
+                id: GiftStorageKeys.GiftPiecesCount,
+                label: "Count of Puzzle Pieces",
+                type: "selection",
+                selector: piecesSelector
+            },
+        ];
+
+        popupHint.show(`🧩 **Your Puzzle Image Is Downloading!**
+
+You're just one step away from turning it into a real gift.
+
+1. **Choose the puzzle size** below.
+2. Tap **"Get it on Amazon"** to open the product page.
+3. On Amazon:
+   • Click **Customize Now**
+   • Click **Upload** and select the image you just downloaded (starts with “XYZ...”)
+   • Click **Add to Cart**, then **Go to Cart** and **Proceed to Checkout**
+
+You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+            () => {
+                window.open(link, "_blank");
+            },
+            () => { this.exitGiftMaking(); },
+            () => { gameModeManager.enterGiftPhysicalOrientationMode(); },
+            null,
+            PopupMode.Gift_Physical_Final,
             formModel
         )
     }

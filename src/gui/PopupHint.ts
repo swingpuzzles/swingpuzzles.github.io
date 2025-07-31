@@ -21,7 +21,8 @@ export enum PopupMode {
     //Gift_Adjustments_Hint,
     Gift_Adjustments_Preview,
     Gift_Adjustments_Overview,
-    Gift_Physical
+    Gift_Physical_Initial,
+    Gift_Physical_Final
 }
 
 class PopupHint {
@@ -336,7 +337,7 @@ class PopupHint {
                     formData.push({ id: child.name!, value: child.text });
                 } else if (child.name === Constants.ISELECTOR) {
                     const selector = (child as unknown as ISelector)!;
-                    formData.push({ id: selector.id, value: selector.selectedItem });
+                    formData.push({ id: selector.id, value: selector.selectedId });
                 }
             }
         }
@@ -361,7 +362,7 @@ class PopupHint {
     }
 
     public isManualOrientation(): boolean {
-        return this._popupMode === PopupMode.Gift_Physical;
+        return this._popupMode === PopupMode.Gift_Physical_Initial || this._popupMode === PopupMode.Gift_Physical_Final;
     }
     
     private clearForm() {
@@ -599,9 +600,12 @@ class PopupHint {
     }
 
     private resize() {
-        const giftPreviewOverview = this._popupMode === PopupMode.Gift_Adjustments_Preview || this._popupMode === PopupMode.Gift_Adjustments_Overview || this._popupMode === PopupMode.Gift_Physical;
+        const giftPreviewOverview = this._popupMode === PopupMode.Gift_Adjustments_Preview ||
+            this._popupMode === PopupMode.Gift_Adjustments_Overview ||
+            this._popupMode === PopupMode.Gift_Physical_Initial ||
+            this._popupMode === PopupMode.Gift_Physical_Final;
         
-        if (this._popupMode !== PopupMode.Gift_Physical) {
+        if (this._popupMode !== PopupMode.Gift_Physical_Initial && this._popupMode !== PopupMode.Gift_Physical_Final) {
             this._vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         }
 
@@ -658,7 +662,9 @@ class PopupHint {
             const formPanelRatio = 1 - middleTopPanelRatio;
             const baseFormPanelheight = formPanelRatio * rawMiddleHeight;
 
-            const overviewMode = this._popupMode === PopupMode.Gift_Adjustments_Overview || this._popupMode === PopupMode.Gift_Physical;
+            const overviewMode = this._popupMode === PopupMode.Gift_Adjustments_Overview ||
+                this._popupMode === PopupMode.Gift_Physical_Initial ||
+                this._popupMode === PopupMode.Gift_Physical_Final;
             const formPanelheight = overviewMode ? 0.92 * baseFormPanelheight : baseFormPanelheight;
             const formPanelheightCoef = overviewMode ? 0.96 * formPanelheight : formPanelheight;
 
@@ -811,8 +817,22 @@ class PopupHint {
                 this.textAreaRect.alpha = 0;
                 break;
             case PopupMode.Gift_Adjustments_Overview:
-            case PopupMode.Gift_Physical:
-                //this.nextButton.isVisible = true;
+                this.coverImage.isVisible = true;
+                this.textAreaRect.alpha = 0.8;
+                this.formPanelRect.alpha = 0.8;
+                this.formPanelRect.background = "#F9F6F1FF";
+                this.formPanelRect.width = "97%";
+                break;
+            case PopupMode.Gift_Physical_Initial:
+                this.nextButton.isVisible = true;
+                this.coverImage.isVisible = true;
+                this.textAreaRect.alpha = 0.8;
+                this.formPanelRect.alpha = 0.8;
+                this.formPanelRect.background = "#F9F6F1FF";
+                this.formPanelRect.width = "97%";
+                break;
+            case PopupMode.Gift_Physical_Final:
+                this.getItButton.isVisible = true;
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;
                 this.formPanelRect.alpha = 0.8;

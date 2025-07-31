@@ -16,7 +16,8 @@ export const GiftStorageKeys = {
     GiftFontFamily: "giftFontFamily",
     GiftForeground: "giftForeground",
     GiftTables: "giftTables",
-    GiftWishText: "giftWishText"
+    GiftWishText: "giftWishText",
+    GiftPiecesCount: "giftPiecesCount"
 };
 
 export type GiftStorageKey = keyof typeof GiftStorageKeys;
