@@ -26,10 +26,7 @@ class PuzzleEditor {
         this.createPopupPlane(this._vertical ? [10, 15] : [15, 10]);
 
         sceneInitializer.addResizeObserver((width, height) => {
-            if (this._vertical != ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth()) {
-                this._vertical = !this._vertical;
-                this.createPopupPlane(this._vertical ? [10, 15] : [15, 10]);
-            }
+            this.resize();
         });
 
         const candleImage = new Image();
@@ -44,6 +41,14 @@ class PuzzleEditor {
 
     get dataUrl(): string {
         return this._popupCtx2d!.canvas.toDataURL("image/png");;
+    }
+
+    public resize() {
+        const vertical = popupHint.isManualOrientation() ? popupHint.vertical : ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+        if (this._vertical != vertical) {
+            this._vertical = vertical;
+            this.createPopupPlane(this._vertical ? [10, 15] : [15, 10]);
+        }
     }
 
     createPopupPlane(planeSize: [number, number]): void {

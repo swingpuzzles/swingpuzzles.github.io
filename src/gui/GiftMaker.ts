@@ -208,7 +208,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             },
         ];
 
-        popupHint.show(introText, "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show(introText, "GIFT MAKING", 0.92, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             () => { this.exitGiftMaking(); },
             null,
@@ -218,27 +218,26 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         )
     }
 
-    public enterAdjustments() {
-        let age!: number;
-        let lang!: string;
+    public enterAdjustments(storeValues: boolean) {
+        if (storeValues) {
+            let age!: number;
+            let lang!: string;
 
-        for (const formRow of popupHint.formData) {
-            localStorageManager.set(formRow.id, formRow.value!.toString());
+            for (const formRow of popupHint.formData) {
+                localStorageManager.set(formRow.id, formRow.value!.toString());
 
-            switch (formRow.id) {
-                case GiftStorageKeys.GiftName: this._friendsName = formRow.value as string; break;
-                case GiftStorageKeys.GiftAge: age = formRow.value as number; break;
-                case GiftStorageKeys.GiftLanguage: lang = formRow.value as string; break;
+                switch (formRow.id) {
+                    case GiftStorageKeys.GiftName: this._friendsName = formRow.value as string; break;
+                    case GiftStorageKeys.GiftAge: age = formRow.value as number; break;
+                    case GiftStorageKeys.GiftLanguage: lang = formRow.value as string; break;
+                }
             }
+
+            puzzleEditor.setFormData(this._friendsName, age);
         }
 
-        puzzleEditor.setFormData(this._friendsName, age);
-
-        popupHint.show("", "GIFT MAKING", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { gameModeManager.enterGiftOverviewMode();
-                /*gameModeManager.enterGiftTryMode();
-                this.makeGiftUrl();*/
-            },
+        popupHint.show("", "↑ ↑ ↑ GIFT STYLING ↑ ↑ ↑", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+            () => { gameModeManager.enterGiftOverviewMode(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },
             null,
@@ -268,7 +267,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
                 type: "button",
                 buttonText: "🛍️ Order Physical Puzzle",
                 background: "#28a745",
-                action: () => { /* TODO */ }
+                action: () => { gameModeManager.enterGiftPhysicalOrientationMode(); }
             }
         ];
 
@@ -283,6 +282,44 @@ You’ve crafted a custom puzzle — now it’s time to share the surprise.
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             null,
             PopupMode.Gift_Adjustments_Overview,
+            formModel
+        )
+    }
+
+    public enterGiftPhysicalOrientation() {
+        const formModel: FormRowModel[] = [
+            {
+                id: "horizPhysical",
+                label: "🖼️ Horizontal (Landscape) for wide scenes",
+                type: "radioButton",
+                buttonText: "🖼️ Horizontal",
+                background: "#2c3e50",
+                action: () => { popupHint.vertical = false; },
+                selected: !popupHint.vertical
+            },
+            {
+                id: "vertPhysical",
+                label: "📱 Vertical (Portrait) for tall layouts",
+                type: "radioButton",
+                buttonText: "📱 Vertical",
+                background: "#34495e",
+                action: () => { popupHint.vertical = true; },
+                selected: popupHint.vertical
+            }
+        ];
+
+        popupHint.show(`🧩 Before ordering your physical puzzle, pick the image orientation.
+
+When you tap Next, your custom puzzle image will be automatically downloaded.
+
+Then we’ll guide you to Amazon, where you can upload it and complete your gift order.
+
+Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+            () => { /* TODO physical final */ },
+            () => { this.exitGiftMaking(); },
+            () => { gameModeManager.enterGiftOverviewMode(); },
+            null,
+            PopupMode.Gift_Physical,
             formModel
         )
     }

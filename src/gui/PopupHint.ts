@@ -11,6 +11,7 @@ import { FormRowModel as FormRowModel } from "../model/FormRowModel";
 import ISelector from "../interfaces/ISelector";
 import Constants from "../core3d/common/Constants";
 import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
+import puzzleEditor from "../core3d/misc/PuzzleEditor";
 
 export enum PopupMode {
     Normal,
@@ -19,7 +20,8 @@ export enum PopupMode {
     Gift_Initial,
     //Gift_Adjustments_Hint,
     Gift_Adjustments_Preview,
-    Gift_Adjustments_Overview
+    Gift_Adjustments_Overview,
+    Gift_Physical
 }
 
 class PopupHint {
@@ -53,6 +55,8 @@ class PopupHint {
     private _backAction: () => void = () => {};
     private _currentAnimation: Animatable | null = null;
     private _popupMode!: PopupMode;
+    private _vertical: boolean = false;
+    private _radioButtons: Button[] = [];
 
     init() {
         this.mainContainer = new Container("PopupHintContainer");
@@ -343,9 +347,26 @@ class PopupHint {
     public set centerImgUrl(url: string) {
         this.coverImage.source = url;
     }
+
+    public get vertical(): boolean {
+        return this._vertical;
+    }
+
+    public set vertical(value: boolean) {
+        if (value !== this._vertical) {
+            this._vertical = value;
+            this.resize();
+            puzzleEditor.resize();
+        }
+    }
+
+    public isManualOrientation(): boolean {
+        return this._popupMode === PopupMode.Gift_Physical;
+    }
     
     private clearForm() {
         this.clearRecursive(this.formPanel);
+        this._radioButtons = [];
     }
 
     private clearRecursive(control: Container) {  // TODO to library
@@ -397,6 +418,56 @@ class PopupHint {
                 });
 
                 container.addControl(button);
+
+                break;
+            case "radioButton":
+                const radioButton = Button.CreateSimpleButton(formRowModel.id, formRowModel.buttonText);
+                radioButton.width = "50%";
+                radioButton.background = formRowModel.background; // 👈 a standout green (or choose your brand color)
+                radioButton.fontWeight = "bold";
+                radioButton.cornerRadius = 12;
+                radioButton.thickness = 0;
+                radioButton.color = "#888888";
+                radioButton.textBlock!.color = "#ffffff";
+                radioButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+
+                const selectedThickness = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight()) / 100;
+                const padding = formRowModel.selected ? 0 : selectedThickness;
+
+                if (formRowModel.selected) {
+                    radioButton.thickness = selectedThickness;
+                    radioButton.color = "#FFD700"; // Golden border for selected
+                } else {
+                    radioButton.paddingBottomInPixels = padding;
+                    radioButton.paddingTopInPixels = padding;
+                    radioButton.paddingLeftInPixels = padding;
+                    radioButton.paddingRightInPixels = padding;
+                }
+
+                radioButton.onPointerClickObservable.add(() => {
+                    const selectedThickness = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight()) / 100;
+                    for (let rb of this._radioButtons) {
+                        rb.color = "#88888800";
+                        rb.thickness = 0;
+                        rb.paddingBottomInPixels = selectedThickness;
+                        rb.paddingTopInPixels = selectedThickness;
+                        rb.paddingLeftInPixels = selectedThickness;
+                        rb.paddingRightInPixels = selectedThickness;
+                    }
+
+                    radioButton.thickness = selectedThickness;
+                    radioButton.color = "#FFD700"; // Golden border for selected
+                    radioButton.paddingBottomInPixels = 0;
+                    radioButton.paddingTopInPixels = 0;
+                    radioButton.paddingLeftInPixels = 0;
+                    radioButton.paddingRightInPixels = 0;
+
+                    formRowModel.action();
+                });
+
+                this._radioButtons.push(radioButton);
+
+                container.addControl(radioButton);
 
                 break;
             default:
@@ -528,18 +599,24 @@ class PopupHint {
     }
 
     private resize() {
-        const giftPreviewOverview = this._popupMode === PopupMode.Gift_Adjustments_Preview || this._popupMode === PopupMode.Gift_Adjustments_Overview;
-        const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+        const giftPreviewOverview = this._popupMode === PopupMode.Gift_Adjustments_Preview || this._popupMode === PopupMode.Gift_Adjustments_Overview || this._popupMode === PopupMode.Gift_Physical;
+        
+        if (this._popupMode !== PopupMode.Gift_Physical) {
+            this._vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+        }
+
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
         const rawMainHeight = minSize * this._sizeCoef;
-        const mainHeight = giftPreviewOverview && vertical
+        const mainHeight = giftPreviewOverview && this._vertical
             ? Math.min(rawMainHeight * 1.673, 0.88 * ctx.engine.getRenderHeight())
             : rawMainHeight;
-        const topHeightCoef = giftPreviewOverview ? 0.1 : 0.2;
+        const topHeightOrigCoef = 0.2;
+        const topHeightCoef = giftPreviewOverview ? 0.1 : topHeightOrigCoef;
+        const topHeightOrig = minSize * topHeightOrigCoef;
         const topHeight = minSize * topHeightCoef;
         const middleHeight = mainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
         const rawMiddleHeight = rawMainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
-        const containerwidth = giftPreviewOverview && !vertical ? mainHeight * 1.1 : (minSize * 0.87);
+        const containerwidth = giftPreviewOverview && !this._vertical ? mainHeight * 1.1 : (minSize * 0.87);
         this.mainContainer.widthInPixels = containerwidth;
         this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
@@ -548,7 +625,7 @@ class PopupHint {
         this.topRect.heightInPixels = topHeight;
         this.centerRect.heightInPixels = middleHeight;
         this.bottomRect.heightInPixels = minSize * 0.1;
-        this.welcomeText.widthInPixels = topHeight * 3.1;//0.62;
+        this.welcomeText.widthInPixels = topHeightOrig * 3.1;//0.62;
         this.welcomeText.fontSizeInPixels = topHeight / 2.8;//14;
 
         const imageWidth = topHeight;
@@ -581,8 +658,9 @@ class PopupHint {
             const formPanelRatio = 1 - middleTopPanelRatio;
             const baseFormPanelheight = formPanelRatio * rawMiddleHeight;
 
-            const formPanelheight = this._popupMode === PopupMode.Gift_Adjustments_Overview ? 0.92 * baseFormPanelheight : baseFormPanelheight;
-            const formPanelheightCoef = this._popupMode === PopupMode.Gift_Adjustments_Overview ? 0.96 * formPanelheight : formPanelheight;
+            const overviewMode = this._popupMode === PopupMode.Gift_Adjustments_Overview || this._popupMode === PopupMode.Gift_Physical;
+            const formPanelheight = overviewMode ? 0.92 * baseFormPanelheight : baseFormPanelheight;
+            const formPanelheightCoef = overviewMode ? 0.96 * formPanelheight : formPanelheight;
 
             this.middleTopStack.heightInPixels = middleTopPanelRatio * rawMiddleHeight;
             this.formPanelRect.heightInPixels = formPanelheight;
@@ -598,7 +676,7 @@ class PopupHint {
             this.formPanel.paddingTopInPixels = formPanelheightCoef / 80;
             this.formPanel.paddingBottomInPixels = formPanelheightCoef / 80;
 
-            const containerHeight = 39 / 40 * formPanelheightCoef / this.formPanel.children.length;
+            const containerHeight = 39 / 40 * formPanelheightCoef / Math.max(this.formPanel.children.length, 3);
 
             for (const container of this.formPanel.children) {
 
@@ -733,6 +811,7 @@ class PopupHint {
                 this.textAreaRect.alpha = 0;
                 break;
             case PopupMode.Gift_Adjustments_Overview:
+            case PopupMode.Gift_Physical:
                 //this.nextButton.isVisible = true;
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;

@@ -5,7 +5,8 @@ export type FormRowModel =
   | NumericInputModel
   | SelectionInputModel
   | ShareActionModel
-  | ButtonActionModel;
+  | ButtonActionModel
+  | RadioButtonActionModel;
 
 interface BaseFormRowModel {
   id: string;
@@ -37,6 +38,14 @@ interface ButtonActionModel extends BaseFormRowModel {
   buttonText: string;
   background: string;
   action: () => void;
+}
+
+interface RadioButtonActionModel extends BaseFormRowModel {
+  type: "radioButton";
+  buttonText: string;
+  background: string;
+  action: () => void;
+  selected?: boolean;
 }
 
 interface ShareActionModel extends BaseFormRowModel {

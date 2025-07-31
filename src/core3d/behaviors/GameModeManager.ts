@@ -12,8 +12,9 @@ export enum GameMode {
     GiftInitial,
     GiftAdjustment,
     GiftOverview,
+    GiftPhysicalOrientation,
     GiftTry,
-    GiftReceived,
+    GiftReceived,   // TODO
 }
 
 class GameModeManager {
@@ -110,15 +111,23 @@ class GameModeManager {
     }
 
     enterGiftAdjustmentMode() {
+        let prevMode = this._currentMode;
+
         this.resetAll(GameMode.GiftAdjustment);
 
-        giftMaker.enterAdjustments();
+        giftMaker.enterAdjustments(prevMode === GameMode.GiftInitial);
     }
 
     enterGiftOverviewMode() {
         this.resetAll(GameMode.GiftOverview);
 
         giftMaker.enterOverview();
+    }
+
+    enterGiftPhysicalOrientationMode() {
+        this.resetAll(GameMode.GiftPhysicalOrientation);
+
+        giftMaker.enterGiftPhysicalOrientation();
     }
 
     enterGiftTryMode() {
