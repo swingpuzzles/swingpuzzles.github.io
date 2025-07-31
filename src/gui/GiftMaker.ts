@@ -318,7 +318,18 @@ Then we’ll guide you to Amazon, where you can upload it and complete your gift
 
 Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => {
-                // TODO download
+                const now = new Date();
+                const timestamp = now.toISOString().replace(/[:.]/g, "-");
+                const orientation = popupHint.vertical ? "portrait" : "landscape";
+
+                const linkElement = document.createElement("a");
+                linkElement.href = puzzleEditor.dataUrl;
+                linkElement.download = `puzzle-${orientation}-${timestamp}.png`;
+                linkElement.style.display = "none";
+
+                document.body.appendChild(linkElement);
+                linkElement.click();
+                document.body.removeChild(linkElement);
                 gameModeManager.enterGiftPhysicalFinalMode();
             },
             () => { this.exitGiftMaking(); },
