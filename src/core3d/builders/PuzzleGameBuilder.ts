@@ -47,14 +47,16 @@ class PuzzleGameBuilder {
             height: 0.5, // thin, but has volume
             depth: ctx.zLimit * 2,
         }, ctx.scene);
-        
-        this._ground.visibility = 0;
 
-        const body = new PhysicsBody(this._ground, PhysicsMotionType.STATIC, false, ctx.scene);
+        //const body = new PhysicsBody(this._ground, PhysicsMotionType.STATIC, false, ctx.scene);
         
         physicsAggregateBuilder.attachGroundAggregate(this._ground);
 
         this._groundVis = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
+        
+        this._lathe.visibility = 0;
+        this._ground.visibility = 0;
+        this._groundVis.visibility = 0;
 
         this._groundCover = MeshBuilder.CreateGround("ground", { width: ctx.xLimit * 2, height: ctx.zLimit * 2 }, ctx.scene);
         this._groundCover.visibility = 0;
@@ -87,6 +89,9 @@ class PuzzleGameBuilder {
         shakeBehaviorManager.enableDragBehaviors();
 
         ctx.resetBoundings(cover.position);
+
+        this._lathe.visibility = 1;
+        this._groundVis.visibility = 1;
 
         this._lathe.position = cover.position.clone();
         this._lathe.position.y = ctx.minY - 0.48;
@@ -127,7 +132,6 @@ class PuzzleGameBuilder {
             // Create DynamicTexture with same size
             const dynamicTexture = new DynamicTexture("dynamicTexture", { width, height }, ctx.scene, true);
             const ctx2d = dynamicTexture.getContext() as CanvasRenderingContext2D;
-            console.log(ctx2d);
 
             // Draw original image
             ctx2d.drawImage(img, 0, 0, width, height);
