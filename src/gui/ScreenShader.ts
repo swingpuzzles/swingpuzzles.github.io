@@ -128,6 +128,7 @@ class ScreenShader {
         if (this._shaderMode !== mode) {
             this._shaderMode = mode;
             this._mainContainer.isVisible = mode !== ShaderMode.NONE;
+            this._mainContainer.zIndex = mode === ShaderMode.SHADOW_WINDOW ? 19.5 : 349.5;
 
             this.resize();
         }
