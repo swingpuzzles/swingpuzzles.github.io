@@ -210,7 +210,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             },
         ];
 
-        popupHint.show(introText, "GIFT MAKING", 0.92, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show(introText, "GIFT MAKING", 0.92, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER,
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             () => { this.exitGiftMaking(); },
             null,
@@ -278,7 +278,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
 You’ve crafted a custom puzzle — now it’s time to share the surprise.
 🎁 Send the link to your friend and let the joy begin.
 🌟 Curious? You can preview it yourself.
-📦 Want to make it even more special? Order a real-life version as a keepsake.`, "GIFT OVERVIEW", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+📦 Want to make it even more special? Order a real-life version as a keepsake.`, "GIFT OVERVIEW", 0.9, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => { this.exitGiftMaking(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftAdjustmentMode(); },
@@ -316,7 +316,7 @@ When you tap Next, your custom puzzle image will be automatically downloaded.
 
 Then we’ll guide you to Amazon, where you can upload it and complete your gift order.
 
-Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 const now = new Date();
                 const timestamp = now.toISOString().replace(/[:.]/g, "-");
@@ -324,7 +324,7 @@ Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_WINDOW_WIDE, 
 
                 const linkElement = document.createElement("a");
                 linkElement.href = puzzleEditor.dataUrl;
-                linkElement.download = `puzzle-${orientation}-${timestamp}.png`;
+                linkElement.download = `PUZZLE-${orientation}-${timestamp}.png`;
                 linkElement.style.display = "none";
 
                 document.body.appendChild(linkElement);
@@ -373,14 +373,14 @@ Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_WINDOW_WIDE, 
 
 You're just one step away from turning it into a real gift.
 
-1. **Choose the puzzle size** below.
+1. **Choose the puzzle size** (# of pieces) below.
 2. Tap **"Get it on Amazon"** to open the product page.
 3. On Amazon:
    • Click **Customize Now**
-   • Click **Upload** and select the image you just downloaded (starts with “XYZ...”)
+   • Click **Upload** and select the image you just downloaded (starts with “PUZZLE-...” and you'll find it under your downloads folder)
    • Click **Add to Cart**, then **Go to Cart** and **Proceed to Checkout**
 
-You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 window.open(link, "_blank");
             },

@@ -660,7 +660,7 @@ class PopupHint {
         this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24;
 
         if (this.formPanelRect.isVisible) {
-            const middleTopPanelRatio = 0.5;
+            const middleTopPanelRatio = 0.99 - 0.16 * this.formPanel.children.length;
             const formPanelRatio = 1 - middleTopPanelRatio;
             const baseFormPanelheight = formPanelRatio * rawMiddleHeight;
 
@@ -675,7 +675,6 @@ class PopupHint {
             this.formPanelRect.cornerRadius = minSize / 40;
 
             this.formPanelRect.paddingLeftInPixels = minSize / 75;
-            this.formPanelRect.paddingRightInPixels = minSize / 75;
             this.formPanelRect.paddingTopInPixels = formPanelheightCoef / 75;
             this.formPanelRect.paddingBottomInPixels = formPanelheightCoef / 75;
 
@@ -684,7 +683,7 @@ class PopupHint {
             this.formPanel.paddingTopInPixels = formPanelheightCoef / 80;
             this.formPanel.paddingBottomInPixels = formPanelheightCoef / 80;
 
-            const containerHeight = 39 / 40 * formPanelheightCoef / Math.max(this.formPanel.children.length, 3);
+            const containerHeight = 39 / 40 * formPanelheightCoef / this.formPanel.children.length;
 
             for (const container of this.formPanel.children) {
 
