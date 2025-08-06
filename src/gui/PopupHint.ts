@@ -56,7 +56,7 @@ class PopupHint {
     private _backAction: () => void = () => {};
     private _currentAnimation: Animatable | null = null;
     private _popupMode!: PopupMode;
-    private _vertical: boolean = false;
+    private _imgVertical: boolean = false;
     private _radioButtons: Button[] = [];
 
     init() {
@@ -350,12 +350,12 @@ class PopupHint {
     }
 
     public get vertical(): boolean {
-        return this._vertical;
+        return this._imgVertical;
     }
 
     public set vertical(value: boolean) {
-        if (value !== this._vertical) {
-            this._vertical = value;
+        if (value !== this._imgVertical) {
+            this._imgVertical = value;
             this.resize();
             puzzleEditor.resize();
         }
@@ -604,14 +604,16 @@ class PopupHint {
             this._popupMode === PopupMode.Gift_Adjustments_Overview ||
             this._popupMode === PopupMode.Gift_Physical_Initial ||
             this._popupMode === PopupMode.Gift_Physical_Final;
+
+        const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         
         if (this._popupMode !== PopupMode.Gift_Physical_Initial && this._popupMode !== PopupMode.Gift_Physical_Final) {
-            this._vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+            this._imgVertical = vertical;
         }
 
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
         const rawMainHeight = minSize * this._sizeCoef;
-        const mainHeight = giftPreviewOverview && this._vertical
+        const mainHeight = giftPreviewOverview && vertical
             ? Math.min(rawMainHeight * 1.673, 0.88 * ctx.engine.getRenderHeight())
             : rawMainHeight;
         const topHeightOrigCoef = 0.2;
@@ -620,7 +622,7 @@ class PopupHint {
         const topHeight = minSize * topHeightCoef;
         const middleHeight = mainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
         const rawMiddleHeight = rawMainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
-        const containerwidth = giftPreviewOverview && !this._vertical ? mainHeight * 1.1 : (minSize * 0.87);
+        const containerwidth = giftPreviewOverview && !vertical ? mainHeight * 1.1 : (minSize * 0.87);
         this.mainContainer.widthInPixels = containerwidth;
         this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
