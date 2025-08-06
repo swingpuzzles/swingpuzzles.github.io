@@ -210,7 +210,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             },
         ];
 
-        popupHint.show(introText, "GIFT MAKING", 0.92, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(introText, "↓↑ GIFT MAKING ↖↙", 0.92, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER,
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             () => { this.exitGiftMaking(); },
             null,

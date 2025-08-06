@@ -632,7 +632,7 @@ class PopupHint {
         this.centerRect.heightInPixels = middleHeight;
         this.bottomRect.heightInPixels = minSize * 0.1;
         this.welcomeText.widthInPixels = topHeightOrig * 3.1;//0.62;
-        this.welcomeText.fontSizeInPixels = topHeight / 2.8;//14;
+        this.welcomeText.fontSizeInPixels = topHeight / 2.8 / Math.max(1, this.welcomeText.text.length / 15);//14;
 
         const imageWidth = topHeight;
         const imageHeight = topHeight * 0.925;//0.185;
