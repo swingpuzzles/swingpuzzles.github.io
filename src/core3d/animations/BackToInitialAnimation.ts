@@ -54,7 +54,7 @@ class BackToInitialAnimation implements IPuzzleAnimation {
         targetAnim.setKeys([{ frame: 0, value: cam.target.clone() }, { frame: animFrames, value: orig.target.clone() }]);
         targetAnim.setEasingFunction(easingFunction);
 
-        gameModeManager.enterOpenCoverMode();
+        gameModeManager.enterOpenCoverMode(false);
 
         ctx.scene.beginDirectAnimation(cam, [alphaAnim, betaAnim, radiusAnim, targetAnim], 0, animFrames, false, 1.0, () => {
             // Final snap to correct alpha/beta/radius/target

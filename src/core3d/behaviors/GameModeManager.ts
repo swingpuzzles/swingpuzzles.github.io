@@ -1,4 +1,5 @@
 import giftMaker from "../../gui/GiftMaker";
+import popupHint from "../../gui/PopupHint";
 import tutorialManager from "../../gui/TutorialManager";
 import ctx from "../common/SceneContext";
 import piecePositioningManager from "./PiecePositioningManager";
@@ -54,6 +55,8 @@ class GameModeManager {
         let prevMode = this._currentMode;
         this._currentMode = currentMode;
 
+        popupHint.hide();
+
         ctx.camera.upperAlphaLimit = null;
         ctx.camera.lowerAlphaLimit = null;
         ctx.camera.upperBetaLimit = null;
@@ -77,12 +80,14 @@ class GameModeManager {
         ctx.camera.attachControl(ctx.canvas, true);
     }
 
-    enterOpenCoverMode() {
+    enterOpenCoverMode(showShakeIt: boolean = true) {
         this.resetAll(GameMode.OpenCover);
 
         ctx.camera.detachControl();
 
-        tutorialManager.showShakeHint();
+        if (showShakeIt) {
+            tutorialManager.showShakeHint();
+        }
     }
 
     enterShakeMode() {
