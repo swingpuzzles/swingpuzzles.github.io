@@ -46,7 +46,7 @@ class PuzzleUrlHelper {
         }
     }
 
-    public setCategory(value: string, update = false) {
+    public setCategory(value: string/*, update = false*/) {
         if (this._category === value) {
             return;
         }
@@ -54,9 +54,9 @@ class PuzzleUrlHelper {
         this._category = value;
         this._puzzleId = null;
 
-        if (update) {
+        //if (update) {
             this.updateUrl();
-        }
+        //}
     }
 
     public setImgUrl(value: string) {
@@ -87,7 +87,12 @@ class PuzzleUrlHelper {
         }
 
         const newUrl = `${window.location.pathname}?${params.toString()}`;
-        window.history.pushState({}, '', newUrl);
+        const currentUrl = `${window.location.pathname}${window.location.search}`;
+
+        // Only push to history if different
+        if (newUrl !== currentUrl) {
+            window.history.pushState({}, '', newUrl);
+        }
     }
 
     public readFromUrl(): { category: string | null; puzzleId: string | null } {

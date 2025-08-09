@@ -1,5 +1,5 @@
 import { Control } from "@babylonjs/gui";
-import ctx, { Categories, Category } from "../../core3d/common/SceneContext";
+import ctx, { Categories, Category, CategoryKeys } from "../../core3d/common/SceneContext";
 import puzzleCircleBuilder from "../../core3d/builders/PuzzleCircleBuilder";
 import DropdownBuilder from "./DropdownBuilder";
 import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
@@ -47,7 +47,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     addImageOption(category: Category, last: boolean = false) {
         this.addOption(category.text, category.url);
 
-        if (!localStorageManager.getString(this.storageItemName) || !(localStorageManager.getString(this.storageItemName)! in Categories)) {
+        if (!localStorageManager.getString(this.storageItemName) || (CategoryKeys.indexOf(localStorageManager.getString(this.storageItemName)!) <= -1)) {
             localStorageManager.set(this.storageItemName, category.key);
         }
 
@@ -64,7 +64,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
             ctx.category = category;
 
             if (!gameModeManager.giftReceived) {
-                puzzleUrlHelper.setCategory(category.key, userAction);
+                puzzleUrlHelper.setCategory(category.key/*, userAction*/);
 
                 if (category === Categories.Gift) {
                     gameModeManager.enterGiftInitialMode();
