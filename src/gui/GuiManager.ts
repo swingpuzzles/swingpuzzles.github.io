@@ -169,7 +169,7 @@ class GuiManager {
         const found = Object.values(Categories).find(cat => cat.key === category);
 
         if (found) {
-            this.categoryDropdown.doSelectAction(found.text, found.url, null, true);
+            this.categoryDropdown.doSelectAction(found.text, found.url, null, false);
         }
     }
 }
