@@ -2,7 +2,7 @@ import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation"
 import gameModeManager from "../core3d/behaviors/GameModeManager";
 import ctx from "../core3d/common/SceneContext";
 import guiManager from "../gui/GuiManager";
-import popupHint from "../gui/PopupHint";
+import popupHint, { overPopup } from "../gui/PopupHint";
 
 class PuzzleUrlHelper {
     private _category: string | null = null;
@@ -12,6 +12,7 @@ class PuzzleUrlHelper {
     constructor() {
         window.addEventListener("popstate", () => {
             popupHint.hide();
+            overPopup.hide();
 
             const urlData = this.readFromUrl();
 

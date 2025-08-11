@@ -1,6 +1,6 @@
 import { Control } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
-import popupHint, { PopupMode } from "./PopupHint";
+import popupHint, { overPopup, PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import handImagePool from "./HandImagePool";
 import timerDisplay from "../core3d/misc/TimerDisplay";
@@ -137,6 +137,33 @@ Available now on Amazon!`;
             null,
             null,
             PopupMode.Sell);
+    }
+
+    public showGiftMakingHint() {
+        if (localStorageManager.getBoolean(CommonStorageKeys.GiftTutorialDone)) {
+            return;
+        }
+
+        popupHint.toBack();
+
+        let makeGiftHint = `🧩 Style your gift!
+        
+Pick the text, font, colors, birthday cake, tablecloth, and background.
+
+All these options are waiting for you in the dropdowns at the top of the screen.`;
+    
+        overPopup.show(makeGiftHint, "↑ STYLE IT! ↑", 0.87, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+                () => { this.finishGiftTutorial(); },
+                () => { this.finishGiftTutorial(); },
+                null, 
+                () => { 
+                    handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.1, 30, true, 0.02, 0.1); });
+    }
+
+    public finishGiftTutorial() {
+        localStorageManager.set(CommonStorageKeys.GiftTutorialDone, true);
+        overPopup.hide();
+        popupHint.toFront();
     }
 
     private finishTutorial() {

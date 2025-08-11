@@ -2,6 +2,7 @@ import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
 import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
+import tutorialManager from "../TutorialManager";
 
 const FONT_FAMILIES = [ "Segoe Script", "Pacifico", "Comic Sans MS", "Brush Script MT" ];
 
@@ -39,7 +40,7 @@ export default class FontFamilyDropdownBuilder extends DropdownBuilder {
         giftMaker.fontFamilyChanged(family);
 
         if (userAction) {
-            //tutorialManager.showPuzzleChooserHint();// TODO tutorial?
+            tutorialManager.finishGiftTutorial();
         }
     }
 }

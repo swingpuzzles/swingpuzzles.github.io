@@ -1,5 +1,6 @@
 export const CommonStorageKeys = {
     TutorialDone: "tutorialDone",
+    GiftTutorialDone: "giftTutorialDone",
     CookiesAccepted: "cookiesAccepted",
     Category: "category",
     NumPieces: "numPieces",

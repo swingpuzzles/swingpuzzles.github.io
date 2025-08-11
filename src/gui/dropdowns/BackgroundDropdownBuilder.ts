@@ -2,6 +2,7 @@ import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
 import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
+import tutorialManager from "../TutorialManager";
 
 export default class BackgroundDropdownBuilder extends DropdownBuilder {
     private static readonly bgs = [ "cartoons", "room", "autumn", "meadow", "trees", "garden", "stars" ];
@@ -46,7 +47,7 @@ export default class BackgroundDropdownBuilder extends DropdownBuilder {
         giftMaker.bgChanged(imageUrl);
 
         if (userAction) {
-            //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?
+            tutorialManager.finishGiftTutorial();
         }
     }
 }

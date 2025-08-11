@@ -4,6 +4,7 @@ import wishes from '../../assets/data/wishes.json'
 import giftMaker from "../GiftMaker";
 import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
 import { TranslationSectionKeys } from "../../core3d/misc/TranslationManager";
+import tutorialManager from "../TutorialManager";
 
 export default class WishTextDropdownBuilder extends DropdownBuilder {
     constructor() {
@@ -44,7 +45,7 @@ export default class WishTextDropdownBuilder extends DropdownBuilder {
         giftMaker.wishTextChanged(text);
 
         if (userAction) {
-            //tutorialManager.showPuzzleChooserHint();// TODO tutorial?
+            tutorialManager.finishGiftTutorial();
         }
     }
 }

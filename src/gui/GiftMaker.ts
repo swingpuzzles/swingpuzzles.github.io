@@ -49,6 +49,7 @@ class GiftMaker {
         guiManager.advancedTexture.addControl(this._fontFamilyDropdown);
 
         this._stack2 = new StackPanel();
+        this._stack2.zIndex = 300;
         this._stack2.isVertical = false;
         this._stack2.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
 
@@ -244,7 +245,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             () => { gameModeManager.enterGiftInitialMode(); },
             null,
             PopupMode.Gift_Adjustments_Preview
-        )
+        );
     }
 
     public enterOverview() {

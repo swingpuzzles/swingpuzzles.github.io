@@ -2,6 +2,7 @@ import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
 import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
+import tutorialManager from "../TutorialManager";
 
 export default class ForegroundDropdownBuilder extends DropdownBuilder {
     private static readonly fromIndex = 1;
@@ -47,7 +48,7 @@ export default class ForegroundDropdownBuilder extends DropdownBuilder {
         giftMaker.fgChanged(imageUrl, Number(index));
 
         if (userAction) {
-            //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?
+            tutorialManager.finishGiftTutorial();
         }
     }
 }

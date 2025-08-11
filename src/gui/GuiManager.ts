@@ -7,7 +7,7 @@ import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation"
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import sceneInitializer from "../core3d/SceneInitializer";
 import screenShader from "./ScreenShader";
-import popupHint from "./PopupHint";
+import popupHint, { overPopup } from "./PopupHint";
 import giftMaker from "./GiftMaker";
 import { Dropdown } from "./dropdowns/Dropdown";
 import CategoryDropdownBuilder from "./dropdowns/CategoryDropdownBuilder";
@@ -37,6 +37,7 @@ class GuiManager {
         screenShader.init();
         
         popupHint.init();
+        overPopup.init();
 
         giftMaker.init();
 

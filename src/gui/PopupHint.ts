@@ -58,6 +58,13 @@ class PopupHint {
     private _popupMode!: PopupMode;
     private _imgVertical: boolean = false;
     private _radioButtons: Button[] = [];
+    private _overPopup: boolean = false;
+    private _shaderMode: ShaderMode = ShaderMode.NONE;
+    private _inFront: boolean = true;
+
+    constructor(overPopup: boolean = false) {
+        this._overPopup = overPopup;
+    }
 
     init() {
         this.mainContainer = new Container("PopupHintContainer");
@@ -727,7 +734,7 @@ class PopupHint {
 
     public show(
         fullText: string,
-        heading = "Welcome!",
+        heading: string,
         sizeCoef: number = 0.87,
         shaderMode: ShaderMode = ShaderMode.NONE,
         verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
@@ -739,7 +746,7 @@ class PopupHint {
         formInputModel: FormRowModel[] | null = null
     ): void {
 
-        if (mode === PopupMode.Normal && localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
+        if (!this._overPopup && mode === PopupMode.Normal && localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
             return;
         }
 
@@ -754,7 +761,7 @@ class PopupHint {
         }
     }
 
-    private showWrapper(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
+    private showWrapper(fullText: string, heading: string, sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
             verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
             action: () => void = () => {},
             closeAction: (() => void) | null = null,
@@ -768,7 +775,7 @@ class PopupHint {
         }
     }
 
-    private internalShow(fullText: string, heading = "Welcome!", sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
+    private internalShow(fullText: string, heading: string, sizeCoef: number = 0.87, shaderMode: ShaderMode = ShaderMode.NONE,
             verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
             action: () => void = () => {},
             closeAction: (() => void) | null = null,
@@ -787,6 +794,7 @@ class PopupHint {
         this.formPanelRect.alpha = 1;
         this.formPanelRect.background = "#FFFFFF00"
         this.formPanelRect.width = "100%";
+        this._shaderMode = shaderMode;
 
 
         switch (mode) {
@@ -873,7 +881,7 @@ class PopupHint {
         }
         
         this.resize();
-        this.mainContainer.zIndex = shaderMode === ShaderMode.SHADOW_WINDOW ? 20 : 350;
+        this.adjustZIndex();
         this.mainContainer.verticalAlignment = verticalAlignment;
         screenShader.setShaderMode(shaderMode);
         this.typeTextLetterByLetter(fullText);
@@ -884,6 +892,20 @@ class PopupHint {
         return true;
     }
 
+    public toBack() {
+        this._inFront = false;
+        this.adjustZIndex();
+    }
+
+    public toFront() {
+        this._inFront = true;
+        this.adjustZIndex();
+    }
+
+    private adjustZIndex() {
+        this.mainContainer.zIndex = !this._inFront ? 19 : this._overPopup ? 20.1 : (this._shaderMode === ShaderMode.SHADOW_WINDOW || this._shaderMode === ShaderMode.SHADOW_WINDOW_WIDE) ? 20 : 350;
+    }
+
     public hide(onComplete?: () => void) {
         if (!this.mainContainer.isVisible) {
             return;
@@ -891,7 +913,8 @@ class PopupHint {
 
         this.fadeOut(() => {
             onComplete?.();
-        });
+        },
+        !this._overPopup);
     }
 
     private stopCurrentAnim() {
@@ -1012,3 +1035,6 @@ class PopupHint {
 
 const popupHint = new PopupHint();
 export default popupHint;
+
+const overPopup = new PopupHint(true);
+export { overPopup }

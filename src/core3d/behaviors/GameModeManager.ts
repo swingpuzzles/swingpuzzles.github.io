@@ -1,5 +1,5 @@
 import giftMaker from "../../gui/GiftMaker";
-import popupHint from "../../gui/PopupHint";
+import popupHint, { overPopup } from "../../gui/PopupHint";
 import tutorialManager from "../../gui/TutorialManager";
 import ctx from "../common/SceneContext";
 import piecePositioningManager from "./PiecePositioningManager";
@@ -56,6 +56,7 @@ class GameModeManager {
         this._currentMode = currentMode;
 
         popupHint.hide();
+        overPopup.hide();
 
         ctx.camera.upperAlphaLimit = null;
         ctx.camera.lowerAlphaLimit = null;
@@ -122,6 +123,7 @@ class GameModeManager {
         this.resetAll(GameMode.GiftAdjustment);
 
         giftMaker.enterAdjustments(prevMode === GameMode.GiftInitial);
+        tutorialManager.showGiftMakingHint();
     }
 
     enterGiftOverviewMode() {
