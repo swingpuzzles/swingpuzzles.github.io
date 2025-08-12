@@ -17,7 +17,7 @@ class TutorialManager {
             nextAction = () => { overPopup.hide(); };
         }
 
-        let message = `Welcome to PuzzleVerse 3D! 🧩
+        let message = `Welcome to SwingPuzzles.com! 🧩
 
 Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. Every piece fits into a world of adventure!
     
