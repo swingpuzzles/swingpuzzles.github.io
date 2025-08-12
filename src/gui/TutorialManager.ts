@@ -9,6 +9,14 @@ import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageMa
 
 class TutorialManager {
     init() {
+        let popup = popupHint;
+        let nextAction = () => { this.showSizeChooserHint(); };
+
+        if (!gameModeManager.initialMode) {
+            popup = overPopup;
+            nextAction = () => { overPopup.hide(); };
+        }
+
         let message = `Welcome to PuzzleVerse 3D! 🧩
 
 Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. Every piece fits into a world of adventure!
@@ -20,10 +28,10 @@ Let's start building!`;
         const hasAcceptedCookies = localStorageManager.getBoolean(CommonStorageKeys.CookiesAccepted);
 
         if (hasAcceptedCookies) {
-            this.showSizeChooserHint();
+            nextAction();
         } else {
-            popupHint.show(message, "WELCOME!", 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
-                () => { this.showSizeChooserHint(); });
+            popup.show(message, "WELCOME!", 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+                () => { nextAction(); });
         }
 
         gameModeManager.addGameModeChangedObserver((prevMode) => {

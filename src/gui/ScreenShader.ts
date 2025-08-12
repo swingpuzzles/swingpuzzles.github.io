@@ -10,7 +10,7 @@ export enum ShaderMode {
     SHADOW_WINDOW_WIDE = 3,
 }
 
-class ScreenShader {
+export default class ScreenShader {
     private _mainContainer!: Rectangle;
     private _topPanel!: Grid;
     private _restPanel!: Rectangle;
@@ -134,6 +134,3 @@ class ScreenShader {
         }
     }
 }
-
-const screenShader = new ScreenShader();
-export default screenShader;

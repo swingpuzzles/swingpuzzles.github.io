@@ -6,7 +6,6 @@ import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
 import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import sceneInitializer from "../core3d/SceneInitializer";
-import screenShader from "./ScreenShader";
 import popupHint, { overPopup } from "./PopupHint";
 import giftMaker from "./GiftMaker";
 import { Dropdown } from "./dropdowns/Dropdown";
@@ -34,8 +33,6 @@ class GuiManager {
         this.piecesCountDropdown = new PiecesCountDropdownBuilder().build();
         guiManager.advancedTexture.addControl(this.piecesCountDropdown);
 
-        screenShader.init();
-        
         popupHint.init();
         overPopup.init();
 

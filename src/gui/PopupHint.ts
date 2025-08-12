@@ -3,7 +3,7 @@ import { Animation, Animatable } from "@babylonjs/core"
 import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
 import sceneInitializer from "../core3d/SceneInitializer";
 import ctx from "../core3d/common/SceneContext";
-import screenShader, { ShaderMode } from "./ScreenShader";
+import ScreenShader, { ShaderMode } from "./ScreenShader";
 import guiManager from "./GuiManager";
 import handImagePool from "./HandImagePool";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
@@ -61,12 +61,16 @@ class PopupHint {
     private _overPopup: boolean = false;
     private _shaderMode: ShaderMode = ShaderMode.NONE;
     private _inFront: boolean = true;
+    private _screenShader: ScreenShader;
 
     constructor(overPopup: boolean = false) {
         this._overPopup = overPopup;
+        this._screenShader = new ScreenShader();
     }
 
     init() {
+        this._screenShader.init();
+        
         this.mainContainer = new Container("PopupHintContainer");
         this.mainContainer.isVisible = false;
         this.mainContainer.alpha = 0;
@@ -883,7 +887,7 @@ class PopupHint {
         this.resize();
         this.adjustZIndex();
         this.mainContainer.verticalAlignment = verticalAlignment;
-        screenShader.setShaderMode(shaderMode);
+        this._screenShader.setShaderMode(shaderMode);
         this.typeTextLetterByLetter(fullText);
         this.mainContainer.isVisible = true;
 
@@ -903,7 +907,10 @@ class PopupHint {
     }
 
     private adjustZIndex() {
-        this.mainContainer.zIndex = !this._inFront ? 19 : this._overPopup ? 20.1 : (this._shaderMode === ShaderMode.SHADOW_WINDOW || this._shaderMode === ShaderMode.SHADOW_WINDOW_WIDE) ? 20 : 350;
+        this.mainContainer.zIndex = !this._inFront ? 19 : (this._shaderMode === ShaderMode.SHADOW_WINDOW || this._shaderMode === ShaderMode.SHADOW_WINDOW_WIDE) ? 20 : 350;
+        if (this._overPopup) {
+            this.mainContainer.zIndex += 0.1;
+        }
     }
 
     public hide(onComplete?: () => void) {
@@ -913,8 +920,7 @@ class PopupHint {
 
         this.fadeOut(() => {
             onComplete?.();
-        },
-        !this._overPopup);
+        });
     }
 
     private stopCurrentAnim() {
@@ -970,7 +976,7 @@ class PopupHint {
             onComplete();
 
             if (exitShader) {
-                screenShader.exitShader();
+                this._screenShader.exitShader();
             }
         });
     }
