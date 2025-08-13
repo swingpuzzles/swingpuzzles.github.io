@@ -55,10 +55,15 @@ export class GiftBoxBuilder {
 
         const basePos = 118;
 
+        const renderWidth = ctx.engine.getRenderWidth();
+        const renderHeight = ctx.engine.getRenderHeight();
+
+        const vertical = renderHeight > renderWidth;
+
         const giftTagPlane = MeshBuilder.CreatePlane("giftTagPlane", { width: 21, height: 9.7 });
         giftTagPlane.hasVertexAlpha = true;
         giftTagPlane.material = tagMat;
-        giftTagPlane.position = new Vector3(basePos + 10, -36.5, 12);
+        giftTagPlane.position = new Vector3(basePos + 10, -36.5, vertical ? 6 : 12);
         giftTagPlane.rotation.x = Math.PI / 2;
         giftTagPlane.rotation.y = -Math.PI / 2 + Math.PI / 4;
 
@@ -88,8 +93,9 @@ export class GiftBoxBuilder {
         textPlane.position = giftTagPlane.position.clone().add(new Vector3(0, 0.01, 0)); // offset slightly
         textPlane.rotation = giftTagPlane.rotation.clone();
 
-        const giftBox = MeshBuilder.CreateBox("giftBox", { width: 29.7, height: 4, depth: 45.6 });
-        giftBox.position = new Vector3(basePos, -38.8, 0);
+        const boxHeight = 3;
+        const baseY = -36.8;
+        const giftBox = MeshBuilder.CreateBox("giftBox", { width: 29.7, height: boxHeight, depth: 45.6 });
 
         giftBox.actionManager = new ActionManager(ctx.scene);
 
@@ -104,8 +110,7 @@ export class GiftBoxBuilder {
         const result = await ImportMeshAsync(source, ctx.scene);
         const ribbon = result.meshes[0];
 
-        const position = new Vector3(basePos, -40, 0);
-        ribbon.position = position;
+        ribbon.position = new Vector3(0, boxHeight / 2 - 3.2, 0);
         ribbon.rotation.x = Math.PI / 2;
 
         for (let m of result.meshes) {
@@ -117,7 +122,11 @@ export class GiftBoxBuilder {
 
         ribbon.setParent(giftBox);
 
-        
+        giftBox.rotation.y = vertical ? Math.PI / 2 : 0;
+
+        giftBox.bakeCurrentTransformIntoVertices();
+
+        giftBox.position = new Vector3(basePos, baseY - boxHeight / 2, 0);        
 
         giftTagPlane.setParent(giftBox);
         textPlane.setParent(giftBox);
