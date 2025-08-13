@@ -10,14 +10,14 @@ class ShakeBehaviorManager {
     private _dragBehaviors: PointerDragBehavior[] = [];
     private _dragMeshes: Mesh[] = [];
 
-    addShakeBehavior(meshes: Mesh[]): void {
+    addShakeBehavior(dragMeshes: Mesh[]): void {
         const origPosMap = new Map<Mesh, Vector3>();
         const origMin = new Vector3(ctx.minX, ctx.minY, ctx.minZ);
         const origMax = new Vector3(ctx.maxX, 0, ctx.maxZ);
 
-        this._dragMeshes = meshes;
+        this._dragMeshes = dragMeshes;
     
-        for (const m of meshes) {
+        for (const m of dragMeshes) {
             origPosMap.set(m, m.position.clone());
     
             const dragBehavior = new PointerDragBehavior();
@@ -28,13 +28,13 @@ class ShakeBehaviorManager {
             });
     
             dragBehavior.onDragObservable.add(() => {
-                this.dragMovements(meshes, dragBehavior, origPosMap, origMin, origMax);
+                this.dragMovements(dragMeshes, dragBehavior, origPosMap, origMin, origMax);
             });
     
             dragBehavior.onDragEndObservable.add(() => {
                 gameModeManager.enterSolveMode();
 
-                this.dragMovements(meshes, dragBehavior, origPosMap, origMin, origMax);
+                this.dragMovements(dragMeshes, dragBehavior, origPosMap, origMin, origMax);
 
                 const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
 
@@ -48,8 +48,9 @@ class ShakeBehaviorManager {
 
                 this.moveArcRotateCamera(3 * Math.PI / 2, 0, targetRadius, dragBehavior.attachedNode.position);
     
-                for (const mesh of meshes) {
-                    dragHelpers.disableDragBehavior(dragBehavior);
+                dragHelpers.disableDragBehavior(dragBehavior);
+
+                for (const mesh of dragMeshes) {
                     mesh.isPickable = false;
                 }
             });
@@ -57,6 +58,8 @@ class ShakeBehaviorManager {
             m.addBehavior(dragBehavior);
         }
     }
+
+    //private 
 
     public enableDragBehaviors() {
         for (let db of this._dragBehaviors) {
@@ -106,9 +109,15 @@ class ShakeBehaviorManager {
         const minY = -38;
         const maxY = 38;
 
-        attachedNode.position.x = Scalar.Clamp(attachedNode.position.x, minX, maxX);
-        attachedNode.position.y = Scalar.Clamp(attachedNode.position.y, minY, maxY);
-        attachedNode.position.z = Scalar.Clamp(attachedNode.position.z, minZ, maxZ);
+        const newPos = new Vector3(Scalar.Clamp(attachedNode.position.x, minX, maxX),
+            Scalar.Clamp(attachedNode.position.y, minY, maxY),
+            Scalar.Clamp(attachedNode.position.z, minZ, maxZ));
+
+        if (attachedNode.physicsBody) {
+            meshHelpers.teleportMesh(attachedNode, newPos);
+        } else {
+            attachedNode.position = newPos;
+        }
         
         const moveVector = attachedNode.position.subtract(origPosMap.get(attachedNode)!);
 
