@@ -140,7 +140,18 @@ export class GiftBoxBuilder {
         return ribbon;
     }
 
-    private drawText(name: string, fontFamily: string, textColor: string) {
+    private async ensureFontLoaded(fontFamily: string, weight = "bold", px = 1000) {
+        const familyQuoted = /[\s"']/.test(fontFamily) ? `"${fontFamily}"` : fontFamily;
+        // Ask the browser to load this exact face
+        await (document as any).fonts.load(`${weight} ${px}px ${familyQuoted}`);
+        // Optional: wait until all pending fonts are ready
+        await (document as any).fonts.ready;
+    }
+
+    private async drawText(name: string, fontFamily: string, textColor: string) {
+        // 1) Ensure font is loaded before measure/draw
+        await this.ensureFontLoaded(fontFamily, "bold", 1000);
+
         // Clear and reset transform
         this.ctx2d.clearRect(0, 0, this.texWidth, this.texHeight);
         this.ctx2d.setTransform(1, 0, 0, 1, 0, 0); // Reset transformation matrix
