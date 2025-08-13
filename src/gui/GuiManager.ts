@@ -22,6 +22,7 @@ class GuiManager {
     private xButton!: Button;
     private menuButton!: Button;
     private categoryDropdown!: Dropdown;
+    private _xAction: () => void = () => {};
 
     get advancedTexture() {
         return this._advancedTexture;
@@ -75,6 +76,8 @@ class GuiManager {
         // Register buttons for high-res replacement
         puzzleAssetsManager.addGuiImageButtonSource(this.playButton, "assets/buttons/play-button.webp");
 
+        this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover); }
+
         this.xButton = Button.CreateImageOnlyButton("xButton", "assets/buttons/x-button.webp");
         this.xButton.thickness = 0;
         this.xButton.background = "";
@@ -82,7 +85,7 @@ class GuiManager {
         this.xButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.xButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.xButton.onPointerClickObservable.add(() => {
-            backToInitialAnimation.animate(ctx.currentCover);
+            this._xAction();
         });
 
         this._advancedTexture.addControl(this.xButton);
@@ -96,7 +99,15 @@ class GuiManager {
 
         this._advancedTexture.addControl(this.menuButton);
 
-        gameModeManager.addGameModeChangedObserver(() => {
+        gameModeManager.addGameModeChangedObserver((prevMode) => {
+            switch (prevMode) {
+                case GameMode.Initial:
+                    this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover); };
+                    break;
+                case GameMode.GiftTry:
+                    this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
+                    break;
+            }
             this.refreshButtonSizes();
         });
 

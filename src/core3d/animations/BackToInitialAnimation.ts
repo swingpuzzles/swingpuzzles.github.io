@@ -6,7 +6,7 @@ import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
 
 class BackToInitialAnimation implements IPuzzleAnimation {
 
-    public animate(cover: Mesh): void {
+    public animate(cover: Mesh, action: (() => void) | null = null): void {
         if (!ctx.originalCoverState || !ctx.originalCameraState) {
             console.warn("Original state not stored.");
             return;
@@ -63,8 +63,12 @@ class BackToInitialAnimation implements IPuzzleAnimation {
             cam.radius = orig.radius;
             cam.target = orig.target.clone();
         
-            // ✅ Safe to re-enter initial mode now
-            gameModeManager.enterInitialMode();
+            if (action) {
+                action();
+            } else {
+                // ✅ Safe to re-enter initial mode now
+                gameModeManager.enterInitialMode();
+            }
         });
 
         this.animUnderCover();
