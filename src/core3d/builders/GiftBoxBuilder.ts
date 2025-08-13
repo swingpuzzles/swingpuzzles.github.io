@@ -115,9 +115,12 @@ export class GiftBoxBuilder {
         giftTagPlane.actionManager = giftBox.actionManager;
         textPlane.actionManager = giftBox.actionManager;
 
+        ribbon.setParent(giftBox);
+
+        
+
         giftTagPlane.setParent(giftBox);
         textPlane.setParent(giftBox);
-        ribbon.setParent(giftBox);
 
         gameModeManager.addGameModeChangedObserver((prevMode) => {
             if (gameModeManager.giftTryMode || prevMode === GameMode.GiftTry || prevMode === GameMode.GiftReceived) {

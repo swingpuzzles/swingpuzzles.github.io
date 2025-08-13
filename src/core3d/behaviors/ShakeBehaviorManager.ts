@@ -11,6 +11,10 @@ class ShakeBehaviorManager {
     private _dragMeshes: Mesh[] = [];
 
     addShakeBehavior(dragMeshes: Mesh[]): void {
+        if (this._dragMeshes.length > 0) {
+            return;
+        }
+
         const origPosMap = new Map<Mesh, Vector3>();
         const origMin = new Vector3(ctx.minX, ctx.minY, ctx.minZ);
         const origMax = new Vector3(ctx.maxX, 0, ctx.maxZ);
@@ -18,6 +22,8 @@ class ShakeBehaviorManager {
         this._dragMeshes = dragMeshes;
     
         for (const m of dragMeshes) {
+            m.isPickable = false;
+
             origPosMap.set(m, m.position.clone());
     
             const dragBehavior = new PointerDragBehavior();
@@ -36,17 +42,7 @@ class ShakeBehaviorManager {
 
                 this.dragMovements(dragMeshes, dragBehavior, origPosMap, origMin, origMax);
 
-                const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
-
-                // Base radius for landscape
-                let baseRadius = 42;
-                
-                // Adjust camera radius proportionally in portrait
-                let targetRadius = isPortrait
-                ? baseRadius * (ctx.engine.getRenderHeight() / ctx.engine.getRenderWidth())
-                : baseRadius;
-
-                this.moveArcRotateCamera(3 * Math.PI / 2, 0, targetRadius, dragBehavior.attachedNode.position);
+                this.moveCameraOnTop();
     
                 dragHelpers.disableDragBehavior(dragBehavior);
 
@@ -59,7 +55,27 @@ class ShakeBehaviorManager {
         }
     }
 
-    //private 
+    private moveCameraOnTop() {
+        const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+
+        // Base radius for landscape
+        let baseRadius = 42;
+        
+        // Adjust camera radius proportionally in portrait
+        let targetRadius = isPortrait
+        ? baseRadius * (ctx.engine.getRenderHeight() / ctx.engine.getRenderWidth())
+        : baseRadius;
+
+        this.moveArcRotateCamera(3 * Math.PI / 2, 0, targetRadius, this._dragMeshes[0].position);
+    }
+
+    public autoShake() {
+        this.togglePhysicsAndShake();
+
+        gameModeManager.enterSolveMode();
+
+        this.moveCameraOnTop();
+    }
 
     public enableDragBehaviors() {
         for (let db of this._dragBehaviors) {

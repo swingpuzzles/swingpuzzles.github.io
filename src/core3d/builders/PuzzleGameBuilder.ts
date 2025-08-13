@@ -86,8 +86,6 @@ class PuzzleGameBuilder {
     public build(cover: Mesh) {
         this._building = true;
 
-        shakeBehaviorManager.enableDragBehaviors();
-
         ctx.resetBoundings(cover.position);
 
         this._lathe.visibility = 1;
@@ -115,10 +113,17 @@ class PuzzleGameBuilder {
 
         let url!: string;
         if (coverMat) {   // TODO better logic here
+            // standard puzzle
             const originalTexture = coverMat.diffuseTexture as Texture;
             url = originalTexture.url!; // this should be the image URL
+            shakeBehaviorManager.enableDragBehaviors();
         } else {
+            // gift puzzle
             url = puzzleEditor.dataUrl;
+
+            setTimeout(async () => {
+                shakeBehaviorManager.autoShake();
+            }, 1000);
         }
 
         const img = new Image();
