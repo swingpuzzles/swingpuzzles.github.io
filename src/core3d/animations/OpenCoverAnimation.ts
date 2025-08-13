@@ -13,12 +13,15 @@ class OpenCoverAnimation implements IPuzzleAnimation {
             return;
         }
 
+        let endAngle = Math.PI / 2;// / 2;//cover.rotation.y < Math.PI ? Math.PI * 2 : 0;
+
         const coverMat = cover.material as StandardMaterial;
 
         if (coverMat) {   // TODO better logic here
             const originalTexture = coverMat.diffuseTexture as Texture;
             const url = originalTexture.url!; // this should be the image URL
             puzzleUrlHelper.setImgUrl(url);
+            endAngle = Math.PI;
         }        
 
         gameModeManager.enterOpenCoverMode();
@@ -45,8 +48,6 @@ class OpenCoverAnimation implements IPuzzleAnimation {
             Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);
 
         cover.rotation.y = PuzzleTools.normalizeAngle(cover.rotation.y);
-
-        const endAngle = Math.PI;// / 2;//cover.rotation.y < Math.PI ? Math.PI * 2 : 0;
 
         const rotationKeys = [
             { frame: 0, value: cover.rotation.y },
@@ -91,7 +92,7 @@ class OpenCoverAnimation implements IPuzzleAnimation {
                     // ===== Second animation: your original one =====
             
                     // Rotation animation
-                    const rotationAnim = new Animation("openRotation", "rotation.z", 30,
+                    const rotationAnim = new Animation("openRotation", coverMat ? "rotation.z" : "rotation.x", 30,
                         Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);
             
                     const rotationKeys = [
@@ -101,7 +102,7 @@ class OpenCoverAnimation implements IPuzzleAnimation {
                     rotationAnim.setKeys(rotationKeys);
             
                     // Compute direction
-                    const localLeft = new Vector3(1, 0, 0);
+                    const localLeft = coverMat ? new Vector3(1, 0, 0) : new Vector3(0, 0, -1);
                     const rotationY = cover.rotation.y;
                     const worldLeft = Vector3.TransformCoordinates(localLeft, Matrix.RotationY(rotationY));
             

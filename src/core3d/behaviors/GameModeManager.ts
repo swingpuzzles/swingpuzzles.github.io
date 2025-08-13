@@ -16,7 +16,7 @@ export enum GameMode {
     GiftPhysicalOrientation,
     GiftPhysicalFinal,
     GiftTry,
-    GiftReceived,   // TODO
+    GiftReceived,
 }
 
 class GameModeManager {
@@ -149,8 +149,8 @@ class GameModeManager {
 
         ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
         ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
-        ctx.camera.upperAlphaLimit = 1 * Math.PI / 32;
-        ctx.camera.lowerAlphaLimit = -1 * Math.PI / 32;
+        ctx.camera.upperAlphaLimit = 1.5 * Math.PI / 32;
+        ctx.camera.lowerAlphaLimit = -1.5 * Math.PI / 32;
             
         ctx.camera.attachControl(ctx.canvas, true);
 
@@ -165,8 +165,8 @@ class GameModeManager {
 
         ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
         ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
-        ctx.camera.upperAlphaLimit = 1 * Math.PI / 32;
-        ctx.camera.lowerAlphaLimit = -1 * Math.PI / 32;
+        ctx.camera.upperAlphaLimit = 1.5 * Math.PI / 32;
+        ctx.camera.lowerAlphaLimit = -1.5 * Math.PI / 32;
             
         ctx.camera.attachControl(ctx.canvas, true);
 

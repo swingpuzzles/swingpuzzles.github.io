@@ -15,7 +15,7 @@ import "@babylonjs/loaders/glTF";
 import ctx from "../common/SceneContext";
 import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
-import gameModeManager from "../behaviors/GameModeManager";
+import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
 import giftMaker from "../../gui/GiftMaker";
 
 export class GiftBoxBuilder {
@@ -92,7 +92,7 @@ export class GiftBoxBuilder {
         giftBox.position = new Vector3(basePos, -38.8, 0);
 
         giftBox.actionManager = new ActionManager(ctx.scene);
-        
+
         giftBox.actionManager.registerAction(
             new ExecuteCodeAction(ActionManager.OnPickTrigger, () => {
                 openCoverAnimation.animate(giftBox);
@@ -115,8 +115,12 @@ export class GiftBoxBuilder {
         giftTagPlane.actionManager = giftBox.actionManager;
         textPlane.actionManager = giftBox.actionManager;
 
-        gameModeManager.addGameModeChangedObserver(() => {
-            if (gameModeManager.giftTryMode) {
+        giftTagPlane.setParent(giftBox);
+        textPlane.setParent(giftBox);
+        ribbon.setParent(giftBox);
+
+        gameModeManager.addGameModeChangedObserver((prevMode) => {
+            if (gameModeManager.giftTryMode || prevMode === GameMode.GiftTry || prevMode === GameMode.GiftReceived) {
                 giftTagPlane.isVisible = true;
                 textPlane.isVisible = true;
                 giftBox.isVisible = true;
