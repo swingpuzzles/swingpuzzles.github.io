@@ -126,6 +126,8 @@ class GameModeManager {
             this.resetAll(GameMode.GiftAdjustment, false);
 
             tutorialManager.showGiftMakingHint();
+        } else {
+            tutorialManager.showBadWordHint();
         }
     }
 

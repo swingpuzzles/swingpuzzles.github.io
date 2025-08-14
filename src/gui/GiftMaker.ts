@@ -240,7 +240,6 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             }
 
             if (await profanityGuard.isProfaneName(this._friendsName)) {
-                alert('bad name');
                 return false; // 🚫 Bad name → block gift immediately
             }
 

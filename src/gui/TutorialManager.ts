@@ -183,10 +183,32 @@ All these options are waiting for you in the dropdowns at the top of the screen.
                     handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.1, 30, true, 0.02, 0.1); });
     }
 
-    public finishGiftTutorial() {
-        localStorageManager.set(CommonStorageKeys.GiftTutorialDone, true);
+    public showBadWordHint() {
+        popupHint.toBack();
+
+        const makeGiftHint = `Oops! Your gift text contains language that isn’t allowed.
+    Please choose kinder words so your friend can enjoy the puzzle.`;
+
+        overPopup.show(
+            makeGiftHint,
+            "BE NICE!",
+            0.5,
+            ShaderMode.SHADOW_FULL,
+            Control.VERTICAL_ALIGNMENT_CENTER,
+            () => { this.leaveOverPopup(); },
+            () => { this.leaveOverPopup(); }
+        );
+    }
+
+    public leaveOverPopup() {
         overPopup.hide();
         popupHint.toFront();
+    }
+
+    public finishGiftTutorial() {
+        localStorageManager.set(CommonStorageKeys.GiftTutorialDone, true);
+
+        this.leaveOverPopup();
     }
 
     private finishTutorial() {
