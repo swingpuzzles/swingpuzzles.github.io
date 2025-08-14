@@ -7,6 +7,11 @@ import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
 import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 
 class OpenCoverAnimation implements IPuzzleAnimation {
+    private _giftCover: boolean = false;
+
+    public get giftCover(): boolean {
+        return this._giftCover;
+    }
     
     public animate(cover: Mesh): void {
         if (!gameModeManager.canOpenCover) {
@@ -22,9 +27,12 @@ class OpenCoverAnimation implements IPuzzleAnimation {
             const url = originalTexture.url!; // this should be the image URL
             puzzleUrlHelper.setImgUrl(url);
             endAngle = Math.PI;
-        }        
+            this._giftCover = false;
+        } else {
+            this._giftCover = true;
+        }
 
-        gameModeManager.enterOpenCoverMode();
+        gameModeManager.enterOpenCoverMode(coverMat !== null);
 
         ctx.currentCover = cover;
 

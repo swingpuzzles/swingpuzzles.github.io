@@ -7,6 +7,7 @@ import timerDisplay from "../core3d/misc/TimerDisplay";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
 import giftMaker from "./GiftMaker";
+import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 
 class TutorialManager {
     init() {
@@ -34,7 +35,10 @@ Let's start building!`;
         By continuing, you agree to our use of cookies to ensure the best experience.`;
 
             title = "YOU’VE GOT A GIFT!";
-            nextAction = () => { popup.hide(); };
+            nextAction = () => {
+                localStorageManager.set(CommonStorageKeys.CookiesAccepted, true);
+                popup.hide();
+            };
         } else if (!gameModeManager.initialMode) {
             popup = overPopup;
             nextAction = () => { popup.hide(); };
@@ -50,7 +54,7 @@ Let's start building!`;
         }
 
         gameModeManager.addGameModeChangedObserver((prevMode) => {
-            if (gameModeManager.currentMode === GameMode.Solve) {
+            if (gameModeManager.currentMode === GameMode.Solve && !openCoverAnimation.giftCover) {
                 this.finishTutorial();
             }
         });
