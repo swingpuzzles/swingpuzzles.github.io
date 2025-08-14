@@ -6,16 +6,14 @@ import handImagePool from "./HandImagePool";
 import timerDisplay from "../core3d/misc/TimerDisplay";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
+import giftMaker from "./GiftMaker";
 
 class TutorialManager {
     init() {
         let popup = popupHint;
         let nextAction = () => { this.showSizeChooserHint(); };
 
-        if (!gameModeManager.initialMode) {
-            popup = overPopup;
-            nextAction = () => { overPopup.hide(); };
-        }
+        let title = "WELCOME!";
 
         let message = `Welcome to SwingPuzzles.com! 🧩
 
@@ -24,13 +22,30 @@ Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside yo
 By continuing, you agree to our use of cookies to ensure the best experience.
     
 Let's start building!`;
+
+        if (gameModeManager.giftReceived) {
+            const gifteeName = giftMaker.friendsName;
+
+            message = `🎁 Hey ${gifteeName}, you’ve received a puzzle gift!
+
+        Tap "Got it", click the present to open your puzzle box,  
+        and start solving immediately 🧩
+
+        By continuing, you agree to our use of cookies to ensure the best experience.`;
+
+            title = "YOU’VE GOT A GIFT!";
+            nextAction = () => { popup.hide(); };
+        } else if (!gameModeManager.initialMode) {
+            popup = overPopup;
+            nextAction = () => { popup.hide(); };
+        }
         
         const hasAcceptedCookies = localStorageManager.getBoolean(CommonStorageKeys.CookiesAccepted);
 
         if (hasAcceptedCookies) {
             nextAction();
         } else {
-            popup.show(message, "WELCOME!", 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+            popup.show(message, title, 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
                 () => { nextAction(); });
         }
 

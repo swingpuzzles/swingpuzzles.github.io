@@ -51,12 +51,14 @@ class GameModeManager {
         return this.initialMode || this.giftTryMode || this.giftReceived;
     }
 
-    private resetAll(currentMode: GameMode) {
+    private resetAll(currentMode: GameMode, hidePopups: boolean = true) {
         let prevMode = this._currentMode;
         this._currentMode = currentMode;
 
-        popupHint.hide();
-        overPopup.hide();
+        if (hidePopups) {
+            popupHint.hide();
+            overPopup.hide();
+        }
 
         ctx.camera.upperAlphaLimit = null;
         ctx.camera.lowerAlphaLimit = null;
@@ -117,13 +119,14 @@ class GameModeManager {
         giftMaker.start();
     }
 
-    enterGiftAdjustmentMode() {
+    async enterGiftAdjustmentMode() {
         let prevMode = this._currentMode;
 
-        this.resetAll(GameMode.GiftAdjustment);
+        if (await giftMaker.enterAdjustments(prevMode === GameMode.GiftInitial)) {
+            this.resetAll(GameMode.GiftAdjustment, false);
 
-        giftMaker.enterAdjustments(prevMode === GameMode.GiftInitial);
-        tutorialManager.showGiftMakingHint();
+            tutorialManager.showGiftMakingHint();
+        }
     }
 
     enterGiftOverviewMode() {

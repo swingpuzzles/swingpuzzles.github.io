@@ -20,6 +20,7 @@ import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import localStorageManager, { GiftStorageKeys } from "../common/LocalStorageManager";
 import translationManager from "../core3d/misc/TranslationManager";
 import PiecesCountSelector from "./selectors/PiecesCountSelector";
+import profanityGuard from "../common/ProfanityGuard";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -223,7 +224,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         )
     }
 
-    public enterAdjustments(storeValues: boolean) {
+    public async enterAdjustments(storeValues: boolean): Promise<boolean> {
         if (storeValues) {
             let age!: number;
             let lang!: string;
@@ -238,6 +239,11 @@ Then, fill in the details below to personalize your custom puzzle — enter your
                 }
             }
 
+            if (await profanityGuard.isProfaneName(this._friendsName)) {
+                alert('bad name');
+                return false; // 🚫 Bad name → block gift immediately
+            }
+
             puzzleEditor.setFormData(this._friendsName, age);
         }
 
@@ -248,6 +254,8 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             null,
             PopupMode.Gift_Adjustments_Preview
         );
+
+        return true;
     }
 
     public enterOverview() {
@@ -435,54 +443,62 @@ You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, Sha
         return `http://localhost:3000/?giftData=${encodedGiftData}`;
     }
 
-    public parseUrlData(giftData: Record<string, string>) {
-        let age = 0;
-        let lang = null;
-        let textId = null;
+    public async parseUrlData(giftData: Record<string, string>): Promise<boolean> {
+        let friendsName: string | null = null;
 
-        let imageName;
-        let imageUrl;
+        // First pass: just extract the name and validate it
+        if (GiftStorageKeys.GiftName in giftData) {
+            friendsName = giftData[GiftStorageKeys.GiftName] ?? "";
+            if (await profanityGuard.isProfaneName(friendsName)) {
+                return false; // 🚫 Bad name → block gift immediately
+            }
+        }
+
+        // Now safely parse the rest
+        let age = 0;
+        let lang: string | null = null;
+        let textId: string | null = null;
 
         for (const [key, value] of Object.entries(giftData)) {
             switch (key) {
                 case GiftStorageKeys.GiftBackground:
-                    imageName = "bg-" + value + "-small.webp";
-                    imageUrl = "assets/gift/bgs/" + imageName;
-
-                    puzzleEditor.setBackgroundImage(imageUrl);
+                    puzzleEditor.setBackgroundImage(`assets/gift/bgs/bg-${value}-small.webp`);
                     break;
+
                 case GiftStorageKeys.GiftTables:
-                    imageName = "table_" + value + "-small.webp";
-                    imageUrl = "assets/gift/tables/" + imageName;
-                    puzzleEditor.setTable(imageUrl, Number.parseInt(value));
+                    puzzleEditor.setTable(`assets/gift/tables/table_${value}-small.webp`, Number.parseInt(value) || 0);
                     break;
 
                 case GiftStorageKeys.GiftForeground:
-                    imageName = "torte_" + value + "-small.webp";
-                    imageUrl = "assets/gift/tortes/" + imageName;
-
-                    puzzleEditor.setTorte(imageName, Number.parseInt(value));
+                    puzzleEditor.setTorte(`torte_${value}-small.webp`, Number.parseInt(value) || 0);
                     break;
+
                 case GiftStorageKeys.GiftFontFamily:
                     this._fontFamily = value;
                     puzzleEditor.setFontFamily(value);
                     break;
+
                 case GiftStorageKeys.GiftTextColor:
                     this._textColor = value;
                     puzzleEditor.setTextColor(Color3.FromHexString(value));
                     break;
+
                 case GiftStorageKeys.GiftWishText:
                     textId = value;
                     break;
+
                 case GiftStorageKeys.GiftName:
                     this._friendsName = value;
                     break;
+
                 case GiftStorageKeys.GiftAge:
-                    age = Number.parseInt(value, 10);
+                    age = Number.parseInt(value, 10) || 0;
                     break;
+
                 case GiftStorageKeys.GiftLanguage:
                     lang = value;
                     break;
+
                 default:
                     console.warn(`Unhandled gift data key: ${key}`);
                     break;
@@ -493,11 +509,12 @@ You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, Sha
 
         if (textId && lang) {
             const wishText = translationManager.translateWishText(textId, lang);
-
             if (wishText) {
                 puzzleEditor.setWishText(wishText);
             }
         }
+
+        return true; // ✅ Safe gift
     }
 }
 

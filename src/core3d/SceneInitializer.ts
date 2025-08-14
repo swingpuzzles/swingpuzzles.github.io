@@ -12,6 +12,7 @@ import timerDisplay from "./misc/TimerDisplay";
 import tutorialManager from "../gui/TutorialManager";
 import handImagePool from "../gui/HandImagePool";
 import puzzleEditor from "./misc/PuzzleEditor";
+import profanityGuard from "../common/ProfanityGuard";
 
 
 declare global {
@@ -56,6 +57,8 @@ class SceneInitializer {
 
         // ✅ Converted createScene function to TypeScript
         const createScene = async function (): Promise<Scene> {
+            profanityGuard.initInBackground();
+
             let scene = new Scene(engine);
             var camera = new ArcRotateCamera("arcCamera", Math.PI / 2, 17 * Math.PI / 32, 4 * 45, Vector3.Zero(), scene);
             camera.angularSensibilityX = 4000; // higher = slower
@@ -81,7 +84,7 @@ class SceneInitializer {
 
             puzzleAssetsManager.init();
 
-            guiManager.init();
+            await guiManager.init();
 
             sceneBuilder.buildScene();
 

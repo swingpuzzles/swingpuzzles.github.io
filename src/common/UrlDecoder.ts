@@ -4,14 +4,16 @@ import giftMaker from "../gui/GiftMaker";
 class UrlDecoder {
     constructor() {}
 
-    init() {
+    async init() {
         const urlParams = new URLSearchParams(window.location.search);
         const encodedGiftData = urlParams.get("giftData");
 
         if (encodedGiftData) {
             const giftData = this.decodeGiftDataFromUrlParam(encodedGiftData);
-            giftMaker.parseUrlData(giftData);
-            gameModeManager.enterGiftReceivedMode();
+            
+            if (await giftMaker.parseUrlData(giftData)) {
+                gameModeManager.enterGiftReceivedMode();
+            }   
         }
     }
 

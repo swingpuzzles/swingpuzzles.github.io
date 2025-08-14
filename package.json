@@ -10,7 +10,9 @@
     "babylonjs-gltf2interface": "8.0.0",
     "cannon-es": "^0.20.0",
     "earcut": "^3.0.1",
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "leo-profanity": "^1.8.0",
+    "naughty-words": "^1.2.0"
   },
   "scripts": {
     "dev": "vite",
@@ -20,6 +22,7 @@
     "postinstall": "cpx node_modules/@babylonjs/havok/lib/esm/HavokPhysics.wasm dist/havok"
   },
   "devDependencies": {
+    "@types/leo-profanity": "^1.5.4",
     "@types/node": "^22.15.14",
     "cpx": "^1.5.0",
     "typescript": "^5.8.2",

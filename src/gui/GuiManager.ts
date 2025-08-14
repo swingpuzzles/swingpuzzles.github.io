@@ -28,7 +28,7 @@ class GuiManager {
         return this._advancedTexture;
     }
 
-    init() {
+    async init() {
         this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
         this.piecesCountDropdown = new PiecesCountDropdownBuilder().build();
@@ -39,7 +39,7 @@ class GuiManager {
 
         giftMaker.init();
 
-        urlDecoder.init();
+        await urlDecoder.init();
         
         this.categoryDropdown = new CategoryDropdownBuilder().build();
         guiManager.advancedTexture.addControl(this.categoryDropdown);
