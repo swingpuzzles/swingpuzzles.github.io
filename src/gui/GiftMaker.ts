@@ -57,6 +57,7 @@ class GiftMaker {
         this._colorPicker.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this._colorPicker.paddingRightInPixels = 1;
         this._colorPicker.value = new Color3(0, 0, 0);
+        this._colorPicker.hoverCursor = "pointer";
         this._colorPicker.onValueChangedObservable.add((color) => {
             this.textColorChanged(color);
         });
@@ -92,6 +93,7 @@ class GiftMaker {
 
         gameModeManager.addGameModeChangedObserver(() => {
             this._colorPicker.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
+            this._stack2.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
         });
     }
 
