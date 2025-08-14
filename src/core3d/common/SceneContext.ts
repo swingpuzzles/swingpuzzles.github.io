@@ -76,7 +76,7 @@ class SceneContext {
             this._zLimit = help;
 
             this._latheWidth = this._xLimit * this._latheMulti;
-            this._latheHeight = this._zLimit * this._latheMultiY;
+            this._latheHeight = this._xLimit * this._latheMultiY;
             this._latheDepth = this._zLimit * this._latheMulti;
             this._coverWidth = this._xLimit * this._coverMulti;
             this._coverHeight = this._zLimit * this._coverMulti;

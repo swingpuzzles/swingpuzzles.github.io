@@ -122,11 +122,15 @@ export class GiftBoxBuilder {
 
         ribbon.setParent(giftBox);
 
+        giftBox.scaling.x = 1.2;
+
         giftBox.rotation.y = vertical ? Math.PI / 2 : 0;
+
+        giftBox.position.y += boxHeight / 4;
 
         giftBox.bakeCurrentTransformIntoVertices();
 
-        giftBox.position = new Vector3(basePos, baseY - boxHeight / 2, 0);        
+        giftBox.position = new Vector3(basePos, baseY - 3 * boxHeight / 4, 0);        
 
         giftTagPlane.setParent(giftBox);
         textPlane.setParent(giftBox);

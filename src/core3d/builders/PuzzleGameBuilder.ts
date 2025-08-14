@@ -5,6 +5,7 @@ import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 import physicsAggregateBuilder from "./PhysicsAggregateBuilder";
 import meshHelpers from "../common/MeshHelpers";
 import puzzleEditor from "../misc/PuzzleEditor";
+import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
 
 class PuzzleGameBuilder {
     private _building: boolean = false;
@@ -65,6 +66,24 @@ class PuzzleGameBuilder {
         this._top = puzzleBuilder.createPuzzlePiece(true, false, 1);
         this._left = puzzleBuilder.createPuzzlePiece(false, true, 2);
         this._middle = puzzleBuilder.createPuzzlePiece(false, false, 3);
+
+        gameModeManager.addGameModeChangedObserver(() => {
+            switch (gameModeManager.currentMode) {
+                case GameMode.OpenCover:
+                case GameMode.Shake:
+                case GameMode.Solve:
+                case GameMode.Celebration:
+                case GameMode.GiftTry:
+                case GameMode.GiftReceived:
+                    this._lathe.visibility = 1;
+                    this._groundVis.visibility = 1;
+                    break;
+                default:
+                    this._lathe.visibility = 0;
+                    this._groundVis.visibility = 0;
+                    break;
+            }
+        });
     }
 
     public clear() {
@@ -88,13 +107,13 @@ class PuzzleGameBuilder {
 
         ctx.resetBoundings(cover.position);
 
-        this._lathe.visibility = 1;
-        this._groundVis.visibility = 1;
-
         this._lathe.position = cover.position.clone();
         this._lathe.position.y = ctx.minY - 0.48;
         this._groundVis.position = cover.position.clone();
         this._groundVis.position.y = ctx.minY - 0.5;
+
+        this._lathe.refreshBoundingInfo(true);
+        this._lathe.computeWorldMatrix(true);
 
         const groundPos = cover.position.clone();
         groundPos.y = ctx.minY + 0.15;
