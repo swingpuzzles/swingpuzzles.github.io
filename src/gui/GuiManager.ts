@@ -22,7 +22,7 @@ class GuiManager {
     private xButton!: Button;
     private menuButton!: Button;
     private categoryDropdown!: Dropdown;
-    private _xAction: () => void = () => {};
+    private _xAction: (() => void) | null = null;
 
     get advancedTexture() {
         return this._advancedTexture;
@@ -85,7 +85,9 @@ class GuiManager {
         this.xButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.xButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.xButton.onPointerClickObservable.add(() => {
-            this._xAction();
+            if (this._xAction) {
+                this._xAction();
+            }
         });
 
         this._advancedTexture.addControl(this.xButton);
@@ -106,6 +108,9 @@ class GuiManager {
                     break;
                 case GameMode.GiftTry:
                     this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
+                    break;
+                case GameMode.GiftReceived:
+                    this._xAction = null;
                     break;
             }
             this.refreshButtonSizes();
@@ -146,21 +151,21 @@ class GuiManager {
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             case GameMode.OpenCover:
-                this.xButton.isVisible = true;
+                this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.width = renderHeight / 3.9 + "px";//"248px";
                 this.bannerButton.isVisible = true;
                 this.bannerButton.height = renderHeight / 15.6 + "px";//"62px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             case GameMode.Solve:
-                this.xButton.isVisible = true;
+                this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.width = renderHeight / 8 + "px";//"124px";
                 this.bannerButton.isVisible = true;
                 this.bannerButton.height = renderHeight / 32 + "px";//"31px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 192 + "px";//"5px";
                 break;
             case GameMode.Celebration:
-                this.xButton.isVisible = true;
+                this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.width = renderHeight / 3.7 + "px";//"248px";
                 this.bannerButton.isVisible = true;
                 this.bannerButton.height = renderHeight / 14.8 + "px";//"62px";
