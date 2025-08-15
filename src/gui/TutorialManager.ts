@@ -37,9 +37,11 @@ Let's start building!`;
             title = "YOU’VE GOT A GIFT!";
             nextAction = () => {
                 localStorageManager.set(CommonStorageKeys.CookiesAccepted, true);
-                popup.hide();
+                popup.hide(() => {
+                    handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_TOP, 0, 0.15, 180, false, 0.06);
+                });
             };
-        } else if (!gameModeManager.initialMode) {
+        } else if (!gameModeManager.initialMode) {  // for gift mode at start
             popup = overPopup;
             nextAction = () => { popup.hide(); };
         }
