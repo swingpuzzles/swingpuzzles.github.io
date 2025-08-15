@@ -1,6 +1,8 @@
 import giftMaker from "../../gui/GiftMaker";
 import popupHint, { overPopup } from "../../gui/PopupHint";
 import tutorialManager from "../../gui/TutorialManager";
+import openCoverAnimation from "../animations/OpenCoverAnimation";
+import puzzleCircleBuilder from "../builders/PuzzleCircleBuilder";
 import ctx from "../common/SceneContext";
 import piecePositioningManager from "./PiecePositioningManager";
 
@@ -179,6 +181,14 @@ class GameModeManager {
         //ctx.camera.beta = 12.5 * Math.PI / 32;  
 
         giftMaker.tryGift();
+    }
+
+    handleGetItOnAmayonAction() {
+        if (openCoverAnimation.giftCover) {
+            this.enterGiftPhysicalOrientationMode();
+        } else {
+            window.open(puzzleCircleBuilder.selectedLink, "_blank");
+        }
     }
 
     enterWaiting() {

@@ -3,11 +3,12 @@ export const CommonStorageKeys = {
     GiftTutorialDone: "giftTutorialDone",
     CookiesAccepted: "cookiesAccepted",
     Category: "category",
-    NumPieces: "numPieces",
+    GiftPiecesCount: "giftPiecesCount"
 };
 
 export type CommonStorageKey = keyof typeof CommonStorageKeys;
 
+// here is what we export as url data
 export const GiftStorageKeys = {
     GiftTextColor: "giftTextColor",
     GiftName:  "giftName",
@@ -18,7 +19,7 @@ export const GiftStorageKeys = {
     GiftForeground: "giftForeground",
     GiftTables: "giftTables",
     GiftWishText: "giftWishText",
-    GiftPiecesCount: "giftPiecesCount"
+    NumPieces: "numPieces",
 };
 
 export type GiftStorageKey = keyof typeof GiftStorageKeys;

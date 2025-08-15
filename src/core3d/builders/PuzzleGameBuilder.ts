@@ -6,6 +6,7 @@ import physicsAggregateBuilder from "./PhysicsAggregateBuilder";
 import meshHelpers from "../common/MeshHelpers";
 import puzzleEditor from "../misc/PuzzleEditor";
 import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
+import openCoverAnimation from "../animations/OpenCoverAnimation";
 
 class PuzzleGameBuilder {
     private _building: boolean = false;
@@ -128,21 +129,20 @@ class PuzzleGameBuilder {
         const startX = -ctx.kitWidth / 2;
         const startZ = ctx.kitHeight / 2;
 
-        const coverMat = cover.material as StandardMaterial;
-
         let url!: string;
-        if (coverMat) {   // TODO better logic here
-            // standard puzzle
-            const originalTexture = coverMat.diffuseTexture as Texture;
-            url = originalTexture.url!; // this should be the image URL
-            shakeBehaviorManager.enableDragBehaviors();
-        } else {
+        if (openCoverAnimation.giftCover) { 
             // gift puzzle
             url = puzzleEditor.dataUrl;
 
             setTimeout(async () => {
                 shakeBehaviorManager.autoShake();
             }, 1000);
+        } else {
+            // standard puzzle
+            const coverMat = cover.material as StandardMaterial;
+            const originalTexture = coverMat.diffuseTexture as Texture;
+            url = originalTexture.url!; // this should be the image URL
+            shakeBehaviorManager.enableDragBehaviors();
         }
 
         const img = new Image();

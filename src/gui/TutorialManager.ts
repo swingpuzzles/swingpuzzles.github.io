@@ -157,7 +157,7 @@ Available now on Amazon!`;
     
         popupHint.show(message, "TAKE IT HOME?", 0.8, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
-                window.open(puzzleCircleBuilder.selectedLink, "_blank");
+                gameModeManager.handleGetItOnAmayonAction();
                 popupHint.hide();
             },
             () => {

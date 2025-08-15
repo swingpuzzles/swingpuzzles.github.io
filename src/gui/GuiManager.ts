@@ -67,7 +67,7 @@ class GuiManager {
         this.bannerButton.background = "";
         this.bannerButton.hoverCursor = "pointer";
         this.bannerButton.onPointerClickObservable.add(() => {
-            window.open(puzzleCircleBuilder.selectedLink, "_blank");
+            gameModeManager.handleGetItOnAmayonAction();
         });
         this.bottomButtonPanel.addControl(this.bannerButton);
 
@@ -172,6 +172,23 @@ class GuiManager {
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             }
+    }
+
+    public setPiecesCount(count: number) {
+        this.piecesCountDropdown.selectByCondition((name: string) => {
+            const match = name.match(/(\d+)\s*x\s*(\d+)/);
+
+            if (match) {
+                const xCount = parseInt(match[1], 10);
+                const zCount = parseInt(match[2], 10);
+
+                if (xCount * zCount >= count) {
+                    return true;
+                }
+            }
+
+            return false;
+        });
     }
 
     public enterGeneralCategory(): void {

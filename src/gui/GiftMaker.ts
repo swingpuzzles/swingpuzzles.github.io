@@ -17,7 +17,7 @@ import puzzleEditor from "../core3d/misc/PuzzleEditor";
 import TablesDropdownBuilder from "./dropdowns/TablesDropdownBuilder";
 import { GiftBoxBuilder } from "../core3d/builders/GiftBoxBuilder";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
-import localStorageManager, { GiftStorageKeys } from "../common/LocalStorageManager";
+import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../common/LocalStorageManager";
 import translationManager from "../core3d/misc/TranslationManager";
 import PiecesCountSelector from "./selectors/PiecesCountSelector";
 import profanityGuard from "../common/ProfanityGuard";
@@ -362,7 +362,7 @@ Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_FULL, Control
 
         const vertical = popupHint.vertical;
 
-        const selectedPiecesCount = localStorageManager.getString(GiftStorageKeys.GiftPiecesCount) ?? "1000";
+        const selectedPiecesCount = localStorageManager.getString(CommonStorageKeys.GiftPiecesCount) ?? "1000";
         const piecesSelector = new PiecesCountSelector(selectedPiecesCount);
 
         let link = vertical ? vertMap.get(selectedPiecesCount) : horizMap.get(selectedPiecesCount);
@@ -372,7 +372,7 @@ Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_FULL, Control
 
         const formModel: FormRowModel[] = [
             {
-                id: GiftStorageKeys.GiftPiecesCount,
+                id: CommonStorageKeys.GiftPiecesCount,
                 label: "Count of Puzzle Pieces",
                 type: "selection",
                 selector: piecesSelector
@@ -496,6 +496,10 @@ You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, Sha
 
                 case GiftStorageKeys.GiftLanguage:
                     lang = value;
+                    break;
+
+                case GiftStorageKeys.NumPieces:
+                    guiManager.setPiecesCount(Number.parseInt(value) || 0);
                     break;
 
                 default:

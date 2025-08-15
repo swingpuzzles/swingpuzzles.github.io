@@ -12,6 +12,7 @@ import ISelector from "../interfaces/ISelector";
 import Constants from "../core3d/common/Constants";
 import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
 import puzzleEditor from "../core3d/misc/PuzzleEditor";
+import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 
 export enum PopupMode {
     Normal,
@@ -805,7 +806,7 @@ class PopupHint {
             case PopupMode.PreSell:
                 this.emptyGreenButton.isVisible = true;
                 this.centerImage.isVisible = true;
-                this.coverImage.source = puzzleCircleBuilder.selectedCoverUrl;
+                this.coverImage.source = openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.selectedCoverUrl;
                 break;
             case PopupMode.Sell:
                 this.getItButton.isVisible = true;

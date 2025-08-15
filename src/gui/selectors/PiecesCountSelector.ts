@@ -1,4 +1,4 @@
-import { GiftStorageKeys } from "../../common/LocalStorageManager";
+import { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
 import TextSelector from "./TextSelector";
 
 export default class PiecesCountSelector extends TextSelector {
@@ -15,7 +15,7 @@ export default class PiecesCountSelector extends TextSelector {
     }
 
     get id(): string {
-        return GiftStorageKeys.GiftPiecesCount;
+        return CommonStorageKeys.GiftPiecesCount;
     }
 
     get widthCoef(): number {

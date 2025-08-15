@@ -270,6 +270,17 @@ export class Dropdown extends Container {
         }
     }
 
+    selectByCondition(cond: (name: string) => boolean) {
+        for (const child of this.options.children) {
+            if (child instanceof Button && child.textBlock && child.name) {
+                if (cond(child.name)) {
+                    this.doSelectAction(child.name, null, null, false);
+                    break;
+                }
+            }
+        }
+    }
+
     addItem(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, imageOnly: boolean): void {
         let button: Button;
 
