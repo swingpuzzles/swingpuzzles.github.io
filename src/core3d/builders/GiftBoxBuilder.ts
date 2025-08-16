@@ -19,6 +19,11 @@ import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
 import giftMaker from "../../gui/GiftMaker";
 
 export class GiftBoxBuilder {
+    private static readonly BASE_X = 118;
+    private static readonly BOX_HEIGHT = 3;
+    private static readonly BASE_Y = -36.8;
+    private static readonly BASE_POS = new Vector3(GiftBoxBuilder.BASE_X, GiftBoxBuilder.BASE_Y - 3 * GiftBoxBuilder.BOX_HEIGHT / 4, 0);
+
     private _position: Vector3 = Vector3.Zero();
     private _scaling: Vector3 = new Vector3(1, 1, 1);
 
@@ -53,8 +58,6 @@ export class GiftBoxBuilder {
         const planeHeight = 9.7;
         const ratio = planeWidth / planeHeight;
 
-        const basePos = 118;
-
         const renderWidth = ctx.engine.getRenderWidth();
         const renderHeight = ctx.engine.getRenderHeight();
 
@@ -63,7 +66,7 @@ export class GiftBoxBuilder {
         const giftTagPlane = MeshBuilder.CreatePlane("giftTagPlane", { width: 21, height: 9.7 });
         giftTagPlane.hasVertexAlpha = true;
         giftTagPlane.material = tagMat;
-        giftTagPlane.position = new Vector3(basePos + 10, -36.5, vertical ? 6 : 12);
+        giftTagPlane.position = new Vector3(GiftBoxBuilder.BASE_X + 10, -36.5, vertical ? 6 : 12);
         giftTagPlane.rotation.x = Math.PI / 2;
         giftTagPlane.rotation.y = -Math.PI / 2 + Math.PI / 4;
 
@@ -93,9 +96,7 @@ export class GiftBoxBuilder {
         textPlane.position = giftTagPlane.position.clone().add(new Vector3(0, 0.01, 0)); // offset slightly
         textPlane.rotation = giftTagPlane.rotation.clone();
 
-        const boxHeight = 3;
-        const baseY = -36.8;
-        const giftBox = MeshBuilder.CreateBox("giftBox", { width: 29.7, height: boxHeight, depth: 45.6 });
+        const giftBox = MeshBuilder.CreateBox("giftBox", { width: 29.7, height: GiftBoxBuilder.BOX_HEIGHT, depth: 45.6 });
 
         giftBox.actionManager = new ActionManager(ctx.scene);
 
@@ -110,7 +111,7 @@ export class GiftBoxBuilder {
         const result = await ImportMeshAsync(source, ctx.scene);
         const ribbon = result.meshes[0];
 
-        ribbon.position = new Vector3(0, boxHeight / 2 - 3.2, 0);
+        ribbon.position = new Vector3(0, GiftBoxBuilder.BOX_HEIGHT / 2 - 3.2, 0);
         ribbon.rotation.x = Math.PI / 2;
 
         for (let m of result.meshes) {
@@ -126,11 +127,11 @@ export class GiftBoxBuilder {
 
         giftBox.rotation.y = vertical ? Math.PI / 2 : 0;
 
-        giftBox.position.y += boxHeight / 4;
+        giftBox.position.y += GiftBoxBuilder.BOX_HEIGHT / 4;
 
         giftBox.bakeCurrentTransformIntoVertices();
 
-        giftBox.position = new Vector3(basePos, baseY - 3 * boxHeight / 4, 0);        
+        giftBox.position = GiftBoxBuilder.BASE_POS.clone();
 
         giftTagPlane.setParent(giftBox);
         textPlane.setParent(giftBox);
@@ -146,6 +147,8 @@ export class GiftBoxBuilder {
                 }
 
                 this.drawText(giftMaker.friendsName, giftMaker.fontFamily, giftMaker.textColor);
+
+                giftBox.position = GiftBoxBuilder.BASE_POS.clone();
             } else {
                 giftTagPlane.isVisible = false;
                 textPlane.isVisible = false;
