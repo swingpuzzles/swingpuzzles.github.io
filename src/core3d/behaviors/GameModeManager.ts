@@ -1,6 +1,7 @@
 import giftMaker from "../../gui/GiftMaker";
 import popupHint, { overPopup } from "../../gui/PopupHint";
 import tutorialManager from "../../gui/TutorialManager";
+import backToInitialAnimation from "../animations/BackToInitialAnimation";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
 import puzzleCircleBuilder from "../builders/PuzzleCircleBuilder";
 import ctx from "../common/SceneContext";
@@ -185,7 +186,7 @@ class GameModeManager {
 
     handleGetItOnAmayonAction() {
         if (openCoverAnimation.giftCover) {
-            this.enterGiftPhysicalOrientationMode();
+            backToInitialAnimation.animate(ctx.currentCover, () => { this.enterGiftPhysicalOrientationMode(); });
         } else {
             window.open(puzzleCircleBuilder.selectedLink, "_blank");
         }

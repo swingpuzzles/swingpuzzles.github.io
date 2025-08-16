@@ -158,13 +158,6 @@ class PuzzleGameBuilder {
             // Draw original image
             ctx2d.drawImage(img, 0, 0, width, height);
 
-            // TODO fill text HERE!
-            // Draw text (adjust coordinates or size as needed)
-            /*ctx2d.font = `${Math.floor(height / 12)}px Arial`; // font size relative to texture height
-            ctx2d.fillStyle = "white";
-            ctx2d.textBaseline = "middle";
-            ctx2d.fillText("Test Text", width / 2, height / 2);*/
-
             dynamicTexture.update();
 
             const box = puzzleBuilder.createFlatBox(ctx.kitWidth, ctx.kitHeight, 0.1, dynamicTexture);
