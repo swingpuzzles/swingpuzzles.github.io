@@ -67,7 +67,7 @@ class GuiManager {
         this.bannerButton.background = "";
         this.bannerButton.hoverCursor = "pointer";
         this.bannerButton.onPointerClickObservable.add(() => {
-            gameModeManager.handleGetItOnAmayonAction();
+            gameModeManager.handleGetItOnAmazonAction();
         });
         this.bottomButtonPanel.addControl(this.bannerButton);
 
@@ -109,8 +109,8 @@ class GuiManager {
                 case GameMode.GiftTry:
                     this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
                     break;
-                case GameMode.GiftReceived:
-                    this._xAction = null;
+                case GameMode.GiftReceived: // TODO
+                    this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
                     break;
             }
             this.refreshButtonSizes();

@@ -4,7 +4,6 @@ import popupHint, { overPopup, PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import handImagePool from "./HandImagePool";
 import timerDisplay from "../core3d/misc/TimerDisplay";
-import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
 import giftMaker from "./GiftMaker";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
@@ -14,7 +13,10 @@ class TutorialManager {
         const hasAcceptedCookies = localStorageManager.getBoolean(CommonStorageKeys.CookiesAccepted);
 
         let popup = popupHint;
-        let nextAction = () => { this.showSizeChooserHint(); };
+        let nextAction = () => {
+            localStorageManager.set(CommonStorageKeys.CookiesAccepted, true);
+            this.showSizeChooserHint();
+        };
 
         let title = "WELCOME!";
 
@@ -67,7 +69,9 @@ By continuing, you agree to our use of cookies to ensure the best experience.`;
     }
 
     private showSizeChooserHint() {
-        localStorageManager.set(CommonStorageKeys.CookiesAccepted, true);
+        if (localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
+            return;
+        }
 
         let dimensionHint = `🧩 Choose Your Challenge!
 
@@ -83,6 +87,10 @@ More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
     }
 
     public showPuzzleChooserHint() {
+        if (localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
+            return;
+        }
+        
         let browseHint = `📚 Browse and Play!
 
 Swipe left or right to explore different puzzles.
@@ -100,6 +108,10 @@ Each puzzle is shown as a cover box — click or tap on one to select it, or jus
     }
 
     public showShakeHint() {
+        if (localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
+            return;
+        }
+        
         let shakeHint = `🧩 Give it a good shake!
     
 Drag the puzzle box around to shake it — this will mix up the pieces so you can start solving!`;
@@ -163,7 +175,7 @@ Available now on Amazon!`;
     
         popupHint.show(message, "TAKE IT HOME?", 0.8, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
-                gameModeManager.handleGetItOnAmayonAction();
+                gameModeManager.handleGetItOnAmazonAction();
                 popupHint.hide();
             },
             () => {

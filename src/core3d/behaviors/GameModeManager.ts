@@ -1,10 +1,11 @@
+import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 import giftMaker from "../../gui/GiftMaker";
 import popupHint, { overPopup } from "../../gui/PopupHint";
 import tutorialManager from "../../gui/TutorialManager";
 import backToInitialAnimation from "../animations/BackToInitialAnimation";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
 import puzzleCircleBuilder from "../builders/PuzzleCircleBuilder";
-import ctx from "../common/SceneContext";
+import ctx, { Categories } from "../common/SceneContext";
 import piecePositioningManager from "./PiecePositioningManager";
 
 export enum GameMode {
@@ -184,9 +185,10 @@ class GameModeManager {
         giftMaker.tryGift();
     }
 
-    handleGetItOnAmayonAction() {
+    handleGetItOnAmazonAction() {
         if (openCoverAnimation.giftCover) {
             backToInitialAnimation.animate(ctx.currentCover, () => { this.enterGiftPhysicalOrientationMode(); });
+            puzzleUrlHelper.setCategory(Categories.Gift.key);
         } else {
             window.open(puzzleCircleBuilder.selectedLink, "_blank");
         }

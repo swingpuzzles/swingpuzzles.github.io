@@ -750,11 +750,6 @@ class PopupHint {
         mode: PopupMode = PopupMode.Normal,
         formInputModel: FormRowModel[] | null = null
     ): void {
-
-        if (!this._overPopup && mode === PopupMode.Normal && localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
-            return;
-        }
-
         this.clearForm();
 
         if (this.mainContainer.isVisible) {
@@ -800,7 +795,6 @@ class PopupHint {
         this.formPanelRect.background = "#FFFFFF00"
         this.formPanelRect.width = "100%";
         this._shaderMode = shaderMode;
-
 
         switch (mode) {
             case PopupMode.PreSell:
