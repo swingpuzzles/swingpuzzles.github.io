@@ -74,8 +74,6 @@ class PuzzleGameBuilder {
                 case GameMode.Shake:
                 case GameMode.Solve:
                 case GameMode.Celebration:
-                case GameMode.GiftTry:
-                case GameMode.GiftReceived:
                     this._lathe.visibility = 1;
                     this._groundVis.visibility = 1;
                     break;
