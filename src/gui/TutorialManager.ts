@@ -143,7 +143,9 @@ Great job putting all the pieces together!`;
 
             if (seconds <= 0) {
                 clearInterval(timerId);
-                this.showBuyOfferMessage();
+                if (gameModeManager.celebrationMode) {
+                    this.showBuyOfferMessage();
+                }
             }
         }, 1000);
     }
