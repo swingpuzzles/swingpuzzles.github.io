@@ -916,6 +916,7 @@ class PopupHint {
 
     public hide(onComplete?: () => void) {
         if (!this.mainContainer.isVisible) {
+            onComplete?.();
             return;
         }
 

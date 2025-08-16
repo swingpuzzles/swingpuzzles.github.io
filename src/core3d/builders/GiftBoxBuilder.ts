@@ -17,6 +17,7 @@ import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
 import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
 import giftMaker from "../../gui/GiftMaker";
+import handImagePool from "../../gui/HandImagePool";
 
 export class GiftBoxBuilder {
     private static readonly BASE_X = 118;
@@ -103,6 +104,7 @@ export class GiftBoxBuilder {
         giftBox.actionManager.registerAction(
             new ExecuteCodeAction(ActionManager.OnPickTrigger, () => {
                 openCoverAnimation.animate(giftBox);
+                handImagePool.releaseAll();
             })
         );
 

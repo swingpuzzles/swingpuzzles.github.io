@@ -11,6 +11,8 @@ import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 
 class TutorialManager {
     init() {
+        const hasAcceptedCookies = localStorageManager.getBoolean(CommonStorageKeys.CookiesAccepted);
+
         let popup = popupHint;
         let nextAction = () => { this.showSizeChooserHint(); };
 
@@ -29,10 +31,14 @@ Let's start building!`;
 
             message = `🎁 Hey ${gifteeName}, you’ve received a puzzle gift!
 
-        Tap "Got it", click the present to open your puzzle box,  
-        and start solving immediately 🧩
+Tap "Got it", click the present to open your puzzle box,  
+and start solving immediately 🧩`;
 
-        By continuing, you agree to our use of cookies to ensure the best experience.`;
+            if (!hasAcceptedCookies) {
+                message += `
+
+By continuing, you agree to our use of cookies to ensure the best experience.`;
+            }
 
             title = "YOU’VE GOT A GIFT!";
             nextAction = () => {
@@ -46,9 +52,7 @@ Let's start building!`;
             nextAction = () => { popup.hide(); };
         }
         
-        const hasAcceptedCookies = localStorageManager.getBoolean(CommonStorageKeys.CookiesAccepted);
-
-        if (hasAcceptedCookies) {
+        if (hasAcceptedCookies && !gameModeManager.giftReceived) {
             nextAction();
         } else {
             popup.show(message, title, 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
