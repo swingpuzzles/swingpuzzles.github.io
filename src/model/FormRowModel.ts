@@ -37,6 +37,7 @@ interface ButtonActionModel extends BaseFormRowModel {
   type: "button";
   buttonText: string;
   background: string;
+  color?: string;
   action: () => void;
 }
 
