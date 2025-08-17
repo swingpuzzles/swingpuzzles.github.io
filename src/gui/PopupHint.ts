@@ -23,7 +23,8 @@ export enum PopupMode {
     Gift_Adjustments_Preview,
     Gift_Adjustments_Overview,
     Gift_Physical_Initial,
-    Gift_Physical_Final
+    Gift_Physical_Final,
+    GamePaused
 }
 
 class PopupHint {
@@ -276,7 +277,7 @@ class PopupHint {
 
         this.bottomRect.addControl(this.getItButton);
 
-        this.backButton = Button.CreateImageOnlyButton("backButton", "assets/buttons/back-button-small.webp");
+        this.backButton = Button.CreateImageWithCenterTextButton("backButton", "BACK", "assets/buttons/back-button-small.webp");
         this.backButton.thickness = 0;
         this.backButton.background = "";
         this.backButton.hoverCursor = "pointer";
@@ -286,6 +287,11 @@ class PopupHint {
         this.backButton.isHitTestVisible = true;
         this.backButton.isPointerBlocker = true;
         this.backButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+
+        this.backButton.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.backButton.textBlock!.paddingRight = "15%"; // push text right
+        this.backButton.textBlock!.color = "#344612";
+        this.backButton.textBlock!.fontWeight = "bold";
 
         this.backButton.onPointerClickObservable.add(() => {
             if (this._backAction) {
@@ -420,7 +426,7 @@ class PopupHint {
                 const button = Button.CreateSimpleButton(formRowModel.id, formRowModel.buttonText);
                 button.width = "50%";
                 button.background = formRowModel.background; // 👈 a standout green (or choose your brand color)
-                button.color = "#ffffff"; // 👈 white text for contrast
+                button.color = formRowModel.color ?? "#ffffff"; // 👈 white text for contrast
                 button.fontWeight = "bold";
                 button.cornerRadius = 12;
                 button.thickness = 2;
@@ -670,6 +676,7 @@ class PopupHint {
         this.xButton.paddingRightInPixels = minSize / 240;
 
         this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24;
+        this.backButton.textBlock!.fontSizeInPixels = minSize / 20;
 
         if (this.formPanelRect.isVisible) {
             const middleTopPanelRatio = 0.99 - 0.16 * this.formPanel.children.length;
@@ -795,6 +802,7 @@ class PopupHint {
         this.formPanelRect.background = "#FFFFFF00"
         this.formPanelRect.width = "100%";
         this._shaderMode = shaderMode;
+        this.backButton.textBlock!.text = "BACK";
 
         switch (mode) {
             case PopupMode.PreSell:
@@ -846,6 +854,15 @@ class PopupHint {
                 this.formPanelRect.alpha = 0.8;
                 this.formPanelRect.background = "#F9F6F1FF";
                 this.formPanelRect.width = "97%";
+                break;
+            case PopupMode.GamePaused:
+                this.nextButton.isVisible = true;
+                this.coverImage.isVisible = true;
+                this.textAreaRect.alpha = 0.8;
+                this.formPanelRect.alpha = 0.8;
+                this.formPanelRect.background = "#F9F6F1FF";
+                this.formPanelRect.width = "97%";
+                this.backButton.textBlock!.text = "PREV";
                 break;
         }
 

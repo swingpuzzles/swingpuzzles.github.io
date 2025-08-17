@@ -12,6 +12,7 @@ import { Dropdown } from "./dropdowns/Dropdown";
 import CategoryDropdownBuilder from "./dropdowns/CategoryDropdownBuilder";
 import PiecesCountDropdownBuilder from "./dropdowns/PiecesCountDropdownBuilder";
 import urlDecoder from "../common/UrlDecoder";
+import navigationManager from "./NavigationManager";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -104,7 +105,8 @@ class GuiManager {
         gameModeManager.addGameModeChangedObserver((prevMode) => {
             switch (prevMode) {
                 case GameMode.Initial:
-                    this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover); };
+                    //this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover); };
+                    this._xAction = () => { navigationManager.handleXAction(); };
                     break;
                 case GameMode.GiftTry:
                     this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
