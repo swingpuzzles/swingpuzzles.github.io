@@ -1,4 +1,4 @@
-import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, Vector3, VertexBuffer } from "@babylonjs/core";
+import { ActionManager, ExecuteCodeAction, Mesh, MeshBuilder, StandardMaterial, VertexBuffer } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 import openCoverAnimation from "../animations/OpenCoverAnimation";

@@ -2,8 +2,8 @@ import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
 
 class TimerDisplay {
     private element: HTMLDivElement;
-    private startTime: number = 0;
-    private elapsed: number = 0;
+    private startTime: number = 0; // when current run started
+    private elapsed: number = 0;   // accumulated ms from previous runs
     private interval: number | null = null;
 
     constructor() {
@@ -39,9 +39,10 @@ class TimerDisplay {
     public getElapsedTime(): string {
         return this.element.textContent!;
     }
-    
+
     private updateDisplay(): void {
-        const totalSeconds = Math.floor(this.elapsed / 1000);
+        const totalMs = this.elapsed + (this.interval ? Date.now() - this.startTime : 0);
+        const totalSeconds = Math.floor(totalMs / 1000);
         const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
         const seconds = String(totalSeconds % 60).padStart(2, '0');
         this.element.textContent = `${minutes}:${seconds}`;
@@ -51,23 +52,20 @@ class TimerDisplay {
         this.startTime = Date.now();
         this.elapsed = 0;
         this.element.style.display = 'block';
-        this.updateDisplay();
+        this.startInterval();
+    }
 
-        if (this.interval) {
-            window.clearInterval(this.interval);
-        }
-
-        this.interval = window.setInterval(() => {
-            this.elapsed = Date.now() - this.startTime;
-            this.updateDisplay();
-        }, 500);
+    public continue(): void {
+        if (this.interval !== null) return; // already running
+        this.startTime = Date.now(); // reset start for this run
+        this.startInterval();
     }
 
     public pause(): void {
         if (this.interval !== null) {
             window.clearInterval(this.interval);
             this.interval = null;
-            this.elapsed = Date.now() - this.startTime;
+            this.elapsed += Date.now() - this.startTime; // add this run
         }
     }
 
@@ -77,6 +75,13 @@ class TimerDisplay {
             window.clearInterval(this.interval);
             this.interval = null;
         }
+    }
+
+    private startInterval(): void {
+        this.updateDisplay();
+        this.interval = window.setInterval(() => {
+            this.updateDisplay();
+        }, 100);
     }
 }
 

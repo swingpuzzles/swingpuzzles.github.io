@@ -2,14 +2,18 @@ import { Mesh, Quaternion, Vector3, Scalar } from "@babylonjs/core";
 import meshHelpers from "../common/MeshHelpers";
 import ctx from "../common/SceneContext";
 import gameModeManager from "./GameModeManager";
-import physicsAggregateBuilder from "../builders/PhysicsAggregateBuilder";
 
 class PiecePositioningManager {
+    private _initialized: boolean = false;
+
     constructor() {
     }
 
     init() {
-        ctx.scene.onBeforeRenderObservable.add(() => this.checkPiecePositions());
+        if (!this._initialized) {
+            ctx.scene.onBeforeRenderObservable.add(() => this.checkPiecePositions());
+            this._initialized = true;
+        }
     }
 
     checkPiecePositions(): void {

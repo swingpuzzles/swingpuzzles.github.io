@@ -105,7 +105,6 @@ class GuiManager {
         gameModeManager.addGameModeChangedObserver((prevMode) => {
             switch (prevMode) {
                 case GameMode.Initial:
-                    //this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover); };
                     this._xAction = () => { navigationManager.handleXAction(); };
                     break;
                 case GameMode.GiftTry:

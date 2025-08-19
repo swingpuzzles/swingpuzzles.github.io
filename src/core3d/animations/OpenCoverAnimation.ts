@@ -14,9 +14,9 @@ class OpenCoverAnimation implements IPuzzleAnimation {
     }
     
     public animate(cover: Mesh): void {
-        if (!gameModeManager.canOpenCover) {
+        /*if (!gameModeManager.canOpenCover && !gameModeManager.solveMode && !gameModeManager.celebrationMode) {
             return;
-        }
+        }*/
 
         let endAngle = Math.PI / 2;// / 2;//cover.rotation.y < Math.PI ? Math.PI * 2 : 0;
 

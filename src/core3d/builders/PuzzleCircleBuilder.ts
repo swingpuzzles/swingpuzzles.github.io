@@ -21,6 +21,30 @@ class PuzzleCircleBuilder {
     constructor() {
     }
 
+    public getPrevCover(cover: Mesh): Mesh | null {
+        const keys = Array.from(this.covers.keys());
+        const index = keys.indexOf(cover);
+
+        if (index === -1 || keys.length === 0) {
+            return null; // cover not found or no covers at all
+        }
+
+        const prevIndex = (index - 1 + keys.length) % keys.length;
+        return keys[prevIndex];
+    }
+
+    public getNextCover(cover: Mesh): Mesh | null {
+        const keys = Array.from(this.covers.keys());
+        const index = keys.indexOf(cover);
+
+        if (index === -1 || keys.length === 0) {
+            return null; // cover not found or no covers at all
+        }
+
+        const nextIndex = (index + 1) % keys.length;
+        return keys[nextIndex];
+    }
+    
     public get selectedLink(): string {
         return this.covers.get(this.closestMesh!)!.link;
     }

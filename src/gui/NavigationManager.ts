@@ -5,10 +5,15 @@ import { ShaderMode } from "./ScreenShader";
 import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation";
 import ctx from "../core3d/common/SceneContext";
 import gameModeManager from "../core3d/behaviors/GameModeManager";
+import timerDisplay from "../core3d/misc/TimerDisplay";
+import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
+import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
+import { Mesh } from "@babylonjs/core";
 
 class NavigationManager {
     public handleXAction() {
-        this.enterGamePaused(false);
+        timerDisplay.pause();
+        this.enterGamePaused(gameModeManager.celebrationMode);
     }
 
     private enterGamePaused(puzzleFinished: boolean) {
@@ -23,7 +28,7 @@ class NavigationManager {
                 background: "#27ae60",    // green
                 color: "#ffffff",     // white text for contrast
                 action: () => {
-                    this.continue();
+                    this.continue(puzzleFinished);
                 }
             });
         }
@@ -78,7 +83,7 @@ You can continue right where you left off, restart from the beginning, return to
             ShaderMode.SHADOW_FULL,
             Control.VERTICAL_ALIGNMENT_CENTER,
             () => { this.nextPuzzle(); }, // FOOTER: NEXT
-            () => { this.continue(); }, // X button → continue
+            () => { this.continue(puzzleFinished); }, // X button → continue
             () => { this.prevPuzzle(); }, // FOOTER: PREV
             null,
             PopupMode.GamePaused,
@@ -87,19 +92,34 @@ You can continue right where you left off, restart from the beginning, return to
     }
 
     private prevPuzzle() {
-        // TODO
+        this.playPuzzle(puzzleCircleBuilder.getPrevCover(ctx.currentCover)!);
     }
 
     private nextPuzzle() {
-        // TODO
+        this.playPuzzle(puzzleCircleBuilder.getNextCover(ctx.currentCover)!);
     }
 
-    private continue() {
+    private continue(puzzleFinished: boolean) {
         popupHint.hide();
+
+        if (!puzzleFinished) {
+            timerDisplay.continue();
+        }
     }
 
     private restartPuzzle() {
-        // TODO
+        this.playPuzzle(ctx.currentCover);
+    }
+    /*private restartPuzzle() {
+        backToInitialAnimation.animate(ctx.currentCover, () => {
+            openCoverAnimation.animate(ctx.currentCover);
+        });
+    }*/
+
+    private playPuzzle(cover: Mesh) {
+        backToInitialAnimation.animate(ctx.currentCover, () => {
+            openCoverAnimation.animate(cover);
+        });
     }
 
     private goBack() {
