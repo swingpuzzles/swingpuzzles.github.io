@@ -1,5 +1,7 @@
+import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
 import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 import giftMaker from "../../gui/GiftMaker";
+import guiManager from "../../gui/GuiManager";
 import popupHint, { overPopup } from "../../gui/PopupHint";
 import tutorialManager from "../../gui/TutorialManager";
 import backToInitialAnimation from "../animations/BackToInitialAnimation";
@@ -180,7 +182,9 @@ class GameModeManager {
         ctx.camera.attachControl(ctx.canvas, true);
 
         ctx.camera.alpha = 0;
-        //ctx.camera.beta = 12.5 * Math.PI / 32;  
+        //ctx.camera.beta = 12.5 * Math.PI / 32;
+
+        localStorageManager.set(CommonStorageKeys.Category, Categories.Gift.key);
 
         giftMaker.tryGift();
     }

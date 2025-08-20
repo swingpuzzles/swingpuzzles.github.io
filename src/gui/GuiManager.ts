@@ -110,8 +110,8 @@ class GuiManager {
                 case GameMode.GiftTry:
                     this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
                     break;
-                case GameMode.GiftReceived: // TODO
-                    this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
+                case GameMode.GiftReceived:
+                    this._xAction = () => { navigationManager.handleXAction(); };
                     break;
             }
             this.refreshButtonSizes();
@@ -195,6 +195,12 @@ class GuiManager {
     public enterGeneralCategory(): void {
         const generalCat = Categories.General;
         this.categoryDropdown.doSelectAction(generalCat.text, generalCat.url, null, false);
+    }
+
+    public ensureNotGiftCategory(): void {
+        if (ctx.category === Categories.Gift) {
+            this.enterGeneralCategory();
+        }
     }
 
     public enterCategory(category: string): void {

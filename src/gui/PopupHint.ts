@@ -856,9 +856,8 @@ class PopupHint {
                 this.formPanelRect.width = "97%";
                 break;
             case PopupMode.GamePaused:
+                this.centerImage.isVisible = true;
                 this.nextButton.isVisible = true;
-                this.coverImage.isVisible = true;
-                this.textAreaRect.alpha = 0.8;
                 this.formPanelRect.alpha = 0.8;
                 this.formPanelRect.background = "#F9F6F1FF";
                 this.formPanelRect.width = "97%";

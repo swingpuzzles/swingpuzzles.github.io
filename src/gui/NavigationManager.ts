@@ -9,6 +9,7 @@ import timerDisplay from "../core3d/misc/TimerDisplay";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import { Mesh } from "@babylonjs/core";
+import guiManager from "./GuiManager";
 
 class NavigationManager {
     public handleXAction() {
@@ -79,7 +80,7 @@ You can continue right where you left off, restart from the beginning, return to
         popupHint.show(
             message,
             title,
-            0.9,
+            0.95,
             ShaderMode.SHADOW_FULL,
             Control.VERTICAL_ALIGNMENT_CENTER,
             () => { this.nextPuzzle(); }, // FOOTER: NEXT
@@ -92,10 +93,14 @@ You can continue right where you left off, restart from the beginning, return to
     }
 
     private prevPuzzle() {
+        guiManager.ensureNotGiftCategory();
+
         this.playPuzzle(puzzleCircleBuilder.getPrevCover(ctx.currentCover)!);
     }
 
     private nextPuzzle() {
+        guiManager.ensureNotGiftCategory();
+
         this.playPuzzle(puzzleCircleBuilder.getNextCover(ctx.currentCover)!);
     }
 
@@ -110,11 +115,6 @@ You can continue right where you left off, restart from the beginning, return to
     private restartPuzzle() {
         this.playPuzzle(ctx.currentCover);
     }
-    /*private restartPuzzle() {
-        backToInitialAnimation.animate(ctx.currentCover, () => {
-            openCoverAnimation.animate(ctx.currentCover);
-        });
-    }*/
 
     private playPuzzle(cover: Mesh) {
         backToInitialAnimation.animate(ctx.currentCover, () => {
@@ -123,6 +123,7 @@ You can continue right where you left off, restart from the beginning, return to
     }
 
     private goBack() {
+        guiManager.ensureNotGiftCategory();
         backToInitialAnimation.animate(ctx.currentCover);
     }
 }

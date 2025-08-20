@@ -23,10 +23,15 @@ class PuzzleCircleBuilder {
 
     public getPrevCover(cover: Mesh): Mesh | null {
         const keys = Array.from(this.covers.keys());
-        const index = keys.indexOf(cover);
 
-        if (index === -1 || keys.length === 0) {
-            return null; // cover not found or no covers at all
+        if (keys.length === 0) {
+            return null; // no covers at all
+        }
+
+        let index = keys.indexOf(cover);
+
+        if (index === -1) {
+            index = 0;
         }
 
         const prevIndex = (index - 1 + keys.length) % keys.length;
@@ -35,10 +40,15 @@ class PuzzleCircleBuilder {
 
     public getNextCover(cover: Mesh): Mesh | null {
         const keys = Array.from(this.covers.keys());
-        const index = keys.indexOf(cover);
 
-        if (index === -1 || keys.length === 0) {
-            return null; // cover not found or no covers at all
+        if (keys.length === 0) {
+            return null; // no covers at all
+        }
+
+        let index = keys.indexOf(cover);
+
+        if (index === -1) {
+            index = 0;
         }
 
         const nextIndex = (index + 1) % keys.length;
