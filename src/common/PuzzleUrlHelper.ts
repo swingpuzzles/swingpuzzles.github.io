@@ -1,6 +1,7 @@
 import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation";
 import gameModeManager from "../core3d/behaviors/GameModeManager";
 import ctx from "../core3d/common/SceneContext";
+import guiManager from "../gui/GuiManager";
 import popupHint, { overPopup } from "../gui/PopupHint";
 import urlDecoder from "./UrlDecoder";
 
@@ -25,6 +26,7 @@ class PuzzleUrlHelper {
                 this._giftReceiving = false;
 
                 if (urlData.category) {
+                    guiManager.enterCategory(urlData.category);
                     changed ||= this.setCategory(urlData.category);
                 }
 
