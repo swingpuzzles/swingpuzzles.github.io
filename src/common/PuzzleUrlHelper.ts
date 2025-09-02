@@ -1,13 +1,14 @@
 import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation";
 import gameModeManager from "../core3d/behaviors/GameModeManager";
 import ctx from "../core3d/common/SceneContext";
-import guiManager from "../gui/GuiManager";
 import popupHint, { overPopup } from "../gui/PopupHint";
+import urlDecoder from "./UrlDecoder";
 
 class PuzzleUrlHelper {
     private _category: string | null = null;
     private _puzzleId: string | null = null;
     private _angleMap: Map<string, number> = new Map();
+    private _giftReceiving: boolean = false;
 
     constructor() {
         window.addEventListener("popstate", () => {
@@ -16,24 +17,36 @@ class PuzzleUrlHelper {
 
             const urlData = this.readFromUrl();
 
-            if (urlData.category) {
-                guiManager.enterCategory(urlData.category);
-                this.setCategory(urlData.category);
-            }
+            if (urlData.giftData) {
+                urlDecoder.processGiftData(urlData.giftData);
+                this._giftReceiving = true;
+            } else {
+                let changed: boolean = this._giftReceiving;
+                this._giftReceiving = false;
 
-            if (urlData.puzzleId) {
-                const angle = this._angleMap.get(urlData.puzzleId);
+                if (urlData.category) {
+                    changed ||= this.setCategory(urlData.category);
+                }
 
-                if (angle) {
-                    if (!gameModeManager.initialMode) {
-                        if (ctx.originalCameraState) {
-                            ctx.originalCameraState.alpha = angle;
+                if (urlData.puzzleId) {
+                    const angle = this._angleMap.get(urlData.puzzleId);
+
+                    if (angle) {
+                        if (!gameModeManager.initialMode) {
+                            if (ctx.originalCameraState) {
+                                ctx.originalCameraState.alpha = angle;
+                            }
+
+                            backToInitialAnimation.animate(ctx.currentCover);
+                            changed = false;    // change already processed
+                        } else {
+                            ctx.camera.alpha = angle;
                         }
-
-                        backToInitialAnimation.animate(ctx.currentCover);
-                    } else {
-                        ctx.camera.alpha = angle;
                     }
+                }
+
+                if (changed && !gameModeManager.initialMode) {
+                    backToInitialAnimation.animate(ctx.currentCover);
                 }
             }
         });
@@ -47,9 +60,9 @@ class PuzzleUrlHelper {
         }
     }
 
-    public setCategory(value: string/*, update = false*/) {
+    public setCategory(value: string/*, update = false*/): boolean {
         if (this._category === value) {
-            return;
+            return false;
         }
 
         this._category = value;
@@ -58,6 +71,8 @@ class PuzzleUrlHelper {
         //if (update) {
             this.updateUrl();
         //}
+
+        return true;
     }
 
     public setImgUrl(value: string) {
@@ -96,11 +111,12 @@ class PuzzleUrlHelper {
         }
     }
 
-    public readFromUrl(): { category: string | null; puzzleId: string | null } {
+    public readFromUrl(): { category: string | null; puzzleId: string | null; giftData: string | null } {
         const params = new URLSearchParams(window.location.search);
         return {
             category: params.get('category'),
-            puzzleId: params.get('puzzleId')
+            puzzleId: params.get('puzzleId'),
+            giftData: params.get('giftData')
         };
     }
 }

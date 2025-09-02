@@ -7,7 +7,7 @@ import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
 class BackToInitialAnimation implements IPuzzleAnimation {
 
     public animate(cover: Mesh, action: (() => void) | null = null): void {
-        if (!ctx.originalCoverState || !ctx.originalCameraState) {
+        if (!ctx.originalCameraState) {
             console.warn("Original state not stored.");
             return;
         }

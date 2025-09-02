@@ -1,4 +1,5 @@
 import { ArcRotateCamera, Engine, Mesh, Scene, Vector3 } from "@babylonjs/core";
+import { GiftBoxBuilder } from "../builders/GiftBoxBuilder";
 
 export const Categories = {
     General: { key: "General", text: "General", tags: [ "General" ], url: "assets/categories/category-general.webp" },
@@ -67,6 +68,13 @@ class SceneContext {
         this._camera = camera;
         this._canvas = canvas;
         this._engine = engine;
+
+        this.originalCameraState = {
+            alpha: this.camera.alpha,
+            beta: this.camera.beta,
+            radius: this.camera.radius,
+            target: this.camera.target.clone()
+        };
 
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
 
@@ -283,7 +291,7 @@ class SceneContext {
         this._category = value;
     }
     
-    public originalCoverState: { position: Vector3; rotation: Vector3 } | null = null;
+    public originalCoverState: { position: Vector3; rotation: Vector3 } = { position: GiftBoxBuilder.BASE_POS.clone(), rotation: Vector3.Zero() };
     public originalCameraState: { alpha: number; beta: number; radius: number; target: Vector3 } | null = null;
 
     public currentCover!: Mesh;

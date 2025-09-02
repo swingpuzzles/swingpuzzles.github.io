@@ -23,7 +23,7 @@ export class GiftBoxBuilder {
     private static readonly BASE_X = 118;
     private static readonly BOX_HEIGHT = 3;
     private static readonly BASE_Y = -36.8;
-    private static readonly BASE_POS = new Vector3(GiftBoxBuilder.BASE_X, GiftBoxBuilder.BASE_Y - 3 * GiftBoxBuilder.BOX_HEIGHT / 4, 0);
+    public static readonly BASE_POS = new Vector3(GiftBoxBuilder.BASE_X, GiftBoxBuilder.BASE_Y - 3 * GiftBoxBuilder.BOX_HEIGHT / 4, 0);
 
     private _position: Vector3 = Vector3.Zero();
     private _scaling: Vector3 = new Vector3(1, 1, 1);
@@ -99,6 +99,8 @@ export class GiftBoxBuilder {
 
         const giftBox = MeshBuilder.CreateBox("giftBox", { width: 29.7, height: GiftBoxBuilder.BOX_HEIGHT, depth: 45.6 });
 
+        ctx.currentCover = giftBox;
+
         giftBox.actionManager = new ActionManager(ctx.scene);
 
         giftBox.actionManager.registerAction(
@@ -139,7 +141,8 @@ export class GiftBoxBuilder {
         textPlane.setParent(giftBox);
 
         gameModeManager.addGameModeChangedObserver((prevMode) => {
-            if (gameModeManager.giftTryMode || prevMode === GameMode.GiftTry || prevMode === GameMode.GiftReceived) {
+            //if (gameModeManager.giftTryMode || prevMode === GameMode.GiftTry || prevMode === GameMode.GiftReceived) { => url navigation problems
+            if (gameModeManager.giftTryMode || gameModeManager.giftReceived) {
                 giftTagPlane.isVisible = true;
                 textPlane.isVisible = true;
                 giftBox.isVisible = true;
@@ -162,7 +165,7 @@ export class GiftBoxBuilder {
             }
         });
 
-        return ribbon;
+        return giftBox;
     }
 
     private async ensureFontLoaded(fontFamily: string, weight = "bold", px = 1000) {

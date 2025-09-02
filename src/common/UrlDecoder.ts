@@ -9,15 +9,11 @@ class UrlDecoder {
         const encodedGiftData = urlParams.get("giftData");
 
         if (encodedGiftData) {
-            const giftData = this.decodeGiftDataFromUrlParam(encodedGiftData);
-            
-            if (await giftMaker.parseUrlData(giftData)) {
-                gameModeManager.enterGiftReceivedMode();
-            }   
+            await this.processGiftData(encodedGiftData);
         }
     }
 
-    decodeGiftDataFromUrlParam(encoded: string): Record<string, string> {
+    private decodeGiftDataFromUrlParam(encoded: string): Record<string, string> {
         try {
             const json = decodeURIComponent(atob(encoded));
             return JSON.parse(json);
@@ -25,6 +21,14 @@ class UrlDecoder {
             console.warn("Failed to decode gift data:", e);
             return {};
         }
+    }
+
+    public async processGiftData(encodedGiftData: string) {
+        const giftData = this.decodeGiftDataFromUrlParam(encodedGiftData);
+        
+        if (await giftMaker.parseUrlData(giftData)) {
+            gameModeManager.enterGiftReceivedMode();
+        }   
     }
 }
 
