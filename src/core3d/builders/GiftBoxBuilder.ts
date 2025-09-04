@@ -154,7 +154,7 @@ export class GiftBoxBuilder {
                 this.drawText(giftMaker.friendsName, giftMaker.fontFamily, giftMaker.textColor);
 
                 giftBox.position = GiftBoxBuilder.BASE_POS.clone();
-                giftBox.rotation.y = 0;
+                giftBox.rotation = Vector3.Zero();
             } else {
                 giftTagPlane.isVisible = false;
                 textPlane.isVisible = false;

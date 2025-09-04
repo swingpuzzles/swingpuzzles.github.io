@@ -13,6 +13,7 @@ import Constants from "../core3d/common/Constants";
 import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
 import puzzleEditor from "../core3d/misc/PuzzleEditor";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
+import timerManager from "../core3d/misc/TimerManager";
 
 export enum PopupMode {
     Normal,
@@ -757,6 +758,8 @@ class PopupHint {
         mode: PopupMode = PopupMode.Normal,
         formInputModel: FormRowModel[] | null = null
     ): void {
+        timerManager.clearAll();
+        
         this.clearForm();
 
         if (this.mainContainer.isVisible) {
@@ -925,6 +928,8 @@ class PopupHint {
     }
 
     public hide(onComplete?: () => void) {
+        timerManager.clearAll();
+        
         if (!this.mainContainer.isVisible) {
             onComplete?.();
             return;

@@ -3,6 +3,7 @@ import IPuzzleAnimation from "./IPuzzleAnimation";
 import ctx from "../common/SceneContext";
 import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
 import tutorialManager from "../../gui/TutorialManager";
+import timerManager from "../misc/TimerManager";
 
 class CelebrationAnimation implements IPuzzleAnimation {
     private particleSystem!: ParticleSystem;
@@ -10,7 +11,7 @@ class CelebrationAnimation implements IPuzzleAnimation {
     animate(mesh: Mesh): void {
         this.particleSystem.emitter = mesh.position.clone();
         this.particleSystem.start();
-        setTimeout(() => {
+        timerManager.setTimeout(() => {
             if (gameModeManager.celebrationMode) {
                 tutorialManager.showCongratsMessage();
             }

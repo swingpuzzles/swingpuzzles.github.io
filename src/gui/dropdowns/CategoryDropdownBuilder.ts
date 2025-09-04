@@ -52,7 +52,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
         }
 
         if (localStorageManager.getString(this.storageItemName) === category.key || last && !this._optionSelected) {
-            this.dropdown.doSelectAction(category.text, category.url, null, false);
+            this.dropdown.doSelectAction(category.text, category.url, null, false, false);
             this._optionSelected = true;
         }
     }
@@ -60,23 +60,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     selectAction(category: Category, userAction: boolean = true) {
         localStorageManager.set(this.storageItemName, category.key);
 
-        if (ctx.category !== category) {
-            ctx.category = category;
-
-            if (!gameModeManager.giftReceived || category !== Categories.Gift) {
-                puzzleUrlHelper.setCategory(category.key/*, userAction*/);
-
-                if (category === Categories.Gift) {
-                    gameModeManager.enterGiftInitialMode();
-                } else {
-                    if (!userAction) {
-                        gameModeManager.enterInitialMode();
-                    }
-
-                    puzzleCircleBuilder.build();
-                }
-            }
-        }
+        gameModeManager.handleCategoryChange(category, userAction);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?

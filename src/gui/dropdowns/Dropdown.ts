@@ -258,14 +258,15 @@ export class Dropdown extends Container {
         }
     }
 
-    doSelectAction(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, userAction: boolean = true): void {
+    doSelectAction(idText: string, imageUrl: string | null = null, fontFamily: string | null = null,
+            userAction: boolean = true, callCallbackAction: boolean = true): void {
         this._selectedItem = idText;
 
         const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;
 
         this.setContent(text, imageUrl, fontFamily);
 
-        if (this.selectionCallback) {
+        if (this.selectionCallback && callCallbackAction) {
             this.selectionCallback(idText, userAction, text);
         }
     }

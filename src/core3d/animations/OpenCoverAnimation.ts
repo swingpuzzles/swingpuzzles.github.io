@@ -5,6 +5,7 @@ import ctx from "../common/SceneContext";
 import { PuzzleTools } from "../common/PuzzleTools";
 import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
 import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
+import timerManager from "../misc/TimerManager";
 
 class OpenCoverAnimation implements IPuzzleAnimation {
     private _giftCover: boolean = false;
@@ -92,10 +93,10 @@ class OpenCoverAnimation implements IPuzzleAnimation {
         ctx.scene.beginAnimation(cover, 0, 20, false, 1.0, () => {
             gameModeManager.enterWaiting();
 
-            setTimeout(async () => {
+            timerManager.setTimeout(async () => {
                 puzzleGameBuilder.build(cover);
 
-                setTimeout(async () => {
+                timerManager.setTimeout(async () => {
                     const startPos = cover.position.clone();
                     // ===== Second animation: your original one =====
             

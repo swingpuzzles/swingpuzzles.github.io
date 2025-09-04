@@ -1,5 +1,5 @@
 import { AdvancedDynamicTexture, Button, Control, StackPanel, Image } from "@babylonjs/gui";
-import ctx, { Categories } from "../core3d/common/SceneContext";
+import ctx, { Categories, Category } from "../core3d/common/SceneContext";
 import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
@@ -13,6 +13,7 @@ import CategoryDropdownBuilder from "./dropdowns/CategoryDropdownBuilder";
 import PiecesCountDropdownBuilder from "./dropdowns/PiecesCountDropdownBuilder";
 import urlDecoder from "../common/UrlDecoder";
 import navigationManager from "./NavigationManager";
+import puzzleUrlHelper from "../common/PuzzleUrlHelper";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -44,6 +45,8 @@ class GuiManager {
         
         this.categoryDropdown = new CategoryDropdownBuilder().build();
         guiManager.advancedTexture.addControl(this.categoryDropdown);
+
+        puzzleUrlHelper.handleUrlData();
 
         this._createButtons();
     }
@@ -77,7 +80,7 @@ class GuiManager {
         // Register buttons for high-res replacement
         puzzleAssetsManager.addGuiImageButtonSource(this.playButton, "assets/buttons/play-button.webp");
 
-        this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover); }
+        this._xAction = () => { navigationManager.handleXAction(); }
 
         this.xButton = Button.CreateImageOnlyButton("xButton", "assets/buttons/x-button.webp");
         this.xButton.thickness = 0;
@@ -193,8 +196,7 @@ class GuiManager {
     }
 
     public enterGeneralCategory(): void {
-        const generalCat = Categories.General;
-        this.categoryDropdown.doSelectAction(generalCat.text, generalCat.url, null, false);
+        this.enterCategoryImpl(Categories.General);
     }
 
     public ensureNotGiftCategory(): void {
@@ -203,11 +205,19 @@ class GuiManager {
         }
     }
 
-    public enterCategory(category: string): void {
+    public enterCategory(category: string, callChangeHandler: boolean = true): void {
         const found = Object.values(Categories).find(cat => cat.key === category);
 
         if (found) {
-            this.categoryDropdown.doSelectAction(found.text, found.url, null, false);
+            this.enterCategoryImpl(found);
+        }
+    }
+
+    private enterCategoryImpl(category: Category, callChangeHandler: boolean = true): void {
+        this.categoryDropdown.doSelectAction(category.text, category.url, null, false, false);
+
+        if (callChangeHandler) {
+            gameModeManager.handleCategoryChange(category, false);
         }
     }
 }

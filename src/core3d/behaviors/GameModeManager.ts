@@ -6,7 +6,8 @@ import tutorialManager from "../../gui/TutorialManager";
 import backToInitialAnimation from "../animations/BackToInitialAnimation";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
 import puzzleCircleBuilder from "../builders/PuzzleCircleBuilder";
-import ctx, { Categories } from "../common/SceneContext";
+import ctx, { Categories, Category } from "../common/SceneContext";
+import timerManager from "../misc/TimerManager";
 import piecePositioningManager from "./PiecePositioningManager";
 
 export enum GameMode {
@@ -65,6 +66,8 @@ class GameModeManager {
             overPopup.hide();
         }
 
+        timerManager.clearAll();
+
         ctx.camera.upperAlphaLimit = null;
         ctx.camera.lowerAlphaLimit = null;
         ctx.camera.upperBetaLimit = null;
@@ -86,6 +89,8 @@ class GameModeManager {
         ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
             
         ctx.camera.attachControl(ctx.canvas, true);
+
+        puzzleUrlHelper.clearPuzzleId();
     }
 
     enterOpenCoverMode(showShakeIt: boolean = true) {
@@ -195,6 +200,26 @@ class GameModeManager {
             puzzleUrlHelper.setCategory(Categories.Gift.key);
         } else {
             window.open(puzzleCircleBuilder.selectedLink, "_blank");
+        }
+    }
+
+    handleCategoryChange(category: Category, userAction: boolean) {
+        if (ctx.category !== category) {
+            ctx.category = category;
+
+            puzzleUrlHelper.setCategory(category.key/*, userAction*/);
+
+            if (category === Categories.Gift) {
+                if (!this.giftReceived) {
+                    this.enterGiftInitialMode();
+                }
+            } else {
+                if (!userAction) {
+                    this.enterInitialMode();
+                }
+
+                puzzleCircleBuilder.build();
+            }
         }
     }
 

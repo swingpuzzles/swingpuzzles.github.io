@@ -1,5 +1,6 @@
 import { Control, TextBlock } from "@babylonjs/gui";
 import guiManager from "./GuiManager";
+import timerManager from "../core3d/misc/TimerManager";
 
 interface DialogTyperOptions {
     speed?: number;
@@ -56,7 +57,7 @@ export class DialogTyper {
         const message = this.queue.shift()!;
         this._typeText(message, () => {
             if (this.autoSkipDelay !== null) {
-                setTimeout(() => this._nextMessage(onComplete), this.autoSkipDelay);
+                timerManager.setTimeout(() => this._nextMessage(onComplete), this.autoSkipDelay);
             } else {
                 this.textBlock.onPointerClickObservable.addOnce(() => {
                     this._nextMessage(onComplete);

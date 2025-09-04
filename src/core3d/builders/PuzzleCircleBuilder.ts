@@ -129,7 +129,7 @@ class PuzzleCircleBuilder {
                 ctx.camera.alpha = angle;
             }
 
-            puzzleUrlHelper.insertAngleEntry(obj.imgSmallUrl, angle);
+            puzzleUrlHelper.insertCoverEntry(obj.imgSmallUrl, cover);
         });
     }
 

@@ -7,6 +7,7 @@ import meshHelpers from "../common/MeshHelpers";
 import puzzleEditor from "../misc/PuzzleEditor";
 import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
+import timerManager from "../misc/TimerManager";
 
 class PuzzleGameBuilder {
     private _building: boolean = false;
@@ -68,27 +69,37 @@ class PuzzleGameBuilder {
         this._left = puzzleBuilder.createPuzzlePiece(false, true, 2);
         this._middle = puzzleBuilder.createPuzzlePiece(false, false, 3);
 
+        this.handleVisibility();
         gameModeManager.addGameModeChangedObserver(() => {
-            switch (gameModeManager.currentMode) {
-                case GameMode.OpenCover:
-                case GameMode.Shake:
-                case GameMode.Solve:
-                case GameMode.Celebration:
-                    this._lathe.visibility = 1;
-                    this._groundVis.visibility = 1;
-                    break;
-                default:
-                    this._lathe.visibility = 0;
-                    this._groundVis.visibility = 0;
-                    break;
-            }
+            this.handleVisibility();
         });
+    }
+
+    private handleVisibility(): void {
+        switch (gameModeManager.currentMode) {
+            case GameMode.OpenCover:
+            case GameMode.Shake:
+            case GameMode.Solve:
+            case GameMode.Celebration:
+                this._lathe.visibility = 1;
+                this._groundVis.visibility = 1;
+                break;
+            default:
+                this._lathe.visibility = 0;
+                this._groundVis.visibility = 0;
+                break;
+        }
     }
 
     public clear() {
         ctx.jigsawPieces.forEach(piece => piece.dispose());
         ctx.jigsawPieces = [];
         ctx.piecesArray = [];
+
+        ctx.piecesMap.forEach((data, mesh) => {
+            data.shapeMesh.dispose();
+            mesh.dispose();
+        })
 
         ctx.piecesMap.clear();
 
@@ -132,7 +143,7 @@ class PuzzleGameBuilder {
             // gift puzzle
             url = puzzleEditor.dataUrl;
 
-            setTimeout(async () => {
+            timerManager.setTimeout(async () => {
                 shakeBehaviorManager.autoShake();
             }, 1000);
         } else {
