@@ -3,7 +3,7 @@ import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation"
 import gameModeManager from "../core3d/behaviors/GameModeManager";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import puzzleGameBuilder from "../core3d/builders/PuzzleGameBuilder";
-import ctx, { Categories } from "../core3d/common/SceneContext";
+import ctx, { Categories, Category } from "../core3d/common/SceneContext";
 import guiManager from "../gui/GuiManager";
 import popupHint, { overPopup } from "../gui/PopupHint";
 import urlDecoder from "./UrlDecoder";
@@ -37,18 +37,20 @@ class PuzzleUrlHelper {
             this._giftReceiving = false;
 
             let puzzleSelected = false;
-            if (urlData.category && urlData.puzzleId) {
-                guiManager.enterCategory(urlData.category, false);
-                changed ||= this.setCategory(urlData.category, false);
+            let category: string = urlData.category || Categories.General.key;
+
+            if (urlData.puzzleId) {
+                guiManager.enterCategory(category, false);
+                changed ||= this.setCategory(category, false);
 
                 const cover = this._coverMap.get(urlData.puzzleId);
 
                 if (cover) {
                     puzzleSelected = true;
 
-                    const changedPuzzle: boolean = ctx.currentCover === cover;
+                    const changedPuzzle: boolean = this._puzzleId !== urlData.puzzleId;
 
-                    if (!gameModeManager.initialMode) {
+                    if (!gameModeManager.initialMode) {console.trace(changedPuzzle);
                         if (changedPuzzle) {
                             backToInitialAnimation.animate(ctx.currentCover, () => {
                                 if (changed) {
@@ -70,9 +72,9 @@ class PuzzleUrlHelper {
                 }
             }
             
-            if (!puzzleSelected && urlData.category) {
-                guiManager.enterCategory(urlData.category);
-                changed ||= this.setCategory(urlData.category);
+            if (!puzzleSelected) {
+                guiManager.enterCategory(category);
+                changed ||= this.setCategory(category);
 
                 if (gameModeManager.initialMode) {
                     if (changed) {

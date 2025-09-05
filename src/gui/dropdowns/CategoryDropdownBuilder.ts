@@ -1,6 +1,5 @@
 import { Control } from "@babylonjs/gui";
-import ctx, { Categories, Category, CategoryKeys } from "../../core3d/common/SceneContext";
-import puzzleCircleBuilder from "../../core3d/builders/PuzzleCircleBuilder";
+import { Categories, Category, CategoryKeys } from "../../core3d/common/SceneContext";
 import DropdownBuilder from "./DropdownBuilder";
 import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
