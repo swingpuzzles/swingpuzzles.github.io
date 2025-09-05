@@ -2,6 +2,9 @@ import { Mesh, Quaternion, Vector3, Scalar } from "@babylonjs/core";
 import meshHelpers from "../common/MeshHelpers";
 import ctx from "../common/SceneContext";
 import gameModeManager from "./GameModeManager";
+import normalizePositionRotationAnimation from "../animations/NormalizePositionRotationAnimation";
+import pieceDragManager from "./PieceDragManager";
+import polygonDragManager from "./PolygonDragManager";
 
 class PiecePositioningManager {
     private _initialized: boolean = false;
@@ -62,50 +65,72 @@ class PiecePositioningManager {
             const edgePosMaxZ = helpThis.getEdgePosition(basicPiece, (edge, pos) => pos.z + ctx.pieceDepthHalf > edge.z);
             const edgePosMinY = helpThis.getEdgePosition(basicPiece, (edge, pos) => pos.y - ctx.pieceHeightHalf < edge.y);
     
-            let edgePos: Vector3 | null = null;
-    
-            if (edgePosMinX.x - ctx.pieceWidthHalf < ctx.minX) {
-                this.handleElementMove(piece, (el) => { el.position.x += 0.2; }, isPolygon);
-                edgePos = edgePosMinX;
-            } else if (edgePosMaxX.x + ctx.pieceWidthHalf > ctx.maxX) {
-                this.handleElementMove(piece, (el) => { el.position.x -= 0.2; }, isPolygon);
-                edgePos = edgePosMaxX;
-            } else if (edgePosMinZ.z - ctx.pieceDepthHalf < ctx.minZ) {
-                this.handleElementMove(piece, (el) => { el.position.z += 0.2; }, isPolygon);
-                edgePos = edgePosMinZ;
-            } else if (edgePosMaxZ.z + ctx.pieceDepthHalf > ctx.maxZ) {
-                this.handleElementMove(piece, (el) => { el.position.z -= 0.2; }, isPolygon);
-                edgePos = edgePosMaxZ;
-            } else if (edgePosMinY.y - ctx.pieceHeightHalf < ctx.minY - 0.1) {
-                this.handleElementMove(piece, (el) => { el.position.y += Math.max(0.2, ctx.minY - edgePosMinY.y + ctx.pieceHeightHalf + 0.2); }, isPolygon);
-                edgePos = edgePosMinY;
-            } else {
-                return;
-            }
-                
-            const centerPoint = new Vector3((ctx.maxX + ctx.minX) / 2, 20 - ctx.minY, (ctx.maxZ + ctx.minZ) / 2);
-            const directionToCenter = centerPoint.subtract(edgePos).normalize();
-    
             if (piece.physicsAggregate) {
-                const power = 1.5;
+                if (isPolygon) {
+                    if ((edgePosMinX.x - ctx.pieceWidthHalf < ctx.minX)
+                            || (edgePosMaxX.x + ctx.pieceWidthHalf > ctx.maxX)
+                            || (edgePosMinZ.z - ctx.pieceDepthHalf < ctx.minZ)
+                            || (edgePosMaxZ.z + ctx.pieceDepthHalf > ctx.maxZ)
+                            || (edgePosMinY.y - ctx.pieceHeightHalf < ctx.minY - 0.1)) {
+                        
+                        normalizePositionRotationAnimation.destinationX = (ctx.minX + ctx.maxX) * 0.5 - (edgePosMinX.x + edgePosMaxX.x) * 0.5 + piece.position.x;
+                        normalizePositionRotationAnimation.destinationZ = (ctx.minZ + ctx.maxZ) * 0.5 - (edgePosMinZ.z + edgePosMaxZ.z) * 0.5 + piece.position.z;
+
+        
+                        if (piece.physicsAggregate) {
+                            piece.physicsAggregate.dispose();
+                            piece.physicsAggregate = undefined;
+                        }
+
+                        normalizePositionRotationAnimation.animate(piece, () => {
+                            polygonDragManager.doDrop(piece);
+                        });
+                    }
+                } else {
+                    let edgePos: Vector3 | null = null;
             
-                const body = piece.physicsAggregate.body;
-                if (!body) return;
-            
-                body.setLinearVelocity(Vector3.Zero());
-            
-                const centerImpulse = directionToCenter.scale(power);
-                body.applyImpulse(centerImpulse, edgePos);
-            
-                const maxAngularSpeed = 1;
-                const angularVelocity = body.getAngularVelocity();
-            
-                if (angularVelocity) {
-                    angularVelocity.x = Scalar.Clamp(angularVelocity.x, -maxAngularSpeed, maxAngularSpeed);
-                    angularVelocity.y = Scalar.Clamp(angularVelocity.y, -maxAngularSpeed, maxAngularSpeed);
-                    angularVelocity.z = Scalar.Clamp(angularVelocity.z, -maxAngularSpeed, maxAngularSpeed);
-            
-                    body.setAngularVelocity(angularVelocity);
+                    if (edgePosMinX.x - ctx.pieceWidthHalf < ctx.minX) {
+                        this.handleElementMove(piece, (el) => { el.position.x += 0.2; }, isPolygon);
+                        edgePos = edgePosMinX;
+                    } else if (edgePosMaxX.x + ctx.pieceWidthHalf > ctx.maxX) {
+                        this.handleElementMove(piece, (el) => { el.position.x -= 0.2; }, isPolygon);
+                        edgePos = edgePosMaxX;
+                    } else if (edgePosMinZ.z - ctx.pieceDepthHalf < ctx.minZ) {
+                        this.handleElementMove(piece, (el) => { el.position.z += 0.2; }, isPolygon);
+                        edgePos = edgePosMinZ;
+                    } else if (edgePosMaxZ.z + ctx.pieceDepthHalf > ctx.maxZ) {
+                        this.handleElementMove(piece, (el) => { el.position.z -= 0.2; }, isPolygon);
+                        edgePos = edgePosMaxZ;
+                    } else if (edgePosMinY.y - ctx.pieceHeightHalf < ctx.minY - 0.1) {
+                        this.handleElementMove(piece, (el) => { el.position.y += Math.max(0.2, ctx.minY - edgePosMinY.y + ctx.pieceHeightHalf + 0.2); }, isPolygon);
+                        edgePos = edgePosMinY;
+                    } else {
+                        return;
+                    }
+                        
+                    const centerPoint = new Vector3((ctx.maxX + ctx.minX) / 2, 20 - ctx.minY, (ctx.maxZ + ctx.minZ) / 2);
+                    const directionToCenter = centerPoint.subtract(edgePos).normalize();
+        
+                    const power = 1.5;
+                
+                    const body = piece.physicsAggregate.body;
+                    if (!body) return;
+                
+                    body.setLinearVelocity(Vector3.Zero());
+                
+                    const centerImpulse = directionToCenter.scale(power);
+                    body.applyImpulse(centerImpulse, edgePos);
+                
+                    const maxAngularSpeed = 1;
+                    const angularVelocity = body.getAngularVelocity();
+                
+                    if (angularVelocity) {
+                        angularVelocity.x = Scalar.Clamp(angularVelocity.x, -maxAngularSpeed, maxAngularSpeed);
+                        angularVelocity.y = Scalar.Clamp(angularVelocity.y, -maxAngularSpeed, maxAngularSpeed);
+                        angularVelocity.z = Scalar.Clamp(angularVelocity.z, -maxAngularSpeed, maxAngularSpeed);
+                
+                        body.setAngularVelocity(angularVelocity);
+                    }
                 }
             }
         });

@@ -3,7 +3,6 @@ import rotationToZeroAnimation from "../animations/RotationToZeroAnimation";
 import ctx from "../common/SceneContext";
 import dragHelpers from "./DragHelpers";
 import meshHelpers from "../common/MeshHelpers";
-import physicsAggregateBuilder from "../builders/PhysicsAggregateBuilder";
 
 abstract class AbstractDragManager {
     addDragBehavior(mesh: Mesh): void {

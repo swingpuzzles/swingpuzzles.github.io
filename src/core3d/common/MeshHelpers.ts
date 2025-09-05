@@ -93,7 +93,9 @@ class MeshHelpers {
 
     teleportMeshWithFunction(mesh: Mesh, posChangeFunction: ((el: Mesh) => void)) {
         const body = mesh.physicsAggregate?.body;
-        if (!body) return;
+        if (!body) {
+            return;
+        }
 
         // Enable pre-step to allow the physics engine to update the body's transform
         body.disablePreStep = true;
