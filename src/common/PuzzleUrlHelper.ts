@@ -80,7 +80,7 @@ class PuzzleUrlHelper {
                     if (changed) {
                         puzzleGameBuilder.clear();
                     }
-                } else {
+                } else if (ctx.currentCover != null) {
                     backToInitialAnimation.animate(ctx.currentCover);
                 }
             }

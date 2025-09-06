@@ -187,6 +187,9 @@ class PuzzleEditor {
             this.drawText(this._wishText, (this._vertical ? 0.21 : 0.1) * planeHeight, 0.66, (this._vertical ? 0.3 : 0.3), planeWidth * (this._vertical ? 0.52 : 0.4), planeWidth * (this._vertical ? 0.15 : 0.1), 320);
         }
 
+        // watermark
+        this.drawWatermark(this._vertical);
+
         // draw CANDLES
         const centerX = planeWidth / 2;
         const centerY = fgOffsetY + 0.091 * smallCoor;//(this._vertical ? 0.58 : 0.442) * planeHeight;
@@ -301,6 +304,46 @@ class PuzzleEditor {
             ctx2d.fillText(char, 0, 0);
             ctx2d.restore();
         }
+    }
+
+    private drawWatermark(vertical: boolean) {
+        const planeWidth = this._popupDynamicTexture!.getSize().width;
+        const planeHeight = this._popupDynamicTexture!.getSize().height;
+        const ctx2d = this._popupCtx2d!;
+
+        const centerX = planeWidth / 2;
+        const centerY = planeHeight / 2;
+
+        const minFontSize = 1;
+        const maxFontSize = 1000;
+
+        const fontSize = 14;
+
+        ctx2d.font = `${fontSize}px Segou Script`;
+        ctx2d.fillStyle = "white";
+        ctx2d.textAlign = "right";
+        ctx2d.textBaseline = "bottom";
+
+        /*for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+
+            // Cylindrical arc distortion: X and Y from angle*/
+            const x = 0.99 * planeWidth //+ Math.sin(angle) * radius;
+            const y = 0.99 * planeHeight //+ (1- Math.cos(angle)) * yAngleFactor; // simulate view from above (taller middle)
+
+            // Simulate vertical skew/stretch for fake perspective
+            /*const skew = Math.cos(angle); // smaller at sides
+            const centerBoost = 1 + 0.3 * (1 - Math.abs(angle) / (angleSpan / 2)); // max at center
+            const scaleX = (1 + 0.2 * (1 - Math.abs(skew))) * centerBoost; // slightly wider in center
+            const scaleY = (1 - 0.3 * Math.abs(skew)) * centerBoost; // shorter at sides*/
+
+            ctx2d.save();
+            ctx2d.translate(x, y);
+            //ctx2d.rotate(angleFactor * angle);
+            //ctx2d.scale(scaleX, scaleY);
+            ctx2d.fillText("swingpuzzles.com", 0, 0);
+            ctx2d.restore();
+        //}
     }
 }
 
