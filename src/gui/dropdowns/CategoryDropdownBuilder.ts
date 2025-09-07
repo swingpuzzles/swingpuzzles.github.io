@@ -4,6 +4,7 @@ import DropdownBuilder from "./DropdownBuilder";
 import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
 import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
+import analyticsManager from "../../common/AnalyticsManager";
 
 export default class CategoryDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
@@ -58,6 +59,11 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
 
     selectAction(category: Category, userAction: boolean = true) {
         localStorageManager.set(this.storageItemName, category.key);
+
+        // Track category change in dropdown
+        if (userAction) {
+            analyticsManager.trackDropdownInteraction('category_dropdown', category.key);
+        }
 
         gameModeManager.handleCategoryChange(category, userAction);
 

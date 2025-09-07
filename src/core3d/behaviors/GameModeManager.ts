@@ -9,6 +9,7 @@ import puzzleCircleBuilder from "../builders/PuzzleCircleBuilder";
 import ctx, { Categories, Category } from "../common/SceneContext";
 import timerManager from "../misc/TimerManager";
 import piecePositioningManager from "./PiecePositioningManager";
+import analyticsManager from "../../common/AnalyticsManager";
 
 export enum GameMode {
     Initial,
@@ -61,6 +62,11 @@ class GameModeManager {
         let prevMode = this._currentMode;
         this._currentMode = currentMode;
 
+        // Track game mode change
+        if (prevMode !== currentMode) {
+            analyticsManager.trackGameModeChange(prevMode, currentMode);
+        }
+
         if (hidePopups) {
             popupHint.hide();
             overPopup.hide();
@@ -91,6 +97,9 @@ class GameModeManager {
         ctx.camera.attachControl(ctx.canvas, true);
 
         puzzleUrlHelper.clearPuzzleId();
+        
+        // Track game session start
+        analyticsManager.startGameSession(GameMode.Initial, ctx.category?.key);
     }
 
     enterOpenCoverMode(showShakeIt: boolean = true) {
@@ -113,12 +122,22 @@ class GameModeManager {
         this.resetAll(GameMode.Solve);
         
         piecePositioningManager.init();
+        
+        // Track puzzle solving start
+        analyticsManager.startGameSession(GameMode.Solve, ctx.category?.key);
     }
 
     enterCelebrationMode() {
         this.resetAll(GameMode.Celebration);
         
         piecePositioningManager.init();
+        
+        // Track puzzle completion
+        const currentSession = analyticsManager.getCurrentSession();
+        if (currentSession) {
+            const solveTime = Date.now() - currentSession.startTime;
+            analyticsManager.trackPuzzleCompletion(solveTime, currentSession.piecesCount || 0);
+        }
     }
 
     enterGiftInitialMode() {
@@ -127,6 +146,9 @@ class GameModeManager {
         ctx.camera.detachControl();
 
         giftMaker.start();
+        
+        // Track gift creation start
+        analyticsManager.startGameSession(GameMode.GiftInitial, 'gift');
     }
 
     async enterGiftAdjustmentMode() {
@@ -205,9 +227,15 @@ class GameModeManager {
 
     handleCategoryChange(category: Category, userAction: boolean) {
         if (ctx.category !== category) {
+            const fromCategory = ctx.category?.key || 'unknown';
+            const toCategory = category.key;
+            
             ctx.category = category;
 
             puzzleUrlHelper.setCategory(category.key/*, userAction*/);
+
+            // Track category change
+            analyticsManager.trackCategoryChange(fromCategory, toCategory);
 
             if (category === Categories.Gift) {
                 if (!this.giftReceived) {

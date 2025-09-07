@@ -1,4 +1,5 @@
 import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
+import analyticsManager from "../../common/AnalyticsManager";
 
 class TimerDisplay {
     private element: HTMLDivElement;
@@ -38,6 +39,10 @@ class TimerDisplay {
 
     public getElapsedTime(): string {
         return this.element.textContent!;
+    }
+
+    public getElapsedTimeMs(): number {
+        return this.elapsed + (this.interval ? Date.now() - this.startTime : 0);
     }
 
     private updateDisplay(): void {

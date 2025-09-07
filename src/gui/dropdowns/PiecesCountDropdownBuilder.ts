@@ -3,6 +3,7 @@ import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
+import analyticsManager from "../../common/AnalyticsManager";
 
 export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
@@ -66,6 +67,11 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     selectAction(xCount: number, zCount: number, text: string, userAction: boolean = true) {
         const count = xCount * zCount;
         localStorageManager.set(this.storageItemName, count.toString());
+
+        // Track pieces count change
+        if (userAction) {
+            analyticsManager.trackDropdownInteraction('pieces_count_dropdown', `${xCount}x${zCount}`);
+        }
 
         ctx.numX = xCount;
         ctx.numZ = zCount;

@@ -21,6 +21,7 @@ import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../comm
 import translationManager from "../core3d/misc/TranslationManager";
 import PiecesCountSelector from "./selectors/PiecesCountSelector";
 import profanityGuard from "../common/ProfanityGuard";
+import analyticsManager, { GiftCreationData } from "../common/AnalyticsManager";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -244,6 +245,22 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             }
 
             puzzleEditor.setFormData(this._friendsName, age);
+            
+            // Track gift creation start
+            const giftData: GiftCreationData = {
+                giftId: `gift_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                friendName: this._friendsName,
+                age: age,
+                language: lang,
+                background: localStorageManager.getString(GiftStorageKeys.GiftBackground) || 'default',
+                fontFamily: localStorageManager.getString(GiftStorageKeys.GiftFontFamily) || 'default',
+                foreground: localStorageManager.getString(GiftStorageKeys.GiftForeground) || 'default',
+                wishText: localStorageManager.getString(GiftStorageKeys.GiftWishText) || '',
+                piecesCount: parseInt(localStorageManager.getString(GiftStorageKeys.NumPieces) || '1000'),
+                creationTime: Date.now()
+            };
+            
+            analyticsManager.trackGiftCreation(giftData);
         }
 
         popupHint.show("", "↑ ↑ ↑ GIFT STYLING ↑ ↑ ↑", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
@@ -392,6 +409,7 @@ You're just one step away from turning it into a real gift.
 
 You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
+                analyticsManager.trackGiftShared('gift_shared', 'amazon');
                 window.open(link, "_blank");
             },
             () => { this.exitGiftMaking(); },
@@ -517,6 +535,9 @@ You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, Sha
             }
         }
 
+        // Track gift received
+        analyticsManager.trackGiftReceived('gift_received_from_url');
+        
         return true; // ✅ Safe gift
     }
 }

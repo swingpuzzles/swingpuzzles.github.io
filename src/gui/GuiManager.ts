@@ -14,6 +14,7 @@ import PiecesCountDropdownBuilder from "./dropdowns/PiecesCountDropdownBuilder";
 import urlDecoder from "../common/UrlDecoder";
 import navigationManager from "./NavigationManager";
 import puzzleUrlHelper from "../common/PuzzleUrlHelper";
+import analyticsManager from "../common/AnalyticsManager";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -62,6 +63,7 @@ class GuiManager {
         this.playButton.background = "";
         this.playButton.hoverCursor = "pointer";
         this.playButton.onPointerClickObservable.add(() => {
+            analyticsManager.trackButtonClick('play_button', 'initial_mode');
             openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
         });
         this.bottomButtonPanel.addControl(this.playButton);
@@ -71,6 +73,7 @@ class GuiManager {
         this.bannerButton.background = "";
         this.bannerButton.hoverCursor = "pointer";
         this.bannerButton.onPointerClickObservable.add(() => {
+            analyticsManager.trackButtonClick('banner_button', 'amazon_action');
             gameModeManager.handleGetItOnAmazonAction();
         });
         this.bottomButtonPanel.addControl(this.bannerButton);
@@ -89,6 +92,7 @@ class GuiManager {
         this.xButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.xButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.xButton.onPointerClickObservable.add(() => {
+            analyticsManager.trackButtonClick('x_button', gameModeManager.currentMode.toString());
             if (this._xAction) {
                 this._xAction();
             }
@@ -96,12 +100,16 @@ class GuiManager {
 
         this._advancedTexture.addControl(this.xButton);
 
-        this.menuButton = Button.CreateImageOnlyButton("xButton", "assets/buttons/menu-button.webp");
+        this.menuButton = Button.CreateImageOnlyButton("menuButton", "assets/buttons/menu-button.webp");
         this.menuButton.thickness = 0;
         this.menuButton.background = "";
         this.menuButton.hoverCursor = "pointer";
         this.menuButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.menuButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this.menuButton.onPointerClickObservable.add(() => {
+            analyticsManager.trackButtonClick('menu_button', 'menu_action');
+            // TODO: Implement menu functionality
+        });
 
         this._advancedTexture.addControl(this.menuButton);
 
