@@ -12,15 +12,65 @@ import { Mesh } from "@babylonjs/core";
 import guiManager from "./GuiManager";
 
 class NavigationManager {
+    private static readonly EMAIL_FLAG_KEY = "emailCaptured";
+
+    private getEmailCaptured(): boolean {
+        return localStorage.getItem(NavigationManager.EMAIL_FLAG_KEY) === "true";
+    }
+
+    private setEmailCaptured(value: boolean): void {
+        localStorage.setItem(NavigationManager.EMAIL_FLAG_KEY, value ? "true" : "false");
+    }
+
     public handleXAction() {
         timerDisplay.pause();
         this.enterGamePaused(gameModeManager.celebrationMode);
     }
 
+    private async subscribeEmail(email: string) {
+        // TODO: swap for your provider / API call
+        // await fetch("/api/subscribe", { method: "POST", body: JSON.stringify({ email }) })
+    }
+
     private enterGamePaused(puzzleFinished: boolean) {
         const formModel: FormRowModel[] = [];
+        let message: string;
 
-        if (!puzzleFinished) {
+        if (puzzleFinished) {
+            const alreadyCaptured = this.getEmailCaptured();
+
+            formModel.push({
+                id: "email",
+                type: "emailCapture",
+                label: alreadyCaptured
+                  ? "Want to add another email for updates?"
+                  : "Want new puzzles & updates? Add your email:",
+                isUpdate: alreadyCaptured,
+                buttonTextSubscribe: "📧 Add email",
+                buttonTextUpdate: "✏️ Add another",
+                onSubmit: async (email, mode) => {
+                  await this.subscribeEmail(email); // send to your backend / provider
+                  this.setEmailCaptured(true);           // flip the boolean flag only
+                  alert(mode === "subscribe"
+                    ? "Thanks! Please check your inbox to confirm."
+                    : "Another email added. You’re all set!");
+                },
+              });
+        
+            message = alreadyCaptured
+              ? `🎉 Congratulations!
+        
+        You’ve completed this puzzle.
+        
+        You can restart it, return to the gallery, or add another email below to get updates.`
+              : `🎉 Congratulations!
+        
+        You’ve completed this puzzle.
+        
+        You can restart it, return to the gallery, or add your email below to get updates when new puzzles arrive.`;
+        
+            // use `message` in popupHint.show later
+        } else {
             formModel.push({
                 id: "continue",
                 label: "Resume solving from this exact spot:",
@@ -32,6 +82,12 @@ class NavigationManager {
                     this.continue(puzzleFinished);
                 }
             });
+
+            message = `Your puzzle is on hold.
+            
+            What’s next?
+            
+            You can continue right where you left off, restart from the beginning, return to the main menu, or use the PREV and NEXT buttons below to switch puzzles.`;
         }
 
         formModel.push(
@@ -62,20 +118,6 @@ class NavigationManager {
         );
 
         const title = puzzleFinished ? "PUZZLE SOLVED!" : "GAME PAUSED";
-
-        const message = puzzleFinished
-            ? `Congratulations!
-            
-You’ve completed this puzzle.
-
-What’s next?
-
-You can restart it for fun, return to the main menu, or use the PREV and NEXT buttons below to switch puzzles.`
-            : `Your puzzle is on hold.
-            
-What’s next?
-
-You can continue right where you left off, restart from the beginning, return to the main menu, or use the PREV and NEXT buttons below to switch puzzles.`;
 
         popupHint.show(
             message,

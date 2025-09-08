@@ -10,7 +10,7 @@ import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import { FormRowModel as FormRowModel } from "../model/FormRowModel";
 import ISelector from "../interfaces/ISelector";
 import Constants from "../core3d/common/Constants";
-import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
+import localStorageManager from "../common/LocalStorageManager";
 import puzzleEditor from "../core3d/misc/PuzzleEditor";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import timerManager from "../core3d/misc/TimerManager";
@@ -610,6 +610,83 @@ class PopupHint {
                         rowControl = horizPanel;
 
                         break;
+
+                    case "emailCapture": {
+                        const m = formRowModel;// as EmailCaptureActionModel;
+                    
+                        // container: one horizontal row
+                        const row = new StackPanel();
+                        row.width = "100%";
+                        row.isVertical = false;
+                        row.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+                    
+                        // input
+                        const input = new InputText(`${m.id}_email`);
+                        input.width = "65%";
+                        input.color = "#222";
+                        input.background = "#f0f0f0";
+                        input.focusedBackground = "#e6e6e6";
+                        input.thickness = 1;
+                        input.placeholderText = m.placeHolder ?? "you@example.com";
+                        input.onTextChangedObservable.add(() => {
+                            const cap = m.maxLength ?? 254;
+                            if (input.text.length > cap) input.text = input.text.slice(0, cap);
+                        });
+                    
+                        // button
+                        const mode: "subscribe" | "update" = m.isUpdate ? "update" : "subscribe";
+                        const btnText = mode === "update"
+                            ? (m.buttonTextUpdate ?? "✏️ Add another")
+                            : (m.buttonTextSubscribe ?? "📧 Add email");
+                    
+                        const submit = Button.CreateSimpleButton(`${m.id}_submit`, btnText);
+                        submit.width = "35%";
+                        submit.background = "#2980b9";
+                        submit.color = "#ffffff";
+                        submit.fontWeight = "bold";
+                        submit.cornerRadius = 12;
+                        submit.thickness = 2;
+                        submit.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+                    
+                        const pattern = m.validatePattern ?? /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    
+                        const doSubmit = async () => {
+                            const value = (input.text || "").trim();
+                            if (!pattern.test(value)) {
+                                alert("Please enter a valid email.");
+                                return;
+                            }
+                            submit.isEnabled = false;
+                            try {
+                                await m.onSubmit(value, mode);
+                                // minimal success feedback without echoing the email
+                                const original = submit.textBlock?.text ?? btnText;
+                                if (submit.textBlock) submit.textBlock.text = "✅ Sent";
+                                setTimeout(() => {
+                                    if (submit.textBlock) submit.textBlock.text = original;
+                                }, 1600);
+                            } catch (e) {
+                                console.error(e);
+                                alert("Subscription failed. Please try again.");
+                            } finally {
+                                submit.isEnabled = true;
+                            }
+                        };
+                    
+                        submit.onPointerClickObservable.add(doSubmit);
+                    
+                        // Optional: Enter key quick submit (works in browsers that forward Enter to InputText)
+                        input.onBeforeKeyAddObservable.add((key) => {
+                            // @ts-ignore: key may be string; guard simple Enter
+                            if (key === "\n" || key === "\r") doSubmit();
+                        });
+                    
+                        // layout: label above, then [input][button]
+                        row.addControl(input);
+                        row.addControl(submit);
+                        container.addControl(row);
+                        break;
+                    }
                 }
 
                 container.addControl(rowControl);
@@ -811,7 +888,7 @@ class PopupHint {
             case PopupMode.PreSell:
                 this.emptyGreenButton.isVisible = true;
                 this.centerImage.isVisible = true;
-                this.coverImage.source = openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.selectedCoverUrl;
+                this.coverImage.source = openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.getCoverUrl(ctx.currentCover);
                 break;
             case PopupMode.Sell:
                 this.getItButton.isVisible = true;

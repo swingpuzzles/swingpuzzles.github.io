@@ -1,3 +1,4 @@
+// FormRowModel.ts
 import ISelector from "../interfaces/ISelector";
 
 export type FormRowModel =
@@ -6,7 +7,8 @@ export type FormRowModel =
   | SelectionInputModel
   | ShareActionModel
   | ButtonActionModel
-  | RadioButtonActionModel;
+  | RadioButtonActionModel
+  | EmailCaptureActionModel;
 
 interface BaseFormRowModel {
   id: string;
@@ -52,4 +54,18 @@ interface RadioButtonActionModel extends BaseFormRowModel {
 interface ShareActionModel extends BaseFormRowModel {
   type: "share";
   link: string;
+}
+
+interface EmailCaptureActionModel extends BaseFormRowModel {
+  type: "emailCapture";
+  // UI texts
+  buttonTextSubscribe?: string;  // default: "📧 Add email"
+  buttonTextUpdate?: string;     // default: "✏️ Add another"
+  placeHolder?: string;          // default: "you@example.com"
+
+  // Behavior
+  isUpdate: boolean;             // you decide via your boolean storage flag
+  maxLength?: number;            // default: 254
+  validatePattern?: RegExp;      // default: basic email regex
+  onSubmit: (email: string, mode: "subscribe" | "update") => Promise<void> | void;
 }

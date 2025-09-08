@@ -1,4 +1,4 @@
-import { Vector3, Mesh, HighlightLayer, Color3 } from '@babylonjs/core';
+import { Vector3, Mesh, HighlightLayer, Color3, StandardMaterial, Texture } from '@babylonjs/core';
 import amazonDataHoriz from '../../assets/data/amazon-jigsaw-horiz.json';
 import amazonDataVert from '../../assets/data/amazon-jigsaw-vert.json';
 import puzzleCoverBuilder from './PuzzleCoverBuilder';
@@ -10,15 +10,28 @@ import puzzleUrlHelper from '../../common/PuzzleUrlHelper';
 interface CoverData {
     imgCoverUrl: string;
     link: string;
+    mesh: Mesh;
 }
 
 class PuzzleCircleBuilder {
-    private covers: Map<Mesh, CoverData> = new Map();
+    private covers: Map<string, CoverData> = new Map();
     private highlightedCover: Mesh | null = null;
     private highlightLayer!: HighlightLayer;
     private closestMesh: Mesh | null = null;
 
     constructor() {
+    }
+
+    private getPuzzleId(cover: Mesh): string | null {
+        const coverMat = cover.material as StandardMaterial;
+
+        if (coverMat) {   // TODO better logic here
+            const originalTexture = coverMat.diffuseTexture as Texture;
+            const url = originalTexture.url!; // this should be the image URL
+            return puzzleUrlHelper.extractPuzzleId(url);
+        }
+
+        return null;
     }
 
     public getPrevCover(cover: Mesh): Mesh | null {
@@ -28,14 +41,16 @@ class PuzzleCircleBuilder {
             return null; // no covers at all
         }
 
-        let index = keys.indexOf(cover);
+        let puzzleId = this.getPuzzleId(cover);
+
+        let index = keys.indexOf(puzzleId!);
 
         if (index === -1) {
             index = 0;
         }
 
         const prevIndex = (index - 1 + keys.length) % keys.length;
-        return keys[prevIndex];
+        return this.covers.get(keys[prevIndex])!.mesh;
     }
 
     public getNextCover(cover: Mesh): Mesh | null {
@@ -45,22 +60,26 @@ class PuzzleCircleBuilder {
             return null; // no covers at all
         }
 
-        let index = keys.indexOf(cover);
+        let puzzleId = this.getPuzzleId(cover);
+
+        let index = keys.indexOf(puzzleId!);
 
         if (index === -1) {
             index = 0;
         }
 
         const nextIndex = (index + 1) % keys.length;
-        return keys[nextIndex];
+        return this.covers.get(keys[nextIndex])!.mesh;
+    }
+
+    public getCoverUrl(cover: Mesh): string {
+        let puzzleId = this.getPuzzleId(cover);
+        return this.covers.get(puzzleId!)!.imgCoverUrl;
     }
     
     public get selectedLink(): string {
-        return this.covers.get(this.closestMesh!)!.link;
-    }
-
-    public get selectedCoverUrl(): string {
-        return this.covers.get(this.closestMesh!)!.imgCoverUrl;
+        let puzzleId = this.getPuzzleId(this.closestMesh!);
+        return this.covers.get(puzzleId!)!.link;
     }
 
     public get selectedCover(): Mesh {
@@ -82,8 +101,8 @@ class PuzzleCircleBuilder {
 
     clear() {
         // Dispose previous covers and clear the map
-        this.covers.forEach((_, mesh) => {
-            mesh.dispose();
+        this.covers.forEach((value, key) => {
+            value.mesh.dispose();
         });
         this.covers.clear();
     }
@@ -108,7 +127,7 @@ class PuzzleCircleBuilder {
         const count = filteredData.length;
 
         const urlData = puzzleUrlHelper.readFromUrl();
-        const puzzleId = urlData.puzzleId;
+        //const puzzleId = urlData.puzzleId;console.log(urlData);
 
         filteredData.forEach((obj, index) => {
             if (!PuzzleTools.hasIntersection(ctx.category!.tags, obj.tags)) {
@@ -122,12 +141,14 @@ class PuzzleCircleBuilder {
             const cover = puzzleCoverBuilder.createCover(obj.imgSmallUrl, obj.imgBigUrl);
             cover.position = position;
             cover.rotation.y = -angle + Math.PI / 2;
+            
+            let puzzleId = puzzleUrlHelper.extractPuzzleId(obj.imgSmallUrl);
 
-            this.covers.set(cover, { imgCoverUrl: obj.imgCoverUrl, link: obj.link });
+            this.covers.set(puzzleId!, { imgCoverUrl: obj.imgCoverUrl, link: obj.link, mesh: cover });
 
-            if (puzzleId && obj.imgSmallUrl.includes(puzzleId)) {
+            /*if (puzzleId && obj.imgSmallUrl.includes(puzzleId)) {
                 ctx.camera.alpha = angle;
-            }
+            }*/
 
             puzzleUrlHelper.insertCoverEntry(obj.imgSmallUrl, cover);
         });
@@ -147,11 +168,11 @@ class PuzzleCircleBuilder {
 
         let minDistance = Infinity;
 
-        for (const [cover, link] of this.covers) {
-            const dist = Vector3.Distance(cover.position, ctx.camera.position);
+        for (const [key, value] of this.covers) {
+            const dist = Vector3.Distance(value.mesh.position, ctx.camera.position);
             if (dist < minDistance) {
                 minDistance = dist;
-                this.closestMesh = cover;
+                this.closestMesh = value.mesh;
             }
         }
 
