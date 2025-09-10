@@ -70,10 +70,10 @@ class SceneContext {
         this._engine = engine;
 
         this.originalCameraState = {
-            alpha: this.camera.alpha,
-            beta: this.camera.beta,
-            radius: this.camera.radius,
-            target: this.camera.target.clone()
+            alpha: this._camera.alpha,
+            beta: this._camera.beta,
+            radius: this._camera.radius,
+            target: this._camera.target.clone()
         };
 
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
@@ -116,9 +116,75 @@ class SceneContext {
     get scene(): Scene {
         return this._scene!;
     }
-    get camera(): ArcRotateCamera {
+    private get camera() {//console.trace('camera used');
         return this._camera!;
     }
+    get cameraObject() {//console.trace('camera used');
+        return this._camera!;
+    }
+    get cameraAlpha(): number {
+        return this.camera.alpha;
+    }
+    get cameraBeta(): number {
+        return this.camera.beta;
+    }
+    get cameraRadius(): number {
+        return this.camera.radius;
+    }
+    get cameraTarget(): Vector3 {
+        return this.camera.target.clone();
+    }
+    set cameraAlpha(value: number) {
+        this.camera.alpha = value;
+    }
+    set cameraBeta(value: number) {
+        this.camera.beta = value;
+    }
+    set cameraRadius(value: number) {
+        this.camera.radius = value;
+    }
+    set cameraTarget(value: Vector3) {
+        this.camera.target = value.clone();
+    }
+    get cameraUpperAlphaLimit(): number | null {
+        return this.camera.upperAlphaLimit;
+    }
+    get cameraLowerAlphaLimit(): number | null {
+        return this.camera.lowerAlphaLimit;
+    }
+    get cameraUpperBetaLimit(): number | null {
+        return this.camera.upperBetaLimit;
+    }
+    get cameraLowerBetaLimit(): number | null {
+        return this.camera.lowerBetaLimit;
+    }
+    set cameraUpperAlphaLimit(value: number | null) {
+        this.camera.upperAlphaLimit = value;
+    }
+    set cameraLowerAlphaLimit(value: number | null) {
+        this.camera.lowerAlphaLimit = value;
+    }
+    set cameraUpperBetaLimit(value: number | null) {
+        this.camera.upperBetaLimit = value;
+    }
+    set cameraLowerBetaLimit(value: number | null) {
+        this.camera.lowerBetaLimit = value;
+    }
+    cameraAttachControl(value: boolean) {
+        this.camera.attachControl(this._canvas!, value);
+    }
+    cameraDetachControl() {
+        this.camera.detachControl();
+    }
+    get cameraInitialized(): boolean {
+        return this._camera !== null;
+    }
+    get cameraPosition(): Vector3 {
+        return this.camera.position.clone();
+    }
+    /*get camera(): ArcRotateCamera {
+        return this._camera!;
+    }*/
     get canvas(): HTMLCanvasElement {
         return this._canvas!;
     }

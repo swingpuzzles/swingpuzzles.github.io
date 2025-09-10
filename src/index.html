@@ -45,6 +45,15 @@
         });
     </script>
     -->
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1351015');
+    </script>
+    <!-- End MailerLite Universal -->
 </head>
 <body>
     <script type="module" src="/index.ts"></script>
@@ -61,6 +70,7 @@
     ">
         <img src="assets/misc/wait-anim.webp" style="width: 200px; height: 200px;" />
     </div>
+    <div style="display: none;"><button class="ml-onclick-form" onclick="ml('show', '1RSel7', true)">Click here to show form</button></div>
     <!-- Cookie Consent -->
     <div id="cookie-consent" style="position: fixed; bottom: 0; width: 100%; background: #333; color: white; padding: 10px; z-index: 1000; text-align: center; display: none;">
         This site uses cookies to improve your experience.

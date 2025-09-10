@@ -107,7 +107,7 @@ class PuzzleCircleBuilder {
         this.covers.clear();
     }
 
-    build() {
+    build() {//console.trace('circle build');
         this.clear();
 
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
@@ -155,7 +155,7 @@ class PuzzleCircleBuilder {
     }
 
     private highlightClosestCover() {
-        if (!ctx.camera) return;
+        if (!ctx.cameraInitialized) return;
 
         if (!gameModeManager.initialMode) {
             if (this.highlightedCover) {
@@ -169,7 +169,7 @@ class PuzzleCircleBuilder {
         let minDistance = Infinity;
 
         for (const [key, value] of this.covers) {
-            const dist = Vector3.Distance(value.mesh.position, ctx.camera.position);
+            const dist = Vector3.Distance(value.mesh.position, ctx.cameraPosition);
             if (dist < minDistance) {
                 minDistance = dist;
                 this.closestMesh = value.mesh;

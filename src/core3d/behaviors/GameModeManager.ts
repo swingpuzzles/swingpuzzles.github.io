@@ -74,10 +74,10 @@ class GameModeManager {
 
         timerManager.clearAll();
 
-        ctx.camera.upperAlphaLimit = null;
-        ctx.camera.lowerAlphaLimit = null;
-        ctx.camera.upperBetaLimit = null;
-        ctx.camera.lowerBetaLimit = null;
+        ctx.cameraUpperAlphaLimit = null;
+        ctx.cameraLowerAlphaLimit = null;
+        ctx.cameraUpperBetaLimit = null;
+        ctx.cameraLowerBetaLimit = null;
 
         for (let observer of this._observers) {
             observer(prevMode);
@@ -91,10 +91,10 @@ class GameModeManager {
     enterInitialMode() {
         this.resetAll(GameMode.Initial);
 
-        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
-        ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
+        ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
+        ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
             
-        ctx.camera.attachControl(ctx.canvas, true);
+        ctx.cameraAttachControl(true);
 
         puzzleUrlHelper.clearPuzzleId();
         
@@ -105,7 +105,7 @@ class GameModeManager {
     enterOpenCoverMode(showShakeIt: boolean = true) {
         this.resetAll(GameMode.OpenCover);
 
-        ctx.camera.detachControl();
+        ctx.cameraDetachControl();
 
         if (showShakeIt) {
             tutorialManager.showShakeHint();
@@ -143,7 +143,7 @@ class GameModeManager {
     enterGiftInitialMode() {
         this.resetAll(GameMode.GiftInitial);
 
-        ctx.camera.detachControl();
+        ctx.cameraDetachControl();
 
         giftMaker.start();
         
@@ -184,14 +184,14 @@ class GameModeManager {
     enterGiftTryMode() {
         this.resetAll(GameMode.GiftTry);
 
-        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
-        ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
-        ctx.camera.upperAlphaLimit = 1.5 * Math.PI / 32;
-        ctx.camera.lowerAlphaLimit = -1.5 * Math.PI / 32;
+        ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
+        ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
+        ctx.cameraUpperAlphaLimit = 1.5 * Math.PI / 32;
+        ctx.cameraLowerAlphaLimit = -1.5 * Math.PI / 32;
             
-        ctx.camera.attachControl(ctx.canvas, true);
+        ctx.cameraAttachControl(true);
 
-        ctx.camera.alpha = 0;
+        ctx.cameraAlpha = 0;
         //ctx.camera.beta = 12.5 * Math.PI / 32;  
 
         giftMaker.tryGift();
@@ -200,14 +200,14 @@ class GameModeManager {
     enterGiftReceivedMode() {
         this.resetAll(GameMode.GiftReceived);
 
-        ctx.camera.upperBetaLimit = 14 * Math.PI / 32;
-        ctx.camera.lowerBetaLimit = 9 * Math.PI / 32;
-        ctx.camera.upperAlphaLimit = 1.5 * Math.PI / 32;
-        ctx.camera.lowerAlphaLimit = -1.5 * Math.PI / 32;
+        ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
+        ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
+        ctx.cameraUpperAlphaLimit = 1.5 * Math.PI / 32;
+        ctx.cameraLowerAlphaLimit = -1.5 * Math.PI / 32;
             
-        ctx.camera.attachControl(ctx.canvas, true);
+        ctx.cameraAttachControl(true);
 
-        ctx.camera.alpha = 0;
+        ctx.cameraAlpha = 0;
         //ctx.camera.beta = 12.5 * Math.PI / 32;
 
         localStorageManager.set(CommonStorageKeys.Category, Categories.Gift.key);

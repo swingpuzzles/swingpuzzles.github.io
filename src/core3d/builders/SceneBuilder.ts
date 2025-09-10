@@ -101,9 +101,9 @@ class SceneBuilder {
 
         ctx.scene.onBeforeRenderObservable.add(() => {
             if (gameModeManager.canOpenCover) {
-                targetPos.y = 140 * (ctx.camera.beta - 18 * Math.PI / 32);
-                ctx.camera.radius = 4 * 45 + 40 * (-ctx.camera.beta + 18 * Math.PI / 32);
-                ctx.camera.setTarget(targetPos);
+                targetPos.y = 140 * (ctx.cameraBeta - 18 * Math.PI / 32);
+                ctx.cameraRadius = 4 * 45 + 40 * (-ctx.cameraBeta + 18 * Math.PI / 32);
+                ctx.cameraTarget = targetPos;
             }
         });
 

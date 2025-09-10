@@ -59,7 +59,7 @@ class ShakeBehaviorManager {
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
 
         // Base radius for landscape
-        let baseRadius = 42;
+        let baseRadius = 42.00001;
         
         // Adjust camera radius proportionally in portrait
         let targetRadius = isPortrait
@@ -178,15 +178,15 @@ class ShakeBehaviorManager {
             return animation;
         };
     
-        const alphaAnim = createAnimation("alpha", ctx.camera.alpha, newAlpha);
-        const betaAnim = createAnimation("beta", ctx.camera.beta, newBeta);
-        const radiusAnim = createAnimation("radius", ctx.camera.radius, newRadius);
+        const alphaAnim = createAnimation("alpha", ctx.cameraAlpha, newAlpha);
+        const betaAnim = createAnimation("beta", ctx.cameraBeta, newBeta);
+        const radiusAnim = createAnimation("radius", ctx.cameraRadius, newRadius);
     
-        const targetXAnim = createAnimation("target.x", ctx.camera.target.x, newTarget.x);
-        const targetYAnim = createAnimation("target.y", ctx.camera.target.y, newTarget.y);
-        const targetZAnim = createAnimation("target.z", ctx.camera.target.z, newTarget.z);
+        const targetXAnim = createAnimation("target.x", ctx.cameraTarget.x, newTarget.x);
+        const targetYAnim = createAnimation("target.y", ctx.cameraTarget.y, newTarget.y);
+        const targetZAnim = createAnimation("target.z", ctx.cameraTarget.z, newTarget.z);
     
-        ctx.camera.animations = [
+        ctx.cameraObject.animations = [
             alphaAnim,
             betaAnim,
             radiusAnim,
@@ -195,7 +195,7 @@ class ShakeBehaviorManager {
             targetZAnim
         ];
     
-        ctx.scene.beginAnimation(ctx.camera, 0, duration, false);
+        ctx.scene.beginAnimation(ctx.cameraObject, 0, duration, false);
     }
     
     private ensureDragBehavior(mesh: Mesh): void {

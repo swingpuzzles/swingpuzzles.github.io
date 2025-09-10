@@ -67,5 +67,5 @@ interface EmailCaptureActionModel extends BaseFormRowModel {
   isUpdate: boolean;             // you decide via your boolean storage flag
   maxLength?: number;            // default: 254
   validatePattern?: RegExp;      // default: basic email regex
-  onSubmit: (email: string, mode: "subscribe" | "update") => Promise<void> | void;
+  action: () => void;
 }

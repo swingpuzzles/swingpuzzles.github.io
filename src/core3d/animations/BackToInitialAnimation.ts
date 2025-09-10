@@ -34,34 +34,33 @@ class BackToInitialAnimation implements IPuzzleAnimation {
 
         // === Animate camera back ===
 
-        const cam = ctx.camera;
         const orig = ctx.originalCameraState;
 
         const easingFunction = new CubicEase();
         easingFunction.setEasingMode(EasingFunction.EASINGMODE_EASEIN);
 
         const alphaAnim = new Animation("camAlpha", "alpha", animSpeed, Animation.ANIMATIONTYPE_FLOAT);
-        alphaAnim.setKeys([{ frame: 0, value: cam.alpha }, { frame: animFrames, value: orig.alpha }]);
+        alphaAnim.setKeys([{ frame: 0, value: ctx.cameraAlpha }, { frame: animFrames, value: orig.alpha }]);
 
         const betaAnim = new Animation("camBeta", "beta", animSpeed, Animation.ANIMATIONTYPE_FLOAT);
-        betaAnim.setKeys([{ frame: 0, value: cam.beta }, { frame: animFrames, value: orig.beta }]);
+        betaAnim.setKeys([{ frame: 0, value: ctx.cameraBeta }, { frame: animFrames, value: orig.beta }]);
 
         const radiusAnim = new Animation("camRadius", "radius", animSpeed, Animation.ANIMATIONTYPE_FLOAT);
-        radiusAnim.setKeys([{ frame: 0, value: cam.radius }, { frame: animFrames, value: orig.radius }]);
+        radiusAnim.setKeys([{ frame: 0, value: ctx.cameraRadius }, { frame: animFrames, value: orig.radius }]);
         radiusAnim.setEasingFunction(easingFunction);
 
         const targetAnim = new Animation("camTarget", "target", animSpeed, Animation.ANIMATIONTYPE_VECTOR3);
-        targetAnim.setKeys([{ frame: 0, value: cam.target.clone() }, { frame: animFrames, value: orig.target.clone() }]);
+        targetAnim.setKeys([{ frame: 0, value: ctx.cameraTarget }, { frame: animFrames, value: orig.target.clone() }]);
         targetAnim.setEasingFunction(easingFunction);
 
         gameModeManager.enterOpenCoverMode(false);
 
-        ctx.scene.beginDirectAnimation(cam, [alphaAnim, betaAnim, radiusAnim, targetAnim], 0, animFrames, false, 1.0, () => {
+        ctx.scene.beginDirectAnimation(ctx.cameraObject, [alphaAnim, betaAnim, radiusAnim, targetAnim], 0, animFrames, false, 1.0, () => {
             // Final snap to correct alpha/beta/radius/target
-            cam.alpha = orig.alpha;
-            cam.beta = orig.beta;
-            cam.radius = orig.radius;
-            cam.target = orig.target.clone();
+            ctx.cameraAlpha = orig.alpha;
+            ctx.cameraBeta = orig.beta;
+            ctx.cameraRadius = orig.radius;
+            ctx.cameraTarget = orig.target.clone();
         
             if (action) {
                 action();

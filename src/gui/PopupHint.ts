@@ -628,10 +628,10 @@ class PopupHint {
                         input.focusedBackground = "#e6e6e6";
                         input.thickness = 1;
                         input.placeholderText = m.placeHolder ?? "you@example.com";
-                        input.onTextChangedObservable.add(() => {
+                        /*input.onTextChangedObservable.add(() => {
                             const cap = m.maxLength ?? 254;
                             if (input.text.length > cap) input.text = input.text.slice(0, cap);
-                        });
+                        });*/
                     
                         // button
                         const mode: "subscribe" | "update" = m.isUpdate ? "update" : "subscribe";
@@ -648,7 +648,15 @@ class PopupHint {
                         submit.thickness = 2;
                         submit.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
                     
-                        const pattern = m.validatePattern ?? /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        input.onPointerClickObservable.add(() => {
+                            m.action();
+                        });
+                    
+                        submit.onPointerClickObservable.add(() => {
+                            m.action();
+                        });
+
+                        /*const pattern = m.validatePattern ?? /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     
                         const doSubmit = async () => {
                             const value = (input.text || "").trim();
@@ -679,7 +687,7 @@ class PopupHint {
                         input.onBeforeKeyAddObservable.add((key) => {
                             // @ts-ignore: key may be string; guard simple Enter
                             if (key === "\n" || key === "\r") doSubmit();
-                        });
+                        });*/
                     
                         // layout: label above, then [input][button]
                         row.addControl(input);

@@ -10,6 +10,9 @@ import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import { Mesh } from "@babylonjs/core";
 import guiManager from "./GuiManager";
+import mlPopupHandler from "../common/MLPopupHandler";
+
+declare var ml: any;
 
 class NavigationManager {
     private static readonly EMAIL_FLAG_KEY = "emailCaptured";
@@ -18,18 +21,13 @@ class NavigationManager {
         return localStorage.getItem(NavigationManager.EMAIL_FLAG_KEY) === "true";
     }
 
-    private setEmailCaptured(value: boolean): void {
+    public setEmailCaptured(value: boolean): void {
         localStorage.setItem(NavigationManager.EMAIL_FLAG_KEY, value ? "true" : "false");
     }
 
     public handleXAction() {
         timerDisplay.pause();
         this.enterGamePaused(gameModeManager.celebrationMode);
-    }
-
-    private async subscribeEmail(email: string) {
-        // TODO: swap for your provider / API call
-        // await fetch("/api/subscribe", { method: "POST", body: JSON.stringify({ email }) })
     }
 
     private enterGamePaused(puzzleFinished: boolean) {
@@ -48,14 +46,22 @@ class NavigationManager {
                 isUpdate: alreadyCaptured,
                 buttonTextSubscribe: "📧 Add email",
                 buttonTextUpdate: "✏️ Add another",
-                onSubmit: async (email, mode) => {
-                  await this.subscribeEmail(email); // send to your backend / provider
-                  this.setEmailCaptured(true);           // flip the boolean flag only
-                  alert(mode === "subscribe"
-                    ? "Thanks! Please check your inbox to confirm."
-                    : "Another email added. You’re all set!");
-                },
-              });
+                action: () => {
+                    mlPopupHandler.open();
+                    //ml('show', '1RSel7', true);
+                    /*const r = await fetch("/api/subscribe", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ email })
+                    });
+                    if (!r.ok) {
+                      const err = await r.json().catch(() => ({}));
+                      throw new Error(err?.detail || "Subscribe failed");
+                    }
+                    this.setEmailCaptured(true); // your boolean flag
+                    alert(mode === "subscribe" ? "Thanks! Check your inbox to confirm." : "Another email added. You’re all set!");*/
+                }
+            });
         
             message = alreadyCaptured
               ? `🎉 Congratulations!

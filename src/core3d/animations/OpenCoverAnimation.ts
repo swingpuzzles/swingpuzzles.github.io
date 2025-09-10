@@ -14,7 +14,7 @@ class OpenCoverAnimation implements IPuzzleAnimation {
         return this._giftCover;
     }
     
-    public animate(cover: Mesh): void {
+    public animate(cover: Mesh): void {//console.trace('open cover');
         /*if (!gameModeManager.canOpenCover && !gameModeManager.solveMode && !gameModeManager.celebrationMode) {
             return;
         }*/
@@ -42,13 +42,13 @@ class OpenCoverAnimation implements IPuzzleAnimation {
             rotation: cover.rotation.clone()
         };
 
-        ctx.camera.alpha = PuzzleTools.normalizeAngle(ctx.camera.alpha);
+        ctx.cameraAlpha = PuzzleTools.normalizeAngle(ctx.cameraAlpha);
 
         ctx.originalCameraState = {
-            alpha: ctx.camera.alpha,
-            beta: ctx.camera.beta,
-            radius: ctx.camera.radius,
-            target: ctx.camera.target.clone()
+            alpha: ctx.cameraAlpha,
+            beta: ctx.cameraBeta,
+            radius: ctx.cameraRadius,
+            target: ctx.cameraTarget
         };
 
         const startPos = cover.position.clone();
@@ -155,28 +155,28 @@ class OpenCoverAnimation implements IPuzzleAnimation {
         // Animation for alpha
         const animAlpha = new Animation("alphaAnim", "alpha", animSpeed, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);
         animAlpha.setKeys([
-            { frame: 0, value: ctx.camera.alpha },
+            { frame: 0, value: ctx.cameraAlpha },
             { frame: animFrames, value: targetAlpha }
         ]);
 
         // Animation for beta
         const animBeta = new Animation("betaAnim", "beta", animSpeed, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);
         animBeta.setKeys([
-            { frame: 0, value: ctx.camera.beta },
+            { frame: 0, value: ctx.cameraBeta },
             { frame: animFrames, value: targetBeta }
         ]);
 
         // Animation for radius
         const animRadius = new Animation("radiusAnim", "radius", animSpeed, Animation.ANIMATIONTYPE_FLOAT, Animation.ANIMATIONLOOPMODE_RELATIVE);
         animRadius.setKeys([
-            { frame: 0, value: ctx.camera.radius },
+            { frame: 0, value: ctx.cameraRadius },
             { frame: animFrames, value: targetRadius }
         ]);
 
         // Animation for target
         const animTarget = new Animation("targetAnim", "target", animSpeed, Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_RELATIVE);
         animTarget.setKeys([
-            { frame: 0, value: ctx.camera.target.clone() },
+            { frame: 0, value: ctx.cameraTarget.clone() },
             { frame: animFrames, value: targetTarget }
         ]);
 
@@ -191,7 +191,12 @@ class OpenCoverAnimation implements IPuzzleAnimation {
         animTarget.setEasingFunction(easingFunction);
 
         // Start animations
-        ctx.scene.beginDirectAnimation(ctx.camera, [animAlpha, animBeta, animRadius, animTarget], 0, animFrames, false);
+        ctx.scene.beginDirectAnimation(ctx.cameraObject, [animAlpha, animBeta, animRadius, animTarget], 0, animFrames, false, 1.0, () => {
+            ctx.cameraAlpha = targetAlpha;
+            ctx.cameraBeta = targetBeta;
+            ctx.cameraRadius = targetRadius;
+            ctx.cameraTarget = targetTarget;
+        });
     }
 }
 
