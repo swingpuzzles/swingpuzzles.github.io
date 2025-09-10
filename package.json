@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node copy-legal-pages.js",
+    "build": "tsc && npx vite build && node copy-legal-pages.js",
     "serve": "vite preview",
     "deploy:prod": "git checkout prod && git pull origin prod && yarn build && gh-pages -d dist -b gh-pages && git checkout main",
     "deploy": "node deploy-to-gh-pages.js",

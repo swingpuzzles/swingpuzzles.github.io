@@ -6,7 +6,8 @@ import { copyFileSync, existsSync, mkdirSync } from 'fs';
 export default defineConfig({
   root: "src", // Serve files from the `src/` folder
   build: {
-    outDir: "../dist" // Output compiled files to `dist/`
+    outDir: "../dist", // Output compiled files to `dist/`
+    emptyOutDir: true // Empty the output directory before building
   },
   server: {
     open: true, // Auto open in browser
