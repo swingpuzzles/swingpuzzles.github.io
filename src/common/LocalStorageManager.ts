@@ -2,6 +2,7 @@ export const CommonStorageKeys = {
     TutorialDone: "tutorialDone",
     GiftTutorialDone: "giftTutorialDone",
     CookiesAccepted: "cookiesAccepted",
+    WelcomeSeen: "welcomeSeen",
     Category: "category",
     GiftPiecesCount: "giftPiecesCount"
 };

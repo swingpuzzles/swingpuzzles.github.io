@@ -25,6 +25,12 @@ class PuzzleUrlHelper {
     }
 
     public handleUrlData(): void {
+        // Check if we're on a legal page - if so, don't process game URL data
+        const path = window.location.pathname;
+        if (path.includes('privacy-policy') || path.includes('terms-of-service') || path.includes('cookie-policy')) {
+            return;
+        }
+        
         const urlData = this.readFromUrl();
 
         if (urlData.giftData) {

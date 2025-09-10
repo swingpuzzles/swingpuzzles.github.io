@@ -10,11 +10,11 @@ import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 
 class TutorialManager {
     init() {
-        const hasAcceptedCookies = localStorageManager.getBoolean(CommonStorageKeys.CookiesAccepted);
+        const hasSeenWelcome = localStorageManager.getBoolean(CommonStorageKeys.WelcomeSeen);
 
         let popup = popupHint;
         let nextAction = () => {
-            localStorageManager.set(CommonStorageKeys.CookiesAccepted, true);
+            localStorageManager.set(CommonStorageKeys.WelcomeSeen, true);
             this.showSizeChooserHint();
         };
 
@@ -24,27 +24,19 @@ class TutorialManager {
 
 Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. Every piece fits into a world of adventure!
     
-By continuing, you agree to our use of cookies to ensure the best experience.
-    
 Let's start building!`;
 
         if (gameModeManager.giftReceived) {
             const gifteeName = giftMaker.friendsName;
 
-            message = `🎁 Hey ${gifteeName}, you’ve received a puzzle gift!
+            message = `🎁 Hey ${gifteeName}, you've received a puzzle gift!
 
 Tap "Got it", click the present to open your puzzle box,  
 and start solving immediately 🧩`;
 
-            if (!hasAcceptedCookies) {
-                message += `
-
-By continuing, you agree to our use of cookies to ensure the best experience.`;
-            }
-
-            title = "YOU’VE GOT A GIFT!";
+            title = "YOU'VE GOT A GIFT!";
             nextAction = () => {
-                localStorageManager.set(CommonStorageKeys.CookiesAccepted, true);
+                localStorageManager.set(CommonStorageKeys.WelcomeSeen, true);
                 popup.hide(() => {
                     handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_TOP, 0, 0.15, 180, false, 0.06);
                 });
@@ -54,7 +46,7 @@ By continuing, you agree to our use of cookies to ensure the best experience.`;
             nextAction = () => { popup.hide(); };
         }
         
-        if (hasAcceptedCookies && !gameModeManager.giftReceived) {
+        if (hasSeenWelcome && !gameModeManager.giftReceived) {
             nextAction();
         } else {
             popup.show(message, title, 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,

@@ -1,0 +1,42 @@
+<!-- Footer Component -->
+<footer style="
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    z-index: 999;
+    display: none;
+" id="footer">
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="privacy-policy.html" style="color: #bdc3c7; text-decoration: none;">Privacy Policy</a>
+        <a href="terms-of-service.html" style="color: #bdc3c7; text-decoration: none;">Terms of Service</a>
+        <a href="cookie-policy.html" style="color: #bdc3c7; text-decoration: none;">Cookie Policy</a>
+        <span style="color: #7f8c8d;">© 2024 Swing Puzzles</span>
+    </div>
+</footer>
+
+<script>
+// Show footer when not in fullscreen mode
+function toggleFooter() {
+    const footer = document.getElementById('footer');
+    if (document.fullscreenElement) {
+        footer.style.display = 'none';
+    } else {
+        footer.style.display = 'block';
+    }
+}
+
+// Listen for fullscreen changes
+document.addEventListener('fullscreenchange', toggleFooter);
+document.addEventListener('webkitfullscreenchange', toggleFooter);
+document.addEventListener('mozfullscreenchange', toggleFooter);
+document.addEventListener('MSFullscreenChange', toggleFooter);
+
+// Initial check
+toggleFooter();
+</script>
