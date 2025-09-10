@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import fs from 'fs';
 import path from 'path';
+import { copyFileSync, existsSync, mkdirSync } from 'fs';
 
 export default defineConfig({
   root: "src", // Serve files from the `src/` folder
@@ -28,6 +29,27 @@ export default defineConfig({
             }
           }
           next();
+        });
+      }
+    },
+    {
+      name: 'copy-legal-pages',
+      writeBundle() {
+        // Copy legal pages to dist folder
+        const legalPages = ['privacy-policy.html', 'terms-of-service.html', 'cookie-policy.html'];
+        const distDir = path.resolve(__dirname, 'dist');
+        
+        if (!existsSync(distDir)) {
+          mkdirSync(distDir, { recursive: true });
+        }
+        
+        legalPages.forEach(page => {
+          const srcPath = path.resolve(__dirname, 'src', page);
+          const destPath = path.resolve(distDir, page);
+          if (existsSync(srcPath)) {
+            copyFileSync(srcPath, destPath);
+            console.log(`Copied ${page} to dist folder`);
+          }
         });
       }
     }
