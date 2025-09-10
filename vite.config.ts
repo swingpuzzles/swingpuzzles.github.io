@@ -34,6 +34,24 @@ export default defineConfig({
       }
     },
     {
+      name: 'copy-havok-wasm',
+      writeBundle() {
+        // Copy HavokPhysics.wasm to dist/havok
+        const srcPath = path.resolve(__dirname, 'node_modules', '@babylonjs', 'havok', 'lib', 'esm', 'HavokPhysics.wasm');
+        const destDir = path.resolve(__dirname, 'dist', 'havok');
+        const destPath = path.join(destDir, 'HavokPhysics.wasm');
+        
+        if (!existsSync(destDir)) {
+          mkdirSync(destDir, { recursive: true });
+        }
+        
+        if (existsSync(srcPath)) {
+          copyFileSync(srcPath, destPath);
+          console.log('Copied HavokPhysics.wasm to dist/havok/');
+        }
+      }
+    },
+    {
       name: 'copy-legal-pages',
       writeBundle() {
         // Copy legal pages to dist folder

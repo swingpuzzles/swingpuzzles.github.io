@@ -7,7 +7,7 @@ console.log('🚀 Starting simple deployment...');
 try {
   // Build the project
   console.log('📦 Building project...');
-  execSync('npx tsc && npx vite build && node copy-legal-pages.js && node copy-all-assets.js', { stdio: 'inherit' });
+  execSync('npx tsc && npx vite build && node copy-legal-pages.js && node copy-all-assets.js && node copy-havok.js', { stdio: 'inherit' });
   
   console.log('✅ Build completed successfully!');
   console.log('📁 Your dist folder is ready for deployment.');

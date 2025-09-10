@@ -7,7 +7,7 @@ console.log('🚀 Starting deployment to GitHub Pages...');
 try {
   // Build the project
   console.log('📦 Building project...');
-  execSync('yarn build', { stdio: 'inherit' });
+  execSync('npx tsc && npx vite build && node copy-legal-pages.js && node copy-all-assets.js && node copy-havok.js', { stdio: 'inherit' });
   
   // Legal pages and assets are already copied during build
   
