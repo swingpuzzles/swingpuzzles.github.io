@@ -9,13 +9,11 @@ try {
   console.log('📦 Building project...');
   execSync('yarn build', { stdio: 'inherit' });
   
-  // Copy legal pages
-  console.log('📄 Copying legal pages...');
-  execSync('node copy-legal-pages.js', { stdio: 'inherit' });
+  // Legal pages and assets are already copied during build
   
   // Deploy to GitHub Pages
   console.log('🌐 Deploying to GitHub Pages...');
-  execSync('gh-pages -d dist -b gh-pages', { stdio: 'inherit' });
+  execSync('npx gh-pages -d dist -b gh-pages', { stdio: 'inherit' });
   
   console.log('✅ Deployment completed successfully!');
   console.log('🔗 Your site should be available at: https://yourusername.github.io/swingpuzzles.github.io/');
