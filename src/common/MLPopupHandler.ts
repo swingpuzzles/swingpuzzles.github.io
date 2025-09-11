@@ -1,4 +1,5 @@
 import navigationManager from "../gui/NavigationManager";
+import analyticsManager from "./AnalyticsManager";
 
 // Type definitions
 declare global {
@@ -36,6 +37,12 @@ class MlPopupHandler {
   // Call this directly from your click handler:
   // button.addEventListener('click', () => mlPopupHandler.open());
   public open() {
+    // Track MLPopup Open event
+    analyticsManager.trackEvent('ml_popup_open', {
+      form_id: this.opts.formId,
+      popup_type: 'mailerlite'
+    });
+    
     // IMPORTANT: keep this call inside the same user gesture
     window.ml?.('show', this.opts.formId, true);
     this.watchForIframe();
