@@ -1,3 +1,4 @@
+import gameModeManager from "../core3d/behaviors/GameModeManager";
 import navigationManager from "../gui/NavigationManager";
 import analyticsManager from "./AnalyticsManager";
 
@@ -23,6 +24,7 @@ class MlPopupHandler {
   private msgHandler?: (e: MessageEvent) => void;
   private observer?: MutationObserver;
   private disposed = false;
+  private loaded = false;
 
   constructor(options: MlPopupOptions) {
     this.opts = {
@@ -37,6 +39,7 @@ class MlPopupHandler {
   // Call this directly from your click handler:
   // button.addEventListener('click', () => mlPopupHandler.open());
   public open() {
+    gameModeManager.enterWaiting();
     // Track MLPopup Open event
     analyticsManager.trackEvent('ml_popup_open', {
       form_id: this.opts.formId,
@@ -68,6 +71,8 @@ class MlPopupHandler {
         if (document.activeElement !== iframe && attempts < 8) {
           if (attempts === 2) iframe.scrollIntoView({ block: 'center', inline: 'center' });
           requestAnimationFrame(tryFocus);
+        } else if (this.loaded) {
+          gameModeManager.leaveWaiting();
         }
       };
 
@@ -75,6 +80,8 @@ class MlPopupHandler {
       const onLoad = () => {
         iframe.removeEventListener('load', onLoad);
         requestAnimationFrame(tryFocus);
+        gameModeManager.leaveWaiting();
+        this.loaded = true;
       };
       iframe.addEventListener('load', onLoad);
 
