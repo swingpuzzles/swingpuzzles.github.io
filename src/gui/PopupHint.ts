@@ -14,6 +14,7 @@ import localStorageManager from "../common/LocalStorageManager";
 import puzzleEditor from "../core3d/misc/PuzzleEditor";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import timerManager from "../core3d/misc/TimerManager";
+import specialModeManager from "../common/special-mode/SpecialModeManager";
 
 export enum PopupMode {
     Normal,
@@ -909,14 +910,14 @@ class PopupHint {
                 this.centerImage.isVisible = true;
                 break;
             case PopupMode.Gift_Initial:
-                this.nextButton.isVisible = true;
+                this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
                 this.centerImage.isVisible = true;
                 break;
             /*case PopupMode.Gift_Adjustments_Hint:
                 this.gotItButton.isVisible = true;
                 break;*/
             case PopupMode.Gift_Adjustments_Preview:
-                this.nextButton.isVisible = true;
+                this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0;
                 break;
@@ -928,7 +929,7 @@ class PopupHint {
                 this.formPanelRect.width = "97%";
                 break;
             case PopupMode.Gift_Physical_Initial:
-                this.nextButton.isVisible = true;
+                this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;
                 this.formPanelRect.alpha = 0.8;
@@ -966,7 +967,7 @@ class PopupHint {
             this.xButton.isVisible = false;
         }
 
-        if (backAction) {
+        if (backAction && specialModeManager.prevButtonVisible(true)) {
             this._backAction = backAction;
             this.backButton.isVisible = true;
         } else {

@@ -11,6 +11,7 @@ import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import { Mesh } from "@babylonjs/core";
 import guiManager from "./GuiManager";
 import mlPopupHandler from "../common/MLPopupHandler";
+import specialModeManager from "../common/special-mode/SpecialModeManager";
 
 declare var ml: any;
 
@@ -32,11 +33,11 @@ class NavigationManager {
 
     private enterGamePaused(puzzleFinished: boolean) {
         const formModel: FormRowModel[] = [];
+        const alreadyCaptured = this.getEmailCaptured();
+
         let message: string;
 
         if (puzzleFinished) {
-            const alreadyCaptured = this.getEmailCaptured();
-
             formModel.push({
                 id: "email",
                 type: "emailCapture",
@@ -68,12 +69,12 @@ class NavigationManager {
         
         You’ve completed this puzzle.
         
-        You can restart it, return to the gallery, or add another email below to get updates.`
+        You can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add another email to get updates.`
               : `🎉 Congratulations!
         
         You’ve completed this puzzle.
         
-        You can restart it, return to the gallery, or add your email below to get updates when new puzzles arrive.`;
+        You can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add your email to get updates when new puzzles arrive.`;
         
             // use `message` in popupHint.show later
         } else {
@@ -114,7 +115,7 @@ class NavigationManager {
                 id: "mainMenu",
                 label: "Return to the puzzle gallery:",
                 type: "button",
-                buttonText: "🏠 Main menu",
+                buttonText: specialModeManager.mainMenuButtonText("🏠 Main menu"),
                 background: "#bdc3c7",   // light gray
                 color: "#2c3e50",    // dark navy text
                 action: () => {
@@ -126,7 +127,7 @@ class NavigationManager {
         const title = puzzleFinished ? "PUZZLE SOLVED!" : "GAME PAUSED";
 
         popupHint.show(
-            message,
+            specialModeManager.getPuzzleSolvedMessage(message, alreadyCaptured, puzzleFinished),
             title,
             0.95,
             ShaderMode.SHADOW_FULL,
@@ -171,8 +172,10 @@ class NavigationManager {
     }
 
     private goBack() {
-        guiManager.ensureNotGiftCategory();
-        backToInitialAnimation.animate(ctx.currentCover);
+        if (specialModeManager.handleGoBackAction()) {
+            guiManager.ensureNotGiftCategory();
+            backToInitialAnimation.animate(ctx.currentCover);
+        }
     }
 }
 

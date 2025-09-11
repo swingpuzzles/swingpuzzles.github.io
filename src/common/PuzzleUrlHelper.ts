@@ -8,6 +8,7 @@ import guiManager from "../gui/GuiManager";
 import popupHint, { overPopup } from "../gui/PopupHint";
 import urlDecoder from "./UrlDecoder";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
+import specialModeManager from "./special-mode/SpecialModeManager";
 
 class PuzzleUrlHelper {
     private _category: string | null = null;
@@ -24,6 +25,10 @@ class PuzzleUrlHelper {
         });
     }
 
+    public get category(): string | null {
+        return this._category;
+    }
+
     public handleUrlData(): void {
         // Check if we're on a legal page - if so, don't process game URL data
         const path = window.location.pathname;
@@ -32,6 +37,10 @@ class PuzzleUrlHelper {
         }
         
         const urlData = this.readFromUrl();
+
+        if (urlData.specialMode) {
+            specialModeManager.enterSpecialMode(urlData.specialMode);
+        }
 
         if (urlData.giftData) {
             urlDecoder.processGiftData(urlData.giftData);
@@ -156,12 +165,13 @@ class PuzzleUrlHelper {
         }
     }
 
-    public readFromUrl(): { category: string | null; puzzleId: string | null; giftData: string | null } {
+    public readFromUrl(): { category: string | null; puzzleId: string | null; giftData: string | null; specialMode: string | null } {
         const params = new URLSearchParams(window.location.search);
         return {
             category: params.get('category'),
             puzzleId: params.get('puzzleId'),
-            giftData: params.get('giftData')
+            giftData: params.get('giftData'),
+            specialMode: params.get('specialMode')
         };
     }
 }

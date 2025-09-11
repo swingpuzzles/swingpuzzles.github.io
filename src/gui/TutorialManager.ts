@@ -7,6 +7,7 @@ import timerDisplay from "../core3d/misc/TimerDisplay";
 import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
 import giftMaker from "./GiftMaker";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
+import specialModeManager from "../common/special-mode/SpecialModeManager";
 
 class TutorialManager {
     init() {
@@ -117,7 +118,13 @@ Drag the puzzle box around to shake it — this will mix up the pieces so you ca
     }
 
     public showCongratsMessage() {
-        const solvedTime = timerDisplay.getElapsedTime();
+        if (specialModeManager.handleShowBuyOfferMessage()) {
+            this.showCongratsMessageImpl();
+        }
+    }
+    
+    public showCongratsMessageImpl() {
+            const solvedTime = timerDisplay.getElapsedTime();
 
         const message = `🎉 Congratulations!
 

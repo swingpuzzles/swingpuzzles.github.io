@@ -15,6 +15,8 @@ import urlDecoder from "../common/UrlDecoder";
 import navigationManager from "./NavigationManager";
 import puzzleUrlHelper from "../common/PuzzleUrlHelper";
 import analyticsManager from "../common/AnalyticsManager";
+import specialModeManager from "../common/special-mode/SpecialModeManager";
+import { ISpecialMode } from "../common/special-mode/ISpecialMode";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -35,7 +37,7 @@ class GuiManager {
         this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
         this.piecesCountDropdown = new PiecesCountDropdownBuilder().build();
-        guiManager.advancedTexture.addControl(this.piecesCountDropdown);
+        this.advancedTexture.addControl(this.piecesCountDropdown);
 
         popupHint.init();
         overPopup.init();
@@ -45,7 +47,7 @@ class GuiManager {
         await urlDecoder.init();
         
         this.categoryDropdown = new CategoryDropdownBuilder().build();
-        guiManager.advancedTexture.addControl(this.categoryDropdown);
+        this.advancedTexture.addControl(this.categoryDropdown);
 
         puzzleUrlHelper.handleUrlData();
 
@@ -157,7 +159,7 @@ class GuiManager {
             case GameMode.Initial:
                 this.playButton.isVisible = true;
                 this.menuButton.isVisible = false;//true;   // TODO LATER
-                this.bannerButton.isVisible = true;
+                this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
                 this.bannerButton.width = renderHeight / 4 + "px";//"240px";
                 this.bannerButton.height = renderHeight / 16 + "px";//"60px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
@@ -165,21 +167,21 @@ class GuiManager {
             case GameMode.OpenCover:
                 this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.width = renderHeight / 3.9 + "px";//"248px";
-                this.bannerButton.isVisible = true;
+                this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
                 this.bannerButton.height = renderHeight / 15.6 + "px";//"62px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
             case GameMode.Solve:
                 this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.width = renderHeight / 8 + "px";//"124px";
-                this.bannerButton.isVisible = true;
+                this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
                 this.bannerButton.height = renderHeight / 32 + "px";//"31px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 192 + "px";//"5px";
                 break;
             case GameMode.Celebration:
                 this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.width = renderHeight / 3.7 + "px";//"248px";
-                this.bannerButton.isVisible = true;
+                this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
                 this.bannerButton.height = renderHeight / 14.8 + "px";//"62px";
                 this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
                 break;
@@ -227,6 +229,10 @@ class GuiManager {
         if (callChangeHandler) {
             gameModeManager.handleCategoryChange(category, false);
         }
+    }
+
+    public enterSpecialMode(specialMode: ISpecialMode): void {
+        this.categoryDropdown.disable();
     }
 }
 

@@ -20,6 +20,7 @@ export class Dropdown extends Container {
     private _selectedItem!: string;
     private isCategory: boolean;
     private isImageOnly: boolean;
+    private isDisabled: boolean = false;
 
     constructor(config: {
         gameModes: GameMode[];
@@ -125,7 +126,7 @@ export class Dropdown extends Container {
         this.isVisible = config.gameModes.includes(gameModeManager.currentMode);
 
         gameModeManager.addGameModeChangedObserver(() => {
-            this.isVisible = config.gameModes.includes(gameModeManager.currentMode);
+            this.isVisible = config.gameModes.includes(gameModeManager.currentMode) && !this.isDisabled;
         });
     }
 
@@ -153,6 +154,11 @@ export class Dropdown extends Container {
 
     public collapse(): void {
         this.options.isVisible = false;
+    }
+
+    public disable(): void {
+        this.isDisabled = true;
+        this.isVisible = false;
     }
 
     public set lang(value: string) {
