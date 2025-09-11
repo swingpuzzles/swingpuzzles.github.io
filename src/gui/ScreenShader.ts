@@ -20,7 +20,7 @@ export default class ScreenShader {
     }
 
     public init() {
-        const shadeCoef = 0.75;
+        const shadeCoef = 0.5;
 
         this._mainContainer = new Rectangle("mainContainer");
         this._mainContainer.width = "100%";
