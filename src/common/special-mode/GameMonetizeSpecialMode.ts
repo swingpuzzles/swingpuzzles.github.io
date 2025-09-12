@@ -43,18 +43,24 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
         return puzzleFinished ? emailCaptured
         ? `🎉 Congratulations!
   
-  You’ve completed this puzzle.
+  You've completed this puzzle.
   
   You can restart it, explore more puzzles, or add another email to get updates.`
         : `🎉 Congratulations!
   
-  You’ve completed this puzzle.
+  You've completed this puzzle.
   
   You can restart it, explore more puzzles, or add your email to get updates when new puzzles arrive.`
     : `Your puzzle is on hold.
             
-    What’s next?
+    What's next?
 
     You can continue right where you left off, restart from the beginning, explore more puzzles, or add your email to get updates when new puzzles arrive.`;
+    }
+    cookiesBannerVisible(defaultVisible: boolean): boolean {
+        return false; // GameMonetize special mode doesn't show cookie banner
+    }
+    useCookies(defaultUse: boolean): boolean {
+        return false; // GameMonetize special mode doesn't use cookies
     }
 }

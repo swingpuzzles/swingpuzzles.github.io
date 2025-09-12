@@ -9,4 +9,6 @@ export interface ISpecialMode {
     handleGoBackAction(): boolean;
     handleShowBuyOfferMessage(): boolean;
     getPuzzleSolvedMessage(defaultMessage: string, emailCaptured: boolean, puzzleFinished: boolean): string;
+    cookiesBannerVisible(defaultVisible: boolean): boolean;
+    useCookies(defaultUse: boolean): boolean;
 }

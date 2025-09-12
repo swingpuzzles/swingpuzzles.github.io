@@ -47,6 +47,12 @@ class SpecialModeManager {
     getPuzzleSolvedMessage(defaultMessage: string, emailCaptured: boolean, puzzleFinished: boolean): string {
         return this._specialMode !== null ? this._specialMode.getPuzzleSolvedMessage(defaultMessage, emailCaptured, puzzleFinished) : defaultMessage;
     }
+    cookiesBannerVisible(defaultVisible: boolean): boolean {
+        return this._specialMode !== null ? this._specialMode.cookiesBannerVisible(defaultVisible) : defaultVisible;
+    }
+    useCookies(defaultUse: boolean): boolean {
+        return this._specialMode !== null ? this._specialMode.useCookies(defaultUse) : defaultUse;
+    }
 }
 
 const specialModeManager = new SpecialModeManager();
