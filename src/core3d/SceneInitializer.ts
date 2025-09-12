@@ -13,6 +13,7 @@ import tutorialManager from "../gui/TutorialManager";
 import handImagePool from "../gui/HandImagePool";
 import puzzleEditor from "./misc/PuzzleEditor";
 import profanityGuard from "../common/ProfanityGuard";
+import cookiesManager from "../common/CookiesManager";
 
 
 declare global {
@@ -85,6 +86,9 @@ class SceneInitializer {
             puzzleAssetsManager.init();
 
             await guiManager.init();
+
+            // Initialize cookies manager after guiManager.init() to ensure URL data is loaded
+            cookiesManager.init();
 
             sceneBuilder.buildScene();
 
