@@ -24,7 +24,7 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
         return true;
     }
     mainMenuButtonText(defaultText: string): string {
-        return "🏠 More puzzles";
+        return "🧩🏠 MORE PUZZLES 🏠🧩";
     }
     handleGoBackAction(): boolean {
         const category = puzzleUrlHelper.category;
