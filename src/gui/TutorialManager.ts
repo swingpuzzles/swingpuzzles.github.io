@@ -65,6 +65,7 @@ and start solving immediately 🧩`;
 
     private showSizeChooserHint() {
         if (localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
+            popupHint.hide();
             return;
         }
 
