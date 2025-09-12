@@ -1,6 +1,7 @@
 import navigationManager from "../../gui/NavigationManager";
 import puzzleUrlHelper from "../PuzzleUrlHelper";
 import { ISpecialMode } from "./ISpecialMode";
+import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../LocalStorageManager";
 
 export class GameMonetizeSpecialMode implements ISpecialMode {
     constructor() {
@@ -28,11 +29,25 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
     }
     handleGoBackAction(): boolean {
         const category = puzzleUrlHelper.category;
+        const localStorageData = puzzleUrlHelper.getCurrentLocalStorageData();
+        
+        // Build URL with category and localStorage items
+        const params = new URLSearchParams();
+        
         if (category) {
-            window.open(`https://swingpuzzles.com?category=${category}`, "_blank");
-        } else {
-            window.open("https://swingpuzzles.com", "_blank");
+            params.set('category', category);
         }
+        
+        // Add localStorage items to URL parameters
+        Object.entries(localStorageData).forEach(([key, value]) => {
+            if (value !== null && value !== undefined) {
+                params.set(key, JSON.stringify(value));
+            }
+        });
+        
+        const url = params.toString() ? `https://swingpuzzles.com?${params.toString()}` : 'https://swingpuzzles.com';
+        window.open(url, "_blank");
+        
         return false;
     }
     handleShowBuyOfferMessage(): boolean {

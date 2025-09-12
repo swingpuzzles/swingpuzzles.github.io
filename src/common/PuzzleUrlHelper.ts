@@ -9,6 +9,7 @@ import popupHint, { overPopup } from "../gui/PopupHint";
 import urlDecoder from "./UrlDecoder";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import specialModeManager from "./special-mode/SpecialModeManager";
+import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "./LocalStorageManager";
 
 class PuzzleUrlHelper {
     private _category: string | null = null;
@@ -37,6 +38,12 @@ class PuzzleUrlHelper {
         }
         
         const urlData = this.readFromUrl();
+
+        // Handle localStorage items from URL
+        const localStorageItems = this.getLocalStorageItemsFromUrl();
+        Object.entries(localStorageItems).forEach(([key, value]) => {
+            localStorageManager.set(key, value);
+        });
 
         if (urlData.specialMode) {
             specialModeManager.enterSpecialMode(urlData.specialMode);
@@ -173,6 +180,80 @@ class PuzzleUrlHelper {
             giftData: params.get('giftData'),
             specialMode: params.get('specialMode')
         };
+    }
+
+    public getLocalStorageItemsFromUrl(): Record<string, any> {
+        const params = new URLSearchParams(window.location.search);
+        const localStorageItems: Record<string, any> = {};
+        
+        // Read CommonStorageKeys from URL
+        Object.values(CommonStorageKeys).forEach(key => {
+            const value = params.get(key);
+            if (value !== null) {
+                try {
+                    localStorageItems[key] = JSON.parse(value);
+                } catch (e) {
+                    // If parsing fails, store as string
+                    localStorageItems[key] = value;
+                }
+            }
+        });
+        
+        // Read GiftStorageKeys from URL
+        Object.values(GiftStorageKeys).forEach(key => {
+            const value = params.get(key);
+            if (value !== null) {
+                try {
+                    localStorageItems[key] = JSON.parse(value);
+                } catch (e) {
+                    // If parsing fails, store as string
+                    localStorageItems[key] = value;
+                }
+            }
+        });
+        
+        return localStorageItems;
+    }
+
+    public setLocalStorageItemsToUrl(items: Record<string, any>): void {
+        const params = new URLSearchParams(window.location.search);
+        
+        // Add localStorage items to URL parameters
+        Object.entries(items).forEach(([key, value]) => {
+            if (value !== null && value !== undefined) {
+                params.set(key, JSON.stringify(value));
+            }
+        });
+        
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        const currentUrl = `${window.location.pathname}${window.location.search}`;
+        
+        // Only push to history if different
+        if (newUrl !== currentUrl) {
+            window.history.pushState({}, '', newUrl);
+        }
+    }
+
+    public getCurrentLocalStorageData(): Record<string, any> {
+        const data: Record<string, any> = {};
+        
+        // Get CommonStorageKeys from localStorage
+        Object.values(CommonStorageKeys).forEach(key => {
+            const value = localStorageManager.get(key);
+            if (value !== null) {
+                data[key] = value;
+            }
+        });
+        
+        // Get GiftStorageKeys from localStorage
+        Object.values(GiftStorageKeys).forEach(key => {
+            const value = localStorageManager.get(key);
+            if (value !== null) {
+                data[key] = value;
+            }
+        });
+        
+        return data;
     }
 }
 
