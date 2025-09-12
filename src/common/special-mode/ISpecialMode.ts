@@ -12,4 +12,5 @@ export interface ISpecialMode {
     cookiesBannerVisible(defaultVisible: boolean): boolean;
     useCookies(defaultUse: boolean): boolean;
     handleWelcomeAction(defaultAction: boolean): boolean;
+    welcomeSeen(defaultSeen: boolean): boolean;
 }

@@ -11,7 +11,7 @@ import specialModeManager from "../common/special-mode/SpecialModeManager";
 
 class TutorialManager {
     init() {
-        const hasSeenWelcome = localStorageManager.getBoolean(CommonStorageKeys.WelcomeSeen);
+        const hasSeenWelcome = specialModeManager.welcomeSeen(localStorageManager.getBoolean(CommonStorageKeys.WelcomeSeen));
 
         let popup = popupHint;
         let nextAction = () => {

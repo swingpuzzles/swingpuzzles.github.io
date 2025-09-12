@@ -87,4 +87,7 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
         
         return true; // GameMonetize special mode allows welcome action
     }
+    welcomeSeen(defaultSeen: boolean): boolean {
+        return false; // GameMonetize special mode respects default welcome seen state
+    }
 }

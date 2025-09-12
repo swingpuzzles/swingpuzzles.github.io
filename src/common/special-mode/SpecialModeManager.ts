@@ -56,6 +56,9 @@ class SpecialModeManager {
     handleWelcomeAction(defaultAction: boolean): boolean {
         return this._specialMode !== null ? this._specialMode.handleWelcomeAction(defaultAction) : defaultAction;
     }
+    welcomeSeen(defaultSeen: boolean): boolean {
+        return this._specialMode !== null ? this._specialMode.welcomeSeen(defaultSeen) : defaultSeen;
+    }
 }
 
 const specialModeManager = new SpecialModeManager();
