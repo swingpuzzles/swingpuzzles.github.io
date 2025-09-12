@@ -5,6 +5,7 @@ import { copyFileSync, existsSync, mkdirSync } from 'fs';
 
 export default defineConfig({
   root: "src", // Serve files from the `src/` folder
+  publicDir: "../public", // Serve files from the `public/` folder
   build: {
     outDir: "../dist", // Output compiled files to `dist/`
     emptyOutDir: true // Empty the output directory before building
