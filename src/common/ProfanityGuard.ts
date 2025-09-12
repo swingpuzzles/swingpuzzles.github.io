@@ -69,7 +69,7 @@ class ProfanityGuard {
   public async isProfaneName(name: string): Promise<boolean> {
     await this.ensureInitialized();
 
-    if (!name || name.trim().length < 2) return true;
+    if (!name || name.trim().length < 2) return false;
 
     const clean = name
       .replace(/[<>]/g, "")
