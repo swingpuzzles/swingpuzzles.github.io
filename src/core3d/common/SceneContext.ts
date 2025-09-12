@@ -14,7 +14,7 @@ export type Category = (typeof Categories)[keyof typeof Categories];
 export const CategoryKeys: string[] = Object.keys(Categories);
 
 class SceneContext {
-    private _debugMode = true; // TODO from properties
+    private _debugMode = !import.meta.env.PROD; // true in dev, false in production
     private _scene: Scene | null = null;
     private _jigsawPieces: Mesh[] = [];
     private _piecesArray: Mesh[][] = [];
