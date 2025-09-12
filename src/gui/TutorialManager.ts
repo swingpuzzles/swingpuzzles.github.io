@@ -10,6 +10,8 @@ import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 
 class TutorialManager {
+    private _puzzleChooserHintShown: boolean = false;
+
     init() {
         const hasSeenWelcome = specialModeManager.welcomeSeen(localStorageManager.getBoolean(CommonStorageKeys.WelcomeSeen));
 
@@ -83,10 +85,12 @@ More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
     }
 
     public showPuzzleChooserHint() {
-        if (localStorageManager.getBoolean(CommonStorageKeys.TutorialDone)) {
+        if (localStorageManager.getBoolean(CommonStorageKeys.TutorialDone) || this._puzzleChooserHintShown) {
             return;
         }
-        
+
+        this._puzzleChooserHintShown = true;
+
         let browseHint = `📚 Browse and Play!
 
 Swipe left or right to explore different puzzles.
