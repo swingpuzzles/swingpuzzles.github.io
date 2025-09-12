@@ -16,9 +16,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && npx vite build && node copy-legal-pages.js && node copy-all-assets.js && node copy-havok.js",
+    "build": "tsc && npx vite build && node copy-legal-pages.js && node copy-all-assets.js && node copy-havok.js && node -e \"require('fs').writeFileSync('dist/.nojekyll', ''); require('fs').writeFileSync('dist/CNAME', 'swingpuzzles.com');\"",
     "serve": "vite preview",
-    "deploy:prod": "git checkout prod && git pull origin prod && yarn build && npx gh-pages -d dist -b gh-pages && git checkout main",
+    "deploy:prod": "git checkout prod && git pull origin prod && yarn build && npx gh-pages -d dist -b gh-pages --dotfiles && git checkout main",
     "deploy": "node deploy-to-gh-pages.js",
     "deploy:simple": "node simple-deploy.js",
     "postinstall": "cpx node_modules/@babylonjs/havok/lib/esm/HavokPhysics.wasm dist/havok"

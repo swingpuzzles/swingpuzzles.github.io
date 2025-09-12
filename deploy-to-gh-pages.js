@@ -9,14 +9,22 @@ try {
   console.log('📦 Building project...');
   execSync('npx tsc && npx vite build && node copy-legal-pages.js && node copy-all-assets.js && node copy-havok.js', { stdio: 'inherit' });
   
-  // Legal pages and assets are already copied during build
+  // Create .nojekyll file to prevent Jekyll processing
+  console.log('📝 Creating .nojekyll file...');
+  const nojekyllPath = path.join(__dirname, 'dist', '.nojekyll');
+  fs.writeFileSync(nojekyllPath, '');
+  
+  // Create CNAME file for custom domain
+  console.log('🌐 Setting up custom domain...');
+  const cnamePath = path.join(__dirname, 'dist', 'CNAME');
+  fs.writeFileSync(cnamePath, 'swingpuzzles.com');
   
   // Deploy to GitHub Pages
   console.log('🌐 Deploying to GitHub Pages...');
-  execSync('npx gh-pages -d dist -b gh-pages', { stdio: 'inherit' });
+  execSync('npx gh-pages -d dist -b gh-pages --dotfiles', { stdio: 'inherit' });
   
   console.log('✅ Deployment completed successfully!');
-  console.log('🔗 Your site should be available at: https://yourusername.github.io/swingpuzzles.github.io/');
+  console.log('🔗 Your site should be available at: https://swingpuzzles.com');
   
 } catch (error) {
   console.error('❌ Deployment failed:', error.message);
