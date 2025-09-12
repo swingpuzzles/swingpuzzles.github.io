@@ -85,7 +85,7 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
             window.parent.postMessage('showAd', '*');
         }
         
-        return true; // GameMonetize special mode allows welcome action
+        return defaultAction; // GameMonetize special mode allows welcome action
     }
     welcomeSeen(defaultSeen: boolean): boolean {
         return false; // GameMonetize special mode respects default welcome seen state
