@@ -41,7 +41,9 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
         // Add localStorage items to URL parameters
         Object.entries(localStorageData).forEach(([key, value]) => {
             if (value !== null && value !== undefined) {
-                params.set(key, JSON.stringify(value));
+                // Don't stringify strings, only objects/arrays
+                const paramValue = typeof value === 'string' ? value : JSON.stringify(value);
+                params.set(key, paramValue);
             }
         });
         
