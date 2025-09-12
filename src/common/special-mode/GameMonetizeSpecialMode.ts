@@ -80,4 +80,11 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
     useCookies(defaultUse: boolean): boolean {
         return false; // GameMonetize special mode doesn't use cookies
     }
+    handleWelcomeAction(defaultAction: boolean): boolean {
+        if (window.parent) {
+            window.parent.postMessage('showAd', '*');
+        }
+        
+        return true; // GameMonetize special mode allows welcome action
+    }
 }

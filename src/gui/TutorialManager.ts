@@ -15,8 +15,10 @@ class TutorialManager {
 
         let popup = popupHint;
         let nextAction = () => {
-            localStorageManager.set(CommonStorageKeys.WelcomeSeen, true);
-            this.showSizeChooserHint();
+            if (specialModeManager.handleWelcomeAction(true)) {
+                localStorageManager.set(CommonStorageKeys.WelcomeSeen, true);
+                this.showSizeChooserHint();
+            }
         };
 
         let title = "WELCOME!";

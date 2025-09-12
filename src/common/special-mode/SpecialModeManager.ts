@@ -53,6 +53,9 @@ class SpecialModeManager {
     useCookies(defaultUse: boolean): boolean {
         return this._specialMode !== null ? this._specialMode.useCookies(defaultUse) : defaultUse;
     }
+    handleWelcomeAction(defaultAction: boolean): boolean {
+        return this._specialMode !== null ? this._specialMode.handleWelcomeAction(defaultAction) : defaultAction;
+    }
 }
 
 const specialModeManager = new SpecialModeManager();

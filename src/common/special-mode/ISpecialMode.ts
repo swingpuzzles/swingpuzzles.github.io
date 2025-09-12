@@ -11,4 +11,5 @@ export interface ISpecialMode {
     getPuzzleSolvedMessage(defaultMessage: string, emailCaptured: boolean, puzzleFinished: boolean): string;
     cookiesBannerVisible(defaultVisible: boolean): boolean;
     useCookies(defaultUse: boolean): boolean;
+    handleWelcomeAction(defaultAction: boolean): boolean;
 }
