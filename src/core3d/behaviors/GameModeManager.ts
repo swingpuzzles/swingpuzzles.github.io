@@ -10,6 +10,7 @@ import ctx, { Categories, Category } from "../common/SceneContext";
 import timerManager from "../misc/TimerManager";
 import piecePositioningManager from "./PiecePositioningManager";
 import analyticsManager from "../../common/AnalyticsManager";
+import waitAnimUrl from "../../assets/misc/wait-anim.webp";
 
 export enum GameMode {
     Initial,
@@ -253,6 +254,10 @@ class GameModeManager {
 
     enterWaiting() {
         const overlay = document.getElementById("loadingOverlay");
+        const img = overlay?.querySelector('img');
+        if (img && waitAnimUrl) {
+            img.src = waitAnimUrl;
+        }
         overlay!.style.display = "flex";
     }
 
