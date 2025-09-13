@@ -370,12 +370,12 @@ Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_FULL, Control
     public enterGiftPhysicalFinal() {
         const vertMap = new Map();
         const horizMap = new Map();
-        vertMap.set("300", "https://amzn.to/4l1UOs5");
-        vertMap.set("500", "https://amzn.to/3UBvGNM");
-        vertMap.set("1000", "https://amzn.to/3UFp4xW");
-        horizMap.set("300", "https://amzn.to/4la3QmS");
-        horizMap.set("500", "https://amzn.to/40JAhBe");
-        horizMap.set("1000", "https://amzn.to/4fq6kw3");
+        vertMap.set("300", "https://amzn.to/46l1v31");
+        vertMap.set("500", "https://amzn.to/46a6m6U");
+        vertMap.set("1000", "https://amzn.to/46kE35S");
+        horizMap.set("300", "https://amzn.to/48fIvFD");
+        horizMap.set("500", "https://amzn.to/465Jrv2");
+        horizMap.set("1000", "https://amzn.to/4gjZ6tT");
 
         const vertical = popupHint.vertical;
 
