@@ -43,38 +43,26 @@ class NavigationManager {
                 type: "emailCapture",
                 label: alreadyCaptured
                   ? "Want to add another email for updates?"
-                  : "Want new puzzles & updates? Add your email:",
+                  : "Want puzzle updates? Add your email:",
                 isUpdate: alreadyCaptured,
                 buttonTextSubscribe: "📧 Add email",
                 buttonTextUpdate: "✏️ Add another",
                 action: () => {
                     mlPopupHandler.open();
-                    //ml('show', '1RSel7', true);
-                    /*const r = await fetch("/api/subscribe", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ email })
-                    });
-                    if (!r.ok) {
-                      const err = await r.json().catch(() => ({}));
-                      throw new Error(err?.detail || "Subscribe failed");
-                    }
-                    this.setEmailCaptured(true); // your boolean flag
-                    alert(mode === "subscribe" ? "Thanks! Check your inbox to confirm." : "Another email added. You’re all set!");*/
                 }
             });
         
             message = alreadyCaptured
               ? `🎉 Congratulations!
         
-        You’ve completed this puzzle.
-        
-        You can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add another email to get updates.`
+You’ve completed this puzzle.
+
+You can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add another email to get updates.`
               : `🎉 Congratulations!
         
-        You’ve completed this puzzle.
-        
-        You can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add your email to get updates when new puzzles arrive.`;
+You’ve completed this puzzle.
+
+You can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add your email to get updates when new puzzles arrive.`;
         
             // use `message` in popupHint.show later
         } else {
@@ -92,16 +80,16 @@ class NavigationManager {
 
             message = `Your puzzle is on hold.
             
-            What’s next?
-            
-            You can continue right where you left off, restart from the beginning, return to the main menu, or use the PREV and NEXT buttons below to switch puzzles.`;
+What’s next?
+
+You can continue right where you left off, restart from the beginning, return to the main menu, or use the PREV and NEXT buttons below to switch puzzles.`;
         }
 
         formModel.push(
             {
                 id: "restart",
                 label: puzzleFinished
-                    ? "Relive the fun — restart this puzzle from the beginning:"
+                    ? "Want to play again? Restart:"
                     : "Shuffle the pieces and start over:",
                 type: "button",
                 buttonText: "🔄 Restart",
@@ -129,7 +117,7 @@ class NavigationManager {
         popupHint.show(
             specialModeManager.getPuzzleSolvedMessage(message, alreadyCaptured, puzzleFinished),
             title,
-            0.95,
+            0.99,
             ShaderMode.SHADOW_FULL,
             Control.VERTICAL_ALIGNMENT_CENTER,
             () => { this.nextPuzzle(); }, // FOOTER: NEXT

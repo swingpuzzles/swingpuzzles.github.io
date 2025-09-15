@@ -33,7 +33,7 @@ class PopupHint {
     private readonly _fadeDuration = 10;
 
     private inputTextArea!: TextBlock;
-    private welcomeText!: TextBlock;
+    private header!: TextBlock;
     private topImage!: Image;
     private centerImage!: Image;
     private coverImage!: Image;
@@ -115,13 +115,13 @@ class PopupHint {
         this.topImage = new Image("Image", "assets/popup/mascot-avatar-small.webp");
         topStack.addControl(this.topImage);
 
-        this.welcomeText = new TextBlock("Textblock", "Welcome!");
-        this.welcomeText.height = "100%";
-        this.welcomeText.color = "#000000";
-        this.welcomeText.fontWeight = "bold";
-        this.welcomeText.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
-        this.welcomeText.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
-        topStack.addControl(this.welcomeText);
+        this.header = new TextBlock("Textblock", "Welcome!");
+        this.header.height = "100%";
+        this.header.color = "#000000";
+        this.header.fontWeight = "bold";
+        this.header.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+        this.header.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
+        topStack.addControl(this.header);
 
         // Top Rectangle (with Welcome text and Image)
         this.centerRect = new Rectangle("Rectangle");
@@ -175,6 +175,7 @@ class PopupHint {
         this.textAreaRect.thickness = 0;
         this.textAreaRect.adaptHeightToChildren = true;
         this.textAreaRect.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+        this.textAreaRect.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.middleTopStack.addControl(this.textAreaRect);
 
         this.inputTextArea = new TextBlock("InputText");
@@ -623,7 +624,7 @@ class PopupHint {
                     
                         // input
                         const input = new InputText(`${m.id}_email`);
-                        input.width = "65%";
+                        //input.width = "65%";
                         input.color = "#222";
                         input.background = "#f0f0f0";
                         input.focusedBackground = "#e6e6e6";
@@ -641,7 +642,7 @@ class PopupHint {
                             : (m.buttonTextSubscribe ?? "📧 Add email");
                     
                         const submit = Button.CreateSimpleButton(`${m.id}_submit`, btnText);
-                        submit.width = "35%";
+                        //submit.width = "40%";
                         submit.background = "#2980b9";
                         submit.color = "#ffffff";
                         submit.fontWeight = "bold";
@@ -656,39 +657,6 @@ class PopupHint {
                         submit.onPointerClickObservable.add(() => {
                             m.action();
                         });
-
-                        /*const pattern = m.validatePattern ?? /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    
-                        const doSubmit = async () => {
-                            const value = (input.text || "").trim();
-                            if (!pattern.test(value)) {
-                                alert("Please enter a valid email.");
-                                return;
-                            }
-                            submit.isEnabled = false;
-                            try {
-                                await m.onSubmit(value, mode);
-                                // minimal success feedback without echoing the email
-                                const original = submit.textBlock?.text ?? btnText;
-                                if (submit.textBlock) submit.textBlock.text = "✅ Sent";
-                                setTimeout(() => {
-                                    if (submit.textBlock) submit.textBlock.text = original;
-                                }, 1600);
-                            } catch (e) {
-                                console.error(e);
-                                alert("Subscription failed. Please try again.");
-                            } finally {
-                                submit.isEnabled = true;
-                            }
-                        };
-                    
-                        submit.onPointerClickObservable.add(doSubmit);
-                    
-                        // Optional: Enter key quick submit (works in browsers that forward Enter to InputText)
-                        input.onBeforeKeyAddObservable.add((key) => {
-                            // @ts-ignore: key may be string; guard simple Enter
-                            if (key === "\n" || key === "\r") doSubmit();
-                        });*/
                     
                         // layout: label above, then [input][button]
                         row.addControl(input);
@@ -705,10 +673,10 @@ class PopupHint {
     }
 
     private resize() {
-        const giftPreviewOverview = this._popupMode === PopupMode.Gift_Adjustments_Preview ||
+        const giftPreviewOverview = false; /*this._popupMode === PopupMode.Gift_Adjustments_Preview ||
             this._popupMode === PopupMode.Gift_Adjustments_Overview ||
             this._popupMode === PopupMode.Gift_Physical_Initial ||
-            this._popupMode === PopupMode.Gift_Physical_Final;
+            this._popupMode === PopupMode.Gift_Physical_Final;*/
 
         const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         
@@ -717,9 +685,9 @@ class PopupHint {
         }
 
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
-        const rawMainHeight = minSize * this._sizeCoef;
+        const rawMainHeight = ctx.engine.getRenderHeight() * this._sizeCoef;
         const mainHeight = giftPreviewOverview && vertical
-            ? Math.min(rawMainHeight * 1.673, 0.88 * ctx.engine.getRenderHeight())
+            ? Math.min(rawMainHeight * 1.673, 0.95 * ctx.engine.getRenderHeight())
             : rawMainHeight;
         const topHeightOrigCoef = 0.2;
         const topHeightCoef = giftPreviewOverview ? 0.1 : topHeightOrigCoef;
@@ -727,7 +695,7 @@ class PopupHint {
         const topHeight = minSize * topHeightCoef;
         const middleHeight = mainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
         const rawMiddleHeight = rawMainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
-        const containerwidth = giftPreviewOverview && !vertical ? mainHeight * 1.1 : (minSize * 0.87);
+        const containerwidth = minSize * 0.94;
         this.mainContainer.widthInPixels = containerwidth;
         this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
@@ -736,8 +704,8 @@ class PopupHint {
         this.topRect.heightInPixels = topHeight;
         this.centerRect.heightInPixels = middleHeight;
         this.bottomRect.heightInPixels = minSize * 0.1;
-        this.welcomeText.widthInPixels = topHeightOrig * 3.1;//0.62;
-        this.welcomeText.fontSizeInPixels = topHeight / 2.8 / Math.max(1, this.welcomeText.text.length / 15);//14;
+        this.header.widthInPixels = topHeightOrig * 3.1;//0.62;
+        this.header.fontSizeInPixels = topHeight / 2.8 / Math.max(1, (this.header.text.length - 10) / 6);//14;
 
         const imageWidth = topHeight;
         const imageHeight = topHeight * 0.925;//0.185;
@@ -746,11 +714,12 @@ class PopupHint {
         this.middleImage.widthInPixels = imageWidth * 0.45;
         this.middleImage.heightInPixels = imageHeight * 0.45;
 
-        this.textAreaRect.widthInPixels = 0.76 * minSize;
+        this.textAreaRect.widthInPixels = 0.86 * minSize;
+        this.textAreaRect.paddingRightInPixels = 0.02 * minSize;
         this.textAreaRect.cornerRadius = minSize / 40;
 
         this.textAreaRect.paddingBottomInPixels = minSize / 160;
-        this.inputTextArea.fontSizeInPixels = minSize / 36;
+        this.inputTextArea.fontSizeInPixels = ctx.engine.getRenderHeight()/*minSize*/ / 32;
 
         this.inputTextArea.paddingBottomInPixels = minSize / 80;
         this.inputTextArea.paddingLeftInPixels = 3 * minSize / 160;
@@ -810,7 +779,7 @@ class PopupHint {
                                 if (sChild instanceof InputText) {
                                     sChild.widthInPixels = containerwidth * 0.4;
                                 } else if (sChild instanceof Button) {
-                                    sChild.widthInPixels = containerwidth * 0.25;
+                                    sChild.widthInPixels = containerwidth * (child.children.length > 2 ? 0.25 : 0.4);
                                     sChild.paddingLeftInPixels = containerwidth * 0.01;
                                     sChild.fontSize = formFontSize;
                                 }
@@ -954,7 +923,7 @@ class PopupHint {
                 break;
         }
 
-        this.welcomeText.text = heading;
+        this.header.text = heading;
         this.inputTextArea.text = "";
         this._sizeCoef = sizeCoef;
         this._action = action;
@@ -988,7 +957,10 @@ class PopupHint {
         this.adjustZIndex();
         this.mainContainer.verticalAlignment = verticalAlignment;
         this._screenShader.setShaderMode(shaderMode);
-        this.typeTextLetterByLetter(fullText);
+
+        const wrapLimitRatio = ctx.engine.getRenderWidth() > ctx.engine.getRenderHeight() ? 1 : ctx.engine.getRenderWidth() / ctx.engine.getRenderHeight();
+
+        this.typeTextLetterByLetter(fullText, 0, 55.8836 * wrapLimitRatio);
         this.mainContainer.isVisible = true;
 
         this.fadeIn();

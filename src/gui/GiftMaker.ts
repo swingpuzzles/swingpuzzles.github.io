@@ -178,9 +178,7 @@ class GiftMaker {
 
     public start() {
         const introText = `Create a unique gift for someone special.
-
 At the top, choose the puzzle dimensions to match your preferred difficulty.
-
 Then, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.`;
 
         const selectedLang = localStorageManager.getString(GiftStorageKeys.GiftLanguage) ?? "en";
@@ -215,7 +213,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             },
         ];
 
-        popupHint.show(introText, "↓↑ GIFT MAKING ↖↙", 0.92, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(introText, "↓↑ GIFT MAKING ↖↙", 0.98, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             () => { this.exitGiftMaking(); },
             null,
@@ -263,7 +261,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             analyticsManager.trackGiftCreation(giftData);
         }
 
-        popupHint.show("", "↑ ↑ ↑ GIFT STYLING ↑ ↑ ↑", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show("", "↑ ↑ GIFT STYLING ↑ ↑", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftOverviewMode(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },
@@ -292,7 +290,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             },
             {
                 id: "orderCustom",
-                label: "Reveal a quick guide on how to turn the puzzle into a real-life surprise:",
+                label: "Turn the puzzle into a real surprise:",
                 type: "button",
                 buttonText: "🛍️ Order Physical Puzzle",
                 background: "#28a745",
@@ -301,11 +299,10 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         ];
 
         popupHint.show(`🧩 **Puzzle Gift Created with Love!**
-
 You’ve crafted a custom puzzle — now it’s time to share the surprise.
 🎁 Send the link to your friend and let the joy begin.
 🌟 Curious? You can preview it yourself.
-📦 Want to make it even more special? Order a real-life version as a keepsake.`, "GIFT OVERVIEW", 0.9, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+📦 Want to make it even more special? Order a real-life version as a keepsake.`, "GIFT OVERVIEW", 0.99, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => { this.exitGiftMaking(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftAdjustmentMode(); },
@@ -397,17 +394,14 @@ Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_FULL, Control
         ];
 
         popupHint.show(`🧩 **Your Puzzle Image Is Downloading!**
-
 You're just one step away from turning it into a real gift.
-
 1. **Choose the puzzle size** (# of pieces) below.
 2. Tap **"Get it on Amazon"** to open the product page.
 3. On Amazon:
    • Click **Customize Now**
    • Click **Upload** and select the image you just downloaded (starts with “PUZZLE-...” and you'll find it under your downloads folder)
    • Click **Add to Cart**, then **Go to Cart** and **Proceed to Checkout**
-
-You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 1.02, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 0.98, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 analyticsManager.trackGiftShared('gift_shared', 'amazon');
                 window.open(link, "_blank");
