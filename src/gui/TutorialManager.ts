@@ -32,9 +32,14 @@ Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside yo
 Let's start building!`;
 
         if (gameModeManager.giftReceived) {
-            const gifteeName = giftMaker.friendsName;
+            let gifteeName = giftMaker.friendsName;
 
-            message = `🎁 Hey ${gifteeName}, you've received a puzzle gift!
+            if (gifteeName) {
+                gifteeName = gifteeName.trim();
+                gifteeName = ' ' + gifteeName;
+            }
+
+            message = `🎁 Hey${gifteeName}, you've received a puzzle gift!
 
 Tap "Got it", click the present to open your puzzle box,  
 and start solving immediately 🧩`;

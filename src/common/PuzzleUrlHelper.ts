@@ -6,10 +6,10 @@ import puzzleGameBuilder from "../core3d/builders/PuzzleGameBuilder";
 import ctx, { Categories } from "../core3d/common/SceneContext";
 import guiManager from "../gui/GuiManager";
 import popupHint, { overPopup } from "../gui/PopupHint";
-import urlDecoder from "./UrlDecoder";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import specialModeManager from "./special-mode/SpecialModeManager";
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "./LocalStorageManager";
+import giftMaker from "../gui/GiftMaker";
 
 class PuzzleUrlHelper {
     private _category: string | null = null;
@@ -30,7 +30,7 @@ class PuzzleUrlHelper {
         return this._category;
     }
 
-    public handleUrlData(): void {
+    public async handleUrlData(): Promise<void> {
         // Check if we're on a legal page - if so, don't process game URL data
         const path = window.location.pathname;
         if (path.includes('privacy-policy') || path.includes('terms-of-service') || path.includes('cookie-policy')) {
@@ -50,7 +50,7 @@ class PuzzleUrlHelper {
         }
 
         if (urlData.giftData) {
-            urlDecoder.processGiftData(urlData.giftData);
+            await this.processGiftData(urlData.giftData);
             this._giftReceiving = true;
             puzzleGameBuilder.clear();
             this._category = Categories.Gift.key;
@@ -254,6 +254,24 @@ class PuzzleUrlHelper {
         });
         
         return data;
+    }
+
+    private decodeGiftDataFromUrlParam(encoded: string): Record<string, string> {
+        try {
+            const json = decodeURIComponent(atob(encoded));
+            return JSON.parse(json);
+        } catch (e) {
+            console.warn("Failed to decode gift data:", e);
+            return {};
+        }
+    }
+
+    private async processGiftData(encodedGiftData: string) {
+        const giftData = this.decodeGiftDataFromUrlParam(encodedGiftData);
+        
+        if (await giftMaker.parseUrlData(giftData)) {
+            gameModeManager.enterGiftReceivedMode();
+        }   
     }
 }
 

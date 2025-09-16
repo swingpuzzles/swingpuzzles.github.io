@@ -11,7 +11,6 @@ import giftMaker from "./GiftMaker";
 import { Dropdown } from "./dropdowns/Dropdown";
 import CategoryDropdownBuilder from "./dropdowns/CategoryDropdownBuilder";
 import PiecesCountDropdownBuilder from "./dropdowns/PiecesCountDropdownBuilder";
-import urlDecoder from "../common/UrlDecoder";
 import navigationManager from "./NavigationManager";
 import puzzleUrlHelper from "../common/PuzzleUrlHelper";
 import analyticsManager from "../common/AnalyticsManager";
@@ -43,13 +42,11 @@ class GuiManager {
         overPopup.init();
 
         giftMaker.init();
-
-        await urlDecoder.init();
         
         this.categoryDropdown = new CategoryDropdownBuilder().build();
         this.advancedTexture.addControl(this.categoryDropdown);
 
-        puzzleUrlHelper.handleUrlData();
+        await puzzleUrlHelper.handleUrlData();
 
         this._createButtons();
     }
