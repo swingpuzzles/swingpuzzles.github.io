@@ -104,7 +104,9 @@ class SceneInitializer {
 
             tutorialManager.init();
 
-            gameModeManager.leaveWaiting();
+            scene.onReadyObservable.add(() => {
+                gameModeManager.leaveWaiting();
+            });
 
             return scene;
         };
