@@ -57,10 +57,13 @@ class GuiManager {
         this.bottomButtonPanel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.bottomButtonPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
 
-        this.playButton = Button.CreateImageOnlyButton("btn1", "assets/buttons/play-button-small.webp");
+        this.playButton = Button.CreateImageWithCenterTextButton("btn1", "PLAY!", "assets/buttons/play-button-small.webp");
         this.playButton.thickness = 0;
         this.playButton.background = "";
         this.playButton.hoverCursor = "pointer";
+        this.playButton.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.playButton.textBlock!.paddingRight = "5%";
+        this.playButton.textBlock!.fontWeight = "bold";
         this.playButton.onPointerClickObservable.add(() => {
             analyticsManager.trackButtonClick('play_button', 'initial_mode');
             openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
@@ -138,6 +141,7 @@ class GuiManager {
         this.bottomButtonPanel.spacing = renderHeight / 48;
         this.playButton.width = renderHeight / 2 + "px";
         this.playButton.height = renderHeight / 8 + "px";
+        this.playButton.textBlock!.fontSizeInPixels = renderHeight / 10;
         this.xButton.width = renderHeight / 12 + "px";
         this.xButton.height = renderHeight / 12 + "px";
         this.xButton.paddingTopInPixels = renderHeight / 80;

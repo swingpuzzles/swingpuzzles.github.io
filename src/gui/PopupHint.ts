@@ -207,7 +207,7 @@ class PopupHint {
         this.bottomRect.color = "#AAAAAA";
         mainStack.addControl(this.bottomRect);
 
-        this.gotItButton = Button.CreateImageOnlyButton("gotItButton", "assets/buttons/got-it-button-small.webp");
+        this.gotItButton = Button.CreateImageWithCenterTextButton("gotItButton", "GOT IT!", "assets/buttons/got-it-button-small.webp");
         this.gotItButton.thickness = 0;
         this.gotItButton.background = "";
         this.gotItButton.hoverCursor = "pointer";
@@ -215,6 +215,10 @@ class PopupHint {
         this.gotItButton.height = "90%";
         this.gotItButton.isHitTestVisible = true;
         this.gotItButton.isPointerBlocker = true;
+        this.gotItButton.textBlock!.paddingRight = "15%";
+        this.gotItButton.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.gotItButton.textBlock!.fontWeight = "bold";
+
 
         this.gotItButton.onPointerClickObservable.add(() => {
             if (this._action) {
@@ -235,6 +239,7 @@ class PopupHint {
         this.emptyGreenButton.isHitTestVisible = true;
         this.emptyGreenButton.isPointerBlocker = true;
         this.emptyGreenButton.textBlock!.color = "#F8EDB8FF";
+        this.emptyGreenButton.textBlock!.fontWeight = "bold";
 
         this.emptyGreenButton.onPointerClickObservable.add(() => {
             if (this._action) {
@@ -244,7 +249,7 @@ class PopupHint {
 
         this.bottomRect.addControl(this.emptyGreenButton);
 
-        this.notNowButton = Button.CreateImageOnlyButton("notNowButton", "assets/buttons/not-now-button.webp");
+        this.notNowButton = Button.CreateImageWithCenterTextButton("notNowButton", "NOT NOW", "assets/buttons/not-now-button.webp");
         this.notNowButton.thickness = 0;
         this.notNowButton.background = "";
         this.notNowButton.hoverCursor = "pointer";
@@ -254,6 +259,7 @@ class PopupHint {
         this.notNowButton.isHitTestVisible = true;
         this.notNowButton.isPointerBlocker = true;
         this.notNowButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+        this.notNowButton.textBlock!.fontWeight = "bold";
 
         this.notNowButton.onPointerClickObservable.add(() => {
             this.hide();
@@ -306,7 +312,7 @@ class PopupHint {
 
         this.bottomRect.addControl(this.backButton);
 
-        this.nextButton = Button.CreateImageOnlyButton("nextButton", "assets/buttons/next-button-small.webp");
+        this.nextButton = Button.CreateImageWithCenterTextButton("nextButton", "NEXT", "assets/buttons/next-button-small.webp");
         this.nextButton.thickness = 0;
         this.nextButton.background = "";
         this.nextButton.hoverCursor = "pointer";
@@ -316,6 +322,10 @@ class PopupHint {
         this.nextButton.isHitTestVisible = true;
         this.nextButton.isPointerBlocker = true;
         this.nextButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.nextButton.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.nextButton.textBlock!.paddingRight = "15%";
+        this.nextButton.textBlock!.fontWeight = "bold";
+        this.nextButton.textBlock!.color = "#F1D89E";
 
         this.nextButton.onPointerClickObservable.add(() => {
             if (this._action) {
@@ -731,8 +741,11 @@ class PopupHint {
         this.xButton.paddingTopInPixels = minSize / 240;
         this.xButton.paddingRightInPixels = minSize / 240;
 
-        this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24;
-        this.backButton.textBlock!.fontSizeInPixels = minSize / 20;
+        this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24; // TODO adjust by text length
+        this.backButton.textBlock!.fontSizeInPixels = minSize / 20; // TODO adjust by text length
+        this.nextButton.textBlock!.fontSizeInPixels = minSize / 20; // TODO adjust by text length
+        this.notNowButton.textBlock!.fontSizeInPixels = minSize / 20; // TODO adjust by text length
+        this.gotItButton.textBlock!.fontSizeInPixels = minSize / 20; // TODO adjust by text length
 
         if (this.formPanelRect.isVisible) {
             const middleTopPanelRatio = 0.99 - 0.16 * this.formPanel.children.length;
