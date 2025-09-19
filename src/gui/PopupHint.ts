@@ -15,6 +15,7 @@ import puzzleEditor from "../core3d/misc/PuzzleEditor";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import timerManager from "../core3d/misc/TimerManager";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
+import { GuiHelpers } from "./GuiHelpers";
 
 export enum PopupMode {
     Normal,
@@ -298,7 +299,7 @@ class PopupHint {
         this.backButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
 
         this.backButton.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
-        this.backButton.textBlock!.paddingRight = "15%"; // push text right
+        this.backButton.textBlock!.paddingRight = "10%"; // push text right
         this.backButton.textBlock!.color = "#344612";
         this.backButton.textBlock!.fontWeight = "bold";
 
@@ -323,7 +324,7 @@ class PopupHint {
         this.nextButton.isPointerBlocker = true;
         this.nextButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.nextButton.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
-        this.nextButton.textBlock!.paddingRight = "15%";
+        this.nextButton.textBlock!.paddingRight = "10%";
         this.nextButton.textBlock!.fontWeight = "bold";
         this.nextButton.textBlock!.color = "#F1D89E";
 
@@ -741,11 +742,16 @@ class PopupHint {
         this.xButton.paddingTopInPixels = minSize / 240;
         this.xButton.paddingRightInPixels = minSize / 240;
 
-        this.emptyGreenButton.textBlock!.fontSizeInPixels = minSize / 24; // TODO adjust by text length
-        this.backButton.textBlock!.fontSizeInPixels = minSize / 20; // TODO adjust by text length
-        this.nextButton.textBlock!.fontSizeInPixels = minSize / 20; // TODO adjust by text length
-        this.notNowButton.textBlock!.fontSizeInPixels = minSize / 20; // TODO adjust by text length
-        this.gotItButton.textBlock!.fontSizeInPixels = minSize / 20; // TODO adjust by text length
+        let fontSize = GuiHelpers.calculateFontSize(this.emptyGreenButton.textBlock!.text, minSize / 6, minSize / 8, this.emptyGreenButton.textBlock!.fontWeight, this.emptyGreenButton.textBlock!.fontFamily);
+        this.emptyGreenButton.textBlock!.fontSizeInPixels = fontSize;
+        fontSize = GuiHelpers.calculateFontSize(this.backButton.textBlock!.text, minSize / 6, minSize / 8, this.backButton.textBlock!.fontWeight, this.backButton.textBlock!.fontFamily);
+        this.backButton.textBlock!.fontSizeInPixels = fontSize;
+        fontSize = GuiHelpers.calculateFontSize(this.nextButton.textBlock!.text, minSize / 6, minSize / 8, this.nextButton.textBlock!.fontWeight, this.nextButton.textBlock!.fontFamily);
+        this.nextButton.textBlock!.fontSizeInPixels = fontSize;
+        fontSize = GuiHelpers.calculateFontSize(this.notNowButton.textBlock!.text, minSize / 4, minSize / 8, this.notNowButton.textBlock!.fontWeight, this.notNowButton.textBlock!.fontFamily);
+        this.notNowButton.textBlock!.fontSizeInPixels = fontSize;
+        fontSize = GuiHelpers.calculateFontSize(this.gotItButton.textBlock!.text, minSize / 6, minSize / 8, this.gotItButton.textBlock!.fontWeight, this.gotItButton.textBlock!.fontFamily);
+        this.gotItButton.textBlock!.fontSizeInPixels = fontSize;
 
         if (this.formPanelRect.isVisible) {
             const middleTopPanelRatio = 0.99 - 0.16 * this.formPanel.children.length;
