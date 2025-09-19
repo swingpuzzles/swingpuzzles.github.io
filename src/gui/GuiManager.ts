@@ -17,6 +17,7 @@ import analyticsManager from "../common/AnalyticsManager";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { ISpecialMode } from "../common/special-mode/ISpecialMode";
 import { GuiHelpers } from "./GuiHelpers";
+import { i18nManager, TranslationKeys } from "../common/i18n";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -58,7 +59,7 @@ class GuiManager {
         this.bottomButtonPanel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.bottomButtonPanel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
 
-        this.playButton = Button.CreateImageWithCenterTextButton("btn1", "PLAY!", "assets/buttons/play-button-small.webp");
+        this.playButton = Button.CreateImageWithCenterTextButton("btn1", i18nManager.translate(TranslationKeys.UI.BUTTONS.PLAY), "assets/buttons/play-button-small.webp");
         this.playButton.thickness = 0;
         this.playButton.background = "";
         this.playButton.hoverCursor = "pointer";

@@ -34,12 +34,12 @@
       "notNow": "Not now",
       "yesIDid": "Yes, I did",
       "getItOnAmazon": "Get it on Amazon",
-      "back": "Back",
-      "next": "Next",
-      "previous": "Previous",
-      "menu": "Menu",
-      "play": "Play",
-      "morePuzzles": "More Puzzles"
+      "back": "BACK",
+      "next": "NEXT",
+      "previous": "PREV",
+      "menu": "Main Menu",
+      "play": "PLAY!",
+      "morePuzzles": "MORE PUZZLES"
     },
     "labels": {
       "friendsName": "Friend's Name",
@@ -68,7 +68,16 @@
     "resumeSolvingLabel": "Resume solving from this exact spot:",
     "playAgainQuestion": "Want to play again? Restart:",
     "shuffleRestartLabel": "Shuffle the pieces and start over:",
-    "returnToGalleryLabel": "Return to the puzzle gallery:"
+    "returnToGalleryLabel": "Return to the puzzle gallery:",
+    "congratsMessageCompleted": "🎉 Congratulations!\n\nYou've completed this puzzle.\n\nYou can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add another email to get updates.",
+    "congratsMessageFirstTime": "🎉 Congratulations!\n\nYou've completed this puzzle.\n\nYou can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add your email to get updates when new puzzles arrive.",
+    "buttonAddEmail": "📧 Add email",
+    "buttonAddAnother": "✏️ Add another",
+    "buttonContinue": "▶️ Continue",
+    "buttonRestart": "🔄 Restart",
+    "buttonMainMenu": "🏠 Main Menu",
+    "titlePuzzleSolved": "PUZZLE SOLVED!",
+    "titleGamePaused": "GAME PAUSED"
   },
   "categories": {
     "general": "General",
@@ -88,5 +97,13 @@
   },
   "specialMode": {
     "puzzleSolvedMessage": "🎉 Congratulations! You've completed the puzzle in {time}. Great job!"
+  },
+  "giftOverview": {
+    "title": "GIFT OVERVIEW",
+    "message": "🧩 **Puzzle Gift Created with Love!**\nYou've crafted a custom puzzle — now it's time to share the surprise.\n🎁 Send the link to your friend and let the joy begin.\n🌟 Curious? You can preview it yourself.\n📦 Want to make it even more special? Order a real-life version as a keepsake.",
+    "orientationTitle": "PUZZLE ORIENTATION",
+    "orientationMessage": "🧩 Before ordering your physical puzzle, pick the image orientation.\n\nWhen you tap Next, your custom puzzle image will be automatically downloaded.\n\nThen we'll guide you to Amazon, where you can upload it and complete your gift order.\n\nImage orientation:",
+    "sizeTitle": "PUZZLE SIZE",
+    "sizeInstruction": "🧩 **Your Puzzle Image Is Downloading!**\nYou're just one step away from turning it into a real gift.\n1. **Choose the puzzle size** (# of pieces) below.\n2. Tap **\"Get it on Amazon\"** to open the product page.\n3. On Amazon:\n   • Click **Customize Now**\n   • Click **Upload** and select the image you just downloaded (starts with \"PUZZLE-...\" and you'll find it under your downloads folder)\n   • Click **Add to Cart**, then **Go to Cart** and **Proceed to Checkout**\nYou'll soon have your custom puzzle delivered! 🎁"
   }
 }

@@ -69,15 +69,24 @@ export const TranslationKeys = {
         AMAZON_INSTRUCTION: "gift.amazonInstruction"
     },
 
-    // Navigation
-    NAVIGATION: {
-        EMAIL_UPDATE_QUESTION: "navigation.emailUpdateQuestion",
-        EMAIL_UPDATE_QUESTION_ALT: "navigation.emailUpdateQuestionAlt",
-        RESUME_SOLVING_LABEL: "navigation.resumeSolvingLabel",
-        PLAY_AGAIN_QUESTION: "navigation.playAgainQuestion",
-        SHUFFLE_RESTART_LABEL: "navigation.shuffleRestartLabel",
-        RETURN_TO_GALLERY_LABEL: "navigation.returnToGalleryLabel"
-    },
+  // Navigation
+  NAVIGATION: {
+    EMAIL_UPDATE_QUESTION: "navigation.emailUpdateQuestion",
+    EMAIL_UPDATE_QUESTION_ALT: "navigation.emailUpdateQuestionAlt",
+    RESUME_SOLVING_LABEL: "navigation.resumeSolvingLabel",
+    PLAY_AGAIN_QUESTION: "navigation.playAgainQuestion",
+    SHUFFLE_RESTART_LABEL: "navigation.shuffleRestartLabel",
+    RETURN_TO_GALLERY_LABEL: "navigation.returnToGalleryLabel",
+    CONGRATS_MESSAGE_COMPLETED: "navigation.congratsMessageCompleted",
+    CONGRATS_MESSAGE_FIRST_TIME: "navigation.congratsMessageFirstTime",
+    BUTTON_ADD_EMAIL: "navigation.buttonAddEmail",
+    BUTTON_ADD_ANOTHER: "navigation.buttonAddAnother",
+    BUTTON_CONTINUE: "navigation.buttonContinue",
+    BUTTON_RESTART: "navigation.buttonRestart",
+    BUTTON_MAIN_MENU: "navigation.buttonMainMenu",
+    TITLE_PUZZLE_SOLVED: "navigation.titlePuzzleSolved",
+    TITLE_GAME_PAUSED: "navigation.titleGamePaused"
+  },
 
     // Categories
     CATEGORIES: {
@@ -104,6 +113,16 @@ export const TranslationKeys = {
     // Special Mode Messages
     SPECIAL_MODE: {
         PUZZLE_SOLVED_MESSAGE: "specialMode.puzzleSolvedMessage"
+    },
+
+    // Gift Overview Messages
+    GIFT_OVERVIEW: {
+        TITLE: "giftOverview.title",
+        MESSAGE: "giftOverview.message",
+        ORIENTATION_TITLE: "giftOverview.orientationTitle",
+        ORIENTATION_MESSAGE: "giftOverview.orientationMessage",
+        SIZE_TITLE: "giftOverview.sizeTitle",
+        SIZE_INSTRUCTION: "giftOverview.sizeInstruction"
     }
 } as const;
 

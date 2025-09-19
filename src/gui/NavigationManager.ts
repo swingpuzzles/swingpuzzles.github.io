@@ -12,6 +12,7 @@ import { Mesh } from "@babylonjs/core";
 import guiManager from "./GuiManager";
 import mlPopupHandler from "../common/MLPopupHandler";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
+import { i18nManager, TranslationKeys } from "../common/i18n";
 
 declare var ml: any;
 
@@ -42,35 +43,27 @@ class NavigationManager {
                 id: "email",
                 type: "emailCapture",
                 label: alreadyCaptured
-                  ? "Want to add another email for updates?"
-                  : "Want puzzle updates? Add your email:",
+                  ? i18nManager.translate(TranslationKeys.NAVIGATION.EMAIL_UPDATE_QUESTION_ALT)
+                  : i18nManager.translate(TranslationKeys.NAVIGATION.EMAIL_UPDATE_QUESTION),
                 isUpdate: alreadyCaptured,
-                buttonTextSubscribe: "📧 Add email",
-                buttonTextUpdate: "✏️ Add another",
+                buttonTextSubscribe: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_EMAIL),
+                buttonTextUpdate: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_ANOTHER),
                 action: () => {
                     mlPopupHandler.open();
                 }
             });
         
             message = alreadyCaptured
-              ? `🎉 Congratulations!
-        
-You’ve completed this puzzle.
-
-You can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add another email to get updates.`
-              : `🎉 Congratulations!
-        
-You’ve completed this puzzle.
-
-You can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add your email to get updates when new puzzles arrive.`;
+              ? i18nManager.translate(TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_COMPLETED)
+              : i18nManager.translate(TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_FIRST_TIME);
         
             // use `message` in popupHint.show later
         } else {
             formModel.push({
                 id: "continue",
-                label: "Resume solving from this exact spot:",
+                label: i18nManager.translate(TranslationKeys.NAVIGATION.RESUME_SOLVING_LABEL),
                 type: "button",
-                buttonText: "▶️ Continue",
+                buttonText: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_CONTINUE),
                 background: "#27ae60",    // green
                 color: "#ffffff",     // white text for contrast
                 action: () => {
@@ -89,10 +82,10 @@ You can continue right where you left off, restart from the beginning, return to
             {
                 id: "restart",
                 label: puzzleFinished
-                    ? "Want to play again? Restart:"
-                    : "Shuffle the pieces and start over:",
+                    ? i18nManager.translate(TranslationKeys.NAVIGATION.PLAY_AGAIN_QUESTION)
+                    : i18nManager.translate(TranslationKeys.NAVIGATION.SHUFFLE_RESTART_LABEL),
                 type: "button",
-                buttonText: "🔄 Restart",
+                buttonText: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_RESTART),
                 background: "#d35400",   // orange
                 color: "#ffffff",    // white text
                 action: () => {
@@ -101,9 +94,9 @@ You can continue right where you left off, restart from the beginning, return to
             },
             {
                 id: "mainMenu",
-                label: "Return to the puzzle gallery:",
+                label: i18nManager.translate(TranslationKeys.NAVIGATION.RETURN_TO_GALLERY_LABEL),
                 type: "button",
-                buttonText: specialModeManager.mainMenuButtonText("🏠 Main menu"),
+                buttonText: specialModeManager.mainMenuButtonText(i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_MAIN_MENU)),
                 background: "#bdc3c7",   // light gray
                 color: "#2c3e50",    // dark navy text
                 action: () => {
@@ -112,7 +105,7 @@ You can continue right where you left off, restart from the beginning, return to
             }
         );
 
-        const title = puzzleFinished ? "PUZZLE SOLVED!" : "GAME PAUSED";
+        const title = puzzleFinished ? i18nManager.translate(TranslationKeys.NAVIGATION.TITLE_PUZZLE_SOLVED) : i18nManager.translate(TranslationKeys.NAVIGATION.TITLE_GAME_PAUSED);
 
         popupHint.show(
             specialModeManager.getPuzzleSolvedMessage(message, alreadyCaptured, puzzleFinished),

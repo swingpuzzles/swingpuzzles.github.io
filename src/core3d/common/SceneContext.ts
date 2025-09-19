@@ -1,5 +1,6 @@
 import { ArcRotateCamera, Engine, Mesh, Scene, Vector3 } from "@babylonjs/core";
 import { GiftBoxBuilder } from "../builders/GiftBoxBuilder";
+import { i18nManager, TranslationKeys } from "../../common/i18n";
 
 export const Categories = {
     General: { key: "General", text: "General", tags: [ "General" ], url: "assets/categories/category-general.webp" },
@@ -12,6 +13,26 @@ export const Categories = {
 export type Category = (typeof Categories)[keyof typeof Categories];
 
 export const CategoryKeys: string[] = Object.keys(Categories);
+
+/**
+ * Get translated category name
+ */
+export function getTranslatedCategoryName(categoryKey: string): string {
+    switch (categoryKey) {
+        case "General":
+            return i18nManager.translate(TranslationKeys.CATEGORIES.GENERAL);
+        case "Animals":
+            return i18nManager.translate(TranslationKeys.CATEGORIES.ANIMALS);
+        case "Beach":
+            return i18nManager.translate(TranslationKeys.CATEGORIES.BEACH);
+        case "Flowers":
+            return i18nManager.translate(TranslationKeys.CATEGORIES.FLORAL);
+        case "Gift":
+            return i18nManager.translate(TranslationKeys.UI.BUTTONS.MORE_PUZZLES); // Using existing key for now
+        default:
+            return Categories[categoryKey as keyof typeof Categories]?.text || categoryKey;
+    }
+}
 
 class SceneContext {
     private _debugMode = !import.meta.env.PROD; // true in dev, false in production

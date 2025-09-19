@@ -297,11 +297,7 @@ class GiftMaker {
             }
         ];
 
-        popupHint.show(`🧩 **Puzzle Gift Created with Love!**
-You’ve crafted a custom puzzle — now it’s time to share the surprise.
-🎁 Send the link to your friend and let the joy begin.
-🌟 Curious? You can preview it yourself.
-📦 Want to make it even more special? Order a real-life version as a keepsake.`, "GIFT OVERVIEW", 0.99, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.MESSAGE), i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.TITLE), 0.99, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => { this.exitGiftMaking(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftAdjustmentMode(); },
@@ -333,13 +329,7 @@ You’ve crafted a custom puzzle — now it’s time to share the surprise.
             }
         ];
 
-        popupHint.show(`🧩 Before ordering your physical puzzle, pick the image orientation.
-
-When you tap Next, your custom puzzle image will be automatically downloaded.
-
-Then we’ll guide you to Amazon, where you can upload it and complete your gift order.
-
-Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_MESSAGE), i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_TITLE), 1.02, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 const now = new Date();
                 const timestamp = now.toISOString().replace(/[:.]/g, "-");
@@ -392,15 +382,7 @@ Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_FULL, Control
             },
         ];
 
-        popupHint.show(`🧩 **Your Puzzle Image Is Downloading!**
-You're just one step away from turning it into a real gift.
-1. **Choose the puzzle size** (# of pieces) below.
-2. Tap **"Get it on Amazon"** to open the product page.
-3. On Amazon:
-   • Click **Customize Now**
-   • Click **Upload** and select the image you just downloaded (starts with “PUZZLE-...” and you'll find it under your downloads folder)
-   • Click **Add to Cart**, then **Go to Cart** and **Proceed to Checkout**
-You’ll soon have your custom puzzle delivered! 🎁`, "PUZZLE SIZE", 0.98, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.SIZE_INSTRUCTION), i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.SIZE_TITLE), 0.98, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 analyticsManager.trackGiftShared('gift_shared', 'amazon');
                 window.open(link, "_blank");

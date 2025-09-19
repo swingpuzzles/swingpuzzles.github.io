@@ -16,6 +16,7 @@ import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import timerManager from "../core3d/misc/TimerManager";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { GuiHelpers } from "./GuiHelpers";
+import { i18nManager, TranslationKeys } from "../common/i18n";
 
 export enum PopupMode {
     Normal,
@@ -601,7 +602,7 @@ class PopupHint {
                                     console.error("Sharing failed:", err);
                                 }
                             } else {
-                                alert("Sharing is not supported on this device.");
+                                alert(i18nManager.translate(TranslationKeys.ERRORS.SHARING_NOT_SUPPORTED));
                             }
                         });
 
@@ -616,7 +617,7 @@ class PopupHint {
                                 }, 2000);
                             }).catch(err => {
                                 console.error("Copy failed:", err);
-                                alert("Failed to copy to clipboard.");
+                                alert(i18nManager.translate(TranslationKeys.ERRORS.COPY_FAILED));
                             });
                         }
 

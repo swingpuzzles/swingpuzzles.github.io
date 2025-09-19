@@ -68,7 +68,16 @@
     "resumeSolvingLabel": "Reanudar la resolución desde este punto exacto:",
     "playAgainQuestion": "¿Quieres jugar de nuevo? Reiniciar:",
     "shuffleRestartLabel": "Baraja las piezas y empieza de nuevo:",
-    "returnToGalleryLabel": "Volver a la galería de puzzles:"
+    "returnToGalleryLabel": "Volver a la galería de puzzles:",
+    "congratsMessageCompleted": "🎉 ¡Felicidades!\n\nHas completado este puzzle.\n\nPuedes reiniciarlo, volver a la galería, usar los botones ANTERIOR y SIGUIENTE de abajo para cambiar puzzles, o agregar otro email para recibir actualizaciones.",
+    "congratsMessageFirstTime": "🎉 ¡Felicidades!\n\nHas completado este puzzle.\n\nPuedes reiniciarlo, volver a la galería, usar los botones ANTERIOR y SIGUIENTE de abajo para cambiar puzzles, o agregar tu email para recibir actualizaciones cuando lleguen nuevos puzzles.",
+    "buttonAddEmail": "📧 Agregar email",
+    "buttonAddAnother": "✏️ Agregar otro",
+    "buttonContinue": "▶️ Continuar",
+    "buttonRestart": "🔄 Reiniciar",
+    "buttonMainMenu": "🏠 Menú principal",
+    "titlePuzzleSolved": "¡PUZZLE RESUELTO!",
+    "titleGamePaused": "JUEGO PAUSADO"
   },
   "categories": {
     "general": "General",
@@ -88,5 +97,13 @@
   },
   "specialMode": {
     "puzzleSolvedMessage": "🎉 ¡Felicidades! Has completado el puzzle en {time}. ¡Excelente trabajo!"
+  },
+  "giftOverview": {
+    "title": "RESUMEN DEL REGALO",
+    "message": "🧩 **¡Regalo de Puzzle Creado con Amor!**\nHas creado un puzzle personalizado — ahora es momento de compartir la sorpresa.\n🎁 Envía el enlace a tu amigo y deja que comience la alegría.\n🌟 ¿Curioso? Puedes previsualizarlo tú mismo.\n📦 ¿Quieres hacerlo aún más especial? Pide una versión real como recuerdo.",
+    "orientationTitle": "ORIENTACIÓN DEL PUZZLE",
+    "orientationMessage": "🧩 Antes de pedir tu puzzle físico, elige la orientación de la imagen.\n\nCuando toques Siguiente, tu imagen de puzzle personalizada se descargará automáticamente.\n\nLuego te guiaremos a Amazon, donde puedes subirla y completar tu pedido de regalo.\n\nOrientación de la imagen:",
+    "sizeTitle": "TAMAÑO DEL PUZZLE",
+    "sizeInstruction": "🧩 **¡Tu Imagen de Puzzle se Está Descargando!**\nEstás a solo un paso de convertirla en un regalo real.\n1. **Elige el tamaño del puzzle** (# de piezas) a continuación.\n2. Toca **\"Conseguirlo en Amazon\"** para abrir la página del producto.\n3. En Amazon:\n   • Haz clic en **Personalizar Ahora**\n   • Haz clic en **Subir** y selecciona la imagen que acabas de descargar (comienza con \"PUZZLE-...\" y la encontrarás en tu carpeta de descargas)\n   • Haz clic en **Agregar al Carrito**, luego **Ir al Carrito** y **Proceder al Pago**\n¡Pronto tendrás tu puzzle personalizado entregado! 🎁"
   }
 }
