@@ -22,6 +22,7 @@ import translationManager from "../core3d/misc/TranslationManager";
 import PiecesCountSelector from "./selectors/PiecesCountSelector";
 import profanityGuard from "../common/ProfanityGuard";
 import analyticsManager, { GiftCreationData } from "../common/AnalyticsManager";
+import { i18nManager, TranslationKeys } from "../common/i18n";
 
 class GiftMaker {
     private _languageSelector!: LanguageSelector;
@@ -177,9 +178,7 @@ class GiftMaker {
     }
 
     public start() {
-        const introText = `Create a unique gift for someone special.
-At the top, choose the puzzle dimensions to match your preferred difficulty.
-Then, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.`;
+        const introText = i18nManager.translate(TranslationKeys.GIFT.INTRO_MESSAGE);
 
         const selectedLang = localStorageManager.getString(GiftStorageKeys.GiftLanguage) ?? "en";
         this._languageSelector = new LanguageSelector(selectedLang);
@@ -192,28 +191,28 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         const formInputModel: FormRowModel[] = [
             {
                 id: GiftStorageKeys.GiftName,
-                label: "Friend's Name",
-                placeHolder: "e.g. Alex",
+                label: i18nManager.translate(TranslationKeys.UI.LABELS.FRIENDS_NAME),
+                placeHolder: i18nManager.translate(TranslationKeys.UI.PLACEHOLDERS.FRIENDS_NAME),
                 type: "text",
                 maxLength: 30
             },
             {
                 id: GiftStorageKeys.GiftAge,
-                label: "Coming Age",
-                placeHolder: "e.g. 30",
+                label: i18nManager.translate(TranslationKeys.UI.LABELS.COMING_AGE),
+                placeHolder: i18nManager.translate(TranslationKeys.UI.PLACEHOLDERS.COMING_AGE),
                 type: "number",
                 min: 0,
                 max: 150
             },
             {
                 id: GiftStorageKeys.GiftLanguage,
-                label: "Wish Language",
+                label: i18nManager.translate(TranslationKeys.UI.LABELS.WISH_LANGUAGE),
                 type: "selection",
                 selector: this._languageSelector
             },
         ];
 
-        popupHint.show(introText, "↓↑ GIFT MAKING ↖↙", 0.98, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show(introText, i18nManager.translate(TranslationKeys.GIFT.TITLE), 0.98, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             () => { this.exitGiftMaking(); },
             null,
@@ -276,13 +275,13 @@ Then, fill in the details below to personalize your custom puzzle — enter your
         const formModel: FormRowModel[] = [
             {
                 id: "giftLink",
-                label: "Copy the link or share directly:",
+                label: i18nManager.translate(TranslationKeys.GIFT.COPY_LINK_LABEL),
                 type: "share",
                 link: this.makeGiftUrl()
             },
             {
                 id: "tryIt",
-                label: "Try the gift first before sending:",
+                label: i18nManager.translate(TranslationKeys.GIFT.TRY_FIRST_LABEL),
                 type: "button",
                 buttonText: "🎮 Try Now!",
                 background: "#17a2b8",
@@ -290,7 +289,7 @@ Then, fill in the details below to personalize your custom puzzle — enter your
             },
             {
                 id: "orderCustom",
-                label: "Turn the puzzle into a real surprise:",
+                label: i18nManager.translate(TranslationKeys.GIFT.TURN_INTO_REAL_LABEL),
                 type: "button",
                 buttonText: "🛍️ Order Physical Puzzle",
                 background: "#28a745",
@@ -387,7 +386,7 @@ Image orientation:`, "PUZZLE ORIENTATION", 1.02, ShaderMode.SHADOW_FULL, Control
         const formModel: FormRowModel[] = [
             {
                 id: CommonStorageKeys.GiftPiecesCount,
-                label: "Count of Puzzle Pieces",
+                label: i18nManager.translate(TranslationKeys.GIFT.PIECES_COUNT_LABEL),
                 type: "selection",
                 selector: piecesSelector
             },

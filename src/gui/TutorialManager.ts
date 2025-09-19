@@ -8,6 +8,7 @@ import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageMa
 import giftMaker from "./GiftMaker";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
+import { i18nManager, TranslationKeys } from "../common/i18n";
 
 class TutorialManager {
     private _puzzleChooserHintShown: boolean = false;
@@ -23,13 +24,9 @@ class TutorialManager {
             }
         };
 
-        let title = "WELCOME!";
+        let title = i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.TITLE);
 
-        let message = `Welcome to SwingPuzzles.com! 🧩
-
-Get ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. Every piece fits into a world of adventure!
-    
-Let's start building!`;
+        let message = i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.MESSAGE);
 
         if (gameModeManager.giftReceived) {
             let gifteeName = giftMaker.friendsName;
@@ -39,12 +36,8 @@ Let's start building!`;
                 gifteeName = ' ' + gifteeName;
             }
 
-            message = `🎁 Hey${gifteeName}, you've received a puzzle gift!
-
-Tap "Got it", click the present to open your puzzle box,  
-and start solving immediately 🧩`;
-
-            title = "YOU'VE GOT A GIFT!";
+            message = i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.GIFT_MESSAGE, { name: gifteeName });
+            title = i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.GIFT_TITLE);
             nextAction = () => {
                 localStorageManager.set(CommonStorageKeys.WelcomeSeen, true);
                 popup.hide(() => {
@@ -76,13 +69,9 @@ and start solving immediately 🧩`;
             return;
         }
 
-        let dimensionHint = `🧩 Choose Your Challenge!
+        let dimensionHint = i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.SIZE_MESSAGE);
 
-Use the highlighted dropdown at the top center to pick your desired puzzle dimensions. 
-
-More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
-
-        popupHint.show(dimensionHint, "HINT: SIZE", 0.63, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show(dimensionHint, i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.SIZE_TITLE), 0.63, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
                 () => { this.showPuzzleChooserHint(); }, () => { this.showPuzzleChooserHint(); },
                 null,
                 () => {
@@ -96,13 +85,9 @@ More pieces, more fun – or keep it simple and relaxing. The choice is yours!`;
 
         this._puzzleChooserHintShown = true;
 
-        let browseHint = `📚 Browse and Play!
+        let browseHint = i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.CHOICE_MESSAGE);
 
-Swipe left or right to explore different puzzles.
-
-Each puzzle is shown as a cover box — click or tap on one to select it, or just hit the ▶️ Play button to dive right in!`;
-
-        popupHint.show(browseHint, "HINT: CHOICE", 0.63, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
+        popupHint.show(browseHint, i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.CHOICE_TITLE), 0.63, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
                 () => { popupHint.hide(); },
                 () => { popupHint.hide(); },
                 null, 
@@ -117,11 +102,9 @@ Each puzzle is shown as a cover box — click or tap on one to select it, or jus
             return;
         }
         
-        let shakeHint = `🧩 Give it a good shake!
+        let shakeHint = i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.SHAKE_MESSAGE);
     
-Drag the puzzle box around to shake it — this will mix up the pieces so you can start solving!`;
-    
-        popupHint.show(shakeHint, "SHAKE IT!", 0.51, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
+        popupHint.show(shakeHint, i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.SHAKE_TITLE), 0.51, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
                 () => { this.finishTutorial(); },
                 () => { this.finishTutorial(); },
                 null, 
@@ -138,16 +121,13 @@ Drag the puzzle box around to shake it — this will mix up the pieces so you ca
     public showCongratsMessageImpl() {
             const solvedTime = timerDisplay.getElapsedTime();
 
-        const message = `🎉 Congratulations!
-
-You’ve completed the puzzle in ${solvedTime}.
-Great job putting all the pieces together!`;
+        const message = i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.MESSAGE, { time: solvedTime });
 
         let seconds = 5;
-        const countdownLabel = () => `Continue (${seconds}s)`;
+        const countdownLabel = () => `${i18nManager.translate(TranslationKeys.UI.BUTTONS.CONTINUE)} (${seconds}s)`;
 
         // Show initial popup
-        popupHint.show(message, "PUZZLE SOLVED!", 0.57, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(message, i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.TITLE), 0.57, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 clearInterval(timerId);
                 this.showBuyOfferMessage();
@@ -178,13 +158,9 @@ Great job putting all the pieces together!`;
     }
 
     public showBuyOfferMessage() {
-        const message = `🧩 Love that puzzle?
+        const message = i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.BUY_MESSAGE);
     
-If you'd like to own it in real life, you can order a high-quality physical version — perfect for your coffee table or as a gift.
-
-Available now on Amazon!`;
-    
-        popupHint.show(message, "TAKE IT HOME?", 0.8, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(message, i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.BUY_TITLE), 0.8, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 gameModeManager.handleGetItOnAmazonAction();
                 popupHint.hide();
@@ -204,13 +180,9 @@ Available now on Amazon!`;
 
         popupHint.toBack();
 
-        let makeGiftHint = `🧩 Style your gift!
-        
-Pick the text, font, colors, birthday cake, tablecloth, and background.
-
-All these options are waiting for you in the dropdowns at the top of the screen.`;
+        let makeGiftHint = i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.STYLE_MESSAGE);
     
-        overPopup.show(makeGiftHint, "↑ STYLE IT! ↑", 0.87, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        overPopup.show(makeGiftHint, i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.STYLE_TITLE), 0.87, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
                 () => { this.finishGiftTutorial(); },
                 () => { this.finishGiftTutorial(); },
                 null, 
@@ -221,12 +193,11 @@ All these options are waiting for you in the dropdowns at the top of the screen.
     public showBadWordHint() {
         popupHint.toBack();
 
-        const makeGiftHint = `Oops! Your gift text contains language that isn’t allowed.
-    Please choose kinder words so your friend can enjoy the puzzle.`;
+        const makeGiftHint = i18nManager.translate(TranslationKeys.TUTORIAL.BAD_WORD.MESSAGE);
 
         overPopup.show(
             makeGiftHint,
-            "BE NICE!",
+            i18nManager.translate(TranslationKeys.TUTORIAL.BAD_WORD.TITLE),
             0.5,
             ShaderMode.SHADOW_FULL,
             Control.VERTICAL_ALIGNMENT_CENTER,

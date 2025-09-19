@@ -1,0 +1,92 @@
+{
+  "tutorial": {
+    "welcome": {
+      "title": "WELCOME!",
+      "message": "Welcome to SwingPuzzles.com! 🧩\n\nGet ready to explore, solve, and enjoy amazing 3D jigsaw puzzles right inside your browser. Every piece fits into a world of adventure!\n\nLet's start building!",
+      "giftTitle": "YOU'VE GOT A GIFT!",
+      "giftMessage": "🎁 Hey {name}, you've received a puzzle gift!\n\nTap \"Got it\", click the present to open your puzzle box,\nand start solving immediately 🧩"
+    },
+    "hints": {
+      "sizeTitle": "HINT: SIZE",
+      "sizeMessage": "🧩 Choose Your Challenge!\n\nUse the highlighted dropdown at the top center to pick your desired puzzle dimensions.\n\nMore pieces, more fun – or keep it simple and relaxing. The choice is yours!",
+      "choiceTitle": "HINT: CHOICE", 
+      "choiceMessage": "📚 Browse and Play!\n\nSwipe left or right to explore different puzzles.\n\nEach puzzle is shown as a cover box — click or tap on one to select it, or just hit the ▶️ Play button to dive right in!",
+      "shakeTitle": "SHAKE IT!",
+      "shakeMessage": "🧩 Give it a good shake!\n\nDrag the puzzle box around to shake it — this will mix up the pieces so you can start solving!",
+      "styleTitle": "↑ STYLE IT! ↑",
+      "styleMessage": "🧩 Style your gift!\n\nPick the text, font, colors, birthday cake, tablecloth, and background.\n\nAll these options are waiting for you in the dropdowns at the top of the screen."
+    },
+    "congrats": {
+      "title": "PUZZLE SOLVED!",
+      "message": "🎉 Congratulations!\n\nYou've completed the puzzle in {time}.\nGreat job putting all the pieces together!",
+      "buyTitle": "TAKE IT HOME?",
+      "buyMessage": "🧩 Love that puzzle?\n\nIf you'd like to own it in real life, you can order a high-quality physical version — perfect for your coffee table or as a gift.\n\nAvailable now on Amazon!"
+    },
+    "badWord": {
+      "title": "BE NICE!",
+      "message": "Oops! Your gift text contains language that isn't allowed.\nPlease choose kinder words so your friend can enjoy the puzzle."
+    }
+  },
+  "ui": {
+    "buttons": {
+      "continue": "Continue",
+      "gotIt": "Got it",
+      "notNow": "Not now",
+      "yesIDid": "Yes, I did",
+      "getItOnAmazon": "Get it on Amazon",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "menu": "Menu",
+      "play": "Play",
+      "morePuzzles": "More Puzzles"
+    },
+    "labels": {
+      "friendsName": "Friend's Name",
+      "comingAge": "Coming Age",
+      "wishLanguage": "Wish Language",
+      "puzzlePieces": "Puzzle Pieces",
+      "category": "Category"
+    },
+    "placeholders": {
+      "friendsName": "e.g. Alex",
+      "comingAge": "e.g. 30"
+    }
+  },
+  "gift": {
+    "title": "↓↑ GIFT MAKING ↖↙",
+    "introMessage": "Create a unique gift for someone special.\nAt the top, choose the puzzle dimensions to match your preferred difficulty.\nThen, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.",
+    "copyLinkLabel": "Copy the link or share directly:",
+    "tryFirstLabel": "Try the gift first before sending:",
+    "turnIntoRealLabel": "Turn the puzzle into a real surprise:",
+    "piecesCountLabel": "Count of Puzzle Pieces",
+    "amazonInstruction": "2. Tap **\"Get it on Amazon\"** to open the product page."
+  },
+  "navigation": {
+    "emailUpdateQuestion": "Want to add another email for updates?",
+    "emailUpdateQuestionAlt": "Want puzzle updates? Add your email:",
+    "resumeSolvingLabel": "Resume solving from this exact spot:",
+    "playAgainQuestion": "Want to play again? Restart:",
+    "shuffleRestartLabel": "Shuffle the pieces and start over:",
+    "returnToGalleryLabel": "Return to the puzzle gallery:"
+  },
+  "categories": {
+    "general": "General",
+    "animals": "Animals",
+    "beach": "Beach", 
+    "floral": "Floral"
+  },
+  "cookies": {
+    "accept": "Accept All",
+    "reject": "Reject Non-Essential",
+    "bannerMessage": "We use cookies to enhance your experience and analyze usage. You can choose to accept all cookies or reject non-essential ones."
+  },
+  "errors": {
+    "sharingNotSupported": "Sharing is not supported on this device.",
+    "copyFailed": "Failed to copy to clipboard.",
+    "decodeFailed": "Failed to decode gift data"
+  },
+  "specialMode": {
+    "puzzleSolvedMessage": "🎉 Congratulations! You've completed the puzzle in {time}. Great job!"
+  }
+}

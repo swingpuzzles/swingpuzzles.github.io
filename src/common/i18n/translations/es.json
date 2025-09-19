@@ -1,0 +1,92 @@
+{
+  "tutorial": {
+    "welcome": {
+      "title": "¡BIENVENIDO!",
+      "message": "¡Bienvenido a SwingPuzzles.com! 🧩\n\nPrepárate para explorar, resolver y disfrutar increíbles puzzles 3D directamente en tu navegador. ¡Cada pieza encaja en un mundo de aventuras!\n\n¡Empecemos a construir!",
+      "giftTitle": "¡TIENES UN REGALO!",
+      "giftMessage": "🎁 ¡Hola {name}, has recibido un regalo de puzzle!\n\nToca \"Entendido\", haz clic en el regalo para abrir tu caja de puzzle,\ny empieza a resolver inmediatamente 🧩"
+    },
+    "hints": {
+      "sizeTitle": "PISTA: TAMAÑO",
+      "sizeMessage": "🧩 ¡Elige tu Desafío!\n\nUsa el menú desplegable resaltado en la parte superior central para elegir las dimensiones del puzzle que desees.\n\n¡Más piezas, más diversión – o manténlo simple y relajante. La elección es tuya!",
+      "choiceTitle": "PISTA: ELECCIÓN",
+      "choiceMessage": "📚 ¡Navega y Juega!\n\nDesliza hacia la izquierda o derecha para explorar diferentes puzzles.\n\nCada puzzle se muestra como una caja de portada — haz clic o toca en una para seleccionarla, o simplemente presiona el botón ▶️ Play para sumergirte directamente!",
+      "shakeTitle": "¡AGÍTALO!",
+      "shakeMessage": "🧩 ¡Dale una buena sacudida!\n\nArrastra la caja del puzzle para agitarla — esto mezclará las piezas para que puedas empezar a resolver!",
+      "styleTitle": "↑ ¡ESTILÍZALO! ↑",
+      "styleMessage": "🧩 ¡Estiliza tu regalo!\n\nElige el texto, fuente, colores, pastel de cumpleaños, mantel y fondo.\n\nTodas estas opciones te esperan en los menús desplegables en la parte superior de la pantalla."
+    },
+    "congrats": {
+      "title": "¡PUZZLE RESUELTO!",
+      "message": "🎉 ¡Felicidades!\n\nHas completado el puzzle en {time}.\n¡Excelente trabajo juntando todas las piezas!",
+      "buyTitle": "¿LLEVÁRTELO A CASA?",
+      "buyMessage": "🧩 ¿Te encanta ese puzzle?\n\nSi te gustaría tenerlo en la vida real, puedes pedir una versión física de alta calidad — perfecta para tu mesa de café o como regalo.\n\n¡Disponible ahora en Amazon!"
+    },
+    "badWord": {
+      "title": "¡SÉ AMABLE!",
+      "message": "¡Ups! Tu texto de regalo contiene lenguaje que no está permitido.\nPor favor elige palabras más amables para que tu amigo pueda disfrutar el puzzle."
+    }
+  },
+  "ui": {
+    "buttons": {
+      "continue": "Continuar",
+      "gotIt": "Entendido",
+      "notNow": "Ahora no",
+      "yesIDid": "Sí, lo hice",
+      "getItOnAmazon": "Conseguirlo en Amazon",
+      "back": "Atrás",
+      "next": "Siguiente",
+      "previous": "Anterior",
+      "menu": "Menú",
+      "play": "Jugar",
+      "morePuzzles": "Más Puzzles"
+    },
+    "labels": {
+      "friendsName": "Nombre del Amigo",
+      "comingAge": "Edad que Cumple",
+      "wishLanguage": "Idioma del Deseo",
+      "puzzlePieces": "Piezas del Puzzle",
+      "category": "Categoría"
+    },
+    "placeholders": {
+      "friendsName": "ej. Alex",
+      "comingAge": "ej. 30"
+    }
+  },
+  "gift": {
+    "title": "↓↑ CREACIÓN DE REGALOS ↖↙",
+    "introMessage": "Crea un regalo único para alguien especial.\nEn la parte superior, elige las dimensiones del puzzle para que coincidan con tu dificultad preferida.\nLuego, completa los detalles a continuación para personalizar tu puzzle personalizado — ingresa el nombre de tu amigo, la edad que cumple y el idioma de tu deseo.",
+    "copyLinkLabel": "Copia el enlace o comparte directamente:",
+    "tryFirstLabel": "Prueba el regalo primero antes de enviarlo:",
+    "turnIntoRealLabel": "Convierte el puzzle en una sorpresa real:",
+    "piecesCountLabel": "Cantidad de Piezas del Puzzle",
+    "amazonInstruction": "2. Toca **\"Conseguirlo en Amazon\"** para abrir la página del producto."
+  },
+  "navigation": {
+    "emailUpdateQuestion": "¿Quieres agregar otro email para actualizaciones?",
+    "emailUpdateQuestionAlt": "¿Quieres actualizaciones de puzzles? Agrega tu email:",
+    "resumeSolvingLabel": "Reanudar la resolución desde este punto exacto:",
+    "playAgainQuestion": "¿Quieres jugar de nuevo? Reiniciar:",
+    "shuffleRestartLabel": "Baraja las piezas y empieza de nuevo:",
+    "returnToGalleryLabel": "Volver a la galería de puzzles:"
+  },
+  "categories": {
+    "general": "General",
+    "animals": "Animales",
+    "beach": "Playa",
+    "floral": "Floral"
+  },
+  "cookies": {
+    "accept": "Aceptar Todo",
+    "reject": "Rechazar No Esenciales",
+    "bannerMessage": "Usamos cookies para mejorar tu experiencia y analizar el uso. Puedes elegir aceptar todas las cookies o rechazar las no esenciales."
+  },
+  "errors": {
+    "sharingNotSupported": "Compartir no es compatible con este dispositivo.",
+    "copyFailed": "Error al copiar al portapapeles.",
+    "decodeFailed": "Error al decodificar los datos del regalo"
+  },
+  "specialMode": {
+    "puzzleSolvedMessage": "🎉 ¡Felicidades! Has completado el puzzle en {time}. ¡Excelente trabajo!"
+  }
+}
