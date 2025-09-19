@@ -215,10 +215,10 @@ class PopupHint {
         this.gotItButton.height = "90%";
         this.gotItButton.isHitTestVisible = true;
         this.gotItButton.isPointerBlocker = true;
-        this.gotItButton.textBlock!.paddingRight = "15%";
+        this.gotItButton.textBlock!.paddingRight = "10%";
         this.gotItButton.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.gotItButton.textBlock!.fontWeight = "bold";
-
+        this.gotItButton.textBlock!.color = "black";
 
         this.gotItButton.onPointerClickObservable.add(() => {
             if (this._action) {
