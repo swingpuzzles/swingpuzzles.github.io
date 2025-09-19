@@ -16,6 +16,7 @@ import puzzleUrlHelper from "../common/PuzzleUrlHelper";
 import analyticsManager from "../common/AnalyticsManager";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { ISpecialMode } from "../common/special-mode/ISpecialMode";
+import { GuiHelpers } from "./GuiHelpers";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -141,7 +142,9 @@ class GuiManager {
         this.bottomButtonPanel.spacing = renderHeight / 48;
         this.playButton.width = renderHeight / 2 + "px";
         this.playButton.height = renderHeight / 8 + "px";
-        this.playButton.textBlock!.fontSizeInPixels = renderHeight / 10;
+        let fontSize = GuiHelpers.calculateFontSize(this.playButton.textBlock!.text, renderHeight / 4, renderHeight / 8, this.playButton.textBlock!.fontWeight, this.playButton.textBlock!.fontFamily);
+        this.playButton.textBlock!.fontSizeInPixels = fontSize;
+
         this.xButton.width = renderHeight / 12 + "px";
         this.xButton.height = renderHeight / 12 + "px";
         this.xButton.paddingTopInPixels = renderHeight / 80;
