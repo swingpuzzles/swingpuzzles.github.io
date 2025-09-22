@@ -61,8 +61,9 @@ export default abstract class BaseSelector extends StackPanel implements ISelect
         let buttonwidth = buttonHeight * this.widthCoef;
         let border = buttonHeight / 6;
 
-        if (buttonwidth * buttonsCount > ctx.engine.getRenderWidth()) {
-            buttonwidth = ctx.engine.getRenderWidth() / buttonsCount * 0.9;
+        const maxWidth = ctx.engine.getRenderWidth() * 0.9;
+        if (buttonwidth * buttonsCount > maxWidth) {
+            buttonwidth = maxWidth / buttonsCount;
             buttonHeight = buttonwidth / this.widthCoef;
             border = buttonHeight / 18;
         }
