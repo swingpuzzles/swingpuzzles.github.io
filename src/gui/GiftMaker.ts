@@ -462,7 +462,7 @@ class GiftMaker {
                     break;
 
                 case GiftStorageKeys.GiftForeground:
-                    puzzleEditor.setTorte(`torte_${value}-small.webp`, Number.parseInt(value) || 0);
+                    puzzleEditor.setTorte(`"assets/gift/tortes/torte_${value}-small.webp`, Number.parseInt(value) || 0);
                     break;
 
                 case GiftStorageKeys.GiftFontFamily:
