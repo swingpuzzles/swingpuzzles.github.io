@@ -2,6 +2,7 @@ import { Button, Control, StackPanel } from "@babylonjs/gui";
 import ISelector from "../../interfaces/ISelector";
 import Constants from "../../core3d/common/Constants";
 import { SelectorModel } from "../../model/SelectorModel";
+import ctx from "../../core3d/common/SceneContext";
 
 export default abstract class BaseSelector extends StackPanel implements ISelector {
     protected _selectionObserver: ((code: string) => void) | null = null;
@@ -28,17 +29,7 @@ export default abstract class BaseSelector extends StackPanel implements ISelect
             btn.onPointerClickObservable.add(() => {
                 this.selectedId = row.id;
 
-                const border = this.heightInPixels / 6;
-
-                // Update visual state of all buttons
-                Object.entries(this._selectorButtons).forEach(([id, button]) => {
-                    button.thickness = id === this._selectedId ? border : 0;
-                    button.color = id === this._selectedId ? "#EA6A15" : "#cccccc";
-                    button.paddingTopInPixels = id === this._selectedId ? 0 : border;
-                    button.paddingBottomInPixels = id === this._selectedId ? 0 : border;
-                    button.paddingLeftInPixels = id === this._selectedId ? 0 : border;
-                    button.paddingRightInPixels = id === this._selectedId ? 0 : border;
-                });
+                this.resize(this.heightInPixels);
 
                 if (this._selectionObserver) {
                     this._selectionObserver(this._selectedId);
@@ -64,15 +55,25 @@ export default abstract class BaseSelector extends StackPanel implements ISelect
     }
 
     resize(height: number): void {
+        const buttonsCount = Object.keys(this._selectorButtons).length;
         this.heightInPixels = height;
-        const buttonwidth = height * this.widthCoef;
-        const border = height / 6;
-        const cornerRadius = height / 5;
+        let buttonHeight = height;
+        let buttonwidth = buttonHeight * this.widthCoef;
+        let border = buttonHeight / 6;
+
+        if (buttonwidth * buttonsCount > ctx.engine.getRenderWidth()) {
+            buttonwidth = ctx.engine.getRenderWidth() / buttonsCount * 0.9;
+            buttonHeight = buttonwidth / this.widthCoef;
+            border = buttonHeight / 18;
+        }
+
+        const cornerRadius = buttonHeight / 5;
         // Update visual state of all buttons
         Object.entries(this._selectorButtons).forEach(([id, button]) => {
             button.widthInPixels = buttonwidth;
-            button.heightInPixels = height;
+            button.heightInPixels = buttonHeight;
             button.cornerRadius = cornerRadius;
+            button.color = id === this._selectedId ? "#EA6A15" : "#cccccc";
             button.thickness = id === this._selectedId ? border : 0;
             button.paddingTopInPixels = id === this._selectedId ? 0 : border;
             button.paddingBottomInPixels = id === this._selectedId ? 0 : border;
