@@ -18,6 +18,7 @@ import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { ISpecialMode } from "../common/special-mode/ISpecialMode";
 import { GuiHelpers } from "./GuiHelpers";
 import { i18nManager, TranslationKeys } from "../common/i18n";
+import LanguageDropdownBuilder from "./dropdowns/LanguageDropdownBuilder";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -28,6 +29,7 @@ class GuiManager {
     private xButton!: Button;
     private menuButton!: Button;
     private categoryDropdown!: Dropdown;
+    private languageDropdown!: Dropdown;
     private _xAction: (() => void) | null = null;
 
     get advancedTexture() {
@@ -47,6 +49,9 @@ class GuiManager {
         
         this.categoryDropdown = new CategoryDropdownBuilder().build();
         this.advancedTexture.addControl(this.categoryDropdown);
+
+        this.languageDropdown = new LanguageDropdownBuilder().build();
+        this.advancedTexture.addControl(this.languageDropdown);
 
         await puzzleUrlHelper.handleUrlData();
 

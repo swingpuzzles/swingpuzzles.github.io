@@ -18,7 +18,7 @@ export class Dropdown extends Container {
     private translationMap: Map<string, Map<string, string>> = new Map();
     private selectionCallback?(key: string, userAction: boolean, text: string): void;
     private _selectedItem!: string;
-    private isCategory: boolean;
+    private isImageCollapsedAlsoTextExpanded: boolean;
     private isImageOnly: boolean;
     private isDisabled: boolean = false;
 
@@ -27,7 +27,7 @@ export class Dropdown extends Container {
         background: string;
         color: string;
         thickness?: number;
-        isCategory?: boolean;
+        isImageCollapsedAlsoTextExpanded?: boolean;
         isImageOnly?: boolean;
         valign?: number;
         halign?: number;
@@ -52,7 +52,7 @@ export class Dropdown extends Container {
         this.horizontalAlignment = config.halign ?? Control.HORIZONTAL_ALIGNMENT_CENTER;
         this.isHitTestVisible = false;
 
-        this.isCategory = config.isCategory ?? false;
+        this.isImageCollapsedAlsoTextExpanded = config.isImageCollapsedAlsoTextExpanded ?? false;
         this.isImageOnly = config.isImageOnly ?? false;
 
         // Create button
@@ -61,10 +61,10 @@ export class Dropdown extends Container {
             this.button.image!.stretch = Image.STRETCH_UNIFORM;
             
             this.button.background = "";
-            this.button.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+            this.button.horizontalAlignment = config.halign ?? Control.HORIZONTAL_ALIGNMENT_LEFT;
 
             // Create and store the nested image (category icon)
-            if (this.isCategory) {
+            if (this.isImageCollapsedAlsoTextExpanded) {
                 this.button.width = "20%"
                 this.button.image!.source = "assets/buttons/category-button.webp";
 
@@ -112,11 +112,17 @@ export class Dropdown extends Container {
 
             if (this.options.isVisible) {
                 const measure = this.button._currentMeasure;
-                this.options.leftInPixels = measure.left;
+
                 this.options.topInPixels = measure.top + measure.height;
-                this.options.widthInPixels = this.isCategory ? 7 * ctx.engine.getRenderHeight() / 20 : measure.width;
+                this.options.widthInPixels = this.isImageCollapsedAlsoTextExpanded ? 7 * ctx.engine.getRenderHeight() / 20 : measure.width;
 
                 this.options.zIndex = this.zIndex + 0.1;
+
+                if (this.horizontalAlignment === Control.HORIZONTAL_ALIGNMENT_LEFT) {   
+                    this.options.leftInPixels = measure.left;
+                } else {
+                    this.options.leftInPixels = measure.left - this.options.widthInPixels + measure.width;
+                }
             }
         });
 
@@ -209,13 +215,18 @@ export class Dropdown extends Container {
         this.itemHeight = height;
 
         this.widthInPixels = width;
-        this.options.width = this.isCategory ? width : optionWidth;
+        this.options.width = this.isImageCollapsedAlsoTextExpanded ? width : optionWidth;
 
         if (!ignoreTop) {
             this.topInPixels = this.itemHeight / 4;
         }
 
-        if (!this.isCategory) {
+        if (this.isImageCollapsedAlsoTextExpanded) {
+            this.leftInPixels = this.horizontalAlignment === Control.HORIZONTAL_ALIGNMENT_LEFT ? this.itemHeight / 4 : -this.itemHeight / 4;
+            //this.paddingRightInPixels = this.itemHeight / 2;
+            this.button.heightInPixels = this.itemHeight * 1.8;
+            this.dropDownSign.paddingBottomInPixels = this.itemHeight / 5;
+        } else {
             if (this.button.textBlock) {
                 this.button.textBlock.fontSizeInPixels = width / 13;
             }
@@ -226,16 +237,12 @@ export class Dropdown extends Container {
                 this.dropDownSign.paddingRightInPixels = this.itemHeight / 10;
                 this.dropDownSign.paddingBottomInPixels = this.itemHeight / 6;
             }
-        } else {
-            this.leftInPixels = this.itemHeight / 4;
-            this.button.heightInPixels = this.itemHeight * 1.8;
-            this.dropDownSign.paddingBottomInPixels = this.itemHeight / 5;
         }
 
         this.dropDownSign.fontSizeInPixels = this.itemHeight / 2;
 
         for (const o of this.options.children) {
-            if (this.isImageOnly && !this.isCategory) {
+            if (this.isImageOnly && !this.isImageCollapsedAlsoTextExpanded) {
                 o.widthInPixels = this.itemHeight;
             }
 
@@ -256,7 +263,7 @@ export class Dropdown extends Container {
         }
 
         if (url && this.button.image!) {
-            if (this.isCategory) {
+            if (this.isImageCollapsedAlsoTextExpanded) {
                 this.categoryIcon!.source = url;
             } else {
                 this.button.image!.source = url;

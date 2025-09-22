@@ -4,7 +4,8 @@ export const CommonStorageKeys = {
     CookiesAccepted: "cookiesAccepted",
     WelcomeSeen: "welcomeSeen",
     Category: "category",
-    GiftPiecesCount: "giftPiecesCount"
+    GiftPiecesCount: "giftPiecesCount",
+    Language: "language"
 };
 
 export type CommonStorageKey = keyof typeof CommonStorageKeys;

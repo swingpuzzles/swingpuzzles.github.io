@@ -40,7 +40,7 @@ export default abstract class DropdownBuilder {
             color: this.options.color || "black",
             background: this.options.background || "white",
             thickness: this.options.thickness,
-            isCategory: this.options.isCategory,
+            isImageCollapsedAlsoTextExpanded: this.options.isCategory,
             isImageOnly: this.options.isImageOnly,
             halign: this.options.halign,
             valign: this.options.valign,
