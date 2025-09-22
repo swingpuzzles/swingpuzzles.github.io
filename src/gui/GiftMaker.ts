@@ -432,7 +432,7 @@ class GiftMaker {
         const giftData = this.buildGiftDataFromLocalStorage();
         const encodedGiftData = this.encodeToCompressedUrlParam(giftData);
 
-        return `http://localhost:3000/?giftData=${encodedGiftData}`;
+        return `https://swingpuzzles.com/?giftData=${encodedGiftData}`;
     }
 
     public async parseUrlData(giftData: Record<string, string>): Promise<boolean> {
