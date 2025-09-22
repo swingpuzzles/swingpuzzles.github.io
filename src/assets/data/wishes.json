@@ -4,12 +4,12 @@
       "id": "happy_birthday",
       "translations": {
         "en": "Happy Birthday!",
-        "es": "¡Feliz cumpleaños!",
-        "fr": "Joyeux anniversaire !",
-        "de": "Alles Gute zum Geburtstag!",
-        "it": "Buon compleanno!",
-        "sk": "Všetko najlepšie k narodeninám!",
-        "cs": "Všechno nejlepší k narozeninám!"
+        "es": "¡Feliz cumple!",
+        "fr": "Joyeux anniv !",
+        "de": "Alles Gute!",
+        "it": "Buon comple!",
+        "sk": "Všetko najlepšie!",
+        "cs": "Všechno nejlepší!"
       }
     },
     {
@@ -27,37 +27,37 @@
     {
       "id": "today_is_your_day",
       "translations": {
-        "en": "Today is your day!",
-        "es": "¡Hoy es tu día!",
+        "en": "It’s your day!",
+        "es": "¡Es tu día!",
         "fr": "C'est ton jour !",
-        "de": "Heute ist dein Tag!",
-        "it": "Oggi è il tuo giorno!",
-        "sk": "Dnes je tvoj deň!",
-        "cs": "Dnes je tvůj den!"
+        "de": "Dein Tag!",
+        "it": "È il tuo giorno!",
+        "sk": "Je to Tvoj deň!",
+        "cs": "Je to Tvůj den!"
       }
     },
     {
       "id": "celebrate_you",
       "translations": {
-        "en": "Let's celebrate you!",
-        "es": "¡Vamos a celebrarte!",
-        "fr": "Célébrons-toi !",
-        "de": "Lass uns dich feiern!",
-        "it": "Festeggiamo te!",
-        "sk": "Oslávme ťa!",
-        "cs": "Oslavme tě!"
+        "en": "Let’s celebrate!",
+        "es": "¡A celebrar!",
+        "fr": "On fête ça !",
+        "de": "Lass uns feiern!",
+        "it": "Festeggiamo!",
+        "sk": "Oslávme to!",
+        "cs": "Oslavme to!"
       }
     },
     {
       "id": "wishing_you_smiles",
       "translations": {
-        "en": "Wishing you smiles and joy!",
-        "es": "¡Te deseo sonrisas y alegría!",
-        "fr": "Je te souhaite sourires et joie !",
-        "de": "Ich wünsche dir Freude und Lächeln!",
-        "it": "Ti auguro sorrisi e gioia!",
-        "sk": "Prajeme ti úsmevy a radosť!",
-        "cs": "Přeji ti úsměvy a radost!"
+        "en": "Smiles & joy!",
+        "es": "¡Sonrisas y alegría!",
+        "fr": "Sourires et joie !",
+        "de": "Freude & Lächeln!",
+        "it": "Sorrisi e gioia!",
+        "sk": "Úsmevy a radosť!",
+        "cs": "Úsměvy a radost!"
       }
     }
   ]
