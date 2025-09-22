@@ -2,6 +2,7 @@ import { Color3, DynamicTexture, Mesh, MeshBuilder, StandardMaterial, Vector3 } 
 import ctx from "../common/SceneContext";
 import sceneInitializer from "../SceneInitializer";
 import popupHint from "../../gui/PopupHint";
+import { GuiHelpers } from "../../gui/GuiHelpers";
 
 class PuzzleEditor {
     private _popupDynamicTexture?: DynamicTexture;
@@ -171,7 +172,7 @@ class PuzzleEditor {
         //const centerY = fgOffsetY + 0.094 * smallCoor;//(this._vertical ? 0.58 : 0.442) * planeHeight;
         // draw TEXT on torte
         if (this._friendsName) {//his._vertical ? 0.84 : 0.41
-            this.drawText(this._friendsName, fgOffsetY + 0.06 * smallCoor, 0.6, -0.1, bigCoor * 0.2, bigCoor * 0.04, 120);
+            this.drawText(this._friendsName, fgOffsetY + 0.06 * smallCoor, 0.6, -0.1, bigCoor * 0.2, bigCoor * 0.04, 240, 80);
         }
 
         // Draw LABEL (centered)
@@ -184,7 +185,7 @@ class PuzzleEditor {
 
         // draw TEXT on label
         if (this._wishText) {
-            this.drawText(this._wishText, (this._vertical ? 0.21 : 0.1) * planeHeight, 0.66, (this._vertical ? 0.3 : 0.3), planeWidth * (this._vertical ? 0.52 : 0.4), planeWidth * (this._vertical ? 0.15 : 0.1), 320);
+            this.drawText(this._wishText, (this._vertical ? 0.21 : 0.1) * planeHeight, 0.66, (this._vertical ? 0.3 : 0.3), planeWidth * (this._vertical ? 0.52 : 0.4), planeWidth * (this._vertical ? 0.15 : 0.1), 500, 160);
         }
 
         // watermark
@@ -265,7 +266,7 @@ class PuzzleEditor {
         popupHint.centerImgUrl = dataUrl;
     }
 
-    private drawText(text: string, centerY: number, textViewAngle: number, angleFactor: number, radius: number, yAngleFactor: number, baseFontSize: number) {
+    private drawText(text: string, centerY: number, textViewAngle: number, angleFactor: number, radius: number, yAngleFactor: number, maxWidth: number, maxHeight: number) {
         const planeWidth = this._popupDynamicTexture!.getSize().width;
         const ctx2d = this._popupCtx2d!;
 
@@ -273,19 +274,31 @@ class PuzzleEditor {
         const textLengthFactor = text.length;
         const angleSpan = textViewAngle * (Math.PI - 4 / 3 * Math.PI / textLengthFactor); // 80% of full semicircle
 
-        const minFontSize = 1;
-        const maxFontSize = 1000;
 
-        const fontSize = Math.max(minFontSize, Math.min(maxFontSize, baseFontSize / Math.pow(textLengthFactor, 0.7)));
+        const fontSize = GuiHelpers.calculateFontSize(text, maxWidth, maxHeight, this._fontFamily, this._textColor);
+
+        let textWidth = 0;
+        let charWidths: number[] = [];
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            const charWidth = GuiHelpers.measureText(char, fontSize, this._fontFamily, this._textColor).width;
+            textWidth += charWidth;
+            charWidths.push(charWidth);
+        }
 
         ctx2d.font = `bold ${fontSize}px ${this._fontFamily}`;
         ctx2d.fillStyle = this._textColor;
         ctx2d.textAlign = "center";
         ctx2d.textBaseline = "middle";
 
+        let cumulativeWidth = 0;
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
-            const angle = text.length > 1 ? -angleSpan / 2 + (i / (text.length - 1)) * angleSpan : 0;
+
+            let charFactor = (charWidths[i] / 2 + cumulativeWidth) / textWidth;
+            const angle = text.length > 1 ? -angleSpan / 2 + charFactor * angleSpan : 0;
+
+            cumulativeWidth += charWidths[i];
 
             // Cylindrical arc distortion: X and Y from angle
             const x = centerX + Math.sin(angle) * radius;
