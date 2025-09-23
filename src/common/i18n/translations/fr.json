@@ -15,12 +15,6 @@
     "styleTitle": "↑ STYLEZ-LE! ↑",
     "styleMessage": "🧩 Stylisez votre cadeau!\n\nChoisissez le texte, la police, les couleurs, le gâteau d'anniversaire, la nappe et l'arrière-plan.\n\nToutes ces options vous attendent dans les menus déroulants en haut de l'écran."
   },
-  "congrats": {
-    "title": "PUZZLE RÉSOLU!",
-    "message": "🎉 Félicitations!\n\nVous avez résolu le puzzle en {time}.\nExcellent travail en assemblant toutes les pièces!",
-    "buyTitle": "L'EMMENER À LA MAISON?",
-    "buyMessage": "🧩 Vous aimez ce puzzle?\n\nSi vous aimeriez le posséder dans la vraie vie, vous pouvez commander une version physique de haute qualité — parfaite pour votre table basse ou comme cadeau.\n\nDisponible maintenant sur Amazon!"
-  },
   "badWord": {
     "title": "SOYEZ GENTIL!",
     "message": "Oups! Votre texte de cadeau contient un langage qui n'est pas autorisé.\nVeuillez choisir des mots plus gentils pour que votre ami puisse profiter du puzzle."
@@ -35,7 +29,13 @@
     "hintUseHints": "Utilisez les indices si vous avez besoin d'aide !",
     "congratulations": "🎉 Félicitations ! Vous avez résolu le puzzle !",
     "buyOffer": "💝 Voulez-vous commander une vraie version de ce puzzle ?",
-    "badWordWarning": "⚠️ Veuillez ne pas utiliser de mots inappropriés dans votre puzzle."
+    "badWordWarning": "⚠️ Veuillez ne pas utiliser de mots inappropriés dans votre puzzle.",
+    "congrats": {
+      "title": "PUZZLE RÉSOLU!",
+      "message": "🎉 Félicitations!\n\nVous avez résolu le puzzle en {time}.\nExcellent travail en assemblant toutes les pièces!",
+      "buyTitle": "L'EMMENER À LA MAISON?",
+      "buyMessage": "🧩 Vous aimez ce puzzle?\n\nSi vous aimeriez le posséder dans la vraie vie, vous pouvez commander une version physique de haute qualité — parfaite pour votre table basse ou comme cadeau.\n\nDisponible maintenant sur Amazon!"
+    }
   },
   "ui": {
     "buttons": {

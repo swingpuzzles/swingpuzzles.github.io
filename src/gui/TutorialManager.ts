@@ -119,7 +119,7 @@ class TutorialManager {
     }
     
     public showCongratsMessageImpl() {
-            const solvedTime = timerDisplay.getElapsedTime();
+        const solvedTime = timerDisplay.getElapsedTime();
 
         const message = i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.MESSAGE, { time: solvedTime });
 

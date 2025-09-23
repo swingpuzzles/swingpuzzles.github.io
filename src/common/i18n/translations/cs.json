@@ -15,12 +15,6 @@
     "styleTitle": "↑ STYLIZUJTE TO! ↑",
     "styleMessage": "🧩 Stylizujte svůj dárek!\n\nVyberte text, font, barvy, narozeninový dort, ubrus a pozadí.\n\nVšechny tyto možnosti na vás čekají v rozbalovacích seznamech nahoře na obrazovce."
   },
-  "congrats": {
-    "title": "PUZZLE VYŘEŠENO!",
-    "message": "🎉 Gratulujeme!\n\nVyřešili jste puzzle za {time}.\nSkvělá práce při skládání všech kousků dohromady!",
-    "buyTitle": "VZÍT SI TO DOMŮ?",
-    "buyMessage": "🧩 Líbí se vám to puzzle?\n\nPokud byste ho chtěli vlastnit ve skutečném životě, můžete si objednat vysoce kvalitní fyzickou verzi — perfektní pro váš konferenční stůl nebo jako dárek.\n\nNyní k dispozici na Amazonu!"
-  },
   "badWord": {
     "title": "BUĎTE HODNÍ!",
     "message": "Ups! Váš text dárku obsahuje jazyk, který není povolen.\nProsím vyberte laskavější slova, aby se váš přítel mohl těšit z puzzle."
@@ -35,7 +29,13 @@
     "hintUseHints": "Použijte nápovědy, pokud potřebujete pomoc!",
     "congratulations": "🎉 Gratulujeme! Vyřešili jste puzzle!",
     "buyOffer": "💝 Chcete objednat skutečnou verzi tohoto puzzle?",
-    "badWordWarning": "⚠️ Prosím nepoužívejte nevhodná slova ve vašem puzzle."
+    "badWordWarning": "⚠️ Prosím nepoužívejte nevhodná slova ve vašem puzzle.",
+    "congrats": {
+      "title": "PUZZLE VYŘEŠENO!",
+      "message": "🎉 Gratulujeme!\n\nVyřešili jste puzzle za {time}.\nSkvělá práce při skládání všech kousků dohromady!",
+      "buyTitle": "VZÍT SI TO DOMŮ?",
+      "buyMessage": "🧩 Líbí se vám to puzzle?\n\nPokud byste ho chtěli vlastnit ve skutečném životě, můžete si objednat vysoce kvalitní fyzickou verzi — perfektní pro váš konferenční stůl nebo jako dárek.\n\nNyní k dispozici na Amazonu!"
+    }
   },
   "ui": {
     "buttons": {
@@ -93,6 +93,7 @@
     "returnToGalleryLabel": "Vraťte se do galerie puzzle:",
     "congratsMessageCompleted": "🎉 Gratulujeme!\n\nDokončili jste toto puzzle.\n\nMůžete ho restartovat, vrátit se do galerie, použít tlačítka PŘEDCHOZÍ a DALŠÍ níže pro přepínání puzzle, nebo přidat další email pro získání aktualizací.",
     "congratsMessageFirstTime": "🎉 Gratulujeme!\n\nDokončili jste toto puzzle.\n\nMůžete ho restartovat, vrátit se do galerie, použít tlačítka PŘEDCHOZÍ a DALŠÍ níže pro přepínání puzzle, nebo přidat svůj email pro získání aktualizací, když přijdou nové puzzle.",
+    "puzzlePausedMessage": "Vaše puzzle je pozastaveno.\n\nCo dál?\n\nMůžete pokračovat přesně tam, kde jste skončili, restartovat od začátku, vrátit se do hlavního menu, nebo použít tlačítka PŘEDCHOZÍ a DALŠÍ níže pro přepínání mezi puzzle.",
     "buttonAddEmail": "📧 Přidat email",
     "buttonAddAnother": "✏️ Přidat další",
     "buttonContinue": "▶️ Pokračovat",

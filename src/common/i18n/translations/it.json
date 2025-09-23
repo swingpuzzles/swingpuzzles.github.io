@@ -15,12 +15,6 @@
     "styleTitle": "↑ STILIZZALO! ↑",
     "styleMessage": "🧩 Stilizza il tuo regalo!\n\nScegli il testo, il font, i colori, la torta di compleanno, la tovaglia e lo sfondo.\n\nTutte queste opzioni ti aspettano nei menu a tendina in alto sullo schermo."
   },
-  "congrats": {
-    "title": "PUZZLE RISOLTO!",
-    "message": "🎉 Congratulazioni!\n\nHai risolto il puzzle in {time}.\nOttimo lavoro nel mettere insieme tutti i pezzi!",
-    "buyTitle": "PORTARLO A CASA?",
-    "buyMessage": "🧩 Ti piace quel puzzle?\n\nSe vorresti possederlo nella vita reale, puoi ordinare una versione fisica di alta qualità — perfetta per il tuo tavolino da caffè o come regalo.\n\nDisponibile ora su Amazon!"
-  },
   "badWord": {
     "title": "SII GENTILE!",
     "message": "Ops! Il tuo testo del regalo contiene un linguaggio che non è permesso.\nPer favore scegli parole più gentili così il tuo amico può godersi il puzzle."
@@ -35,7 +29,13 @@
     "hintUseHints": "Usa gli indizi se hai bisogno di aiuto!",
     "congratulations": "🎉 Congratulazioni! Hai risolto il puzzle!",
     "buyOffer": "💝 Vuoi ordinare una versione reale di questo puzzle?",
-    "badWordWarning": "⚠️ Per favore non usare parole inappropriate nel tuo puzzle."
+    "badWordWarning": "⚠️ Per favore non usare parole inappropriate nel tuo puzzle.",
+    "congrats": {
+      "title": "PUZZLE RISOLTO!",
+      "message": "🎉 Congratulazioni!\n\nHai risolto il puzzle in {time}.\nOttimo lavoro nel mettere insieme tutti i pezzi!",
+      "buyTitle": "PORTARLO A CASA?",
+      "buyMessage": "🧩 Ti piace quel puzzle?\n\nSe vorresti possederlo nella vita reale, puoi ordinare una versione fisica di alta qualità — perfetta per il tuo tavolino da caffè o come regalo.\n\nDisponibile ora su Amazon!"
+    }
   },
   "ui": {
     "buttons": {
@@ -93,6 +93,7 @@
     "returnToGalleryLabel": "Torna alla galleria dei puzzle:",
     "congratsMessageCompleted": "🎉 Congratulazioni!\n\nHai completato questo puzzle.\n\nPuoi riavviarlo, tornare alla galleria, usare i pulsanti PRECEDENTE e SUCCESSIVO qui sotto per cambiare puzzle, o aggiungere un'altra email per ricevere aggiornamenti.",
     "congratsMessageFirstTime": "🎉 Congratulazioni!\n\nHai completato questo puzzle.\n\nPuoi riavviarlo, tornare alla galleria, usare i pulsanti PRECEDENTE e SUCCESSIVO qui sotto per cambiare puzzle, o aggiungere la tua email per ricevere aggiornamenti quando arrivano nuovi puzzle.",
+    "puzzlePausedMessage": "Il tuo puzzle è in pausa.\n\nCosa fare dopo?\n\nPuoi continuare esattamente dove hai lasciato, riavviare dall'inizio, tornare al menu principale, o usare i pulsanti PRECEDENTE e SUCCESSIVO sotto per cambiare puzzle.",
     "buttonAddEmail": "📧 Aggiungi email",
     "buttonAddAnother": "✏️ Aggiungi un altro",
     "buttonContinue": "▶️ Continua",

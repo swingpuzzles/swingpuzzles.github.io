@@ -16,15 +16,15 @@
       "styleTitle": "↑ ¡ESTILÍZALO! ↑",
       "styleMessage": "🧩 ¡Estiliza tu regalo!\n\nElige el texto, fuente, colores, pastel de cumpleaños, mantel y fondo.\n\nTodas estas opciones te esperan en los menús desplegables en la parte superior de la pantalla."
     },
+    "badWord": {
+      "title": "¡SÉ AMABLE!",
+      "message": "¡Ups! Tu texto de regalo contiene lenguaje que no está permitido.\nPor favor elige palabras más amables para que tu amigo pueda disfrutar el puzzle."
+    },
     "congrats": {
       "title": "¡PUZZLE RESUELTO!",
       "message": "🎉 ¡Felicidades!\n\nHas completado el puzzle en {time}.\n¡Excelente trabajo juntando todas las piezas!",
       "buyTitle": "¿LLEVÁRTELO A CASA?",
       "buyMessage": "🧩 ¿Te encanta ese puzzle?\n\nSi te gustaría tenerlo en la vida real, puedes pedir una versión física de alta calidad — perfecta para tu mesa de café o como regalo.\n\n¡Disponible ahora en Amazon!"
-    },
-    "badWord": {
-      "title": "¡SÉ AMABLE!",
-      "message": "¡Ups! Tu texto de regalo contiene lenguaje que no está permitido.\nPor favor elige palabras más amables para que tu amigo pueda disfrutar el puzzle."
     }
   },
   "ui": {

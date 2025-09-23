@@ -15,12 +15,6 @@
     "styleTitle": "↑ STYLE ES! ↑",
     "styleMessage": "🧩 Style dein Geschenk!\n\nWähle den Text, die Schrift, die Farben, die Geburtstagstorte, das Tischtuch und den Hintergrund.\n\nAlle diese Optionen warten auf dich in den Dropdown-Menüs oben auf dem Bildschirm."
   },
-  "congrats": {
-    "title": "PUZZLE GELÖST!",
-    "message": "🎉 Herzlichen Glückwunsch!\n\nDu hast das Puzzle in {time} gelöst.\nGroßartige Arbeit beim Zusammensetzen aller Teile!",
-    "buyTitle": "MIT NACH HAUSE NEHMEN?",
-    "buyMessage": "🧩 Liebst du dieses Puzzle?\n\nWenn du es gerne im wahren Leben besitzen möchtest, kannst du eine hochwertige physische Version bestellen — perfekt für deinen Couchtisch oder als Geschenk.\n\nJetzt verfügbar bei Amazon!"
-  },
   "badWord": {
     "title": "SEI NETT!",
     "message": "Hoppla! Dein Geschenkstext enthält Sprache, die nicht erlaubt ist.\nBitte wähle freundlichere Worte, damit dein Freund das Puzzle genießen kann."
@@ -35,7 +29,13 @@
     "hintUseHints": "Verwende Hinweise, wenn du Hilfe brauchst!",
     "congratulations": "🎉 Herzlichen Glückwunsch! Du hast das Puzzle gelöst!",
     "buyOffer": "💝 Möchtest du eine echte Version dieses Puzzles bestellen?",
-    "badWordWarning": "⚠️ Bitte verwende keine unangemessenen Wörter in deinem Puzzle."
+    "badWordWarning": "⚠️ Bitte verwende keine unangemessenen Wörter in deinem Puzzle.",
+    "congrats": {
+      "title": "PUZZLE GELÖST!",
+      "message": "🎉 Herzlichen Glückwunsch!\n\nDu hast das Puzzle in {time} gelöst.\nGroßartige Arbeit beim Zusammensetzen aller Teile!",
+      "buyTitle": "MIT NACH HAUSE NEHMEN?",
+      "buyMessage": "🧩 Liebst du dieses Puzzle?\n\nWenn du es gerne im wahren Leben besitzen möchtest, kannst du eine hochwertige physische Version bestellen — perfekt für deinen Couchtisch oder als Geschenk.\n\nJetzt verfügbar bei Amazon!"
+    }
   },
   "ui": {
     "buttons": {
