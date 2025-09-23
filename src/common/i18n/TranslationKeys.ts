@@ -103,7 +103,24 @@ export const TranslationKeys = {
     COOKIES: {
         ACCEPT: "cookies.accept",
         REJECT: "cookies.reject",
-        BANNER_MESSAGE: "cookies.bannerMessage"
+        BANNER_MESSAGE: "cookies.bannerMessage",
+        LEARN_MORE: "cookies.learnMore",
+        PRIVACY_POLICY: "cookies.privacyPolicy",
+        TERMS_OF_SERVICE: "cookies.termsOfService"
+    },
+    
+    // Fullscreen
+    FULLSCREEN: {
+        REQUIRED_MESSAGE: "fullscreen.requiredMessage",
+        ENTER_BUTTON: "fullscreen.enterButton",
+        EXIT_BUTTON: "fullscreen.exitButton"
+    },
+    
+    // Legal Pages
+    LEGAL: {
+        BACK_TO_GAME: "legal.backToGame",
+        PAGE_NOT_FOUND: "legal.pageNotFound",
+        PAGE_NOT_FOUND_MESSAGE: "legal.pageNotFoundMessage"
     },
 
     // Error Messages

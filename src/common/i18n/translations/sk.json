@@ -126,7 +126,20 @@
   "cookies": {
     "accept": "Prijať všetko",
     "reject": "Odmietnuť nepodstatné",
-    "bannerMessage": "Používame cookies na vylepšenie vašej skúsenosti a analýzu používania. Môžete sa rozhodnúť prijať všetky cookies alebo odmietnuť tie, ktoré nie sú podstatné."
+    "bannerMessage": "Táto stránka používa cookies a miestne úložisko pre zlepšenie vášho zážitku a zapamätanie vášho pokroku v hre.",
+    "learnMore": "Zistiť viac",
+    "privacyPolicy": "Zásady Ochrany Osobných Údajov",
+    "termsOfService": "Obchodné Podmienky"
+  },
+  "fullscreen": {
+    "requiredMessage": "Táto hra vyžaduje celú obrazovku. Klepnite nižšie pre pokračovanie.",
+    "enterButton": "Vstúpiť do Celé Obrazovky",
+    "exitButton": "Ukončiť Celú Obrazovku"
+  },
+  "legal": {
+    "backToGame": "← Späť k Swing Puzzles",
+    "pageNotFound": "Stránka nenájdená",
+    "pageNotFoundMessage": "Ospravedlňujeme sa, požadovaná stránka nebola nájdená."
   },
   "giftOverview": {
     "title": "PREHĽAD DARČKU",

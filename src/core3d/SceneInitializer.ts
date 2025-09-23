@@ -14,6 +14,7 @@ import handImagePool from "../gui/HandImagePool";
 import puzzleEditor from "./misc/PuzzleEditor";
 import profanityGuard from "../common/ProfanityGuard";
 import cookiesManager from "../common/CookiesManager";
+import { languageManager } from "../common/i18n";
 import translationManager from "./misc/TranslationManager";
 
 

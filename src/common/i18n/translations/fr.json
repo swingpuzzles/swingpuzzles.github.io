@@ -126,7 +126,20 @@
   "cookies": {
     "accept": "Accepter tout",
     "reject": "Rejeter les non essentiels",
-    "bannerMessage": "Nous utilisons des cookies pour améliorer votre expérience et analyser l'utilisation. Vous pouvez choisir d'accepter tous les cookies ou de rejeter ceux qui ne sont pas essentiels."
+    "bannerMessage": "Ce site utilise des cookies et un stockage local pour améliorer votre expérience et mémoriser votre progression dans le jeu.",
+    "learnMore": "En savoir plus",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions de Service"
+  },
+  "fullscreen": {
+    "requiredMessage": "Ce jeu nécessite le mode plein écran. Appuyez ci-dessous pour continuer.",
+    "enterButton": "Entrer en Plein Écran",
+    "exitButton": "Quitter le Plein Écran"
+  },
+  "legal": {
+    "backToGame": "← Retour à Swing Puzzles",
+    "pageNotFound": "Page non trouvée",
+    "pageNotFoundMessage": "Désolé, la page demandée n'a pas pu être trouvée."
   },
   "giftOverview": {
     "title": "APERÇU DU CADEAU",

@@ -91,7 +91,20 @@
   "cookies": {
     "accept": "Aceptar Todo",
     "reject": "Rechazar No Esenciales",
-    "bannerMessage": "Usamos cookies para mejorar tu experiencia y analizar el uso. Puedes elegir aceptar todas las cookies o rechazar las no esenciales."
+    "bannerMessage": "Este sitio usa cookies y almacenamiento local para mejorar tu experiencia y recordar tu progreso en el juego.",
+    "learnMore": "Saber más",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio"
+  },
+  "fullscreen": {
+    "requiredMessage": "Este juego requiere pantalla completa. Toca abajo para continuar.",
+    "enterButton": "Entrar en Pantalla Completa",
+    "exitButton": "Salir de Pantalla Completa"
+  },
+  "legal": {
+    "backToGame": "← Volver a Swing Puzzles",
+    "pageNotFound": "Página no encontrada",
+    "pageNotFoundMessage": "Lo sentimos, la página solicitada no se pudo encontrar."
   },
   "errors": {
     "sharingNotSupported": "Compartir no es compatible con este dispositivo.",

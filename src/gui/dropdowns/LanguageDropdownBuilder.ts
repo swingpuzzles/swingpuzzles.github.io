@@ -1,8 +1,7 @@
 import { Control } from "@babylonjs/gui";
 import DropdownBuilder from "./DropdownBuilder";
-import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
+import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
-import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 import analyticsManager from "../../common/AnalyticsManager";
 import languageManager, { LanguageNames, SupportedLanguage, SupportedLanguages } from "../../common/i18n/LanguageManager";
 

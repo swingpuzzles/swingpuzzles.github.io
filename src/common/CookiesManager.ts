@@ -1,4 +1,6 @@
 import specialModeManager from "./special-mode/SpecialModeManager";
+import { i18nManager, languageManager } from "./i18n";
+import { TranslationKeys } from "./i18n/TranslationKeys";
 
 class CookiesManager {
     private cookieConsent: HTMLElement | null = null;
@@ -13,6 +15,74 @@ class CookiesManager {
         this.setupCookieConsent();
         this.setupGlobalFunctions();
         this.checkInitialLegalPage();
+        this.updateUITexts();
+        
+        // Listen for language changes to update UI texts
+        languageManager.addLanguageChangeObserver(() => {
+            this.updateUITexts();
+            this.refreshLegalPagesContent();
+        });
+    }
+
+    private updateUITexts(): void {
+        this.updateCookieBannerText();
+        this.updateFullscreenDialogText();
+    }
+
+    private updateCookieBannerText(): void {
+        const bannerMessage = document.getElementById('cookie-banner-message');
+        const acceptBtn = document.getElementById('acceptCookies');
+        const rejectBtn = document.getElementById('rejectCookies');
+        const privacyLink = document.querySelector('a[href="/privacy-policy"]');
+        const termsLink = document.querySelector('a[href="/terms-of-service"]');
+        const learnMoreLink = document.querySelector('a[href="/cookie-policy"]');
+
+        if (bannerMessage) {
+            bannerMessage.innerHTML = `${i18nManager.translate(TranslationKeys.COOKIES.BANNER_MESSAGE)} <a href="/cookie-policy" onclick="showLegalPage('cookie-policy'); return false;" style="color: #3498db; text-decoration: underline;">${i18nManager.translate(TranslationKeys.COOKIES.LEARN_MORE)}</a>`;
+        }
+
+        if (acceptBtn) {
+            acceptBtn.textContent = i18nManager.translate(TranslationKeys.COOKIES.ACCEPT);
+        }
+
+        if (rejectBtn) {
+            rejectBtn.textContent = i18nManager.translate(TranslationKeys.COOKIES.REJECT);
+        }
+
+        if (privacyLink) {
+            privacyLink.textContent = i18nManager.translate(TranslationKeys.COOKIES.PRIVACY_POLICY);
+        }
+
+        if (termsLink) {
+            termsLink.textContent = i18nManager.translate(TranslationKeys.COOKIES.TERMS_OF_SERVICE);
+        }
+    }
+
+    private updateFullscreenDialogText(): void {
+        const fullscreenText = document.getElementById('fullscreen-dialog-text');
+        const enterBtn = document.getElementById('enterFullscreenBtn');
+        const exitBtn = document.getElementById('exitFullscreenBtn');
+
+        if (fullscreenText) {
+            fullscreenText.textContent = i18nManager.translate(TranslationKeys.FULLSCREEN.REQUIRED_MESSAGE);
+        }
+
+        if (enterBtn) {
+            enterBtn.textContent = i18nManager.translate(TranslationKeys.FULLSCREEN.ENTER_BUTTON);
+        }
+
+        if (exitBtn) {
+            exitBtn.textContent = i18nManager.translate(TranslationKeys.FULLSCREEN.EXIT_BUTTON);
+        }
+    }
+
+    private refreshLegalPagesContent(): void {
+        // Refresh the current legal page if it's open
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('privacy-policy') || currentPath.includes('terms-of-service') || currentPath.includes('cookie-policy')) {
+            const page = currentPath.replace('.html', '').replace('/', '');
+            (window as any).showLegalPage(page);
+        }
     }
 
     private initializeElements(): void {
@@ -61,7 +131,7 @@ class CookiesManager {
 
         const legalPagesContent = {
             'privacy-policy': `
-                <a href="#" class="back-link" style="display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold;">← Back to Swing Puzzles</a>
+                <a href="#" class="back-link" style="display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold;">${i18nManager.translate(TranslationKeys.LEGAL.BACK_TO_GAME)}</a>
                 
                 <h1 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px;">Privacy Policy</h1>
                 
@@ -183,7 +253,7 @@ class CookiesManager {
                 </div>
             `,
             'terms-of-service': `
-                <a href="#" class="back-link" style="display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold;">← Back to Swing Puzzles</a>
+                <a href="#" class="back-link" style="display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold;">${i18nManager.translate(TranslationKeys.LEGAL.BACK_TO_GAME)}</a>
                 
                 <h1 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px;">Terms of Service</h1>
                 
@@ -300,7 +370,7 @@ class CookiesManager {
                 </div>
             `,
             'cookie-policy': `
-                <a href="#" class="back-link" style="display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold;">← Back to Swing Puzzles</a>
+                <a href="#" class="back-link" style="display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold;">${i18nManager.translate(TranslationKeys.LEGAL.BACK_TO_GAME)}</a>
                 
                 <h1 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px;">Cookie Policy</h1>
                 
@@ -497,9 +567,9 @@ class CookiesManager {
             } else {
                 this.legalContent.innerHTML = `
                     <div style="padding: 40px; text-align: center;">
-                        <h1>Page not found</h1>
-                        <p>Sorry, the requested page could not be found.</p>
-                        <a href="#" class="back-link" style="color: #3498db; text-decoration: underline;">← Back to Swing Puzzles</a>
+                        <h1>${i18nManager.translate(TranslationKeys.LEGAL.PAGE_NOT_FOUND)}</h1>
+                        <p>${i18nManager.translate(TranslationKeys.LEGAL.PAGE_NOT_FOUND_MESSAGE)}</p>
+                        <a href="#" class="back-link" style="color: #3498db; text-decoration: underline;">${i18nManager.translate(TranslationKeys.LEGAL.BACK_TO_GAME)}</a>
                     </div>
                 `;
             }
