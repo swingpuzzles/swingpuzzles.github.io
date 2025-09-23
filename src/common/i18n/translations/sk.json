@@ -1,25 +1,25 @@
 {
-  "welcome": {
-    "title": "VÍTAJTE!",
-    "message": "Vitajte na SwingPuzzles.com! 🧩\n\nPripravte sa na preskúmanie, riešenie a užívanie si úžasných 3D puzzle priamo vo vašom prehliadači. Každý kúsok sa zapadá do sveta dobrodružstva!\n\nZačnime stavať!",
-    "giftTitle": "MÁTE DARČEK!",
-    "giftMessage": "🎁 Ahoj {name}, dostal si puzzle darček!\n\nKlepnite na \"Rozumiem\", kliknite na darček pre otvorenie vašej puzzle krabice,\na začnite okamžite riešiť 🧩"
-  },
-  "hints": {
-    "sizeTitle": "TIP: VEĽKOSŤ",
-    "sizeMessage": "🧩 Vyberte si svoju výzvu!\n\nPoužite zvýraznený rozbaľovací zoznam hore uprostred pre výber požadovaných rozmerov puzzle.\n\nViac kúskov, viac zábavy – alebo to nechajte jednoduché a relaxačné. Voľba je na vás!",
-    "choiceTitle": "TIP: VÝBER",
-    "choiceMessage": "📚 Prechádzajte a hrajte!\n\nPreťahujte doľava alebo doprava pre preskúmanie rôznych puzzle.\n\nKaždé puzzle je zobrazené ako krycia krabica — kliknite alebo klepnite na jednu pre výber, alebo jednoducho stlačte tlačidlo ▶️ Hrať pre okamžité ponorenie!",
-    "shakeTitle": "PROTREPETE TO!",
-    "shakeMessage": "🧩 Dajte tomu poriadne protrepienie!\n\nPreťahujte puzzle krabicu okolo pre protrepienie — to zamieša kúsky tak, že môžete začať riešiť!",
-    "styleTitle": "↑ STYLIZUJTE TO! ↑",
-    "styleMessage": "🧩 Stylizujte svoj darček!\n\nVyberte text, font, farby, narodeninový tortu, obrus a pozadie.\n\nVšetky tieto možnosti na vás čakajú v rozbaľovacích zoznamoch hore na obrazovke."
-  },
-  "badWord": {
-    "title": "BUĎTE HODNÍ!",
-    "message": "Ups! Váš text darčeka obsahuje jazyk, ktorý nie je povolený.\nProsím vyberte láskavejšie slová, aby sa váš priateľ mohol tešiť z puzzle."
-  },
   "tutorial": {
+    "welcome": {
+      "title": "VÍTAJTE!",
+      "message": "Vitajte na SwingPuzzles.com! 🧩\n\nPripravte sa na preskúmanie, riešenie a užívanie si úžasných 3D puzzle priamo vo vašom prehliadači. Každý kúsok sa zapadá do sveta dobrodružstva!\n\nZačnime stavať!",
+      "giftTitle": "MÁTE DARČEK!",
+      "giftMessage": "🎁 Ahoj {name}, dostal si puzzle darček!\n\nKlepnite na \"Rozumiem\", kliknite na darček pre otvorenie vašej puzzle krabice,\na začnite okamžite riešiť 🧩"
+    },
+    "hints": {
+      "sizeTitle": "TIP: VEĽKOSŤ",
+      "sizeMessage": "🧩 Vyberte si svoju výzvu!\n\nPoužite zvýraznený rozbaľovací zoznam hore uprostred pre výber požadovaných rozmerov puzzle.\n\nViac kúskov, viac zábavy – alebo to nechajte jednoduché a relaxačné. Voľba je na vás!",
+      "choiceTitle": "TIP: VÝBER",
+      "choiceMessage": "📚 Prechádzajte a hrajte!\n\nPreťahujte doľava alebo doprava pre preskúmanie rôznych puzzle.\n\nKaždé puzzle je zobrazené ako krycia krabica — kliknite alebo klepnite na jednu pre výber, alebo jednoducho stlačte tlačidlo ▶️ Hrať pre okamžité ponorenie!",
+      "shakeTitle": "PROTREPETE TO!",
+      "shakeMessage": "🧩 Dajte tomu poriadne protrepienie!\n\nPreťahujte puzzle krabicu okolo pre protrepienie — to zamieša kúsky tak, že môžete začať riešiť!",
+      "styleTitle": "↑ STYLIZUJTE TO! ↑",
+      "styleMessage": "🧩 Stylizujte svoj darček!\n\nVyberte text, font, farby, narodeninový tortu, obrus a pozadie.\n\nVšetky tieto možnosti na vás čakajú v rozbaľovacích zoznamoch hore na obrazovke."
+    },
+    "badWord": {
+      "title": "BUĎTE HODNÍ!",
+      "message": "Ups! Váš text darčeka obsahuje jazyk, ktorý nie je povolený.\nProsím vyberte láskavejšie slová, aby sa váš priateľ mohol tešiť z puzzle."
+    },
     "welcomeMessage": "🎉 Vitajte v puzzle hre!\n\nKliknite na kategóriu pre začiatok, alebo vytvorte personalizovaný puzzle darček!",
     "hintClickCategory": "Kliknite na kategóriu pre hranie!",
     "hintClickPlay": "Kliknite na HRAŤ pre spustenie puzzle!",

@@ -1,25 +1,25 @@
 {
-  "welcome": {
-    "title": "BIENVENUE!",
-    "message": "Bienvenue sur SwingPuzzles.com! 🧩\n\nPréparez-vous à explorer, résoudre et profiter de puzzles 3D étonnants directement dans votre navigateur. Chaque pièce s'intègre dans un monde d'aventure!\n\nCommençons à construire!",
-    "giftTitle": "VOUS AVEZ REÇU UN CADEAU!",
-    "giftMessage": "🎁 Salut {name}, tu as reçu un cadeau puzzle!\n\nAppuie sur \"Compris\", clique sur le cadeau pour ouvrir ta boîte de puzzle,\net commence à résoudre immédiatement 🧩"
-  },
-  "hints": {
-    "sizeTitle": "ASTUCE: TAILLE",
-    "sizeMessage": "🧩 Choisissez votre défi!\n\nUtilisez le menu déroulant mis en évidence en haut au centre pour choisir les dimensions de puzzle souhaitées.\n\nPlus de pièces, plus de plaisir – ou gardez-le simple et relaxant. Le choix vous appartient!",
-    "choiceTitle": "ASTUCE: CHOIX",
-    "choiceMessage": "📚 Parcourez et jouez!\n\nGlissez vers la gauche ou la droite pour explorer différents puzzles.\n\nChaque puzzle est affiché comme une boîte de couverture — cliquez ou appuyez sur une pour la sélectionner, ou appuyez simplement sur le bouton ▶️ Jouer pour plonger directement!",
-    "shakeTitle": "SECOUEZ-LE!",
-    "shakeMessage": "🧩 Donnez-lui une bonne secousse!\n\nFaites glisser la boîte de puzzle pour la secouer — cela mélangera les pièces pour que vous puissiez commencer à résoudre!",
-    "styleTitle": "↑ STYLEZ-LE! ↑",
-    "styleMessage": "🧩 Stylisez votre cadeau!\n\nChoisissez le texte, la police, les couleurs, le gâteau d'anniversaire, la nappe et l'arrière-plan.\n\nToutes ces options vous attendent dans les menus déroulants en haut de l'écran."
-  },
-  "badWord": {
-    "title": "SOYEZ GENTIL!",
-    "message": "Oups! Votre texte de cadeau contient un langage qui n'est pas autorisé.\nVeuillez choisir des mots plus gentils pour que votre ami puisse profiter du puzzle."
-  },
   "tutorial": {
+    "welcome": {
+      "title": "BIENVENUE!",
+      "message": "Bienvenue sur SwingPuzzles.com! 🧩\n\nPréparez-vous à explorer, résoudre et profiter de puzzles 3D étonnants directement dans votre navigateur. Chaque pièce s'intègre dans un monde d'aventure!\n\nCommençons à construire!",
+      "giftTitle": "VOUS AVEZ REÇU UN CADEAU!",
+      "giftMessage": "🎁 Salut {name}, tu as reçu un cadeau puzzle!\n\nAppuie sur \"Compris\", clique sur le cadeau pour ouvrir ta boîte de puzzle,\net commence à résoudre immédiatement 🧩"
+    },
+    "hints": {
+      "sizeTitle": "ASTUCE: TAILLE",
+      "sizeMessage": "🧩 Choisissez votre défi!\n\nUtilisez le menu déroulant mis en évidence en haut au centre pour choisir les dimensions de puzzle souhaitées.\n\nPlus de pièces, plus de plaisir – ou gardez-le simple et relaxant. Le choix vous appartient!",
+      "choiceTitle": "ASTUCE: CHOIX",
+      "choiceMessage": "📚 Parcourez et jouez!\n\nGlissez vers la gauche ou la droite pour explorer différents puzzles.\n\nChaque puzzle est affiché comme une boîte de couverture — cliquez ou appuyez sur une pour la sélectionner, ou appuyez simplement sur le bouton ▶️ Jouer pour plonger directement!",
+      "shakeTitle": "SECOUEZ-LE!",
+      "shakeMessage": "🧩 Donnez-lui une bonne secousse!\n\nFaites glisser la boîte de puzzle pour la secouer — cela mélangera les pièces pour que vous puissiez commencer à résoudre!",
+      "styleTitle": "↑ STYLEZ-LE! ↑",
+      "styleMessage": "🧩 Stylisez votre cadeau!\n\nChoisissez le texte, la police, les couleurs, le gâteau d'anniversaire, la nappe et l'arrière-plan.\n\nToutes ces options vous attendent dans les menus déroulants en haut de l'écran."
+    },
+    "badWord": {
+      "title": "SOYEZ GENTIL!",
+      "message": "Oups! Votre texte de cadeau contient un langage qui n'est pas autorisé.\nVeuillez choisir des mots plus gentils pour que votre ami puisse profiter du puzzle."
+    },
     "welcomeMessage": "🎉 Bienvenue au jeu de puzzle !\n\nCliquez sur une catégorie pour commencer, ou créez un cadeau puzzle personnalisé !",
     "hintClickCategory": "Cliquez sur une catégorie pour jouer !",
     "hintClickPlay": "Cliquez sur JOUER pour démarrer le puzzle !",

@@ -1,25 +1,25 @@
 {
-  "welcome": {
-    "title": "BENVENUTO!",
-    "message": "Benvenuto su SwingPuzzles.com! 🧩\n\nPreparati a esplorare, risolvere e goderti incredibili puzzle 3D direttamente nel tuo browser. Ogni pezzo si inserisce in un mondo di avventura!\n\nIniziamo a costruire!",
-    "giftTitle": "HAI RICEVUTO UN REGALO!",
-    "giftMessage": "🎁 Ciao {name}, hai ricevuto un regalo puzzle!\n\nTocca \"Capito\", clicca sul regalo per aprire la tua scatola puzzle,\ne inizia a risolvere immediatamente 🧩"
-  },
-  "hints": {
-    "sizeTitle": "SUGGERIMENTO: DIMENSIONE",
-    "sizeMessage": "🧩 Scegli la tua sfida!\n\nUsa il menu a tendina evidenziato in alto al centro per scegliere le dimensioni del puzzle desiderate.\n\nPiù pezzi, più divertimento – o mantienilo semplice e rilassante. La scelta è tua!",
-    "choiceTitle": "SUGGERIMENTO: SCELTA",
-    "choiceMessage": "📚 Sfoglia e gioca!\n\nScorri a sinistra o a destra per esplorare diversi puzzle.\n\nOgni puzzle è mostrato come una scatola di copertina — clicca o tocca su una per selezionarla, o premi semplicemente il pulsante ▶️ Gioca per immergerti subito!",
-    "shakeTitle": "SCUOTILO!",
-    "shakeMessage": "🧩 Dagli una bella scossa!\n\nTrascina la scatola del puzzle per scuoterla — questo mescolerà i pezzi così puoi iniziare a risolvere!",
-    "styleTitle": "↑ STILIZZALO! ↑",
-    "styleMessage": "🧩 Stilizza il tuo regalo!\n\nScegli il testo, il font, i colori, la torta di compleanno, la tovaglia e lo sfondo.\n\nTutte queste opzioni ti aspettano nei menu a tendina in alto sullo schermo."
-  },
-  "badWord": {
-    "title": "SII GENTILE!",
-    "message": "Ops! Il tuo testo del regalo contiene un linguaggio che non è permesso.\nPer favore scegli parole più gentili così il tuo amico può godersi il puzzle."
-  },
   "tutorial": {
+    "welcome": {
+      "title": "BENVENUTO!",
+      "message": "Benvenuto su SwingPuzzles.com! 🧩\n\nPreparati a esplorare, risolvere e goderti incredibili puzzle 3D direttamente nel tuo browser. Ogni pezzo si inserisce in un mondo di avventura!\n\nIniziamo a costruire!",
+      "giftTitle": "HAI RICEVUTO UN REGALO!",
+      "giftMessage": "🎁 Ciao {name}, hai ricevuto un regalo puzzle!\n\nTocca \"Capito\", clicca sul regalo per aprire la tua scatola puzzle,\ne inizia a risolvere immediatamente 🧩"
+    },
+    "hints": {
+      "sizeTitle": "SUGGERIMENTO: DIMENSIONE",
+      "sizeMessage": "🧩 Scegli la tua sfida!\n\nUsa il menu a tendina evidenziato in alto al centro per scegliere le dimensioni del puzzle desiderate.\n\nPiù pezzi, più divertimento – o mantienilo semplice e rilassante. La scelta è tua!",
+      "choiceTitle": "SUGGERIMENTO: SCELTA",
+      "choiceMessage": "📚 Sfoglia e gioca!\n\nScorri a sinistra o a destra per esplorare diversi puzzle.\n\nOgni puzzle è mostrato come una scatola di copertina — clicca o tocca su una per selezionarla, o premi semplicemente il pulsante ▶️ Gioca per immergerti subito!",
+      "shakeTitle": "SCUOTILO!",
+      "shakeMessage": "🧩 Dagli una bella scossa!\n\nTrascina la scatola del puzzle per scuoterla — questo mescolerà i pezzi così puoi iniziare a risolvere!",
+      "styleTitle": "↑ STILIZZALO! ↑",
+      "styleMessage": "🧩 Stilizza il tuo regalo!\n\nScegli il testo, il font, i colori, la torta di compleanno, la tovaglia e lo sfondo.\n\nTutte queste opzioni ti aspettano nei menu a tendina in alto sullo schermo."
+    },
+    "badWord": {
+      "title": "SII GENTILE!",
+      "message": "Ops! Il tuo testo del regalo contiene un linguaggio che non è permesso.\nPer favore scegli parole più gentili così il tuo amico può godersi il puzzle."
+    },
     "welcomeMessage": "🎉 Benvenuto al gioco di puzzle!\n\nClicca su una categoria per iniziare, o crea un regalo puzzle personalizzato!",
     "hintClickCategory": "Clicca su una categoria per giocare!",
     "hintClickPlay": "Clicca su GIOCA per iniziare il puzzle!",
