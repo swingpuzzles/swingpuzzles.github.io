@@ -114,6 +114,8 @@
     "orientationTitle": "PUZZLE ORIENTATION",
     "orientationMessage": "🧩 Before ordering your physical puzzle, pick the image orientation.\n\nWhen you tap Next, your custom puzzle image will be automatically downloaded.\n\nThen we'll guide you to Amazon, where you can upload it and complete your gift order.\n\nImage orientation:",
     "sizeTitle": "PUZZLE SIZE",
-    "sizeInstruction": "🧩 **Your Puzzle Image Is Downloading!**\nYou're just one step away from turning it into a real gift.\n1. **Choose the puzzle size** (# of pieces) below.\n2. Tap **\"Get it on Amazon\"** to open the product page.\n3. On Amazon:\n   • Click **Customize Now**\n   • Click **Upload** and select the image you just downloaded (starts with \"PUZZLE-...\" and you'll find it under your downloads folder)\n   • Click **Add to Cart**, then **Go to Cart** and **Proceed to Checkout**\nYou'll soon have your custom puzzle delivered! 🎁"
+    "sizeInstruction": "🧩 **Your Puzzle Image Is Downloading!**\nYou're just one step away from turning it into a real gift.\n1. **Choose the puzzle size** (# of pieces) below.\n2. Tap **\"Get it on Amazon\"** to open the product page.\n3. On Amazon:\n   • Click **Customize Now**\n   • Click **Upload** and select the image you just downloaded (starts with \"PUZZLE-...\" and you'll find it under your downloads folder)\n   • Click **Add to Cart**, then **Go to Cart** and **Proceed to Checkout**\nYou'll soon have your custom puzzle delivered! 🎁",
+    "orientationHorizontalLabel": "🖼️ Horizontal (Landscape) for wide scenes",
+    "orientationVerticalLabel": "📱 Vertical (Portrait) for tall layouts"
   }
 }

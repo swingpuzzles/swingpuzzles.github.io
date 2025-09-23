@@ -133,6 +133,8 @@
     "orientationTitle": "ORIENTACE PUZZLE",
     "orientationMessage": "🧩 Před objednáním vašeho fyzického puzzle vyberte orientaci obrázku.\n\nKdyž klepnete na Další, váš personalizovaný puzzle obrázek se automaticky stáhne.\n\nPoté vás provedeme na Amazon, kde ho můžete nahrát a dokončit vaši objednávku dárku.\n\nOrientace obrázku:",
     "sizeTitle": "VELIKOST PUZZLE",
-    "sizeInstruction": "🧩 **Váš Puzzle Obrázek se Stahuje!**\nJste jen jeden krok od proměny v skutečný dárek.\n1. **Vyberte velikost puzzle** (počet kousků) níže.\n2. Klepněte na **\"Získat na Amazonu\"** pro otevření stránky produktu.\n3. Na Amazonu:\n   • Klepněte na **Přizpůsobit nyní**\n   • Klepněte na **Nahrát** a vyberte obrázek, který jste právě stáhli (začíná \"PUZZLE-...\" a najdete ho ve vaší složce stahování)\n   • Klepněte na **Přidat do košíku**, pak **Jít do košíku** a **Přejít k pokladně**\nBrzy budete mít své personalizované puzzle doručené! 🎁"
+    "sizeInstruction": "🧩 **Váš Puzzle Obrázek se Stahuje!**\nJste jen jeden krok od proměny v skutečný dárek.\n1. **Vyberte velikost puzzle** (počet kousků) níže.\n2. Klepněte na **\"Získat na Amazonu\"** pro otevření stránky produktu.\n3. Na Amazonu:\n   • Klepněte na **Přizpůsobit nyní**\n   • Klepněte na **Nahrát** a vyberte obrázek, který jste právě stáhli (začíná \"PUZZLE-...\" a najdete ho ve vaší složce stahování)\n   • Klepněte na **Přidat do košíku**, pak **Jít do košíku** a **Přejít k pokladně**\nBrzy budete mít své personalizované puzzle doručené! 🎁",
+    "orientationHorizontalLabel": "🖼️ Horizontální (Na šířku) pro široké scény",
+    "orientationVerticalLabel": "📱 Vertikální (Na výšku) pro vysoké rozvržení"
   }
 }

@@ -117,7 +117,7 @@ class PopupHint {
         this.topImage = new Image("Image", "assets/popup/mascot-avatar-small.webp");
         topStack.addControl(this.topImage);
 
-        this.header = new TextBlock("Textblock", "Welcome!");
+        this.header = new TextBlock("Textblock", i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.TITLE));
         this.header.height = "100%";
         this.header.color = "#000000";
         this.header.fontWeight = "bold";
@@ -232,7 +232,7 @@ class PopupHint {
 
         puzzleAssetsManager.addGuiImageButtonSource(this.gotItButton, "assets/buttons/got-it-button.webp");
 
-        this.emptyGreenButton = Button.CreateImageWithCenterTextButton("yesIDidButton", "Continue", "assets/buttons/empty-green-button.webp");
+        this.emptyGreenButton = Button.CreateImageWithCenterTextButton("yesIDidButton", i18nManager.translate(TranslationKeys.UI.BUTTONS.CONTINUE), "assets/buttons/empty-green-button.webp");
         this.emptyGreenButton.thickness = 0;
         this.emptyGreenButton.background = "";
         this.emptyGreenButton.hoverCursor = "pointer";

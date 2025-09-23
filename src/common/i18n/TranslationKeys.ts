@@ -131,6 +131,8 @@ export const TranslationKeys = {
         MESSAGE: "giftOverview.message",
         ORIENTATION_TITLE: "giftOverview.orientationTitle",
         ORIENTATION_MESSAGE: "giftOverview.orientationMessage",
+        ORIENTATION_HORIZONTAL_LABEL: "giftOverview.orientationHorizontalLabel",
+        ORIENTATION_VERTICAL_LABEL: "giftOverview.orientationVerticalLabel",
         SIZE_TITLE: "giftOverview.sizeTitle",
         SIZE_INSTRUCTION: "giftOverview.sizeInstruction"
     }

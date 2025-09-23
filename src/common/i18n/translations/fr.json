@@ -134,6 +134,8 @@
     "orientationTitle": "ORIENTATION DU PUZZLE",
     "orientationMessage": "🧩 Avant de commander votre puzzle physique, choisissez l'orientation de l'image.\n\nQuand vous appuyez sur Suivant, votre image de puzzle personnalisée sera automatiquement téléchargée.\n\nEnsuite, nous vous guiderons vers Amazon, où vous pouvez la télécharger et compléter votre commande de cadeau.\n\nOrientation de l'image:",
     "sizeTitle": "TAILLE DU PUZZLE",
-    "sizeInstruction": "🧩 **Votre Image de Puzzle se Télécharge!**\nVous n'êtes qu'à un pas de la transformer en un vrai cadeau.\n1. **Choisissez la taille du puzzle** (nombre de pièces) ci-dessous.\n2. Appuyez sur **\"L'obtenir sur Amazon\"** pour ouvrir la page produit.\n3. Sur Amazon:\n   • Cliquez sur **Personnaliser maintenant**\n   • Cliquez sur **Télécharger** et sélectionnez l'image que vous venez de télécharger (commence par \"PUZZLE-...\" et vous la trouverez dans votre dossier téléchargements)\n   • Cliquez sur **Ajouter au panier**, puis **Aller au panier** et **Procéder au paiement**\nVous aurez bientôt votre puzzle personnalisé livré! 🎁"
+    "sizeInstruction": "🧩 **Votre Image de Puzzle se Télécharge!**\nVous n'êtes qu'à un pas de la transformer en un vrai cadeau.\n1. **Choisissez la taille du puzzle** (nombre de pièces) ci-dessous.\n2. Appuyez sur **\"L'obtenir sur Amazon\"** pour ouvrir la page produit.\n3. Sur Amazon:\n   • Cliquez sur **Personnaliser maintenant**\n   • Cliquez sur **Télécharger** et sélectionnez l'image que vous venez de télécharger (commence par \"PUZZLE-...\" et vous la trouverez dans votre dossier téléchargements)\n   • Cliquez sur **Ajouter au panier**, puis **Aller au panier** et **Procéder au paiement**\nVous aurez bientôt votre puzzle personnalisé livré! 🎁",
+    "orientationHorizontalLabel": "🖼️ Horizontal (Paysage) pour les scènes larges",
+    "orientationVerticalLabel": "📱 Vertical (Portrait) pour les mises en page hautes"
   }
 }

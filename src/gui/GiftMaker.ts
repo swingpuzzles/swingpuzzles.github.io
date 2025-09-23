@@ -311,7 +311,7 @@ class GiftMaker {
         const formModel: FormRowModel[] = [
             {
                 id: "horizPhysical",
-                label: "🖼️ Horizontal (Landscape) for wide scenes",
+                label: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_HORIZONTAL_LABEL),
                 type: "radioButton",
                 buttonText: "🖼️ Horizontal",
                 background: "#2c3e50",
@@ -320,7 +320,7 @@ class GiftMaker {
             },
             {
                 id: "vertPhysical",
-                label: "📱 Vertical (Portrait) for tall layouts",
+                label: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_VERTICAL_LABEL),
                 type: "radioButton",
                 buttonText: "📱 Vertical",
                 background: "#34495e",
