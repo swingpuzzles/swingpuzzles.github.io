@@ -96,7 +96,14 @@
     "decodeFailed": "Failed to decode gift data"
   },
   "specialMode": {
-    "puzzleSolvedMessage": "🎉 Congratulations! You've completed the puzzle in {time}. Great job!"
+    "puzzleSolvedMessage": "🎉 Congratulations! You've completed the puzzle in {time}. Great job!",
+    "gameMonetize": {
+      "welcomeMessage": "🎮 Welcome to the puzzle game!\n\nClick on a category to get started!",
+      "adMessage": "🎯 Advertisement loading...",
+      "puzzleSolvedMessageCompleted": "🎉 Congratulations!\n\nYou've completed this puzzle.\n\nYou can restart it, explore more puzzles, or add another email to get updates.",
+      "puzzleSolvedMessageFirstTime": "🎉 Congratulations!\n\nYou've completed this puzzle.\n\nYou can restart it, explore more puzzles, or add your email to get updates when new puzzles arrive.",
+      "puzzlePausedMessage": "Your puzzle is on hold.\n\nWhat's next?\n\nYou can continue right where you left off, restart from the beginning, explore more puzzles, or add your email to get updates when new puzzles arrive."
+    }
   },
   "giftOverview": {
     "title": "GIFT OVERVIEW",

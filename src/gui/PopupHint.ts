@@ -16,7 +16,7 @@ import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import timerManager from "../core3d/misc/TimerManager";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { GuiHelpers } from "./GuiHelpers";
-import { i18nManager, TranslationKeys } from "../common/i18n";
+import { i18nManager, TranslationKeys, languageManager } from "../common/i18n";
 
 export enum PopupMode {
     Normal,
@@ -209,7 +209,7 @@ class PopupHint {
         this.bottomRect.color = "#AAAAAA";
         mainStack.addControl(this.bottomRect);
 
-        this.gotItButton = Button.CreateImageWithCenterTextButton("gotItButton", "GOT IT!", "assets/buttons/got-it-button-small.webp");
+        this.gotItButton = Button.CreateImageWithCenterTextButton("gotItButton", i18nManager.translate(TranslationKeys.UI.BUTTONS.GOT_IT), "assets/buttons/got-it-button-small.webp");
         this.gotItButton.thickness = 0;
         this.gotItButton.background = "";
         this.gotItButton.hoverCursor = "pointer";
@@ -251,7 +251,7 @@ class PopupHint {
 
         this.bottomRect.addControl(this.emptyGreenButton);
 
-        this.notNowButton = Button.CreateImageWithCenterTextButton("notNowButton", "NOT NOW", "assets/buttons/not-now-button.webp");
+        this.notNowButton = Button.CreateImageWithCenterTextButton("notNowButton", i18nManager.translate(TranslationKeys.UI.BUTTONS.NOT_NOW), "assets/buttons/not-now-button.webp");
         this.notNowButton.thickness = 0;
         this.notNowButton.background = "";
         this.notNowButton.hoverCursor = "pointer";
@@ -288,7 +288,7 @@ class PopupHint {
 
         this.bottomRect.addControl(this.getItButton);
 
-        this.backButton = Button.CreateImageWithCenterTextButton("backButton", "BACK", "assets/buttons/back-button-small.webp");
+        this.backButton = Button.CreateImageWithCenterTextButton("backButton", i18nManager.translate(TranslationKeys.UI.BUTTONS.BACK), "assets/buttons/back-button-small.webp");
         this.backButton.thickness = 0;
         this.backButton.background = "";
         this.backButton.hoverCursor = "pointer";
@@ -314,7 +314,7 @@ class PopupHint {
 
         this.bottomRect.addControl(this.backButton);
 
-        this.nextButton = Button.CreateImageWithCenterTextButton("nextButton", "NEXT", "assets/buttons/next-button-small.webp");
+        this.nextButton = Button.CreateImageWithCenterTextButton("nextButton", i18nManager.translate(TranslationKeys.UI.BUTTONS.NEXT), "assets/buttons/next-button-small.webp");
         this.nextButton.thickness = 0;
         this.nextButton.background = "";
         this.nextButton.hoverCursor = "pointer";
@@ -358,6 +358,11 @@ class PopupHint {
 
         sceneInitializer.addResizeObserver((width, height) => {
             this.resize();
+        });
+        
+        // Listen for language changes to refresh button texts
+        languageManager.addLanguageChangeObserver(() => {
+            this.refreshButtonTexts();
         });
     }
 
@@ -820,6 +825,22 @@ class PopupHint {
         }
     }
 
+    private refreshButtonTexts() {
+        // Refresh button texts when language changes
+        if (this.gotItButton && this.gotItButton.textBlock) {
+            this.gotItButton.textBlock.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.GOT_IT);
+        }
+        if (this.notNowButton && this.notNowButton.textBlock) {
+            this.notNowButton.textBlock.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.NOT_NOW);
+        }
+        if (this.backButton && this.backButton.textBlock) {
+            this.backButton.textBlock.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.BACK);
+        }
+        if (this.nextButton && this.nextButton.textBlock) {
+            this.nextButton.textBlock.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.NEXT);
+        }
+    }
+
     public show(
         fullText: string,
         heading: string,
@@ -880,7 +901,7 @@ class PopupHint {
         this.formPanelRect.background = "#FFFFFF00"
         this.formPanelRect.width = "100%";
         this._shaderMode = shaderMode;
-        this.backButton.textBlock!.text = "BACK";
+        this.backButton.textBlock!.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.BACK);
 
         switch (mode) {
             case PopupMode.PreSell:
@@ -939,7 +960,7 @@ class PopupHint {
                 this.formPanelRect.alpha = 0.8;
                 this.formPanelRect.background = "#F9F6F1FF";
                 this.formPanelRect.width = "97%";
-                this.backButton.textBlock!.text = "PREV";
+                this.backButton.textBlock!.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.PREVIOUS);
                 break;
         }
 

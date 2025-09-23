@@ -64,9 +64,13 @@
     "copyFailed": "Kopírování selhalo. Zkuste to prosím ručně."
   },
   "specialMode": {
+    "puzzleSolvedMessage": "🎉 Gratulujeme! Vyřešili jste puzzle za {time}. Skvělá práce!",
     "gameMonetize": {
       "welcomeMessage": "🎮 Vítejte v puzzle hře!\n\nKlikněte na kategorii pro začátek!",
-      "adMessage": "🎯 Reklama se načítá..."
+      "adMessage": "🎯 Reklama se načítá...",
+      "puzzleSolvedMessageCompleted": "🎉 Gratulujeme!\n\nDokončili jste toto puzzle.\n\nMůžete ho restartovat, prozkoumat více puzzle, nebo přidat další email pro aktualizace.",
+      "puzzleSolvedMessageFirstTime": "🎉 Gratulujeme!\n\nDokončili jste toto puzzle.\n\nMůžete ho restartovat, prozkoumat více puzzle, nebo přidat svůj email pro získání aktualizací, když přijdou nová puzzle.",
+      "puzzlePausedMessage": "Vaše puzzle je pozastaveno.\n\nCo dál?\n\nMůžete pokračovat přesně tam, kde jste skončili, restartovat od začátku, prozkoumat více puzzle, nebo přidat svůj email pro získání aktualizací, když přijdou nová puzzle."
     }
   }
 }

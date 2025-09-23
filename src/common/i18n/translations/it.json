@@ -64,9 +64,13 @@
     "copyFailed": "Copia fallita. Per favore prova manualmente."
   },
   "specialMode": {
+    "puzzleSolvedMessage": "🎉 Congratulazioni! Hai risolto il puzzle in {time}. Ottimo lavoro!",
     "gameMonetize": {
       "welcomeMessage": "🎮 Benvenuto al gioco di puzzle!\n\nClicca su una categoria per iniziare!",
-      "adMessage": "🎯 Pubblicità in caricamento..."
+      "adMessage": "🎯 Pubblicità in caricamento...",
+      "puzzleSolvedMessageCompleted": "🎉 Congratulazioni!\n\nHai completato questo puzzle.\n\nPuoi riavviarlo, esplorare più puzzle, o aggiungere un'altra email per gli aggiornamenti.",
+      "puzzleSolvedMessageFirstTime": "🎉 Congratulazioni!\n\nHai completato questo puzzle.\n\nPuoi riavviarlo, esplorare più puzzle, o aggiungere la tua email per ricevere aggiornamenti quando arrivano nuovi puzzle.",
+      "puzzlePausedMessage": "Il tuo puzzle è in pausa.\n\nCosa fare dopo?\n\nPuoi continuare esattamente dove hai lasciato, riavviare dall'inizio, esplorare più puzzle, o aggiungere la tua email per ricevere aggiornamenti quando arrivano nuovi puzzle."
     }
   }
 }

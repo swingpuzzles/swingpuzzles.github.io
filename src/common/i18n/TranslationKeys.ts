@@ -112,7 +112,14 @@ export const TranslationKeys = {
 
     // Special Mode Messages
     SPECIAL_MODE: {
-        PUZZLE_SOLVED_MESSAGE: "specialMode.puzzleSolvedMessage"
+        PUZZLE_SOLVED_MESSAGE: "specialMode.puzzleSolvedMessage",
+        GAME_MONETIZE: {
+            WELCOME_MESSAGE: "specialMode.gameMonetize.welcomeMessage",
+            AD_MESSAGE: "specialMode.gameMonetize.adMessage",
+            PUZZLE_SOLVED_MESSAGE_COMPLETED: "specialMode.gameMonetize.puzzleSolvedMessageCompleted",
+            PUZZLE_SOLVED_MESSAGE_FIRST_TIME: "specialMode.gameMonetize.puzzleSolvedMessageFirstTime",
+            PUZZLE_PAUSED_MESSAGE: "specialMode.gameMonetize.puzzlePausedMessage"
+        }
     },
 
     // Gift Overview Messages

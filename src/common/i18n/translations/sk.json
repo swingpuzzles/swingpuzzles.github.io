@@ -64,9 +64,13 @@
     "copyFailed": "Kopírovanie zlyhalo. Skúste to prosím ručne."
   },
   "specialMode": {
+    "puzzleSolvedMessage": "🎉 Gratulujeme! Vyriešili ste puzzle za {time}. Skvelá práca!",
     "gameMonetize": {
       "welcomeMessage": "🎮 Vitajte v puzzle hre!\n\nKliknite na kategóriu pre začiatok!",
-      "adMessage": "🎯 Reklama sa načítava..."
+      "adMessage": "🎯 Reklama sa načítava...",
+      "puzzleSolvedMessageCompleted": "🎉 Gratulujeme!\n\nDokončili ste toto puzzle.\n\nMôžete ho reštartovať, preskúmať viac puzzle, alebo pridať ďalší email pre aktualizácie.",
+      "puzzleSolvedMessageFirstTime": "🎉 Gratulujeme!\n\nDokončili ste toto puzzle.\n\nMôžete ho reštartovať, preskúmať viac puzzle, alebo pridať svoj email pre získanie aktualizácií, keď prídu nové puzzle.",
+      "puzzlePausedMessage": "Vaše puzzle je pozastavené.\n\nČo ďalej?\n\nMôžete pokračovať presne tam, kde ste skončili, reštartovať od začiatku, preskúmať viac puzzle, alebo pridať svoj email pre získanie aktualizácií, keď prídu nové puzzle."
     }
   }
 }

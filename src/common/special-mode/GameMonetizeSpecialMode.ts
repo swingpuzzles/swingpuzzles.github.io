@@ -2,6 +2,7 @@ import navigationManager from "../../gui/NavigationManager";
 import puzzleUrlHelper from "../PuzzleUrlHelper";
 import { ISpecialMode } from "./ISpecialMode";
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../LocalStorageManager";
+import { i18nManager, TranslationKeys } from "../i18n";
 
 export class GameMonetizeSpecialMode implements ISpecialMode {
     constructor() {
@@ -57,22 +58,13 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
         return false;
     }
     getPuzzleSolvedMessage(defaultMessage: string, emailCaptured: boolean, puzzleFinished: boolean): string {
-        return puzzleFinished ? emailCaptured
-        ? `🎉 Congratulations!
-  
-  You've completed this puzzle.
-  
-  You can restart it, explore more puzzles, or add another email to get updates.`
-        : `🎉 Congratulations!
-  
-  You've completed this puzzle.
-  
-  You can restart it, explore more puzzles, or add your email to get updates when new puzzles arrive.`
-    : `Your puzzle is on hold.
-            
-    What's next?
-
-    You can continue right where you left off, restart from the beginning, explore more puzzles, or add your email to get updates when new puzzles arrive.`;
+        if (puzzleFinished) {
+            return emailCaptured
+                ? i18nManager.translate(TranslationKeys.SPECIAL_MODE.GAME_MONETIZE.PUZZLE_SOLVED_MESSAGE_COMPLETED)
+                : i18nManager.translate(TranslationKeys.SPECIAL_MODE.GAME_MONETIZE.PUZZLE_SOLVED_MESSAGE_FIRST_TIME);
+        } else {
+            return i18nManager.translate(TranslationKeys.SPECIAL_MODE.GAME_MONETIZE.PUZZLE_PAUSED_MESSAGE);
+        }
     }
     cookiesBannerVisible(defaultVisible: boolean): boolean {
         return false; // GameMonetize special mode doesn't show cookie banner

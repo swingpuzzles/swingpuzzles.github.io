@@ -96,7 +96,14 @@
     "decodeFailed": "Error al decodificar los datos del regalo"
   },
   "specialMode": {
-    "puzzleSolvedMessage": "🎉 ¡Felicidades! Has completado el puzzle en {time}. ¡Excelente trabajo!"
+    "puzzleSolvedMessage": "🎉 ¡Felicidades! Has completado el puzzle en {time}. ¡Excelente trabajo!",
+    "gameMonetize": {
+      "welcomeMessage": "🎮 ¡Bienvenido al juego de puzzle!\n\n¡Haz clic en una categoría para comenzar!",
+      "adMessage": "🎯 Cargando publicidad...",
+      "puzzleSolvedMessageCompleted": "🎉 ¡Felicidades!\n\nHas completado este puzzle.\n\nPuedes reiniciarlo, explorar más puzzles, o agregar otro email para recibir actualizaciones.",
+      "puzzleSolvedMessageFirstTime": "🎉 ¡Felicidades!\n\nHas completado este puzzle.\n\nPuedes reiniciarlo, explorar más puzzles, o agregar tu email para recibir actualizaciones cuando lleguen nuevos puzzles.",
+      "puzzlePausedMessage": "Tu puzzle está en pausa.\n\n¿Qué sigue?\n\nPuedes continuar exactamente donde lo dejaste, reiniciar desde el principio, explorar más puzzles, o agregar tu email para recibir actualizaciones cuando lleguen nuevos puzzles."
+    }
   },
   "giftOverview": {
     "title": "RESUMEN DEL REGALO",
