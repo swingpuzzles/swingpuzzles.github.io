@@ -5,6 +5,7 @@ import { Color3 } from "@babylonjs/core";
 import guiManager from "../GuiManager";
 import ctx from "../../core3d/common/SceneContext";
 import translationManager from "../../core3d/misc/TranslationManager";
+import { languageManager } from "../../common/i18n";
 
 export class Dropdown extends Container {
     private button: Button;
@@ -301,7 +302,8 @@ export class Dropdown extends Container {
     addItem(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, imageOnly: boolean): void {
         let button: Button;
 
-        const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;
+        const currentLang = languageManager.currentLanguage;
+        const text = this.translationMap.get(idText)?.get(currentLang) ?? idText;
 
         if (imageOnly) {
             button = Button.CreateImageOnlyButton(idText, imageUrl!);
@@ -343,17 +345,18 @@ export class Dropdown extends Container {
     public refreshTranslationMap() {
         if (this.translationSectionKey) {
             this.translationMap = translationManager.getSection(this.translationSectionKey) ?? new Map();
+            const currentLang = languageManager.currentLanguage;
             
             // Refresh all button texts with new translation map
             for (const child of this.options.children) {
                 if (child instanceof Button && child.textBlock && child.name) {
-                    child.textBlock.text = this.translationMap.get(child.name)?.get(this._lang) ?? child.name;
+                    child.textBlock.text = this.translationMap.get(child.name)?.get(currentLang) ?? child.name;
                 }
             }
             
             // Refresh the main button text if there's a selected item
             if (this._selectedItem) {
-                const text = this.translationMap.get(this._selectedItem)?.get(this._lang) ?? this._selectedItem;
+                const text = this.translationMap.get(this._selectedItem)?.get(currentLang) ?? this._selectedItem;
                 this.setContent(text, null, null);
             }
         }
