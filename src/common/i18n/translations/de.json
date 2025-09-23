@@ -105,7 +105,8 @@
     "general": "Allgemein",
     "animals": "Tiere",
     "beach": "Strand",
-    "floral": "Blumen"
+    "floral": "Blumen",
+    "makeAGift": "Ein Geschenk Machen"
   },
   "errors": {
     "sharingNotSupported": "Teilen wird in diesem Browser nicht unterstützt.",
@@ -120,12 +121,6 @@
       "puzzleSolvedMessageFirstTime": "🎉 Herzlichen Glückwunsch!\n\nDu hast dieses Puzzle gelöst.\n\nDu kannst es neu starten, weitere Puzzles erkunden oder deine E-Mail hinzufügen, um Updates zu erhalten, wenn neue Puzzles ankommen.",
       "puzzlePausedMessage": "Dein Puzzle ist pausiert.\n\nWas kommt als nächstes?\n\nDu kannst genau dort weitermachen, wo du aufgehört hast, von vorne beginnen, weitere Puzzles erkunden oder deine E-Mail hinzufügen, um Updates zu erhalten, wenn neue Puzzles ankommen."
     }
-  },
-  "categories": {
-    "general": "Allgemein",
-    "animals": "Tiere",
-    "beach": "Strand",
-    "floral": "Blumen"
   },
   "cookies": {
     "accept": "Alle akzeptieren",

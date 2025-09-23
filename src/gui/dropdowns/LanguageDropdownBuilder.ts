@@ -14,7 +14,7 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
             gameModes: [ GameMode.Initial ],
             halign: Control.HORIZONTAL_ALIGNMENT_RIGHT,
             thickness: 0,
-            isCategory: true,
+            isImageCollapsedAlsoTextExpanded: true,
             isImageOnly: true,
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }
         });

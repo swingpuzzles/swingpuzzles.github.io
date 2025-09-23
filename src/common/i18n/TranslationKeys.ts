@@ -94,7 +94,8 @@ export const TranslationKeys = {
         GENERAL: "categories.general",
         ANIMALS: "categories.animals", 
         BEACH: "categories.beach",
-        FLORAL: "categories.floral"
+        FLORAL: "categories.floral",
+        MAKE_A_GIFT: "categories.makeAGift"
     },
 
     // Cookie and Legal

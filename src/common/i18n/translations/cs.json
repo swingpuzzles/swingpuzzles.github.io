@@ -105,7 +105,8 @@
     "general": "Obecné",
     "animals": "Zvířata",
     "beach": "Pláž",
-    "floral": "Květinové"
+    "floral": "Květinové",
+    "makeAGift": "Udělat Dárek"
   },
   "errors": {
     "sharingNotSupported": "Sdílení není v tomto prohlížeči podporováno.",
@@ -120,12 +121,6 @@
       "puzzleSolvedMessageFirstTime": "🎉 Gratulujeme!\n\nDokončili jste toto puzzle.\n\nMůžete ho restartovat, prozkoumat více puzzle, nebo přidat svůj email pro získání aktualizací, když přijdou nová puzzle.",
       "puzzlePausedMessage": "Vaše puzzle je pozastaveno.\n\nCo dál?\n\nMůžete pokračovat přesně tam, kde jste skončili, restartovat od začátku, prozkoumat více puzzle, nebo přidat svůj email pro získání aktualizací, když přijdou nová puzzle."
     }
-  },
-  "categories": {
-    "general": "Obecné",
-    "animals": "Zvířata",
-    "beach": "Pláž",
-    "floral": "Květinové"
   },
   "cookies": {
     "accept": "Přijmout vše",

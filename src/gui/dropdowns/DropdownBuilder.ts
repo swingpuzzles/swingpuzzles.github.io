@@ -13,7 +13,7 @@ interface DropdownOptions {
     thickness?: number;
     halign?: number;
     valign?: number;
-    isCategory?: boolean;
+    isImageCollapsedAlsoTextExpanded?: boolean;
     isImageOnly?: boolean;
     lang?: string;
     translationSectionKey?: string;
@@ -40,7 +40,7 @@ export default abstract class DropdownBuilder {
             color: this.options.color || "black",
             background: this.options.background || "white",
             thickness: this.options.thickness,
-            isImageCollapsedAlsoTextExpanded: this.options.isCategory,
+            isImageCollapsedAlsoTextExpanded: this.options.isImageCollapsedAlsoTextExpanded,
             isImageOnly: this.options.isImageOnly,
             halign: this.options.halign,
             valign: this.options.valign,

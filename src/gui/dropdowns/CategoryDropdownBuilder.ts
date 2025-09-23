@@ -1,5 +1,5 @@
 import { Control } from "@babylonjs/gui";
-import { Categories, Category, CategoryKeys } from "../../core3d/common/SceneContext";
+import { Categories, Category, CategoryKeys } from "../../core3d/common/Constants";
 import DropdownBuilder from "./DropdownBuilder";
 import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
@@ -14,8 +14,9 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
             gameModes: [ GameMode.Initial ],
             halign: Control.HORIZONTAL_ALIGNMENT_LEFT,
             thickness: 0,
-            isCategory: true,
+            isImageCollapsedAlsoTextExpanded: true,
             isImageOnly: true,
+            translationSectionKey: "categories",
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }
         });
 
@@ -37,7 +38,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     }
 
     private selectionCallback(key: string, userAction: boolean = true) {
-        const category = Object.values(Categories).find(c => c.text === key);
+        const category = Object.values(Categories).find(c => c.key === key);
 
         if (category) {
             this.selectAction(category, userAction);
@@ -45,14 +46,14 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
     }
 
     addImageOption(category: Category, last: boolean = false) {
-        this.addOption(category.text, category.url);
+        this.addOption(category.key, category.url);
 
         if (!localStorageManager.getString(this.storageItemName) || (CategoryKeys.indexOf(localStorageManager.getString(this.storageItemName)!) <= -1)) {
             localStorageManager.set(this.storageItemName, category.key);
         }
 
         if (localStorageManager.getString(this.storageItemName) === category.key || last && !this._optionSelected) {
-            this.dropdown.doSelectAction(category.text, category.url, null, false, false);
+            this.dropdown.doSelectAction(category.key, category.url, null, false, false);
             this._optionSelected = true;
         }
     }

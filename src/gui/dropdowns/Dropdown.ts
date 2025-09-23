@@ -17,6 +17,7 @@ export class Dropdown extends Container {
     private _lang: string = "en";
     private translationMap: Map<string, Map<string, string>> = new Map();
     private selectionCallback?(key: string, userAction: boolean, text: string): void;
+
     private _selectedItem!: string;
     private isImageCollapsedAlsoTextExpanded: boolean;
     private isImageOnly: boolean;

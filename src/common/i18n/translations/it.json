@@ -105,7 +105,8 @@
     "general": "Generale",
     "animals": "Animali",
     "beach": "Spiaggia",
-    "floral": "Floreale"
+    "floral": "Floreale",
+    "makeAGift": "Fare un Regalo"
   },
   "errors": {
     "sharingNotSupported": "La condivisione non è supportata in questo browser.",
@@ -120,12 +121,6 @@
       "puzzleSolvedMessageFirstTime": "🎉 Congratulazioni!\n\nHai completato questo puzzle.\n\nPuoi riavviarlo, esplorare più puzzle, o aggiungere la tua email per ricevere aggiornamenti quando arrivano nuovi puzzle.",
       "puzzlePausedMessage": "Il tuo puzzle è in pausa.\n\nCosa fare dopo?\n\nPuoi continuare esattamente dove hai lasciato, riavviare dall'inizio, esplorare più puzzle, o aggiungere la tua email per ricevere aggiornamenti quando arrivano nuovi puzzle."
     }
-  },
-  "categories": {
-    "general": "Generale",
-    "animals": "Animali",
-    "beach": "Spiaggia",
-    "floral": "Floreale"
   },
   "cookies": {
     "accept": "Accetta tutto",

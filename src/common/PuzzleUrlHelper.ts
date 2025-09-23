@@ -3,7 +3,8 @@ import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation"
 import gameModeManager from "../core3d/behaviors/GameModeManager";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import puzzleGameBuilder from "../core3d/builders/PuzzleGameBuilder";
-import ctx, { Categories } from "../core3d/common/SceneContext";
+import ctx from "../core3d/common/SceneContext";
+import { Categories } from "../core3d/common/Constants";
 import guiManager from "../gui/GuiManager";
 import popupHint, { overPopup } from "../gui/PopupHint";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";

@@ -83,8 +83,9 @@
   "categories": {
     "general": "General",
     "animals": "Animals",
-    "beach": "Beach", 
-    "floral": "Floral"
+    "beach": "Beach",
+    "floral": "Floral",
+    "makeAGift": "Make a Gift"
   },
   "cookies": {
     "accept": "Accept All",

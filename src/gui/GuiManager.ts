@@ -1,5 +1,6 @@
 import { AdvancedDynamicTexture, Button, Control, StackPanel, Image } from "@babylonjs/gui";
-import ctx, { Categories, Category } from "../core3d/common/SceneContext";
+import ctx from "../core3d/common/SceneContext";
+import { Categories, Category } from "../core3d/common/Constants";
 import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
@@ -239,7 +240,7 @@ class GuiManager {
     }
 
     private enterCategoryImpl(category: Category, callChangeHandler: boolean = true): void {
-        this.categoryDropdown.doSelectAction(category.text, category.url, null, false, false);
+        this.categoryDropdown.doSelectAction(category.key, category.url, null, false, false);
 
         if (callChangeHandler) {
             gameModeManager.handleCategoryChange(category, false);
