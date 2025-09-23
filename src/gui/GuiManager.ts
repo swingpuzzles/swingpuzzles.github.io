@@ -12,6 +12,7 @@ import giftMaker from "./GiftMaker";
 import { Dropdown } from "./dropdowns/Dropdown";
 import CategoryDropdownBuilder from "./dropdowns/CategoryDropdownBuilder";
 import PiecesCountDropdownBuilder from "./dropdowns/PiecesCountDropdownBuilder";
+import LanguageDropdownBuilder from "./dropdowns/LanguageDropdownBuilder";
 import navigationManager from "./NavigationManager";
 import puzzleUrlHelper from "../common/PuzzleUrlHelper";
 import analyticsManager from "../common/AnalyticsManager";
@@ -19,18 +20,20 @@ import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { ISpecialMode } from "../common/special-mode/ISpecialMode";
 import { GuiHelpers } from "./GuiHelpers";
 import { i18nManager, TranslationKeys, languageManager } from "../common/i18n";
-import LanguageDropdownBuilder from "./dropdowns/LanguageDropdownBuilder";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
     private bottomButtonPanel!: StackPanel;
     private piecesCountDropdown!: Dropdown;
+    private piecesCountDropdownBuilder!: PiecesCountDropdownBuilder;
     private playButton!: Button;
     private bannerButton!: Button;
     private xButton!: Button;
     private menuButton!: Button;
     private categoryDropdown!: Dropdown;
+    private categoryDropdownBuilder!: CategoryDropdownBuilder;
     private languageDropdown!: Dropdown;
+    private languageDropdownBuilder!: LanguageDropdownBuilder;
     private _xAction: (() => void) | null = null;
 
     get advancedTexture() {
@@ -40,7 +43,8 @@ class GuiManager {
     async init() {
         this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
-        this.piecesCountDropdown = new PiecesCountDropdownBuilder().build();
+        this.piecesCountDropdownBuilder = new PiecesCountDropdownBuilder();
+        this.piecesCountDropdown = this.piecesCountDropdownBuilder.build();
         this.advancedTexture.addControl(this.piecesCountDropdown);
 
         popupHint.init();
@@ -48,11 +52,18 @@ class GuiManager {
 
         giftMaker.init();
         
-        this.categoryDropdown = new CategoryDropdownBuilder().build();
+        this.categoryDropdownBuilder = new CategoryDropdownBuilder();
+        this.categoryDropdown = this.categoryDropdownBuilder.build();
         this.advancedTexture.addControl(this.categoryDropdown);
 
-        this.languageDropdown = new LanguageDropdownBuilder().build();
+        this.languageDropdownBuilder = new LanguageDropdownBuilder();
+        this.languageDropdown = this.languageDropdownBuilder.build();
         this.advancedTexture.addControl(this.languageDropdown);
+
+        // Refresh translation maps after TranslationManager is initialized
+        this.categoryDropdown.refreshTranslationMap();
+        this.languageDropdown.refreshTranslationMap();
+        this.piecesCountDropdownBuilder.refreshPiecesText();
 
         await puzzleUrlHelper.handleUrlData();
 
@@ -257,8 +268,16 @@ class GuiManager {
             this.playButton.textBlock.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.PLAY);
         }
         
-        // Note: Other UI components that display translated text will need to be refreshed
-        // when they are created or shown. This is a basic implementation that can be extended.
+        // Refresh dropdowns
+        if (this.categoryDropdown) {
+            this.categoryDropdown.refreshTranslationMap();
+        }
+        if (this.languageDropdown) {
+            this.languageDropdown.refreshTranslationMap();
+        }
+        if (this.piecesCountDropdownBuilder) {
+            this.piecesCountDropdownBuilder.refreshPiecesText();
+        }
     }
 }
 

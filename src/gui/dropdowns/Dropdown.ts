@@ -16,6 +16,7 @@ export class Dropdown extends Container {
     private itemHeight = 0;
     private _lang: string = "en";
     private translationMap: Map<string, Map<string, string>> = new Map();
+    private translationSectionKey?: string;
     private selectionCallback?(key: string, userAction: boolean, text: string): void;
 
     private _selectedItem!: string;
@@ -42,6 +43,7 @@ export class Dropdown extends Container {
 
         this.buttonBackground = config.background;
         this.buttonColor = config.color;
+        this.translationSectionKey = config.translationSectionKey;
         this._lang = config.lang ?? this._lang;
         this.selectionCallback = config.selectionCallback;
         
@@ -332,5 +334,28 @@ export class Dropdown extends Container {
         });
 
         this.options.addControl(button);
+    }
+
+    public clearOptions() {
+        this.options.clearControls();
+    }
+
+    public refreshTranslationMap() {
+        if (this.translationSectionKey) {
+            this.translationMap = translationManager.getSection(this.translationSectionKey) ?? new Map();
+            
+            // Refresh all button texts with new translation map
+            for (const child of this.options.children) {
+                if (child instanceof Button && child.textBlock && child.name) {
+                    child.textBlock.text = this.translationMap.get(child.name)?.get(this._lang) ?? child.name;
+                }
+            }
+            
+            // Refresh the main button text if there's a selected item
+            if (this._selectedItem) {
+                const text = this.translationMap.get(this._selectedItem)?.get(this._lang) ?? this._selectedItem;
+                this.setContent(text, null, null);
+            }
+        }
     }
 }

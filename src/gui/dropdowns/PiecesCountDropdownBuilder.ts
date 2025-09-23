@@ -65,6 +65,27 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         }
     }
 
+    public refreshPiecesText() {
+        // Clear existing options
+        this.dropdown.clearOptions();
+        this._optionSelected = false;
+        
+        // Regenerate all options with current language
+        if (ctx.debugMode) {
+            this.addPiecesNums(3, 2);
+        }
+
+        this.addPiecesNums(5, 3);
+        this.addPiecesNums(6, 4);
+        this.addPiecesNums(8, 5);
+        this.addPiecesNums(10, 6);
+        this.addPiecesNums(13, 8);
+        this.addPiecesNums(16, 10);
+        this.addPiecesNums(19, 12);
+        this.addPiecesNums(24, 15);
+        this.addPiecesNums(25, 20, true);
+    }
+
     selectAction(xCount: number, zCount: number, text: string, userAction: boolean = true) {
         const count = xCount * zCount;
         localStorageManager.set(this.storageItemName, count.toString());
