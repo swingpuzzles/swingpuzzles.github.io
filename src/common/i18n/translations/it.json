@@ -1,4 +1,30 @@
 {
+  "welcome": {
+    "title": "BENVENUTO!",
+    "message": "Benvenuto su SwingPuzzles.com! 🧩\n\nPreparati a esplorare, risolvere e goderti incredibili puzzle 3D direttamente nel tuo browser. Ogni pezzo si inserisce in un mondo di avventura!\n\nIniziamo a costruire!",
+    "giftTitle": "HAI RICEVUTO UN REGALO!",
+    "giftMessage": "🎁 Ciao {name}, hai ricevuto un regalo puzzle!\n\nTocca \"Capito\", clicca sul regalo per aprire la tua scatola puzzle,\ne inizia a risolvere immediatamente 🧩"
+  },
+  "hints": {
+    "sizeTitle": "SUGGERIMENTO: DIMENSIONE",
+    "sizeMessage": "🧩 Scegli la tua sfida!\n\nUsa il menu a tendina evidenziato in alto al centro per scegliere le dimensioni del puzzle desiderate.\n\nPiù pezzi, più divertimento – o mantienilo semplice e rilassante. La scelta è tua!",
+    "choiceTitle": "SUGGERIMENTO: SCELTA",
+    "choiceMessage": "📚 Sfoglia e gioca!\n\nScorri a sinistra o a destra per esplorare diversi puzzle.\n\nOgni puzzle è mostrato come una scatola di copertina — clicca o tocca su una per selezionarla, o premi semplicemente il pulsante ▶️ Gioca per immergerti subito!",
+    "shakeTitle": "SCUOTILO!",
+    "shakeMessage": "🧩 Dagli una bella scossa!\n\nTrascina la scatola del puzzle per scuoterla — questo mescolerà i pezzi così puoi iniziare a risolvere!",
+    "styleTitle": "↑ STILIZZALO! ↑",
+    "styleMessage": "🧩 Stilizza il tuo regalo!\n\nScegli il testo, il font, i colori, la torta di compleanno, la tovaglia e lo sfondo.\n\nTutte queste opzioni ti aspettano nei menu a tendina in alto sullo schermo."
+  },
+  "congrats": {
+    "title": "PUZZLE RISOLTO!",
+    "message": "🎉 Congratulazioni!\n\nHai risolto il puzzle in {time}.\nOttimo lavoro nel mettere insieme tutti i pezzi!",
+    "buyTitle": "PORTARLO A CASA?",
+    "buyMessage": "🧩 Ti piace quel puzzle?\n\nSe vorresti possederlo nella vita reale, puoi ordinare una versione fisica di alta qualità — perfetta per il tuo tavolino da caffè o come regalo.\n\nDisponibile ora su Amazon!"
+  },
+  "badWord": {
+    "title": "SII GENTILE!",
+    "message": "Ops! Il tuo testo del regalo contiene un linguaggio che non è permesso.\nPer favore scegli parole più gentili così il tuo amico può godersi il puzzle."
+  },
   "tutorial": {
     "welcomeMessage": "🎉 Benvenuto al gioco di puzzle!\n\nClicca su una categoria per iniziare, o crea un regalo puzzle personalizzato!",
     "hintClickCategory": "Clicca su una categoria per giocare!",
@@ -13,7 +39,28 @@
   },
   "ui": {
     "buttons": {
-      "play": "GIOCA!"
+      "continue": "Continua",
+      "gotIt": "Capito",
+      "notNow": "Non ora",
+      "yesIDid": "Sì, l'ho fatto",
+      "getItOnAmazon": "Acquistalo su Amazon",
+      "back": "INDIETRO",
+      "next": "AVANTI",
+      "previous": "PRECEDENTE",
+      "menu": "Menu principale",
+      "play": "GIOCA!",
+      "morePuzzles": "PIÙ PUZZLE"
+    },
+    "labels": {
+      "friendsName": "Nome dell'amico",
+      "comingAge": "Età",
+      "wishLanguage": "Lingua del desiderio",
+      "puzzlePieces": "Pezzi del puzzle",
+      "category": "Categoria"
+    },
+    "placeholders": {
+      "friendsName": "es. Alex",
+      "comingAge": "es. 30"
     }
   },
   "gift": {
@@ -72,5 +119,24 @@
       "puzzleSolvedMessageFirstTime": "🎉 Congratulazioni!\n\nHai completato questo puzzle.\n\nPuoi riavviarlo, esplorare più puzzle, o aggiungere la tua email per ricevere aggiornamenti quando arrivano nuovi puzzle.",
       "puzzlePausedMessage": "Il tuo puzzle è in pausa.\n\nCosa fare dopo?\n\nPuoi continuare esattamente dove hai lasciato, riavviare dall'inizio, esplorare più puzzle, o aggiungere la tua email per ricevere aggiornamenti quando arrivano nuovi puzzle."
     }
+  },
+  "categories": {
+    "general": "Generale",
+    "animals": "Animali",
+    "beach": "Spiaggia",
+    "floral": "Floreale"
+  },
+  "cookies": {
+    "accept": "Accetta tutto",
+    "reject": "Rifiuta i non essenziali",
+    "bannerMessage": "Utilizziamo i cookie per migliorare la tua esperienza e analizzare l'utilizzo. Puoi scegliere di accettare tutti i cookie o rifiutare quelli non essenziali."
+  },
+  "giftOverview": {
+    "title": "ANTEPRIMA REGALO",
+    "message": "🧩 **Regalo Puzzle Creato con Amore!**\nHai creato un puzzle personalizzato — ora è il momento di condividere la sorpresa.\n🎁 Invia il link al tuo amico e lascia che inizi la gioia.\n🌟 Curioso? Puoi provarlo tu stesso.\n📦 Vuoi renderlo ancora più speciale? Ordina una versione reale come ricordo.",
+    "orientationTitle": "ORIENTAMENTO DEL PUZZLE",
+    "orientationMessage": "🧩 Prima di ordinare il tuo puzzle fisico, scegli l'orientamento dell'immagine.\n\nQuando tocchi Avanti, la tua immagine del puzzle personalizzata verrà scaricata automaticamente.\n\nPoi ti guideremo su Amazon, dove puoi caricarla e completare il tuo ordine regalo.\n\nOrientamento dell'immagine:",
+    "sizeTitle": "DIMENSIONE DEL PUZZLE",
+    "sizeInstruction": "🧩 **La tua Immagine del Puzzle si sta Scaricando!**\nSei a un passo dal trasformarla in un vero regalo.\n1. **Scegli la dimensione del puzzle** (numero di pezzi) qui sotto.\n2. Tocca **\"Acquistalo su Amazon\"** per aprire la pagina del prodotto.\n3. Su Amazon:\n   • Clicca su **Personalizza ora**\n   • Clicca su **Carica** e seleziona l'immagine che hai appena scaricato (inizia con \"PUZZLE-...\" e la troverai nella cartella download)\n   • Clicca su **Aggiungi al carrello**, poi **Vai al carrello** e **Procedi al checkout**\nAvrai presto il tuo puzzle personalizzato consegnato! 🎁"
   }
 }

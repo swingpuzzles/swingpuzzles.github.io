@@ -1,4 +1,30 @@
 {
+  "welcome": {
+    "title": "VÍTEJTE!",
+    "message": "Vítejte na SwingPuzzles.com! 🧩\n\nPřipravte se na prozkoumání, řešení a užívání si úžasných 3D puzzle přímo ve vašem prohlížeči. Každý kousek se zapadá do světa dobrodružství!\n\nZačněme stavět!",
+    "giftTitle": "MÁTE DÁREK!",
+    "giftMessage": "🎁 Ahoj {name}, dostal jsi puzzle dárek!\n\nKlepněte na \"Rozumím\", klikněte na dárek pro otevření vaší puzzle krabice,\na začněte okamžitě řešit 🧩"
+  },
+  "hints": {
+    "sizeTitle": "TIP: VELIKOST",
+    "sizeMessage": "🧩 Vyberte si svou výzvu!\n\nPoužijte zvýrazněný rozbalovací seznam nahoře uprostřed pro výběr požadovaných rozměrů puzzle.\n\nVíce kousků, více zábavy – nebo to nechte jednoduché a relaxační. Volba je na vás!",
+    "choiceTitle": "TIP: VÝBĚR",
+    "choiceMessage": "📚 Procházejte a hrajte!\n\nPřejeďte doleva nebo doprava pro prozkoumání různých puzzle.\n\nKaždé puzzle je zobrazeno jako krycí krabice — klikněte nebo klepněte na jednu pro výběr, nebo jednoduše stiskněte tlačítko ▶️ Hrát pro okamžité ponoření!",
+    "shakeTitle": "PROTŘEPEJTE TO!",
+    "shakeMessage": "🧩 Dejte tomu pořádné protřepání!\n\nPřetáhněte puzzle krabici kolem pro protřepání — to zamíchá kousky tak, že můžete začít řešit!",
+    "styleTitle": "↑ STYLIZUJTE TO! ↑",
+    "styleMessage": "🧩 Stylizujte svůj dárek!\n\nVyberte text, font, barvy, narozeninový dort, ubrus a pozadí.\n\nVšechny tyto možnosti na vás čekají v rozbalovacích seznamech nahoře na obrazovce."
+  },
+  "congrats": {
+    "title": "PUZZLE VYŘEŠENO!",
+    "message": "🎉 Gratulujeme!\n\nVyřešili jste puzzle za {time}.\nSkvělá práce při skládání všech kousků dohromady!",
+    "buyTitle": "VZÍT SI TO DOMŮ?",
+    "buyMessage": "🧩 Líbí se vám to puzzle?\n\nPokud byste ho chtěli vlastnit ve skutečném životě, můžete si objednat vysoce kvalitní fyzickou verzi — perfektní pro váš konferenční stůl nebo jako dárek.\n\nNyní k dispozici na Amazonu!"
+  },
+  "badWord": {
+    "title": "BUĎTE HODNÍ!",
+    "message": "Ups! Váš text dárku obsahuje jazyk, který není povolen.\nProsím vyberte laskavější slova, aby se váš přítel mohl těšit z puzzle."
+  },
   "tutorial": {
     "welcomeMessage": "🎉 Vítejte v puzzle hře!\n\nKlikněte na kategorii pro začátek, nebo vytvořte personalizovaný puzzle dárek!",
     "hintClickCategory": "Klikněte na kategorii pro hraní!",
@@ -13,7 +39,28 @@
   },
   "ui": {
     "buttons": {
-      "play": "HRÁT!"
+      "continue": "Pokračovat",
+      "gotIt": "Rozumím",
+      "notNow": "Ne teď",
+      "yesIDid": "Ano, udělal jsem",
+      "getItOnAmazon": "Získat na Amazonu",
+      "back": "ZPĚT",
+      "next": "DALŠÍ",
+      "previous": "PŘEDCHOZÍ",
+      "menu": "Hlavní menu",
+      "play": "HRÁT!",
+      "morePuzzles": "VÍCE PUZZLE"
+    },
+    "labels": {
+      "friendsName": "Jméno přítele",
+      "comingAge": "Věk",
+      "wishLanguage": "Jazyk přání",
+      "puzzlePieces": "Puzzle kousky",
+      "category": "Kategorie"
+    },
+    "placeholders": {
+      "friendsName": "např. Alex",
+      "comingAge": "např. 30"
     }
   },
   "gift": {
@@ -72,5 +119,24 @@
       "puzzleSolvedMessageFirstTime": "🎉 Gratulujeme!\n\nDokončili jste toto puzzle.\n\nMůžete ho restartovat, prozkoumat více puzzle, nebo přidat svůj email pro získání aktualizací, když přijdou nová puzzle.",
       "puzzlePausedMessage": "Vaše puzzle je pozastaveno.\n\nCo dál?\n\nMůžete pokračovat přesně tam, kde jste skončili, restartovat od začátku, prozkoumat více puzzle, nebo přidat svůj email pro získání aktualizací, když přijdou nová puzzle."
     }
+  },
+  "categories": {
+    "general": "Obecné",
+    "animals": "Zvířata",
+    "beach": "Pláž",
+    "floral": "Květinové"
+  },
+  "cookies": {
+    "accept": "Přijmout vše",
+    "reject": "Odmítnout nepodstatné",
+    "bannerMessage": "Používáme cookies k vylepšení vaší zkušenosti a analýze používání. Můžete se rozhodnout přijmout všechny cookies nebo odmítnout ty, které nejsou podstatné."
+  },
+  "giftOverview": {
+    "title": "PŘEHLED DÁRKU",
+    "message": "🧩 **Puzzle Dárek Vytvořený s Láskou!**\nVytvořili jste personalizované puzzle — nyní je čas sdílet překvapení.\n🎁 Pošlete odkaz svému příteli a nechte radost začít.\n🌟 Zvědaví? Můžete si to vyzkoušet sami.\n📦 Chcete to udělat ještě speciálnější? Objednejte si skutečnou verzi jako památku.",
+    "orientationTitle": "ORIENTACE PUZZLE",
+    "orientationMessage": "🧩 Před objednáním vašeho fyzického puzzle vyberte orientaci obrázku.\n\nKdyž klepnete na Další, váš personalizovaný puzzle obrázek se automaticky stáhne.\n\nPoté vás provedeme na Amazon, kde ho můžete nahrát a dokončit vaši objednávku dárku.\n\nOrientace obrázku:",
+    "sizeTitle": "VELIKOST PUZZLE",
+    "sizeInstruction": "🧩 **Váš Puzzle Obrázek se Stahuje!**\nJste jen jeden krok od proměny v skutečný dárek.\n1. **Vyberte velikost puzzle** (počet kousků) níže.\n2. Klepněte na **\"Získat na Amazonu\"** pro otevření stránky produktu.\n3. Na Amazonu:\n   • Klepněte na **Přizpůsobit nyní**\n   • Klepněte na **Nahrát** a vyberte obrázek, který jste právě stáhli (začíná \"PUZZLE-...\" a najdete ho ve vaší složce stahování)\n   • Klepněte na **Přidat do košíku**, pak **Jít do košíku** a **Přejít k pokladně**\nBrzy budete mít své personalizované puzzle doručené! 🎁"
   }
 }
