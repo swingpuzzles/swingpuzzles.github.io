@@ -61,8 +61,8 @@ class GuiManager {
         this.advancedTexture.addControl(this.languageDropdown);
 
         // Refresh translation maps after TranslationManager is initialized
-        this.categoryDropdown.refreshTranslationMap();
-        this.languageDropdown.refreshTranslationMap();
+        this.categoryDropdown.lang = languageManager.currentLanguage;
+        this.languageDropdown.lang = languageManager.currentLanguage;
         this.piecesCountDropdownBuilder.refreshPiecesText();
 
         await puzzleUrlHelper.handleUrlData();
@@ -270,10 +270,10 @@ class GuiManager {
         
         // Refresh dropdowns
         if (this.categoryDropdown) {
-            this.categoryDropdown.refreshTranslationMap();
+            this.categoryDropdown.lang = languageManager.currentLanguage;
         }
         if (this.languageDropdown) {
-            this.languageDropdown.refreshTranslationMap();
+            this.languageDropdown.lang = languageManager.currentLanguage;
         }
         if (this.piecesCountDropdownBuilder) {
             this.piecesCountDropdownBuilder.refreshPiecesText();

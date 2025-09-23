@@ -302,8 +302,9 @@ export class Dropdown extends Container {
     addItem(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, imageOnly: boolean): void {
         let button: Button;
 
-        const currentLang = languageManager.currentLanguage;
-        const text = this.translationMap.get(idText)?.get(currentLang) ?? idText;
+        // Update language to current language
+        this._lang = languageManager.currentLanguage;
+        const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;
 
         if (imageOnly) {
             button = Button.CreateImageOnlyButton(idText, imageUrl!);
@@ -340,25 +341,5 @@ export class Dropdown extends Container {
 
     public clearOptions() {
         this.options.clearControls();
-    }
-
-    public refreshTranslationMap() {
-        if (this.translationSectionKey) {
-            this.translationMap = translationManager.getSection(this.translationSectionKey) ?? new Map();
-            const currentLang = languageManager.currentLanguage;
-            
-            // Refresh all button texts with new translation map
-            for (const child of this.options.children) {
-                if (child instanceof Button && child.textBlock && child.name) {
-                    child.textBlock.text = this.translationMap.get(child.name)?.get(currentLang) ?? child.name;
-                }
-            }
-            
-            // Refresh the main button text if there's a selected item
-            if (this._selectedItem) {
-                const text = this.translationMap.get(this._selectedItem)?.get(currentLang) ?? this._selectedItem;
-                this.setContent(text, null, null);
-            }
-        }
     }
 }
