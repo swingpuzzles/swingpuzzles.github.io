@@ -1,40 +1,40 @@
 {
   "tutorial": {
     "welcome": {
-      "title": "VÍTAJTE!",
-      "message": "Vitajte na SwingPuzzles.com! 🧩\n\nPripravte sa na preskúmanie, riešenie a užívanie si úžasných 3D puzzle priamo vo vašom prehliadači. Každý kúsok sa zapadá do sveta dobrodružstva!\n\nZačnime stavať!",
-      "giftTitle": "MÁTE DARČEK!",
-      "giftMessage": "🎁 Ahoj {name}, dostal si puzzle darček!\n\nKlepnite na \"Rozumiem\", kliknite na darček pre otvorenie vašej puzzle krabice,\na začnite okamžite riešiť 🧩"
+      "title": "VITAJ!",
+      "message": "Vitaj na SwingPuzzles.com! 🧩\n\nPriprav sa preskúmať, skladať a užívať si úžasné 3D puzzle priamo v prehliadači. Každý kúsok zapadá do sveta dobrodružstva!\n\nZačnime skladať!",
+      "giftTitle": "MÁŠ DARČEK!",
+      "giftMessage": "🎁 Ahoj {name}, dostal si darček – puzzle!\n\nKlepni na „Rozumiem“, potom klikni na darček, otvor svoju puzzle krabicu a začni skladať hneď teraz 🧩"
     },
     "hints": {
       "sizeTitle": "TIP: VEĽKOSŤ",
-      "sizeMessage": "🧩 Vyberte si svoju výzvu!\n\nPoužite zvýraznený rozbaľovací zoznam hore uprostred pre výber požadovaných rozmerov puzzle.\n\nViac kúskov, viac zábavy – alebo to nechajte jednoduché a relaxačné. Voľba je na vás!",
+      "sizeMessage": "🧩 Vyber si svoju výzvu!\n\nPouži zvýraznené rozbaľovacie menu hore uprostred a zvoľ požadované rozmery puzzle.\n\nViac kúskov = viac zábavy – alebo to nechaj jednoduché a relaxačné. Voľba je na tebe!",
       "choiceTitle": "TIP: VÝBER",
-      "choiceMessage": "📚 Prechádzajte a hrajte!\n\nPreťahujte doľava alebo doprava pre preskúmanie rôznych puzzle.\n\nKaždé puzzle je zobrazené ako krycia krabica — kliknite alebo klepnite na jednu pre výber, alebo jednoducho stlačte tlačidlo ▶️ Hrať pre okamžité ponorenie!",
-      "shakeTitle": "PROTREPETE TO!",
-      "shakeMessage": "🧩 Dajte tomu poriadne protrepienie!\n\nPreťahujte puzzle krabicu okolo pre protrepienie — to zamieša kúsky tak, že môžete začať riešiť!",
-      "styleTitle": "↑ STYLIZUJTE TO! ↑",
-      "styleMessage": "🧩 Stylizujte svoj darček!\n\nVyberte text, font, farby, narodeninový tortu, obrus a pozadie.\n\nVšetky tieto možnosti na vás čakajú v rozbaľovacích zoznamoch hore na obrazovke."
+      "choiceMessage": "📚 Prechádzaj a hraj!\n\nPotiahni doľava alebo doprava na preskúmanie rôznych puzzle.\n\nKaždé puzzle je zobrazené ako obal krabice — klikni alebo klepni naň na výber, alebo stlač ▶️ HRAŤ pre okamžité ponorenie!",
+      "shakeTitle": "ZATRAS TÝM!",
+      "shakeMessage": "🧩 Poriadne tým zatras!\n\nPosúvaj krabicu sem a tam, aby si ju pretrepal — kúsky sa premiešajú a môžeš začať skladať!",
+      "styleTitle": "↑ DOLAĎ ŠTÝL ↑",
+      "styleMessage": "🧩 Vyštylizuj si svoj darček!\n\nVyber text, písmo, farby, narodeninovú tortu, obrus a pozadie.\n\nVšetky možnosti nájdeš v rozbaľovacích zoznamoch hore na obrazovke."
     },
     "badWord": {
-      "title": "BUĎTE HODNÍ!",
-      "message": "Ups! Váš text darčeka obsahuje jazyk, ktorý nie je povolený.\nProsím vyberte láskavejšie slová, aby sa váš priateľ mohol tešiť z puzzle."
+      "title": "ZOSTAŇ SLUŠNÝ!",
+      "message": "Ups! Text darčeka obsahuje nevhodný jazyk.\nProsím, zvoľ láskavejšie slová, aby si tvoj priateľ mohol puzzle naplno užiť."
     },
-    "welcomeMessage": "🎉 Vitajte v puzzle hre!\n\nKliknite na kategóriu pre začiatok, alebo vytvorte personalizovaný puzzle darček!",
-    "hintClickCategory": "Kliknite na kategóriu pre hranie!",
-    "hintClickPlay": "Kliknite na HRAŤ pre spustenie puzzle!",
-    "hintDragPieces": "Pretiahnite puzzle kúsky pre ich presun!",
-    "hintRotatePieces": "Kliknite na puzzle kúsok pre jeho otočenie!",
-    "hintConnectPieces": "Spojte puzzle kúsky dokopy!",
-    "hintUseHints": "Použite nápovedy, ak potrebujete pomoc!",
-    "congratulations": "🎉 Gratulujeme! Vyriešili ste puzzle!",
-    "buyOffer": "💝 Chcete objednať skutočnú verziu tohto puzzle?",
-    "badWordWarning": "⚠️ Prosím nepoužívajte nevhodné slová vo vašom puzzle.",
+    "welcomeMessage": "🎉 Vitaj v puzzle hre!\n\nKlikni na kategóriu na začiatok alebo vytvor personalizovaný puzzle darček!",
+    "hintClickCategory": "Klikni na kategóriu a hraj!",
+    "hintClickPlay": "Klikni na HRAŤ a spusti puzzle!",
+    "hintDragPieces": "Potiahni kúsky puzzle na ich presun!",
+    "hintRotatePieces": "Klikni na dielik a otoč ho!",
+    "hintConnectPieces": "Spájaj dieliky dokopy!",
+    "hintUseHints": "Použi nápovedu, keď potrebuješ pomoc!",
+    "congratulations": "🎉 Gratulujem! Vyriešil si puzzle!",
+    "buyOffer": "💝 Chceš objednať skutočnú verziu tohto puzzle?",
+    "badWordWarning": "⚠️ Prosím, nepoužívaj nevhodné slová vo svojom puzzle.",
     "congrats": {
       "title": "PUZZLE VYRIEŠENÉ!",
-      "message": "🎉 Gratulujeme!\n\nVyriešili ste puzzle za {time}.\nSkvelá práca pri skladaní všetkých kúskov dokopy!",
-      "buyTitle": "VZIŤ SI TO DOMOV?",
-      "buyMessage": "🧩 Páči sa vám to puzzle?\n\nAk by ste ho chceli vlastniť v skutočnom živote, môžete si objednať vysoko kvalitnú fyzickú verziu — perfektnú pre váš konferenčný stôl alebo ako darček.\n\nTeraz k dispozícii na Amazone!"
+      "message": "🎉 Gratulujem!\n\nVyriešil si puzzle za {time}.\nSkvelá práca — poskladal si všetky kúsky!",
+      "buyTitle": "CHCEŠ HO DOMOV?",
+      "buyMessage": "🧩 Páči sa ti toto puzzle?\n\nAk ho chceš mať aj v skutočnosti, môžeš si objednať vysokokvalitnú fyzickú verziu — perfektnú na konferenčný stolík alebo ako darček.\n\nTeraz dostupné na Amazone!"
     }
   },
   "ui": {
@@ -42,22 +42,22 @@
       "continue": "Pokračovať",
       "gotIt": "Rozumiem",
       "notNow": "Teraz nie",
-      "yesIDid": "Áno, urobil som",
+      "yesIDid": "Áno, hotovo",
       "getItOnAmazon": "Získať na Amazone",
       "back": "SPÄŤ",
       "next": "ĎALEJ",
-      "previous": "PREDCHOZÍ",
+      "previous": "PREDOŠLÝ",
       "menu": "Hlavné menu",
       "play": "HRAŤ!",
-      "morePuzzles": "VIAC PUZZLE"
+      "morePuzzles": "ĎALŠIE PUZZLE"
     },
     "labels": {
       "friendsName": "Meno priateľa",
       "comingAge": "Vek",
-      "wishLanguage": "Jazyk priania",
-      "puzzlePieces": "Puzzle kúsky",
+      "wishLanguage": "Jazyk želania",
+      "puzzlePieces": "Kúsky puzzle",
       "category": "Kategória",
-      "piecesFormat": "{xCount} x {zCount} = {count} kúskov"
+      "piecesFormat": "{xCount} × {zCount} = {count} kúskov"
     },
     "placeholders": {
       "friendsName": "napr. Alex",
@@ -65,9 +65,9 @@
     }
   },
   "gift": {
-    "introText": "🎁 Vytvorte personalizovaný puzzle darček!\n\nNahrajte obrázok a premeňte ho na jedinečné puzzle.",
+    "introText": "🎁 Vytvor si personalizovaný puzzle darček!\n\nNahraj obrázok a premeň ho na jedinečné puzzle.",
     "imageUploadLabel": "Nahrať obrázok",
-    "imageUploadPlaceholder": "Kliknite sem alebo pretiahnite obrázok",
+    "imageUploadPlaceholder": "Klikni sem alebo pretiahni obrázok",
     "orientationLabel": "Orientácia obrázka",
     "sizeLabel": "Veľkosť puzzle",
     "piecesLabel": "Počet kúskov",
@@ -75,25 +75,25 @@
     "createLabel": "Vytvoriť puzzle",
     "giftOverview": {
       "title": "PREHĽAD DARČKU",
-      "message": "🌟 Zvedaví? Môžete si to vyskúšať sami. 📦 Chcete to urobiť ešte špeciálnejšie? Objednajte si skutočnú verziu ako pamiatku.",
+      "message": "🌟 Si zvedavý? Môžeš si ho vyskúšať aj sám. 📦 Chceš to urobiť ešte výnimočnejšie? Objednaj si skutočnú verziu ako pamiatku.",
       "orientationMessage": "Orientácia obrázka:",
-      "sizeInstruction": "🧩 **Váš puzzle obrázok sa sťahuje!**\n\n📏 **Veľkosť:** {size}\n🔢 **Kúsky:** {pieces}\n\n💡 **Tip:** Pre najlepšie výsledky používajte obrázky s vysokým rozlíšením (aspoň 1000x1000 pixelov)."
+      "sizeInstruction": "🧩 **Tvoj obrázok puzzle sa sťahuje!**\n\n📏 **Veľkosť:** {size}\n🔢 **Kúsky:** {pieces}\n\n💡 **Tip:** Pre najlepšie výsledky používaj obrázky s vysokým rozlíšením (aspoň 1000×1000 px)."
     },
-    "tryFirstLabel": "Najprv si darček vyskúšajte pred odoslaním:",
-    "turnIntoRealLabel": "Premenite puzzle na skutočné prekvapenie:",
-    "piecesCountLabel": "Počet puzzle kúskov",
-    "amazonInstruction": "2. Klepnite na **\"Získať na Amazone\"** pre otvorenie stránky produktu."
+    "tryFirstLabel": "Najprv si darček vyskúšaj:",
+    "turnIntoRealLabel": "Premeň puzzle na skutočné prekvapenie:",
+    "piecesCountLabel": "Počet kúskov puzzle",
+    "amazonInstruction": "2. Klepni na **„Získať na Amazone“** na otvorenie stránky produktu."
   },
   "navigation": {
-    "emailUpdateQuestion": "Chcete pridať ďalší email pre aktualizácie?",
-    "emailUpdateQuestionAlt": "Chcete aktualizácie puzzle? Pridajte svoj email:",
-    "resumeSolvingLabel": "Pokračujte v riešení od tohto presného bodu:",
-    "playAgainQuestion": "Chcete hrať znovu? Reštart:",
-    "shuffleRestartLabel": "Zamiešajte kúsky a začnite znovu:",
-    "returnToGalleryLabel": "Vráťte sa do galérie puzzle:",
-    "congratsMessageCompleted": "🎉 Gratulujeme!\n\nDokončili ste toto puzzle.\n\nMôžete ho reštartovať, vrátiť sa do galérie, použiť tlačidlá PREDCHOZÍ a ĎALŠÍ nižšie pre prepínanie puzzle, alebo pridať ďalší email pre získanie aktualizácií.",
-    "congratsMessageFirstTime": "🎉 Gratulujeme!\n\nDokončili ste toto puzzle.\n\nMôžete ho reštartovať, vrátiť sa do galérie, použiť tlačidlá PREDCHOZÍ a ĎALŠÍ nižšie pre prepínanie puzzle, alebo pridať svoj email pre získanie aktualizácií, keď prídu nové puzzle.",
-    "puzzlePausedMessage": "Vaše puzzle je pozastavené.\n\nČo ďalej?\n\nMôžete pokračovať presne tam, kde ste skončili, reštartovať od začiatku, vrátiť sa do hlavného menu, alebo použiť tlačidlá PREDCHOZÍ a ĎALŠÍ nižšie pre prepínanie medzi puzzle.",
+    "emailUpdateQuestion": "Chceš pridať ďalší email na aktualizácie?",
+    "emailUpdateQuestionAlt": "Chceš novinky o puzzle? Pridaj svoj email:",
+    "resumeSolvingLabel": "Pokračuj v riešení presne od tohto bodu:",
+    "playAgainQuestion": "Chceš hrať znova? Reštart:",
+    "shuffleRestartLabel": "Zamiešaj kúsky a začni znova:",
+    "returnToGalleryLabel": "Vráť sa do galérie puzzle:",
+    "congratsMessageCompleted": "🎉 Gratulujem!\n\nDokončil si toto puzzle.\n\nMôžeš ho reštartovať, vrátiť sa do galérie, použiť tlačidlá PREDOŠLÝ a ĎALEJ dole na prepínanie puzzle alebo pridať ďalší email na získanie aktualizácií.",
+    "congratsMessageFirstTime": "🎉 Gratulujem!\n\nDokončil si toto puzzle.\n\nMôžeš ho reštartovať, vrátiť sa do galérie, použiť tlačidlá PREDOŠLÝ a ĎALEJ dole na prepínanie puzzle alebo pridať svoj email na získanie aktualizácií, keď pribudnú nové puzzle.",
+    "puzzlePausedMessage": "Tvoje puzzle je pozastavené.\n\nČo ďalej?\n\nMôžeš pokračovať presne tam, kde si skončil, reštartovať od začiatku, vrátiť sa do hlavného menu alebo použiť tlačidlá PREDOŠLÝ a ĎALEJ dole na prepínanie medzi puzzle.",
     "buttonAddEmail": "📧 Pridať email",
     "buttonAddAnother": "✏️ Pridať ďalší",
     "buttonContinue": "▶️ Pokračovať",
@@ -107,48 +107,48 @@
     "animals": "Zvieratá",
     "beach": "Pláž",
     "floral": "Kvetinové",
-    "makeAGift": "Urobiť Darček"
+    "makeAGift": "Vytvoriť darček"
   },
   "errors": {
     "sharingNotSupported": "Zdieľanie nie je v tomto prehliadači podporované.",
-    "copyFailed": "Kopírovanie zlyhalo. Skúste to prosím ručne."
+    "copyFailed": "Kopírovanie zlyhalo. Skús to prosím ručne."
   },
   "specialMode": {
-    "puzzleSolvedMessage": "🎉 Gratulujeme! Vyriešili ste puzzle za {time}. Skvelá práca!",
+    "puzzleSolvedMessage": "🎉 Gratulujem! Vyriešil si puzzle za {time}. Skvelá práca!",
     "gameMonetize": {
-      "welcomeMessage": "🎮 Vitajte v puzzle hre!\n\nKliknite na kategóriu pre začiatok!",
+      "welcomeMessage": "🎮 Vitaj v puzzle hre!\n\nKlikni na kategóriu a začni!",
       "adMessage": "🎯 Reklama sa načítava...",
-      "puzzleSolvedMessageCompleted": "🎉 Gratulujeme!\n\nDokončili ste toto puzzle.\n\nMôžete ho reštartovať, preskúmať viac puzzle, alebo pridať ďalší email pre aktualizácie.",
-      "puzzleSolvedMessageFirstTime": "🎉 Gratulujeme!\n\nDokončili ste toto puzzle.\n\nMôžete ho reštartovať, preskúmať viac puzzle, alebo pridať svoj email pre získanie aktualizácií, keď prídu nové puzzle.",
-      "puzzlePausedMessage": "Vaše puzzle je pozastavené.\n\nČo ďalej?\n\nMôžete pokračovať presne tam, kde ste skončili, reštartovať od začiatku, preskúmať viac puzzle, alebo pridať svoj email pre získanie aktualizácií, keď prídu nové puzzle."
+      "puzzleSolvedMessageCompleted": "🎉 Gratulujem!\n\nDokončil si toto puzzle.\n\nMôžeš ho reštartovať, preskúmať ďalšie puzzle alebo pridať ďalší email na aktualizácie.",
+      "puzzleSolvedMessageFirstTime": "🎉 Gratulujem!\n\nDokončil si toto puzzle.\n\nMôžeš ho reštartovať, preskúmať ďalšie puzzle alebo pridať svoj email na získanie aktualizácií, keď pribudnú nové puzzle.",
+      "puzzlePausedMessage": "Tvoje puzzle je pozastavené.\n\nČo ďalej?\n\nMôžeš pokračovať presne tam, kde si skončil, reštartovať od začiatku, preskúmať ďalšie puzzle alebo pridať svoj email na získanie aktualizácií, keď pribudnú nové puzzle."
     }
   },
   "cookies": {
     "accept": "Prijať všetko",
-    "reject": "Odmietnuť nepodstatné",
-    "bannerMessage": "Táto stránka používa cookies a miestne úložisko pre zlepšenie vášho zážitku a zapamätanie vášho pokroku v hre.",
+    "reject": "Odmietnuť nepovinné",
+    "bannerMessage": "Táto stránka používa cookies a lokálne úložisko na zlepšenie tvojho zážitku a zapamätanie postupu v hre.",
     "learnMore": "Zistiť viac",
-    "privacyPolicy": "Zásady Ochrany Osobných Údajov",
-    "termsOfService": "Obchodné Podmienky"
+    "privacyPolicy": "Zásady ochrany osobných údajov",
+    "termsOfService": "Obchodné podmienky"
   },
   "fullscreen": {
-    "requiredMessage": "Táto hra vyžaduje celú obrazovku. Klepnite nižšie pre pokračovanie.",
-    "enterButton": "Vstúpiť do Celé Obrazovky",
-    "exitButton": "Ukončiť Celú Obrazovku"
+    "requiredMessage": "Táto hra vyžaduje celú obrazovku. Klepni nižšie na pokračovanie.",
+    "enterButton": "Prejsť na celú obrazovku",
+    "exitButton": "Ukončiť celú obrazovku"
   },
   "legal": {
-    "backToGame": "← Späť k Swing Puzzles",
+    "backToGame": "← Späť na Swing Puzzles",
     "pageNotFound": "Stránka nenájdená",
     "pageNotFoundMessage": "Ospravedlňujeme sa, požadovaná stránka nebola nájdená."
   },
   "giftOverview": {
     "title": "PREHĽAD DARČKU",
-    "message": "🧩 **Puzzle Darček Vytvorený s Láskou!**\nVytvorili ste personalizované puzzle — teraz je čas zdieľať prekvapenie.\n🎁 Pošlite odkaz svojmu priateľovi a nechajte radosť začať.\n🌟 Zvedaví? Môžete si to vyskúšať sami.\n📦 Chcete to urobiť ešte špeciálnejšie? Objednajte si skutočnú verziu ako pamiatku.",
+    "message": "🧩 **Puzzle darček vytvorený s láskou!**\nVytvoril si personalizované puzzle — teraz je čas zdieľať prekvapenie.\n🎁 Pošli odkaz svojmu priateľovi a nech radosť začne.\n🌟 Si zvedavý? Môžeš si ho vyskúšať aj sám.\n📦 Chceš to urobiť ešte výnimočnejšie? Objednaj si skutočnú verziu ako pamiatku.",
     "orientationTitle": "ORIENTÁCIA PUZZLE",
-    "orientationMessage": "🧩 Pred objednaním vášho fyzického puzzle vyberte orientáciu obrázka.\n\nKeď klepnete na Ďalej, váš personalizovaný puzzle obrázok sa automaticky stiahne.\n\nPotom vás prevedieme na Amazon, kde ho môžete nahrať a dokončiť vašu objednávku darčeka.\n\nOrientácia obrázka:",
+    "orientationMessage": "🧩 Pred objednaním fyzického puzzle vyber orientáciu obrázka.\n\nPo klepnutí na Ďalej sa tvoj personalizovaný obrázok puzzle automaticky stiahne.\n\nPotom ťa presmerujeme na Amazon, kde ho nahráš a dokončíš objednávku darčeka.\n\nOrientácia obrázka:",
     "sizeTitle": "VEĽKOSŤ PUZZLE",
-    "sizeInstruction": "🧩 **Váš Puzzle Obrázok sa Sťahuje!**\nSte len jeden krok od premeny v skutočný darček.\n1. **Vyberte veľkosť puzzle** (počet kúskov) nižšie.\n2. Klepnite na **\"Získať na Amazone\"** pre otvorenie stránky produktu.\n3. Na Amazone:\n   • Klepnite na **Prispôsobiť teraz**\n   • Klepnite na **Nahrať** a vyberte obrázok, ktorý ste práve stiahli (začína \"PUZZLE-...\" a nájdete ho vo vašej zložke sťahovania)\n   • Klepnite na **Pridať do košíka**, potom **Ísť do košíka** a **Prejsť k pokladni**\nČoskoro budete mať svoje personalizované puzzle doručené! 🎁",
-    "orientationHorizontalLabel": "🖼️ Horizontálne (Na šírku) pre široké scény",
-    "orientationVerticalLabel": "📱 Vertikálne (Na výšku) pre vysoké rozloženie"
+    "sizeInstruction": "🧩 **Tvoj obrázok puzzle sa sťahuje!**\nSi len krok od skutočného darčeka.\n1. **Vyber veľkosť puzzle** (počet kúskov) dole.\n2. Klepni na **„Získať na Amazone“** na otvorenie stránky produktu.\n3. Na Amazone:\n   • Klepni na **Prispôsobiť teraz**\n   • Klepni na **Nahrať** a vyber obrázok, ktorý si práve stiahol (začína na „PUZZLE-…“ a nájdeš ho v priečinku sťahovania)\n   • Klepni na **Pridať do košíka**, potom **Ísť do košíka** a **Prejsť k pokladni**\nČoskoro budeš mať svoje personalizované puzzle doma! 🎁",
+    "orientationHorizontalLabel": "🖼️ Horizontálne (na šírku) – pre široké scény",
+    "orientationVerticalLabel": "📱 Vertikálne (na výšku) – pre vysoké rozloženie"
   }
 }
