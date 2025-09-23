@@ -1,0 +1,72 @@
+{
+  "tutorial": {
+    "welcomeMessage": "🎉 Benvenuto al gioco di puzzle!\n\nClicca su una categoria per iniziare, o crea un regalo puzzle personalizzato!",
+    "hintClickCategory": "Clicca su una categoria per giocare!",
+    "hintClickPlay": "Clicca su GIOCA per iniziare il puzzle!",
+    "hintDragPieces": "Trascina i pezzi del puzzle per spostarli!",
+    "hintRotatePieces": "Clicca su un pezzo del puzzle per ruotarlo!",
+    "hintConnectPieces": "Collega i pezzi del puzzle insieme!",
+    "hintUseHints": "Usa gli indizi se hai bisogno di aiuto!",
+    "congratulations": "🎉 Congratulazioni! Hai risolto il puzzle!",
+    "buyOffer": "💝 Vuoi ordinare una versione reale di questo puzzle?",
+    "badWordWarning": "⚠️ Per favore non usare parole inappropriate nel tuo puzzle."
+  },
+  "ui": {
+    "buttons": {
+      "play": "GIOCA!"
+    }
+  },
+  "gift": {
+    "introText": "🎁 Crea un regalo puzzle personalizzato!\n\nCarica un'immagine e trasformala in un puzzle unico.",
+    "imageUploadLabel": "Carica immagine",
+    "imageUploadPlaceholder": "Clicca qui o trascina un'immagine",
+    "orientationLabel": "Orientamento immagine",
+    "sizeLabel": "Dimensione puzzle",
+    "piecesLabel": "Numero di pezzi",
+    "previewLabel": "Anteprima",
+    "createLabel": "Crea puzzle",
+    "giftOverview": {
+      "title": "ANTEPRIMA REGALO",
+      "message": "🌟 Curioso? Puoi provarlo tu stesso. 📦 Vuoi renderlo ancora più speciale? Ordina una versione reale come ricordo.",
+      "orientationMessage": "Orientamento immagine:",
+      "sizeInstruction": "🧩 **La tua immagine del puzzle si sta scaricando!**\n\n📏 **Dimensione:** {size}\n🔢 **Pezzi:** {pieces}\n\n💡 **Suggerimento:** Per i migliori risultati, usa immagini ad alta risoluzione (almeno 1000x1000 pixel)."
+    },
+    "tryFirstLabel": "Prova prima il regalo prima di inviarlo:",
+    "turnIntoRealLabel": "Trasforma il puzzle in una vera sorpresa:",
+    "piecesCountLabel": "Numero di pezzi del puzzle",
+    "amazonInstruction": "2. Tocca **\"Acquistalo su Amazon\"** per aprire la pagina del prodotto."
+  },
+  "navigation": {
+    "emailUpdateQuestion": "Vuoi aggiungere un'altra email per gli aggiornamenti?",
+    "emailUpdateQuestionAlt": "Vuoi aggiornamenti sui puzzle? Aggiungi la tua email:",
+    "resumeSolvingLabel": "Riprendi la risoluzione da questo punto esatto:",
+    "playAgainQuestion": "Vuoi giocare di nuovo? Riavvia:",
+    "shuffleRestartLabel": "Mescola i pezzi e ricomincia:",
+    "returnToGalleryLabel": "Torna alla galleria dei puzzle:",
+    "congratsMessageCompleted": "🎉 Congratulazioni!\n\nHai completato questo puzzle.\n\nPuoi riavviarlo, tornare alla galleria, usare i pulsanti PRECEDENTE e SUCCESSIVO qui sotto per cambiare puzzle, o aggiungere un'altra email per ricevere aggiornamenti.",
+    "congratsMessageFirstTime": "🎉 Congratulazioni!\n\nHai completato questo puzzle.\n\nPuoi riavviarlo, tornare alla galleria, usare i pulsanti PRECEDENTE e SUCCESSIVO qui sotto per cambiare puzzle, o aggiungere la tua email per ricevere aggiornamenti quando arrivano nuovi puzzle.",
+    "buttonAddEmail": "📧 Aggiungi email",
+    "buttonAddAnother": "✏️ Aggiungi un altro",
+    "buttonContinue": "▶️ Continua",
+    "buttonRestart": "🔄 Riavvia",
+    "buttonMainMenu": "🏠 Menu principale",
+    "titlePuzzleSolved": "PUZZLE RISOLTO!",
+    "titleGamePaused": "GIOCO IN PAUSA"
+  },
+  "categories": {
+    "general": "Generale",
+    "animals": "Animali",
+    "beach": "Spiaggia",
+    "floral": "Floreale"
+  },
+  "errors": {
+    "sharingNotSupported": "La condivisione non è supportata in questo browser.",
+    "copyFailed": "Copia fallita. Per favore prova manualmente."
+  },
+  "specialMode": {
+    "gameMonetize": {
+      "welcomeMessage": "🎮 Benvenuto al gioco di puzzle!\n\nClicca su una categoria per iniziare!",
+      "adMessage": "🎯 Pubblicità in caricamento..."
+    }
+  }
+}

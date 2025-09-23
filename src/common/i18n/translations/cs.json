@@ -1,0 +1,72 @@
+{
+  "tutorial": {
+    "welcomeMessage": "🎉 Vítejte v puzzle hře!\n\nKlikněte na kategorii pro začátek, nebo vytvořte personalizovaný puzzle dárek!",
+    "hintClickCategory": "Klikněte na kategorii pro hraní!",
+    "hintClickPlay": "Klikněte na HRÁT pro spuštění puzzle!",
+    "hintDragPieces": "Přetáhněte puzzle kousky pro jejich přesun!",
+    "hintRotatePieces": "Klikněte na puzzle kousek pro jeho otočení!",
+    "hintConnectPieces": "Spojte puzzle kousky dohromady!",
+    "hintUseHints": "Použijte nápovědy, pokud potřebujete pomoc!",
+    "congratulations": "🎉 Gratulujeme! Vyřešili jste puzzle!",
+    "buyOffer": "💝 Chcete objednat skutečnou verzi tohoto puzzle?",
+    "badWordWarning": "⚠️ Prosím nepoužívejte nevhodná slova ve vašem puzzle."
+  },
+  "ui": {
+    "buttons": {
+      "play": "HRÁT!"
+    }
+  },
+  "gift": {
+    "introText": "🎁 Vytvořte personalizovaný puzzle dárek!\n\nNahrajte obrázek a přeměňte ho na jedinečné puzzle.",
+    "imageUploadLabel": "Nahrát obrázek",
+    "imageUploadPlaceholder": "Klikněte zde nebo přetáhněte obrázek",
+    "orientationLabel": "Orientace obrázku",
+    "sizeLabel": "Velikost puzzle",
+    "piecesLabel": "Počet kousků",
+    "previewLabel": "Náhled",
+    "createLabel": "Vytvořit puzzle",
+    "giftOverview": {
+      "title": "PŘEHLED DÁRKU",
+      "message": "🌟 Zvědaví? Můžete si to vyzkoušet sami. 📦 Chcete to udělat ještě speciálnější? Objednejte si skutečnou verzi jako památku.",
+      "orientationMessage": "Orientace obrázku:",
+      "sizeInstruction": "🧩 **Váš puzzle obrázek se stahuje!**\n\n📏 **Velikost:** {size}\n🔢 **Kousky:** {pieces}\n\n💡 **Tip:** Pro nejlepší výsledky používejte obrázky s vysokým rozlišením (alespoň 1000x1000 pixelů)."
+    },
+    "tryFirstLabel": "Nejdříve si dárek vyzkoušejte před odesláním:",
+    "turnIntoRealLabel": "Proměňte puzzle ve skutečné překvapení:",
+    "piecesCountLabel": "Počet puzzle kousků",
+    "amazonInstruction": "2. Klepněte na **\"Získat na Amazonu\"** pro otevření stránky produktu."
+  },
+  "navigation": {
+    "emailUpdateQuestion": "Chcete přidat další email pro aktualizace?",
+    "emailUpdateQuestionAlt": "Chcete aktualizace puzzle? Přidejte svůj email:",
+    "resumeSolvingLabel": "Pokračujte v řešení od tohoto přesného bodu:",
+    "playAgainQuestion": "Chcete hrát znovu? Restart:",
+    "shuffleRestartLabel": "Zamíchejte kousky a začněte znovu:",
+    "returnToGalleryLabel": "Vraťte se do galerie puzzle:",
+    "congratsMessageCompleted": "🎉 Gratulujeme!\n\nDokončili jste toto puzzle.\n\nMůžete ho restartovat, vrátit se do galerie, použít tlačítka PŘEDCHOZÍ a DALŠÍ níže pro přepínání puzzle, nebo přidat další email pro získání aktualizací.",
+    "congratsMessageFirstTime": "🎉 Gratulujeme!\n\nDokončili jste toto puzzle.\n\nMůžete ho restartovat, vrátit se do galerie, použít tlačítka PŘEDCHOZÍ a DALŠÍ níže pro přepínání puzzle, nebo přidat svůj email pro získání aktualizací, když přijdou nové puzzle.",
+    "buttonAddEmail": "📧 Přidat email",
+    "buttonAddAnother": "✏️ Přidat další",
+    "buttonContinue": "▶️ Pokračovat",
+    "buttonRestart": "🔄 Restart",
+    "buttonMainMenu": "🏠 Hlavní menu",
+    "titlePuzzleSolved": "PUZZLE VYŘEŠENO!",
+    "titleGamePaused": "HRA POZASTAVENA"
+  },
+  "categories": {
+    "general": "Obecné",
+    "animals": "Zvířata",
+    "beach": "Pláž",
+    "floral": "Květinové"
+  },
+  "errors": {
+    "sharingNotSupported": "Sdílení není v tomto prohlížeči podporováno.",
+    "copyFailed": "Kopírování selhalo. Zkuste to prosím ručně."
+  },
+  "specialMode": {
+    "gameMonetize": {
+      "welcomeMessage": "🎮 Vítejte v puzzle hře!\n\nKlikněte na kategorii pro začátek!",
+      "adMessage": "🎯 Reklama se načítá..."
+    }
+  }
+}

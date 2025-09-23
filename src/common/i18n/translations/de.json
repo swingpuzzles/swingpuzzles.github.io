@@ -1,0 +1,72 @@
+{
+  "tutorial": {
+    "welcomeMessage": "🎉 Willkommen beim Puzzle-Spiel!\n\nKlicke auf eine Kategorie, um zu beginnen, oder erstelle ein personalisiertes Puzzle-Geschenk!",
+    "hintClickCategory": "Klicke auf eine Kategorie, um zu spielen!",
+    "hintClickPlay": "Klicke auf SPIELEN, um das Puzzle zu starten!",
+    "hintDragPieces": "Ziehe die Puzzleteile, um sie zu bewegen!",
+    "hintRotatePieces": "Klicke auf ein Puzzleteil, um es zu drehen!",
+    "hintConnectPieces": "Verbinde die Puzzleteile miteinander!",
+    "hintUseHints": "Verwende Hinweise, wenn du Hilfe brauchst!",
+    "congratulations": "🎉 Herzlichen Glückwunsch! Du hast das Puzzle gelöst!",
+    "buyOffer": "💝 Möchtest du eine echte Version dieses Puzzles bestellen?",
+    "badWordWarning": "⚠️ Bitte verwende keine unangemessenen Wörter in deinem Puzzle."
+  },
+  "ui": {
+    "buttons": {
+      "play": "SPIELEN!"
+    }
+  },
+  "gift": {
+    "introText": "🎁 Erstelle ein personalisiertes Puzzle-Geschenk!\n\nLade ein Bild hoch und verwandle es in ein einzigartiges Puzzle.",
+    "imageUploadLabel": "Bild hochladen",
+    "imageUploadPlaceholder": "Klicke hier oder ziehe ein Bild herein",
+    "orientationLabel": "Bildausrichtung",
+    "sizeLabel": "Puzzlegröße",
+    "piecesLabel": "Anzahl der Teile",
+    "previewLabel": "Vorschau",
+    "createLabel": "Puzzle erstellen",
+    "giftOverview": {
+      "title": "GESCHENK ÜBERSICHT",
+      "message": "🌟 Neugierig? Du kannst es selbst ausprobieren. 📦 Möchtest du es noch besonderer machen? Bestelle eine echte Version als Andenken.",
+      "orientationMessage": "Bildausrichtung:",
+      "sizeInstruction": "🧩 **Dein Puzzle-Bild wird heruntergeladen!**\n\n📏 **Größe:** {size}\n🔢 **Teile:** {pieces}\n\n💡 **Tipp:** Für beste Ergebnisse verwende Bilder mit hoher Auflösung (mindestens 1000x1000 Pixel)."
+    },
+    "tryFirstLabel": "Probiere das Geschenk zuerst aus, bevor du es sendest:",
+    "turnIntoRealLabel": "Verwandle das Puzzle in eine echte Überraschung:",
+    "piecesCountLabel": "Anzahl der Puzzleteile",
+    "amazonInstruction": "2. Tippe auf **\"Bei Amazon bestellen\"**, um die Produktseite zu öffnen."
+  },
+  "navigation": {
+    "emailUpdateQuestion": "Möchtest du eine weitere E-Mail für Updates hinzufügen?",
+    "emailUpdateQuestionAlt": "Möchtest du Puzzle-Updates? Füge deine E-Mail hinzu:",
+    "resumeSolvingLabel": "Setze das Lösen von diesem genauen Punkt fort:",
+    "playAgainQuestion": "Möchtest du nochmal spielen? Neu starten:",
+    "shuffleRestartLabel": "Mische die Teile und starte von vorne:",
+    "returnToGalleryLabel": "Zurück zur Puzzle-Galerie:",
+    "congratsMessageCompleted": "🎉 Herzlichen Glückwunsch!\n\nDu hast dieses Puzzle gelöst.\n\nDu kannst es neu starten, zur Galerie zurückkehren, die VORHERIGE und NÄCHSTE Buttons unten verwenden, um zwischen Puzzles zu wechseln, oder eine weitere E-Mail für Updates hinzufügen.",
+    "congratsMessageFirstTime": "🎉 Herzlichen Glückwunsch!\n\nDu hast dieses Puzzle gelöst.\n\nDu kannst es neu starten, zur Galerie zurückkehren, die VORHERIGE und NÄCHSTE Buttons unten verwenden, um zwischen Puzzles zu wechseln, oder deine E-Mail hinzufügen, um Updates zu erhalten, wenn neue Puzzles ankommen.",
+    "buttonAddEmail": "📧 E-Mail hinzufügen",
+    "buttonAddAnother": "✏️ Weitere hinzufügen",
+    "buttonContinue": "▶️ Fortsetzen",
+    "buttonRestart": "🔄 Neu starten",
+    "buttonMainMenu": "🏠 Hauptmenü",
+    "titlePuzzleSolved": "PUZZLE GELÖST!",
+    "titleGamePaused": "SPIEL PAUSIERT"
+  },
+  "categories": {
+    "general": "Allgemein",
+    "animals": "Tiere",
+    "beach": "Strand",
+    "floral": "Blumen"
+  },
+  "errors": {
+    "sharingNotSupported": "Teilen wird in diesem Browser nicht unterstützt.",
+    "copyFailed": "Kopieren fehlgeschlagen. Bitte versuche es manuell."
+  },
+  "specialMode": {
+    "gameMonetize": {
+      "welcomeMessage": "🎮 Willkommen zum Puzzle-Spiel!\n\nKlicke auf eine Kategorie, um zu beginnen!",
+      "adMessage": "🎯 Werbung wird geladen..."
+    }
+  }
+}

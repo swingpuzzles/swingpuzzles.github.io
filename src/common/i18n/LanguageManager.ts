@@ -25,6 +25,7 @@ export const LanguageNames: Record<SupportedLanguage, string> = {
 class LanguageManager {
     private _currentLanguage: SupportedLanguage = SupportedLanguages.EN;
     private _fallbackLanguage: SupportedLanguage = SupportedLanguages.EN;
+    private _languageChangeObservers: ((newLanguage: SupportedLanguage) => void)[] = [];
 
     constructor() {
         this.initializeLanguage();
@@ -63,9 +64,12 @@ class LanguageManager {
     }
 
     public setLanguage(language: SupportedLanguage): void {
-        if (Object.values(SupportedLanguages).includes(language)) {
+        if (Object.values(SupportedLanguages).includes(language) && language !== this._currentLanguage) {
             this._currentLanguage = language;
             localStorageManager.set('language', language);
+            
+            // Notify all observers about the language change
+            this._languageChangeObservers.forEach(observer => observer(language));
         }
     }
 
@@ -83,6 +87,17 @@ class LanguageManager {
 
     public getLanguageFlagSmallUrl(language: SupportedLanguage): string {
         return `assets/flags/${language}-small.webp`;
+    }
+
+    public addLanguageChangeObserver(observer: (newLanguage: SupportedLanguage) => void): void {
+        this._languageChangeObservers.push(observer);
+    }
+
+    public removeLanguageChangeObserver(observer: (newLanguage: SupportedLanguage) => void): void {
+        const index = this._languageChangeObservers.indexOf(observer);
+        if (index > -1) {
+            this._languageChangeObservers.splice(index, 1);
+        }
     }
 }
 

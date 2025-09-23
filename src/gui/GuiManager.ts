@@ -17,7 +17,7 @@ import analyticsManager from "../common/AnalyticsManager";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { ISpecialMode } from "../common/special-mode/ISpecialMode";
 import { GuiHelpers } from "./GuiHelpers";
-import { i18nManager, TranslationKeys } from "../common/i18n";
+import { i18nManager, TranslationKeys, languageManager } from "../common/i18n";
 import LanguageDropdownBuilder from "./dropdowns/LanguageDropdownBuilder";
 
 class GuiManager {
@@ -56,6 +56,11 @@ class GuiManager {
         await puzzleUrlHelper.handleUrlData();
 
         this._createButtons();
+        
+        // Listen for language changes to refresh UI
+        languageManager.addLanguageChangeObserver(() => {
+            this.refreshTranslatedText();
+        });
     }
 
     private _createButtons() {
@@ -243,6 +248,16 @@ class GuiManager {
 
     public enterSpecialMode(specialMode: ISpecialMode): void {
         this.categoryDropdown.disable();
+    }
+
+    private refreshTranslatedText() {
+        // Refresh the play button text
+        if (this.playButton && this.playButton.textBlock) {
+            this.playButton.textBlock.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.PLAY);
+        }
+        
+        // Note: Other UI components that display translated text will need to be refreshed
+        // when they are created or shown. This is a basic implementation that can be extended.
     }
 }
 

@@ -4,6 +4,11 @@ import { TranslationKey } from "./TranslationKeys";
 // Import translation files
 import enTranslations from "./translations/en.json";
 import esTranslations from "./translations/es.json";
+import deTranslations from "./translations/de.json";
+import frTranslations from "./translations/fr.json";
+import itTranslations from "./translations/it.json";
+import csTranslations from "./translations/cs.json";
+import skTranslations from "./translations/sk.json";
 
 type TranslationData = Record<string, any>;
 
@@ -19,13 +24,11 @@ class I18nManager {
         // Load all translation files
         this._translations.set("en", enTranslations);
         this._translations.set("es", esTranslations);
-        
-        // TODO: Add more language files as they become available
-        // this._translations.set("de", deTranslations);
-        // this._translations.set("fr", frTranslations);
-        // this._translations.set("it", itTranslations);
-        // this._translations.set("cs", csTranslations);
-        // this._translations.set("sk", skTranslations);
+        this._translations.set("de", deTranslations);
+        this._translations.set("fr", frTranslations);
+        this._translations.set("it", itTranslations);
+        this._translations.set("cs", csTranslations);
+        this._translations.set("sk", skTranslations);
     }
 
     /**

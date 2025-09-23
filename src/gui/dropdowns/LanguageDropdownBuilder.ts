@@ -19,11 +19,8 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }
         });
 
-        const urlData = puzzleUrlHelper.readFromUrl();
-
-        if (urlData.category) {
-            localStorageManager.set(this.storageItemName, urlData.category);
-        }
+        // Language is automatically loaded from URL via getLocalStorageItemsFromUrl in PuzzleUrlHelper
+        // No need to manually handle it here
 
         const languageEntries = Object.entries(LanguageNames);
         for (let i = 0; i < languageEntries.length; i++) {

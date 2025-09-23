@@ -1,0 +1,72 @@
+{
+  "tutorial": {
+    "welcomeMessage": "🎉 Bienvenue au jeu de puzzle !\n\nCliquez sur une catégorie pour commencer, ou créez un cadeau puzzle personnalisé !",
+    "hintClickCategory": "Cliquez sur une catégorie pour jouer !",
+    "hintClickPlay": "Cliquez sur JOUER pour démarrer le puzzle !",
+    "hintDragPieces": "Glissez les pièces du puzzle pour les déplacer !",
+    "hintRotatePieces": "Cliquez sur une pièce du puzzle pour la faire tourner !",
+    "hintConnectPieces": "Connectez les pièces du puzzle ensemble !",
+    "hintUseHints": "Utilisez les indices si vous avez besoin d'aide !",
+    "congratulations": "🎉 Félicitations ! Vous avez résolu le puzzle !",
+    "buyOffer": "💝 Voulez-vous commander une vraie version de ce puzzle ?",
+    "badWordWarning": "⚠️ Veuillez ne pas utiliser de mots inappropriés dans votre puzzle."
+  },
+  "ui": {
+    "buttons": {
+      "play": "JOUER !"
+    }
+  },
+  "gift": {
+    "introText": "🎁 Créez un cadeau puzzle personnalisé !\n\nTéléchargez une image et transformez-la en un puzzle unique.",
+    "imageUploadLabel": "Télécharger une image",
+    "imageUploadPlaceholder": "Cliquez ici ou glissez une image",
+    "orientationLabel": "Orientation de l'image",
+    "sizeLabel": "Taille du puzzle",
+    "piecesLabel": "Nombre de pièces",
+    "previewLabel": "Aperçu",
+    "createLabel": "Créer le puzzle",
+    "giftOverview": {
+      "title": "APERÇU DU CADEAU",
+      "message": "🌟 Curieux ? Vous pouvez l'essayer vous-même. 📦 Voulez-vous le rendre encore plus spécial ? Commandez une vraie version comme souvenir.",
+      "orientationMessage": "Orientation de l'image :",
+      "sizeInstruction": "🧩 **Votre image de puzzle est en cours de téléchargement !**\n\n📏 **Taille :** {size}\n🔢 **Pièces :** {pieces}\n\n💡 **Astuce :** Pour de meilleurs résultats, utilisez des images haute résolution (au moins 1000x1000 pixels)."
+    },
+    "tryFirstLabel": "Essayez le cadeau d'abord avant de l'envoyer :",
+    "turnIntoRealLabel": "Transformez le puzzle en une vraie surprise :",
+    "piecesCountLabel": "Nombre de pièces du puzzle",
+    "amazonInstruction": "2. Appuyez sur **\"Obtenir sur Amazon\"** pour ouvrir la page produit."
+  },
+  "navigation": {
+    "emailUpdateQuestion": "Voulez-vous ajouter une autre adresse e-mail pour les mises à jour ?",
+    "emailUpdateQuestionAlt": "Voulez-vous des mises à jour de puzzle ? Ajoutez votre e-mail :",
+    "resumeSolvingLabel": "Reprendre la résolution à partir de ce point exact :",
+    "playAgainQuestion": "Voulez-vous rejouer ? Redémarrer :",
+    "shuffleRestartLabel": "Mélangez les pièces et recommencez :",
+    "returnToGalleryLabel": "Retourner à la galerie de puzzles :",
+    "congratsMessageCompleted": "🎉 Félicitations !\n\nVous avez terminé ce puzzle.\n\nVous pouvez le redémarrer, retourner à la galerie, utiliser les boutons PRÉCÉDENT et SUIVANT ci-dessous pour changer de puzzle, ou ajouter une autre adresse e-mail pour recevoir des mises à jour.",
+    "congratsMessageFirstTime": "🎉 Félicitations !\n\nVous avez terminé ce puzzle.\n\nVous pouvez le redémarrer, retourner à la galerie, utiliser les boutons PRÉCÉDENT et SUIVANT ci-dessous pour changer de puzzle, ou ajouter votre e-mail pour recevoir des mises à jour quand de nouveaux puzzles arrivent.",
+    "buttonAddEmail": "📧 Ajouter un e-mail",
+    "buttonAddAnother": "✏️ Ajouter un autre",
+    "buttonContinue": "▶️ Continuer",
+    "buttonRestart": "🔄 Redémarrer",
+    "buttonMainMenu": "🏠 Menu principal",
+    "titlePuzzleSolved": "PUZZLE RÉSOLU !",
+    "titleGamePaused": "JEU EN PAUSE"
+  },
+  "categories": {
+    "general": "Général",
+    "animals": "Animaux",
+    "beach": "Plage",
+    "floral": "Floral"
+  },
+  "errors": {
+    "sharingNotSupported": "Le partage n'est pas pris en charge dans ce navigateur.",
+    "copyFailed": "Échec de la copie. Veuillez essayer manuellement."
+  },
+  "specialMode": {
+    "gameMonetize": {
+      "welcomeMessage": "🎮 Bienvenue au jeu de puzzle !\n\nCliquez sur une catégorie pour commencer !",
+      "adMessage": "🎯 Publicité en cours de chargement..."
+    }
+  }
+}
