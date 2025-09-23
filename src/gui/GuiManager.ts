@@ -63,6 +63,7 @@ class GuiManager {
         // Refresh translation maps after TranslationManager is initialized
         this.categoryDropdown.lang = languageManager.currentLanguage;
         this.languageDropdown.lang = languageManager.currentLanguage;
+        this.languageDropdownBuilder.refreshSelection();
         this.piecesCountDropdownBuilder.refreshPiecesText();
 
         await puzzleUrlHelper.handleUrlData();
@@ -274,6 +275,9 @@ class GuiManager {
         }
         if (this.languageDropdown) {
             this.languageDropdown.lang = languageManager.currentLanguage;
+        }
+        if (this.languageDropdownBuilder) {
+            this.languageDropdownBuilder.refreshSelection();
         }
         if (this.piecesCountDropdownBuilder) {
             this.piecesCountDropdownBuilder.refreshPiecesText();

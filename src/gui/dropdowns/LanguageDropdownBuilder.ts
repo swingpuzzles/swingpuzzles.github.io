@@ -70,4 +70,13 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
             //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?
         }
     }
+
+    public refreshSelection() {
+        const currentLanguage = languageManager.currentLanguage;
+        const languageName = LanguageNames[currentLanguage];
+        
+        if (languageName) {
+            this.dropdown.doSelectAction(languageName, `assets/flags/${currentLanguage}.webp`, null, false, false);
+        }
+    }
 }
