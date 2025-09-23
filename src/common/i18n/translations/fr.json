@@ -56,7 +56,8 @@
       "comingAge": "Âge",
       "wishLanguage": "Langue du souhait",
       "puzzlePieces": "Pièces de puzzle",
-      "category": "Catégorie"
+      "category": "Catégorie",
+      "piecesFormat": "{xCount} x {zCount} = {count} pièces"
     },
     "placeholders": {
       "friendsName": "ex. Alex",

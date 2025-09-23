@@ -50,7 +50,8 @@ export const TranslationKeys = {
             COMING_AGE: "ui.labels.comingAge", 
             WISH_LANGUAGE: "ui.labels.wishLanguage",
             PUZZLE_PIECES: "ui.labels.puzzlePieces",
-            CATEGORY: "ui.labels.category"
+            CATEGORY: "ui.labels.category",
+            PIECES_FORMAT: "ui.labels.piecesFormat"
         },
         PLACEHOLDERS: {
             FRIENDS_NAME: "ui.placeholders.friendsName",

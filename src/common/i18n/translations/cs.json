@@ -56,7 +56,8 @@
       "comingAge": "Věk",
       "wishLanguage": "Jazyk přání",
       "puzzlePieces": "Puzzle kousky",
-      "category": "Kategorie"
+      "category": "Kategorie",
+      "piecesFormat": "{xCount} x {zCount} = {count} kousků"
     },
     "placeholders": {
       "friendsName": "např. Alex",

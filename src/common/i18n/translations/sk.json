@@ -56,7 +56,8 @@
       "comingAge": "Vek",
       "wishLanguage": "Jazyk priania",
       "puzzlePieces": "Puzzle kúsky",
-      "category": "Kategória"
+      "category": "Kategória",
+      "piecesFormat": "{xCount} x {zCount} = {count} kúskov"
     },
     "placeholders": {
       "friendsName": "napr. Alex",

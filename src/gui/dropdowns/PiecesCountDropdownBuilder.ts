@@ -4,6 +4,7 @@ import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
 import analyticsManager from "../../common/AnalyticsManager";
+import { i18nManager, TranslationKeys } from "../../common/i18n";
 
 export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
@@ -51,7 +52,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         }
 
         const count = xCount * zCount;
-        const text = `${xCount} x ${zCount} = ${count} pieces`;
+        const text = i18nManager.translate(TranslationKeys.UI.LABELS.PIECES_FORMAT, { xCount, zCount, count });
         this.addOption(text);
 
         if (!localStorageManager.getString(this.storageItemName) || isNaN(Number(localStorageManager.getString(this.storageItemName)))) {
