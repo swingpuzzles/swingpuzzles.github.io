@@ -72,6 +72,7 @@
     "returnToGalleryLabel": "Return to the puzzle gallery:",
     "congratsMessageCompleted": "🎉 Congratulations!\n\nYou've completed this puzzle.\n\nYou can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add another email to get updates.",
     "congratsMessageFirstTime": "🎉 Congratulations!\n\nYou've completed this puzzle.\n\nYou can restart it, return to the gallery, use the PREV and NEXT buttons below to switch puzzles, or add your email to get updates when new puzzles arrive.",
+    "puzzlePausedMessage": "Your puzzle is on hold.\n\nWhat's next?\n\nYou can continue right where you left off, restart from the beginning, return to the main menu, or use the PREV and NEXT buttons below to switch puzzles.",
     "buttonAddEmail": "📧 Add email",
     "buttonAddAnother": "✏️ Add another",
     "buttonContinue": "▶️ Continue",

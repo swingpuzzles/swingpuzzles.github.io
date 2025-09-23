@@ -13,7 +13,7 @@ import { i18nManager, TranslationKeys } from "../common/i18n";
 class TutorialManager {
     private _puzzleChooserHintShown: boolean = false;
 
-    init() {console.log("TutorialManager.init");
+    init() {
         const hasSeenWelcome = specialModeManager.welcomeSeen(localStorageManager.getBoolean(CommonStorageKeys.WelcomeSeen));
 
         let popup = popupHint;

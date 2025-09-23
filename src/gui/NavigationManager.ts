@@ -71,11 +71,7 @@ class NavigationManager {
                 }
             });
 
-            message = `Your puzzle is on hold.
-            
-What’s next?
-
-You can continue right where you left off, restart from the beginning, return to the main menu, or use the PREV and NEXT buttons below to switch puzzles.`;
+            message = i18nManager.translate(TranslationKeys.NAVIGATION.PUZZLE_PAUSED_MESSAGE);
         }
 
         formModel.push(

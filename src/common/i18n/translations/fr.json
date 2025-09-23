@@ -93,6 +93,7 @@
     "returnToGalleryLabel": "Retourner à la galerie de puzzles :",
     "congratsMessageCompleted": "🎉 Félicitations !\n\nVous avez terminé ce puzzle.\n\nVous pouvez le redémarrer, retourner à la galerie, utiliser les boutons PRÉCÉDENT et SUIVANT ci-dessous pour changer de puzzle, ou ajouter une autre adresse e-mail pour recevoir des mises à jour.",
     "congratsMessageFirstTime": "🎉 Félicitations !\n\nVous avez terminé ce puzzle.\n\nVous pouvez le redémarrer, retourner à la galerie, utiliser les boutons PRÉCÉDENT et SUIVANT ci-dessous pour changer de puzzle, ou ajouter votre e-mail pour recevoir des mises à jour quand de nouveaux puzzles arrivent.",
+    "puzzlePausedMessage": "Votre puzzle est en pause.\n\nQue faire ensuite ?\n\nVous pouvez continuer exactement où vous vous êtes arrêté, redémarrer depuis le début, retourner au menu principal, ou utiliser les boutons PRÉCÉDENT et SUIVANT ci-dessous pour changer de puzzle.",
     "buttonAddEmail": "📧 Ajouter un e-mail",
     "buttonAddAnother": "✏️ Ajouter un autre",
     "buttonContinue": "▶️ Continuer",
