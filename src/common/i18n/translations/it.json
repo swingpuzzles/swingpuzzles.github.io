@@ -65,6 +65,9 @@
     }
   },
   "gift": {
+    "title": "↓↑ CREAZIONE REGALI ↖↙",
+    "introMessage": "Crea un regalo unico per qualcuno di speciale.\nIn alto, scegli le dimensioni del puzzle per abbinare la tua difficoltà preferita.\nPoi, compila i dettagli qui sotto per personalizzare il tuo puzzle personalizzato — inserisci il nome del tuo amico, l'età che sta compiendo, e la lingua del tuo desiderio.",
+    "copyLinkLabel": "Copia il link o condividi direttamente:",
     "introText": "🎁 Crea un regalo puzzle personalizzato!\n\nCarica un'immagine e trasformala in un puzzle unico.",
     "imageUploadLabel": "Carica immagine",
     "imageUploadPlaceholder": "Clicca qui o trascina un'immagine",
@@ -80,9 +83,16 @@
       "sizeInstruction": "🧩 **La tua immagine del puzzle si sta scaricando!**\n\n📏 **Dimensione:** {size}\n🔢 **Pezzi:** {pieces}\n\n💡 **Suggerimento:** Per i migliori risultati, usa immagini ad alta risoluzione (almeno 1000x1000 pixel)."
     },
     "tryFirstLabel": "Prova prima il regalo prima di inviarlo:",
+    "tryNowButton": "🎮 Prova Ora!",
     "turnIntoRealLabel": "Trasforma il puzzle in una vera sorpresa:",
+    "orderPhysicalButton": "🛍️ Ordina Puzzle Fisico",
     "piecesCountLabel": "Numero di pezzi del puzzle",
-    "amazonInstruction": "2. Tocca **\"Acquistalo su Amazon\"** per aprire la pagina del prodotto."
+    "amazonInstruction": "2. Tocca **\"Acquistalo su Amazon\"** per aprire la pagina del prodotto.",
+    "copyLinkButton": "🔗 Copia Link",
+    "shareLinkButton": "📤 Condividi Link",
+    "copiedSuccess": "✅ Copiato!",
+    "puzzleGiftTitle": "🎁 Regalo Puzzle",
+    "puzzleGiftText": "Ecco un puzzle che ho fatto per te!"
   },
   "navigation": {
     "emailUpdateQuestion": "Vuoi aggiungere un'altra email per gli aggiornamenti?",

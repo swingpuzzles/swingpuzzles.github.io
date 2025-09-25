@@ -59,9 +59,16 @@
     "introMessage": "Crea un regalo único para alguien especial.\nEn la parte superior, elige las dimensiones del puzzle para que coincidan con tu dificultad preferida.\nLuego, completa los detalles a continuación para personalizar tu puzzle personalizado — ingresa el nombre de tu amigo, la edad que cumple y el idioma de tu deseo.",
     "copyLinkLabel": "Copia el enlace o comparte directamente:",
     "tryFirstLabel": "Prueba el regalo primero antes de enviarlo:",
+    "tryNowButton": "🎮 ¡Prueba Ahora!",
     "turnIntoRealLabel": "Convierte el puzzle en una sorpresa real:",
+    "orderPhysicalButton": "🛍️ Pedir Puzzle Físico",
     "piecesCountLabel": "Cantidad de Piezas del Puzzle",
-    "amazonInstruction": "2. Toca **\"Conseguirlo en Amazon\"** para abrir la página del producto."
+    "amazonInstruction": "2. Toca **\"Conseguirlo en Amazon\"** para abrir la página del producto.",
+    "copyLinkButton": "🔗 Copiar Enlace",
+    "shareLinkButton": "📤 Compartir Enlace",
+    "copiedSuccess": "✅ ¡Copiado!",
+    "puzzleGiftTitle": "🎁 Regalo Puzzle",
+    "puzzleGiftText": "¡Aquí tienes un puzzle que hice para ti!"
   },
   "navigation": {
     "emailUpdateQuestion": "¿Quieres agregar otro email para actualizaciones?",

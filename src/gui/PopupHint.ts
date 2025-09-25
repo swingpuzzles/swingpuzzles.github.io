@@ -539,7 +539,7 @@ class PopupHint {
                         break;
                     case "number":
                         const maxLength = formRowModel.max ? Math.max(formRowModel.max.toString().length, input.placeholderText.length) : null;
-                        input.width = maxLength ? (Math.min(100, maxLength * 2.5) + "%") : "100%";
+                        input.width = maxLength ? (Math.min(100, maxLength * 3.5) + "%") : "100%";
                         input.onTextChangedObservable.add(() => {
                             input.text = input.text.replace(/\D/g, "");
                             const value = parseInt(input.text, 10);
@@ -572,7 +572,7 @@ class PopupHint {
 
                         horizPanel.addControl(input);
 
-                        const copyButton = Button.CreateSimpleButton("copyLinkButton", "🔗 Copy Link");
+                        const copyButton = Button.CreateSimpleButton("copyLinkButton", i18nManager.translate(TranslationKeys.GIFT.COPY_LINK_BUTTON));
                         copyButton.width = "200px";
                         copyButton.background = "#6c757d"; // 👈 a standout green (or choose your brand color)
                         copyButton.color = "#ffffff"; // 👈 white text for contrast
@@ -586,7 +586,7 @@ class PopupHint {
 
                         horizPanel.addControl(copyButton);
 
-                        const shareButton = Button.CreateSimpleButton("shareLinkButton", "📤 Share Link");
+                        const shareButton = Button.CreateSimpleButton("shareLinkButton", i18nManager.translate(TranslationKeys.GIFT.SHARE_LINK_BUTTON));
                         shareButton.height = "100%";
                         shareButton.background = "#007BFF"; // 👈 a standout green (or choose your brand color)
                         shareButton.color = "#ffffff"; // 👈 white text for contrast
@@ -599,8 +599,8 @@ class PopupHint {
                             if (navigator.share) {
                                 try {
                                     await navigator.share({
-                                        title: "🎁 Puzzle Gift",
-                                        text: "Here’s a puzzle I made for you!",
+                                        title: i18nManager.translate(TranslationKeys.GIFT.PUZZLE_GIFT_TITLE),
+                                        text: i18nManager.translate(TranslationKeys.GIFT.PUZZLE_GIFT_TEXT),
                                         url: formRowModel.link
                                     });
                                 } catch (err) {
@@ -615,8 +615,8 @@ class PopupHint {
 
                         function copyToClipboard() {
                             navigator.clipboard.writeText(giftLink).then(() => {
-                                const original = copyButton.textBlock?.text || "🔗 Copy Link";
-                                copyButton.textBlock!.text = "✅ Copied!";
+                                const original = copyButton.textBlock?.text || i18nManager.translate(TranslationKeys.GIFT.COPY_LINK_BUTTON);
+                                copyButton.textBlock!.text = i18nManager.translate(TranslationKeys.GIFT.COPIED_SUCCESS);
                                 setTimeout(() => {
                                     copyButton.textBlock!.text = original;
                                 }, 2000);
@@ -653,10 +653,9 @@ class PopupHint {
                         });*/
                     
                         // button
-                        const mode: "subscribe" | "update" = m.isUpdate ? "update" : "subscribe";
-                        const btnText = mode === "update"
-                            ? (m.buttonTextUpdate ?? "✏️ Add another")
-                            : (m.buttonTextSubscribe ?? "📧 Add email");
+                        const btnText = m.isUpdate
+                            ? (m.buttonTextUpdate ?? i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_ANOTHER))
+                            : (m.buttonTextSubscribe ?? i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_EMAIL));
                     
                         const submit = Button.CreateSimpleButton(`${m.id}_submit`, btnText);
                         //submit.width = "40%";
@@ -738,7 +737,7 @@ class PopupHint {
         this.textAreaRect.paddingBottomInPixels = minSize / 160;
         this.inputTextArea.fontSizeInPixels = ctx.engine.getRenderHeight()/*minSize*/ / 32;
 
-        this.inputTextArea.paddingBottomInPixels = minSize / 80;
+        this.inputTextArea.paddingBottomInPixels = minSize / 160;
         this.inputTextArea.paddingLeftInPixels = 3 * minSize / 160;
         this.inputTextArea.paddingRightInPixels = vertical? 0 : (3 * minSize / 160);
         this.inputTextArea.paddingTopInPixels = minSize / 80;
@@ -760,7 +759,7 @@ class PopupHint {
         this.gotItButton.textBlock!.fontSizeInPixels = fontSize;
 
         if (this.formPanelRect.isVisible) {
-            const middleTopPanelRatio = 0.99 - 0.16 * this.formPanel.children.length;
+            const middleTopPanelRatio = 1.06 - 0.16 * this.formPanel.children.length;
             const formPanelRatio = 1 - middleTopPanelRatio;
             const baseFormPanelheight = formPanelRatio * rawMiddleHeight;
 
@@ -775,13 +774,13 @@ class PopupHint {
             this.formPanelRect.cornerRadius = minSize / 40;
 
             this.formPanelRect.paddingLeftInPixels = minSize / 75;
-            this.formPanelRect.paddingTopInPixels = formPanelheightCoef / 75;
-            this.formPanelRect.paddingBottomInPixels = formPanelheightCoef / 75;
+            this.formPanelRect.paddingTopInPixels = formPanelheightCoef / 160;
+            this.formPanelRect.paddingBottomInPixels = formPanelheightCoef / 160;
 
             this.formPanel.paddingLeftInPixels = minSize / 80;
             this.formPanel.paddingRightInPixels = minSize / 80;
-            this.formPanel.paddingTopInPixels = formPanelheightCoef / 80;
-            this.formPanel.paddingBottomInPixels = formPanelheightCoef / 80;
+            this.formPanel.paddingTopInPixels = formPanelheightCoef / 160;
+            this.formPanel.paddingBottomInPixels = formPanelheightCoef / 160;
 
             const containerHeight = 39 / 40 * formPanelheightCoef / this.formPanel.children.length;
 
@@ -1001,7 +1000,7 @@ class PopupHint {
 
         const wrapLimitRatio = ctx.engine.getRenderWidth() > ctx.engine.getRenderHeight() ? 1 : ctx.engine.getRenderWidth() / ctx.engine.getRenderHeight();
 
-        this.typeTextLetterByLetter(fullText, 0, 55.8836 * wrapLimitRatio);
+        this.typeTextLetterByLetter(fullText, 0, 59 * wrapLimitRatio);
         this.mainContainer.isVisible = true;
 
         this.fadeIn();
@@ -1099,7 +1098,7 @@ class PopupHint {
 
     private typingSessionId = 0;
     
-    public typeTextLetterByLetter(fullText: string, delay = 0, wrapLimit = 55) {
+    public typeTextLetterByLetter(fullText: string, delay = 0, wrapLimit: number) {
         const target = this.inputTextArea;
         let index = 0;
     

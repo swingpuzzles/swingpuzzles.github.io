@@ -64,10 +64,17 @@ export const TranslationKeys = {
         TITLE: "gift.title",
         INTRO_MESSAGE: "gift.introMessage",
         COPY_LINK_LABEL: "gift.copyLinkLabel",
-        TRY_FIRST_LABEL: "gift.tryFirstLabel", 
+        TRY_FIRST_LABEL: "gift.tryFirstLabel",
+        TRY_NOW_BUTTON: "gift.tryNowButton",
         TURN_INTO_REAL_LABEL: "gift.turnIntoRealLabel",
+        ORDER_PHYSICAL_BUTTON: "gift.orderPhysicalButton",
         PIECES_COUNT_LABEL: "gift.piecesCountLabel",
-        AMAZON_INSTRUCTION: "gift.amazonInstruction"
+        AMAZON_INSTRUCTION: "gift.amazonInstruction",
+        COPY_LINK_BUTTON: "gift.copyLinkButton",
+        SHARE_LINK_BUTTON: "gift.shareLinkButton",
+        COPIED_SUCCESS: "gift.copiedSuccess",
+        PUZZLE_GIFT_TITLE: "gift.puzzleGiftTitle",
+        PUZZLE_GIFT_TEXT: "gift.puzzleGiftText"
     },
 
   // Navigation

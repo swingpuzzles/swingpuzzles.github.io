@@ -65,6 +65,9 @@
     }
   },
   "gift": {
+    "title": "↓↑ TVORBA DARČKOV ↖↙",
+    "introMessage": "Vytvor jedinečný darček pre niekoho špeciálneho.\nHore zvoľ rozmery puzzle podľa svojej obľúbenej obtiažnosti.\nPotom vyplň údaje nižšie, aby si prispôsobil svoje vlastné puzzle — zadaj meno svojho priateľa, vek, ktorý slávi, a jazyk svojho želania.",
+    "copyLinkLabel": "Skopíruj odkaz alebo zdieľaj priamo:",
     "introText": "🎁 Vytvor si personalizovaný puzzle darček!\n\nNahraj obrázok a premeň ho na jedinečné puzzle.",
     "imageUploadLabel": "Nahrať obrázok",
     "imageUploadPlaceholder": "Klikni sem alebo pretiahni obrázok",
@@ -80,14 +83,21 @@
       "sizeInstruction": "🧩 **Tvoj obrázok puzzle sa sťahuje!**\n\n📏 **Veľkosť:** {size}\n🔢 **Kúsky:** {pieces}\n\n💡 **Tip:** Pre najlepšie výsledky používaj obrázky s vysokým rozlíšením (aspoň 1000×1000 px)."
     },
     "tryFirstLabel": "Najprv si darček vyskúšaj:",
-    "turnIntoRealLabel": "Premeň puzzle na skutočné prekvapenie:",
+    "tryNowButton": "🎮 Vyskúšať Teraz!",
+    "turnIntoRealLabel": "Urob z puzzle skutočné prekvapenie:",
+    "orderPhysicalButton": "🛍️ Objednať Fyzické Puzzle",
     "piecesCountLabel": "Počet kúskov puzzle",
-    "amazonInstruction": "2. Klepni na **„Získať na Amazone“** na otvorenie stránky produktu."
+    "amazonInstruction": "2. Klepni na **„Získať na Amazone\"** na otvorenie stránky produktu.",
+    "copyLinkButton": "🔗 Skopírovať Odkaz",
+    "shareLinkButton": "📤 Zdieľať Odkaz",
+    "copiedSuccess": "✅ Skopírované!",
+    "puzzleGiftTitle": "🎁 Puzzle Darček",
+    "puzzleGiftText": "Tu je puzzle, ktoré som pre teba urobil!"
   },
   "navigation": {
-    "emailUpdateQuestion": "Chceš pridať ďalší email na aktualizácie?",
+    "emailUpdateQuestion": "Chceš pridať ďalší email?",
     "emailUpdateQuestionAlt": "Chceš novinky o puzzle? Pridaj svoj email:",
-    "resumeSolvingLabel": "Pokračuj v riešení presne od tohto bodu:",
+    "resumeSolvingLabel": "Pokračuj v riešení:",
     "playAgainQuestion": "Chceš hrať znova? Reštart:",
     "shuffleRestartLabel": "Zamiešaj kúsky a začni znova:",
     "returnToGalleryLabel": "Vráť sa do galérie puzzle:",

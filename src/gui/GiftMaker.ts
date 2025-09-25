@@ -283,7 +283,7 @@ class GiftMaker {
                 id: "tryIt",
                 label: i18nManager.translate(TranslationKeys.GIFT.TRY_FIRST_LABEL),
                 type: "button",
-                buttonText: "🎮 Try Now!",
+                buttonText: i18nManager.translate(TranslationKeys.GIFT.TRY_NOW_BUTTON),
                 background: "#17a2b8",
                 action: () => { gameModeManager.enterGiftTryMode(); }
             },
@@ -291,7 +291,7 @@ class GiftMaker {
                 id: "orderCustom",
                 label: i18nManager.translate(TranslationKeys.GIFT.TURN_INTO_REAL_LABEL),
                 type: "button",
-                buttonText: "🛍️ Order Physical Puzzle",
+                buttonText: i18nManager.translate(TranslationKeys.GIFT.ORDER_PHYSICAL_BUTTON),
                 background: "#28a745",
                 action: () => { gameModeManager.enterGiftPhysicalOrientationMode(); }
             }
@@ -313,7 +313,7 @@ class GiftMaker {
                 id: "horizPhysical",
                 label: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_HORIZONTAL_LABEL),
                 type: "radioButton",
-                buttonText: "🖼️ Horizontal",
+                buttonText: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_HORIZONTAL_LABEL),
                 background: "#2c3e50",
                 action: () => { popupHint.vertical = false; },
                 selected: !popupHint.vertical
@@ -322,7 +322,7 @@ class GiftMaker {
                 id: "vertPhysical",
                 label: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_VERTICAL_LABEL),
                 type: "radioButton",
-                buttonText: "📱 Vertical",
+                buttonText: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_VERTICAL_LABEL),
                 background: "#34495e",
                 action: () => { popupHint.vertical = true; },
                 selected: popupHint.vertical

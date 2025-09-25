@@ -65,6 +65,9 @@
     }
   },
   "gift": {
+    "title": "↓↑ CRÉATION DE CADEAUX ↖↙",
+    "introMessage": "Créez un cadeau unique pour quelqu'un de spécial.\nEn haut, choisissez les dimensions du puzzle pour correspondre à votre difficulté préférée.\nEnsuite, remplissez les détails ci-dessous pour personnaliser votre puzzle personnalisé — entrez le nom de votre ami, l'âge qu'il atteint, et la langue de votre souhait.",
+    "copyLinkLabel": "Copiez le lien ou partagez directement :",
     "introText": "🎁 Créez un cadeau puzzle personnalisé !\n\nTéléchargez une image et transformez-la en un puzzle unique.",
     "imageUploadLabel": "Télécharger une image",
     "imageUploadPlaceholder": "Cliquez ici ou glissez une image",
@@ -80,9 +83,16 @@
       "sizeInstruction": "🧩 **Votre image de puzzle est en cours de téléchargement !**\n\n📏 **Taille :** {size}\n🔢 **Pièces :** {pieces}\n\n💡 **Astuce :** Pour de meilleurs résultats, utilisez des images haute résolution (au moins 1000x1000 pixels)."
     },
     "tryFirstLabel": "Essayez le cadeau d'abord avant de l'envoyer :",
+    "tryNowButton": "🎮 Essayer Maintenant!",
     "turnIntoRealLabel": "Transformez le puzzle en une vraie surprise :",
+    "orderPhysicalButton": "🛍️ Commander Puzzle Physique",
     "piecesCountLabel": "Nombre de pièces du puzzle",
-    "amazonInstruction": "2. Appuyez sur **\"Obtenir sur Amazon\"** pour ouvrir la page produit."
+    "amazonInstruction": "2. Appuyez sur **\"Obtenir sur Amazon\"** pour ouvrir la page produit.",
+    "copyLinkButton": "🔗 Copier le Lien",
+    "shareLinkButton": "📤 Partager le Lien",
+    "copiedSuccess": "✅ Copié !",
+    "puzzleGiftTitle": "🎁 Cadeau Puzzle",
+    "puzzleGiftText": "Voici un puzzle que j'ai fait pour toi !"
   },
   "navigation": {
     "emailUpdateQuestion": "Voulez-vous ajouter une autre adresse e-mail pour les mises à jour ?",

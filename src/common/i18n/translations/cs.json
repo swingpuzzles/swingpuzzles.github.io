@@ -65,6 +65,9 @@
     }
   },
   "gift": {
+    "title": "↓↑ TVORBA DÁRKŮ ↖↙",
+    "introMessage": "Vytvoř jedinečný dárek pro někoho speciálního.\nNahoře zvol rozměry puzzle podle své oblíbené obtížnosti.\nPak vyplň údaje níže, abys přizpůsobil své vlastní puzzle — zadej jméno svého přítele, věk, který slaví, a jazyk svého přání.",
+    "copyLinkLabel": "Zkopíruj odkaz nebo sdílej přímo:",
     "introText": "🎁 Vytvoř si personalizovaný puzzle dárek!\n\nNahraj obrázek a proměň ho v jedinečné puzzle.",
     "imageUploadLabel": "Nahrát obrázek",
     "imageUploadPlaceholder": "Klikni sem nebo přetáhni obrázek",
@@ -80,9 +83,16 @@
       "sizeInstruction": "🧩 **Tvůj obrázek puzzle se stahuje!**\n\n📏 **Velikost:** {size}\n🔢 **Dílky:** {pieces}\n\n💡 **Tip:** Pro nejlepší výsledky používej obrázky s vysokým rozlišením (alespoň 1000×1000 px)."
     },
     "tryFirstLabel": "Nejdřív si dárek vyzkoušej:",
+    "tryNowButton": "🎮 Zkusit Teď!",
     "turnIntoRealLabel": "Proměň puzzle ve skutečné překvapení:",
+    "orderPhysicalButton": "🛍️ Objednat Fyzické Puzzle",
     "piecesCountLabel": "Počet dílků puzzle",
-    "amazonInstruction": "2. Klepni na **„Získat na Amazonu“** pro otevření stránky produktu."
+    "amazonInstruction": "2. Klepni na **„Získat na Amazonu\"** pro otevření stránky produktu.",
+    "copyLinkButton": "🔗 Zkopírovat Odkaz",
+    "shareLinkButton": "📤 Sdílet Odkaz",
+    "copiedSuccess": "✅ Zkopírováno!",
+    "puzzleGiftTitle": "🎁 Puzzle Dárek",
+    "puzzleGiftText": "Tady je puzzle, které jsem pro tebe udělal!"
   },
   "navigation": {
     "emailUpdateQuestion": "Chceš přidat další email pro aktualizace?",
