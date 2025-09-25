@@ -32,7 +32,8 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     }
 
     private selectionCallback(key: string, userAction: boolean = true) {
-        const match = key.match(/(\d+)\s*x\s*(\d+)/);
+        // Match both 'x' and '×' (multiplication symbol) characters
+        const match = key.match(/(\d+)\s*[x×]\s*(\d+)/);
 
         if (match) {
             const xCount = parseInt(match[1], 10);
