@@ -68,6 +68,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     public refreshPiecesText() {
         // Clear existing options
         this.dropdown.clearOptions();
+        this.items = [];
         this._optionSelected = false;
         
         // Regenerate all options with current language
@@ -84,6 +85,8 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         this.addPiecesNums(19, 12);
         this.addPiecesNums(24, 15);
         this.addPiecesNums(25, 20, true);
+
+        this.build();
     }
 
     selectAction(xCount: number, zCount: number, text: string, userAction: boolean = true) {

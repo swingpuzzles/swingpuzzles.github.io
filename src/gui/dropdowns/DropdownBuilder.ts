@@ -30,7 +30,7 @@ interface DropdownItem {
 export default abstract class DropdownBuilder {
     private _dropdown: Dropdown;
     private options: DropdownOptions;
-    private items: DropdownItem[] = [];
+    protected items: DropdownItem[] = [];
 
     constructor(options: DropdownOptions) {
         this.options = options;
