@@ -56,9 +56,8 @@ export default abstract class DropdownBuilder {
 
     protected abstract get storageItemName(): string;
 
-    addOption(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, imageOnly: boolean = false): this {
+    addOption(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, imageOnly: boolean = false): void {
         this.items.push({ idText: idText, imageUrl, fontFamily, imageOnly });
-        return this;
     }
 
     build(customResize: boolean = false): Dropdown {

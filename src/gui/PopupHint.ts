@@ -712,7 +712,7 @@ class PopupHint {
         const topHeight = minSize * topHeightCoef;
         const middleHeight = mainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
         const rawMiddleHeight = rawMainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
-        const containerwidth = minSize * 0.94;
+        const containerwidth = vertical? minSize : minSize * 0.94;
         this.mainContainer.widthInPixels = containerwidth;
         this.mainContainer.heightInPixels = mainHeight;
         this.mainRect.cornerRadius = minSize / 16;
@@ -731,8 +731,8 @@ class PopupHint {
         this.middleImage.widthInPixels = imageWidth * 0.45;
         this.middleImage.heightInPixels = imageHeight * 0.45;
 
-        this.textAreaRect.widthInPixels = 0.86 * minSize;
-        this.textAreaRect.paddingRightInPixels = 0.02 * minSize;
+        this.textAreaRect.widthInPixels = vertical? 0.89 * minSize : (0.86 * minSize);
+        this.textAreaRect.paddingRightInPixels = vertical? 0 : (0.02 * minSize);
         this.textAreaRect.cornerRadius = minSize / 40;
 
         this.textAreaRect.paddingBottomInPixels = minSize / 160;
@@ -740,7 +740,7 @@ class PopupHint {
 
         this.inputTextArea.paddingBottomInPixels = minSize / 80;
         this.inputTextArea.paddingLeftInPixels = 3 * minSize / 160;
-        this.inputTextArea.paddingRightInPixels = 3 * minSize / 160;
+        this.inputTextArea.paddingRightInPixels = vertical? 0 : (3 * minSize / 160);
         this.inputTextArea.paddingTopInPixels = minSize / 80;
 
         this.xButton.widthInPixels = minSize / 15;

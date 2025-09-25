@@ -122,10 +122,10 @@ export class Dropdown extends Container {
 
                 this.options.zIndex = this.zIndex + 0.1;
 
-                if (this.horizontalAlignment === Control.HORIZONTAL_ALIGNMENT_LEFT) {   
-                    this.options.leftInPixels = measure.left;
-                } else {
+                if (this.horizontalAlignment === Control.HORIZONTAL_ALIGNMENT_RIGHT) {   
                     this.options.leftInPixels = measure.left - this.options.widthInPixels + measure.width;
+                } else {
+                    this.options.leftInPixels = measure.left;
                 }
             }
         });
