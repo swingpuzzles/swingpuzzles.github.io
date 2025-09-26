@@ -163,9 +163,6 @@ class PopupHint {
 
         this.middleImage = new Image("Image", "assets/popup/mascot-avatar-small.webp");
         this.middleImage.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
-        this.middleImage.paddingBottom = "5px";
-        this.middleImage.paddingLeft = "5px";
-        this.middleImage.paddingRight = "5px";
         this.middleTopStack.addControl(this.middleImage);
 
         puzzleAssetsManager.addGuiImageSourceForMultiple([ this.topImage, this.middleImage ], "assets/popup/mascot-avatar.webp");
@@ -730,15 +727,19 @@ class PopupHint {
         const imageHeight = topHeight * 0.925;//0.185;
         this.topImage.widthInPixels = imageWidth;
         this.topImage.heightInPixels = imageHeight;
-        this.middleImage.widthInPixels = imageWidth * 0.45;
+        this.middleImage.widthInPixels = imageWidth * (vertical ? 0.37 : 0.43);
         this.middleImage.heightInPixels = imageHeight * 0.45;
+        this.middleImage.paddingBottom = 0.1 * imageHeight;
+        this.middleImage.paddingLeft = imageWidth * (vertical ? 0.01 : 0.04);
+        this.middleImage.paddingRight = imageWidth * (vertical ? 0.01 : 0.04);
+
 
         this.textAreaRect.widthInPixels = vertical? 0.89 * minSize : (0.86 * minSize);
         this.textAreaRect.paddingRightInPixels = vertical? 0 : (0.02 * minSize);
         this.textAreaRect.cornerRadius = minSize / 40;
 
         this.textAreaRect.paddingBottomInPixels = minSize / 160;
-        this.inputTextArea.fontSizeInPixels = ctx.engine.getRenderHeight()/*minSize*/ / 32;
+        this.inputTextArea.fontSizeInPixels = ctx.engine.getRenderHeight()/*minSize*/ / 33;
 
         this.inputTextArea.paddingBottomInPixels = minSize / 160;
         this.inputTextArea.paddingLeftInPixels = 3 * minSize / 160;

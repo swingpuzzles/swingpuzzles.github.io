@@ -81,7 +81,7 @@ export const TranslationKeys = {
   // Navigation
     NAVIGATION: {
         EMAIL_UPDATE_QUESTION: "navigation.emailUpdateQuestion",
-        EMAIL_UPDATE_QUESTION_ALT: "navigation.emailUpdateQuestionAlt",
+        EMAIL_INSERT_QUESTION: "navigation.emailInsertQuestion",
         RESUME_SOLVING_LABEL: "navigation.resumeSolvingLabel",
         PLAY_AGAIN_QUESTION: "navigation.playAgainQuestion",
         SHUFFLE_RESTART_LABEL: "navigation.shuffleRestartLabel",
@@ -158,6 +158,8 @@ export const TranslationKeys = {
         ORIENTATION_MESSAGE: "giftOverview.orientationMessage",
         ORIENTATION_HORIZONTAL_LABEL: "giftOverview.orientationHorizontalLabel",
         ORIENTATION_VERTICAL_LABEL: "giftOverview.orientationVerticalLabel",
+        ORIENTATION_HORIZONTAL_BUTTON: "giftOverview.orientationHorizontalButton",
+        ORIENTATION_VERTICAL_BUTTON: "giftOverview.orientationVerticalButton",
         SIZE_TITLE: "giftOverview.sizeTitle",
         SIZE_INSTRUCTION: "giftOverview.sizeInstruction"
     }

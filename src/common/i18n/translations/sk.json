@@ -8,7 +8,7 @@
     },
     "hints": {
       "sizeTitle": "TIP: VEĽKOSŤ",
-      "sizeMessage": "🧩 Vyber si svoju výzvu!\n\nPouži zvýraznené rozbaľovacie menu hore uprostred a zvoľ požadované rozmery puzzle.\n\nViac kúskov = viac zábavy – alebo to nechaj jednoduché a relaxačné. Voľba je na tebe!",
+      "sizeMessage": "🧩 Vyber si svoju výzvu!\n\nPouži zvýraznené rozbaľovacie menu hore uprostred a zvoľ požadované rozmery puzzle.\n\nViac kúskov = viac zábavy – alebo to nechaj jednoduché a relaxačné. Voľba je na Tebe!",
       "choiceTitle": "TIP: VÝBER",
       "choiceMessage": "📚 Prechádzaj a hraj!\n\nPotiahni doľava alebo doprava na preskúmanie rôznych puzzle.\n\nKaždé puzzle je zobrazené ako obal krabice — klikni alebo klepni naň na výber, alebo stlač ▶️ HRAŤ pre okamžité ponorenie!",
       "shakeTitle": "ZATRAS TÝM!",
@@ -97,7 +97,7 @@
   },
   "navigation": {
     "emailUpdateQuestion": "Chceš pridať ďalší email?",
-    "emailUpdateQuestionAlt": "Chceš novinky o puzzle? Pridaj svoj email:",
+    "emailInsertQuestion": "Chceš dostávať novinky?",
     "resumeSolvingLabel": "Pokračuj v riešení:",
     "playAgainQuestion": "Chceš hrať znova? Reštart:",
     "shuffleRestartLabel": "Zamiešaj kúsky a začni znova:",
@@ -159,7 +159,9 @@
     "orientationMessage": "🧩 Pred objednaním fyzického puzzle vyber orientáciu obrázka.\n\nPo klepnutí na Ďalej sa tvoj personalizovaný obrázok puzzle automaticky stiahne.\n\nPotom ťa presmerujeme na Amazon, kde ho nahráš a dokončíš objednávku darčeka.\n\nOrientácia obrázka:",
     "sizeTitle": "VEĽKOSŤ PUZZLE",
     "sizeInstruction": "🧩 **Tvoj obrázok puzzle sa sťahuje!**\nSi len krok od skutočného darčeka.\n1. **Vyber veľkosť puzzle** (počet kúskov) dole.\n2. Klepni na **„Získať na Amazone“** na otvorenie stránky produktu.\n3. Na Amazone:\n   • Klepni na **Prispôsobiť teraz**\n   • Klepni na **Nahrať** a vyber obrázok, ktorý si práve stiahol (začína na „PUZZLE-…“ a nájdeš ho v priečinku sťahovania)\n   • Klepni na **Pridať do košíka**, potom **Ísť do košíka** a **Prejsť k pokladni**\nČoskoro budeš mať svoje personalizované puzzle doma! 🎁",
-    "orientationHorizontalLabel": "🖼️ Horizontálne (na šírku) – pre široké scény",
-    "orientationVerticalLabel": "📱 Vertikálne (na výšku) – pre vysoké rozloženie"
+    "orientationHorizontalLabel": "🖼️ Horizontálne (na šírku)",
+    "orientationVerticalLabel": "📱 Vertikálne (na výšku)",
+    "orientationHorizontalButton": "Horizontálne",
+    "orientationVerticalButton": "Vertikálne"
   }
 }

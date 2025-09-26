@@ -97,7 +97,7 @@
   },
   "navigation": {
     "emailUpdateQuestion": "Chceš přidat další email pro aktualizace?",
-    "emailUpdateQuestionAlt": "Chceš novinky o puzzle? Přidej svůj email:",
+    "emailInsertQuestion": "Chceš novinky o puzzle? Přidej svůj email:",
     "resumeSolvingLabel": "Pokračuj ve skládání od tohoto bodu:",
     "playAgainQuestion": "Chceš hrát znovu? Restart:",
     "shuffleRestartLabel": "Zamíchej dílky a začni znovu:",
@@ -160,6 +160,8 @@
     "sizeTitle": "VELIKOST PUZZLE",
     "sizeInstruction": "🧩 **Tvůj obrázek puzzle se stahuje!**\nJsi jen krok od skutečného dárku.\n1. **Vyber velikost puzzle** (počet dílků) dole.\n2. Klepni na **„Získat na Amazonu“** pro otevření stránky produktu.\n3. Na Amazonu:\n   • Klepni na **Přizpůsobit nyní**\n   • Klepni na **Nahrát** a vyber obrázek, který jsi právě stáhl (začíná „PUZZLE-…“ a najdeš ho ve složce stahování)\n   • Klepni na **Přidat do košíku**, pak **Přejít do košíku** a **Pokračovat k pokladně**\nBrzy budeš mít své personalizované puzzle doma! 🎁",
     "orientationHorizontalLabel": "🖼️ Horizontální (na šířku) – pro široké scény",
-    "orientationVerticalLabel": "📱 Vertikální (na výšku) – pro vysoké rozvržení"
+    "orientationVerticalLabel": "📱 Vertikální (na výšku) – pro vysoké rozvržení",
+    "orientationHorizontalButton": "Horizontální",
+    "orientationVerticalButton": "Vertikální"
   }
 }

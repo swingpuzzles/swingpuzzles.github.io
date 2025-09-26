@@ -43,8 +43,8 @@ class NavigationManager {
                 id: "email",
                 type: "emailCapture",
                 label: alreadyCaptured
-                  ? i18nManager.translate(TranslationKeys.NAVIGATION.EMAIL_UPDATE_QUESTION_ALT)
-                  : i18nManager.translate(TranslationKeys.NAVIGATION.EMAIL_UPDATE_QUESTION),
+                  ? i18nManager.translate(TranslationKeys.NAVIGATION.EMAIL_UPDATE_QUESTION)
+                  : i18nManager.translate(TranslationKeys.NAVIGATION.EMAIL_INSERT_QUESTION),
                 isUpdate: alreadyCaptured,
                 buttonTextSubscribe: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_EMAIL),
                 buttonTextUpdate: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_ANOTHER),

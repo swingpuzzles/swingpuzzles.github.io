@@ -73,7 +73,7 @@
   },
   "navigation": {
     "emailUpdateQuestion": "Want to add another email for updates?",
-    "emailUpdateQuestionAlt": "Want puzzle updates? Add your email:",
+    "emailInsertQuestion": "Want puzzle updates? Add your email:",
     "resumeSolvingLabel": "Resume solving from this exact spot:",
     "playAgainQuestion": "Want to play again? Restart:",
     "shuffleRestartLabel": "Shuffle the pieces and start over:",
@@ -137,6 +137,8 @@
     "sizeTitle": "PUZZLE SIZE",
     "sizeInstruction": "🧩 **Your Puzzle Image Is Downloading!**\nYou're just one step away from turning it into a real gift.\n1. **Choose the puzzle size** (# of pieces) below.\n2. Tap **\"Get it on Amazon\"** to open the product page.\n3. On Amazon:\n   • Click **Customize Now**\n   • Click **Upload** and select the image you just downloaded (starts with \"PUZZLE-...\" and you'll find it under your downloads folder)\n   • Click **Add to Cart**, then **Go to Cart** and **Proceed to Checkout**\nYou'll soon have your custom puzzle delivered! 🎁",
     "orientationHorizontalLabel": "🖼️ Horizontal (Landscape) for wide scenes",
-    "orientationVerticalLabel": "📱 Vertical (Portrait) for tall layouts"
+    "orientationVerticalLabel": "📱 Vertical (Portrait) for tall layouts",
+    "orientationHorizontalButton": "Horizontal",
+    "orientationVerticalButton": "Vertical"
   }
 }

@@ -313,7 +313,7 @@ class GiftMaker {
                 id: "horizPhysical",
                 label: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_HORIZONTAL_LABEL),
                 type: "radioButton",
-                buttonText: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_HORIZONTAL_LABEL),
+                buttonText: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_HORIZONTAL_BUTTON),
                 background: "#2c3e50",
                 action: () => { popupHint.vertical = false; },
                 selected: !popupHint.vertical
@@ -322,7 +322,7 @@ class GiftMaker {
                 id: "vertPhysical",
                 label: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_VERTICAL_LABEL),
                 type: "radioButton",
-                buttonText: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_VERTICAL_LABEL),
+                buttonText: i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_VERTICAL_BUTTON),
                 background: "#34495e",
                 action: () => { popupHint.vertical = true; },
                 selected: popupHint.vertical

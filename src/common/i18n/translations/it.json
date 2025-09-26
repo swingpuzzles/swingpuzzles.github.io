@@ -97,7 +97,7 @@
   },
   "navigation": {
     "emailUpdateQuestion": "Vuoi aggiungere un'altra email per gli aggiornamenti?",
-    "emailUpdateQuestionAlt": "Vuoi aggiornamenti sui puzzle? Aggiungi la tua email:",
+    "emailInsertQuestion": "Vuoi aggiornamenti sui puzzle? Aggiungi la tua email:",
     "resumeSolvingLabel": "Riprendi la risoluzione da questo punto esatto:",
     "playAgainQuestion": "Vuoi giocare di nuovo? Riavvia:",
     "shuffleRestartLabel": "Mescola i pezzi e ricomincia:",
@@ -160,6 +160,8 @@
     "sizeTitle": "DIMENSIONE DEL PUZZLE",
     "sizeInstruction": "🧩 **La tua Immagine del Puzzle si sta Scaricando!**\nSei a un passo dal trasformarla in un vero regalo.\n1. **Scegli la dimensione del puzzle** (numero di pezzi) qui sotto.\n2. Tocca **\"Acquistalo su Amazon\"** per aprire la pagina del prodotto.\n3. Su Amazon:\n   • Clicca su **Personalizza ora**\n   • Clicca su **Carica** e seleziona l'immagine che hai appena scaricato (inizia con \"PUZZLE-...\" e la troverai nella cartella download)\n   • Clicca su **Aggiungi al carrello**, poi **Vai al carrello** e **Procedi al checkout**\nAvrai presto il tuo puzzle personalizzato consegnato! 🎁",
     "orientationHorizontalLabel": "🖼️ Orizzontale (Paesaggio) per scene larghe",
-    "orientationVerticalLabel": "📱 Verticale (Ritratto) per layout alti"
+    "orientationVerticalLabel": "📱 Verticale (Ritratto) per layout alti",
+    "orientationHorizontalButton": "Orizzontale",
+    "orientationVerticalButton": "Verticale"
   }
 }
