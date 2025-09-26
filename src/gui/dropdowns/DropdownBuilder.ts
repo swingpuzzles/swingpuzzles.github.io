@@ -18,6 +18,7 @@ interface DropdownOptions {
     lang?: string;
     translationSectionKey?: string;
     selectionCallback?(key: string, userAction: boolean, text: string): void;
+    alwaysCallCallback?: boolean;
 }
 
 interface DropdownItem {
@@ -46,7 +47,8 @@ export default abstract class DropdownBuilder {
             valign: this.options.valign,
             lang: this.options.lang,
             translationSectionKey: this.options.translationSectionKey,
-            selectionCallback: this.options.selectionCallback
+            selectionCallback: this.options.selectionCallback,
+            alwaysCallCallback: this.options.alwaysCallCallback
         });
     }
 

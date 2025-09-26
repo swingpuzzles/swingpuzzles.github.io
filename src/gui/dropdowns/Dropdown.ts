@@ -24,6 +24,7 @@ export class Dropdown extends Container {
     private isImageCollapsedAlsoTextExpanded: boolean;
     private isImageOnly: boolean;
     private isDisabled: boolean = false;
+    private alwaysCallCallback: boolean = false;    
 
     constructor(config: {
         gameModes: GameMode[];
@@ -37,6 +38,7 @@ export class Dropdown extends Container {
         lang?: string;
         translationSectionKey?: string;
         selectionCallback?(key: string, userAction: boolean, text: string): void;
+        alwaysCallCallback?: boolean;
     }) {
         super();
 
@@ -47,7 +49,7 @@ export class Dropdown extends Container {
         this.translationSectionKey = config.translationSectionKey;
         this._lang = config.lang ?? this._lang;
         this.selectionCallback = config.selectionCallback;
-        
+        this.alwaysCallCallback = config.alwaysCallCallback ?? false;
         if (config.translationSectionKey) {
             this.translationMap = translationManager.getSection(config.translationSectionKey)!;
         }
@@ -183,7 +185,7 @@ export class Dropdown extends Container {
                 child.textBlock.text = this.translationMap.get(child.name)?.get(this._lang) ?? child.name;
 
                 if (child.name === this._selectedItem) {
-                    this.doSelectAction(child.name, null, null, false, false);
+                    this.doSelectAction(child.name, null, null, false, this.alwaysCallCallback);
                 }
             }
         }

@@ -9,7 +9,8 @@ import tutorialManager from "../TutorialManager";
 export default class WishTextDropdownBuilder extends DropdownBuilder {
     constructor() {
         super({ gameModes: [ GameMode.GiftAdjustment ], translationSectionKey: TranslationSectionKeys.GiftWishText,
-            selectionCallback: (key, userAction, text) => { this.selectionCallback(key, userAction, text); } });
+            selectionCallback: (key, userAction, text) => { this.selectionCallback(key, userAction, text); },
+            alwaysCallCallback: true });
 
         let currentIdText = localStorageManager.getString(this.storageItemName);
 
