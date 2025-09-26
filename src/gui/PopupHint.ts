@@ -720,8 +720,11 @@ class PopupHint {
         this.topRect.heightInPixels = topHeight;
         this.centerRect.heightInPixels = middleHeight;
         this.bottomRect.heightInPixels = minSize * 0.1;
+
+        let fontSize = GuiHelpers.calculateFontSize(this.header.text, minSize * (1 - 2.2 * topHeightCoef), topHeight * 0.6, this.header.fontWeight, this.header.fontFamily);
+        this.header.fontSizeInPixels = fontSize;
+
         this.header.widthInPixels = topHeightOrig * 3.1;//0.62;
-        this.header.fontSizeInPixels = topHeight / 2.8 / Math.max(1, (this.header.text.length - 10) / 6);//14;
 
         const imageWidth = topHeight;
         const imageHeight = topHeight * 0.925;//0.185;
@@ -747,7 +750,7 @@ class PopupHint {
         this.xButton.paddingTopInPixels = minSize / 240;
         this.xButton.paddingRightInPixels = minSize / 240;
 
-        let fontSize = GuiHelpers.calculateFontSize(this.emptyGreenButton.textBlock!.text, minSize / 6, minSize / 8, this.emptyGreenButton.textBlock!.fontWeight, this.emptyGreenButton.textBlock!.fontFamily);
+        fontSize = GuiHelpers.calculateFontSize(this.emptyGreenButton.textBlock!.text, minSize / 6, minSize / 8, this.emptyGreenButton.textBlock!.fontWeight, this.emptyGreenButton.textBlock!.fontFamily);
         this.emptyGreenButton.textBlock!.fontSizeInPixels = fontSize;
         fontSize = GuiHelpers.calculateFontSize(this.backButton.textBlock!.text, minSize / 6, minSize / 8, this.backButton.textBlock!.fontWeight, this.backButton.textBlock!.fontFamily);
         this.backButton.textBlock!.fontSizeInPixels = fontSize;
