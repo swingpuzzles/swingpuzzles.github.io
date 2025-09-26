@@ -63,6 +63,7 @@ export const TranslationKeys = {
     GIFT: {
         TITLE: "gift.title",
         INTRO_MESSAGE: "gift.introMessage",
+        STYLING_TITLE: "gift.stylingTitle",
         COPY_LINK_LABEL: "gift.copyLinkLabel",
         TRY_FIRST_LABEL: "gift.tryFirstLabel",
         TRY_NOW_BUTTON: "gift.tryNowButton",

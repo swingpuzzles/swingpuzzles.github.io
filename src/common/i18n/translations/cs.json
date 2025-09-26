@@ -67,6 +67,7 @@
   "gift": {
     "title": "↓↑ TVORBA DÁRKŮ ↖↙",
     "introMessage": "Vytvoř jedinečný dárek pro někoho speciálního.\nNahoře zvol rozměry puzzle podle své oblíbené obtížnosti.\nPak vyplň údaje níže, abys přizpůsobil své vlastní puzzle — zadej jméno svého přítele, věk, který slaví, a jazyk svého přání.",
+    "stylingTitle": "↑ ↑ STYLIZACE DÁRKU ↑ ↑",
     "copyLinkLabel": "Zkopíruj odkaz nebo sdílej přímo:",
     "introText": "🎁 Vytvoř si personalizovaný puzzle dárek!\n\nNahraj obrázek a proměň ho v jedinečné puzzle.",
     "imageUploadLabel": "Nahrát obrázek",

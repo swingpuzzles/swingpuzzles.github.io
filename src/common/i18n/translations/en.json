@@ -57,6 +57,7 @@
   "gift": {
     "title": "↓↑ GIFT MAKING ↖↙",
     "introMessage": "Create an unique gift for someone special.\nAt the top, choose the puzzle dimensions to match your preferred difficulty.\nThen, fill in the details below to personalize your custom puzzle — enter your friend's name, the age they're turning, and the language of your wish.",
+    "stylingTitle": "↑ ↑ GIFT STYLING ↑ ↑",
     "copyLinkLabel": "Copy the link or share directly:",
     "tryFirstLabel": "Try the gift first before sending:",
     "tryNowButton": "🎮 Try Now!",

@@ -67,6 +67,7 @@
   "gift": {
     "title": "↓↑ TVORBA DARČKOV ↖↙",
     "introMessage": "Vytvor jedinečný darček pre niekoho špeciálneho.\nHore zvoľ rozmery puzzle podľa svojej obľúbenej obtiažnosti.\nPotom vyplň údaje nižšie, aby si prispôsobil svoje vlastné puzzle — zadaj meno svojho priateľa, vek, ktorý slávi, a jazyk svojho želania.",
+    "stylingTitle": "↑ ↑ ŠTYLIZÁCIA DARČEKA ↑ ↑",
     "copyLinkLabel": "Skopíruj odkaz alebo zdieľaj priamo:",
     "introText": "🎁 Vytvor si personalizovaný puzzle darček!\n\nNahraj obrázok a premeň ho na jedinečné puzzle.",
     "imageUploadLabel": "Nahrať obrázok",
@@ -77,7 +78,7 @@
     "previewLabel": "Náhľad",
     "createLabel": "Vytvoriť puzzle",
     "giftOverview": {
-      "title": "PREHĽAD DARČKU",
+      "title": "PREHĽAD DARČEKA",
       "message": "🌟 Si zvedavý? Môžeš si ho vyskúšať aj sám. 📦 Chceš to urobiť ešte výnimočnejšie? Objednaj si skutočnú verziu ako pamiatku.",
       "orientationMessage": "Orientácia obrázka:",
       "sizeInstruction": "🧩 **Tvoj obrázok puzzle sa sťahuje!**\n\n📏 **Veľkosť:** {size}\n🔢 **Kúsky:** {pieces}\n\n💡 **Tip:** Pre najlepšie výsledky používaj obrázky s vysokým rozlíšením (aspoň 1000×1000 px)."

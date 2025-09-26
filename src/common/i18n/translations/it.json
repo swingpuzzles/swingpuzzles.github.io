@@ -67,6 +67,7 @@
   "gift": {
     "title": "↓↑ CREAZIONE REGALI ↖↙",
     "introMessage": "Crea un regalo unico per qualcuno di speciale.\nIn alto, scegli le dimensioni del puzzle per abbinare la tua difficoltà preferita.\nPoi, compila i dettagli qui sotto per personalizzare il tuo puzzle personalizzato — inserisci il nome del tuo amico, l'età che sta compiendo, e la lingua del tuo desiderio.",
+    "stylingTitle": "↑ ↑ STILIZZAZIONE REGALO ↑ ↑",
     "copyLinkLabel": "Copia il link o condividi direttamente:",
     "introText": "🎁 Crea un regalo puzzle personalizzato!\n\nCarica un'immagine e trasformala in un puzzle unico.",
     "imageUploadLabel": "Carica immagine",

@@ -260,7 +260,7 @@ class GiftMaker {
             analyticsManager.trackGiftCreation(giftData);
         }
 
-        popupHint.show("", "↑ ↑ GIFT STYLING ↑ ↑", 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show("", i18nManager.translate(TranslationKeys.GIFT.STYLING_TITLE), 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftOverviewMode(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },

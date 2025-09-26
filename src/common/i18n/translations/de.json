@@ -67,6 +67,7 @@
   "gift": {
     "title": "↓↑ GESCHENK-ERSTELLUNG ↖↙",
     "introMessage": "Erstelle ein einzigartiges Geschenk für jemand Besonderes.\nOben wähle die Puzzle-Dimensionen entsprechend deiner bevorzugten Schwierigkeit.\nDann fülle die Details unten aus, um dein personalisiertes Puzzle anzupassen — gib den Namen deines Freundes ein, das Alter, das er erreicht, und die Sprache deines Wunsches.",
+    "stylingTitle": "↑ ↑ GESCHENK-STYLING ↑ ↑",
     "copyLinkLabel": "Link kopieren oder direkt teilen:",
     "introText": "🎁 Erstelle ein personalisiertes Puzzle-Geschenk!\n\nLade ein Bild hoch und verwandle es in ein einzigartiges Puzzle.",
     "imageUploadLabel": "Bild hochladen",

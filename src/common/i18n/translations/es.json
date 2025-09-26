@@ -57,6 +57,7 @@
   "gift": {
     "title": "↓↑ CREACIÓN DE REGALOS ↖↙",
     "introMessage": "Crea un regalo único para alguien especial.\nEn la parte superior, elige las dimensiones del puzzle para que coincidan con tu dificultad preferida.\nLuego, completa los detalles a continuación para personalizar tu puzzle personalizado — ingresa el nombre de tu amigo, la edad que cumple y el idioma de tu deseo.",
+    "stylingTitle": "↑ ↑ ESTILIZADO DE REGALO ↑ ↑",
     "copyLinkLabel": "Copia el enlace o comparte directamente:",
     "tryFirstLabel": "Prueba el regalo primero antes de enviarlo:",
     "tryNowButton": "🎮 ¡Prueba Ahora!",
