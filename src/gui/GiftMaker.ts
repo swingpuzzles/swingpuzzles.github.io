@@ -212,14 +212,14 @@ class GiftMaker {
             },
         ];
 
-        popupHint.show(introText, i18nManager.translate(TranslationKeys.GIFT.TITLE), 0.98, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show(TranslationKeys.GIFT.INTRO_MESSAGE, TranslationKeys.GIFT.TITLE, {}, {}, 0.98, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             () => { this.exitGiftMaking(); },
             null,
             null,
             PopupMode.Gift_Initial,
             formInputModel
-        )
+        );
     }
 
     public async enterAdjustments(storeValues: boolean): Promise<boolean> {
@@ -260,7 +260,7 @@ class GiftMaker {
             analyticsManager.trackGiftCreation(giftData);
         }
 
-        popupHint.show("", i18nManager.translate(TranslationKeys.GIFT.STYLING_TITLE), 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show("", TranslationKeys.GIFT.STYLING_TITLE, {}, {}, 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftOverviewMode(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },
@@ -297,14 +297,14 @@ class GiftMaker {
             }
         ];
 
-        popupHint.show(i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.MESSAGE), i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.TITLE), 0.99, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(TranslationKeys.GIFT_OVERVIEW.MESSAGE, TranslationKeys.GIFT_OVERVIEW.TITLE, {}, {}, 0.99, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => { this.exitGiftMaking(); },
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             null,
             PopupMode.Gift_Adjustments_Overview,
             formModel
-        )
+        );
     }
 
     public enterGiftPhysicalOrientation() {
@@ -329,7 +329,7 @@ class GiftMaker {
             }
         ];
 
-        popupHint.show(i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_MESSAGE), i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_TITLE), 1.02, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(TranslationKeys.GIFT_OVERVIEW.ORIENTATION_MESSAGE, TranslationKeys.GIFT_OVERVIEW.ORIENTATION_TITLE, {}, {}, 1.02, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 const now = new Date();
                 const timestamp = now.toISOString().replace(/[:.]/g, "-");
@@ -382,7 +382,7 @@ class GiftMaker {
             },
         ];
 
-        popupHint.show(i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.SIZE_INSTRUCTION), i18nManager.translate(TranslationKeys.GIFT_OVERVIEW.SIZE_TITLE), 0.98, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(TranslationKeys.GIFT_OVERVIEW.SIZE_INSTRUCTION, TranslationKeys.GIFT_OVERVIEW.SIZE_TITLE, {}, {}, 0.98, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 analyticsManager.trackGiftShared('gift_shared', 'amazon');
                 window.open(link, "_blank");

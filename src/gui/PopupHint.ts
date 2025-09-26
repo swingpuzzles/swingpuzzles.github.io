@@ -845,8 +845,10 @@ class PopupHint {
     }
 
     public show(
-        fullText: string,
-        heading: string,
+        messageKey: string,
+        headingKey: string,
+        messageParams: Record<string, any> = {},
+        headingParams: Record<string, any> = {},
         sizeCoef: number = 0.87,
         shaderMode: ShaderMode = ShaderMode.NONE,
         verticalAlignment: number = Control.VERTICAL_ALIGNMENT_CENTER,
@@ -860,6 +862,9 @@ class PopupHint {
         timerManager.clearAll();
         
         this.clearForm();
+
+        const fullText = i18nManager.translate(messageKey, messageParams);
+        const heading = i18nManager.translate(headingKey, headingParams);
 
         if (this.mainContainer.isVisible) {
             this.fadeOut(() => {

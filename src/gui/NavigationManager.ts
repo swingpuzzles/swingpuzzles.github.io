@@ -54,8 +54,8 @@ class NavigationManager {
             });
         
             message = alreadyCaptured
-              ? i18nManager.translate(TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_COMPLETED)
-              : i18nManager.translate(TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_FIRST_TIME);
+              ? TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_COMPLETED
+              : TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_FIRST_TIME;
         
             // use `message` in popupHint.show later
         } else {
@@ -71,7 +71,7 @@ class NavigationManager {
                 }
             });
 
-            message = i18nManager.translate(TranslationKeys.NAVIGATION.PUZZLE_PAUSED_MESSAGE);
+            message = TranslationKeys.NAVIGATION.PUZZLE_PAUSED_MESSAGE;
         }
 
         formModel.push(
@@ -101,11 +101,13 @@ class NavigationManager {
             }
         );
 
-        const title = puzzleFinished ? i18nManager.translate(TranslationKeys.NAVIGATION.TITLE_PUZZLE_SOLVED) : i18nManager.translate(TranslationKeys.NAVIGATION.TITLE_GAME_PAUSED);
+        const titleKey = puzzleFinished ? TranslationKeys.NAVIGATION.TITLE_PUZZLE_SOLVED : TranslationKeys.NAVIGATION.TITLE_GAME_PAUSED;
 
         popupHint.show(
-            specialModeManager.getPuzzleSolvedMessage(message, alreadyCaptured, puzzleFinished),
-            title,
+            message,
+            titleKey,
+            {},
+            {},
             0.99,
             ShaderMode.SHADOW_FULL,
             Control.VERTICAL_ALIGNMENT_CENTER,

@@ -36,8 +36,6 @@ class TutorialManager {
                 gifteeName = ' ' + gifteeName;
             }
 
-            message = i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.GIFT_MESSAGE, { name: gifteeName });
-            title = i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.GIFT_TITLE);
             nextAction = () => {
                 localStorageManager.set(CommonStorageKeys.WelcomeSeen, true);
                 popup.hide(() => {
@@ -52,8 +50,18 @@ class TutorialManager {
         if (hasSeenWelcome && !gameModeManager.giftReceived) {
             nextAction();
         } else {
-            popup.show(message, title, 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
-                () => { nextAction(); });
+            if (gameModeManager.giftReceived) {
+                let gifteeName = giftMaker.friendsName;
+                if (gifteeName) {
+                    gifteeName = gifteeName.trim();
+                    gifteeName = ' ' + gifteeName;
+                }
+                popup.show(TranslationKeys.TUTORIAL.WELCOME.GIFT_MESSAGE, TranslationKeys.TUTORIAL.WELCOME.GIFT_TITLE, { name: gifteeName }, {}, 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+                    () => { nextAction(); });
+            } else {
+                popup.show(TranslationKeys.TUTORIAL.WELCOME.MESSAGE, TranslationKeys.TUTORIAL.WELCOME.TITLE, {}, {}, 0.7, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+                    () => { nextAction(); });
+            }
         }
 
         gameModeManager.addGameModeChangedObserver((prevMode) => {
@@ -69,9 +77,7 @@ class TutorialManager {
             return;
         }
 
-        let dimensionHint = i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.SIZE_MESSAGE);
-
-        popupHint.show(dimensionHint, i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.SIZE_TITLE), 0.63, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        popupHint.show(TranslationKeys.TUTORIAL.HINTS.SIZE_MESSAGE, TranslationKeys.TUTORIAL.HINTS.SIZE_TITLE, {}, {}, 0.63, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
                 () => { this.showPuzzleChooserHint(); }, () => { this.showPuzzleChooserHint(); },
                 null,
                 () => {
@@ -85,9 +91,7 @@ class TutorialManager {
 
         this._puzzleChooserHintShown = true;
 
-        let browseHint = i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.CHOICE_MESSAGE);
-
-        popupHint.show(browseHint, i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.CHOICE_TITLE), 0.63, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
+        popupHint.show(TranslationKeys.TUTORIAL.HINTS.CHOICE_MESSAGE, TranslationKeys.TUTORIAL.HINTS.CHOICE_TITLE, {}, {}, 0.63, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
                 () => { popupHint.hide(); },
                 () => { popupHint.hide(); },
                 null, 
@@ -102,9 +106,7 @@ class TutorialManager {
             return;
         }
         
-        let shakeHint = i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.SHAKE_MESSAGE);
-    
-        popupHint.show(shakeHint, i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.SHAKE_TITLE), 0.51, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
+        popupHint.show(TranslationKeys.TUTORIAL.HINTS.SHAKE_MESSAGE, TranslationKeys.TUTORIAL.HINTS.SHAKE_TITLE, {}, {}, 0.51, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
                 () => { this.finishTutorial(); },
                 () => { this.finishTutorial(); },
                 null, 
@@ -121,13 +123,11 @@ class TutorialManager {
     public showCongratsMessageImpl() {
         const solvedTime = timerDisplay.getElapsedTime();
 
-        const message = i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.MESSAGE, { time: solvedTime });
-
         let seconds = 5;
         const countdownLabel = () => `${i18nManager.translate(TranslationKeys.UI.BUTTONS.CONTINUE)} (${seconds}s)`;
 
         // Show initial popup
-        popupHint.show(message, i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.TITLE), 0.57, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(TranslationKeys.TUTORIAL.CONGRATS.MESSAGE, TranslationKeys.TUTORIAL.CONGRATS.TITLE, { time: solvedTime }, {}, 0.57, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 clearInterval(timerId);
                 this.showBuyOfferMessage();
@@ -158,9 +158,7 @@ class TutorialManager {
     }
 
     public showBuyOfferMessage() {
-        const message = i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.BUY_MESSAGE);
-    
-        popupHint.show(message, i18nManager.translate(TranslationKeys.TUTORIAL.CONGRATS.BUY_TITLE), 0.8, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
+        popupHint.show(TranslationKeys.TUTORIAL.CONGRATS.BUY_MESSAGE, TranslationKeys.TUTORIAL.CONGRATS.BUY_TITLE, {}, {}, 0.8, ShaderMode.SHADOW_FULL, Control.VERTICAL_ALIGNMENT_CENTER,
             () => {
                 gameModeManager.handleGetItOnAmazonAction();
                 popupHint.hide();
@@ -180,9 +178,7 @@ class TutorialManager {
 
         popupHint.toBack();
 
-        let makeGiftHint = i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.STYLE_MESSAGE);
-    
-        overPopup.show(makeGiftHint, i18nManager.translate(TranslationKeys.TUTORIAL.HINTS.STYLE_TITLE), 0.87, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
+        overPopup.show(TranslationKeys.TUTORIAL.HINTS.STYLE_MESSAGE, TranslationKeys.TUTORIAL.HINTS.STYLE_TITLE, {}, {}, 0.87, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
                 () => { this.finishGiftTutorial(); },
                 () => { this.finishGiftTutorial(); },
                 null, 
@@ -193,11 +189,11 @@ class TutorialManager {
     public showBadWordHint() {
         popupHint.toBack();
 
-        const makeGiftHint = i18nManager.translate(TranslationKeys.TUTORIAL.BAD_WORD.MESSAGE);
-
         overPopup.show(
-            makeGiftHint,
-            i18nManager.translate(TranslationKeys.TUTORIAL.BAD_WORD.TITLE),
+            TranslationKeys.TUTORIAL.BAD_WORD.MESSAGE,
+            TranslationKeys.TUTORIAL.BAD_WORD.TITLE,
+            {},
+            {},
             0.5,
             ShaderMode.SHADOW_FULL,
             Control.VERTICAL_ALIGNMENT_CENTER,
