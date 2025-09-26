@@ -1,4 +1,4 @@
-import localStorageManager, { CommonStorageKeys } from "../LocalStorageManager";
+import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../LocalStorageManager";
 
 export const SupportedLanguages = {
     EN: "en",
@@ -18,8 +18,8 @@ export const LanguageNames: Record<SupportedLanguage, string> = {
     [SupportedLanguages.DE]: "Deutsch", 
     [SupportedLanguages.FR]: "Français",
     [SupportedLanguages.IT]: "Italiano",
+    [SupportedLanguages.SK]: "Slovenčina",
     [SupportedLanguages.CS]: "Čeština",
-    [SupportedLanguages.SK]: "Slovenčina"
 };
 
 class LanguageManager {
@@ -33,7 +33,7 @@ class LanguageManager {
 
     private initializeLanguage(): void {
         // Try to get language from localStorage first
-        const storedLanguage = localStorageManager.getString('language') as SupportedLanguage;
+        const storedLanguage = localStorageManager.getString(CommonStorageKeys.Language) as SupportedLanguage;
         
         if (storedLanguage && Object.values(SupportedLanguages).includes(storedLanguage)) {
             this._currentLanguage = storedLanguage;
@@ -41,6 +41,8 @@ class LanguageManager {
             // Try to detect from browser language
             const browserLanguage = this.detectBrowserLanguage();
             this._currentLanguage = browserLanguage;
+            localStorageManager.set(CommonStorageKeys.Language, browserLanguage);
+            localStorageManager.set(GiftStorageKeys.GiftLanguage, browserLanguage);console.trace('first set language: ', browserLanguage);
         }
     }
 
@@ -65,8 +67,8 @@ class LanguageManager {
 
     public setLanguage(language: SupportedLanguage): void {
         if (Object.values(SupportedLanguages).includes(language) && language !== this._currentLanguage) {
-            this._currentLanguage = language;
-            localStorageManager.set('language', language);
+            this._currentLanguage = language;console.trace('set language: ', language);
+            localStorageManager.set(CommonStorageKeys.Language, language);
             
             // Notify all observers about the language change
             this._languageChangeObservers.forEach(observer => observer(language));

@@ -887,6 +887,8 @@ class PopupHint {
             backAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal,
             formInputModel: FormRowModel[] | null = null) : boolean {
+        
+        const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
 
         this.gotItButton.isVisible = false;
         this.emptyGreenButton.isVisible = false;
@@ -1000,7 +1002,7 @@ class PopupHint {
 
         const wrapLimitRatio = ctx.engine.getRenderWidth() > ctx.engine.getRenderHeight() ? 1 : ctx.engine.getRenderWidth() / ctx.engine.getRenderHeight();
 
-        this.typeTextLetterByLetter(fullText, 0, 59 * wrapLimitRatio);
+        this.typeTextLetterByLetter(fullText, 0, (vertical ? 59 : 54) * wrapLimitRatio);
         this.mainContainer.isVisible = true;
 
         this.fadeIn();

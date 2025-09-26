@@ -1,7 +1,7 @@
 import { Control } from "@babylonjs/gui";
 import DropdownBuilder from "./DropdownBuilder";
 import { GameMode } from "../../core3d/behaviors/GameModeManager";
-import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
+import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
 import analyticsManager from "../../common/AnalyticsManager";
 import languageManager, { LanguageNames, SupportedLanguage, SupportedLanguages } from "../../common/i18n/LanguageManager";
 
@@ -22,10 +22,8 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
         // No need to manually handle it here
 
         const languageEntries = Object.entries(LanguageNames);
-        for (let i = 0; i < languageEntries.length; i++) {
-            const language = languageEntries[i];
-            const isLast = i === languageEntries.length - 1;
-            this.addImageOption(language[0], language[1], isLast);
+        for (const language of languageEntries) {
+            this.addImageOption(language[0], language[1]);
         }
     }
 
@@ -41,17 +39,8 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
         }
     }
 
-    addImageOption(id: string, name: string, last: boolean = false) {
+    addImageOption(id: string, name: string) {
         this.addOption(name, `assets/flags/${id}.webp`);
-
-        if (!localStorageManager.getString(this.storageItemName) || (Object.keys(SupportedLanguages).indexOf(localStorageManager.getString(this.storageItemName)!) <= -1)) {
-            localStorageManager.set(this.storageItemName, id);
-        }
-
-        if (localStorageManager.getString(this.storageItemName) === id || last && !this._optionSelected) {
-            this.dropdown.doSelectAction(name, `assets/flags/${id}.webp`, null, false, false);
-            this._optionSelected = true;
-        }
     }
 
     selectAction(id: SupportedLanguage, name: string, userAction: boolean = true) {
@@ -61,9 +50,9 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
         if (userAction) {
             analyticsManager.trackDropdownInteraction('language_dropdown', id);
         }
-        // TODO: implement language change
+
         languageManager.setLanguage(id);
-        //gameModeManager.handleLanguageChange(id, userAction);
+        localStorageManager.set(GiftStorageKeys.GiftLanguage, id);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?
@@ -76,6 +65,10 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
         
         if (languageName) {
             this.dropdown.doSelectAction(languageName, `assets/flags/${currentLanguage}.webp`, null, false, false);
+
+            if (!localStorageManager.getString(GiftStorageKeys.GiftLanguage)) {console.trace('refreshSelection set language: ', currentLanguage);
+                localStorageManager.set(GiftStorageKeys.GiftLanguage, currentLanguage);
+            }
         }
     }
 }
