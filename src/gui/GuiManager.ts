@@ -218,7 +218,7 @@ class GuiManager {
 
     public setPiecesCount(count: number) {
         this.piecesCountDropdown.selectByCondition((name: string) => {
-            const match = name.match(/(\d+)\s*x\s*(\d+)/);
+            const match = name.match(/(\d+)\s*[x×]\s*(\d+)/);
 
             if (match) {
                 const xCount = parseInt(match[1], 10);
