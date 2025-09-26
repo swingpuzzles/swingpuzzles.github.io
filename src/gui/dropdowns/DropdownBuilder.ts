@@ -19,6 +19,7 @@ interface DropdownOptions {
     translationSectionKey?: string;
     selectionCallback?(key: string, userAction: boolean, text: string): void;
     alwaysCallCallback?: boolean;
+    zIndex?: number;
 }
 
 interface DropdownItem {
@@ -48,7 +49,8 @@ export default abstract class DropdownBuilder {
             lang: this.options.lang,
             translationSectionKey: this.options.translationSectionKey,
             selectionCallback: this.options.selectionCallback,
-            alwaysCallCallback: this.options.alwaysCallCallback
+            alwaysCallCallback: this.options.alwaysCallCallback,
+            zIndex: this.options.zIndex
         });
     }
 

@@ -39,10 +39,11 @@ export class Dropdown extends Container {
         translationSectionKey?: string;
         selectionCallback?(key: string, userAction: boolean, text: string): void;
         alwaysCallCallback?: boolean;
+        zIndex?: number;
     }) {
         super();
 
-        this.zIndex = 300;
+        this.zIndex = config.zIndex ?? 300;
 
         this.buttonBackground = config.background;
         this.buttonColor = config.color;

@@ -15,7 +15,8 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
             thickness: 0,
             isImageCollapsedAlsoTextExpanded: true,
             isImageOnly: true,
-            selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }
+            selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); },
+            zIndex: 400
         });
 
         // Language is automatically loaded from URL via getLocalStorageItemsFromUrl in PuzzleUrlHelper
