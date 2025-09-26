@@ -1,7 +1,7 @@
 import ctx from "../../core3d/common/SceneContext";
 import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
-import { GameMode } from "../../core3d/behaviors/GameModeManager";
+import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
 import analyticsManager from "../../common/AnalyticsManager";
 import { i18nManager, TranslationKeys } from "../../common/i18n";
@@ -102,7 +102,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         ctx.numX = xCount;
         ctx.numZ = zCount;
 
-        if (userAction) {
+        if (userAction && gameModeManager.initialMode) {
             tutorialManager.showPuzzleChooserHint();
         }
     }
