@@ -1,5 +1,6 @@
-import { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
+import { CommonStorageKeys } from "../../common/LocalStorageManager";
 import TextSelector from "./TextSelector";
+import { i18nManager, TranslationKeys } from "../../common/i18n";
 
 export default class PiecesCountSelector extends TextSelector {
     constructor(selectedPiecesCount: string) {
@@ -7,7 +8,7 @@ export default class PiecesCountSelector extends TextSelector {
 
         const countModel = piecesCounts.map(count => ({
             id: count,
-            text: `${count} Pieces`,
+            text: `${count} ${i18nManager.translate(TranslationKeys.UI.LABELS.PUZZLE_PIECES)}`,
             selected: selectedPiecesCount === count
         }));
 
@@ -19,6 +20,6 @@ export default class PiecesCountSelector extends TextSelector {
     }
 
     get widthCoef(): number {
-        return 3;
+        return 3.5;
     }
 }

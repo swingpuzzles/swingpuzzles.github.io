@@ -8,7 +8,7 @@
     },
     "hints": {
       "sizeTitle": "TIP: VEĽKOSŤ",
-      "sizeMessage": "🧩 Vyber si svoju výzvu!\n\nPouži zvýraznené rozbaľovacie menu hore uprostred a zvoľ požadované rozmery puzzle.\n\nViac kúskov = viac zábavy – alebo to nechaj jednoduché a relaxačné. Voľba je na Tebe!",
+      "sizeMessage": "🧩 Vyber si svoju výzvu!\n\nPouži zvýraznené rozbaľovacie menu hore uprostred a zvoľ požadované rozmery puzzle.\n\nViac dielikov = viac zábavy – alebo to nechaj jednoduché a relaxačné. Voľba je na Tebe!",
       "choiceTitle": "TIP: VÝBER",
       "choiceMessage": "📚 Prechádzaj a hraj!\n\nPotiahni doľava alebo doprava na preskúmanie rôznych puzzle.\n\nKaždé puzzle je zobrazené ako obal krabice — klikni alebo klepni naň na výber, alebo stlač ▶️ HRAŤ pre okamžité ponorenie!",
       "shakeTitle": "ZATRAS TÝM!",
@@ -55,9 +55,9 @@
       "friendsName": "Meno priateľa",
       "comingAge": "Vek",
       "wishLanguage": "Jazyk želania",
-      "puzzlePieces": "Kúsky puzzle",
+      "puzzlePieces": "dielikov",
       "category": "Kategória",
-      "piecesFormat": "{xCount} × {zCount} = {count} kúskov"
+      "piecesFormat": "{xCount} × {zCount} = {count} dielikov"
     },
     "placeholders": {
       "friendsName": "napr. Alex",
@@ -74,7 +74,7 @@
     "imageUploadPlaceholder": "Klikni sem alebo pretiahni obrázok",
     "orientationLabel": "Orientácia obrázka",
     "sizeLabel": "Veľkosť puzzle",
-    "piecesLabel": "Počet kúskov",
+    "piecesLabel": "Počet dielikov",
     "previewLabel": "Náhľad",
     "createLabel": "Vytvoriť puzzle",
     "giftOverview": {
@@ -87,7 +87,7 @@
     "tryNowButton": "🎮 Vyskúšať Teraz!",
     "turnIntoRealLabel": "Urob z puzzle skutočné prekvapenie:",
     "orderPhysicalButton": "🛍️ Objednať Fyzické Puzzle",
-    "piecesCountLabel": "Počet kúskov puzzle",
+    "piecesCountLabel": "Počet dielikov puzzle",
     "amazonInstruction": "2. Klepni na **„Získať na Amazone\"** na otvorenie stránky produktu.",
     "copyLinkButton": "🔗 Kopírovať",
     "shareLinkButton": "📤 Zdieľať",
@@ -157,8 +157,8 @@
     "message": "🧩 **Puzzle darček vytvorený s láskou!**\nVytvoril si personalizované puzzle — teraz je čas zdieľať prekvapenie.\n🎁 Pošli odkaz svojmu priateľovi a nech radosť začne.\n🌟 Si zvedavý? Môžeš si ho vyskúšať aj sám.\n📦 Chceš to urobiť ešte výnimočnejšie? Objednaj si skutočnú verziu ako pamiatku.",
     "orientationTitle": "ORIENTÁCIA PUZZLE",
     "orientationMessage": "🧩 Pred objednaním fyzického puzzle vyber orientáciu obrázka.\n\nPo klepnutí na Ďalej sa tvoj personalizovaný obrázok puzzle automaticky stiahne.\n\nPotom ťa presmerujeme na Amazon, kde ho nahráš a dokončíš objednávku darčeka.\n\nOrientácia obrázka:",
-    "sizeTitle": "VEĽKOSŤ PUZZLE",
-    "sizeInstruction": "🧩 **Tvoj obrázok puzzle sa sťahuje!**\nSi len krok od skutočného darčeka.\n1. **Vyber veľkosť puzzle** (počet kúskov) dole.\n2. Klepni na **„Získať na Amazone“** na otvorenie stránky produktu.\n3. Na Amazone:\n   • Klepni na **Prispôsobiť teraz**\n   • Klepni na **Nahrať** a vyber obrázok, ktorý si práve stiahol (začína na „PUZZLE-…“ a nájdeš ho v priečinku sťahovania)\n   • Klepni na **Pridať do košíka**, potom **Ísť do košíka** a **Prejsť k pokladni**\nČoskoro budeš mať svoje personalizované puzzle doma! 🎁",
+    "sizeTitle": "TAKMER HOTOVO!",
+    "sizeInstruction": "🧩 **Puzzle sa sťahuje!**\nPokračuj nasledovne:\n1. **Vyber veľkosť puzzle** (počet dielikov) dole.\n2. Klepni na **„Získať na Amazone“**.\n3. Na Amazone:\n   • Klepni na **Prispôsobiť teraz**\n   • Klepni na **Nahrať** a vyber obrázok, ktorý si práve stiahol (začína na „PUZZLE-…“ a nájdeš ho v priečinku sťahovania)\n   • Klepni na **Pridať do košíka**, potom **Ísť do košíka** a **Prejsť k pokladni**\nČoskoro budeš mať svoje puzzle doma! 🎁",
     "orientationHorizontalLabel": "🖼️ Horizontálne (na šírku)",
     "orientationVerticalLabel": "📱 Vertikálne (na výšku)",
     "orientationHorizontalButton": "Horizontálne",
