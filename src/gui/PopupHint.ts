@@ -61,6 +61,10 @@ class PopupHint {
     private _closeAction: () => void = () => {};
     private _backAction: () => void = () => {};
     private _currentAnimation: Animatable | null = null;
+    private _currentMessageKey: string = "";
+    private _currentHeadingKey: string = "";
+    private _currentMessageParams: Record<string, any> = {};
+    private _currentHeadingParams: Record<string, any> = {};
     private _popupMode!: PopupMode;
     private _imgVertical: boolean = false;
     private _radioButtons: Button[] = [];
@@ -357,9 +361,9 @@ class PopupHint {
             this.resize();
         });
         
-        // Listen for language changes to refresh button texts
+        // Listen for language changes to refresh texts
         languageManager.addLanguageChangeObserver(() => {
-            this.refreshButtonTexts();
+            this.refreshTexts();
         });
     }
 
@@ -828,7 +832,24 @@ class PopupHint {
         }
     }
 
-    private refreshButtonTexts() {
+    private refreshTexts() {
+        // Refresh header text when language changes
+        if (this._currentHeadingKey && this.header) {
+            this.header.text = i18nManager.translate(this._currentHeadingKey, this._currentHeadingParams);
+        }
+
+        // Refresh message text with proper typing and wrapping when language changes
+        if (this._currentMessageKey && this.textAreaRect && this.textAreaRect.children.length > 0) {
+            const fullText = i18nManager.translate(this._currentMessageKey, this._currentMessageParams);
+            
+            // Calculate wrap limit the same way as in showWrapper
+            const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
+            const wrapLimitRatio = ctx.engine.getRenderWidth() > ctx.engine.getRenderHeight() ? 1 : ctx.engine.getRenderWidth() / ctx.engine.getRenderHeight();
+            
+            // Call typeTextLetterByLetter to properly wrap and type the text
+            this.typeTextLetterByLetter(fullText, 0, (vertical ? 59 : 54) * wrapLimitRatio);
+        }
+
         // Refresh button texts when language changes
         if (this.gotItButton && this.gotItButton.textBlock) {
             this.gotItButton.textBlock.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.GOT_IT);
@@ -862,6 +883,12 @@ class PopupHint {
         timerManager.clearAll();
         
         this.clearForm();
+
+        // Store current keys and parameters for language change refresh
+        this._currentMessageKey = messageKey;
+        this._currentHeadingKey = headingKey;
+        this._currentMessageParams = messageParams;
+        this._currentHeadingParams = headingParams;
 
         const fullText = i18nManager.translate(messageKey, messageParams);
         const heading = i18nManager.translate(headingKey, headingParams);
