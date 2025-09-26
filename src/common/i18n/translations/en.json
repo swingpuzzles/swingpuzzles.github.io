@@ -45,7 +45,7 @@
       "friendsName": "Friend's Name",
       "comingAge": "Coming Age",
       "wishLanguage": "Wish Language",
-      "puzzlePieces": "Puzzle Pieces",
+      "puzzlePieces": "Pieces",
       "category": "Category",
       "piecesFormat": "{xCount} x {zCount} = {count} pieces"
     },
@@ -72,8 +72,8 @@
     "puzzleGiftText": "Here's a puzzle I made for you!"
   },
   "navigation": {
-    "emailUpdateQuestion": "Want to add another email for updates?",
-    "emailInsertQuestion": "Want puzzle updates? Add your email:",
+    "emailUpdateQuestion": "Want to add another email?",
+    "emailInsertQuestion": "Want puzzle updates?",
     "resumeSolvingLabel": "Resume solving from this exact spot:",
     "playAgainQuestion": "Want to play again? Restart:",
     "shuffleRestartLabel": "Shuffle the pieces and start over:",

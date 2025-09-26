@@ -20,6 +20,6 @@ export default class PiecesCountSelector extends TextSelector {
     }
 
     get widthCoef(): number {
-        return 3.5;
+        return 3.75;
     }
 }

@@ -55,7 +55,7 @@
       "friendsName": "Jméno přítele",
       "comingAge": "Věk",
       "wishLanguage": "Jazyk přání",
-      "puzzlePieces": "Dílky puzzle",
+      "puzzlePieces": "dílků",
       "category": "Kategorie",
       "piecesFormat": "{xCount} × {zCount} = {count} dílků"
     },
@@ -89,15 +89,15 @@
     "orderPhysicalButton": "🛍️ Objednat Fyzické Puzzle",
     "piecesCountLabel": "Počet dílků puzzle",
     "amazonInstruction": "2. Klepni na **„Získat na Amazonu\"** pro otevření stránky produktu.",
-    "copyLinkButton": "🔗 Zkopírovat Odkaz",
-    "shareLinkButton": "📤 Sdílet Odkaz",
+    "copyLinkButton": "🔗 Kopírovat",
+    "shareLinkButton": "📤 Sdílet",
     "copiedSuccess": "✅ Zkopírováno!",
     "puzzleGiftTitle": "🎁 Puzzle Dárek",
     "puzzleGiftText": "Tady je puzzle, které jsem pro tebe udělal!"
   },
   "navigation": {
-    "emailUpdateQuestion": "Chceš přidat další email pro aktualizace?",
-    "emailInsertQuestion": "Chceš novinky o puzzle? Přidej svůj email:",
+    "emailUpdateQuestion": "Chceš přidat další email?",
+    "emailInsertQuestion": "Chceš přijímat novinky?",
     "resumeSolvingLabel": "Pokračuj ve skládání od tohoto bodu:",
     "playAgainQuestion": "Chceš hrát znovu? Restart:",
     "shuffleRestartLabel": "Zamíchej dílky a začni znovu:",
@@ -158,9 +158,9 @@
     "orientationTitle": "ORIENTACE PUZZLE",
     "orientationMessage": "🧩 Před objednáním fyzického puzzle vyber orientaci obrázku.\n\nPo klepnutí na Další se tvůj personalizovaný obrázek puzzle automaticky stáhne.\n\nPak tě přesměrujeme na Amazon, kde ho nahraješ a dokončíš objednávku.\n\nOrientace obrázku:",
     "sizeTitle": "VELIKOST PUZZLE",
-    "sizeInstruction": "🧩 **Tvůj obrázek puzzle se stahuje!**\nJsi jen krok od skutečného dárku.\n1. **Vyber velikost puzzle** (počet dílků) dole.\n2. Klepni na **„Získat na Amazonu“** pro otevření stránky produktu.\n3. Na Amazonu:\n   • Klepni na **Přizpůsobit nyní**\n   • Klepni na **Nahrát** a vyber obrázek, který jsi právě stáhl (začíná „PUZZLE-…“ a najdeš ho ve složce stahování)\n   • Klepni na **Přidat do košíku**, pak **Přejít do košíku** a **Pokračovat k pokladně**\nBrzy budeš mít své personalizované puzzle doma! 🎁",
-    "orientationHorizontalLabel": "🖼️ Horizontální (na šířku) – pro široké scény",
-    "orientationVerticalLabel": "📱 Vertikální (na výšku) – pro vysoké rozvržení",
+    "sizeInstruction": "🧩 **Puzzle se stahuje!**\nPokračuj následovně:\n1. **Vyber velikost puzzle** (počet dílků) dole.\n2. Klepni na **„Získat na Amazonu“** pro otevření stránky produktu.\n3. Na Amazonu:\n   • Klepni na **Přizpůsobit nyní**\n   • Klepni na **Nahrát** a vyber obrázek, který jsi právě stáhl (začíná „PUZZLE-…“ a najdeš ho ve složce stahování)\n   • Klepni na **Přidat do košíku**, pak **Přejít do košíku** a **Pokračovat k pokladně**\nBrzy budeš mít své puzzle doma! 🎁",
+    "orientationHorizontalLabel": "🖼️ Horizontální (na šířku)",
+    "orientationVerticalLabel": "📱 Vertikální (na výšku)",
     "orientationHorizontalButton": "Horizontální",
     "orientationVerticalButton": "Vertikální"
   }

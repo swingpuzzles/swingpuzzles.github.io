@@ -96,10 +96,10 @@
     "puzzleGiftText": "Hier ist ein Puzzle, das ich für dich gemacht habe!"
   },
   "navigation": {
-    "emailUpdateQuestion": "Möchtest du eine weitere E-Mail für Updates hinzufügen?",
-    "emailInsertQuestion": "Möchtest du Puzzle-Updates? Füge deine E-Mail hinzu:",
-    "resumeSolvingLabel": "Setze das Lösen von diesem genauen Punkt fort:",
-    "playAgainQuestion": "Möchtest du nochmal spielen? Neu starten:",
+    "emailUpdateQuestion": "Noch eine E-Mail für Updates?",
+    "emailInsertQuestion": "Möchtest du Puzzle-Updates?",
+    "resumeSolvingLabel": "Vom selben Punkt:",
+    "playAgainQuestion": "Möchtest du nochmal spielen?",
     "shuffleRestartLabel": "Mische die Teile und starte von vorne:",
     "returnToGalleryLabel": "Zurück zur Puzzle-Galerie:",
     "congratsMessageCompleted": "🎉 Herzlichen Glückwunsch!\n\nDu hast dieses Puzzle gelöst.\n\nDu kannst es neu starten, zur Galerie zurückkehren, die VORHERIGE und NÄCHSTE Buttons unten verwenden, um zwischen Puzzles zu wechseln, oder eine weitere E-Mail für Updates hinzufügen.",
@@ -154,11 +154,11 @@
   },
   "giftOverview": {
     "title": "GESCHENK ÜBERSICHT",
-    "message": "🧩 **Puzzle-Geschenk mit Liebe erstellt!**\nDu hast ein personalisiertes Puzzle erstellt — jetzt ist es Zeit, die Überraschung zu teilen.\n🎁 Sende den Link an deinen Freund und lass die Freude beginnen.\n🌟 Neugierig? Du kannst es selbst ausprobieren.\n📦 Möchtest du es noch besonderer machen? Bestelle eine echte Version als Andenken.",
+    "message": "🧩 **Puzzle-Geschenk mit Liebe erstellt!**\nDu hast ein persönliches Puzzle gemacht — jetzt teile die Überraschung.\n🎁 Schick den Link an deinen Freund und lass die Freude beginnen.\n🌟 Neugierig? Probier es selbst.\n📦 Willst du noch mehr? Bestell eine echte Version als Andenken.",
     "orientationTitle": "PUZZLE ORIENTIERUNG",
     "orientationMessage": "🧩 Bevor du dein physisches Puzzle bestellst, wähle die Bildausrichtung.\n\nWenn du auf Weiter tippst, wird dein personalisiertes Puzzle-Bild automatisch heruntergeladen.\n\nDann führen wir dich zu Amazon, wo du es hochladen und deine Geschenkbestellung abschließen kannst.\n\nBildausrichtung:",
     "sizeTitle": "PUZZLE GRÖSSE",
-    "sizeInstruction": "🧩 **Dein Puzzle-Bild wird heruntergeladen!**\nDu bist nur einen Schritt davon entfernt, es in ein echtes Geschenk zu verwandeln.\n1. **Wähle die Puzzle-Größe** (Anzahl der Teile) unten.\n2. Tippe auf **\"Bei Amazon bestellen\"**, um die Produktseite zu öffnen.\n3. Auf Amazon:\n   • Klicke auf **Jetzt personalisieren**\n   • Klicke auf **Hochladen** und wähle das Bild aus, das du gerade heruntergeladen hast (beginnt mit \"PUZZLE-...\" und du findest es in deinem Downloads-Ordner)\n   • Klicke auf **In den Warenkorb**, dann **Zum Warenkorb** und **Zur Kasse gehen**\nDu wirst bald dein personalisiertes Puzzle geliefert bekommen! 🎁",
+    "sizeInstruction": "🧩 **Dein Puzzle wird heruntergeladen!**\nSo geht’s:\n1. **Wähle die Größe** (Teile) unten.\n2. Tippe **\"Bei Amazon bestellen\"**.\n3. Auf Amazon:\n   • **Jetzt personalisieren**\n   • **Hochladen** → Bild auswählen (\"PUZZLE-…\" im Downloads-Ordner)\n   • **In den Warenkorb** → **Zum Warenkorb** → **Zur Kasse**\nBald hast du dein persönliches Puzzle zu Hause! 🎁",
     "orientationHorizontalLabel": "🖼️ Horizontal (Querformat) für breite Szenen",
     "orientationVerticalLabel": "📱 Vertikal (Hochformat) für hohe Layouts",
     "orientationHorizontalButton": "Horizontal",
