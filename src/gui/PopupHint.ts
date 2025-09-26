@@ -863,6 +863,8 @@ class PopupHint {
         if (this.nextButton && this.nextButton.textBlock) {
             this.nextButton.textBlock.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.NEXT);
         }
+
+        this.resize();
     }
 
     public show(

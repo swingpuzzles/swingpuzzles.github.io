@@ -282,6 +282,8 @@ class GuiManager {
         if (this.piecesCountDropdownBuilder) {
             this.piecesCountDropdownBuilder.refreshPiecesText();
         }
+
+        this.refreshButtonSizes();
     }
 }
 
