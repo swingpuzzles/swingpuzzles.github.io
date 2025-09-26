@@ -302,8 +302,6 @@ export class Dropdown extends Container {
     addItem(idText: string, imageUrl: string | null = null, fontFamily: string | null = null, imageOnly: boolean): void {
         let button: Button;
 
-        // Update language to current language
-        this._lang = languageManager.currentLanguage;
         const text = this.translationMap.get(idText)?.get(this._lang) ?? idText;
 
         if (imageOnly) {
