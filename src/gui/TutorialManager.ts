@@ -91,12 +91,12 @@ class TutorialManager {
 
         this._puzzleChooserHintShown = true;
 
-        popupHint.show(TranslationKeys.TUTORIAL.HINTS.CHOICE_MESSAGE, TranslationKeys.TUTORIAL.HINTS.CHOICE_TITLE, {}, {}, 0.63, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
+        popupHint.show(TranslationKeys.TUTORIAL.HINTS.CHOICE_MESSAGE, TranslationKeys.TUTORIAL.HINTS.CHOICE_TITLE, {}, {}, 0.67, ShaderMode.NONE, Control.VERTICAL_ALIGNMENT_TOP,
                 () => { popupHint.hide(); },
                 () => { popupHint.hide(); },
                 null, 
                 () => { 
-            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.28, 30, true, 0.2, 0.01);
+            handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.21, 30, true, 0.2, 0.01);
             handImagePool.acquire(Control.HORIZONTAL_ALIGNMENT_CENTER, Control.VERTICAL_ALIGNMENT_BOTTOM, 0, 0.15, 150, false);
         });
     }
