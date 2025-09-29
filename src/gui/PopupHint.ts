@@ -214,7 +214,7 @@ class PopupHint {
         this.gotItButton.thickness = 0;
         this.gotItButton.background = "";
         this.gotItButton.hoverCursor = "pointer";
-        this.gotItButton.width = "40%";
+        this.gotItButton.width = "50%";
         this.gotItButton.height = "90%";
         this.gotItButton.isHitTestVisible = true;
         this.gotItButton.isPointerBlocker = true;
@@ -763,7 +763,7 @@ class PopupHint {
         this.nextButton.textBlock!.fontSizeInPixels = fontSize;
         fontSize = GuiHelpers.calculateFontSize(this.notNowButton.textBlock!.text, minSize / 4, minSize / 8, this.notNowButton.textBlock!.fontWeight, this.notNowButton.textBlock!.fontFamily);
         this.notNowButton.textBlock!.fontSizeInPixels = fontSize;
-        fontSize = GuiHelpers.calculateFontSize(this.gotItButton.textBlock!.text, minSize / 6, minSize / 8, this.gotItButton.textBlock!.fontWeight, this.gotItButton.textBlock!.fontFamily);
+        fontSize = GuiHelpers.calculateFontSize(this.gotItButton.textBlock!.text, minSize / 4, minSize / 8, this.gotItButton.textBlock!.fontWeight, this.gotItButton.textBlock!.fontFamily);
         this.gotItButton.textBlock!.fontSizeInPixels = fontSize;
 
         if (this.formPanelRect.isVisible) {
