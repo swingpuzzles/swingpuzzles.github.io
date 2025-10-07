@@ -65,7 +65,7 @@
     }
   },
   "gift": {
-    "title": "↓↑ TVORBA DARČKOV ↖↙",
+    "title": "↓↑ TVORBA DARČEKOV ↖↙",
     "introMessage": "Vytvor jedinečný darček pre niekoho špeciálneho.\nHore zvoľ rozmery puzzle podľa svojej obľúbenej obtiažnosti.\nPotom vyplň údaje nižšie, aby si prispôsobil svoje vlastné puzzle — zadaj meno svojho priateľa, vek, ktorý slávi, a jazyk svojho želania.",
     "stylingTitle": "↑ ↑ ŠTYLIZÁCIA DARČEKA ↑ ↑",
     "copyLinkLabel": "Skopíruj odkaz alebo zdieľaj priamo:",
@@ -153,7 +153,7 @@
     "pageNotFoundMessage": "Ospravedlňujeme sa, požadovaná stránka nebola nájdená."
   },
   "giftOverview": {
-    "title": "PREHĽAD DARČKU",
+    "title": "PREHĽAD DARČEKA",
     "message": "🧩 **Puzzle darček vytvorený s láskou!**\nVytvoril si personalizované puzzle — teraz je čas zdieľať prekvapenie.\n🎁 Pošli odkaz svojmu priateľovi a nech radosť začne.\n🌟 Si zvedavý? Môžeš si ho vyskúšať aj sám.\n📦 Chceš to urobiť ešte výnimočnejšie? Objednaj si skutočnú verziu ako pamiatku.",
     "orientationTitle": "ORIENTÁCIA PUZZLE",
     "orientationMessage": "🧩 Pred objednaním fyzického puzzle vyber orientáciu obrázka.\n\nPo klepnutí na Ďalej sa tvoj personalizovaný obrázok puzzle automaticky stiahne.\n\nPotom ťa presmerujeme na Amazon, kde ho nahráš a dokončíš objednávku darčeka.\n\nOrientácia obrázka:",
