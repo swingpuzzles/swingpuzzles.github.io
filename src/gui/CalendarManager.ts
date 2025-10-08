@@ -1,5 +1,5 @@
 import { Control } from "@babylonjs/gui";
-import popupHint from "./PopupHint";
+import popupHint, { PopupMode } from "./PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import i18nManager from "../common/i18n/I18nManager";
 
@@ -28,7 +28,7 @@ class CalendarManager {
         const title = this.getTitleForToday();
         
         popupHint.show(message, title, {}, {}, 0.95, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_BOTTOM,
-            () => { /* TODO */ }, () => { /* TODO */ });
+            () => { /* TODO */ }, () => { /* TODO */ }, null, null, PopupMode.Sell, null, dailyData?.horiz.imgCoverUrl);
     }
 
     private async loadDailyData(): Promise<DailyData | null> {

@@ -880,7 +880,8 @@ class PopupHint {
         backAction: (() => void) | null = null,
         afterShowAction: (() => void) | null = null,
         mode: PopupMode = PopupMode.Normal,
-        formInputModel: FormRowModel[] | null = null
+        formInputModel: FormRowModel[] | null = null,
+        coverImageUrl: string | null = null
     ): void {
         timerManager.clearAll();
         
@@ -897,10 +898,10 @@ class PopupHint {
 
         if (this.mainContainer.isVisible) {
             this.fadeOut(() => {
-                this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, afterShowAction, mode, formInputModel);
+                this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, afterShowAction, mode, formInputModel, coverImageUrl);
             }, false);
         } else {
-            this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, afterShowAction, mode, formInputModel);
+            this.showWrapper(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, afterShowAction, mode, formInputModel, coverImageUrl);
         }
     }
 
@@ -911,9 +912,10 @@ class PopupHint {
             backAction: (() => void) | null = null,
             afterShowAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal,
-            formInputModel: FormRowModel[] | null = null) : void {
+            formInputModel: FormRowModel[] | null = null,
+            coverImageUrl: string | null = null) : void {
 
-        if (this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, mode, formInputModel) && afterShowAction) {
+        if (this.internalShow(fullText, heading, sizeCoef, shaderMode, verticalAlignment, action, closeAction, backAction, mode, formInputModel, coverImageUrl) && afterShowAction) {
             afterShowAction();
         }
     }
@@ -924,7 +926,8 @@ class PopupHint {
             closeAction: (() => void) | null = null,
             backAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal,
-            formInputModel: FormRowModel[] | null = null) : boolean {
+            formInputModel: FormRowModel[] | null = null,
+            coverImageUrl: string | null = null) : boolean {
 
         this.gotItButton.isVisible = false;
         this.emptyGreenButton.isVisible = false;
@@ -944,13 +947,16 @@ class PopupHint {
             case PopupMode.PreSell:
                 this.emptyGreenButton.isVisible = true;
                 this.centerImage.isVisible = true;
-                this.coverImage.source = openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.getCoverUrl(ctx.currentCover);
+                this.coverImage.source = coverImageUrl || (openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.getCoverUrl(ctx.currentCover));
                 break;
             case PopupMode.Sell:
                 this.getItButton.isVisible = true;
                 this.notNowButton.isVisible = true;
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;
+                if (coverImageUrl) {
+                    this.coverImage.source = coverImageUrl;
+                }
                 break;
             case PopupMode.Normal:
                 this.gotItButton.isVisible = true;
