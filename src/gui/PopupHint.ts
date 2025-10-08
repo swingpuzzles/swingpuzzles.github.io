@@ -17,6 +17,7 @@ import timerManager from "../core3d/misc/TimerManager";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { GuiHelpers } from "./GuiHelpers";
 import { i18nManager, TranslationKeys, languageManager } from "../common/i18n";
+import TextTyper from "./TextTyper";
 
 export enum PopupMode {
     Normal,
@@ -72,6 +73,7 @@ class PopupHint {
     private _shaderMode: ShaderMode = ShaderMode.NONE;
     private _inFront: boolean = true;
     private _screenShader: ScreenShader;
+    private _textTyper!: TextTyper;
 
     constructor(overPopup: boolean = false) {
         this._overPopup = overPopup;
@@ -191,6 +193,8 @@ class PopupHint {
         this.inputTextArea.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.inputTextArea.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         this.textAreaRect.addControl(this.inputTextArea);
+
+        this._textTyper = new TextTyper(this.inputTextArea);
 
         this.formPanelRect = new Rectangle("Rectangle");
         this.formPanelRect.thickness = 0;
@@ -847,7 +851,7 @@ class PopupHint {
             const wrapLimitRatio = ctx.engine.getRenderWidth() > ctx.engine.getRenderHeight() ? 1 : ctx.engine.getRenderWidth() / ctx.engine.getRenderHeight();
             
             // Call typeTextLetterByLetter to properly wrap and type the text
-            this.typeTextLetterByLetter(fullText, 0, (vertical ? 59 : 54) * wrapLimitRatio);
+            this._textTyper.typeTextLetterByLetter(fullText, 0, (vertical ? 59 : 54) * wrapLimitRatio);
         }
 
         // Refresh button texts when language changes
@@ -1040,7 +1044,7 @@ class PopupHint {
 
         const wrapLimitRatio = ctx.engine.getRenderWidth() > ctx.engine.getRenderHeight() ? 1 : ctx.engine.getRenderWidth() / ctx.engine.getRenderHeight();
 
-        this.typeTextLetterByLetter(fullText, 0, (vertical ? 59 : 54) * wrapLimitRatio);
+        this._textTyper.typeTextLetterByLetter(fullText, 0, (vertical ? 59 : 54) * wrapLimitRatio);
         this.mainContainer.isVisible = true;
 
         this.fadeIn();
@@ -1134,63 +1138,6 @@ class PopupHint {
                 this._screenShader.exitShader();
             }
         });
-    }
-
-    private typingSessionId = 0;
-    
-    public typeTextLetterByLetter(fullText: string, delay = 0, wrapLimit: number) {
-        const target = this.inputTextArea;
-        let index = 0;
-    
-        // Invalidate any previous typing session
-        const currentSessionId = ++this.typingSessionId;
-    
-        const smartWrap = (text: string): string => {
-            const lines = text.split("\n");
-            const wrappedLines: string[] = [];
-    
-            for (const line of lines) {
-                if (line.trim() === "") {
-                    wrappedLines.push(""); // preserve empty line
-                    continue;
-                }
-    
-                let i = 0;
-                while (i < line.length) {
-                    let nextBreak = i + wrapLimit;
-    
-                    if (nextBreak >= line.length) {
-                        wrappedLines.push(line.substring(i));
-                        break;
-                    }
-    
-                    let spaceIndex = line.lastIndexOf(" ", nextBreak);
-                    if (spaceIndex <= i) spaceIndex = nextBreak;
-    
-                    wrappedLines.push(line.substring(i, spaceIndex));
-                    i = spaceIndex + 1;
-                }
-            }
-    
-            return wrappedLines.join("\n");
-        };
-    
-        const addNextChar = () => {
-            // Stop if a new session has started
-            if (currentSessionId !== this.typingSessionId) return;
-    
-            if (index <= fullText.length) {
-                const currentRaw = fullText.substring(0, index);
-                const currentWrapped = smartWrap(currentRaw);
-                target.text = currentWrapped;
-    
-                index++;
-                window.setTimeout(addNextChar, delay);
-            }
-        };
-    
-        // Start typing
-        addNextChar();
     }
 }
 
