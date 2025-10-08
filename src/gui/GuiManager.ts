@@ -20,6 +20,7 @@ import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { ISpecialMode } from "../common/special-mode/ISpecialMode";
 import { GuiHelpers } from "./GuiHelpers";
 import { i18nManager, TranslationKeys, languageManager } from "../common/i18n";
+import calendarManager from "./CalendarManager";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -30,6 +31,7 @@ class GuiManager {
     private bannerButton!: Button;
     private xButton!: Button;
     private menuButton!: Button;
+    private calendarButton!: Button;
     private categoryDropdown!: Dropdown;
     private categoryDropdownBuilder!: CategoryDropdownBuilder;
     private languageDropdown!: Dropdown;
@@ -107,6 +109,18 @@ class GuiManager {
 
         this._advancedTexture.addControl(this.bottomButtonPanel);
 
+        this.calendarButton = Button.CreateImageOnlyButton("calendarButton", "assets/buttons/calendar-button.webp");
+        this.calendarButton.thickness = 0;
+        this.calendarButton.background = "";
+        this.calendarButton.hoverCursor = "pointer";
+        this.calendarButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+        this.calendarButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this.calendarButton.onPointerClickObservable.add(() => {
+            analyticsManager.trackButtonClick('calendar_button', 'calendar_action');
+            calendarManager.start();
+        });
+        this._advancedTexture.addControl(this.calendarButton);
+
         // Register buttons for high-res replacement
         puzzleAssetsManager.addGuiImageButtonSource(this.playButton, "assets/buttons/play-button.webp");
 
@@ -164,54 +178,64 @@ class GuiManager {
         const renderHeight = ctx.engine.getRenderHeight();
 
         this.bottomButtonPanel.spacing = renderHeight / 48;
-        this.playButton.width = renderHeight / 2 + "px";
-        this.playButton.height = renderHeight / 8 + "px";
+        this.playButton.widthInPixels = renderHeight / 2;
+        this.playButton.heightInPixels = renderHeight / 8;
         let fontSize = GuiHelpers.calculateFontSize(this.playButton.textBlock!.text, renderHeight / 4, renderHeight / 8, this.playButton.textBlock!.fontWeight, this.playButton.textBlock!.fontFamily);
         this.playButton.textBlock!.fontSizeInPixels = fontSize;
 
-        this.xButton.width = renderHeight / 12 + "px";
-        this.xButton.height = renderHeight / 12 + "px";
+        this.xButton.widthInPixels = renderHeight / 12;
+        this.xButton.heightInPixels = renderHeight / 12;
         this.xButton.paddingTopInPixels = renderHeight / 80;
         this.xButton.paddingRightInPixels = renderHeight / 80;
-        this.menuButton.width = renderHeight / 12 + "px";
-        this.menuButton.height = renderHeight / 10 + "px";
+
+        this.menuButton.widthInPixels = renderHeight / 12;
+        this.menuButton.heightInPixels = renderHeight / 10;
         this.menuButton.paddingTopInPixels = renderHeight / 80;
         this.menuButton.paddingRightInPixels = renderHeight / 80;
+
+        const calPaddingTop = renderHeight / 120;
+        const calPaddingLeft = 7 * renderHeight / 80;
+        this.calendarButton.widthInPixels = calPaddingLeft + renderHeight / 14;
+        this.calendarButton.heightInPixels = calPaddingTop + renderHeight / 14;
+        this.calendarButton.paddingTopInPixels = calPaddingTop;
+        this.calendarButton.paddingLeftInPixels = calPaddingLeft;
 
         this.playButton.isVisible = false;
         this.menuButton.isVisible = false;
         this.xButton.isVisible = false;
         this.bannerButton.isVisible = false;
+        this.calendarButton.isVisible = false;
 
         switch (gameModeManager.currentMode) {
             case GameMode.Initial:
                 this.playButton.isVisible = true;
                 this.menuButton.isVisible = false;//true;   // TODO LATER
+                this.calendarButton.isVisible = true;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
-                this.bannerButton.width = renderHeight / 4 + "px";//"240px";
-                this.bannerButton.height = renderHeight / 16 + "px";//"60px";
-                this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
+                this.bannerButton.widthInPixels = renderHeight / 4;
+                this.bannerButton.heightInPixels = renderHeight / 16;
+                this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
                 break;
             case GameMode.OpenCover:
                 this.xButton.isVisible = this._xAction !== null;
-                this.bannerButton.width = renderHeight / 3.9 + "px";//"248px";
+                this.bannerButton.widthInPixels = renderHeight / 3.9;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
-                this.bannerButton.height = renderHeight / 15.6 + "px";//"62px";
-                this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
+                this.bannerButton.heightInPixels = renderHeight / 15.6;
+                this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
                 break;
             case GameMode.Solve:
                 this.xButton.isVisible = this._xAction !== null;
-                this.bannerButton.width = renderHeight / 8 + "px";//"124px";
+                this.bannerButton.widthInPixels = renderHeight / 8;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
-                this.bannerButton.height = renderHeight / 32 + "px";//"31px";
-                this.bottomButtonPanel.paddingBottom = renderHeight / 192 + "px";//"5px";
+                this.bannerButton.heightInPixels = renderHeight / 32;
+                this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 192;
                 break;
             case GameMode.Celebration:
                 this.xButton.isVisible = this._xAction !== null;
-                this.bannerButton.width = renderHeight / 3.7 + "px";//"248px";
+                this.bannerButton.widthInPixels = renderHeight / 3.7;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
-                this.bannerButton.height = renderHeight / 14.8 + "px";//"62px";
-                this.bottomButtonPanel.paddingBottom = renderHeight / 48 + "px";//"20px";
+                this.bannerButton.heightInPixels = renderHeight / 14.8;
+                this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
                 break;
             }
     }

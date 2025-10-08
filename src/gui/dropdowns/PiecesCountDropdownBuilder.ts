@@ -23,7 +23,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         this.refreshPiecesText(false);
 
         sceneInitializer.addResizeObserver((w, h) => {
-            const dropdownWidth = Math.min(7 * h / 20, w * 0.4);
+            const dropdownWidth = Math.min(7 * h / 20, w * 0.36);
             this._dropdown.resize(dropdownWidth, h / 20, dropdownWidth);
         });
     }

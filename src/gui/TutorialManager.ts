@@ -24,10 +24,6 @@ class TutorialManager {
             }
         };
 
-        let title = i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.TITLE);
-
-        let message = i18nManager.translate(TranslationKeys.TUTORIAL.WELCOME.MESSAGE);
-
         if (gameModeManager.giftReceived) {
             let gifteeName = giftMaker.friendsName;
 
