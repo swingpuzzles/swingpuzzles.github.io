@@ -139,5 +139,10 @@
     "orientationVerticalLabel": "📱 Vertical (Retrato) para diseños altos",
     "orientationHorizontalButton": "Horizontal",
     "orientationVerticalButton": "Vertical"
+  },
+  "calendar": {
+    "forToday": "PARA HOY",
+    "forYesterday": "PARA AYER",
+    "forDate": "PARA EL {date}"
   }
 }

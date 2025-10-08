@@ -163,5 +163,10 @@
     "orientationVerticalLabel": "📱 Vertikální (na výšku)",
     "orientationHorizontalButton": "Horizontální",
     "orientationVerticalButton": "Vertikální"
+  },
+  "calendar": {
+    "forToday": "NA DNES",
+    "forYesterday": "NA VČERA",
+    "forDate": "NA {date}"
   }
 }
