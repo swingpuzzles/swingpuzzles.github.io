@@ -846,12 +846,8 @@ class PopupHint {
         if (this._currentMessageKey && this.textAreaRect && this.textAreaRect.children.length > 0) {
             const fullText = i18nManager.translate(this._currentMessageKey, this._currentMessageParams);
             
-            // Calculate wrap limit the same way as in showWrapper
-            const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
-            const wrapLimitRatio = ctx.engine.getRenderWidth() > ctx.engine.getRenderHeight() ? 1 : ctx.engine.getRenderWidth() / ctx.engine.getRenderHeight();
-            
             // Call typeTextLetterByLetter to properly wrap and type the text
-            this._textTyper.typeTextLetterByLetter(fullText, 0, (vertical ? 59 : 54) * wrapLimitRatio);
+            this._textTyper.typeTextLetterByLetter(fullText, this.textAreaRect.widthInPixels);
         }
 
         // Refresh button texts when language changes
@@ -929,8 +925,6 @@ class PopupHint {
             backAction: (() => void) | null = null,
             mode: PopupMode = PopupMode.Normal,
             formInputModel: FormRowModel[] | null = null) : boolean {
-        
-        const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
 
         this.gotItButton.isVisible = false;
         this.emptyGreenButton.isVisible = false;
@@ -1042,9 +1036,7 @@ class PopupHint {
         this.mainContainer.verticalAlignment = verticalAlignment;
         this._screenShader.setShaderMode(shaderMode);
 
-        const wrapLimitRatio = ctx.engine.getRenderWidth() > ctx.engine.getRenderHeight() ? 1 : ctx.engine.getRenderWidth() / ctx.engine.getRenderHeight();
-
-        this._textTyper.typeTextLetterByLetter(fullText, 0, (vertical ? 59 : 54) * wrapLimitRatio);
+        this._textTyper.typeTextLetterByLetter(fullText, this.textAreaRect.widthInPixels);
         this.mainContainer.isVisible = true;
 
         this.fadeIn();

@@ -1,65 +1,68 @@
 import { TextBlock } from "@babylonjs/gui";
+import { GuiHelpers } from "./GuiHelpers";
 
 export default class TextTyper {
     private typingSessionId = 0;
     private inputTextArea!: TextBlock;
+    private bakedText: string = "";
+    private hotText: string = "";
+    private hotStartIndex: number = 0;
+    private currentIndex: number = 0;
+    private lastSpaceIndex: number = 0;
+    private maxWidth: number = 0;
 
     constructor(inputTextArea: TextBlock) {
         this.inputTextArea = inputTextArea;
     }
     
-    public typeTextLetterByLetter(fullText: string, delay = 0, wrapLimit: number) {
-        const target = this.inputTextArea;
-        let index = 0;
-    
+    public typeTextLetterByLetter(fullText: string, maxWidth: number) {
+        this.currentIndex = 0;
+        this.hotStartIndex = 0;
+        this.bakedText = "";
+        this.hotText = "";
+        this.lastSpaceIndex = 0;
+        this.maxWidth = maxWidth;
+
         // Invalidate any previous typing session
         const currentSessionId = ++this.typingSessionId;
-    
-        const smartWrap = (text: string): string => {
-            const lines = text.split("\n");
-            const wrappedLines: string[] = [];
-    
-            for (const line of lines) {
-                if (line.trim() === "") {
-                    wrappedLines.push(""); // preserve empty line
-                    continue;
-                }
-    
-                let i = 0;
-                while (i < line.length) {
-                    let nextBreak = i + wrapLimit;
-    
-                    if (nextBreak >= line.length) {
-                        wrappedLines.push(line.substring(i));
-                        break;
-                    }
-    
-                    let spaceIndex = line.lastIndexOf(" ", nextBreak);
-                    if (spaceIndex <= i) spaceIndex = nextBreak;
-    
-                    wrappedLines.push(line.substring(i, spaceIndex));
-                    i = spaceIndex + 1;
-                }
-            }
-    
-            return wrappedLines.join("\n");
-        };
     
         const addNextChar = () => {
             // Stop if a new session has started
             if (currentSessionId !== this.typingSessionId) return;
     
-            if (index <= fullText.length) {
-                const currentRaw = fullText.substring(0, index);
-                const currentWrapped = smartWrap(currentRaw);
-                target.text = currentWrapped;
+            if (this.currentIndex < fullText.length) {
+                if (fullText[this.currentIndex] === "\n") {
+                    this.bakedText += this.hotText + "\n";
+                    this.hotText = "";
+                    this.hotStartIndex = this.currentIndex + 1;
+                } else {
+                    if (fullText[this.currentIndex] === " ") {
+                        this.lastSpaceIndex = this.currentIndex;
+                    }
+
+                    this.hotText += fullText[this.currentIndex];
+
+                    if (this.textTooLong()) {
+                        this.bakedText += fullText.substring(this.hotStartIndex, this.lastSpaceIndex) + "\n";
+                        this.hotText = fullText.substring(this.lastSpaceIndex + 1, this.currentIndex + 1);
+                        this.hotStartIndex = this.lastSpaceIndex + 1;
+                        this.lastSpaceIndex = 0;
+                    }
+                }
     
-                index++;
-                window.setTimeout(addNextChar, delay);
+                const currentWrapped = this.bakedText + this.hotText;
+                this.inputTextArea.text = currentWrapped;
+
+                this.currentIndex++;
+                window.setTimeout(addNextChar, 0);
             }
         };
     
         // Start typing
         addNextChar();
+    }
+
+    private textTooLong(): boolean {
+        return 3 * GuiHelpers.measureText(this.hotText, this.inputTextArea.fontSizeInPixels, this.inputTextArea.fontWeight, this.inputTextArea.fontFamily).width > this.maxWidth;
     }
 }
