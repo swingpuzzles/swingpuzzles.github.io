@@ -5,26 +5,27 @@ import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManage
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
 import analyticsManager from "../../common/AnalyticsManager";
 import { i18nManager, TranslationKeys } from "../../common/i18n";
+import sceneInitializer from "../../core3d/SceneInitializer";
 
 export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
-        super({ gameModes: [ GameMode.Initial, GameMode.GiftInitial ], selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
+        super({
+            gameModes: [ GameMode.Initial, GameMode.GiftInitial ],
+            selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); },
+            });
 
         if (ctx.debugMode) {
             this.addPiecesNums(3, 2);
         }
 
-        this.addPiecesNums(5, 3);
-        this.addPiecesNums(6, 4);
-        this.addPiecesNums(8, 5);
-        this.addPiecesNums(10, 6);
-        this.addPiecesNums(13, 8);
-        this.addPiecesNums(16, 10);
-        this.addPiecesNums(19, 12);
-        this.addPiecesNums(24, 15);
-        this.addPiecesNums(25, 20, true);
+        this.refreshPiecesText(false);
+
+        sceneInitializer.addResizeObserver((w, h) => {
+            const dropdownWidth = Math.min(7 * h / 20, w * 0.4);
+            this._dropdown.resize(dropdownWidth, h / 20, dropdownWidth);
+        });
     }
 
     protected get storageItemName(): string {
@@ -66,7 +67,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         }
     }
 
-    public refreshPiecesText() {
+    public refreshPiecesText(build: boolean = true) {
         // Clear existing options
         this.dropdown.clearOptions();
         this.items = [];
@@ -87,7 +88,9 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         this.addPiecesNums(24, 15);
         this.addPiecesNums(25, 20, true);
 
-        this.build();
+        if (build) {
+            this.build(true);
+        }
     }
 
     selectAction(xCount: number, zCount: number, text: string, userAction: boolean = true) {

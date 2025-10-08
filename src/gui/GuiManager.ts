@@ -44,7 +44,7 @@ class GuiManager {
         this._advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI", true, ctx.scene);
     
         this.piecesCountDropdownBuilder = new PiecesCountDropdownBuilder();
-        this.piecesCountDropdown = this.piecesCountDropdownBuilder.build();
+        this.piecesCountDropdown = this.piecesCountDropdownBuilder.build(true);
         this.advancedTexture.addControl(this.piecesCountDropdown);
 
         popupHint.init();

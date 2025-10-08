@@ -30,7 +30,7 @@ interface DropdownItem {
 }
 
 export default abstract class DropdownBuilder {
-    private _dropdown: Dropdown;
+    protected _dropdown: Dropdown;
     private options: DropdownOptions;
     protected items: DropdownItem[] = [];
 
