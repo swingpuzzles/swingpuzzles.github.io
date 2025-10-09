@@ -1,23 +1,23 @@
 import { Container, Control, Rectangle, StackPanel, TextBlock, Image, Button, InputText } from "@babylonjs/gui";
 import { Animation, Animatable } from "@babylonjs/core"
-import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
-import sceneInitializer from "../core3d/SceneInitializer";
-import ctx from "../core3d/common/SceneContext";
-import ScreenShader, { ShaderMode } from "./ScreenShader";
-import guiManager from "./GuiManager";
-import handImagePool from "./HandImagePool";
-import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
-import { FormRowModel as FormRowModel } from "../model/FormRowModel";
-import ISelector from "../interfaces/ISelector";
-import Constants from "../core3d/common/Constants";
-import localStorageManager from "../common/LocalStorageManager";
-import puzzleEditor from "../core3d/misc/PuzzleEditor";
-import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
-import timerManager from "../core3d/misc/TimerManager";
-import specialModeManager from "../common/special-mode/SpecialModeManager";
-import { GuiHelpers } from "./GuiHelpers";
-import { i18nManager, TranslationKeys, languageManager } from "../common/i18n";
-import TextTyper from "./TextTyper";
+import puzzleAssetsManager from "../../core3d/behaviors/PuzzleAssetsManager";
+import sceneInitializer from "../../core3d/SceneInitializer";
+import ctx from "../../core3d/common/SceneContext";
+import ScreenShader, { ShaderMode } from "../ScreenShader";
+import guiManager from "../GuiManager";
+import handImagePool from "../HandImagePool";
+import puzzleCircleBuilder from "../../core3d/builders/PuzzleCircleBuilder";
+import { FormRowModel as FormRowModel } from "../../model/FormRowModel";
+import ISelector from "../../interfaces/ISelector";
+import Constants from "../../core3d/common/Constants";
+import localStorageManager from "../../common/LocalStorageManager";
+import puzzleEditor from "../../core3d/misc/PuzzleEditor";
+import openCoverAnimation from "../../core3d/animations/OpenCoverAnimation";
+import timerManager from "../../core3d/misc/TimerManager";
+import specialModeManager from "../../common/special-mode/SpecialModeManager";
+import { GuiHelpers } from "../GuiHelpers";
+import { i18nManager, TranslationKeys, languageManager } from "../../common/i18n";
+import TextTyper from "../TextTyper";
 
 export enum PopupMode {
     Normal,

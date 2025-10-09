@@ -7,7 +7,7 @@ import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
 import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import sceneInitializer from "../core3d/SceneInitializer";
-import popupHint, { overPopup } from "./PopupHint";
+import popupHint, { overPopup } from "./popups/PopupHint";
 import giftMaker from "./GiftMaker";
 import { Dropdown } from "./dropdowns/Dropdown";
 import CategoryDropdownBuilder from "./dropdowns/CategoryDropdownBuilder";

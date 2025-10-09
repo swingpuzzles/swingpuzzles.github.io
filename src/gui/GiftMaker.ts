@@ -1,5 +1,5 @@
 import { ColorPicker, Control, Image, Rectangle, StackPanel } from "@babylonjs/gui";
-import popupHint, { PopupMode } from "./PopupHint";
+import popupHint, { PopupMode } from "./popups/PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import { FormRowModel } from "../model/FormRowModel";
 import LanguageSelector from "./selectors/LanguageSelector";

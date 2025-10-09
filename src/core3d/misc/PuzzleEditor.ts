@@ -1,7 +1,7 @@
 import { Color3, DynamicTexture, Mesh, MeshBuilder, StandardMaterial, Vector3 } from "@babylonjs/core";
 import ctx from "../common/SceneContext";
 import sceneInitializer from "../SceneInitializer";
-import popupHint from "../../gui/PopupHint";
+import popupHint from "../../gui/popups/PopupHint";
 import { GuiHelpers } from "../../gui/GuiHelpers";
 
 class PuzzleEditor {

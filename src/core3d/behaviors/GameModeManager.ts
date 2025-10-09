@@ -1,7 +1,7 @@
 import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
 import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 import giftMaker from "../../gui/GiftMaker";
-import popupHint, { overPopup } from "../../gui/PopupHint";
+import popupHint, { overPopup } from "../../gui/popups/PopupHint";
 import tutorialManager from "../../gui/TutorialManager";
 import backToInitialAnimation from "../animations/BackToInitialAnimation";
 import openCoverAnimation from "../animations/OpenCoverAnimation";

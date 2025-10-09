@@ -1,6 +1,6 @@
 import { Control } from "@babylonjs/gui";
 import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
-import popupHint, { overPopup, PopupMode } from "./PopupHint";
+import popupHint, { overPopup, PopupMode } from "./popups/PopupHint";
 import { ShaderMode } from "./ScreenShader";
 import handImagePool from "./HandImagePool";
 import timerDisplay from "../core3d/misc/TimerDisplay";

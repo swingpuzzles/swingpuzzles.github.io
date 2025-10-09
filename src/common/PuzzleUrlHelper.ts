@@ -6,7 +6,7 @@ import puzzleGameBuilder from "../core3d/builders/PuzzleGameBuilder";
 import ctx from "../core3d/common/SceneContext";
 import { Categories } from "../core3d/common/Constants";
 import guiManager from "../gui/GuiManager";
-import popupHint, { overPopup } from "../gui/PopupHint";
+import popupHint, { overPopup } from "../gui/popups/PopupHint";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import specialModeManager from "./special-mode/SpecialModeManager";
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "./LocalStorageManager";
