@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4nBSV7m",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91ofJnRFhDL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91ofJnRFhDL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71j7y-meRhL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3WtqkoL",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81Q5KqpsVjL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81Q5KqpsVjL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81KyUVyQHBL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 11, 1799, an inventor in France tried to prove that balloons could safely transport animals — so he sent up a sheep, a duck, and a rooster. The crowd cheered as the animals returned alive… but very unimpressed.",
+        "es": "El 11 de octubre de 1799, un inventor en Francia intentó demostrar que los globos podían transportar animales de forma segura — así que envió al aire una oveja, un pato y un gallo. La multitud aplaudió cuando regresaron vivos… pero nada contentos.",
+        "de": "Am 11. Oktober 1799 versuchte ein französischer Erfinder zu beweisen, dass Ballons Tiere sicher transportieren können — also schickte er ein Schaf, eine Ente und einen Hahn in die Luft. Die Menge jubelte, als sie lebend zurückkamen… aber sichtlich genervt.",
+        "fr": "Le 11 octobre 1799, un inventeur français voulut prouver que les ballons pouvaient transporter des animaux sans danger — il fit donc voler un mouton, un canard et un coq. La foule applaudit lorsqu’ils revinrent vivants… mais visiblement contrariés.",
+        "it": "L’11 ottobre 1799, un inventore francese cercò di dimostrare che i palloni potevano trasportare animali in sicurezza — così fece volare una pecora, un’anatra e un gallo. La folla applaudì quando tornarono vivi… ma per niente felici.",
+        "sk": "Dňa 11. októbra 1799 sa francúzsky vynálezca pokúsil dokázať, že balóny dokážu bezpečne prepravovať zvieratá — do vzduchu preto poslal ovcu, kačku a kohúta. Dav tlieskal, keď sa vrátili živí… no poriadne nahnevaní.",
+        "cs": "Dne 11. října 1799 se francouzský vynálezce pokusil dokázat, že balóny mohou bezpečně přepravovat zvířata — do vzduchu proto vyslal ovci, kachnu a kohouta. Dav jásal, když se vrátili živí… ale značně rozladění."
+    }
+}
+
