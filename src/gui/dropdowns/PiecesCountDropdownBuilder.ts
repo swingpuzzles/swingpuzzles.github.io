@@ -6,13 +6,14 @@ import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../../c
 import analyticsManager from "../../common/AnalyticsManager";
 import { i18nManager, TranslationKeys } from "../../common/i18n";
 import sceneInitializer from "../../core3d/SceneInitializer";
+import { Dropdown } from "./Dropdown";
 
 export default class PiecesCountDropdownBuilder extends DropdownBuilder {
     private _optionSelected: boolean = false;
 
     constructor() {
         super({
-            gameModes: [ GameMode.Initial, GameMode.GiftInitial ],
+            gameModes: [ GameMode.Initial, GameMode.GiftInitial, GameMode.Calendar ],
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); },
             });
 
@@ -23,9 +24,19 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
         this.refreshPiecesText(false);
 
         sceneInitializer.addResizeObserver((w, h) => {
-            const dropdownWidth = Math.min(7 * h / 20, w * 0.36);
-            this._dropdown.resize(dropdownWidth, h / 20, dropdownWidth);
+            this.build();
         });
+
+        this.build();
+    }
+
+    build(customResize: boolean = false): Dropdown {
+        super.build(customResize);
+
+        const dropdownWidth = Math.min(7 * ctx.engine.getRenderHeight() / 20, ctx.engine.getRenderWidth() * 0.36);
+        this._dropdown.resize(dropdownWidth, ctx.engine.getRenderHeight() / 20, dropdownWidth);
+
+        return this._dropdown;
     }
 
     protected get storageItemName(): string {

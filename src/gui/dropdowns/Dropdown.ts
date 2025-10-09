@@ -255,7 +255,7 @@ export class Dropdown extends Container {
 
             o.heightInPixels = this.itemHeight - 1;
             if ((o as Button).textBlock) {
-                (o as Button).textBlock!.fontSizeInPixels = width / 14;
+                (o as Button).textBlock!.fontSizeInPixels = Math.min(optionWidth / 10, height / 2);
             }
         }
     }

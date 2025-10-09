@@ -20,7 +20,6 @@ import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { ISpecialMode } from "../common/special-mode/ISpecialMode";
 import { GuiHelpers } from "./GuiHelpers";
 import { i18nManager, TranslationKeys, languageManager } from "../common/i18n";
-import calendarManager from "./CalendarManager";
 
 class GuiManager {
     private _advancedTexture!: AdvancedDynamicTexture;
@@ -117,7 +116,7 @@ class GuiManager {
         this.calendarButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.calendarButton.onPointerClickObservable.add(() => {
             analyticsManager.trackButtonClick('calendar_button', 'calendar_action');
-            calendarManager.start();
+            gameModeManager.enterCalendarMode();
         });
         this._advancedTexture.addControl(this.calendarButton);
 
@@ -218,26 +217,32 @@ class GuiManager {
                 break;
             case GameMode.OpenCover:
                 this.xButton.isVisible = this._xAction !== null;
-                this.bannerButton.widthInPixels = renderHeight / 3.9;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
+                this.bannerButton.widthInPixels = renderHeight / 3.9;
                 this.bannerButton.heightInPixels = renderHeight / 15.6;
                 this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
                 break;
             case GameMode.Solve:
                 this.xButton.isVisible = this._xAction !== null;
-                this.bannerButton.widthInPixels = renderHeight / 8;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
+                this.bannerButton.widthInPixels = renderHeight / 8;
                 this.bannerButton.heightInPixels = renderHeight / 32;
                 this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 192;
                 break;
             case GameMode.Celebration:
                 this.xButton.isVisible = this._xAction !== null;
-                this.bannerButton.widthInPixels = renderHeight / 3.7;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
+                this.bannerButton.widthInPixels = renderHeight / 3.7;
                 this.bannerButton.heightInPixels = renderHeight / 14.8;
                 this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
                 break;
-            }
+            case GameMode.Calendar:
+                this.calendarButton.isVisible = true;
+                this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
+                this.bannerButton.widthInPixels = renderHeight / 3.7;
+                this.bannerButton.heightInPixels = renderHeight / 14.8;
+                break;
+        }
     }
 
     public setPiecesCount(count: number) {
@@ -257,29 +262,29 @@ class GuiManager {
         });
     }
 
-    public enterGeneralCategory(): void {
-        this.enterCategoryImpl(Categories.General);
+    public async enterGeneralCategory(): Promise<void> {
+        await this.enterCategoryImpl(Categories.General);
     }
 
-    public ensureNotGiftCategory(): void {
+    public async ensureNotGiftCategory(): Promise<void> {
         if (ctx.category === Categories.Gift) {
-            this.enterGeneralCategory();
+            await this.enterGeneralCategory();
         }
     }
 
-    public enterCategory(category: string, callChangeHandler: boolean = true): void {
+    public async enterCategory(category: string, callChangeHandler: boolean = true): Promise<void> {
         const found = Object.values(Categories).find(cat => cat.key === category);
 
         if (found) {
-            this.enterCategoryImpl(found);
+            await this.enterCategoryImpl(found);
         }
     }
 
-    private enterCategoryImpl(category: Category, callChangeHandler: boolean = true): void {
+    private async enterCategoryImpl(category: Category, callChangeHandler: boolean = true): Promise<void> {
         this.categoryDropdown.doSelectAction(category.key, category.url, null, false, false);
 
         if (callChangeHandler) {
-            gameModeManager.handleCategoryChange(category, false);
+            await gameModeManager.handleCategoryChange(category, false);
         }
     }
 

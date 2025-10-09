@@ -58,7 +58,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
         }
     }
 
-    selectAction(category: Category, userAction: boolean = true) {
+    async selectAction(category: Category, userAction: boolean = true) {
         localStorageManager.set(this.storageItemName, category.key);
 
         // Track category change in dropdown
@@ -66,7 +66,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
             analyticsManager.trackDropdownInteraction('category_dropdown', category.key);
         }
 
-        gameModeManager.handleCategoryChange(category, userAction);
+        await gameModeManager.handleCategoryChange(category, userAction);
 
         if (userAction) {
             //tutorialManager.showPuzzleChooserHint();    // TODO tutorial action?

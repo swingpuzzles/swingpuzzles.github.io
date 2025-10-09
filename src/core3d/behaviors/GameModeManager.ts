@@ -11,6 +11,7 @@ import { Categories, Category } from "../common/Constants";
 import timerManager from "../misc/TimerManager";
 import piecePositioningManager from "./PiecePositioningManager";
 import analyticsManager from "../../common/AnalyticsManager";
+import calendarManager from "../../gui/CalendarManager";
 
 export enum GameMode {
     Initial,
@@ -25,6 +26,7 @@ export enum GameMode {
     GiftPhysicalFinal,
     GiftTry,
     GiftReceived,
+    Calendar,
 }
 
 class GameModeManager {
@@ -51,6 +53,9 @@ class GameModeManager {
     }
     get giftReceived() {
         return this._currentMode === GameMode.GiftReceived;
+    }
+    get calendarMode() {
+        return this._currentMode === GameMode.Calendar;
     }
     get currentMode() {
         return this._currentMode;
@@ -217,6 +222,22 @@ class GameModeManager {
         giftMaker.tryGift();
     }
 
+    enterCalendarMode() {
+        this.resetAll(GameMode.Calendar);
+
+        ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
+        ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
+            
+        ctx.cameraAttachControl(true);
+
+        puzzleUrlHelper.clearPuzzleId();
+        
+        // Track calendar session start
+        analyticsManager.startGameSession(GameMode.Calendar, ctx.category?.key);
+
+        calendarManager.start();
+    }
+
     handleGetItOnAmazonAction() {
         if (openCoverAnimation.giftCover) {
             backToInitialAnimation.animate(ctx.currentCover, () => { this.enterGiftPhysicalOrientationMode(); });
@@ -226,7 +247,7 @@ class GameModeManager {
         }
     }
 
-    handleCategoryChange(category: Category, userAction: boolean) {
+    async handleCategoryChange(category: Category, userAction: boolean) {
         if (ctx.category !== category) {
             const fromCategory = ctx.category?.key || 'unknown';
             const toCategory = category.key;
@@ -247,7 +268,7 @@ class GameModeManager {
                     this.enterInitialMode();
                 }
 
-                puzzleCircleBuilder.build();
+                await puzzleCircleBuilder.build();
             }
         }
     }

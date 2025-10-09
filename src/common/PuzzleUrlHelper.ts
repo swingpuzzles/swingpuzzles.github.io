@@ -75,19 +75,19 @@ class PuzzleUrlHelper {
 
                     if (!gameModeManager.initialMode) {console.trace(changedPuzzle);
                         if (changedPuzzle) {
-                            backToInitialAnimation.animate(ctx.currentCover, () => {
+                            backToInitialAnimation.animate(ctx.currentCover, async () => {
                                 if (changed) {
-                                    puzzleCircleBuilder.build();
+                                    await puzzleCircleBuilder.build();
                                 }
 
                                 openCoverAnimation.animate(cover);
                             });
                         } else if (changed) {
-                            puzzleCircleBuilder.build();
+                            await puzzleCircleBuilder.build();
                         }
                     } else {
                         if (changed) {
-                            puzzleCircleBuilder.build();
+                            await puzzleCircleBuilder.build();
                         }
 
                         openCoverAnimation.animate(cover);

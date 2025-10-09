@@ -33,7 +33,9 @@ class OpenCoverAnimation implements IPuzzleAnimation {
             this._giftCover = true;
         }
 
-        gameModeManager.enterOpenCoverMode(coverMat !== null);
+        if (!gameModeManager.calendarMode) {
+            gameModeManager.enterOpenCoverMode(coverMat !== null);
+        }
 
         ctx.currentCover = cover;
 

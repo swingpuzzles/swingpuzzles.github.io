@@ -105,16 +105,13 @@ class PuzzleCircleBuilder {
         this.covers.clear();
     }
 
-    build() {//console.trace('circle build');
+    async build() {
         this.clear();
 
-        const filteredData = puzzleDataManager.getFilteredData();
+        const filteredData = await puzzleDataManager.getFilteredData();
 
         const radius = 100;
         const count = filteredData.length;
-
-        const urlData = puzzleUrlHelper.readFromUrl();
-        //const puzzleId = urlData.puzzleId;console.log(urlData);
 
         filteredData.forEach((obj, index) => {
             const angle = (2 * Math.PI * index) / count;
@@ -132,10 +129,6 @@ class PuzzleCircleBuilder {
                 imgCoverUrl: obj.imgCoverUrl, 
                 link: obj.link 
             });
-
-            /*if (puzzleId && obj.imgSmallUrl.includes(puzzleId)) {
-                ctx.camera.alpha = angle;
-            }*/
 
             puzzleUrlHelper.insertCoverEntry(obj.imgSmallUrl, cover);
         });
