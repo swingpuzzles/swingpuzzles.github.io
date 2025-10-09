@@ -63,6 +63,6 @@ export default class TextTyper {
     }
 
     private textTooLong(): boolean {
-        return 3 * GuiHelpers.measureText(this.hotText, this.inputTextArea.fontSizeInPixels, this.inputTextArea.fontWeight, this.inputTextArea.fontFamily).width > this.maxWidth;
+        return 3.2 * GuiHelpers.measureText(this.hotText, this.inputTextArea.fontSizeInPixels, this.inputTextArea.fontWeight, this.inputTextArea.fontFamily).width > this.maxWidth;
     }
 }

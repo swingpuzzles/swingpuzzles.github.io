@@ -19,6 +19,7 @@ import { GuiHelpers } from "../GuiHelpers";
 import { i18nManager, TranslationKeys, languageManager } from "../../common/i18n";
 import TextTyper from "../TextTyper";
 import { PopupMode } from "./modes/PopupMode";
+import { IPopupMode } from "./IPopupMode";
 
 class PopupHint {
     private readonly _fadeDuration = 10;
@@ -54,7 +55,7 @@ class PopupHint {
     private _currentHeadingKey: string = "";
     private _currentMessageParams: Record<string, any> = {};
     private _currentHeadingParams: Record<string, any> = {};
-    private _popupMode!: PopupMode;
+    private _popupMode!: IPopupMode;
     private _imgVertical: boolean = false;
     private _radioButtons: Button[] = [];
     private _overPopup: boolean = false;
@@ -393,7 +394,7 @@ class PopupHint {
     }
 
     public isManualOrientation(): boolean {
-        return this._popupMode === PopupMode.GiftPhysicalInitial || this._popupMode === PopupMode.GiftPhysicalFinal;
+        return this._popupMode?.manualOrientation;
     }
     
     private clearForm() {
@@ -867,7 +868,7 @@ class PopupHint {
         closeAction: (() => void) | null = null,
         backAction: (() => void) | null = null,
         afterShowAction: (() => void) | null = null,
-        mode: PopupMode = PopupMode.Normal,
+        mode: IPopupMode = PopupMode.Normal,
         formInputModel: FormRowModel[] | null = null,
         coverImageUrl: string | null = null
     ): void {
@@ -899,7 +900,7 @@ class PopupHint {
             closeAction: (() => void) | null = null,
             backAction: (() => void) | null = null,
             afterShowAction: (() => void) | null = null,
-            mode: PopupMode = PopupMode.Normal,
+            mode: IPopupMode = PopupMode.Normal,
             formInputModel: FormRowModel[] | null = null,
             coverImageUrl: string | null = null) : void {
 
@@ -913,7 +914,7 @@ class PopupHint {
             action: () => void = () => {},
             closeAction: (() => void) | null = null,
             backAction: (() => void) | null = null,
-            mode: PopupMode = PopupMode.Normal,
+            mode: IPopupMode = PopupMode.Normal,
             formInputModel: FormRowModel[] | null = null,
             coverImageUrl: string | null = null) : boolean {
 

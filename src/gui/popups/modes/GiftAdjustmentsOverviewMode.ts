@@ -1,6 +1,8 @@
 import { IPopupMode, PopupElements } from "../IPopupMode";
 
 export class GiftAdjustmentsOverviewMode implements IPopupMode {
+    readonly manualOrientation = false;
+
     configure(
         elements: PopupElements,
         coverImageUrl: string | undefined,

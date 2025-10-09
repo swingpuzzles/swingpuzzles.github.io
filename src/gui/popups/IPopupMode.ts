@@ -41,5 +41,10 @@ export interface IPopupMode {
         isNextButtonVisible: (value: boolean) => boolean,
         backButtonText: string
     ): void;
+
+    /**
+     * Whether this mode uses manual orientation
+     */
+    readonly manualOrientation: boolean;
 }
 
