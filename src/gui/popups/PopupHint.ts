@@ -683,25 +683,16 @@ class PopupHint {
     }
 
     private resize() {
-        const giftPreviewOverview = false; /*this._popupMode === PopupMode.GiftAdjustmentsPreview ||
-            this._popupMode === PopupMode.GiftAdjustmentsOverview ||
-            this._popupMode === PopupMode.GiftPhysicalInitial ||
-            this._popupMode === PopupMode.GiftPhysicalFinal;*/
-
         const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         
-        if (this._popupMode !== PopupMode.GiftPhysicalInitial && this._popupMode !== PopupMode.GiftPhysicalFinal) {
+        if (!this._popupMode.manualOrientation) {
             this._imgVertical = vertical;
         }
 
         const minSize = Math.min(ctx.engine.getRenderWidth(), ctx.engine.getRenderHeight());
         const rawMainHeight = ctx.engine.getRenderHeight() * this._sizeCoef;
-        const mainHeight = giftPreviewOverview && vertical
-            ? Math.min(rawMainHeight * 1.673, 0.95 * ctx.engine.getRenderHeight())
-            : rawMainHeight;
-        const topHeightOrigCoef = 0.2;
-        const topHeightCoef = giftPreviewOverview ? 0.1 : topHeightOrigCoef;
-        const topHeightOrig = minSize * topHeightOrigCoef;
+        const mainHeight = rawMainHeight;
+        const topHeightCoef = 0.2;
         const topHeight = minSize * topHeightCoef;
         const middleHeight = mainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
         const rawMiddleHeight = rawMainHeight - (minSize * (0.1 + 1 / 40)) - topHeight;
@@ -718,7 +709,7 @@ class PopupHint {
         let fontSize = GuiHelpers.calculateFontSize(this.header.text, minSize * (1 - 2.2 * topHeightCoef), topHeight * 0.6, this.header.fontWeight, this.header.fontFamily);
         this.header.fontSizeInPixels = fontSize;
 
-        this.header.widthInPixels = topHeightOrig * 3.1;//0.62;
+        this.header.widthInPixels = topHeight * 3.1;//0.62;
 
         const imageWidth = topHeight;
         const imageHeight = topHeight * 0.925;//0.185;
