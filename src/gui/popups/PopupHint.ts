@@ -24,7 +24,6 @@ export enum PopupMode {
     PreSell,
     Sell,
     Gift_Initial,
-    //Gift_Adjustments_Hint,
     Gift_Adjustments_Preview,
     Gift_Adjustments_Overview,
     Gift_Physical_Initial,
