@@ -114,7 +114,7 @@ class PuzzleCircleBuilder {
         const count = filteredData.length;
 
         filteredData.forEach((obj, index) => {
-            const angle = (2 * Math.PI * index) / count;
+            const angle = Math.PI * (2 * index + 5 / 4) / count;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);
             const position = new Vector3(x, -38, z);
@@ -134,10 +134,14 @@ class PuzzleCircleBuilder {
         });
     }
 
+    public refresh() {
+        this.highlightClosestCover();
+    }
+
     private highlightClosestCover() {
         if (!ctx.cameraInitialized) return;
 
-        if (!gameModeManager.initialMode) {
+        if (!gameModeManager.initialMode && !gameModeManager.calendarMode) {
             if (this.highlightedCover) {
                 this.highlightLayer.removeMesh(this.highlightedCover);
                 this.highlightedCover = null;
@@ -162,7 +166,7 @@ class PuzzleCircleBuilder {
             }
 
             if (this.closestMesh) {
-                this.highlightLayer.addMesh(this.closestMesh, new Color3(0.5, 1, 0));
+                this.highlightLayer?.addMesh(this.closestMesh, new Color3(0.5, 1, 0));
             }
 
             this.highlightedCover = this.closestMesh;

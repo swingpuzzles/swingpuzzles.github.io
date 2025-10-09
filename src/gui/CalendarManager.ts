@@ -12,6 +12,8 @@ class CalendarManager {
     public async start() {
         await puzzleCircleBuilder.build();
 
+        puzzleCircleBuilder.refresh();
+
         openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
 
         const dailyData = await puzzleDataManager.loadTodaysPuzzle();
