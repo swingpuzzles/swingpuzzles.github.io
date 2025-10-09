@@ -6,7 +6,7 @@ import { Image, Rectangle, TextBlock } from "@babylonjs/gui";
 export interface PopupElements {
     emptyGreenButton: { isVisible: boolean };
     centerImage: { isVisible: boolean };
-    coverImage: { isVisible: boolean; source?: string };
+    coverImage: { isVisible: boolean; source?: string | null };
     textAreaRect: { alpha: number };
     getItButton: { isVisible: boolean };
     notNowButton: { isVisible: boolean };
@@ -15,7 +15,7 @@ export interface PopupElements {
     formPanelRect: { 
         alpha: number; 
         background: string; 
-        width: string; 
+        width: string | number; 
     };
     backButton: { textBlock: TextBlock | null };
 }

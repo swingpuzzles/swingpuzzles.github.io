@@ -907,6 +907,9 @@ class PopupHint {
             formInputModel: FormRowModel[] | null = null,
             coverImageUrl: string | null = null) : boolean {
 
+        this._popupMode = mode;
+
+        // Reset all elements to default state
         this.gotItButton.isVisible = false;
         this.emptyGreenButton.isVisible = false;
         this.getItButton.isVisible = false;
@@ -921,72 +924,31 @@ class PopupHint {
         this._shaderMode = shaderMode;
         this.backButton.textBlock!.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.BACK);
 
-        switch (mode) {
-            case PopupMode.PreSell:
-                this.emptyGreenButton.isVisible = true;
-                this.centerImage.isVisible = true;
-                this.coverImage.source = coverImageUrl || (openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.getCoverUrl(ctx.currentCover));
-                break;
-            case PopupMode.Sell:
-                this.getItButton.isVisible = true;
-                this.notNowButton.isVisible = true;
-                this.coverImage.isVisible = true;
-                this.textAreaRect.alpha = 0.8;
-                if (coverImageUrl) {
-                    this.coverImage.source = coverImageUrl;
-                }
-                break;
-            case PopupMode.Normal:
-                this.gotItButton.isVisible = true;
-                this.centerImage.isVisible = true;
-                break;
-            case PopupMode.GiftInitial:
-                this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
-                this.centerImage.isVisible = true;
-                break;
-            case PopupMode.GiftAdjustmentsPreview:
-                this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
-                this.coverImage.isVisible = true;
-                this.textAreaRect.alpha = 0;
-                break;
-            case PopupMode.GiftAdjustmentsOverview:
-                this.coverImage.isVisible = true;
-                this.textAreaRect.alpha = 0.8;
-                this.formPanelRect.alpha = 0.8;
-                this.formPanelRect.background = "#F9F6F1FF";
-                this.formPanelRect.width = "97%";
-                break;
-            case PopupMode.GiftPhysicalInitial:
-                this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
-                this.coverImage.isVisible = true;
-                this.textAreaRect.alpha = 0.8;
-                this.formPanelRect.alpha = 0.8;
-                this.formPanelRect.background = "#F9F6F1FF";
-                this.formPanelRect.width = "97%";
-                break;
-            case PopupMode.GiftPhysicalFinal:
-                this.getItButton.isVisible = true;
-                this.coverImage.isVisible = true;
-                this.textAreaRect.alpha = 0.8;
-                this.formPanelRect.alpha = 0.8;
-                this.formPanelRect.background = "#F9F6F1FF";
-                this.formPanelRect.width = "97%";
-                break;
-            case PopupMode.GamePaused:
-                this.centerImage.isVisible = true;
-                this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
-                this.formPanelRect.alpha = 0.8;
-                this.formPanelRect.background = "#F9F6F1FF";
-                this.formPanelRect.width = "97%";
-                this.backButton.textBlock!.text = i18nManager.translate(TranslationKeys.UI.BUTTONS.PREVIOUS);
-                break;
-        }
+        // Configure mode-specific settings using the popup mode's configure method
+        mode.configure(
+            {
+                emptyGreenButton: this.emptyGreenButton,
+                centerImage: this.centerImage,
+                coverImage: this.coverImage,
+                textAreaRect: this.textAreaRect,
+                getItButton: this.getItButton,
+                notNowButton: this.notNowButton,
+                gotItButton: this.gotItButton,
+                nextButton: this.nextButton,
+                formPanelRect: this.formPanelRect,
+                backButton: { textBlock: this.backButton.textBlock }
+            },
+            coverImageUrl || undefined,
+            () => puzzleCircleBuilder.getCoverUrl(ctx.currentCover),
+            () => openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.getCoverUrl(ctx.currentCover),
+            (value: boolean) => specialModeManager.nextButtonVisible(value),
+            i18nManager.translate(TranslationKeys.UI.BUTTONS.PREVIOUS)
+        );
 
         this.header.text = heading;
         this.inputTextArea.text = "";
         this._sizeCoef = sizeCoef;
         this._action = action;
-        this._popupMode = mode;
 
         if (closeAction) {
             this._closeAction = closeAction;
