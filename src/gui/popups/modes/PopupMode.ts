@@ -8,6 +8,7 @@ import { GiftAdjustmentsOverviewMode } from "./GiftAdjustmentsOverviewMode";
 import { GiftPhysicalInitialMode } from "./GiftPhysicalInitialMode";
 import { GiftPhysicalFinalMode } from "./GiftPhysicalFinalMode";
 import { GamePausedMode } from "./GamePausedMode";
+import { CalendarMode } from "./CalendarMode";
 
 /**
  * Factory for creating popup mode instances
@@ -22,5 +23,6 @@ export class PopupMode {
     static GiftPhysicalInitial = new GiftPhysicalInitialMode();
     static GiftPhysicalFinal = new GiftPhysicalFinalMode();
     static GamePaused = new GamePausedMode();
+    static Calendar = new CalendarMode();
 }
 

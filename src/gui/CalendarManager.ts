@@ -23,7 +23,7 @@ class CalendarManager {
         popupHint.show(message, title, {}, {}, 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER,
             () => { gameModeManager.enterOpenCoverMode(true); },
             () => { gameModeManager.enterInitialMode(); },
-            null, null, PopupMode.Sell, null, dailyData?.horiz.imgCoverUrl);
+            null, null, PopupMode.Calendar, null, dailyData?.horiz.imgCoverUrl);
     }
 
     private getTitleForToday(): string {
