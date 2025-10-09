@@ -1,5 +1,6 @@
 import { Control } from "@babylonjs/gui";
-import popupHint, { PopupMode } from "./popups/PopupHint";
+import popupHint from "./popups/PopupHint";
+import { PopupMode } from "./popups/modes/PopupMode";
 import { ShaderMode } from "./ScreenShader";
 import i18nManager from "../common/i18n/I18nManager";
 import gameModeManager from "../core3d/behaviors/GameModeManager";

@@ -18,18 +18,7 @@ import specialModeManager from "../../common/special-mode/SpecialModeManager";
 import { GuiHelpers } from "../GuiHelpers";
 import { i18nManager, TranslationKeys, languageManager } from "../../common/i18n";
 import TextTyper from "../TextTyper";
-
-export enum PopupMode {
-    Normal,
-    PreSell,
-    Sell,
-    Gift_Initial,
-    Gift_Adjustments_Preview,
-    Gift_Adjustments_Overview,
-    Gift_Physical_Initial,
-    Gift_Physical_Final,
-    GamePaused
-}
+import { PopupMode } from "./modes/PopupMode";
 
 class PopupHint {
     private readonly _fadeDuration = 10;
@@ -404,7 +393,7 @@ class PopupHint {
     }
 
     public isManualOrientation(): boolean {
-        return this._popupMode === PopupMode.Gift_Physical_Initial || this._popupMode === PopupMode.Gift_Physical_Final;
+        return this._popupMode === PopupMode.GiftPhysicalInitial || this._popupMode === PopupMode.GiftPhysicalFinal;
     }
     
     private clearForm() {
@@ -693,14 +682,14 @@ class PopupHint {
     }
 
     private resize() {
-        const giftPreviewOverview = false; /*this._popupMode === PopupMode.Gift_Adjustments_Preview ||
-            this._popupMode === PopupMode.Gift_Adjustments_Overview ||
-            this._popupMode === PopupMode.Gift_Physical_Initial ||
-            this._popupMode === PopupMode.Gift_Physical_Final;*/
+        const giftPreviewOverview = false; /*this._popupMode === PopupMode.GiftAdjustmentsPreview ||
+            this._popupMode === PopupMode.GiftAdjustmentsOverview ||
+            this._popupMode === PopupMode.GiftPhysicalInitial ||
+            this._popupMode === PopupMode.GiftPhysicalFinal;*/
 
         const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         
-        if (this._popupMode !== PopupMode.Gift_Physical_Initial && this._popupMode !== PopupMode.Gift_Physical_Final) {
+        if (this._popupMode !== PopupMode.GiftPhysicalInitial && this._popupMode !== PopupMode.GiftPhysicalFinal) {
             this._imgVertical = vertical;
         }
 
@@ -774,9 +763,9 @@ class PopupHint {
             const formPanelRatio = 1 - middleTopPanelRatio;
             const baseFormPanelheight = formPanelRatio * rawMiddleHeight;
 
-            const overviewMode = this._popupMode === PopupMode.Gift_Adjustments_Overview ||
-                this._popupMode === PopupMode.Gift_Physical_Initial ||
-                this._popupMode === PopupMode.Gift_Physical_Final;
+            const overviewMode = this._popupMode === PopupMode.GiftAdjustmentsOverview ||
+                this._popupMode === PopupMode.GiftPhysicalInitial ||
+                this._popupMode === PopupMode.GiftPhysicalFinal;
             const formPanelheight = overviewMode ? 0.92 * baseFormPanelheight : baseFormPanelheight;
             const formPanelheightCoef = overviewMode ? 0.96 * formPanelheight : formPanelheight;
 
@@ -961,26 +950,23 @@ class PopupHint {
                 this.gotItButton.isVisible = true;
                 this.centerImage.isVisible = true;
                 break;
-            case PopupMode.Gift_Initial:
+            case PopupMode.GiftInitial:
                 this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
                 this.centerImage.isVisible = true;
                 break;
-            /*case PopupMode.Gift_Adjustments_Hint:
-                this.gotItButton.isVisible = true;
-                break;*/
-            case PopupMode.Gift_Adjustments_Preview:
+            case PopupMode.GiftAdjustmentsPreview:
                 this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0;
                 break;
-            case PopupMode.Gift_Adjustments_Overview:
+            case PopupMode.GiftAdjustmentsOverview:
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;
                 this.formPanelRect.alpha = 0.8;
                 this.formPanelRect.background = "#F9F6F1FF";
                 this.formPanelRect.width = "97%";
                 break;
-            case PopupMode.Gift_Physical_Initial:
+            case PopupMode.GiftPhysicalInitial:
                 this.nextButton.isVisible = specialModeManager.nextButtonVisible(true);
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;
@@ -988,7 +974,7 @@ class PopupHint {
                 this.formPanelRect.background = "#F9F6F1FF";
                 this.formPanelRect.width = "97%";
                 break;
-            case PopupMode.Gift_Physical_Final:
+            case PopupMode.GiftPhysicalFinal:
                 this.getItButton.isVisible = true;
                 this.coverImage.isVisible = true;
                 this.textAreaRect.alpha = 0.8;

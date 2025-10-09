@@ -1,6 +1,7 @@
 import { Control } from "@babylonjs/gui";
 import { FormRowModel } from "../model/FormRowModel";
-import popupHint, { PopupMode } from "./popups/PopupHint";
+import popupHint from "./popups/PopupHint";
+import { PopupMode } from "./popups/modes/PopupMode";
 import { ShaderMode } from "./ScreenShader";
 import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation";
 import ctx from "../core3d/common/SceneContext";

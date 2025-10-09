@@ -1,5 +1,6 @@
 import { ColorPicker, Control, Image, Rectangle, StackPanel } from "@babylonjs/gui";
-import popupHint, { PopupMode } from "./popups/PopupHint";
+import popupHint from "./popups/PopupHint";
+import { PopupMode } from "./popups/modes/PopupMode";
 import { ShaderMode } from "./ScreenShader";
 import { FormRowModel } from "../model/FormRowModel";
 import LanguageSelector from "./selectors/LanguageSelector";
@@ -217,7 +218,7 @@ class GiftMaker {
             () => { this.exitGiftMaking(); },
             null,
             null,
-            PopupMode.Gift_Initial,
+            PopupMode.GiftInitial,
             formInputModel
         );
     }
@@ -265,7 +266,7 @@ class GiftMaker {
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftInitialMode(); },
             null,
-            PopupMode.Gift_Adjustments_Preview
+            PopupMode.GiftAdjustmentsPreview
         );
 
         return true;
@@ -302,7 +303,7 @@ class GiftMaker {
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftAdjustmentMode(); },
             null,
-            PopupMode.Gift_Adjustments_Overview,
+            PopupMode.GiftAdjustmentsOverview,
             formModel
         );
     }
@@ -348,7 +349,7 @@ class GiftMaker {
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftOverviewMode(); },
             null,
-            PopupMode.Gift_Physical_Initial,
+            PopupMode.GiftPhysicalInitial,
             formModel
         )
     }
@@ -390,7 +391,7 @@ class GiftMaker {
             () => { this.exitGiftMaking(); },
             () => { gameModeManager.enterGiftPhysicalOrientationMode(); },
             null,
-            PopupMode.Gift_Physical_Final,
+            PopupMode.GiftPhysicalFinal,
             formModel
         )
     }
