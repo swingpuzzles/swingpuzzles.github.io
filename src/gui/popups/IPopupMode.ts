@@ -46,5 +46,10 @@ export interface IPopupMode {
      * Whether this mode uses manual orientation
      */
     readonly manualOrientation: boolean;
+
+    /**
+     * Whether this mode is an overview mode (affects layout calculations)
+     */
+    readonly overviewMode: boolean;
 }
 

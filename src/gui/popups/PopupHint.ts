@@ -685,7 +685,7 @@ class PopupHint {
     private resize() {
         const vertical = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
         
-        if (!this._popupMode.manualOrientation) {
+        if (!this._popupMode?.manualOrientation) {
             this._imgVertical = vertical;
         }
 
@@ -755,9 +755,7 @@ class PopupHint {
             const formPanelRatio = 1 - middleTopPanelRatio;
             const baseFormPanelheight = formPanelRatio * rawMiddleHeight;
 
-            const overviewMode = this._popupMode === PopupMode.GiftAdjustmentsOverview ||
-                this._popupMode === PopupMode.GiftPhysicalInitial ||
-                this._popupMode === PopupMode.GiftPhysicalFinal;
+            const overviewMode = this._popupMode?.overviewMode;
             const formPanelheight = overviewMode ? 0.92 * baseFormPanelheight : baseFormPanelheight;
             const formPanelheightCoef = overviewMode ? 0.96 * formPanelheight : formPanelheight;
 

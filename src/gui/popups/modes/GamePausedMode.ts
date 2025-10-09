@@ -2,6 +2,7 @@ import { IPopupMode, PopupElements } from "../IPopupMode";
 
 export class GamePausedMode implements IPopupMode {
     readonly manualOrientation = false;
+    readonly overviewMode = false;
 
     configure(
         elements: PopupElements,

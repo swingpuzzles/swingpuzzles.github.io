@@ -2,6 +2,7 @@ import { IPopupMode, PopupElements } from "../IPopupMode";
 
 export class GiftAdjustmentsOverviewMode implements IPopupMode {
     readonly manualOrientation = false;
+    readonly overviewMode = true;
 
     configure(
         elements: PopupElements,

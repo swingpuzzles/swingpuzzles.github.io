@@ -2,6 +2,7 @@ import { IPopupMode, PopupElements } from "../IPopupMode";
 
 export class GiftPhysicalInitialMode implements IPopupMode {
     readonly manualOrientation = true; // Manual orientation for physical puzzle selection
+    readonly overviewMode = true;
 
     configure(
         elements: PopupElements,
