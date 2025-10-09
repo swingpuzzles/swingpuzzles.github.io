@@ -1,16 +1,14 @@
 import { Vector3, Mesh, HighlightLayer, Color3, StandardMaterial, Texture } from '@babylonjs/core';
-import amazonDataHoriz from '../../assets/data/amazon-jigsaw-horiz.json';
-import amazonDataVert from '../../assets/data/amazon-jigsaw-vert.json';
 import puzzleCoverBuilder from './PuzzleCoverBuilder';
 import ctx from '../common/SceneContext';
 import gameModeManager from '../behaviors/GameModeManager';
-import { PuzzleTools } from '../common/PuzzleTools';
 import puzzleUrlHelper from '../../common/PuzzleUrlHelper';
+import puzzleDataManager from '../misc/PuzzleDataManager';
 
 interface CoverData {
+    mesh: Mesh;
     imgCoverUrl: string;
     link: string;
-    mesh: Mesh;
 }
 
 class PuzzleCircleBuilder {
@@ -74,12 +72,12 @@ class PuzzleCircleBuilder {
 
     public getCoverUrl(cover: Mesh): string {
         let puzzleId = this.getPuzzleId(cover);
-        return this.covers.get(puzzleId!)!.imgCoverUrl;
+        return this.covers.get(puzzleId!)?.imgCoverUrl || '';
     }
     
     public get selectedLink(): string {
         let puzzleId = this.getPuzzleId(this.closestMesh!);
-        return this.covers.get(puzzleId!)!.link;
+        return this.covers.get(puzzleId!)?.link || '';
     }
 
     public get selectedCover(): Mesh {
@@ -110,30 +108,15 @@ class PuzzleCircleBuilder {
     build() {//console.trace('circle build');
         this.clear();
 
-        const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
-        const data = isPortrait ? amazonDataVert : amazonDataHoriz;
+        const filteredData = puzzleDataManager.getFilteredData();
 
         const radius = 100;
-
-        let filteredData = data;    // just to reuse the type
-        filteredData = [];
-
-        data.forEach((obj, index) => {
-            if (PuzzleTools.hasIntersection(ctx.category!.tags, obj.tags)) {
-                filteredData.push(obj);
-            }
-        });
-
         const count = filteredData.length;
 
         const urlData = puzzleUrlHelper.readFromUrl();
         //const puzzleId = urlData.puzzleId;console.log(urlData);
 
         filteredData.forEach((obj, index) => {
-            if (!PuzzleTools.hasIntersection(ctx.category!.tags, obj.tags)) {
-                return;
-            }
-
             const angle = (2 * Math.PI * index) / count;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);
@@ -144,7 +127,11 @@ class PuzzleCircleBuilder {
             
             let puzzleId = puzzleUrlHelper.extractPuzzleId(obj.imgSmallUrl);
 
-            this.covers.set(puzzleId!, { imgCoverUrl: obj.imgCoverUrl, link: obj.link, mesh: cover });
+            this.covers.set(puzzleId!, { 
+                mesh: cover, 
+                imgCoverUrl: obj.imgCoverUrl, 
+                link: obj.link 
+            });
 
             /*if (puzzleId && obj.imgSmallUrl.includes(puzzleId)) {
                 ctx.camera.alpha = angle;
