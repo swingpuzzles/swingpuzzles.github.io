@@ -3,7 +3,7 @@ import ctx from "../core3d/common/SceneContext";
 import { Categories, Category } from "../core3d/common/Constants";
 import puzzleAssetsManager from "../core3d/behaviors/PuzzleAssetsManager";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
-import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../core3d/behaviors/GameModeManager";
 import backToInitialAnimation from "../core3d/animations/BackToInitialAnimation";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import sceneInitializer from "../core3d/SceneInitializer";
@@ -31,6 +31,7 @@ class GuiManager {
     private xButton!: Button;
     private menuButton!: Button;
     private calendarButton!: Button;
+    private giftButton!: Button;
     private categoryDropdown!: Dropdown;
     private categoryDropdownBuilder!: CategoryDropdownBuilder;
     private languageDropdown!: Dropdown;
@@ -90,9 +91,9 @@ class GuiManager {
         this.playButton.textBlock!.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.playButton.textBlock!.paddingRight = "5%";
         this.playButton.textBlock!.fontWeight = "bold";
-        this.playButton.onPointerClickObservable.add(() => {
+        this.playButton.onPointerClickObservable.add(async () => {
             analyticsManager.trackButtonClick('play_button', 'initial_mode');
-            openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
+            await openCoverAnimation.animateAsync(puzzleCircleBuilder.selectedCover);
         });
         this.bottomButtonPanel.addControl(this.playButton);
 
@@ -119,6 +120,18 @@ class GuiManager {
             gameModeManager.enterCalendarMode();
         });
         this._advancedTexture.addControl(this.calendarButton);
+
+        this.giftButton = Button.CreateImageOnlyButton("calendarButton", "assets/buttons/giftbox.webp");
+        this.giftButton.thickness = 0;
+        this.giftButton.background = "";
+        this.giftButton.hoverCursor = "pointer";
+        this.giftButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        this.giftButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this.giftButton.onPointerClickObservable.add(() => {
+            analyticsManager.trackButtonClick('gift_button', 'gift_action');
+            gameModeManager.enterGiftInitialMode();
+        });
+        this._advancedTexture.addControl(this.giftButton);
 
         // Register buttons for high-res replacement
         puzzleAssetsManager.addGuiImageButtonSource(this.playButton, "assets/buttons/play-button.webp");
@@ -155,13 +168,13 @@ class GuiManager {
 
         gameModeManager.addGameModeChangedObserver((prevMode) => {
             switch (prevMode) {
-                case GameMode.Initial:
+                case MainMode.Initial:
                     this._xAction = () => { navigationManager.handleXAction(); };
                     break;
-                case GameMode.GiftTry:
+                case MainMode.GiftTry:
                     this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
                     break;
-                case GameMode.GiftReceived:
+                case MainMode.GiftReceived:
                     this._xAction = () => { navigationManager.handleXAction(); };
                     break;
             }
@@ -194,53 +207,62 @@ class GuiManager {
 
         const calPaddingTop = renderHeight / 120;
         const calPaddingLeft = 7 * renderHeight / 80;
+        
         this.calendarButton.widthInPixels = calPaddingLeft + renderHeight / 14;
         this.calendarButton.heightInPixels = calPaddingTop + renderHeight / 14;
         this.calendarButton.paddingTopInPixels = calPaddingTop;
         this.calendarButton.paddingLeftInPixels = calPaddingLeft;
+        
+        this.giftButton.widthInPixels = calPaddingLeft + renderHeight / 14;
+        this.giftButton.heightInPixels = calPaddingTop + renderHeight / 14;
+        this.giftButton.paddingTopInPixels = calPaddingTop;
+        this.giftButton.paddingRightInPixels = calPaddingLeft;
 
         this.playButton.isVisible = false;
         this.menuButton.isVisible = false;
         this.xButton.isVisible = false;
         this.bannerButton.isVisible = false;
         this.calendarButton.isVisible = false;
+        this.giftButton.isVisible = false;
 
         switch (gameModeManager.currentMode) {
-            case GameMode.Initial:
+            case MainMode.Initial:
                 this.playButton.isVisible = true;
                 this.menuButton.isVisible = false;//true;   // TODO LATER
                 this.calendarButton.isVisible = true;
+                this.giftButton.isVisible = true;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
                 this.bannerButton.widthInPixels = renderHeight / 4;
                 this.bannerButton.heightInPixels = renderHeight / 16;
                 this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
                 break;
-            case GameMode.OpenCover:
+            case MainMode.OpenCover:
                 this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
-                this.bannerButton.widthInPixels = renderHeight / 3.9;
-                this.bannerButton.heightInPixels = renderHeight / 15.6;
-                this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
+
+                if (gameModeManager.calendarMode) {
+                    this.bannerButton.widthInPixels = renderHeight / 3.7;
+                    this.bannerButton.heightInPixels = renderHeight / 14.8;
+                    this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
+                } else {
+                    this.bannerButton.widthInPixels = renderHeight / 3.9;
+                    this.bannerButton.heightInPixels = renderHeight / 15.6;
+                    this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
+                }
                 break;
-            case GameMode.Solve:
+            case MainMode.Solve:
                 this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
                 this.bannerButton.widthInPixels = renderHeight / 8;
                 this.bannerButton.heightInPixels = renderHeight / 32;
                 this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 192;
                 break;
-            case GameMode.Celebration:
+            case MainMode.Celebration:
                 this.xButton.isVisible = this._xAction !== null;
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
                 this.bannerButton.widthInPixels = renderHeight / 3.7;
                 this.bannerButton.heightInPixels = renderHeight / 14.8;
                 this.bottomButtonPanel.paddingBottomInPixels = renderHeight / 48;
-                break;
-            case GameMode.Calendar:
-                this.calendarButton.isVisible = true;
-                this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
-                this.bannerButton.widthInPixels = renderHeight / 3.7;
-                this.bannerButton.heightInPixels = renderHeight / 14.8;
                 break;
         }
     }
@@ -262,21 +284,11 @@ class GuiManager {
         });
     }
 
-    public async enterGeneralCategory(): Promise<void> {
-        await this.enterCategoryImpl(Categories.General);
-    }
-
-    public async ensureNotGiftCategory(): Promise<void> {
-        if (ctx.category === Categories.Gift) {
-            await this.enterGeneralCategory();
-        }
-    }
-
     public async enterCategory(category: string, callChangeHandler: boolean = true): Promise<void> {
         const found = Object.values(Categories).find(cat => cat.key === category);
 
         if (found) {
-            await this.enterCategoryImpl(found);
+            await this.enterCategoryImpl(found, callChangeHandler);
         }
     }
 

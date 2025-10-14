@@ -15,7 +15,7 @@ import "@babylonjs/loaders/glTF";
 import ctx from "../common/SceneContext";
 import puzzleAssetsManager from "../behaviors/PuzzleAssetsManager";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
-import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../behaviors/GameModeManager";
 import giftMaker from "../../gui/GiftMaker";
 import handImagePool from "../../gui/HandImagePool";
 
@@ -104,8 +104,8 @@ export class GiftBoxBuilder {
         giftBox.actionManager = new ActionManager(ctx.scene);
 
         giftBox.actionManager.registerAction(
-            new ExecuteCodeAction(ActionManager.OnPickTrigger, () => {
-                openCoverAnimation.animate(giftBox);
+            new ExecuteCodeAction(ActionManager.OnPickTrigger, async () => {
+                await openCoverAnimation.animateAsync(giftBox);
                 handImagePool.releaseAll();
             })
         );

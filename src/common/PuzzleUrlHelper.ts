@@ -4,7 +4,7 @@ import gameModeManager from "../core3d/behaviors/GameModeManager";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import puzzleGameBuilder from "../core3d/builders/PuzzleGameBuilder";
 import ctx from "../core3d/common/SceneContext";
-import { Categories } from "../core3d/common/Constants";
+import Constants, { Categories } from "../core3d/common/Constants";
 import guiManager from "../gui/GuiManager";
 import popupHint, { overPopup } from "../gui/popups/PopupHint";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
@@ -13,10 +13,11 @@ import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "./Local
 import giftMaker from "../gui/GiftMaker";
 
 class PuzzleUrlHelper {
-    private _category: string | null = null;
+    private static readonly DEFAULT_CATEGORY = Categories.General.key;
+
+    private _mode: string | null = null;
     private _puzzleId: string | null = null;
     private _coverMap: Map<string, Mesh> = new Map();
-    private _giftReceiving: boolean = false;
 
     constructor() {
         window.addEventListener("popstate", () => {
@@ -27,8 +28,8 @@ class PuzzleUrlHelper {
         });
     }
 
-    public get category(): string | null {
-        return this._category;
+    public get mode(): string | null {
+        return this._mode;
     }
 
     public async handleUrlData(): Promise<void> {
@@ -52,19 +53,22 @@ class PuzzleUrlHelper {
 
         if (urlData.giftData) {
             await this.processGiftData(urlData.giftData);
-            this._giftReceiving = true;
             puzzleGameBuilder.clear();
-            this._category = Categories.Gift.key;
+            this._mode = Constants.MODE_GIFT_RECEIVE;
         } else {
-            let changed: boolean = this._giftReceiving;
-            this._giftReceiving = false;
+            let changed: boolean = this._mode === Constants.MODE_GIFT_RECEIVE;
 
             let puzzleSelected = false;
-            let category: string = urlData.category || Categories.General.key;
+            this._mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY;
 
             if (urlData.puzzleId) {
-                guiManager.enterCategory(category, false);
-                changed ||= this.setCategory(category, false);
+                if (this._mode === Constants.MODE_CALENDAR) {
+                    // TODO
+                } else {
+                    await guiManager.enterCategory(this._mode);
+                }
+
+                changed ||= this.setMode(this._mode, false);
 
                 const cover = this._coverMap.get(urlData.puzzleId);
 
@@ -73,14 +77,14 @@ class PuzzleUrlHelper {
 
                     const changedPuzzle: boolean = this._puzzleId !== urlData.puzzleId;
 
-                    if (!gameModeManager.initialMode) {console.trace(changedPuzzle);
+                    if (!gameModeManager.initialMode) {
                         if (changedPuzzle) {
                             backToInitialAnimation.animate(ctx.currentCover, async () => {
                                 if (changed) {
                                     await puzzleCircleBuilder.build();
                                 }
 
-                                openCoverAnimation.animate(cover);
+                                await openCoverAnimation.animateAsync(cover);
                             });
                         } else if (changed) {
                             await puzzleCircleBuilder.build();
@@ -90,14 +94,19 @@ class PuzzleUrlHelper {
                             await puzzleCircleBuilder.build();
                         }
 
-                        openCoverAnimation.animate(cover);
+                        await openCoverAnimation.animateAsync(cover);
                     }
                 }
             }
             
             if (!puzzleSelected) {
-                guiManager.enterCategory(category);
-                changed ||= this.setCategory(category);
+                if (this._mode === Constants.MODE_CALENDAR) {
+                    // TODO
+                } else {
+                    guiManager.enterCategory(this._mode);
+                }
+
+                changed ||= this.setMode(this._mode);
 
                 if (gameModeManager.initialMode) {
                     if (changed) {
@@ -118,10 +127,10 @@ class PuzzleUrlHelper {
         }
     }
 
-    public setCategory(value: string, update = true): boolean {
-        const changed = this._category === value;
+    public setMode(value: string, update = true): boolean {
+        const changed = this._mode === value;
 
-        this._category = value;
+        this._mode = value;
         this._puzzleId = null;
 
         if (update) {
@@ -158,7 +167,7 @@ class PuzzleUrlHelper {
 
     private updateUrl(): void {
         const params = new URLSearchParams();
-        params.set('category', this._category!);
+        params.set('mode', this._mode!);
 
         if (this._puzzleId) {
             params.set('puzzleId', this._puzzleId);
@@ -173,10 +182,10 @@ class PuzzleUrlHelper {
         }
     }
 
-    public readFromUrl(): { category: string | null; puzzleId: string | null; giftData: string | null; specialMode: string | null } {
+    public readFromUrl(): { mode: string | null; puzzleId: string | null; giftData: string | null; specialMode: string | null } {
         const params = new URLSearchParams(window.location.search);
         return {
-            category: params.get('category'),
+            mode: params.get('mode'),
             puzzleId: params.get('puzzleId'),
             giftData: params.get('giftData'),
             specialMode: params.get('specialMode')

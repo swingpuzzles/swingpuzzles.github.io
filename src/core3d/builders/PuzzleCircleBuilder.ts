@@ -9,6 +9,8 @@ interface CoverData {
     mesh: Mesh;
     imgCoverUrl: string;
     link: string;
+    story: Record<string, string> | null;
+    date: Date | null;
 }
 
 class PuzzleCircleBuilder {
@@ -84,6 +86,11 @@ class PuzzleCircleBuilder {
         return this.closestMesh!;
     }
 
+    public get coverData(): CoverData | null {
+        let puzzleId = this.getPuzzleId(this.closestMesh!);
+        return this.covers.get(puzzleId!) || null;
+    }
+
     init() {
         // Create the highlight layer when the builder is constructed
         this.highlightLayer = new HighlightLayer("coverHighlightLayer", ctx.scene, {
@@ -114,7 +121,7 @@ class PuzzleCircleBuilder {
         const count = filteredData.length;
 
         filteredData.forEach((obj, index) => {
-            const angle = Math.PI * (2 * index + 5 / 4) / count;
+            const angle = Math.PI * (2 * index + 9 / 4) / count;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);
             const position = new Vector3(x, -38, z);
@@ -127,7 +134,9 @@ class PuzzleCircleBuilder {
             this.covers.set(puzzleId!, { 
                 mesh: cover, 
                 imgCoverUrl: obj.imgCoverUrl, 
-                link: obj.link 
+                link: obj.link,
+                story: obj.story,
+                date: obj.date
             });
 
             puzzleUrlHelper.insertCoverEntry(obj.imgSmallUrl, cover);
@@ -141,7 +150,7 @@ class PuzzleCircleBuilder {
     private highlightClosestCover() {
         if (!ctx.cameraInitialized) return;
 
-        if (!gameModeManager.initialMode && !gameModeManager.calendarMode) {
+        if (!gameModeManager.initialMode) {
             if (this.highlightedCover) {
                 this.highlightLayer.removeMesh(this.highlightedCover);
                 this.highlightedCover = null;

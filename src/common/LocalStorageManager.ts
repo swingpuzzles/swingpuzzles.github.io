@@ -3,7 +3,7 @@ export const CommonStorageKeys = {
     GiftTutorialDone: "giftTutorialDone",
     CookiesAccepted: "cookiesAccepted",
     WelcomeSeen: "welcomeSeen",
-    Category: "category",
+    Mode: "mode",
     GiftPiecesCount: "giftPiecesCount",
     Language: "language"
 };

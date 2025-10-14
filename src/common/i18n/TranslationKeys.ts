@@ -104,6 +104,7 @@ export const TranslationKeys = {
         ANIMALS: "categories.animals", 
         BEACH: "categories.beach",
         FLORAL: "categories.floral",
+        CALENDAR: "categories.calendar",
         MAKE_A_GIFT: "categories.makeAGift"
     },
 

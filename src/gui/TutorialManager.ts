@@ -1,5 +1,5 @@
 import { Control } from "@babylonjs/gui";
-import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../core3d/behaviors/GameModeManager";
 import popupHint, { overPopup } from "./popups/PopupHint";
 import { PopupMode } from "./popups/modes/PopupMode";
 import { ShaderMode } from "./ScreenShader";
@@ -62,7 +62,7 @@ class TutorialManager {
         }
 
         gameModeManager.addGameModeChangedObserver((prevMode) => {
-            if (gameModeManager.currentMode === GameMode.Solve && !openCoverAnimation.giftCover) {
+            if (gameModeManager.currentMode === MainMode.Solve && !openCoverAnimation.giftCover) {
                 this.finishTutorial();
             }
         });

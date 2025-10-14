@@ -1,5 +1,5 @@
 import { Button, Container, Control, StackPanel, Image, TextBlock, Rectangle, AdvancedDynamicTexture } from "@babylonjs/gui";
-import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../../core3d/behaviors/GameModeManager";
 import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 import { Color3 } from "@babylonjs/core";
 import guiManager from "../GuiManager";
@@ -27,7 +27,7 @@ export class Dropdown extends Container {
     private alwaysCallCallback: boolean = false;    
 
     constructor(config: {
-        gameModes: GameMode[];
+        gameModes: MainMode[];
         background: string;
         color: string;
         thickness?: number;

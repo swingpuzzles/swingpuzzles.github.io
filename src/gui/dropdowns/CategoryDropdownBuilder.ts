@@ -1,7 +1,7 @@
 import { Control } from "@babylonjs/gui";
 import { Categories, Category, CategoryKeys } from "../../core3d/common/Constants";
 import DropdownBuilder from "./DropdownBuilder";
-import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys } from "../../common/LocalStorageManager";
 import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 import analyticsManager from "../../common/AnalyticsManager";
@@ -11,7 +11,7 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
 
     constructor() {
         super({
-            gameModes: [ GameMode.Initial ],
+            gameModes: [ MainMode.Initial ],
             halign: Control.HORIZONTAL_ALIGNMENT_LEFT,
             thickness: 0,
             isImageCollapsedAlsoTextExpanded: true,
@@ -22,19 +22,18 @@ export default class CategoryDropdownBuilder extends DropdownBuilder {
 
         const urlData = puzzleUrlHelper.readFromUrl();
 
-        if (urlData.category) {
-            localStorageManager.set(this.storageItemName, urlData.category);
+        if (urlData.mode) {
+            localStorageManager.set(this.storageItemName, urlData.mode);
         }
 
         this.addImageOption(Categories.General);
         this.addImageOption(Categories.Animals);
         this.addImageOption(Categories.Beach);
-        this.addImageOption(Categories.Flowers);
-        this.addImageOption(Categories.Gift, true);
+        this.addImageOption(Categories.Flowers, true);
     }
 
     protected get storageItemName(): string {
-        return CommonStorageKeys.Category;
+        return CommonStorageKeys.Mode;
     }
 
     private selectionCallback(key: string, userAction: boolean = true) {

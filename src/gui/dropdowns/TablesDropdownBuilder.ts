@@ -1,5 +1,5 @@
 import DropdownBuilder from "./DropdownBuilder";
-import { GameMode } from "../../core3d/behaviors/GameModeManager";
+import { MainMode } from "../../core3d/behaviors/GameModeManager";
 import giftMaker from "../GiftMaker";
 import localStorageManager, { GiftStorageKeys } from "../../common/LocalStorageManager";
 import tutorialManager from "../TutorialManager";
@@ -10,7 +10,7 @@ export default class TablesDropdownBuilder extends DropdownBuilder {
 
     constructor() {
         super({
-            gameModes: [ GameMode.GiftAdjustment ],
+            gameModes: [ MainMode.GiftAdjustment ],
             isImageOnly: true,
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); }});
 

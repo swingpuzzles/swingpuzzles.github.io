@@ -3,34 +3,77 @@ import popupHint from "./popups/PopupHint";
 import { PopupMode } from "./popups/modes/PopupMode";
 import { ShaderMode } from "./ScreenShader";
 import i18nManager from "../common/i18n/I18nManager";
-import gameModeManager from "../core3d/behaviors/GameModeManager";
+import gameModeManager, { MainMode, SubMode } from "../core3d/behaviors/GameModeManager";
 import puzzleCircleBuilder from "../core3d/builders/PuzzleCircleBuilder";
 import openCoverAnimation from "../core3d/animations/OpenCoverAnimation";
 import puzzleDataManager from "../core3d/misc/PuzzleDataManager";
+import Constants, { Categories } from "../core3d/common/Constants";
+import localStorageManager, { CommonStorageKeys } from "../common/LocalStorageManager";
+import ctx from "../core3d/common/SceneContext";
+import puzzleUrlHelper from "../common/PuzzleUrlHelper";
+import analyticsManager from "../common/AnalyticsManager";
+import { Mesh } from "@babylonjs/core";
 
 class CalendarManager {
-    public async start() {
+    public async start() {        
+        puzzleUrlHelper.clearPuzzleId();
+        
+        // Track calendar session start
+        analyticsManager.startGameSession(MainMode.Initial, SubMode.Calendar, ctx.category?.key);
+
+        localStorageManager.set(CommonStorageKeys.Mode, Constants.MODE_CALENDAR);
+        puzzleUrlHelper.setMode(Constants.MODE_CALENDAR);
+
         await puzzleCircleBuilder.build();
 
         puzzleCircleBuilder.refresh();
 
-        openCoverAnimation.animate(puzzleCircleBuilder.selectedCover);
-
-        const dailyData = await puzzleDataManager.loadTodaysPuzzle();
-        const currentLanguage = i18nManager.getCurrentLanguage();
-        const message = dailyData?.story?.[currentLanguage] || dailyData?.story?.["en"] || "No story available for today.";
-        
-        const title = this.getTitleForToday();
-        
-        popupHint.show(message, title, {}, {}, 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER,
-            () => { gameModeManager.enterOpenCoverMode(true); },
-            () => { gameModeManager.enterOpenCoverMode(true); },
-            null, null, PopupMode.Calendar, null, dailyData?.horiz.imgCoverUrl);
+        await openCoverAnimation.animateAsync(puzzleCircleBuilder.selectedCover);
     }
 
-    private getTitleForToday(): string {
-        // For now, always show "FOR TODAY" since we're showing today's puzzle
-        return i18nManager.translate("calendar.forToday");
+    public async handleOpenCover(cover: Mesh) {
+        if (gameModeManager.calendarMode) {
+            const dailyData = puzzleCircleBuilder.coverData;
+
+            let headingParams = {};
+            let headingKey = "calendar.forToday";
+
+            if (dailyData?.date) {
+                const today = new Date();
+                const yesterday = new Date(today);
+                yesterday.setDate(today.getDate() - 1);
+                
+                const isToday = this.isSameDay(dailyData.date, today);
+                const isYesterday = this.isSameDay(dailyData.date, yesterday);
+                
+                if (isToday) {
+                    headingKey = "calendar.forToday";
+                    headingParams = {};
+                } else if (isYesterday) {
+                    headingKey = "calendar.forYesterday";
+                    headingParams = {};
+                } else {
+                    headingKey = "calendar.forDate";
+                    headingParams = { date: this.formatDate(dailyData.date) };
+                }
+            }
+
+            popupHint.show(dailyData?.story!, headingKey, {}, headingParams, 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER,
+                () => { gameModeManager.enterOpenCoverMode(true); },
+                () => { gameModeManager.enterOpenCoverMode(true); },
+                null, null, PopupMode.Calendar, null, dailyData?.imgCoverUrl);
+        }
+    }
+
+    private isSameDay(date1: Date, date2: Date): boolean {
+        return date1.getFullYear() === date2.getFullYear() &&
+               date1.getMonth() === date2.getMonth() &&
+               date1.getDate() === date2.getDate();
+    }
+
+    private formatDate(date: Date): string {
+        const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString(i18nManager.getCurrentLanguage(), options);
     }
 }
 

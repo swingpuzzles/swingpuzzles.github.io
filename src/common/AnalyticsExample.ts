@@ -2,7 +2,7 @@
 
 import analyticsManager from './AnalyticsManager';
 import analyticsInitializer from './AnalyticsInitializer';
-import { GameMode } from '../core3d/behaviors/GameModeManager';
+import { MainMode } from '../core3d/behaviors/GameModeManager';
 
 // Example initialization with Microsoft Clarity
 export function initializeWithClarity(projectId: string) {
@@ -51,7 +51,7 @@ export function switchToLocalOnly() {
 // Example event tracking
 export function trackGameEvents() {
     // Game events
-    analyticsManager.startGameSession(GameMode.Initial, 'animals', 100);
+    analyticsManager.startGameSession(MainMode.Initial, 'animals', 100);
     analyticsManager.trackButtonClick('play_button', 'main_menu');
     analyticsManager.trackCategoryChange('animals', 'nature');
     analyticsManager.trackPuzzleCompletion(120000, 100); // 2 minutes, 100 pieces

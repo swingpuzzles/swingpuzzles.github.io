@@ -122,14 +122,10 @@ class NavigationManager {
     }
 
     private prevPuzzle() {
-        guiManager.ensureNotGiftCategory();
-
         this.playPuzzle(puzzleCircleBuilder.getPrevCover(ctx.currentCover)!);
     }
 
     private nextPuzzle() {
-        guiManager.ensureNotGiftCategory();
-
         this.playPuzzle(puzzleCircleBuilder.getNextCover(ctx.currentCover)!);
     }
 
@@ -146,14 +142,13 @@ class NavigationManager {
     }
 
     private playPuzzle(cover: Mesh) {
-        backToInitialAnimation.animate(ctx.currentCover, () => {
-            openCoverAnimation.animate(cover);
+        backToInitialAnimation.animate(ctx.currentCover, async () => {
+            openCoverAnimation.animateAsync(cover);
         });
     }
 
     private goBack() {
         if (specialModeManager.handleGoBackAction()) {
-            guiManager.ensureNotGiftCategory();
             backToInitialAnimation.animate(ctx.currentCover);
         }
     }

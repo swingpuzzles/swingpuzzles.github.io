@@ -51,7 +51,7 @@ class PopupHint {
     private _closeAction: () => void = () => {};
     private _backAction: () => void = () => {};
     private _currentAnimation: Animatable | null = null;
-    private _currentMessageKey: string = "";
+    private _currentMessageKey: string | Record<string, string> = "";
     private _currentHeadingKey: string = "";
     private _currentMessageParams: Record<string, any> = {};
     private _currentHeadingParams: Record<string, any> = {};
@@ -822,7 +822,9 @@ class PopupHint {
 
         // Refresh message text with proper typing and wrapping when language changes
         if (this._currentMessageKey && this.textAreaRect && this.textAreaRect.children.length > 0) {
-            const fullText = i18nManager.translate(this._currentMessageKey, this._currentMessageParams);
+            const fullText = typeof this._currentMessageKey === "string" ?
+                i18nManager.translate(this._currentMessageKey, this._currentMessageParams) :
+                this._currentMessageKey[i18nManager.getCurrentLanguage().toString()]!;
             
             // Call typeTextLetterByLetter to properly wrap and type the text
             this._textTyper.typeTextLetterByLetter(fullText, this.textAreaRect.widthInPixels);
@@ -846,7 +848,7 @@ class PopupHint {
     }
 
     public show(
-        messageKey: string,
+        messageKey: string | Record<string, string>,
         headingKey: string,
         messageParams: Record<string, any> = {},
         headingParams: Record<string, any> = {},
@@ -871,7 +873,9 @@ class PopupHint {
         this._currentMessageParams = messageParams;
         this._currentHeadingParams = headingParams;
 
-        const fullText = i18nManager.translate(messageKey, messageParams);
+        const fullText = typeof messageKey === "string" ?
+            i18nManager.translate(messageKey, messageParams) :
+            messageKey[i18nManager.getCurrentLanguage().toString()]!;
         const heading = i18nManager.translate(headingKey, headingParams);
 
         if (this.mainContainer.isVisible) {

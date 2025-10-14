@@ -1,7 +1,7 @@
 import { Color4, Mesh, ParticleSystem, Animation, Texture, Vector3, SineEase, EasingFunction } from "@babylonjs/core";
 import IPuzzleAnimation from "./IPuzzleAnimation";
 import ctx from "../common/SceneContext";
-import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../behaviors/GameModeManager";
 import tutorialManager from "../../gui/TutorialManager";
 import timerManager from "../misc/TimerManager";
 
@@ -97,8 +97,8 @@ class CelebrationAnimation implements IPuzzleAnimation {
         this.particleSystem.maxEmitPower = 3;
         this.particleSystem.updateSpeed = 0.01;
 
-        gameModeManager.addGameModeChangedObserver((prevMode: GameMode) => {
-            if (prevMode == GameMode.Celebration) {
+        gameModeManager.addGameModeChangedObserver((prevMode: MainMode) => {
+            if (prevMode == MainMode.Celebration) {
                 this.particleSystem.stop();
             }
         });

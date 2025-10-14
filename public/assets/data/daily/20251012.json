@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/48tsuMu",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91u7DMCpgIL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91u7DMCpgIL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71EbUpFRn3L._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/47n2Xn6",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81jf0JYfpgL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81jf0JYfpgL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/813ldlvuGIL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 12, 1492, Christopher Columbus landed in the Bahamas — proudly believing he had reached Asia. He called the locals 'Indians', took notes about 'giant parrots', and never realized he was nowhere near India.",
+        "es": "El 12 de octubre de 1492, Cristóbal Colón llegó a las Bahamas — convencido de haber llegado a Asia. Llamó a los habitantes 'indios', tomó notas sobre 'loros gigantes' y nunca se dio cuenta de que estaba muy lejos de la India.",
+        "de": "Am 12. Oktober 1492 landete Christoph Kolumbus auf den Bahamas — fest davon überzeugt, in Asien angekommen zu sein. Er nannte die Einheimischen 'Inder', schrieb über 'riesige Papageien' und merkte nie, dass er weit weg von Indien war.",
+        "fr": "Le 12 octobre 1492, Christophe Colomb débarqua aux Bahamas — persuadé d’avoir atteint l’Asie. Il appela les habitants 'Indiens', nota l’existence de 'perroquets géants' et ne réalisa jamais qu’il était très loin de l’Inde.",
+        "it": "Il 12 ottobre 1492, Cristoforo Colombo sbarcò alle Bahamas — convinto di aver raggiunto l’Asia. Chiamò gli abitanti 'indiani', scrisse di 'pappagalli giganti' e non si rese mai conto di essere lontanissimo dall’India.",
+        "sk": "Dňa 12. októbra 1492 pristál Krištof Kolumbus na Bahamách — presvedčený, že dorazil do Ázie. Miestnych nazval 'Indiánmi', zapísal si poznámky o 'obrovských papagájoch' a nikdy si neuvedomil, že je tisíce kilometrov od Indie.",
+        "cs": "Dne 12. října 1492 přistál Kryštof Kolumbus na Bahamách — přesvědčen, že dorazil do Asie. Místní nazval 'Indiány', psal si poznámky o 'obrovských papoušcích' a nikdy si neuvědomil, že je od Indie hodně daleko."
+    }
+}
+

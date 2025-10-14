@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4q95NDH",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91aqiKI7w0L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91aqiKI7w0L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91-Jpa6UYkL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4o9HVhw",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81-xVieatJL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81-xVieatJL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81EGB7P4vVL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 13, 1959, the Soviet Luna 3 probe sent back the first-ever photos of the far side of the Moon. The images were so blurry that scientists argued whether they were seeing craters, clouds, or coffee stains on the film. Even so, it was the first time humanity saw the hidden face of our Moon.",
+        "es": "El 13 de octubre de 1959, la sonda soviética Luna 3 envió las primeras fotos del lado oculto de la Luna. Las imágenes eran tan borrosas que los científicos discutían si veían cráteres, nubes o manchas de café en el negativo. Aun así, fue la primera vez que la humanidad vio el rostro oculto de nuestra Luna.",
+        "de": "Am 13. Oktober 1959 sandte die sowjetische Sonde Luna 3 die ersten Fotos der Rückseite des Mondes. Die Bilder waren so verschwommen, dass die Wissenschaftler stritten, ob sie Krater, Wolken oder Kaffeeflecken sahen. Trotzdem war es das erste Mal, dass die Menschheit die verborgene Seite unseres Mondes sah.",
+        "fr": "Le 13 octobre 1959, la sonde soviétique Luna 3 envoya les toutes premières photos de la face cachée de la Lune. Les images étaient si floues que les scientifiques débattaient : cratères, nuages ou taches de café ? Ce fut néanmoins la première fois que l’humanité vit le visage caché de notre Lune.",
+        "it": "Il 13 ottobre 1959, la sonda sovietica Luna 3 inviò le prime foto del lato nascosto della Luna. Le immagini erano così sfocate che gli scienziati discutevano se fossero crateri, nuvole o macchie di caffè sul rullino. Fu comunque la prima volta che l’umanità vide il volto nascosto della nostra Luna.",
+        "sk": "Dňa 13. októbra 1959 sovietska sonda Luna 3 poslala prvé fotografie odvrátenej strany Mesiaca. Obrázky boli také rozmazané, že sa vedci hádali, či vidia krátery, mraky alebo škvrny od kávy. Napriek tomu to bolo prvýkrát, čo ľudstvo uvidelo skrytú tvár nášho Mesiaca.",
+        "cs": "Dne 13. října 1959 sovětská sonda Luna 3 odeslala první snímky odvrácené strany Měsíce. Obrázky byly tak rozmazané, že se vědci přeli, zda vidí krátery, mraky nebo kávové skvrny. I tak to bylo poprvé, kdy lidstvo spatřilo skrytou tvář našeho Měsíce."
+    }
+}
+

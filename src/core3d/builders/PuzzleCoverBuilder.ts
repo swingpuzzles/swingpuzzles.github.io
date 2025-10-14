@@ -40,8 +40,8 @@ class PuzzleCoverBuilder {
         box.bakeCurrentTransformIntoVertices();
 
         box.actionManager.registerAction(
-            new ExecuteCodeAction(ActionManager.OnPickTrigger, () => {
-                openCoverAnimation.animate(box);
+            new ExecuteCodeAction(ActionManager.OnPickTrigger, async () => {
+                await openCoverAnimation.animateAsync(box);
             })
         );
 

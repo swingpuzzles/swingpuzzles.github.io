@@ -1,6 +1,6 @@
 import { Control } from "@babylonjs/gui";
 import DropdownBuilder from "./DropdownBuilder";
-import { GameMode } from "../../core3d/behaviors/GameModeManager";
+import { MainMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
 import analyticsManager from "../../common/AnalyticsManager";
 import languageManager, { LanguageNames, SupportedLanguage, SupportedLanguages } from "../../common/i18n/LanguageManager";
@@ -10,7 +10,7 @@ export default class LanguageDropdownBuilder extends DropdownBuilder {
 
     constructor() {
         super({
-            gameModes: [ GameMode.Initial ],
+            gameModes: [ MainMode.Initial ],
             halign: Control.HORIZONTAL_ALIGNMENT_RIGHT,
             thickness: 0,
             isImageCollapsedAlsoTextExpanded: true,

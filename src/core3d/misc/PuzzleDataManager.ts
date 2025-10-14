@@ -10,6 +10,8 @@ export interface PuzzleData {
     imgBigUrl: string;
     imgCoverUrl: string;
     tags: string[];
+    story: Record<string, string> | null;
+    date: Date | null;
 }
 
 export interface DailyPuzzleData {
@@ -26,10 +28,11 @@ export interface DailyPuzzleData {
         imgCoverUrl: string;
     };
     story: Record<string, string>;
+    date: Date;
 }
 
 class PuzzleDataManager {
-    private dailyPuzzleCache: Map<string, DailyPuzzleData> = new Map();
+    private dailyPuzzleCache: Map<Date, DailyPuzzleData> = new Map();
     private calendarDataCache: { data: PuzzleData[], timestamp: number } | null = null;
     private readonly CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
@@ -44,9 +47,9 @@ class PuzzleDataManager {
             const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
             const data = isPortrait ? amazonDataVert : amazonDataHoriz;
             
-            return data.filter(obj => 
-                PuzzleTools.hasIntersection(ctx.category!.tags, obj.tags)
-            );
+            return data
+                .filter(obj => PuzzleTools.hasIntersection(ctx.category!.tags, obj.tags))
+                .map(obj => ({ ...obj, story: null, date: null }));
         }
     }
 
@@ -77,7 +80,9 @@ class PuzzleDataManager {
                 const puzzleData = isPortrait ? dailyData.vert : dailyData.horiz;
                 puzzles.push({
                     ...puzzleData,
-                    tags: ['Daily']
+                    tags: ['Daily'],
+                    story: dailyData.story,
+                    date: dailyData.date
                 });
             }
         }
@@ -100,8 +105,8 @@ class PuzzleDataManager {
         const dateString = this.getDateString(date);
         
         // Check cache first
-        if (this.dailyPuzzleCache.has(dateString)) {
-            return this.dailyPuzzleCache.get(dateString)!;
+        if (this.dailyPuzzleCache.has(date)) {
+            return this.dailyPuzzleCache.get(date)!;
         }
 
         try {
@@ -114,7 +119,7 @@ class PuzzleDataManager {
             const data = await response.json();
             
             // Cache the result
-            this.dailyPuzzleCache.set(dateString, data);
+            this.dailyPuzzleCache.set(date, { ...data, date });
             
             return data;
         } catch (error) {
@@ -149,7 +154,8 @@ class PuzzleDataManager {
      */
     public getAllData(): PuzzleData[] {
         const isPortrait = ctx.engine.getRenderHeight() > ctx.engine.getRenderWidth();
-        return isPortrait ? amazonDataVert : amazonDataHoriz;
+        const data = isPortrait ? amazonDataVert : amazonDataHoriz;
+        return data.map(obj => ({ ...obj, story: null, date: null }));
     }
 
     /**

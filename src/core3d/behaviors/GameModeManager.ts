@@ -7,13 +7,14 @@ import backToInitialAnimation from "../animations/BackToInitialAnimation";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
 import puzzleCircleBuilder from "../builders/PuzzleCircleBuilder";
 import ctx from "../common/SceneContext";
-import { Categories, Category } from "../common/Constants";
+import Constants, { Categories, Category } from "../common/Constants";
 import timerManager from "../misc/TimerManager";
 import piecePositioningManager from "./PiecePositioningManager";
 import analyticsManager from "../../common/AnalyticsManager";
 import calendarManager from "../../gui/CalendarManager";
+import PuzzleUrlHelper from "../../common/PuzzleUrlHelper";
 
-export enum GameMode {
+export enum MainMode {
     Initial,
     OpenCover,
     Shake,
@@ -26,47 +27,56 @@ export enum GameMode {
     GiftPhysicalFinal,
     GiftTry,
     GiftReceived,
+}
+
+export enum SubMode {
+    Normal,
+    GiftMaking,
+    GiftReceiving,
     Calendar,
 }
 
 class GameModeManager {
-    private _currentMode: GameMode = GameMode.Initial;
-    private _observers: ((prevMode: GameMode) => void)[] = [];
+    private _currentMainMode: MainMode = MainMode.Initial;
+    private _currentSubMode: SubMode = SubMode.Normal;
+    private _observers: ((prevMode: MainMode) => void)[] = [];
 
     get initialMode() {
-        return this._currentMode === GameMode.Initial;
+        return this._currentMainMode === MainMode.Initial;
     }
     get openCoverMode() {
-        return this._currentMode === GameMode.OpenCover;
+        return this._currentMainMode === MainMode.OpenCover;
     }
     get shakeMode() {
-        return this._currentMode === GameMode.Shake;
+        return this._currentMainMode === MainMode.Shake;
     }
     get solveMode() {
-        return this._currentMode === GameMode.Solve;
+        return this._currentMainMode === MainMode.Solve;
     }
     get celebrationMode() {
-        return this._currentMode === GameMode.Celebration;
+        return this._currentMainMode === MainMode.Celebration;
     }
     get giftTryMode() {
-        return this._currentMode === GameMode.GiftTry;
+        return this._currentMainMode === MainMode.GiftTry;
     }
     get giftReceived() {
-        return this._currentMode === GameMode.GiftReceived;
+        return this._currentMainMode === MainMode.GiftReceived;
     }
     get calendarMode() {
-        return this._currentMode === GameMode.Calendar;
+        return this._currentSubMode === SubMode.Calendar;
     }
     get currentMode() {
-        return this._currentMode;
+        return this._currentMainMode;
     }
     get canOpenCover() {
         return this.initialMode || this.giftTryMode || this.giftReceived;
     }
 
-    private resetAll(currentMode: GameMode, hidePopups: boolean = true) {
-        let prevMode = this._currentMode;
-        this._currentMode = currentMode;
+    private resetAll(currentMode: MainMode, hidePopups: boolean = true) {
+        let prevMode = this._currentMainMode;
+        this._currentMainMode = currentMode;
+
+        console.log("resetAll", currentMode, this._currentSubMode);
 
         // Track game mode change
         if (prevMode !== currentMode) {
@@ -90,12 +100,12 @@ class GameModeManager {
         }
     }
 
-    public addGameModeChangedObserver(observer: (prevMode: GameMode) => void) {
+    public addGameModeChangedObserver(observer: (prevMode: MainMode) => void) {
         this._observers.push(observer);
     }
 
     enterInitialMode() {
-        this.resetAll(GameMode.Initial);
+        this.resetAll(MainMode.Initial);
 
         ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
         ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
@@ -105,11 +115,15 @@ class GameModeManager {
         puzzleUrlHelper.clearPuzzleId();
         
         // Track game session start
-        analyticsManager.startGameSession(GameMode.Initial, ctx.category?.key);
+        analyticsManager.startGameSession(MainMode.Initial, this._currentSubMode, ctx.category?.key);
+    }
+
+    enterNormalSubMode() {
+        this._currentSubMode = SubMode.Normal;
     }
 
     enterOpenCoverMode(showShakeIt: boolean = true) {
-        this.resetAll(GameMode.OpenCover);
+        this.resetAll(MainMode.OpenCover);
 
         ctx.cameraDetachControl();
 
@@ -119,22 +133,22 @@ class GameModeManager {
     }
 
     enterShakeMode() {
-        this.resetAll(GameMode.Shake);
+        this.resetAll(MainMode.Shake);
         
         piecePositioningManager.init();
     }
 
     enterSolveMode() {
-        this.resetAll(GameMode.Solve);
+        this.resetAll(MainMode.Solve);
         
         piecePositioningManager.init();
         
         // Track puzzle solving start
-        analyticsManager.startGameSession(GameMode.Solve, ctx.category?.key);
+        analyticsManager.startGameSession(MainMode.Solve, this._currentSubMode, ctx.category?.key);
     }
 
     enterCelebrationMode() {
-        this.resetAll(GameMode.Celebration);
+        this.resetAll(MainMode.Celebration);
         
         piecePositioningManager.init();
         
@@ -147,21 +161,23 @@ class GameModeManager {
     }
 
     enterGiftInitialMode() {
-        this.resetAll(GameMode.GiftInitial);
+        this.resetAll(MainMode.GiftInitial);
+
+        this._currentSubMode = SubMode.GiftMaking;
 
         ctx.cameraDetachControl();
 
         giftMaker.start();
         
         // Track gift creation start
-        analyticsManager.startGameSession(GameMode.GiftInitial, 'gift');
+        analyticsManager.startGameSession(MainMode.GiftInitial, SubMode.GiftMaking);
     }
 
     async enterGiftAdjustmentMode() {
-        let prevMode = this._currentMode;
+        let prevMode = this._currentMainMode;
 
-        if (await giftMaker.enterAdjustments(prevMode === GameMode.GiftInitial)) {
-            this.resetAll(GameMode.GiftAdjustment, false);
+        if (await giftMaker.enterAdjustments(prevMode === MainMode.GiftInitial)) {
+            this.resetAll(MainMode.GiftAdjustment, false);
 
             tutorialManager.showGiftMakingHint();
         } else {
@@ -170,25 +186,25 @@ class GameModeManager {
     }
 
     enterGiftOverviewMode() {
-        this.resetAll(GameMode.GiftOverview);
+        this.resetAll(MainMode.GiftOverview);
 
         giftMaker.enterOverview();
     }
 
     enterGiftPhysicalOrientationMode() {
-        this.resetAll(GameMode.GiftPhysicalOrientation);
+        this.resetAll(MainMode.GiftPhysicalOrientation);
 
         giftMaker.enterGiftPhysicalOrientation();
     }
 
     enterGiftPhysicalFinalMode() {
-        this.resetAll(GameMode.GiftPhysicalFinal);
+        this.resetAll(MainMode.GiftPhysicalFinal);
 
         giftMaker.enterGiftPhysicalFinal();
     }
 
     enterGiftTryMode() {
-        this.resetAll(GameMode.GiftTry);
+        this.resetAll(MainMode.GiftTry);
 
         ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
         ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
@@ -204,7 +220,7 @@ class GameModeManager {
     }
 
     enterGiftReceivedMode() {
-        this.resetAll(GameMode.GiftReceived);
+        this.resetAll(MainMode.GiftReceived);
 
         ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
         ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
@@ -216,60 +232,48 @@ class GameModeManager {
         ctx.cameraAlpha = 0;
         //ctx.camera.beta = 12.5 * Math.PI / 32;
 
-        localStorageManager.set(CommonStorageKeys.Category, Categories.Gift.key);
-        ctx.category = Categories.Gift;
+        localStorageManager.set(CommonStorageKeys.Mode, Constants.MODE_GIFT_RECEIVE);
 
         giftMaker.tryGift();
     }
 
-    enterCalendarMode() {
-        this.resetAll(GameMode.Calendar);
+    enterCalendarMode(onlyModeSet: boolean = false) {
+        this._currentSubMode = SubMode.Calendar;
 
-        ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
-        ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
-            
-        ctx.cameraAttachControl(true);
+        this.enterInitialMode();
 
-        puzzleUrlHelper.clearPuzzleId();
-        
-        // Track calendar session start
-        analyticsManager.startGameSession(GameMode.Calendar, ctx.category?.key);
-
-        calendarManager.start();
+        if (!onlyModeSet) {
+            calendarManager.start();
+        }
     }
 
     handleGetItOnAmazonAction() {
         if (openCoverAnimation.giftCover) {
             backToInitialAnimation.animate(ctx.currentCover, () => { this.enterGiftPhysicalOrientationMode(); });
-            puzzleUrlHelper.setCategory(Categories.Gift.key);
         } else {
             window.open(puzzleCircleBuilder.selectedLink, "_blank");
         }
     }
 
     async handleCategoryChange(category: Category, userAction: boolean) {
+        this.enterNormalSubMode();
+        
         if (ctx.category !== category) {
             const fromCategory = ctx.category?.key || 'unknown';
             const toCategory = category.key;
             
             ctx.category = category;
 
-            puzzleUrlHelper.setCategory(category.key/*, userAction*/);
+            puzzleUrlHelper.setMode(category.key/*, userAction*/);
 
             // Track category change
             analyticsManager.trackCategoryChange(fromCategory, toCategory);
 
-            if (category === Categories.Gift) {
-                if (!this.giftReceived) {
-                    this.enterGiftInitialMode();
-                }
-            } else {
-                if (!userAction) {
-                    this.enterInitialMode();
-                }
-
-                await puzzleCircleBuilder.build();
+            if (!userAction) {
+                this.enterInitialMode();
             }
+
+            await puzzleCircleBuilder.build();
         }
     }
 

@@ -5,7 +5,7 @@ import shakeBehaviorManager from "../behaviors/ShakeBehaviorManager";
 import physicsAggregateBuilder from "./PhysicsAggregateBuilder";
 import meshHelpers from "../common/MeshHelpers";
 import puzzleEditor from "../misc/PuzzleEditor";
-import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../behaviors/GameModeManager";
 import openCoverAnimation from "../animations/OpenCoverAnimation";
 import timerManager from "../misc/TimerManager";
 
@@ -77,10 +77,10 @@ class PuzzleGameBuilder {
 
     private handleVisibility(): void {
         switch (gameModeManager.currentMode) {
-            case GameMode.OpenCover:
-            case GameMode.Shake:
-            case GameMode.Solve:
-            case GameMode.Celebration:
+            case MainMode.OpenCover:
+            case MainMode.Shake:
+            case MainMode.Solve:
+            case MainMode.Celebration:
                 this._lathe.visibility = 1;
                 this._groundVis.visibility = 1;
                 break;

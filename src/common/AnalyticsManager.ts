@@ -1,4 +1,4 @@
-import { GameMode } from "../core3d/behaviors/GameModeManager";
+import { MainMode, SubMode } from "../core3d/behaviors/GameModeManager";
 import IAnalyticsProvider from "./providers/IAnalyticsProvider";
 import ClarityProvider from "./providers/ClarityProvider";
 import GAProvider from "./providers/GAProvider";
@@ -15,7 +15,8 @@ export interface GameSessionData {
     sessionId: string;
     startTime: number;
     endTime?: number;
-    gameMode: GameMode;
+    gameMode: MainMode;
+    subMode: SubMode;
     puzzleCategory?: string;
     piecesCount?: number;
     solveTime?: number;
@@ -178,18 +179,20 @@ class AnalyticsManager {
     }
 
     // Game events
-    public startGameSession(gameMode: GameMode, category?: string, piecesCount?: number): void {
+    public startGameSession(gameMode: MainMode, subMode: SubMode, category?: string, piecesCount?: number): void {
         this.currentSession = {
             sessionId: this.sessionId,
             startTime: Date.now(),
             gameMode,
+            subMode,
             puzzleCategory: category,
             piecesCount,
             completed: false
         };
 
         this.trackEvent('game_session_start', {
-            game_mode: GameMode[gameMode],
+            game_mode: MainMode[gameMode],
+            sub_mode: SubMode[subMode],
             puzzle_category: category,
             pieces_count: piecesCount
         });
@@ -202,7 +205,7 @@ class AnalyticsManager {
         this.currentSession.solveTime = this.currentSession.endTime - this.currentSession.startTime;
 
         this.trackEvent('game_session_end', {
-            game_mode: GameMode[this.currentSession.gameMode],
+            game_mode: MainMode[this.currentSession.gameMode],
             puzzle_category: this.currentSession.puzzleCategory,
             pieces_count: this.currentSession.piecesCount,
             solve_time_ms: this.currentSession.solveTime,
@@ -212,10 +215,10 @@ class AnalyticsManager {
         this.currentSession = null;
     }
 
-    public trackGameModeChange(fromMode: GameMode, toMode: GameMode): void {
+    public trackGameModeChange(fromMode: MainMode, toMode: MainMode): void {
         this.trackEvent('game_mode_change', {
-            from_mode: GameMode[fromMode],
-            to_mode: GameMode[toMode]
+            from_mode: MainMode[fromMode],
+            to_mode: MainMode[toMode]
         });
     }
 
@@ -234,7 +237,7 @@ class AnalyticsManager {
 
     public trackPuzzleAbandoned(): void {
         this.trackEvent('puzzle_abandoned', {
-            game_mode: this.currentSession ? GameMode[this.currentSession.gameMode] : 'unknown'
+            game_mode: this.currentSession ? MainMode[this.currentSession.gameMode] : 'unknown'
         });
     }
 

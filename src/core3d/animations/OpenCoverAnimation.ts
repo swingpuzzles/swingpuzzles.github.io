@@ -6,19 +6,20 @@ import { PuzzleTools } from "../common/PuzzleTools";
 import puzzleGameBuilder from "../builders/PuzzleGameBuilder";
 import puzzleUrlHelper from "../../common/PuzzleUrlHelper";
 import timerManager from "../misc/TimerManager";
+import calendarManager from "../../gui/CalendarManager";
 
 class OpenCoverAnimation implements IPuzzleAnimation {
+    animate(mesh: Mesh, action: (() => void) | null): void {
+        throw new Error("Method not implemented.");
+    }
+    
     private _giftCover: boolean = false;
 
     public get giftCover(): boolean {
         return this._giftCover;
     }
     
-    public animate(cover: Mesh): void {//console.trace('open cover');
-        /*if (!gameModeManager.canOpenCover && !gameModeManager.solveMode && !gameModeManager.celebrationMode) {
-            return;
-        }*/
-
+    public async animateAsync(cover: Mesh): Promise<void> {//console.trace('open cover');
         let endAngle = Math.PI / 2;// / 2;//cover.rotation.y < Math.PI ? Math.PI * 2 : 0;
 
         const coverMat = cover.material as StandardMaterial;
@@ -33,9 +34,9 @@ class OpenCoverAnimation implements IPuzzleAnimation {
             this._giftCover = true;
         }
 
-        if (!gameModeManager.calendarMode) {
-            gameModeManager.enterOpenCoverMode(coverMat !== null);
-        }
+        gameModeManager.enterOpenCoverMode(coverMat !== null);
+
+        await calendarManager.handleOpenCover(cover);
 
         ctx.currentCover = cover;
 

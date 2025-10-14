@@ -4,7 +4,7 @@ import { PopupMode } from "./popups/modes/PopupMode";
 import { ShaderMode } from "./ScreenShader";
 import { FormRowModel } from "../model/FormRowModel";
 import LanguageSelector from "./selectors/LanguageSelector";
-import gameModeManager, { GameMode } from "../core3d/behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../core3d/behaviors/GameModeManager";
 import { Dropdown } from "./dropdowns/Dropdown";
 import FontFamilyDropdownBuilder from "./dropdowns/FontFamilyDropdownBuilder";
 import WishTextDropdownBuilder from "./dropdowns/WishTextDropdownBuilder";
@@ -96,8 +96,7 @@ class GiftMaker {
         });
 
         gameModeManager.addGameModeChangedObserver(() => {
-            this._colorPicker.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
-            this._stack2.isVisible = gameModeManager.currentMode === GameMode.GiftAdjustment;
+            this._stack2.isVisible = gameModeManager.currentMode === MainMode.GiftAdjustment;
         });
     }
 
@@ -408,7 +407,7 @@ class GiftMaker {
 
     public exitGiftMaking(): void {
         popupHint.hide();
-        guiManager.enterGeneralCategory();
+        //guiManager.enterGeneralCategory();
     }
 
     private buildGiftDataFromLocalStorage(): Record<string, string> {

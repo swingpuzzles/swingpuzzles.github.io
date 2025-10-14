@@ -1,4 +1,4 @@
-import gameModeManager, { GameMode } from "../behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../behaviors/GameModeManager";
 import analyticsManager from "../../common/AnalyticsManager";
 
 class TimerDisplay {
@@ -25,10 +25,10 @@ class TimerDisplay {
     public init(): void {
         gameModeManager.addGameModeChangedObserver(() => {
             switch (gameModeManager.currentMode) {
-                case GameMode.Solve:
+                case MainMode.Solve:
                     this.resetAndShow();
                     break;
-                case GameMode.Celebration:
+                case MainMode.Celebration:
                     this.pause();
                     break;
                 default:

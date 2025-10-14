@@ -1,11 +1,11 @@
 import { Dropdown } from "./Dropdown";
 import guiManager from "../GuiManager";
 import sceneInitializer from "../../core3d/SceneInitializer";
-import { GameMode } from "../../core3d/behaviors/GameModeManager";
+import { MainMode } from "../../core3d/behaviors/GameModeManager";
 import { ITranslationEntry } from "../../interfaces/ITranslationEntry";
 
 interface DropdownOptions {
-    gameModes: GameMode[];
+    gameModes: MainMode[];
     width?: number;
     height?: number;
     color?: string;

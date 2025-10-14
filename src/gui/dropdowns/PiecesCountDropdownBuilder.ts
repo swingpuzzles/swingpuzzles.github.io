@@ -1,7 +1,7 @@
 import ctx from "../../core3d/common/SceneContext";
 import tutorialManager from "../TutorialManager";
 import DropdownBuilder from "./DropdownBuilder";
-import gameModeManager, { GameMode } from "../../core3d/behaviors/GameModeManager";
+import gameModeManager, { MainMode } from "../../core3d/behaviors/GameModeManager";
 import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "../../common/LocalStorageManager";
 import analyticsManager from "../../common/AnalyticsManager";
 import { i18nManager, TranslationKeys } from "../../common/i18n";
@@ -13,7 +13,7 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
 
     constructor() {
         super({
-            gameModes: [ GameMode.Initial, GameMode.GiftInitial, GameMode.Calendar ],
+            gameModes: [ MainMode.Initial, MainMode.GiftInitial, MainMode.Calendar ],
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); },
             });
 
