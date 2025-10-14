@@ -71,6 +71,9 @@ class GameModeManager {
     get canOpenCover() {
         return this.initialMode || this.giftTryMode || this.giftReceived;
     }
+    get anyGiftMode() {
+        return this.giftTryMode || this.giftReceived;
+    }
 
     private resetAll(currentMode: MainMode, hidePopups: boolean = true) {
         let prevMode = this._currentMainMode;
@@ -237,14 +240,12 @@ class GameModeManager {
         giftMaker.tryGift();
     }
 
-    enterCalendarMode(onlyModeSet: boolean = false) {
+    async enterCalendarMode(openCover: boolean) {
         this._currentSubMode = SubMode.Calendar;
 
         this.enterInitialMode();
 
-        if (!onlyModeSet) {
-            calendarManager.start();
-        }
+        await calendarManager.start(openCover);
     }
 
     handleGetItOnAmazonAction() {

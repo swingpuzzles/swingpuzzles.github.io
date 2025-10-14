@@ -86,8 +86,8 @@ class PuzzleCircleBuilder {
         return this.closestMesh!;
     }
 
-    public get coverData(): CoverData | null {
-        let puzzleId = this.getPuzzleId(this.closestMesh!);
+    public getCoverData(cover: Mesh): CoverData | null {
+        let puzzleId = this.getPuzzleId(cover);
         return this.covers.get(puzzleId!) || null;
     }
 

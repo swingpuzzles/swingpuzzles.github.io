@@ -3,6 +3,7 @@ import ctx from "../common/SceneContext";
 import sceneInitializer from "../SceneInitializer";
 import popupHint from "../../gui/popups/PopupHint";
 import { GuiHelpers } from "../../gui/GuiHelpers";
+import gameModeManager from "../behaviors/GameModeManager";
 
 class PuzzleEditor {
     private _popupDynamicTexture?: DynamicTexture;
@@ -263,7 +264,10 @@ class PuzzleEditor {
         this._popupDynamicTexture.update();
 
         const dataUrl = ctx2d.canvas.toDataURL("image/png");
-        popupHint.centerImgUrl = dataUrl;
+
+        if (gameModeManager.anyGiftMode) {
+            popupHint.centerImgUrl = dataUrl;
+        }
     }
 
     private drawText(text: string, centerY: number, textViewAngle: number, angleFactor: number, radius: number, yAngleFactor: number, maxWidth: number, maxHeight: number) {

@@ -63,7 +63,7 @@ class PuzzleUrlHelper {
 
             if (urlData.puzzleId) {
                 if (this._mode === Constants.MODE_CALENDAR) {
-                    // TODO
+                    await gameModeManager.enterCalendarMode(false);
                 } else {
                     await guiManager.enterCategory(this._mode);
                 }
@@ -101,9 +101,9 @@ class PuzzleUrlHelper {
             
             if (!puzzleSelected) {
                 if (this._mode === Constants.MODE_CALENDAR) {
-                    // TODO
+                    await gameModeManager.enterCalendarMode(false);
                 } else {
-                    guiManager.enterCategory(this._mode);
+                    await guiManager.enterCategory(this._mode);
                 }
 
                 changed ||= this.setMode(this._mode);
@@ -146,7 +146,7 @@ class PuzzleUrlHelper {
         this.updateUrl();
     }
 
-    public setImgUrl(value: string) {
+    public setImgUrl(value: string) {console.log(value);
         const puzzleId = this.extractPuzzleId(value);
 
         if (this._puzzleId === puzzleId) {

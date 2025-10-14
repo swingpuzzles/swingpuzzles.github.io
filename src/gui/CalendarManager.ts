@@ -15,7 +15,7 @@ import analyticsManager from "../common/AnalyticsManager";
 import { Mesh } from "@babylonjs/core";
 
 class CalendarManager {
-    public async start() {        
+    public async start(openCover: boolean) {        
         puzzleUrlHelper.clearPuzzleId();
         
         // Track calendar session start
@@ -28,12 +28,14 @@ class CalendarManager {
 
         puzzleCircleBuilder.refresh();
 
-        await openCoverAnimation.animateAsync(puzzleCircleBuilder.selectedCover);
+        if (openCover) {
+            await openCoverAnimation.animateAsync(puzzleCircleBuilder.selectedCover);
+        }
     }
 
     public async handleOpenCover(cover: Mesh) {
         if (gameModeManager.calendarMode) {
-            const dailyData = puzzleCircleBuilder.coverData;
+            const dailyData = puzzleCircleBuilder.getCoverData(cover);
 
             let headingParams = {};
             let headingKey = "calendar.forToday";
@@ -73,7 +75,7 @@ class CalendarManager {
 
     private formatDate(date: Date): string {
         const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-        return date.toLocaleDateString(i18nManager.getCurrentLanguage(), options);
+        return date.toLocaleDateString(i18nManager.getCurrentLanguage(), options).toUpperCase();
     }
 }
 

@@ -117,9 +117,11 @@ class PuzzleDataManager {
             }
             
             const data = await response.json();
+
+            data.date = date;
             
             // Cache the result
-            this.dailyPuzzleCache.set(date, { ...data, date });
+            this.dailyPuzzleCache.set(date, data);
             
             return data;
         } catch (error) {
