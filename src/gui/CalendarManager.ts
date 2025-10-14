@@ -58,7 +58,7 @@ class CalendarManager {
                 }
             }
 
-            popupHint.show(dailyData?.story!, headingKey, {}, headingParams, 0.9, ShaderMode.SHADOW_WINDOW, Control.VERTICAL_ALIGNMENT_CENTER,
+            popupHint.show(dailyData?.story!, headingKey, {}, headingParams, 0.9, ShaderMode.SHADOW_FULL/*ShaderMode.SHADOW_WINDOW*/, Control.VERTICAL_ALIGNMENT_CENTER,
                 () => { gameModeManager.enterOpenCoverMode(true); },
                 () => { gameModeManager.enterOpenCoverMode(true); },
                 null, null, PopupMode.Calendar, null, dailyData?.imgCoverUrl);

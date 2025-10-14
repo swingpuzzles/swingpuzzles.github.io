@@ -121,7 +121,7 @@ class PuzzleCircleBuilder {
         const count = filteredData.length;
 
         filteredData.forEach((obj, index) => {
-            const angle = Math.PI * (2 * index + 9 / 4) / count;
+            const angle = index * 2 * Math.PI / count + 7 * Math.PI / 16;
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);
             const position = new Vector3(x, -38, z);

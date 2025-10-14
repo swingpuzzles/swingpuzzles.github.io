@@ -13,9 +13,9 @@ export default class PiecesCountDropdownBuilder extends DropdownBuilder {
 
     constructor() {
         super({
-            gameModes: [ MainMode.Initial, MainMode.GiftInitial, MainMode.Calendar ],
+            gameModes: [ MainMode.Initial, MainMode.GiftInitial/*, MainMode.OpenCover*/ ],
             selectionCallback: (key, userAction) => { this.selectionCallback(key, userAction); },
-            });
+        });
 
         if (ctx.debugMode) {
             this.addPiecesNums(3, 2);
