@@ -231,8 +231,8 @@ class GuiManager {
             case MainMode.Initial:
                 this.playButton.isVisible = true;
                 this.menuButton.isVisible = false;//true;   // TODO LATER
-                this.calendarButton.isVisible = true;
-                this.giftButton.isVisible = true;
+                this.calendarButton.isVisible = specialModeManager.calendarButtonVisible(true);
+                this.giftButton.isVisible = specialModeManager.giftButtonVisible(true);
                 this.bannerButton.isVisible = specialModeManager.bannerButtonVisible(true);
                 this.bannerButton.widthInPixels = renderHeight / 4;
                 this.bannerButton.heightInPixels = renderHeight / 16;

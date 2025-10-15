@@ -20,6 +20,12 @@ class SpecialModeManager {
     bannerButtonVisible(defaultVisible: boolean): boolean {
         return this._specialMode !== null ? this._specialMode.bannerButtonVisible(defaultVisible) : defaultVisible;
     }
+    calendarButtonVisible(defaultVisible: boolean): boolean {
+        return this._specialMode !== null ? this._specialMode.calendarButtonVisible(defaultVisible) : defaultVisible;
+    }
+    giftButtonVisible(defaultVisible: boolean): boolean {
+        return this._specialMode !== null ? this._specialMode.giftButtonVisible(defaultVisible) : defaultVisible;
+    }
     nextButtonVisible(defaultVisible: boolean): boolean {
         return this._specialMode !== null ? this._specialMode.nextButtonVisible(defaultVisible) : defaultVisible;
     }

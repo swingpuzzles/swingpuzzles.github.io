@@ -1,6 +1,8 @@
 export interface ISpecialMode {
     categoryDropdownVisible(defaultVisible: boolean): boolean;
     bannerButtonVisible(defaultVisible: boolean): boolean;
+    calendarButtonVisible(defaultVisible: boolean): boolean;
+    giftButtonVisible(defaultVisible: boolean): boolean;
     nextButtonVisible(defaultVisible: boolean): boolean;
     prevButtonVisible(defaultVisible: boolean): boolean;
     menuButtonVisible(defaultVisible: boolean): boolean;

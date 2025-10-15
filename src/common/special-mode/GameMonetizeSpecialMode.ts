@@ -13,6 +13,12 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
     bannerButtonVisible(defaultVisible: boolean): boolean {
         return false;
     }
+    calendarButtonVisible(defaultVisible: boolean): boolean {
+        return false;
+    }
+    giftButtonVisible(defaultVisible: boolean): boolean {
+        return false;
+    }
     nextButtonVisible(defaultVisible: boolean): boolean {
         return false;
     }
