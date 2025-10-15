@@ -117,8 +117,10 @@ class GuiManager {
         this.calendarButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         this.calendarButton.zIndex = 300;
         this.calendarButton.onPointerClickObservable.add(() => {
+            gameModeManager.enterWaiting();
             analyticsManager.trackButtonClick('calendar_button', 'calendar_action');
             gameModeManager.enterCalendarMode(true);
+            gameModeManager.leaveWaiting();
         });
         this._advancedTexture.addControl(this.calendarButton);
 
