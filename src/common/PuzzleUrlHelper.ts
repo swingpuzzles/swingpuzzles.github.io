@@ -56,7 +56,7 @@ class PuzzleUrlHelper {
             puzzleGameBuilder.clear();
             this._mode = Constants.MODE_GIFT_RECEIVE;
         } else {
-            let changed: boolean = this._mode === Constants.MODE_GIFT_RECEIVE || this._mode === Constants.MODE_GIFT_CREATE;
+            let modeChanged: boolean = this._mode === Constants.MODE_GIFT_RECEIVE || this._mode === Constants.MODE_GIFT_CREATE;
 
             let puzzleSelected = false;
             let mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY;
@@ -67,12 +67,12 @@ class PuzzleUrlHelper {
 
             if (urlData.puzzleId) {
                 if (mode === Constants.MODE_CALENDAR) {
-                    await gameModeManager.enterCalendarMode(false);
+                    await gameModeManager.enterCalendarMode(false, false);
                 } else {
                     await guiManager.enterCategory(mode);
                 }
 
-                changed ||= this.setMode(mode, false);
+                modeChanged ||= this.setMode(mode, false);
 
                 const cover = this._coverMap.get(urlData.puzzleId);
 
@@ -84,17 +84,17 @@ class PuzzleUrlHelper {
                     if (!gameModeManager.initialMode) {
                         if (changedPuzzle) {
                             backToInitialAnimation.animate(ctx.currentCover, async () => {
-                                if (changed) {
+                                if (modeChanged) {
                                     await puzzleCircleBuilder.build();
                                 }
 
                                 await openCoverAnimation.animateAsync(cover);
                             });
-                        } else if (changed) {
+                        } else if (modeChanged) {
                             await puzzleCircleBuilder.build();
                         }
                     } else {
-                        if (changed) {
+                        if (modeChanged) {
                             await puzzleCircleBuilder.build();
                         }
 
@@ -110,10 +110,10 @@ class PuzzleUrlHelper {
                     await guiManager.enterCategory(mode);
                 }
 
-                changed ||= this.setMode(mode);
+                modeChanged ||= this.setMode(mode);
 
                 if (gameModeManager.initialMode) {
-                    if (changed) {
+                    if (modeChanged) {
                         puzzleGameBuilder.clear();
 
                         await puzzleCircleBuilder.build(true);
