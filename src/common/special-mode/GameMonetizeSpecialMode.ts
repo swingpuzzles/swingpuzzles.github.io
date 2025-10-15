@@ -29,14 +29,14 @@ export class GameMonetizeSpecialMode implements ISpecialMode {
         return "🧩🏠 MORE PUZZLES 🏠🧩";
     }
     handleGoBackAction(): boolean {
-        const category = puzzleUrlHelper.category;
+        const mode = puzzleUrlHelper.mode;
         const localStorageData = puzzleUrlHelper.getCurrentLocalStorageData();
         
         // Build URL with category and localStorage items
         const params = new URLSearchParams();
         
-        if (category) {
-            params.set('category', category);
+        if (mode) {
+            params.set('mode', mode);
         }
         
         // Add localStorage items to URL parameters
