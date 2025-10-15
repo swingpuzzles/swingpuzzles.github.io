@@ -19,8 +19,8 @@ class OpenCoverAnimation implements IPuzzleAnimation {
         return this._giftCover;
     }
     
-    public async animateAsync(cover: Mesh): Promise<void> {//console.trace('open cover');
-        let endAngle = Math.PI / 2;// / 2;//cover.rotation.y < Math.PI ? Math.PI * 2 : 0;
+    public async animateAsync(cover: Mesh): Promise<void> {
+        let endAngle = Math.PI / 2;
 
         const coverMat = cover.material as StandardMaterial;
 

@@ -13,7 +13,8 @@ import localStorageManager, { CommonStorageKeys, GiftStorageKeys } from "./Local
 import giftMaker from "../gui/GiftMaker";
 
 class PuzzleUrlHelper {
-    private static readonly DEFAULT_CATEGORY = Categories.General.key;
+    private static readonly DEFAULT_CATEGORY = Categories.General;
+    private static readonly DEFAULT_CATEGORY_KEY = PuzzleUrlHelper.DEFAULT_CATEGORY.key;
 
     private _mode: string | null = null;
     private _puzzleId: string | null = null;
@@ -59,10 +60,10 @@ class PuzzleUrlHelper {
             let modeChanged: boolean = this._mode === Constants.MODE_GIFT_RECEIVE || this._mode === Constants.MODE_GIFT_CREATE;
 
             let puzzleSelected = false;
-            let mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY;
+            let mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY_KEY;
 
             if (mode === Constants.MODE_GIFT_CREATE) {
-                mode = PuzzleUrlHelper.DEFAULT_CATEGORY;
+                mode = PuzzleUrlHelper.DEFAULT_CATEGORY_KEY;
             }
 
             if (urlData.puzzleId) {
@@ -153,8 +154,12 @@ class PuzzleUrlHelper {
     public clearPuzzleId() {
         this._puzzleId = null;
 
-        if (this._mode === Constants.MODE_GIFT_CREATE) {
-            this._mode = PuzzleUrlHelper.DEFAULT_CATEGORY;
+        if (this._mode === Constants.MODE_GIFT_CREATE || this._mode === Constants.MODE_GIFT_RECEIVE) {
+            this._mode = PuzzleUrlHelper.DEFAULT_CATEGORY_KEY;
+
+            if (!ctx.category) {
+                ctx.category = PuzzleUrlHelper.DEFAULT_CATEGORY;
+            }
         }
 
         this.updateUrl();

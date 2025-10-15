@@ -55,7 +55,7 @@ class BackToInitialAnimation implements IPuzzleAnimation {
 
         gameModeManager.enterOpenCoverMode(false);
 
-        ctx.scene.beginDirectAnimation(ctx.cameraObject, [alphaAnim, betaAnim, radiusAnim, targetAnim], 0, animFrames, false, 1.0, () => {
+        ctx.scene.beginDirectAnimation(ctx.cameraObject, [alphaAnim, betaAnim, radiusAnim, targetAnim], 0, animFrames, false, 1.0, async () => {
             // Final snap to correct alpha/beta/radius/target
             ctx.cameraAlpha = orig.alpha;
             ctx.cameraBeta = orig.beta;
@@ -66,7 +66,7 @@ class BackToInitialAnimation implements IPuzzleAnimation {
                 action();
             } else {
                 // ✅ Safe to re-enter initial mode now
-                gameModeManager.enterInitialMode();
+                await gameModeManager.enterInitialMode();
             }
         });
 

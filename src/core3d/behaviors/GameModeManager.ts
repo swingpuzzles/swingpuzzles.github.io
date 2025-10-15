@@ -62,6 +62,9 @@ class GameModeManager {
     get giftReceived() {
         return this._currentMainMode === MainMode.GiftReceived;
     }
+    get giftReceivingSubMode() {
+        return this._currentSubMode === SubMode.GiftReceiving;
+    }
     get normalSubMode() {
         return this._currentSubMode === SubMode.Normal;
     }
@@ -97,8 +100,6 @@ class GameModeManager {
         let prevMode = this._currentMainMode;
         this._currentMainMode = currentMode;
 
-        console.log("resetAll", currentMode, this._currentSubMode);
-
         // Track game mode change
         if (prevMode !== currentMode) {
             analyticsManager.trackGameModeChange(prevMode, currentMode);
@@ -125,18 +126,20 @@ class GameModeManager {
         this._observers.push(observer);
     }
 
-    enterInitialMode(clearPuzzleId: boolean = true) {
+    async enterInitialMode(clearPuzzleId: boolean = true) {
         this.resetAll(MainMode.Initial);
 
         ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
         ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
-            
+        
         ctx.cameraAttachControl(true);
 
         if (clearPuzzleId) {
             puzzleUrlHelper.clearPuzzleId();
         }
         
+        await puzzleCircleBuilder.build(true);
+
         // Track game session start
         analyticsManager.startGameSession(MainMode.Initial, this._currentSubMode, ctx.category?.key);
     }
@@ -243,13 +246,14 @@ class GameModeManager {
         ctx.cameraAttachControl(true);
 
         ctx.cameraAlpha = 0;
-        //ctx.camera.beta = 12.5 * Math.PI / 32;  
 
         giftMaker.tryGift();
     }
 
     enterGiftReceivedMode() {
         this.resetAll(MainMode.GiftReceived);
+
+        this._currentSubMode = SubMode.GiftReceiving;
 
         ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
         ctx.cameraLowerBetaLimit = 9 * Math.PI / 32;
@@ -259,7 +263,6 @@ class GameModeManager {
         ctx.cameraAttachControl(true);
 
         ctx.cameraAlpha = 0;
-        //ctx.camera.beta = 12.5 * Math.PI / 32;
 
         localStorageManager.set(CommonStorageKeys.Mode, Constants.MODE_GIFT_RECEIVE);
 
@@ -270,7 +273,7 @@ class GameModeManager {
         this._currentSubMode = SubMode.Calendar;
 
         if (forceInitialMode) {
-            this.enterInitialMode(openCover);
+            await this.enterInitialMode(openCover);
         }
 
         await calendarManager.start(openCover);
@@ -297,7 +300,7 @@ class GameModeManager {
             analyticsManager.trackCategoryChange(fromCategory, toCategory);
 
             if (!userAction) {
-                this.enterInitialMode();
+                await this.enterInitialMode();
             }
 
             await puzzleCircleBuilder.build();

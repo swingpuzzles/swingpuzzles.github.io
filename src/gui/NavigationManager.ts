@@ -14,6 +14,7 @@ import guiManager from "./GuiManager";
 import mlPopupHandler from "../common/MLPopupHandler";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { i18nManager, TranslationKeys } from "../common/i18n";
+import { Categories } from "../core3d/common/Constants";
 
 declare var ml: any;
 
@@ -112,20 +113,24 @@ class NavigationManager {
             0.99,
             ShaderMode.SHADOW_FULL,
             Control.VERTICAL_ALIGNMENT_CENTER,
-            () => { this.nextPuzzle(); }, // FOOTER: NEXT
+            async () => { await this.nextPuzzle(); }, // FOOTER: NEXT
             () => { this.continue(puzzleFinished); }, // X button → continue
-            () => { this.prevPuzzle(); }, // FOOTER: PREV
+            async () => { await this.prevPuzzle(); }, // FOOTER: PREV
             null,
             PopupMode.GamePaused,
             formModel
         );
     }
 
-    private prevPuzzle() {
+    private async prevPuzzle() {
+        await this.handleGiftReceivedMode();
+        
         this.playPuzzle(puzzleCircleBuilder.getPrevCover(ctx.currentCover)!);
     }
 
-    private nextPuzzle() {
+    private async nextPuzzle() {
+        await this.handleGiftReceivedMode();
+        
         this.playPuzzle(puzzleCircleBuilder.getNextCover(ctx.currentCover)!);
     }
 
@@ -147,9 +152,18 @@ class NavigationManager {
         });
     }
 
-    private goBack() {
+    private async goBack() {
+        await this.handleGiftReceivedMode();
+
         if (specialModeManager.handleGoBackAction()) {
             backToInitialAnimation.animate(ctx.currentCover);
+        }
+    }
+
+    private async handleGiftReceivedMode() {
+        if (gameModeManager.giftReceivingSubMode) {
+            await gameModeManager.handleCategoryChange(Categories.General, false);
+            await gameModeManager.enterInitialMode();
         }
     }
 }

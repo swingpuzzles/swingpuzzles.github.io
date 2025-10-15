@@ -115,6 +115,7 @@ class GuiManager {
         this.calendarButton.hoverCursor = "pointer";
         this.calendarButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
         this.calendarButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this.calendarButton.zIndex = 300;
         this.calendarButton.onPointerClickObservable.add(() => {
             analyticsManager.trackButtonClick('calendar_button', 'calendar_action');
             gameModeManager.enterCalendarMode(true);
@@ -127,6 +128,7 @@ class GuiManager {
         this.giftButton.hoverCursor = "pointer";
         this.giftButton.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
         this.giftButton.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        this.giftButton.zIndex = 300;
         this.giftButton.onPointerClickObservable.add(() => {
             analyticsManager.trackButtonClick('gift_button', 'gift_action');
             gameModeManager.enterGiftInitialMode();
