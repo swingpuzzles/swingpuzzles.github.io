@@ -68,6 +68,21 @@ class GameModeManager {
     get calendarMode() {
         return this._currentSubMode === SubMode.Calendar;
     }
+    get giftInitialMode() {
+        return this._currentMainMode === MainMode.GiftInitial;
+    }
+    get giftAdjustmentMode() {
+        return this._currentMainMode === MainMode.GiftAdjustment;
+    }
+    get giftOverviewMode() {
+        return this._currentMainMode === MainMode.GiftOverview;
+    }
+    get giftPhysicalOrientationMode() {
+        return this._currentMainMode === MainMode.GiftPhysicalOrientation;
+    }
+    get giftPhysicalFinalMode() {
+        return this._currentMainMode === MainMode.GiftPhysicalFinal;
+    }
     get currentMode() {
         return this._currentMainMode;
     }
@@ -75,7 +90,7 @@ class GameModeManager {
         return this.initialMode || this.giftTryMode || this.giftReceived;
     }
     get anyGiftMode() {
-        return this.giftTryMode || this.giftReceived;
+        return this.giftTryMode || this.giftReceived || this.giftInitialMode || this.giftAdjustmentMode || this.giftOverviewMode || this.giftPhysicalOrientationMode;
     }
 
     private resetAll(currentMode: MainMode, hidePopups: boolean = true) {
@@ -178,6 +193,8 @@ class GameModeManager {
         this._currentSubMode = SubMode.GiftMaking;
 
         ctx.cameraDetachControl();
+
+        puzzleUrlHelper.setMode(Constants.MODE_GIFT_CREATE);
 
         giftMaker.start();
         

@@ -61,6 +61,10 @@ class PuzzleUrlHelper {
             let puzzleSelected = false;
             let mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY;
 
+            if (mode === Constants.MODE_GIFT_CREATE) {
+                mode = PuzzleUrlHelper.DEFAULT_CATEGORY;
+            }
+
             if (urlData.puzzleId) {
                 if (mode === Constants.MODE_CALENDAR) {
                     await gameModeManager.enterCalendarMode(false);
@@ -116,6 +120,10 @@ class PuzzleUrlHelper {
                     backToInitialAnimation.animate(ctx.currentCover);
                 }
             }
+
+            if (urlData.mode === Constants.MODE_GIFT_CREATE) {
+                gameModeManager.enterGiftInitialMode();
+            }
         }
     }
 
@@ -142,6 +150,10 @@ class PuzzleUrlHelper {
 
     public clearPuzzleId() {
         this._puzzleId = null;
+
+        if (this._mode === Constants.MODE_GIFT_CREATE) {
+            this._mode = PuzzleUrlHelper.DEFAULT_CATEGORY;
+        }
 
         this.updateUrl();
     }
