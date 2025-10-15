@@ -112,7 +112,11 @@ class PuzzleCircleBuilder {
         this.covers.clear();
     }
 
-    async build() {
+    async build(onlyWhenEmpty: boolean = false) {
+        if (onlyWhenEmpty && this.covers.size > 0) {
+            return;
+        }
+
         this.clear();
 
         const filteredData = await puzzleDataManager.getFilteredData();

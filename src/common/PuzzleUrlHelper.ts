@@ -56,7 +56,7 @@ class PuzzleUrlHelper {
             puzzleGameBuilder.clear();
             this._mode = Constants.MODE_GIFT_RECEIVE;
         } else {
-            let changed: boolean = this._mode === Constants.MODE_GIFT_RECEIVE;
+            let changed: boolean = this._mode === Constants.MODE_GIFT_RECEIVE || this._mode === Constants.MODE_GIFT_CREATE;
 
             let puzzleSelected = false;
             let mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY;
@@ -115,6 +115,8 @@ class PuzzleUrlHelper {
                 if (gameModeManager.initialMode) {
                     if (changed) {
                         puzzleGameBuilder.clear();
+
+                        await puzzleCircleBuilder.build(true);
                     }
                 } else if (ctx.currentCover != null) {
                     backToInitialAnimation.animate(ctx.currentCover);
