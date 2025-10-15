@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3KQCVA3",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71N0tWt5uzL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71N0tWt5uzL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81wE+fpmBgL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3KOJrr2",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71RXq44Un-S._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71RXq44Un-S._AC_SL1118_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/61WMm608l4L._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 16, 1846, doctors in Boston performed the first successful surgery using ether anesthesia. The audience of surgeons was amazed — mostly because the patient didn’t scream for the first time in medical history.",
+        "es": "El 16 de octubre de 1846, médicos en Boston realizaron la primera cirugía exitosa utilizando anestesia con éter. La audiencia de cirujanos quedó asombrada — sobre todo porque, por primera vez en la historia, el paciente no gritó.",
+        "de": "Am 16. Oktober 1846 führten Ärzte in Boston die erste erfolgreiche Operation unter Verwendung von Ether-Anästhesie durch. Das Publikum aus Chirurgen war verblüfft — vor allem, weil der Patient zum ersten Mal in der Medizingeschichte nicht schrie.",
+        "fr": "Le 16 octobre 1846, des médecins de Boston réalisèrent la première opération réussie sous anesthésie à l’éther. Le public de chirurgiens fut stupéfait — surtout parce que, pour la première fois de l’histoire, le patient ne cria pas.",
+        "it": "Il 16 ottobre 1846, i medici di Boston eseguirono il primo intervento chirurgico riuscito con anestesia all’etere. Il pubblico di chirurghi rimase sbalordito — soprattutto perché, per la prima volta nella storia, il paziente non urlò.",
+        "sk": "Dňa 16. októbra 1846 uskutočnili lekári v Bostone prvú úspešnú operáciu s použitím éterovej anestézie. Prítomní chirurgovia boli ohromení — najmä preto, že pacient po prvýkrát v histórii medicíny nekričal.",
+        "cs": "Dne 16. října 1846 provedli lékaři v Bostonu první úspěšnou operaci s použitím éterové anestezie. Přítomní chirurgové byli ohromeni — hlavně proto, že pacient poprvé v dějinách medicíny nekřičel."
+    }
+}
+

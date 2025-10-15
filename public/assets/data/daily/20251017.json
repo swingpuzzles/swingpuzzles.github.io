@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4n4RJIw",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81k7X3r99lL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81k7X3r99lL._AC_SL1280_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71plso7o2YL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3IVXHh3",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/512I6MJrqkL._AC_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/512I6MJrqkL._AC_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/617EzDig-zS._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 17, 1931, famed gangster Al Capone was convicted of income tax evasion — a surprise but crafty way to put a crime lord behind bars when tougher charges wouldn’t stick.",
+        "es": "El 17 de octubre de 1931, el célebre gánster Al Capone fue condenado por evasión de impuestos — una forma sorprendente pero astuta de encarcelar a un señor del crimen cuando cargos más graves no prosperaban.",
+        "de": "Am 17. Oktober 1931 wurde der berüchtigte Gangster Al Capone wegen Steuerhinterziehung verurteilt — ein überraschender, aber kluger Weg, einen Verbrecherboss hinter Gitter zu bringen, wenn schärfere Anklagen nicht hielten.",
+        "fr": "Le 17 octobre 1931, le célèbre gangster Al Capone fut condamné pour évasion fiscale — une façon surprenante mais astucieuse de confiner un chef du crime quand des accusations plus sévères n’avaient pas tenu.",
+        "it": "Il 17 ottobre 1931, il famoso gangster Al Capone fu condannato per evasione fiscale — un modo sorprendente ma astuto di incarcerare un re del crimine quando accuse più gravi non reggevano.",
+        "sk": "Dňa 17. októbra 1931 bol slávny gangster Al Capone odsúdený za daňové úniky — prekvapivý, no šikovný spôsob, ako dostať kriminálneho bossa za mreže, keď vážnejšie obvinenia neobstáli.",
+        "cs": "Dne 17. října 1931 byl slavný gangster Al Capone odsouzen za daňové úniky — překvapivý, ale chytrý způsob, jak dostat zločineckého bosse za mříže, když vážnější obvinění neobstála."
+    }
+}
+
