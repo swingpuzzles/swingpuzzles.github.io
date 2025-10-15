@@ -62,6 +62,9 @@ class GameModeManager {
     get giftReceived() {
         return this._currentMainMode === MainMode.GiftReceived;
     }
+    get normalSubMode() {
+        return this._currentSubMode === SubMode.Normal;
+    }
     get calendarMode() {
         return this._currentSubMode === SubMode.Calendar;
     }
@@ -107,7 +110,7 @@ class GameModeManager {
         this._observers.push(observer);
     }
 
-    enterInitialMode() {
+    enterInitialMode(clearPuzzleId: boolean = true) {
         this.resetAll(MainMode.Initial);
 
         ctx.cameraUpperBetaLimit = 14 * Math.PI / 32;
@@ -115,14 +118,20 @@ class GameModeManager {
             
         ctx.cameraAttachControl(true);
 
-        puzzleUrlHelper.clearPuzzleId();
+        if (clearPuzzleId) {
+            puzzleUrlHelper.clearPuzzleId();
+        }
         
         // Track game session start
         analyticsManager.startGameSession(MainMode.Initial, this._currentSubMode, ctx.category?.key);
     }
 
-    enterNormalSubMode() {
+    enterNormalSubMode(): boolean {
+        const changed = this._currentSubMode !== SubMode.Normal;
+
         this._currentSubMode = SubMode.Normal;
+
+        return changed;
     }
 
     enterOpenCoverMode(showShakeIt: boolean = true) {
@@ -240,10 +249,12 @@ class GameModeManager {
         giftMaker.tryGift();
     }
 
-    async enterCalendarMode(openCover: boolean) {
+    async enterCalendarMode(openCover: boolean, forceInitialMode: boolean = true) {
         this._currentSubMode = SubMode.Calendar;
 
-        this.enterInitialMode();
+        if (forceInitialMode) {
+            this.enterInitialMode(openCover);
+        }
 
         await calendarManager.start(openCover);
     }
@@ -257,9 +268,7 @@ class GameModeManager {
     }
 
     async handleCategoryChange(category: Category, userAction: boolean) {
-        this.enterNormalSubMode();
-        
-        if (ctx.category !== category) {
+        if (this.enterNormalSubMode() || ctx.category !== category) {
             const fromCategory = ctx.category?.key || 'unknown';
             const toCategory = category.key;
             

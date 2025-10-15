@@ -59,16 +59,16 @@ class PuzzleUrlHelper {
             let changed: boolean = this._mode === Constants.MODE_GIFT_RECEIVE;
 
             let puzzleSelected = false;
-            this._mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY;
+            let mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY;
 
             if (urlData.puzzleId) {
-                if (this._mode === Constants.MODE_CALENDAR) {
+                if (mode === Constants.MODE_CALENDAR) {
                     await gameModeManager.enterCalendarMode(false);
                 } else {
-                    await guiManager.enterCategory(this._mode);
+                    await guiManager.enterCategory(mode);
                 }
 
-                changed ||= this.setMode(this._mode, false);
+                changed ||= this.setMode(mode, false);
 
                 const cover = this._coverMap.get(urlData.puzzleId);
 
@@ -100,13 +100,13 @@ class PuzzleUrlHelper {
             }
             
             if (!puzzleSelected) {
-                if (this._mode === Constants.MODE_CALENDAR) {
-                    await gameModeManager.enterCalendarMode(false);
+                if (mode === Constants.MODE_CALENDAR) {
+                    await gameModeManager.enterCalendarMode(false, false);
                 } else {
-                    await guiManager.enterCategory(this._mode);
+                    await guiManager.enterCategory(mode);
                 }
 
-                changed ||= this.setMode(this._mode);
+                changed ||= this.setMode(mode);
 
                 if (gameModeManager.initialMode) {
                     if (changed) {
@@ -128,12 +128,12 @@ class PuzzleUrlHelper {
     }
 
     public setMode(value: string, update = true): boolean {
-        const changed = this._mode === value;
+        const changed = this._mode !== value;
 
         this._mode = value;
         this._puzzleId = null;
 
-        if (update) {
+        if (update && changed) {
             this.updateUrl();
         }
 

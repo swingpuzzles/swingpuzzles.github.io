@@ -34,7 +34,7 @@ class PuzzleCircleBuilder {
         return null;
     }
 
-    public getPrevCover(cover: Mesh): Mesh | null {
+    public getNextCover(cover: Mesh): Mesh | null {
         const keys = Array.from(this.covers.keys());
 
         if (keys.length === 0) {
@@ -53,7 +53,7 @@ class PuzzleCircleBuilder {
         return this.covers.get(keys[prevIndex])!.mesh;
     }
 
-    public getNextCover(cover: Mesh): Mesh | null {
+    public getPrevCover(cover: Mesh): Mesh | null {
         const keys = Array.from(this.covers.keys());
 
         if (keys.length === 0) {

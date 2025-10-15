@@ -16,17 +16,16 @@ import { Mesh } from "@babylonjs/core";
 
 class CalendarManager {
     public async start(openCover: boolean) {        
-        puzzleUrlHelper.clearPuzzleId();
-        
         // Track calendar session start
         analyticsManager.startGameSession(MainMode.Initial, SubMode.Calendar, ctx.category?.key);
 
         localStorageManager.set(CommonStorageKeys.Mode, Constants.MODE_CALENDAR);
-        puzzleUrlHelper.setMode(Constants.MODE_CALENDAR);
+        
+        if (puzzleUrlHelper.setMode(Constants.MODE_CALENDAR)) {
+            await puzzleCircleBuilder.build();
 
-        await puzzleCircleBuilder.build();
-
-        puzzleCircleBuilder.refresh();
+            puzzleCircleBuilder.refresh();
+        }
 
         if (openCover) {
             await openCoverAnimation.animateAsync(puzzleCircleBuilder.selectedCover);
