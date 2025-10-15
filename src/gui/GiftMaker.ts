@@ -178,8 +178,6 @@ class GiftMaker {
     }
 
     public start() {
-        const introText = i18nManager.translate(TranslationKeys.GIFT.INTRO_MESSAGE);
-
         const selectedLang = localStorageManager.getString(GiftStorageKeys.GiftLanguage) ?? "en";
         this._languageSelector = new LanguageSelector(selectedLang);
         this._wishTextDropdown.lang = selectedLang;
@@ -263,7 +261,7 @@ class GiftMaker {
         popupHint.show("", TranslationKeys.GIFT.STYLING_TITLE, {}, {}, 0.9, ShaderMode.SHADOW_WINDOW_WIDE, Control.VERTICAL_ALIGNMENT_BOTTOM,
             () => { gameModeManager.enterGiftOverviewMode(); },
             () => { this.exitGiftMaking(); },
-            () => { gameModeManager.enterGiftInitialMode(); },
+            () => { this.start(); },
             null,
             PopupMode.GiftAdjustmentsPreview
         );
@@ -407,7 +405,7 @@ class GiftMaker {
 
     public exitGiftMaking(): void {
         popupHint.hide();
-        //guiManager.enterGeneralCategory();
+        gameModeManager.enterInitialMode();
     }
 
     private buildGiftDataFromLocalStorage(): Record<string, string> {
