@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4nBSV7m",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91ofJnRFhDL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91ofJnRFhDL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71j7y-meRhL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3WtqkoL",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81Q5KqpsVjL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81Q5KqpsVjL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81KyUVyQHBL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 15, 1783, French inventors Jacques-Étienne Montgolfier and his brother launched the first manned hot‐air balloon flight. Their passenger? A sheep, a duck and a rooster — the original “air show” of weird cargo.",
+        "es": "El 15 de octubre de 1783, los inventores franceses Jacques-Étienne Montgolfier y su hermano realizaron el primer vuelo en globo tripulado. Su carga? Una oveja, un pato y un gallo — el “show aéreo” más raro de la historia.",
+        "de": "Am 15. Oktober 1783 starteten die französischen Erfinder Jacques-Étienne Montgolfier und sein Bruder den ersten bemannten Heißluftballonflug. Ihre Passagiere? Ein Schaf, eine Ente und ein Hahn — die urtümliche „Luftshow“ mit seltsamer Ladung.",
+        "fr": "Le 15 octobre 1783, les inventeurs français Jacques-Étienne Montgolfier et son frère lancèrent le premier vol en montgolfière habité. Leur passager ? Un mouton, un canard et un coq — le « spectacle aérien » le plus étrange jamais vu.",
+        "it": "Il 15 ottobre 1783, gli inventori francesi Jacques-Étienne Montgolfier e suo fratello lanciarono il primo volo in mongolfiera con equipaggio. I “passeggeri”? Una pecora, un’anatra e un gallo — lo show aereo più bizzarro della storia.",
+        "sk": "Dňa 15. októbra 1783 francúzski vynálezcovia Jacques-Étienne Montgolfier a jeho brat vypustili prvý pilotovaný let horkovzdušným balónom. Ich pasažieri? Ovca, kačka a kohút — pôvodná „letecká šou“ s netradičným nákladom.",
+        "cs": "Dne 15. října 1783 francouzští vynálezci Jacques-Étienne Montgolfier a jeho bratr podnikli první lidský let balonem. Jejich pasažéři? Ovce, kachna a kohout — pravděpodobně nejbizarnější „letecké představení“ všech dob."
+    }
+}
+

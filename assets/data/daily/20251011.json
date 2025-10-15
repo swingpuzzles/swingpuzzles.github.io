@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4oc5G8y",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81iZApwR4VL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81iZApwR4VL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91FPQDg-+lL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3IIWk5l",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71KoEFr5qxL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71KoEFr5qxL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81d9WbhdynL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 11, 1958, NASA officially began operations, replacing the National Advisory Committee for Aeronautics (NACA). The United States had just one rocket that could reach space — and a lot of ambition. Within 11 years, humans would walk on the Moon.",
+        "es": "El 11 de octubre de 1958, la NASA comenzó oficialmente sus operaciones, reemplazando al Comité Asesor Nacional para la Aeronáutica (NACA). Estados Unidos tenía solo un cohete capaz de llegar al espacio — y mucha ambición. En once años, los humanos caminarían sobre la Luna.",
+        "de": "Am 11. Oktober 1958 nahm die NASA offiziell ihre Arbeit auf und ersetzte das Nationale Beratende Komitee für Luftfahrt (NACA). Die USA verfügten damals über genau eine Rakete, die den Weltraum erreichen konnte — und über eine Menge Ehrgeiz. Elf Jahre später liefen Menschen auf dem Mond.",
+        "fr": "Le 11 octobre 1958, la NASA commença officiellement ses activités, remplaçant le Comité consultatif national pour l’aéronautique (NACA). Les États-Unis n’avaient alors qu’une seule fusée capable d’atteindre l’espace — et beaucoup d’ambition. Onze ans plus tard, des humains marcheraient sur la Lune.",
+        "it": "L’11 ottobre 1958, la NASA iniziò ufficialmente le sue operazioni, sostituendo il Comitato Consultivo Nazionale per l’Aeronautica (NACA). Gli Stati Uniti avevano solo un razzo capace di raggiungere lo spazio — e una grande ambizione. Undici anni dopo, l’uomo avrebbe camminato sulla Luna.",
+        "sk": "Dňa 11. októbra 1958 začala NASA oficiálne svoju činnosť a nahradila Národný poradný výbor pre letectvo (NACA). Spojené štáty mali vtedy iba jednu raketu schopnú dosiahnuť vesmír — a obrovskú ambíciu. O jedenásť rokov neskôr už ľudia kráčali po Mesiaci.",
+        "cs": "Dne 11. října 1958 zahájila NASA oficiálně svou činnost a nahradila Národní poradní výbor pro letectví (NACA). Spojené státy tehdy měly jen jednu raketu schopnou dosáhnout vesmíru — a spoustu ambicí. O jedenáct let později už lidé chodili po Měsíci."
+    }
+}
+

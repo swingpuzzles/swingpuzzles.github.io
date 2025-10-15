@@ -1,0 +1,23 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3IZ8G9j",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91dCLCiH+1L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91dCLCiH+1L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81jjZKSoO9L._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4neALI5",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71qZXGIuMfL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71qZXGIuMfL._AC_SL1048_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/713xIWA47pL._AC_SY879_.jpg"
+    },
+    "story": {
+        "en": "On October 8, 1945, Percy Spencer patented the microwave oven — inspired by an experiment where a candy bar in his pocket melted from microwave radiation. (Yes, your snack was his ‘laboratory’!)",
+        "es": "El 8 de octubre de 1945, Percy Spencer patentó el horno de microondas — inspirado por un experimento en el que una barra de chocolate en su bolsillo se derritió debido a la radiación microondas. (Sí, tu snack fue su “laboratorio” improvisado).",
+        "de": "Am 8. Oktober 1945 ließ Percy Spencer den Mikrowellenofen patentieren — inspiriert von einem Experiment, bei dem ein Schokoriegel in seiner Hosentasche durch Mikrowellenstrahlung schmolz. (Ja, dein Snack war sein ‘Laboratorium’!)",
+        "fr": "Le 8 octobre 1945, Percy Spencer breveta le four à micro-ondes — inspiré par une expérience où une barre chocolatée dans sa poche a fondu sous l’effet des micro-ondes. (Oui, votre snack a servi de « laboratoire » !)",
+        "it": "L’8 ottobre 1945, Percy Spencer brevettò il forno a microonde — ispirato da un esperimento in cui una barretta di cioccolato nella sua tasca si sciolse a causa delle microonde. (Sì, il tuo snack è stato il suo “laboratorio”!)",
+        "sk": "Dňa 8. októbra 1945 Percy Spencer patentoval mikrovlnnú rúru — inšpirovaný experimentom, pri ktorom sa čokoládová tyčinka v jeho vrecku roztopila v dôsledku mikrovĺn. (Áno, tvoja pochúťka bola jeho „laboratórium“!)",
+        "cs": "8. října 1945 Percy Spencer patentoval mikrovlnnou troubu — inspirován experimentem, při němž se čokoládová tyčinka v jeho kapse roztavila vlivem mikrovlnného záření. (Ano, tvoje svačinka byla jeho 'laboratoř'!)"
+    }
+}
