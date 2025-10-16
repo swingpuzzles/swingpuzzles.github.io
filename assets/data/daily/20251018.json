@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/43iVyTt",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91imNpx+VZL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91imNpx+VZL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81Zyrywvq3L._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4n8ybTM",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81sL+lU5OjL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81sL+lU5OjL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/819i0HI1mML._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 18, 1963, Félicette, a Parisian stray cat, became the first (and so far only) cat in space — she flew up 98 miles for 13 minutes before parachuting safely back to Earth.",
+        "es": "El 18 de octubre de 1963, Félicette, una gata callejera parisina, se convirtió en la primera (y hasta ahora única) gata en el espacio — voló 98 millas durante 13 minutos antes de regresar en paracaídas de forma segura.",
+        "de": "Am 18. Oktober 1963 wurde Félicette, eine Pariser Straßenkatze, zur ersten (und bisher einzigen) Katze im All — sie flog 98 Meilen für 13 Minuten, bevor sie mit dem Fallschirm sicher zur Erde zurückkehrte.",
+        "fr": "Le 18 octobre 1963, Félicette, une chatte errante parisienne, devint le premier (et à ce jour le seul) chat dans l’espace — elle vola à 98 miles pendant 13 minutes avant de revenir sainement en parachute.",
+        "it": "Il 18 ottobre 1963, Félicette, una gatta randagia parigina, diventò il primo (e finora unico) gatto nello spazio — volò per 98 miglia per 13 minuti prima di fare rientro in sicurezza con un paracadute.",
+        "sk": "Dňa 18. októbra 1963 sa Félicette, parížska potulná mačka, stala prvou (a doposiaľ jedinou) mačkou vo vesmíre — letela 98 míľ počas 13 minút, potom bezpečne pristála na padáku.",
+        "cs": "Dne 18. října 1963 se Félicette, pařížská toulavá kočka, stala první (a dosud jedinou) kočkou ve vesmíru — letěla 98 mil po dobu 13 minut, než bezpečně přistála na padáku."
+    }
+}
+
