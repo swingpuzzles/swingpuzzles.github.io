@@ -13,6 +13,7 @@ import ctx from "../core3d/common/SceneContext";
 import puzzleUrlHelper from "../common/PuzzleUrlHelper";
 import analyticsManager from "../common/AnalyticsManager";
 import { Mesh } from "@babylonjs/core";
+import { PuzzleTools } from "../core3d/common/PuzzleTools";
 
 class CalendarManager {
     public async start(openCover: boolean) {        
@@ -43,9 +44,12 @@ class CalendarManager {
                 const today = new Date();
                 const yesterday = new Date(today);
                 yesterday.setDate(today.getDate() - 1);
+
+                const todayString = PuzzleTools.getDateString(today);
+                const yesterdayString = PuzzleTools.getDateString(yesterday);
                 
-                const isToday = this.isSameDay(dailyData.date, today);
-                const isYesterday = this.isSameDay(dailyData.date, yesterday);
+                const isToday = dailyData.date === todayString;
+                const isYesterday = dailyData.date === yesterdayString;
                 
                 if (isToday) {
                     headingKey = "calendar.forToday";
@@ -66,15 +70,21 @@ class CalendarManager {
         }
     }
 
-    private isSameDay(date1: Date, date2: Date): boolean {
-        return date1.getFullYear() === date2.getFullYear() &&
-               date1.getMonth() === date2.getMonth() &&
-               date1.getDate() === date2.getDate();
-    }
-
-    private formatDate(date: Date): string {
+    private formatDate(date: string): string {
+        // Parse YYYYMMDD format (e.g., "20251019")
+        let dateObj: Date;
+        if (/^\d{8}$/.test(date)) {
+            const year = parseInt(date.substring(0, 4));
+            const month = parseInt(date.substring(4, 6)) - 1; // Month is 0-indexed
+            const day = parseInt(date.substring(6, 8));
+            dateObj = new Date(year, month, day);
+        } else {
+            // Fallback to standard Date parsing
+            dateObj = new Date(date);
+        }
+        
         const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-        return date.toLocaleDateString(i18nManager.getCurrentLanguage(), options).toUpperCase();
+        return dateObj.toLocaleDateString(i18nManager.getCurrentLanguage(), options).toUpperCase();
     }
 }
 

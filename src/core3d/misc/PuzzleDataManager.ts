@@ -11,7 +11,7 @@ export interface PuzzleData {
     imgCoverUrl: string;
     tags: string[];
     story: Record<string, string> | null;
-    date: Date | null;
+    date: string | null;
 }
 
 export interface DailyPuzzleData {
@@ -28,11 +28,10 @@ export interface DailyPuzzleData {
         imgCoverUrl: string;
     };
     story: Record<string, string>;
-    date: Date;
 }
 
 class PuzzleDataManager {
-    private dailyPuzzleCache: Map<Date, DailyPuzzleData> = new Map();
+    private dailyPuzzleCache: Map<string, DailyPuzzleData> = new Map();
     private calendarDataCache: { data: PuzzleData[], timestamp: number } | null = null;
     private readonly CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
@@ -74,15 +73,17 @@ class PuzzleDataManager {
         for (let i = 0; i < 11; i++) {
             const date = new Date(today);
             date.setDate(today.getDate() - i);
+
+            const dateString = PuzzleTools.getDateString(date);
             
-            const dailyData = await this.loadDailyPuzzle(date);
+            const dailyData = await this.loadDailyPuzzle(dateString);
             if (dailyData) {
                 const puzzleData = isPortrait ? dailyData.vert : dailyData.horiz;
                 puzzles.push({
                     ...puzzleData,
                     tags: ['Daily'],
                     story: dailyData.story,
-                    date: dailyData.date
+                    date: dateString
                 });
             }
         }
@@ -101,24 +102,20 @@ class PuzzleDataManager {
      * @param date The date to load puzzle for
      * @returns Daily puzzle data or null if not found
      */
-    public async loadDailyPuzzle(date: Date): Promise<DailyPuzzleData | null> {
-        const dateString = this.getDateString(date);
-        
+    public async loadDailyPuzzle(date: string): Promise<DailyPuzzleData | null> {
         // Check cache first
         if (this.dailyPuzzleCache.has(date)) {
             return this.dailyPuzzleCache.get(date)!;
         }
 
         try {
-            const response = await fetch(`/assets/data/daily/${dateString}.json`);
+            const response = await fetch(`/assets/data/daily/${date}.json`);
             
             if (!response.ok) {
                 return null;
             }
             
             const data = await response.json();
-
-            data.date = date;
             
             // Cache the result
             this.dailyPuzzleCache.set(date, data);
@@ -135,19 +132,7 @@ class PuzzleDataManager {
      * @returns Today's daily puzzle data or null if not found
      */
     public async loadTodaysPuzzle(): Promise<DailyPuzzleData | null> {
-        return await this.loadDailyPuzzle(new Date());
-    }
-
-    /**
-     * Format date as YYYYMMDD string
-     * @param date The date to format
-     * @returns Formatted date string
-     */
-    private getDateString(date: Date): string {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}${month}${day}`;
+        return await this.loadDailyPuzzle(PuzzleTools.getDateString(new Date()));
     }
 
     /**

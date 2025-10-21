@@ -19,6 +19,7 @@ class PuzzleUrlHelper {
     private _mode: string | null = null;
     private _puzzleId: string | null = null;
     private _coverMap: Map<string, Mesh> = new Map();
+    private _coverDateMap: Map<string, Mesh> = new Map();
 
     constructor() {
         window.addEventListener("popstate", () => {
@@ -62,11 +63,14 @@ class PuzzleUrlHelper {
             let puzzleSelected = false;
             let mode = urlData.mode || PuzzleUrlHelper.DEFAULT_CATEGORY_KEY;
 
-            if (mode === Constants.MODE_GIFT_CREATE) {
+            // Force calendar mode if puzzleDate is present
+            if (urlData.puzzleDate) {
+                mode = Constants.MODE_CALENDAR;
+            } else if (mode === Constants.MODE_GIFT_CREATE) {
                 mode = PuzzleUrlHelper.DEFAULT_CATEGORY_KEY;
             }
 
-            if (urlData.puzzleId) {
+            if (urlData.puzzleId || urlData.puzzleDate) {
                 if (mode === Constants.MODE_CALENDAR) {
                     await gameModeManager.enterCalendarMode(false, false);
                 } else {
@@ -75,8 +79,14 @@ class PuzzleUrlHelper {
 
                 modeChanged ||= this.setMode(mode, false);
 
-                const cover = this._coverMap.get(urlData.puzzleId);
-
+                // Try to find cover by puzzleId first, then by date if puzzleDate is present
+                let cover;
+                if (urlData.puzzleId) {
+                    cover = this._coverMap.get(urlData.puzzleId);
+                } else if (urlData.puzzleDate) {
+                    cover = this._coverDateMap.get(urlData.puzzleDate);
+                }
+                
                 if (cover) {
                     puzzleSelected = true;
 
@@ -130,12 +140,20 @@ class PuzzleUrlHelper {
         }
     }
 
-    public insertCoverEntry(imgUrl: string, cover: Mesh) {
+    public insertCoverEntry(imgUrl: string, cover: Mesh, date?: string | null) {
         const puzzleId = this.extractPuzzleId(imgUrl);
 
         if (puzzleId) {
             this._coverMap.set(puzzleId, cover);
         }
+        
+        if (date) {
+           this._coverDateMap.set(date, cover);
+        }
+    }
+
+    public getCoverByDate(date: string): Mesh | undefined {
+        return this._coverDateMap.get(date);
     }
 
     public setMode(value: string, update = true): boolean {
@@ -165,7 +183,7 @@ class PuzzleUrlHelper {
         this.updateUrl();
     }
 
-    public setImgUrl(value: string) {console.log(value);
+    public setImgUrl(value: string) {
         const puzzleId = this.extractPuzzleId(value);
 
         if (this._puzzleId === puzzleId) {
@@ -201,13 +219,14 @@ class PuzzleUrlHelper {
         }
     }
 
-    public readFromUrl(): { mode: string | null; puzzleId: string | null; giftData: string | null; specialMode: string | null } {
+    public readFromUrl(): { mode: string | null; puzzleId: string | null; giftData: string | null; specialMode: string | null; puzzleDate: string | null } {
         const params = new URLSearchParams(window.location.search);
         return {
             mode: params.get('mode'),
             puzzleId: params.get('puzzleId'),
             giftData: params.get('giftData'),
-            specialMode: params.get('specialMode')
+            specialMode: params.get('specialMode'),
+            puzzleDate: params.get('puzzleDate')
         };
     }
 

@@ -10,7 +10,7 @@ interface CoverData {
     imgCoverUrl: string;
     link: string;
     story: Record<string, string> | null;
-    date: Date | null;
+    date: string | null;
 }
 
 class PuzzleCircleBuilder {
@@ -143,7 +143,7 @@ class PuzzleCircleBuilder {
                 date: obj.date
             });
 
-            puzzleUrlHelper.insertCoverEntry(obj.imgSmallUrl, cover);
+            puzzleUrlHelper.insertCoverEntry(obj.imgSmallUrl, cover, obj.date);
         });
     }
 
