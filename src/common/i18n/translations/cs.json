@@ -113,6 +113,17 @@
     "titlePuzzleSolved": "PUZZLE VYŘEŠENO!",
     "titleGamePaused": "HRA POZASTAVENA"
   },
+  "emailForm": {
+    "emailLabel": "E-mailová adresa *",
+    "emailPlaceholder": "vas@email.cz",
+    "nameLabel": "Jméno (Volitelné)",
+    "namePlaceholder": "Vaše jméno",
+    "submitButton": "Odeslat",
+    "successMessage": "Děkujeme! Vaše informace byly úspěšně odeslány.",
+    "errorMessage": "Omlouváme se, při odesílání vašich informací došlo k chybě. Zkuste to prosím znovu.",
+    "validationEmailRequired": "Zadejte prosím platnou e-mailovou adresu",
+    "validationEmailInvalid": "Zadejte prosím platnou e-mailovou adresu"
+  },
   "categories": {
     "general": "Obecné",
     "animals": "Zvířata",

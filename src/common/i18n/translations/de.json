@@ -113,6 +113,17 @@
     "titlePuzzleSolved": "PUZZLE GELÖST!",
     "titleGamePaused": "SPIEL PAUSIERT"
   },
+  "emailForm": {
+    "emailLabel": "E-Mail-Adresse *",
+    "emailPlaceholder": "ihre@email.de",
+    "nameLabel": "Name (Optional)",
+    "namePlaceholder": "Ihr Name",
+    "submitButton": "Absenden",
+    "successMessage": "Vielen Dank! Ihre Informationen wurden erfolgreich übermittelt.",
+    "errorMessage": "Entschuldigung, beim Übermitteln Ihrer Informationen ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "validationEmailRequired": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "validationEmailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+  },
   "categories": {
     "general": "Allgemein",
     "animals": "Tiere",

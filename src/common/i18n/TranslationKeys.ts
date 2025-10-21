@@ -78,7 +78,7 @@ export const TranslationKeys = {
         PUZZLE_GIFT_TEXT: "gift.puzzleGiftText"
     },
 
-  // Navigation
+    // Navigation
     NAVIGATION: {
         EMAIL_UPDATE_QUESTION: "navigation.emailUpdateQuestion",
         EMAIL_INSERT_QUESTION: "navigation.emailInsertQuestion",
@@ -91,12 +91,25 @@ export const TranslationKeys = {
         PUZZLE_PAUSED_MESSAGE: "navigation.puzzlePausedMessage",
         BUTTON_ADD_EMAIL: "navigation.buttonAddEmail",
         BUTTON_ADD_ANOTHER: "navigation.buttonAddAnother",
-    BUTTON_CONTINUE: "navigation.buttonContinue",
-    BUTTON_RESTART: "navigation.buttonRestart",
-    BUTTON_MAIN_MENU: "navigation.buttonMainMenu",
-    TITLE_PUZZLE_SOLVED: "navigation.titlePuzzleSolved",
-    TITLE_GAME_PAUSED: "navigation.titleGamePaused"
-  },
+        BUTTON_CONTINUE: "navigation.buttonContinue",
+        BUTTON_RESTART: "navigation.buttonRestart",
+        BUTTON_MAIN_MENU: "navigation.buttonMainMenu",
+        TITLE_PUZZLE_SOLVED: "navigation.titlePuzzleSolved",
+        TITLE_GAME_PAUSED: "navigation.titleGamePaused"
+    },
+
+    // Email Form
+    EMAIL_FORM: {
+        EMAIL_LABEL: "emailForm.emailLabel",
+        EMAIL_PLACEHOLDER: "emailForm.emailPlaceholder",
+        NAME_LABEL: "emailForm.nameLabel", 
+        NAME_PLACEHOLDER: "emailForm.namePlaceholder",
+        SUBMIT_BUTTON: "emailForm.submitButton",
+        SUCCESS_MESSAGE: "emailForm.successMessage",
+        ERROR_MESSAGE: "emailForm.errorMessage",
+        VALIDATION_EMAIL_REQUIRED: "emailForm.validationEmailRequired",
+        VALIDATION_EMAIL_INVALID: "emailForm.validationEmailInvalid"
+    },
 
     // Categories
     CATEGORIES: {

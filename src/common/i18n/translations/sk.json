@@ -113,6 +113,17 @@
     "titlePuzzleSolved": "PUZZLE VYRIEŠENÉ!",
     "titleGamePaused": "HRA POZASTAVENÁ"
   },
+  "emailForm": {
+    "emailLabel": "E-mailová adresa *",
+    "emailPlaceholder": "vas@email.sk",
+    "nameLabel": "Meno (Voliteľné)",
+    "namePlaceholder": "Vaše meno",
+    "submitButton": "Odoslať",
+    "successMessage": "Ďakujeme! Vaše informácie boli úspešne odoslané.",
+    "errorMessage": "Ospravedlňujeme sa, pri odosielaní vašich informácií došlo k chybe. Skúste to prosím znovu.",
+    "validationEmailRequired": "Zadajte prosím platnú e-mailovú adresu",
+    "validationEmailInvalid": "Zadajte prosím platnú e-mailovú adresu"
+  },
   "categories": {
     "general": "Všeobecné",
     "animals": "Zvieratá",

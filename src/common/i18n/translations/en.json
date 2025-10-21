@@ -89,6 +89,17 @@
     "titlePuzzleSolved": "PUZZLE SOLVED!",
     "titleGamePaused": "GAME PAUSED"
   },
+  "emailForm": {
+    "emailLabel": "Email Address *",
+    "emailPlaceholder": "your@email.com",
+    "nameLabel": "Name (Optional)",
+    "namePlaceholder": "Your Name",
+    "submitButton": "Submit",
+    "successMessage": "Thank you! Your information has been submitted successfully.",
+    "errorMessage": "Sorry, there was an error submitting your information. Please try again.",
+    "validationEmailRequired": "Please enter a valid email address",
+    "validationEmailInvalid": "Please enter a valid email address"
+  },
   "categories": {
     "general": "General",
     "animals": "Animals",

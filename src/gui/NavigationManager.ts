@@ -51,10 +51,11 @@ class NavigationManager {
                 buttonTextSubscribe: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_EMAIL),
                 buttonTextUpdate: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_ANOTHER),
                 action: () => {
-                    mlPopupHandler.open();
+                    //mlPopupHandler.open();
+                    // TODO: add email capture logic here
                 }
             });
-        
+            
             message = alreadyCaptured
               ? TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_COMPLETED
               : TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_FIRST_TIME;
@@ -125,13 +126,13 @@ class NavigationManager {
     private async prevPuzzle() {
         await this.handleGiftReceivedMode();
         
-        this.playPuzzle(puzzleCircleBuilder.getPrevCover(ctx.currentCover)!);
+        this.playPuzzle(puzzleCircleBuilder.getPrevCover(ctx.currentCover!)!);
     }
 
     private async nextPuzzle() {
         await this.handleGiftReceivedMode();
         
-        this.playPuzzle(puzzleCircleBuilder.getNextCover(ctx.currentCover)!);
+        this.playPuzzle(puzzleCircleBuilder.getNextCover(ctx.currentCover!)!);
     }
 
     private continue(puzzleFinished: boolean) {
@@ -143,11 +144,11 @@ class NavigationManager {
     }
 
     private restartPuzzle() {
-        this.playPuzzle(ctx.currentCover);
+        this.playPuzzle(ctx.currentCover!);
     }
 
     private playPuzzle(cover: Mesh) {
-        backToInitialAnimation.animate(ctx.currentCover, async () => {
+        backToInitialAnimation.animate(ctx.currentCover!, async () => {
             openCoverAnimation.animateAsync(cover);
         });
     }
@@ -156,7 +157,7 @@ class NavigationManager {
         await this.handleGiftReceivedMode();
 
         if (specialModeManager.handleGoBackAction()) {
-            backToInitialAnimation.animate(ctx.currentCover);
+            backToInitialAnimation.animate(ctx.currentCover!);
         }
     }
 

@@ -113,6 +113,17 @@
     "titlePuzzleSolved": "PUZZLE RISOLTO!",
     "titleGamePaused": "GIOCO IN PAUSA"
   },
+  "emailForm": {
+    "emailLabel": "Indirizzo email *",
+    "emailPlaceholder": "tua@email.it",
+    "nameLabel": "Nome (Opzionale)",
+    "namePlaceholder": "Il tuo nome",
+    "submitButton": "Invia",
+    "successMessage": "Grazie! Le tue informazioni sono state inviate con successo.",
+    "errorMessage": "Spiacenti, si è verificato un errore durante l'invio delle tue informazioni. Riprova.",
+    "validationEmailRequired": "Inserisci un indirizzo email valido",
+    "validationEmailInvalid": "Inserisci un indirizzo email valido"
+  },
   "categories": {
     "general": "Generale",
     "animals": "Animali",

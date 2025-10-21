@@ -634,17 +634,30 @@ class PopupHint {
                         row.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
                     
                         // input
-                        const input = new InputText(`${m.id}_email`);
+                        const nameInput = new InputText(`${m.id}_name`);
                         //input.width = "65%";
-                        input.color = "#222";
-                        input.background = "#f0f0f0";
-                        input.focusedBackground = "#e6e6e6";
-                        input.thickness = 1;
-                        input.placeholderText = m.placeHolder ?? "you@example.com";
-                        /*input.onTextChangedObservable.add(() => {
+                        nameInput.color = "#222";
+                        nameInput.background = "#f0f0f0";
+                        nameInput.focusedBackground = "#e6e6e6";
+                        nameInput.thickness = 1;
+                        nameInput.placeholderText = i18nManager.translate(TranslationKeys.EMAIL_FORM.NAME_PLACEHOLDER);
+                        nameInput.onTextChangedObservable.add(() => {
                             const cap = m.maxLength ?? 254;
-                            if (input.text.length > cap) input.text = input.text.slice(0, cap);
-                        });*/
+                            if (nameInput.text.length > cap) nameInput.text = nameInput.text.slice(0, cap);
+                        });
+                    
+                        // input
+                        const emailInput = new InputText(`${m.id}_email`);
+                        //input.width = "65%";
+                        emailInput.color = "#222";
+                        emailInput.background = "#f0f0f0";
+                        emailInput.focusedBackground = "#e6e6e6";
+                        emailInput.thickness = 1;
+                        emailInput.placeholderText = i18nManager.translate(TranslationKeys.EMAIL_FORM.EMAIL_PLACEHOLDER);
+                        emailInput.onTextChangedObservable.add(() => {
+                            const cap = m.maxLength ?? 254;
+                            if (emailInput.text.length > cap) emailInput.text = emailInput.text.slice(0, cap);
+                        });
                     
                         // button
                         const btnText = m.isUpdate
@@ -660,16 +673,17 @@ class PopupHint {
                         submit.thickness = 2;
                         submit.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
                     
-                        input.onPointerClickObservable.add(() => {
+                        /*input.onPointerClickObservable.add(() => {
                             m.action();
-                        });
+                        });*/
                     
                         submit.onPointerClickObservable.add(() => {
                             m.action();
                         });
                     
                         // layout: label above, then [input][button]
-                        row.addControl(input);
+                        row.addControl(nameInput);
+                        row.addControl(emailInput);
                         row.addControl(submit);
                         container.addControl(row);
                         break;
@@ -791,7 +805,8 @@ class PopupHint {
                         if (child instanceof StackPanel) {
                             for (let sChild of child.children) {
                                 if (sChild instanceof InputText) {
-                                    sChild.widthInPixels = containerwidth * 0.4;
+                                    sChild.widthInPixels = containerwidth * (1 / child.children.length);
+                                    sChild.paddingLeftInPixels = containerwidth * 0.01;
                                 } else if (sChild instanceof Button) {
                                     sChild.widthInPixels = containerwidth * (child.children.length > 2 ? 0.25 : 0.4);
                                     sChild.paddingLeftInPixels = containerwidth * 0.01;
@@ -943,8 +958,8 @@ class PopupHint {
                 backButton: { textBlock: this.backButton.textBlock }
             },
             coverImageUrl || undefined,
-            () => puzzleCircleBuilder.getCoverUrl(ctx.currentCover),
-            () => openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.getCoverUrl(ctx.currentCover),
+            () => puzzleCircleBuilder.getCoverUrl(ctx.currentCover!),
+            () => openCoverAnimation.giftCover ? puzzleEditor.dataUrl : puzzleCircleBuilder.getCoverUrl(ctx.currentCover!),
             (value: boolean) => specialModeManager.nextButtonVisible(value),
             i18nManager.translate(TranslationKeys.UI.BUTTONS.PREVIOUS)
         );
