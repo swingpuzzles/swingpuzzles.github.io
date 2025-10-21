@@ -350,7 +350,7 @@ class SceneContext {
     public originalCoverState: { position: Vector3; rotation: Vector3 } = { position: GiftBoxBuilder.BASE_POS.clone(), rotation: Vector3.Zero() };
     public originalCameraState: { alpha: number; beta: number; radius: number; target: Vector3 } | null = null;
 
-    public currentCover!: Mesh;
+    public currentCover: Mesh | null = null;
 
     public resetBoundings(centerPos: Vector3): void {
         this._minX = centerPos.x - this._xLimit;

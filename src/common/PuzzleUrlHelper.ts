@@ -94,7 +94,7 @@ class PuzzleUrlHelper {
 
                     if (!gameModeManager.initialMode) {
                         if (changedPuzzle) {
-                            backToInitialAnimation.animate(ctx.currentCover, async () => {
+                            backToInitialAnimation.animate(ctx.currentCover!, async () => {
                                 if (modeChanged) {
                                     await puzzleCircleBuilder.build();
                                 }
@@ -116,7 +116,7 @@ class PuzzleUrlHelper {
             
             if (!puzzleSelected) {
                 if (mode === Constants.MODE_CALENDAR) {
-                    await gameModeManager.enterCalendarMode(false, false);
+                    await gameModeManager.enterCalendarMode(false, gameModeManager.initialMode);
                 } else {
                     await guiManager.enterCategory(mode);
                 }

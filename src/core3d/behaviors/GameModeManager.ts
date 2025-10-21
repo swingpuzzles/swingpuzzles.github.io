@@ -281,7 +281,7 @@ class GameModeManager {
 
     handleGetItOnAmazonAction() {
         if (openCoverAnimation.giftCover) {
-            backToInitialAnimation.animate(ctx.currentCover, () => { this.enterGiftPhysicalOrientationMode(); });
+            backToInitialAnimation.animate(ctx.currentCover!, () => { this.enterGiftPhysicalOrientationMode(); });
         } else {
             window.open(puzzleCircleBuilder.selectedLink, "_blank");
         }
