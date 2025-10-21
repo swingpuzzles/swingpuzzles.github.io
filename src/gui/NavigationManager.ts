@@ -51,11 +51,16 @@ class NavigationManager {
                 buttonTextSubscribe: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_EMAIL),
                 buttonTextUpdate: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_ANOTHER),
                 action: () => {
-                    //mlPopupHandler.open();
+                    for (const formRow of popupHint.formData) {
+                        switch (formRow.id) {
+                            case "email_name": formRow.value as string; break;
+                            case "email_email": formRow.value as string; break;
+                        }
+                    }
                     // TODO: add email capture logic here
                 }
             });
-            
+
             message = alreadyCaptured
               ? TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_COMPLETED
               : TranslationKeys.NAVIGATION.CONGRATS_MESSAGE_FIRST_TIME;

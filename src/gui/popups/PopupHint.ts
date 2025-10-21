@@ -370,6 +370,12 @@ class PopupHint {
                 } else if (child.name === Constants.ISELECTOR) {
                     const selector = (child as unknown as ISelector)!;
                     formData.push({ id: selector.id, value: selector.selectedId });
+                } else if (child instanceof StackPanel) {
+                    for (const sChild of child.children) {
+                        if (sChild instanceof InputText) {
+                            formData.push({ id: sChild.name!, value: sChild.text });
+                        }
+                    }
                 }
             }
         }
