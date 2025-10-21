@@ -15,6 +15,8 @@ import mlPopupHandler from "../common/MLPopupHandler";
 import specialModeManager from "../common/special-mode/SpecialModeManager";
 import { i18nManager, TranslationKeys } from "../common/i18n";
 import { Categories } from "../core3d/common/Constants";
+import RecaptchaManager from "../common/RecaptchaManager";
+import EmailCaptureService from "../common/EmailCaptureService";
 
 declare var ml: any;
 
@@ -51,13 +53,7 @@ class NavigationManager {
                 buttonTextSubscribe: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_EMAIL),
                 buttonTextUpdate: i18nManager.translate(TranslationKeys.NAVIGATION.BUTTON_ADD_ANOTHER),
                 action: () => {
-                    for (const formRow of popupHint.formData) {
-                        switch (formRow.id) {
-                            case "email_name": formRow.value as string; break;
-                            case "email_email": formRow.value as string; break;
-                        }
-                    }
-                    // TODO: add email capture logic here
+                    this.handleEmailCapture();
                 }
             });
 
@@ -170,6 +166,66 @@ class NavigationManager {
         if (gameModeManager.giftReceivingSubMode) {
             await gameModeManager.handleCategoryChange(Categories.General, false);
             await gameModeManager.enterInitialMode();
+        }
+    }
+
+    private async handleEmailCapture(): Promise<void> {
+        // Extract form data from the existing popup
+        let name: string = "";
+        let email: string = "";
+        
+        for (const formRow of popupHint.formData) {
+            switch (formRow.id) {
+                case "email_name": 
+                    name = formRow.value as string; 
+                    break;
+                case "email_email": 
+                    email = formRow.value as string; 
+                    break;
+            }
+        }
+
+        // Validate email
+        if (!email || !EmailCaptureService.validateEmail(email)) {
+            alert(i18nManager.translate(TranslationKeys.EMAIL_FORM.VALIDATION_EMAIL_INVALID));
+            return;
+        }
+
+        try {
+            // Load reCAPTCHA
+            await RecaptchaManager.loadRecaptcha("6LfZaPArAAAAAMtiOUSt4q2DfYIADMEXxVP-maLm");
+
+            // Show reCAPTCHA checkbox
+            const recaptchaToken = await RecaptchaManager.showCheckbox((token: string) => {
+                console.log("reCAPTCHA completed:", token);
+            });
+
+            // Prepare form data
+            const formData = {
+                email: email,
+                name: name || undefined,
+                locale: EmailCaptureService.getCurrentLocale(),
+                hotPot: EmailCaptureService.generateHotPotValue(),
+                recaptchaToken: recaptchaToken
+            };
+
+            // Submit form
+            const response = await EmailCaptureService.submitEmailCapture(formData);
+            
+            if (response.success) {
+                alert(i18nManager.translate(TranslationKeys.EMAIL_FORM.SUCCESS_MESSAGE));
+                this.setEmailCaptured(true);
+                popupHint.hide();
+            } else {
+                alert(response.message || i18nManager.translate(TranslationKeys.EMAIL_FORM.ERROR_MESSAGE));
+            }
+        } catch (error) {
+            console.error("Email capture error:", error);
+            if (error instanceof Error && error.message.includes("cancelled")) {
+                // User cancelled reCAPTCHA, don't show error
+                return;
+            }
+            alert(i18nManager.translate(TranslationKeys.EMAIL_FORM.ERROR_MESSAGE));
         }
     }
 }
