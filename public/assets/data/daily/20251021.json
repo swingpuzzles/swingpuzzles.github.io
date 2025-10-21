@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4qqYfwo",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91kgGA6vdEL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91kgGA6vdEL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91+Ruzcmf3L._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3ITzqIA",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81wnOPxi8jL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81wnOPxi8jL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81lYGHlZoeL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 21, 1879, Thomas Edison successfully tested his first practical electric light bulb. It glowed for about 13 hours before burning out — long enough to prove that the age of candlelight was over (and the age of forgetting to turn off the lights had begun).",
+        "es": "El 21 de octubre de 1879, Thomas Edison probó con éxito su primera bombilla eléctrica práctica. Brilló durante unas 13 horas antes de fundirse — suficiente para demostrar que la era de las velas había terminado (y comenzaba la era de olvidar apagar la luz).",
+        "de": "Am 21. Oktober 1879 testete Thomas Edison erfolgreich seine erste praxistaugliche Glühbirne. Sie leuchtete etwa 13 Stunden, bevor sie durchbrannte — lang genug, um zu beweisen, dass das Zeitalter des Kerzenlichts vorbei war (und das Zeitalter des Lichts-an-Vergessens begann).",
+        "fr": "Le 21 octobre 1879, Thomas Edison testa avec succès sa première ampoule électrique pratique. Elle brilla environ 13 heures avant de griller — assez pour prouver que l’ère des bougies était terminée (et que commençait celle d’oublier d’éteindre la lumière).",
+        "it": "Il 21 ottobre 1879, Thomas Edison collaudò con successo la sua prima lampadina elettrica pratica. Rimase accesa per circa 13 ore prima di bruciarsi — abbastanza per dimostrare che l’era delle candele era finita (e iniziava quella del dimenticare la luce accesa).",
+        "sk": "Dňa 21. októbra 1879 Thomas Edison úspešne otestoval svoju prvú praktickú elektrickú žiarovku. Svietila približne 13 hodín, kým zhorela — no stačilo to na dôkaz, že éra sviečok sa skončila (a začala sa éra zabúdania zhasnúť svetlo).",
+        "cs": "Dne 21. října 1879 Thomas Edison úspěšně otestoval svou první praktickou elektrickou žárovku. Svítila asi 13 hodin, než se přepálila — ale to stačilo k důkazu, že éra svíček skončila (a začala éra zapomínání zhasínat světlo)."
+    }
+}
+
