@@ -6,6 +6,7 @@ export interface EmailCaptureData {
     locale: string;
     hotPot: string;
     recaptchaToken: string;
+    timezone: string; // IANA timezone, e.g., "Europe/Bratislava"
 }
 
 export interface EmailCaptureResponse {
@@ -64,6 +65,17 @@ export class EmailCaptureService {
      */
     public static generateHotPotValue(): string {
         return `email_capture_${Date.now()}`;
+    }
+
+    /**
+     * Get the user's current IANA timezone (e.g., "Europe/Bratislava")
+     */
+    public static getCurrentTimezone(): string {
+        try {
+            return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+        } catch {
+            return 'UTC';
+        }
     }
 
     /**

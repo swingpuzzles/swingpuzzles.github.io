@@ -206,7 +206,8 @@ class NavigationManager {
                 name: name || undefined,
                 locale: EmailCaptureService.getCurrentLocale(),
                 hotPot: EmailCaptureService.generateHotPotValue(),
-                recaptchaToken: recaptchaToken
+                recaptchaToken: recaptchaToken,
+                timezone: EmailCaptureService.getCurrentTimezone()
             };
 
             // Submit form
