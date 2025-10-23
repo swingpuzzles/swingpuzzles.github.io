@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4njtI0I",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81Ihw2Jw-wL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81Ihw2Jw-wL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81VOacmUsOL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4nfwVhx",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91-vBO78U2L._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91-vBO78U2L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81-C6eHJZtL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 24, 1945, the United Nations Charter officially came into force, marking the birth of the UN. After the devastation of World War II, 51 countries joined together to prevent future global conflicts. The headquarters would later rise in New York City — a place where arguments moved from battlefields to conference tables.",
+        "es": "El 24 de octubre de 1945 entró en vigor la Carta de las Naciones Unidas, marcando el nacimiento de la ONU. Tras la devastación de la Segunda Guerra Mundial, 51 países se unieron para evitar futuros conflictos globales. Más tarde, la sede se levantaría en Nueva York — un lugar donde las discusiones pasaron del campo de batalla a la mesa de conferencias.",
+        "de": "Am 24. Oktober 1945 trat die Charta der Vereinten Nationen in Kraft und markierte die Geburt der UNO. Nach der Verwüstung des Zweiten Weltkriegs schlossen sich 51 Länder zusammen, um künftige globale Konflikte zu verhindern. Später entstand das Hauptquartier in New York – ein Ort, an dem sich Streitigkeiten von den Schlachtfeldern an die Konferenztische verlagerten.",
+        "fr": "Le 24 octobre 1945, la Charte des Nations Unies entra officiellement en vigueur, marquant la naissance de l’ONU. Après la dévastation de la Seconde Guerre mondiale, 51 pays s’unirent pour éviter de futurs conflits mondiaux. Le siège fut ensuite établi à New York — là où les désaccords passèrent des champs de bataille aux tables de conférence.",
+        "it": "Il 24 ottobre 1945 entrò ufficialmente in vigore la Carta delle Nazioni Unite, segnando la nascita dell’ONU. Dopo la devastazione della Seconda Guerra Mondiale, 51 paesi si unirono per evitare futuri conflitti globali. La sede fu poi costruita a New York — un luogo dove le dispute si spostarono dai campi di battaglia ai tavoli delle conferenze.",
+        "sk": "Dňa 24. októbra 1945 nadobudla platnosť Charta Organizácie Spojených národov, čím sa oficiálne zrodila OSN. Po hrôzach druhej svetovej vojny sa 51 krajín spojilo s cieľom zabrániť ďalším globálnym konfliktom. Hlavné sídlo neskôr vyrástlo v New Yorku — na mieste, kde sa spory presunuli z bojísk za rokovacie stoly.",
+        "cs": "Dne 24. října 1945 vstoupila v platnost Charta Organizace spojených národů, čímž se oficiálně zrodila OSN. Po hrůzách druhé světové války se 51 zemí spojilo, aby zabránily dalším globálním konfliktům. Hlavní sídlo později vyrostlo v New Yorku — tam, kde se spory přesunuly z bitevních polí k jednacím stolům."
+    }
+}
+
