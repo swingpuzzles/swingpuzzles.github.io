@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/47p0CqP",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81hZemxR1ZL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81hZemxR1ZL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81uNtM5KASL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4o9KZuq",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71njICfKRGL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71njICfKRGL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71i8lnKZqbL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 26, 1984, London held the first public test of the Docklands Light Railway — an automated train system with no drivers. The sleek new line symbolized the city’s future, running quietly through the redeveloped docklands. Passengers were amazed to see a train move on its own… and slightly nervous about who to blame if it didn’t stop.",
+        "es": "El 26 de octubre de 1984, Londres realizó la primera prueba pública del Docklands Light Railway — un sistema de trenes automatizado sin conductores. La nueva línea simbolizaba el futuro de la ciudad y cruzaba silenciosamente los antiguos muelles. Los pasajeros se sorprendieron al ver un tren moverse solo… y un poco nerviosos por si no se detenía.",
+        "de": "Am 26. Oktober 1984 fand in London die erste öffentliche Testfahrt der Docklands Light Railway statt — eines automatisierten Zugsystems ohne Fahrer. Die neue Strecke galt als Symbol für Londons Zukunft und führte leise durch die Docklands. Die Fahrgäste staunten, dass sich der Zug selbst bewegte… und waren leicht nervös, falls er nicht anhält.",
+        "fr": "Le 26 octobre 1984, Londres organisa le premier essai public du Docklands Light Railway — un système de train automatisé sans conducteur. La nouvelle ligne symbolisait l’avenir de la ville et traversait en silence les anciens docks. Les passagers furent fascinés… et un peu inquiets que le train ne s’arrête pas.",
+        "it": "Il 26 ottobre 1984, Londra effettuò la prima prova pubblica della Docklands Light Railway — un sistema ferroviario automatizzato senza conducenti. La nuova linea simboleggiava il futuro della città, attraversando silenziosamente i vecchi moli. I passeggeri erano affascinati… e leggermente preoccupati che il treno non si fermasse.",
+        "sk": "Dňa 26. októbra 1984 sa v Londýne uskutočnila prvá verejná skúška Docklands Light Railway — automatizovaného vlakového systému bez rušňovodiča. Nová linka symbolizovala budúcnosť mesta a ticho sa kĺzala cez bývalé doky. Cestujúci boli ohromení… a trochu nervózni, či vlak naozaj zastaví.",
+        "cs": "Dne 26. října 1984 se v Londýně uskutečnila první veřejná zkouška Docklands Light Railway — automatizovaného vlakového systému bez strojvedoucího. Nová linka symbolizovala budoucnost města a tiše projížděla bývalými doky. Cestující byli nadšení… a trochu nervózní, jestli vlak opravdu zastaví."
+    }
+}
+
