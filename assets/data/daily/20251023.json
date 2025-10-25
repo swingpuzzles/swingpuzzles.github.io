@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/49fqEiA",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81snuSy0oZL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81snuSy0oZL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71bNKA7qcjL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3Jj5Ufd",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/913kRq5CP4L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/913kRq5CP4L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/51CdU8KL+xL._AC_.jpg"
+    },
+    "story": {
+        "en": "On October 23, 2001, Apple unveiled the first iPod — a small white device promising '1,000 songs in your pocket.' At the time, it sounded almost magical. Steve Jobs presented it in his usual black turtleneck, pulling it from his jeans like a magician revealing a secret trick. Within months, it reshaped the entire music industry — and made tangled headphone cables a global problem.",
+        "es": "El 23 de octubre de 2001, Apple presentó el primer iPod — un pequeño dispositivo blanco que prometía '1.000 canciones en tu bolsillo'. En aquel momento, sonaba casi mágico. Steve Jobs lo mostró con su clásico suéter negro, sacándolo de su bolsillo como un mago revelando un truco. En pocos meses, transformó por completo la industria musical — y convirtió los cables de auriculares en un problema mundial.",
+        "de": "Am 23. Oktober 2001 stellte Apple den ersten iPod vor — ein kleines weißes Gerät mit dem Versprechen '1.000 Songs in deiner Tasche'. Damals klang das fast magisch. Steve Jobs präsentierte ihn in seinem typischen schwarzen Rollkragenpullover und zog ihn aus seiner Jeans, wie ein Zauberer, der ein Geheimnis enthüllt. Innerhalb weniger Monate veränderte der iPod die Musikindustrie — und machte verknotete Kopfhörerkabel zu einem globalen Problem.",
+        "fr": "Le 23 octobre 2001, Apple présenta le tout premier iPod — un petit appareil blanc promettant '1 000 chansons dans votre poche'. À l’époque, cela semblait presque magique. Steve Jobs le dévoila dans son célèbre col roulé noir, le sortant de sa poche comme un magicien révélant un secret. En quelques mois, il transforma toute l’industrie musicale — et fit des câbles d’écouteurs emmêlés un problème mondial.",
+        "it": "Il 23 ottobre 2001, Apple presentò il primo iPod — un piccolo dispositivo bianco che prometteva '1.000 canzoni in tasca'. All’epoca sembrava quasi magia. Steve Jobs lo mostrò con il suo classico dolcevita nero, estraendolo dai jeans come un mago che rivela un trucco. Nel giro di pochi mesi, cambiò l’intera industria musicale — e trasformò i cavi degli auricolari aggrovigliati in un problema globale.",
+        "sk": "Dňa 23. októbra 2001 predstavila spoločnosť Apple prvý iPod — malé biele zariadenie so sľubom '1 000 piesní vo vrecku'. Vtedy to znelo takmer ako kúzlo. Steve Jobs ho predstavil v svojom typickom čiernom roláku, vytiahol ho z vrecka džínsov ako kúzelník, ktorý odhaľuje tajomstvo. O pár mesiacov zmenil celý hudobný priemysel — a zamotané káble od slúchadiel sa stali celosvetovým problémom.",
+        "cs": "Dne 23. října 2001 představila společnost Apple první iPod — malé bílé zařízení se slibem '1 000 písní v kapse'. Tehdy to znělo skoro kouzelně. Steve Jobs ho představil ve svém typickém černém roláku, vytáhl ho z kapes džínsů jako kouzelník, který odhaluje tajemství. Během několika měsíců změnil celý hudební průmysl — a zamotané kabely od sluchátek se staly celosvětovým problémem."
+    }
+}
+
