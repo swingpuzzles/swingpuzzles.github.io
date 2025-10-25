@@ -176,7 +176,7 @@ class GuiManager {
                     this._xAction = () => { navigationManager.handleXAction(); };
                     break;
                 case MainMode.GiftTry:
-                    this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover, () => { gameModeManager.enterGiftOverviewMode(); }); };
+                    this._xAction = () => { backToInitialAnimation.animate(ctx.currentCover!, () => { gameModeManager.enterGiftOverviewMode(); }); };
                     break;
                 case MainMode.GiftReceived:
                     this._xAction = () => { navigationManager.handleXAction(); };
