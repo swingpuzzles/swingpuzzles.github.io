@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4oOWVSk",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81ULFplexSL._AC_SX450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81ULFplexSL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81+-w9VgpYL._AC_SY300_SX300_QL70_FMwebp_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3JCGU2M",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71oXSLHCeYL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71oXSLHCeYL._AC_SL1460_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81BI89b8llL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On October 30, 1938, Orson Welles broadcast his famous radio adaptation of *The War of the Worlds*. The realistic 'news bulletins' describing a Martian invasion caused panic among listeners who thought Earth was actually under attack. It was the night humanity learned two things — never believe everything you hear on the radio, and never underestimate good storytelling.",
+        "es": "El 30 de octubre de 1938, Orson Welles transmitió su famosa adaptación radial de *La guerra de los mundos*. Los 'boletines informativos' realistas que describían una invasión marciana provocaron el pánico entre oyentes que creyeron que la Tierra estaba siendo atacada. Aquella noche la humanidad aprendió dos cosas: no creer todo lo que se oye en la radio y no subestimar el poder de una buena historia.",
+        "de": "Am 30. Oktober 1938 sendete Orson Welles seine berühmte Hörspielversion von *Krieg der Welten*. Die realistisch klingenden 'Nachrichtenmeldungen' über eine marsianische Invasion versetzten viele Zuhörer in Panik, die glaubten, die Erde werde tatsächlich angegriffen. In dieser Nacht lernte die Menschheit zwei Dinge: Glaube nicht alles, was im Radio läuft – und unterschätze niemals die Macht einer guten Geschichte.",
+        "fr": "Le 30 octobre 1938, Orson Welles diffusa sa célèbre adaptation radiophonique de *La Guerre des mondes*. Les 'bulletins d’information' réalistes décrivant une invasion martienne semèrent la panique parmi des auditeurs persuadés que la Terre était réellement attaquée. Ce soir-là, l’humanité apprit deux choses : ne pas croire tout ce qu’on entend à la radio et ne jamais sous-estimer le pouvoir d’une bonne histoire.",
+        "it": "Il 30 ottobre 1938, Orson Welles trasmise la sua famosa versione radiofonica de *La guerra dei mondi*. I 'bollettini di notizie' realistici che descrivevano un’invasione marziana causarono il panico tra gli ascoltatori, convinti che la Terra fosse davvero sotto attacco. Quella notte l’umanità imparò due cose: non credere a tutto ciò che si sente alla radio e non sottovalutare mai il potere di una buona storia.",
+        "sk": "Dňa 30. októbra 1938 odvysielal Orson Welles svoju slávnu rozhlasovú adaptáciu *Vojny svetov*. Realistické „správy“ o invázii Marťanov vyvolali paniku medzi poslucháčmi, ktorí uverili, že Zem je skutočne napadnutá. Bola to noc, keď sa ľudstvo naučilo dve veci — neveriť všetkému, čo počuje v rádiu, a nikdy nepodceňovať silu dobre rozprávaného príbehu.",
+        "cs": "Dne 30. října 1938 odvysílal Orson Welles svou slavnou rozhlasovou adaptaci *Války světů*. Realistické „zpravodajské hlášení“ o invazi Marťanů vyvolalo paniku mezi posluchači, kteří uvěřili, že je Země skutečně napadena. Byla to noc, kdy se lidstvo naučilo dvě věci — nevěřit všemu, co slyší v rádiu, a nikdy nepodceňovat sílu dobrého příběhu."
+    }
+}
+

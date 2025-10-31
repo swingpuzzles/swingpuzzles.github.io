@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3LBECBv",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71FM2vYFw3L._AC_SX450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71FM2vYFw3L._AC_SL1024_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71L3shZl6OL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4qA7evb",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71IsaoOssjL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71IsaoOssjL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81NzhNFcCJL._AC_SY606_.jpg"
+    },
+    "story": {
+        "en": "On November 1, 1512, Michelangelo’s masterpiece on the ceiling of the Sistine Chapel was unveiled to the public. After four years of painting while lying on scaffolding, he finally revealed a vision so grand that even the Pope looked up in awe — and perhaps in relief that it was finally finished.",
+        "es": "El 1 de noviembre de 1512 se presentó al público la obra maestra de Miguel Ángel en el techo de la Capilla Sixtina. Tras cuatro años pintando tumbado sobre andamios, por fin reveló una visión tan grandiosa que incluso el Papa miró hacia arriba con asombro… y tal vez con alivio de que por fin estuviera terminada.",
+        "de": "Am 1. November 1512 wurde Michelangelos Meisterwerk an der Decke der Sixtinischen Kapelle der Öffentlichkeit enthüllt. Nach vier Jahren des Malens auf dem Rücken auf Gerüsten offenbarte er eine so gewaltige Vision, dass selbst der Papst ehrfürchtig nach oben blickte – und wohl auch erleichtert, dass es endlich fertig war.",
+        "fr": "Le 1er novembre 1512, Michel-Ange dévoila au public sa fresque magistrale au plafond de la chapelle Sixtine. Après quatre années passées à peindre allongé sur un échafaudage, il révéla une œuvre si grandiose que même le pape leva les yeux au ciel — sans doute à la fois émerveillé et soulagé que ce soit enfin terminé.",
+        "it": "Il 1º novembre 1512, Michelangelo presentò al pubblico il suo capolavoro sul soffitto della Cappella Sistina. Dopo quattro anni passati a dipingere sdraiato sui ponteggi, rivelò una visione così grandiosa che persino il Papa alzò gli occhi al cielo — forse ammirato, forse solo sollevato che fosse finita.",
+        "sk": "Dňa 1. novembra 1512 bola verejnosti predstavená Michelangelova freska na strope Sixtínskej kaplnky. Po štyroch rokoch maľovania poležiačky na lešení odhalil dielo také veľkolepé, že aj pápež vzhliadol k nebu v úžase — a možno aj s úľavou, že je konečne hotové.",
+        "cs": "Dne 1. listopadu 1512 byla veřejnosti poprvé představena Michelangelova freska na stropě Sixtinské kaple. Po čtyřech letech malování vleže na lešení odhalil dílo tak velkolepé, že i papež vzhlédl k nebi v úžasu — a možná i s úlevou, že je konečně hotové."
+    }
+}
+
