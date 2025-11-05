@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4nFXBbA",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/A1G+KMkFUBL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/A1G+KMkFUBL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/8179NAnBgyL._AC_SX466_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/43ewcpX",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71r4xeDdzLL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71r4xeDdzLL._AC_SL1000_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81GZ9fQmnBL._AC_SY679_.jpg"
+    },
+    "story": {
+        "en": "On November 3, 1900, the first U.S. automobile show opened in New York City. Visitors marveled at over 30 different makes of cars — most of them powered by steam, electricity, or pure optimism. A century later, traffic jams would prove that people took the idea a bit too seriously.",
+        "es": "El 3 de noviembre de 1900 se inauguró en Nueva York la primera exposición de automóviles de Estados Unidos. Los visitantes se maravillaron con más de 30 modelos distintos — la mayoría impulsados por vapor, electricidad o puro optimismo. Un siglo después, los atascos demostrarían que la gente se lo tomó demasiado en serio.",
+        "de": "Am 3. November 1900 eröffnete in New York die erste Automobilausstellung der USA. Besucher bestaunten über 30 verschiedene Marken – die meisten angetrieben von Dampf, Elektrizität oder purem Optimismus. Ein Jahrhundert später zeigten die Verkehrsstaus, dass die Idee wohl etwas zu gut funktionierte.",
+        "fr": "Le 3 novembre 1900, le premier salon automobile des États-Unis ouvrit ses portes à New York. Les visiteurs y découvrirent plus de 30 modèles différents — la plupart propulsés par la vapeur, l’électricité ou un optimisme sans limites. Un siècle plus tard, les embouteillages prouvèrent que l’idée avait un peu trop bien marché.",
+        "it": "Il 3 novembre 1900 si aprì a New York il primo salone automobilistico degli Stati Uniti. I visitatori ammirarono oltre 30 modelli diversi — la maggior parte alimentati a vapore, elettricità o puro ottimismo. Un secolo dopo, gli ingorghi avrebbero dimostrato che l’idea aveva funzionato fin troppo bene.",
+        "sk": "Dňa 3. novembra 1900 sa v New Yorku otvorila prvá výstava automobilov v USA. Návštevníci obdivovali vyše 30 rôznych značiek — väčšina poháňaná parou, elektrinou alebo čistým optimizmom. O sto rokov neskôr dopravné zápchy ukázali, že ten nápad sa až príliš ujal.",
+        "cs": "Dne 3. listopadu 1900 byla v New Yorku otevřena první automobilová výstava v USA. Návštěvníci obdivovali přes 30 různých značek — většina z nich poháněná párou, elektřinou nebo čistým optimismem. O sto let později dopravní zácpy ukázaly, že ten nápad se uchytil až příliš dobře."
+    }
+}
+
