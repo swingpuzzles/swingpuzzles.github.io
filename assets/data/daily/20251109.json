@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/47SfeiK",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/912GxM3NJFS._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/912GxM3NJFS._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81ddMjdGGrS._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4nODhox",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91b9NNCjCmL._AC_SY679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91b9NNCjCmL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81EXnG+b7jL._AC_SX569_.jpg"
+    },
+    "story": {
+        "en": "On November 9, 1989, the Berlin Wall — the symbol of division between East and West — finally fell. What began with a confused press conference turned into a spontaneous celebration as thousands of people crossed the border, hugged strangers, and chipped away pieces of concrete for souvenirs. It was the night when a wall came down and millions of spirits rose.",
+        "es": "El 9 de noviembre de 1989 cayó el Muro de Berlín, símbolo de la división entre Este y Oeste. Todo comenzó con una rueda de prensa confusa y terminó en una celebración espontánea, cuando miles de personas cruzaron la frontera, abrazaron a desconocidos y se llevaron pedacitos de muro como recuerdo. Fue la noche en que un muro cayó y millones de almas se levantaron.",
+        "de": "Am 9. November 1989 fiel die Berliner Mauer – das Symbol der Teilung zwischen Ost und West. Was mit einer missverständlichen Pressekonferenz begann, endete in einer spontanen Feier, als Tausende die Grenze überquerten, Fremde umarmten und Betonstücke als Andenken mitnahmen. Es war die Nacht, in der eine Mauer fiel und Millionen Herzen aufgingen.",
+        "fr": "Le 9 novembre 1989, le mur de Berlin — symbole de la division entre l’Est et l’Ouest — s’effondra enfin. Ce qui commença par une conférence de presse confuse se transforma en une fête spontanée, alors que des milliers de personnes franchissaient la frontière, s’embrassaient et emportaient des morceaux du mur en souvenir. Ce fut la nuit où un mur tomba et des millions d’esprits se relevèrent.",
+        "it": "Il 9 novembre 1989 cadde il Muro di Berlino — simbolo della divisione tra Est e Ovest. Tutto iniziò con una conferenza stampa confusa e finì in una celebrazione spontanea, mentre migliaia di persone attraversavano il confine, abbracciavano sconosciuti e portavano a casa pezzi di muro come ricordo. Fu la notte in cui cadde un muro e si sollevarono milioni di animi.",
+        "sk": "Dňa 9. novembra 1989 padol Berlínsky múr — symbol rozdelenia medzi Východom a Západom. Začalo sa to nejasnou tlačovou konferenciou a skončilo spontánnymi oslavami, keď tisíce ľudí prekročili hranicu, objímali sa s cudzincami a odlamovali kúsky betónu ako suveníry. Bola to noc, keď padol múr a pozdvihli sa milióny ľudských duchov.",
+        "cs": "Dne 9. listopadu 1989 padla Berlínská zeď — symbol rozdělení mezi Východem a Západem. Začalo to zmatenou tiskovou konferencí a skončilo spontánní oslavou, když tisíce lidí překročily hranici, objímaly se s cizinci a odlamovaly kusy betonu jako suvenýry. Byla to noc, kdy zeď padla a pozdvihly se miliony lidských duchů."
+    }
+}
+

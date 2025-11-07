@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3JC0E6Q",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81-sMQDu0cL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81-sMQDu0cL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81AvWqUXiYL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/482UbuU",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81dYQ5R574L._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81dYQ5R574L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/710PZC6O2hL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On November 10, 1969, *Sesame Street* premiered on American television, introducing the world to Big Bird, Cookie Monster, and the revolutionary idea that puppets could teach children better than textbooks. It was the first educational show to mix fun, music, and fuzzy monsters — proving that learning can be joyful, messy, and full of cookies.",
+        "es": "El 10 de noviembre de 1969 se estrenó *Barrio Sésamo* en la televisión estadounidense, presentando al mundo a Big Bird, el Monstruo de las Galletas y la revolucionaria idea de que los títeres podían enseñar mejor que los libros. Fue el primer programa educativo en combinar diversión, música y monstruos de felpa — demostrando que aprender puede ser alegre, caótico y lleno de galletas.",
+        "de": "Am 10. November 1969 feierte *Sesamstraße* seine Premiere im US-Fernsehen und stellte der Welt Bibo, das Krümelmonster und die revolutionäre Idee vor, dass Plüschfiguren Kinder besser lehren können als Schulbücher. Es war die erste Bildungssendung, die Spaß, Musik und flauschige Monster verband – und bewies, dass Lernen fröhlich, chaotisch und voller Kekse sein kann.",
+        "fr": "Le 10 novembre 1969, *Sesame Street* fit ses débuts à la télévision américaine, présentant au monde Big Bird, Cookie Monster et l’idée révolutionnaire que des marionnettes pouvaient mieux enseigner que les manuels scolaires. Ce fut la première émission éducative à mêler humour, musique et monstres en peluche — prouvant que l’apprentissage peut être joyeux, un peu désordonné et plein de biscuits.",
+        "it": "Il 10 novembre 1969 debuttò in televisione *Sesame Street*, introducendo al mondo Big Bird, Cookie Monster e l’idea rivoluzionaria che i pupazzi potessero insegnare meglio dei libri di testo. Fu il primo programma educativo a mescolare divertimento, musica e mostri di peluche — dimostrando che imparare può essere gioioso, un po’ caotico e pieno di biscotti.",
+        "sk": "Dňa 10. novembra 1969 mal v americkej televízii premiéru program *Sesame Street*, ktorý svetu predstavil Veľkého vtáka, Cukríkové monštrum a prelomovú myšlienku, že deti môžu učiť aj plyšové postavičky. Bol to prvý vzdelávací program, ktorý spojil zábavu, hudbu a mäkké monštrá — a dokázal, že učenie môže byť veselé, trochu chaotické a plné sušienok.",
+        "cs": "Dne 10. listopadu 1969 měl v americké televizi premiéru pořad *Sesame Street*, který světu představil Velkého ptáka, Cukrové monstrum a přelomovou myšlenku, že děti mohou učit i plyšové postavičky. Byl to první vzdělávací pořad, který spojil zábavu, hudbu a měkká monstra — a dokázal, že učení může být veselé, trochu chaotické a plné sušenek."
+    }
+}
+
