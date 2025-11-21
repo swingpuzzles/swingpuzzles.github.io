@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4itPBcZ",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/A1G+KMkFUBL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/A1G+KMkFUBL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71DiIdO3krL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/485yHwb",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81pHL9shllL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81pHL9shllL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71zqGqCgLPS._AC_SX450_.jpg"
+    },
+    "story": {
+        "en": "On November 21, 1877, Thomas Edison announced the invention of the phonograph — the first machine that could record and play back sound. When he demonstrated it, people were stunned to hear a human voice coming from a metal cylinder instead of a living person. It was the beginning of recorded music, voicemail… and messages that could patiently wait until someone finally listened.",
+        "es": "El 21 de noviembre de 1877, Thomas Edison anunció la invención del fonógrafo, la primera máquina capaz de grabar y reproducir sonido. Cuando lo demostró, la gente quedó atónita al oír una voz humana salir de un cilindro metálico en lugar de una persona real. Fue el inicio de la música grabada, los mensajes de voz… y los recados que podían esperar pacientemente hasta que alguien los escuchara.",
+        "de": "Am 21. November 1877 kündigte Thomas Edison die Erfindung des Phonographen an – des ersten Geräts, das Ton aufnehmen und wiedergeben konnte. Als er es vorführte, waren die Menschen verblüfft, eine menschliche Stimme aus einem Metallzylinder zu hören statt von einer echten Person. Es war der Beginn der Musikaufzeichnung, der Sprachnachrichten… und von Mitteilungen, die geduldig warten konnten, bis sie jemand anhörte.",
+        "fr": "Le 21 novembre 1877, Thomas Edison annonça l’invention du phonographe — la première machine capable d’enregistrer et de restituer un son. Lors de sa démonstration, les gens furent stupéfaits d’entendre une voix humaine sortir d’un cylindre métallique plutôt que d’une personne vivante. Ce fut le début de la musique enregistrée, des messages vocaux… et de messages capables d’attendre patiemment que quelqu’un les écoute enfin.",
+        "it": "Il 21 novembre 1877, Thomas Edison annunciò l’invenzione del fonografo, la prima macchina capace di registrare e riprodurre il suono. Durante la dimostrazione, la gente rimase sbalordita nel sentire una voce umana provenire da un cilindro metallico invece che da una persona in carne e ossa. Fu l’inizio della musica registrata, dei messaggi vocali… e di messaggi che potevano aspettare pazientemente finché qualcuno non li ascoltava.",
+        "sk": "Dňa 21. novembra 1877 oznámil Thomas Edison vynález fonografu — prvého zariadenia, ktoré dokázalo zaznamenať a prehrávať zvuk. Keď ho predviedol, ľudia neverili vlastným ušiam: z kovového valca sa ozýval ľudský hlas bez živej osoby nablízku. Bol to začiatok reprodukovanej hudby, hlasových odkazov… a správ, ktoré mohli trpezlivo čakať, kým si ich niekto napokon vypočul.",
+        "cs": "Dne 21. listopadu 1877 oznámil Thomas Edison vynález fonografu — prvního zařízení, které dokázalo zaznamenat a přehrávat zvuk. Když ho předvedl, lidé byli ohromeni, protože lidský hlas vycházel z kovového válce místo skutečného člověka. Byl to začátek reprodukované hudby, hlasových zpráv… a vzkazů, které mohly trpělivě čekat, až si je někdo nakonec poslechne."
+    }
+}
+
