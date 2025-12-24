@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/44xSKmg",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91xxSnfQm9L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91xxSnfQm9L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91-Lqw-x4LL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/44F7xLU",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/814PExHSDcL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/814PExHSDcL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/719GZ9zUwRL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On December 25, 1914, soldiers on parts of the Western Front took part in the Christmas Truce during World War I. Enemies laid down their weapons, sang carols, exchanged small gifts, and even played football in no man’s land. It didn’t end the war, but it showed that humanity can briefly outshine orders — especially at Christmas.",
+        "es": "El 25 de diciembre de 1914, soldados de ambos bandos en algunas zonas del frente occidental participaron en la Tregua de Navidad durante la Primera Guerra Mundial. Los enemigos dejaron las armas, cantaron villancicos, intercambiaron pequeños regalos e incluso jugaron al fútbol en tierra de nadie. No puso fin a la guerra, pero demostró que la humanidad puede brillar más que las órdenes, al menos por un día.",
+        "de": "Am 25. Dezember 1914 kam es an Teilen der Westfront während des Ersten Weltkriegs zum Weihnachtsfrieden. Soldaten legten ihre Waffen nieder, sangen Weihnachtslieder, tauschten kleine Geschenke aus und spielten sogar Fußball im Niemandsland. Der Krieg endete dadurch nicht, doch es zeigte, dass Menschlichkeit manchmal stärker ist als Befehle — besonders zu Weihnachten.",
+        "fr": "Le 25 décembre 1914, des soldats de part et d’autre du front occidental participèrent à la trêve de Noël pendant la Première Guerre mondiale. Les ennemis déposèrent les armes, chantèrent des chants de Noël, échangèrent de petits cadeaux et jouèrent même au football dans le no man’s land. Cela ne mit pas fin à la guerre, mais prouva que l’humanité peut parfois l’emporter sur les ordres.",
+        "it": "Il 25 dicembre 1914, in alcune parti del fronte occidentale della Prima Guerra Mondiale, i soldati parteciparono alla Tregua di Natale. I nemici posarono le armi, cantarono canti natalizi, si scambiarono piccoli doni e giocarono persino a calcio nella terra di nessuno. La guerra non finì, ma per un giorno l’umanità superò gli ordini.",
+        "sk": "Dňa 25. decembra 1914 sa na niektorých úsekoch západného frontu počas prvej svetovej vojny odohralo vianočné prímerie. Vojaci znepriatelených strán odložili zbrane, spievali koledy, vymieňali si drobné darčeky a dokonca si zahrali futbal v zemi nikoho. Vojnu to neukončilo, no ukázalo, že ľudskosť dokáže aspoň na chvíľu prekonať rozkazy.",
+        "cs": "Dne 25. prosince 1914 došlo na některých úsecích západní fronty během první světové války k vánočnímu příměří. Vojáci znepřátelených stran odložili zbraně, zpívali koledy, vyměňovali si drobné dárky a dokonce si zahráli fotbal v zemi nikoho. Válku to neukončilo, ale ukázalo, že lidskost může na chvíli převážit nad rozkazy."
+    }
+}
+
