@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4q4o9Fy",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71opdqJZvCL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71opdqJZvCL._AC_SL1398_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71UnCpi5AuL._AC_SX522_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3N1s6fG",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91mFcM81RIL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91mFcM81RIL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/9129CH0447L._AC_SX522_.jpg"
+    },
+    "story": {
+        "en": "On January 5, 1933, construction began on the Golden Gate Bridge in San Francisco. Engineers faced fog, wind, strong currents, and plenty of skeptics who were sure the whole idea was impossible. Years later, the bridge not only stood firm — it became one of the world’s most famous landmarks, proving that sometimes the best way to silence critics is with 227,000 tons of steel.",
+        "es": "El 5 de enero de 1933 comenzó la construcción del puente Golden Gate en San Francisco. Los ingenieros tuvieron que enfrentarse a niebla, viento, corrientes fuertes y a muchos escépticos que pensaban que el proyecto era imposible. Años después, el puente no solo seguía en pie, sino que se convirtió en uno de los iconos más famosos del mundo — prueba de que, a veces, la mejor respuesta a los críticos son 227.000 toneladas de acero.",
+        "de": "Am 5. Januar 1933 begann der Bau der Golden-Gate-Brücke in San Francisco. Ingenieure kämpften mit Nebel, Wind, starken Strömungen — und zahlreichen Skeptikern, die das Vorhaben für unmöglich hielten. Jahre später stand die Brücke nicht nur stabil, sondern wurde zu einem der berühmtesten Wahrzeichen der Welt — ein Beweis dafür, dass man Kritiker manchmal am besten mit 227.000 Tonnen Stahl überzeugt.",
+        "fr": "Le 5 janvier 1933 commença la construction du Golden Gate Bridge à San Francisco. Les ingénieurs durent affronter brouillard, vent, courants puissants — et quantité de sceptiques persuadés que le projet était impossible. Quelques années plus tard, le pont était debout et devint l’un des monuments les plus célèbres du monde — preuve qu’on peut parfois répondre aux critiques avec 227 000 tonnes d’acier.",
+        "it": "Il 5 gennaio 1933 iniziò la costruzione del Golden Gate Bridge a San Francisco. Gli ingegneri dovettero affrontare nebbia, vento, correnti forti e molti scettici convinti che il progetto fosse irrealizzabile. Anni dopo, il ponte non solo rimase saldo, ma divenne uno dei simboli più famosi del mondo — dimostrando che, a volte, il modo migliore per zittire i critici sono 227.000 tonnellate di acciaio.",
+        "sk": "Dňa 5. januára 1933 sa začala výstavba mosta Golden Gate v San Franciscu. Inžinieri bojovali s hmlou, vetrom, silnými prúdmi — a so zástupom skeptikov, ktorí boli presvedčení, že to nemôže fungovať. O pár rokov most nielenže stál, ale sa stal jedným z najznámejších symbolov sveta — dôkaz, že niekedy stačí 227-tisíc ton ocele, aby kritici stíchli.",
+        "cs": "Dne 5. ledna 1933 začala stavba mostu Golden Gate v San Francisku. Inženýři se potýkali s mlhou, větrem, silnými proudy — a s mnoha skeptiky, kteří byli přesvědčeni, že projekt je nemožný. O několik let později most nejen stál, ale stal se jedním z nejslavnějších symbolů světa — důkaz, že někdy kritiky umlčí 227 000 tun oceli."
+    }
+}
+
