@@ -51,6 +51,53 @@
             height: 100%;
             touch-action: none;
         }
+
+        #loadingOverlay {
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        #loadingOverlayContent {
+            text-align: center;
+            color: white;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        #loadingOverlayContent h1 {
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            font-size: clamp(24px, 5vw, 42px);
+            margin: 0 0 20px 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+
+        #loadingOverlayContent p {
+            font-family: Arial, sans-serif;
+            font-size: clamp(14px, 3vw, 18px);
+            margin: 0 0 15px 0;
+            color: #f0f0f0;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #loadingOverlayContent p:last-child {
+            font-size: clamp(16px, 3.5vw, 20px);
+            font-weight: 600;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            #loadingOverlay {
+                gap: 20px;
+            }
+            
+            #loadingOverlayContent {
+                padding: 0 15px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     
@@ -101,9 +148,51 @@
         fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
-  <script type="module" crossorigin src="/assets/index-BN3RwWub.js"></script>
+  <script type="module" crossorigin src="/assets/index-BFoUoxYQ.js"></script>
 </head>
 <body>
+    <script>
+        // Update loading overlay text when translations are ready
+        (function() {
+            function updateLoadingText() {
+                // Check if i18n is available
+                if (window.i18nManager) {
+                    try {
+                        const titleEl = document.getElementById('loadingTitle');
+                        const descEl = document.getElementById('loadingDescription');
+                        const textEl = document.getElementById('loadingText');
+                        
+                        if (titleEl) {
+                            titleEl.textContent = window.i18nManager.translate('loading.title');
+                        }
+                        if (descEl) {
+                            descEl.textContent = window.i18nManager.translate('loading.description');
+                        }
+                        if (textEl) {
+                            textEl.textContent = window.i18nManager.translate('loading.loadingText');
+                        }
+                    } catch (e) {
+                        // Translations not ready yet, will retry
+                        setTimeout(updateLoadingText, 100);
+                    }
+                } else {
+                    // Retry after a short delay
+                    setTimeout(updateLoadingText, 100);
+                }
+            }
+            
+            // Start checking after DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateLoadingText);
+            } else {
+                updateLoadingText();
+            }
+            
+            // Also try after a longer delay to catch late initialization
+            setTimeout(updateLoadingText, 500);
+            setTimeout(updateLoadingText, 1000);
+        })();
+    </script>
     <div id="loadingOverlay" style="
         position: absolute;
         top: 0; left: 0;
@@ -115,6 +204,15 @@
         align-items: center;
         z-index: 100;
     ">
+        <div id="loadingOverlayContent">
+            <h1 id="loadingTitle">Swing Puzzles – Free Online 3D Jigsaw Puzzle Game</h1>
+            <p id="loadingDescription">
+              Play relaxing 3D jigsaw puzzles online in your browser. No download — just pick an image and start solving.
+            </p>
+            <p id="loadingText">
+                Loading...
+            </p>
+        </div>
         <img src="/assets/misc/wait-anim.webp" style="width: 200px; height: 200px;" />
     </div>
     <div style="display: none;"><button class="ml-onclick-form" onclick="ml('show', '1RSel7', true)">Click here to show form</button></div>
