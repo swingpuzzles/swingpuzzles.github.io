@@ -52,19 +52,37 @@
             touch-action: none;
         }
 
-        #loadingOverlay {
+        #mainOverlay, #mainOverlayContent {
+            position: absolute;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
             gap: 30px;
         }
 
-        #loadingOverlayContent {
-            text-align: center;
-            color: white;
-            max-width: 600px;
-            padding: 0 20px;
+        #mainOverlay {
+            width: 100vw;
+            top: 0vw;
+            z-index: 100;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
         }
 
-        #loadingOverlayContent h1 {
+        #mainOverlayContent {
+            z-index: 100;
+            top: 1vw;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            padding: 0 10px;
+            max-width: 99vw;
+            box-sizing: border-box;
+        }
+
+        #mainOverlayContent h1 {
             font-family: 'Pacifico', cursive, Arial, sans-serif;
             font-size: clamp(24px, 5vw, 42px);
             margin: 0 0 20px 0;
@@ -73,7 +91,7 @@
             line-height: 1.2;
         }
 
-        #loadingOverlayContent p {
+        #mainOverlayContent p {
             font-family: Arial, sans-serif;
             font-size: clamp(14px, 3vw, 18px);
             margin: 0 0 15px 0;
@@ -82,7 +100,7 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        #loadingOverlayContent p:last-child {
+        #mainOverlayContent p:last-child {
             font-size: clamp(16px, 3.5vw, 20px);
             font-weight: 600;
             color: #fff;
@@ -90,11 +108,11 @@
         }
 
         @media (max-width: 768px) {
-            #loadingOverlay {
+            #mainOverlay {
                 gap: 20px;
             }
             
-            #loadingOverlayContent {
+            #mainOverlayContent {
                 padding: 0 15px;
             }
         }
@@ -148,7 +166,7 @@
         fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
-  <script type="module" crossorigin src="/assets/index-BFoUoxYQ.js"></script>
+  <script type="module" crossorigin src="/assets/index-MeAffZw0.js"></script>
 </head>
 <body>
     <script>
@@ -158,8 +176,8 @@
                 // Check if i18n is available
                 if (window.i18nManager) {
                     try {
-                        const titleEl = document.getElementById('loadingTitle');
-                        const descEl = document.getElementById('loadingDescription');
+                        const titleEl = document.getElementById('mainTitle');
+                        const descEl = document.getElementById('mainDescription');
                         const textEl = document.getElementById('loadingText');
                         
                         if (titleEl) {
@@ -193,27 +211,17 @@
             setTimeout(updateLoadingText, 1000);
         })();
     </script>
-    <div id="loadingOverlay" style="
-        position: absolute;
-        top: 0; left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 100;
-    ">
-        <div id="loadingOverlayContent">
-            <h1 id="loadingTitle">Swing Puzzles – Free Online 3D Jigsaw Puzzle Game</h1>
-            <p id="loadingDescription">
-              Play relaxing 3D jigsaw puzzles online in your browser. No download — just pick an image and start solving.
-            </p>
-            <p id="loadingText">
-                Loading...
-            </p>
-        </div>
+    <div id="mainOverlay">
         <img src="/assets/misc/wait-anim.webp" style="width: 200px; height: 200px;" />
+    </div>
+    <div id="mainOverlayContent">
+        <h1 id="mainTitle">Swing Puzzles – Free Online 3D Jigsaw Puzzle Game</h1>
+        <p id="mainDescription">
+            Play relaxing 3D jigsaw puzzles online in your browser. No download — just pick an image and start solving.
+        </p>
+        <p id="loadingText">
+            Loading...
+        </p>
     </div>
     <div style="display: none;"><button class="ml-onclick-form" onclick="ml('show', '1RSel7', true)">Click here to show form</button></div>
     <!-- Cookie Consent -->
@@ -258,7 +266,7 @@
     <!-- AI-friendly content (hidden but crawlable) -->
     <noscript>
         <div style="display:none;">
-            <h1>Swing Puzzles - 3D Jigsaw Puzzle Game</h1>
+            <h1>Swing Puzzles - 3D Jigsaw Puzzle Game Online</h1>
             <p>Play free 3D jigsaw puzzles online at swingpuzzles.com with daily historical facts. Interactive puzzle game featuring beautiful 3D graphics and educational content. Create personalized puzzle gifts for friends and family.</p>
             <h2>Features</h2>
             <ul>
