@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3Z8KdCQ",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/817XusrMGIL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/817XusrMGIL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71lWxF5gpiL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4aR7W1K",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81zzFj1Y1sL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81zzFj1Y1sL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/813BVlb74CL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On January 12, 1876, Jack London was born. He would later become famous for adventure stories set in icy wildernesses, where survival depended on courage, instinct, and occasionally a very determined dog. His books proved that readers love nature — especially when someone else is freezing in it.",
+        "es": "El 12 de enero de 1876 nació Jack London. Más tarde se hizo famoso por sus historias de aventuras ambientadas en tierras heladas, donde la supervivencia dependía del coraje, el instinto y, a veces, de un perro muy decidido. Sus libros demostraron que a los lectores les encanta la naturaleza… sobre todo cuando es otro quien pasa frío.",
+        "de": "Am 12. Januar 1876 wurde Jack London geboren. Später wurde er berühmt für Abenteuerromane aus eisigen Wildnissen, in denen Überleben Mut, Instinkt und gelegentlich einen sehr entschlossenen Hund erforderte. Seine Bücher zeigten, dass Menschen die Natur lieben — besonders, wenn jemand anderes darin friert.",
+        "fr": "Le 12 janvier 1876 naquit Jack London. Il devint célèbre pour ses récits d’aventure se déroulant dans des contrées glacées, où survivre exigeait courage, instinct et parfois un chien très déterminé. Ses livres prouvèrent que le public adore la nature — surtout quand ce n’est pas lui qui grelotte.",
+        "it": "Il 12 gennaio 1876 nacque Jack London. In seguito divenne famoso per i suoi racconti d’avventura ambientati in terre gelide, dove sopravvivere richiedeva coraggio, istinto e talvolta un cane estremamente determinato. I suoi libri dimostrarono che le persone amano la natura — soprattutto quando è qualcun altro a congelare.",
+        "sk": "Dňa 12. januára 1876 sa narodil Jack London. Neskôr sa preslávil dobrodružnými príbehmi z ľadovej divočiny, kde o prežití rozhodovali odvaha, inštinkt a občas aj veľmi odhodlaný pes. Jeho knihy ukázali, že ľudia majú radi prírodu — najmä keď v nej mrzne niekto iný.",
+        "cs": "Dne 12. ledna 1876 se narodil Jack London. Později se proslavil dobrodružnými příběhy z ledové divočiny, kde o přežití rozhodovala odvaha, instinkt a někdy i velmi odhodlaný pes. Jeho knihy ukázaly, že lidé mají rádi přírodu — zvlášť když v ní mrzne někdo jiný."
+    }
+}
+
