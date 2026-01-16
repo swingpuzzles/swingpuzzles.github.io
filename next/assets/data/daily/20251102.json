@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4oe0LnZ",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91PkeSK4jCL._SX522_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91PkeSK4jCL._SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71sczZOLY5L._SX342_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/49dSA6L",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/A1oPjUXWk2L._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/A1oPjUXWk2L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81gd9dIXB1L._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On November 2, 2000, astronauts boarded the International Space Station for the very first time, turning it into a continuously inhabited home in orbit. Since then, humans have lived in space every single day — proving that even 400 kilometers above Earth, roommates still have to argue about chores.",
+        "es": "El 2 de noviembre de 2000, los astronautas abordaron por primera vez la Estación Espacial Internacional, convirtiéndola en un hogar habitado de forma continua en órbita. Desde entonces, siempre ha habido humanos viviendo en el espacio — demostrando que incluso a 400 kilómetros de la Tierra, los compañeros de piso siguen discutiendo por las tareas.",
+        "de": "Am 2. November 2000 betraten Astronauten erstmals die Internationale Raumstation und machten sie zu einem dauerhaft bewohnten Zuhause im Orbit. Seitdem leben Menschen jeden Tag im All – ein Beweis dafür, dass Mitbewohner selbst 400 Kilometer über der Erde noch über den Abwasch streiten.",
+        "fr": "Le 2 novembre 2000, des astronautes montèrent pour la première fois à bord de la Station spatiale internationale, en faisant un foyer habité en permanence en orbite. Depuis, des humains vivent chaque jour dans l’espace — preuve que même à 400 kilomètres au-dessus de la Terre, les colocataires se disputent encore les corvées.",
+        "it": "Il 2 novembre 2000, gli astronauti salirono per la prima volta a bordo della Stazione Spaziale Internazionale, trasformandola in una casa abitata permanentemente in orbita. Da allora, l’uomo vive nello spazio ogni singolo giorno — dimostrando che anche a 400 chilometri dalla Terra i coinquilini litigano ancora per le faccende domestiche.",
+        "sk": "Dňa 2. novembra 2000 nastúpili astronauti po prvý raz na palubu Medzinárodnej vesmírnej stanice, čím ju premenili na trvalo obývaný domov na obežnej dráhe. Odvtedy žijú ľudia vo vesmíre každý jeden deň — dôkaz, že aj 400 kilometrov nad Zemou sa spolubývajúci dokážu pohádať o domáce práce.",
+        "cs": "Dne 2. listopadu 2000 nastoupili astronauti poprvé na palubu Mezinárodní vesmírné stanice, čímž z ní udělali trvale obydlený domov na oběžné dráze. Od té doby žijí lidé ve vesmíru každý den — důkaz, že i 400 kilometrů nad Zemí se spolubydlící dokážou pohádat o domácí práce."
+    }
+}
+

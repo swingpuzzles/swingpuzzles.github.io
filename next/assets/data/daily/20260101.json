@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4pasO7q",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81IulZHz7rL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81IulZHz7rL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81HoAwp7MDL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4qigvXC",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71iKHxfyigL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71iKHxfyigL._AC_SL1000_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71ayPp-7IWL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On January 1, 1752, Britain and its colonies officially adopted January 1 as the start of the new year, aligning with most of Europe. Until then, the year technically began on March 25, which made dating documents… confusing, to say the least. The change simplified life — and gave everyone one clear day to make resolutions they would soon regret.",
+        "es": "El 1 de enero de 1752, Gran Bretaña y sus colonias adoptaron oficialmente el 1 de enero como inicio del año nuevo, alineándose con la mayor parte de Europa. Hasta entonces, el año comenzaba técnicamente el 25 de marzo, lo que hacía que las fechas en los documentos fueran… complicadas, por decirlo suavemente. El cambio simplificó la vida y dio a todos un día claro para hacer propósitos que pronto lamentarían.",
+        "de": "Am 1. Januar 1752 erklärten Großbritannien und seine Kolonien den 1. Januar offiziell zum Jahresbeginn — im Einklang mit dem übrigen Europa. Zuvor begann das Jahr streng genommen am 25. März, was Datierungen in Dokumenten… nun ja, schwierig machte. Die Umstellung vereinfachte vieles — und schenkte allen einen festen Tag für Vorsätze, die man bald bereuen würde.",
+        "fr": "Le 1er janvier 1752, la Grande-Bretagne et ses colonies adoptèrent officiellement le 1er janvier comme début de l’année, s’alignant ainsi sur la plupart de l’Europe. Jusqu’alors, l’année commençait en réalité le 25 mars, ce qui rendait les dates… disons, déroutantes. Ce changement simplifia la vie — et offrit à chacun un jour précis pour prendre des résolutions vite abandonnées.",
+        "it": "Il 1º gennaio 1752 la Gran Bretagna e le sue colonie adottarono ufficialmente il 1º gennaio come inizio dell’anno, allineandosi al resto d’Europa. Fino ad allora l’anno iniziava tecnicamente il 25 marzo, rendendo le date nei documenti… quantomeno confuse. Il cambiamento semplificò la vita — e diede a tutti un giorno chiaro per fare buoni propositi destinati a svanire presto.",
+        "sk": "Dňa 1. januára 1752 prijalo Spojené kráľovstvo so svojimi kolóniami 1. január ako oficičný začiatok roka, čím sa zaradilo k väčšine Európy. Dovtedy sa rok technicky začínal 25. marca, čo robilo dátumy v dokumentoch… prinajmenšom mätúcimi. Zmena život zjednodušila — a dala všetkým jeden jasný deň na predsavzatia, ktoré čoskoro oľutujú.",
+        "cs": "Dne 1. ledna 1752 přijala Velká Británie se svými koloniemi 1. leden jako oficiální začátek roku a sladila se tak s většinou Evropy. Do té doby rok technicky začínal 25. března, takže datování dokumentů bylo… mírně řečeno matoucí. Změna život zjednodušila — a dala všem jeden jasný den pro předsevzetí, kterých brzy litují."
+    }
+}
+

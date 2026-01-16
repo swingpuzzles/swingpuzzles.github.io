@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4qlCxK3",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71BbU+q8lyL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71BbU+q8lyL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81sxsmHID5L._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/49ds9xG",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/917sMmA-OLL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/917sMmA-OLL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/815xoyQkU9L._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 20, 1803, the U.S. Senate ratified the Louisiana Purchase treaty with France, instantly doubling the size of the United States. The deal cost $15 million — about four cents per acre — and even President Jefferson wasn’t entirely sure it was constitutional, but nobody could resist that kind of bargain.",
+        "es": "El 20 de octubre de 1803, el Senado de Estados Unidos ratificó el tratado de la Compra de Luisiana con Francia, duplicando de inmediato el tamaño del país. El acuerdo costó 15 millones de dólares — unos cuatro centavos por acre — y ni el propio presidente Jefferson estaba seguro de que fuera constitucional, pero nadie pudo resistirse a una ganga así.",
+        "de": "Am 20. Oktober 1803 ratifizierte der US-Senat den Vertrag über den Louisiana-Kauf mit Frankreich und verdoppelte damit über Nacht die Größe der Vereinigten Staaten. Das Geschäft kostete 15 Millionen Dollar – etwa vier Cent pro Acre – und selbst Präsident Jefferson war sich nicht sicher, ob es verfassungsgemäß war, doch einem solchen Schnäppchen konnte niemand widerstehen.",
+        "fr": "Le 20 octobre 1803, le Sénat des États-Unis ratifia le traité de l’Achat de la Louisiane avec la France, doublant instantanément la taille du pays. L’affaire coûta 15 millions de dollars — environ quatre cents l’acre — et même le président Jefferson n’était pas certain que ce soit constitutionnel, mais qui aurait résisté à une telle aubaine ?",
+        "it": "Il 20 ottobre 1803, il Senato degli Stati Uniti ratificò il trattato per l’Acquisto della Louisiana dalla Francia, raddoppiando istantaneamente la dimensione del Paese. L’accordo costò 15 milioni di dollari — circa quattro centesimi per acro — e persino il presidente Jefferson non era sicuro che fosse costituzionale, ma a un affare così non si poteva dire di no.",
+        "sk": "Dňa 20. októbra 1803 ratifikoval Senát USA dohodu o kúpe Louisiany od Francúzska, čím sa rozloha Spojených štátov okamžite zdvojnásobila. Celá transakcia stála 15 miliónov dolárov — približne štyri centy za aker — a aj samotný prezident Jefferson si nebol istý, či je to ústavné, no takému obchodu sa jednoducho nedalo odolať.",
+        "cs": "Dne 20. října 1803 Senát USA ratifikoval smlouvu o koupi Louisiany od Francie, čímž se rozloha Spojených států okamžitě zdvojnásobila. Celá dohoda stála 15 milionů dolarů — asi čtyři centy za akr — a i samotný prezident Jefferson si nebyl jistý, zda je to ústavní, ale takovému obchodu prostě nešlo odolat."
+    }
+}
+

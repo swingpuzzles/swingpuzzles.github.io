@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4o4c02n",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/911fM4cv8GL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/911fM4cv8GL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81MFRbZBVxL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/47nvO9Q",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71shUB5EFQL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71shUB5EFQL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71EyL7zNNBL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 25, 1415, King Henry V of England led his vastly outnumbered army to a stunning victory over the French at the Battle of Agincourt. Mud, longbows, and stubborn determination won the day — and Shakespeare later made sure no one forgot it.",
+        "es": "El 25 de octubre de 1415, el rey Enrique V de Inglaterra condujo a su ejército, muy inferior en número, a una asombrosa victoria sobre los franceses en la Batalla de Azincourt. Barro, arcos largos y mucha determinación ganaron la jornada — y Shakespeare se encargó de que nadie lo olvidara.",
+        "de": "Am 25. Oktober 1415 führte König Heinrich V. von England seine zahlenmäßig weit unterlegene Armee zu einem erstaunlichen Sieg über die Franzosen in der Schlacht von Azincourt. Schlamm, Langbögen und eiserner Wille entschieden den Tag – und Shakespeare sorgte dafür, dass ihn niemand vergaß.",
+        "fr": "Le 25 octobre 1415, le roi Henri V d’Angleterre mena son armée, largement inférieure en nombre, à une victoire éclatante sur les Français à la bataille d’Azincourt. La boue, les arcs longs et la détermination triomphèrent — et Shakespeare fit en sorte que le monde s’en souvienne.",
+        "it": "Il 25 ottobre 1415, il re Enrico V d’Inghilterra guidò il suo esercito, molto inferiore di numero, a una sorprendente vittoria contro i francesi nella battaglia di Azincourt. Fango, archi lunghi e determinazione conquistarono il giorno — e Shakespeare fece in modo che nessuno lo dimenticasse.",
+        "sk": "Dňa 25. októbra 1415 viedol anglický kráľ Henrich V. svoju početne slabšiu armádu k ohromujúcemu víťazstvu nad Francúzmi v bitke pri Agincourte. Blato, dlhé luky a tvrdohlavá vôľa rozhodli deň — a Shakespeare sa postaral o to, aby na to svet nezabudol.",
+        "cs": "Dne 25. října 1415 vedl anglický král Jindřich V. svou početně slabší armádu k ohromujícímu vítězství nad Francouzi v bitvě u Azincourtu. Bláto, dlouhé luky a odhodlání rozhodly den — a Shakespeare zařídil, aby se na to nikdy nezapomnělo."
+    }
+}
+

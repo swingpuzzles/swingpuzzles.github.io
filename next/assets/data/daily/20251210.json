@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3MpxY1Z",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81Qq4tKTpsL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81Qq4tKTpsL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71UPNQgojzL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/44qUYUh",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91Mpthh6ryL._SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91Mpthh6ryL._SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91EwxnRkDUL._SY450_.jpg"
+    },
+    "story": {
+        "en": "On December 10, 1815, Ada Lovelace was born — the mathematician who later wrote what is widely considered the first computer algorithm, long before computers existed. Her notes described how a machine could process symbols, not just numbers, making her the spiritual ancestor of all programmers. Every time a computer crashes today, someone somewhere probably whispers: ‘Sorry, Ada.’",
+        "es": "El 10 de diciembre de 1815 nació Ada Lovelace, la matemática que más tarde escribiría lo que muchos consideran el primer algoritmo informático, mucho antes de que existieran los ordenadores. Sus notas describían cómo una máquina podía procesar símbolos y no solo números, convirtiéndola en la antepasada espiritual de todos los programadores. Cada vez que un ordenador se bloquea hoy, alguien en algún lugar seguramente susurra: ‘Perdón, Ada.’",
+        "de": "Am 10. Dezember 1815 wurde Ada Lovelace geboren — die Mathematikerin, die später das schrieb, was heute als der erste Computeralgorithmus gilt, lange bevor Computer existierten. Ihre Notizen beschrieben, wie eine Maschine nicht nur Zahlen, sondern auch Symbole verarbeiten könnte, was sie zur geistigen Ahnin aller Programmierer macht. Immer wenn heute ein Computer abstürzt, flüstert irgendwo bestimmt jemand: „Sorry, Ada.“",
+        "fr": "Le 10 décembre 1815 naquit Ada Lovelace — la mathématicienne qui écrivit plus tard ce que l’on considère comme le tout premier algorithme informatique, bien avant que les ordinateurs n’existent. Ses notes expliquaient comment une machine pouvait manipuler des symboles et pas seulement des chiffres, faisant d’elle l’ancêtre spirituelle de tous les programmeurs. Chaque fois qu’un ordinateur plante aujourd’hui, quelqu’un doit sans doute murmurer : « Désolée, Ada. »",
+        "it": "Il 10 dicembre 1815 nacque Ada Lovelace — la matematica che più tardi avrebbe scritto quello che è considerato il primo algoritmo informatico, molto prima che esistessero i computer. I suoi appunti descrivevano come una macchina potesse elaborare simboli e non solo numeri, rendendola l’antenata spirituale di tutti i programmatori. Ogni volta che un computer si blocca oggi, qualcuno da qualche parte sussurra: ‘Scusa, Ada.’",
+        "sk": "Dňa 10. decembra 1815 sa narodila Ada Lovelace — matematička, ktorá neskôr napísala to, čo sa dnes považuje za prvý počítačový algoritmus, a to dávno predtým, než existovali počítače. Vo svojich poznámkach opisovala, ako by stroj mohol spracovávať nielen čísla, ale aj symboly, čím sa stala duchovnou predchodkyňou všetkých programátorov. A vždy, keď dnes niekomu spadne počítač, niekde vo svete určite zaznie tiché: „Prepáč, Ada.“",
+        "cs": "Dne 10. prosince 1815 se narodila Ada Lovelace — matematička, která později napsala to, co je dnes považováno za první počítačový algoritmus, a to dávno před existencí počítačů. Ve svých poznámkách popsala, jak by stroj mohl zpracovávat nejen čísla, ale i symboly, čímž se stala duchovní předchůdkyní všech programátorů. A pokaždé, když dnes někomu spadne počítač, někde na světě jistě zazní tiché: „Promiň, Ado.“"
+    }
+}
+

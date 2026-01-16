@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4oRmx1m",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81sr2Oj9eNL._AC_SX450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81sr2Oj9eNL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81jxD7bPYUL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/49zHZDj",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71UETElksZL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71UETElksZL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71IF-m3bkSL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On November 16, 1959, the world was introduced to the first microchip-based image sensor — a tiny device that would one day allow cameras to become digital. At the time, it looked more like a lab curiosity than a revolution. Yet from that humble start came phone cameras, selfies, and the ability to photograph your lunch in eight different filters.",
+        "es": "El 16 de noviembre de 1959 se presentó al mundo el primer sensor de imagen basado en microchips, un pequeño dispositivo que algún día permitiría que las cámaras fueran digitales. En aquel momento parecía más una curiosidad de laboratorio que una revolución. Pero de ese comienzo humilde surgieron las cámaras de los móviles, los selfis y la posibilidad de fotografiar tu comida con ocho filtros distintos.",
+        "de": "Am 16. November 1959 wurde der Welt der erste mikrochipbasierte Bildsensor vorgestellt – ein winziges Gerät, das eines Tages digitale Kameras ermöglichen würde. Damals wirkte es eher wie eine Labormerkwürdigkeit als wie eine Revolution. Doch aus diesem bescheidenen Anfang entstanden Smartphone-Kameras, Selfies und die Fähigkeit, sein Mittagessen mit acht verschiedenen Filtern zu fotografieren.",
+        "fr": "Le 16 novembre 1959, le premier capteur d’image basé sur une puce électronique fut présenté au monde — un minuscule dispositif qui permettrait un jour aux appareils photo de devenir numériques. À l’époque, cela ressemblait plus à une curiosité de laboratoire qu’à une révolution. Pourtant, de ce début modeste sont nés les appareils photo des smartphones, les selfies et la possibilité de photographier son déjeuner avec huit filtres différents.",
+        "it": "Il 16 novembre 1959 venne presentato il primo sensore d’immagine basato su microchip — un minuscolo dispositivo che un giorno avrebbe reso possibili le fotocamere digitali. All’epoca sembrava più una curiosità da laboratorio che una rivoluzione. Eppure, da quell’inizio modesto nacquero le fotocamere degli smartphone, i selfie e la possibilità di fotografare il proprio pranzo con otto filtri diversi.",
+        "sk": "Dňa 16. novembra 1959 bol svetu predstavený prvý obrazový senzor založený na mikročipe — malinké zariadenie, ktoré raz umožnilo vznik digitálnych fotoaparátov. Vtedy pôsobil skôr ako laboratórna zvláštnosť než revolúcia. No z tohto nenápadného začiatku vznikli mobilné foťáky, selfíčka a možnosť nafotiť si obed v ôsmich rôznych filtroch.",
+        "cs": "Dne 16. listopadu 1959 byl světu představen první obrazový senzor založený na mikrochipu — drobné zařízení, které jednou umožnilo vznik digitálních fotoaparátů. Tehdy působil spíše jako laboratorní kuriozita než jako revoluce. Ale z tohoto nenápadného začátku vznikly mobilní kamery, selfíčka a možnost vyfotit si oběd v osmi různých filtrech."
+    }
+}
+

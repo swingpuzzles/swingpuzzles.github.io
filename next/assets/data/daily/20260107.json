@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/49rpVcS",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/710MuX7Y6SL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/710MuX7Y6SL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/710MuX7Y6SL._AC_SL1200_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4poLsc7",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91oBOjYpJxL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91oBOjYpJxL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81lQhl6vglL._AC_SX522_.jpg"
+    },
+    "story": {
+        "en": "On January 7, 1610, Galileo Galilei observed four bright points near Jupiter through his telescope. At first he thought they were stars — until they moved. He had discovered Jupiter’s largest moons, proof that not everything in the sky revolves around Earth. It was a quiet observation that loudly annoyed a lot of important people.",
+        "es": "El 7 de enero de 1610, Galileo Galilei observó a través de su telescopio cuatro puntos brillantes cerca de Júpiter. Al principio creyó que eran estrellas, hasta que se movieron. Había descubierto las mayores lunas de Júpiter, una prueba de que no todo en el cielo gira alrededor de la Tierra. Fue una observación tranquila que molestó mucho a gente muy influyente.",
+        "de": "Am 7. Januar 1610 sah Galileo Galilei durch sein Teleskop vier helle Punkte in der Nähe des Jupiter. Zunächst hielt er sie für Sterne — bis sie sich bewegten. Er hatte die größten Monde des Jupiter entdeckt und gezeigt, dass sich nicht alles am Himmel um die Erde dreht. Eine stille Entdeckung, die viele wichtige Leute sehr laut verärgerte.",
+        "fr": "Le 7 janvier 1610, Galilée observa au télescope quatre petits points lumineux près de Jupiter. Il pensa d’abord qu’il s’agissait d’étoiles — jusqu’à ce qu’ils bougent. Il venait de découvrir les plus grandes lunes de Jupiter, prouvant que tout dans le ciel ne tourne pas autour de la Terre. Une observation calme… qui irrita bruyamment de nombreuses autorités.",
+        "it": "Il 7 gennaio 1610 Galileo Galilei vide attraverso il suo telescopio quattro punti luminosi vicino a Giove. All’inizio pensò fossero stelle, finché non si mossero. Aveva scoperto le lune più grandi di Giove, dimostrando che non tutto nel cielo ruota attorno alla Terra. Una scoperta silenziosa che fece molto rumore tra le persone importanti.",
+        "sk": "Dňa 7. januára 1610 pozoroval Galileo Galilei cez ďalekohľad štyri jasné body pri Jupiteri. Spočiatku si myslel, že sú to hviezdy — kým sa nepohli. Objavil najväčšie Jupiterove mesiace a ukázal, že nie všetko na oblohe obieha okolo Zeme. Tiché pozorovanie, ktoré poriadne rozrušilo mnohých vplyvných ľudí.",
+        "cs": "Dne 7. ledna 1610 zahlédl Galileo Galilei dalekohledem čtyři jasné body u Jupiteru. Nejdřív je považoval za hvězdy — dokud se nepohnuly. Objevil největší Jupiterovy měsíce a ukázal, že ne všechno na nebi obíhá kolem Země. Tiché zjištění, které velmi hlasitě rozčílilo řadu významných lidí."
+    }
+}
+

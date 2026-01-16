@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4itPBcZ",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/A1G+KMkFUBL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/A1G+KMkFUBL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71DiIdO3krL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3LVbsgW",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/810BrBV8qiL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/810BrBV8qiL._AC_SL1188_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/A1kHLuM8sWL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On November 13, 1899, the world’s first speeding ticket was issued to a New York driver going a shocking 12 miles per hour (about 19 km/h). The officer had to chase him down on a bicycle, which surely made the lecture afterward even more humiliating. It was the beginning of a long human tradition — inventing faster machines, and then inventing rules to slow them down.",
+        "es": "El 13 de noviembre de 1899 se emitió la primera multa por exceso de velocidad del mundo, a un conductor de Nueva York que iba a unos sorprendentes 12 millas por hora (unos 19 km/h). El agente tuvo que perseguirlo en bicicleta, lo que sin duda hizo la reprimenda aún más humillante. Así comenzó una larga tradición humana: inventar máquinas más rápidas y luego inventar reglas para frenarlas.",
+        "de": "Am 13. November 1899 wurde der erste Strafzettel wegen zu schnellen Fahrens ausgestellt – für einen New Yorker Fahrer, der unglaubliche 12 Meilen pro Stunde fuhr (rund 19 km/h). Der Polizist musste ihn auf einem Fahrrad einholen, was die anschließende Standpauke sicher noch peinlicher machte. Es war der Beginn einer langen menschlichen Tradition: schnellere Maschinen bauen und dann Regeln erfinden, um sie zu bremsen.",
+        "fr": "Le 13 novembre 1899 fut délivrée la première contravention pour excès de vitesse de l’histoire, à un conducteur new-yorkais roulant à l’incroyable vitesse de 12 miles par heure (environ 19 km/h). L’agent dut le rattraper à vélo, ce qui rendit la remontrance suivante encore plus embarrassante. Ce fut le début d’une longue tradition humaine : inventer des machines plus rapides, puis des règles pour les ralentir.",
+        "it": "Il 13 novembre 1899 fu emessa la prima multa per eccesso di velocità della storia, a un automobilista di New York che viaggiava alla sconvolgente velocità di 12 miglia orarie (circa 19 km/h). L'agente dovette inseguirlo in bicicletta, rendendo la predica successiva ancora più imbarazzante. Fu l'inizio di una lunga tradizione umana: creare macchine sempre più veloci, e poi creare le regole per rallentarle.",
+        "sk": "Dňa 13. novembra 1899 dostal vodič v New Yorku prvú pokutu za rýchlosť na svete — išiel šokujúcich 12 míľ za hodinu (asi 19 km/h). Policajt ho musel dobehnúť na bicykli, čo určite spravilo následné napomenutie ešte trápnejším. Bol to začiatok dlhej ľudskej tradície: vymýšľať rýchle stroje a potom aj pravidlá, ktoré ich spomalia.",
+        "cs": "Dne 13. listopadu 1899 byla v New Yorku udělena první pokuta za překročení rychlosti — řidiči, který jel ohromujících 12 mil za hodinu (zhruba 19 km/h). Policista ho musel dohnat na kole, což jistě udělalo následnou domluvu ještě trapnější. Byl to začátek dlouhé lidské tradice: vymýšlet rychlejší stroje a pak také pravidla, která je zase zpomalí."
+    }
+}
+

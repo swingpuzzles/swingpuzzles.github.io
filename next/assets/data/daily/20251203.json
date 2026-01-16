@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4ooUOno",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81IaIHZSNSL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81IaIHZSNSL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71UnnxqHeaL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4peHnb2",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81OJU2fItfL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81OJU2fItfL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81KuqMp2WXL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On December 3, 1901, Guglielmo Marconi succeeded in sending the first wireless telegraph message across the Atlantic. The signal — a simple letter ‘S’ in Morse code — traveled from England to Canada. The message was short, the equipment enormous, and the static so loud that Marconi probably needed a week to hear properly again. But it proved that communication no longer needed wires, only a very determined inventor and a bit of atmospheric luck.",
+        "es": "El 3 de diciembre de 1901, Guglielmo Marconi logró enviar el primer mensaje telegráfico inalámbrico a través del Atlántico. La señal — una simple ‘S’ en código Morse — viajó desde Inglaterra hasta Canadá. El mensaje fue corto, el equipo enorme y la estática tan fuerte que Marconi probablemente tardó una semana en volver a oír bien. Pero demostró que la comunicación ya no necesitaba cables, solo un inventor muy decidido y un poco de suerte atmosférica.",
+        "de": "Am 3. Dezember 1901 gelang es Guglielmo Marconi, die erste drahtlose Telegrafennachricht über den Atlantik zu senden. Das Signal — ein einfaches ‘S’ im Morsecode — reiste von England bis nach Kanada. Die Nachricht war kurz, die Geräte gigantisch und das Rauschen so laut, dass Marconi vermutlich eine Woche brauchte, um wieder normal zu hören. Doch er bewies, dass Kommunikation keine Drähte mehr brauchte — nur einen entschlossenen Erfinder und etwas atmosphärisches Glück.",
+        "fr": "Le 3 décembre 1901, Guglielmo Marconi réussit à transmettre le premier message télégraphique sans fil à travers l’Atlantique. Le signal — une simple lettre ‘S’ en Morse — voyagea de l’Angleterre au Canada. Le message était court, l’équipement immense et les parasites si forts que Marconi dut probablement attendre une semaine avant de bien réentendre. Mais il prouva que la communication n’avait plus besoin de câbles — seulement d’un inventeur déterminé et d’un peu de chance atmosphérique.",
+        "it": "Il 3 dicembre 1901 Guglielmo Marconi riuscì a inviare il primo messaggio telegrafico senza fili attraverso l’Atlantico. Il segnale — una semplice ‘S’ in codice Morse — viaggiò dall’Inghilterra al Canada. Il messaggio era corto, l’attrezzatura enorme e il rumore di fondo così forte che a Marconi probabilmente servì una settimana per tornare a sentire bene. Ma dimostrò che la comunicazione non aveva più bisogno di fili — solo di un inventore determinato e di un po’ di fortuna atmosferica.",
+        "sk": "Dňa 3. decembra 1901 sa Guglielmovi Marconimu podarilo odoslať prvú bezdrôtovú telegrafickú správu cez Atlantik. Signál — jednoduché „S“ v Morzeovke — precestoval cestu z Anglicka do Kanady. Správa bola krátka, zariadenia obrovské a šum taký hlasný, že Marconi zrejme týždeň poriadne nepočul. No dokázal, že komunikácia už nepotrebuje drôty — iba odhodlaného vynálezcu a trochu atmosférického šťastia.",
+        "cs": "Dne 3. prosince 1901 se Guglielmu Marconimu podařilo odeslat první bezdrátový telegrafní signál přes Atlantik. Signál — jednoduché „S“ v Morseově abecedě — doputoval z Anglie do Kanady. Zpráva byla krátká, zařízení obrovské a šum tak hlasitý, že Marconi možná týden pořádně neslyšel. Ale dokázal, že komunikace už nepotřebuje dráty — jen odhodlaného vynálezce a trochu atmosférického štěstí."
+    }
+}
+

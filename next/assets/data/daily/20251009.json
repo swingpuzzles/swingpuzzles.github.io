@@ -1,0 +1,23 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3Wt7aPT",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71hzbpDbiWL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71hzbpDbiWL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71X47ZVU7TL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4mT7MZO",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71r4xeDdzLL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71r4xeDdzLL._AC_SL1000_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71+Uk2oLxJS._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 9, 1992, a fragment of a meteorite crashed into Peekskill, New York — and hit a parked 1980 Chevrolet Malibu dead center. The meteorite weighing ~13 kg smashed the car’s tailgate!",
+        "es": "El 9 de octubre de 1992, un fragmento de un meteorito cayó en Peekskill, Nueva York — y golpeó de lleno un Chevrolet Malibu 1980 estacionado. ¡El meteorito de unos 13 kg destrozó la puerta trasera del auto!",
+        "de": "Am 9. Oktober 1992 stürzte ein Meteorfragment in Peekskill, New York — und traf exakt ein geparktes 1980er Chevrolet Malibu. Der etwa 13 kg schwere Brocken zertrümmerte die Heckklappe!",
+        "fr": "Le 9 octobre 1992, un fragment de météorite s’écrasa à Peekskill, New York — et toucha en plein un Chevrolet Malibu de 1980 stationné. Le météorite, d’environ 13 kg, pulvérisa le hayon !",
+        "it": "Il 9 ottobre 1992, un frammento di meteorite precipitò a Peekskill, New York — colpendo in pieno una Chevrolet Malibu del 1980 parcheggiata. Il meteorite, del peso di ~13 kg, distrusse il portellone posteriore!",
+        "sk": "Dňa 9. októbra 1992 dopadol meteorický fragment v Peekskill, New York — a trafil presne zaparkovaný Chevrolet Malibu z roku 1980. Meteorito vážiace ~13 kg rozdrvil zadné dvere auta!",
+        "cs": "Dne 9. října 1992 se úlomky meteoritu zřítily v Peekskill, New York — a zasáhly přímo zaparkovaný Chevrolet Malibu z roku 1980. Meteor s hmotností cca 13 kg rozbil kufr auta!"
+    }
+}

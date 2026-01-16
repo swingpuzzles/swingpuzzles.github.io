@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4ackGQ3",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81IaIHZSNSL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81IaIHZSNSL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71UnnxqHeaL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4rno7K6",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71yK6tZnakL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71yK6tZnakL._AC_SL1181_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71ikRh4bzcL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On November 30, 1934, German engineer Christian Hülsmeyer successfully tested an early radar-like device that could detect ships through fog. At the time, he called it a ‘telemobiloscope,’ which sounded impressive enough to convince investors it was only slightly magical. Although the idea didn’t catch on immediately, it became the foundation of modern radar — and a world where losing ships to bad weather became much less fashionable.",
+        "es": "El 30 de noviembre de 1934, el ingeniero alemán Christian Hülsmeyer probó con éxito un primer dispositivo similar al radar capaz de detectar barcos entre la niebla. En aquel tiempo lo llamó ‘telemobiloscopio’, un nombre lo bastante impresionante como para convencer a los inversores de que era solo un poco mágico. Aunque la idea no triunfó de inmediato, se convirtió en la base del radar moderno — y en un mundo donde perder barcos por mal tiempo dejó de ser aceptable.",
+        "de": "Am 30. November 1934 testete der deutsche Ingenieur Christian Hülsmeyer erfolgreich ein frühes radartaugliches Gerät, das Schiffe im Nebel orten konnte. Damals nannte er es ‘Telemobiloskop’, ein Name, der beeindruckend genug klang, um Investoren zu überzeugen, dass es nur ein bisschen zauberhaft sei. Obwohl sich die Idee nicht sofort durchsetzte, wurde sie zum Fundament des modernen Radars — und machte das Verlieren von Schiffen im schlechten Wetter deutlich unmodischer.",
+        "fr": "Le 30 novembre 1934, l’ingénieur allemand Christian Hülsmeyer testa avec succès un dispositif précoce, semblable au radar, capable de détecter des navires dans le brouillard. À l’époque, il l’appela ‘télé-mobiloscope’, un nom suffisamment impressionnant pour convaincre les investisseurs qu’il n’était qu’un peu magique. Bien que l’idée ne se soit pas imposée immédiatement, elle devint le fondement du radar moderne — et d’un monde où perdre des navires à cause du mauvais temps devint beaucoup moins acceptable.",
+        "it": "Il 30 novembre 1934 l’ingegnere tedesco Christian Hülsmeyer testò con successo un primissimo dispositivo simile al radar, capace di rilevare navi nella nebbia. All’epoca lo chiamò ‘telemobiloscopio’, un nome abbastanza imponente da convincere gli investitori che fosse solo lievemente magico. Sebbene l’idea non si diffuse subito, divenne la base del radar moderno — e di un mondo in cui perdere navi per maltempo divenne molto meno elegante.",
+        "sk": "Dňa 30. novembra 1934 úspešne otestoval nemecký inžinier Christian Hülsmeyer rané zariadenie podobné radaru, ktoré dokázalo zachytiť lode aj v hustej hmle. Nazval ho „telemobiloskop“, čo znelo dostatočne pôsobivo na to, aby investorov presvedčil, že ide len o trochu mágie. Hoci sa jeho nápad okamžite neuchytil, stal sa základom moderného radaru — a sveta, v ktorom je stratiť loď v zlom počasí oveľa menej „v móde“. ",
+        "cs": "Dne 30. listopadu 1934 úspěšně otestoval německý inženýr Christian Hülsmeyer rané zařízení podobné radaru, které dokázalo zachytit lodě i v husté mlze. Nazval ho „telemobiloskop“, což znělo dost působivě na to, aby investory přesvědčil, že jde jen o trochu magie. Ačkoli se nápad okamžitě neprosadil, stal se základem moderního radaru — a světa, ve kterém je ztratit loď v špatném počasí mnohem méně „v módě“."
+    }
+}
+

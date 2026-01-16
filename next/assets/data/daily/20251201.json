@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4rj4aUA",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81JmIKgWlkL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81JmIKgWlkL._AC_SL1395_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81AveW315NL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4rdOYbr",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81egAPYl7aL._SX522_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81egAPYl7aL._SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81hKXirvJfL._SX342_.jpg"
+    },
+    "story": {
+        "en": "On December 1, 1840, the world’s first prepaid postal stamp — the famous Penny Black — officially entered broader use in the United Kingdom. Suddenly, sending mail no longer required guessing fees, weighing envelopes with kitchen tools, or bribing the mail carrier with cookies. With a single tiny sticker, communication became cheaper, faster, and far less chaotic.",
+        "es": "El 1 de diciembre de 1840 entró en uso generalizado el primer sello postal prepago del mundo — el famoso Penny Black — en el Reino Unido. De repente, enviar correo ya no requería adivinar tarifas, pesar sobres con utensilios de cocina ni sobornar al cartero con galletas. Con una pequeña pegatina, la comunicación se volvió más barata, rápida y mucho menos caótica.",
+        "de": "Am 1. Dezember 1840 kam die weltweit erste vorausbezahlte Briefmarke — die berühmte Penny Black — im Vereinigten Königreich in breitere Nutzung. Plötzlich musste man beim Verschicken von Post keine Gebühren mehr erraten, Briefe mit Küchengeräten abwiegen oder den Postboten mit Keksen bestechen. Dank eines winzigen Aufklebers wurde Kommunikation günstiger, schneller und deutlich weniger chaotisch.",
+        "fr": "Le 1ᵉʳ décembre 1840, le premier timbre postal prépayé au monde — le célèbre Penny Black — entra en usage plus large au Royaume-Uni. Soudain, envoyer une lettre ne nécessitait plus de deviner les tarifs, de peser les enveloppes avec des ustensiles de cuisine ou de soudoyer le facteur avec des biscuits. Avec un simple autocollant, la communication devint moins chère, plus rapide et nettement moins chaotique.",
+        "it": "Il 1º dicembre 1840 entrò in uso più ampio nel Regno Unito il primo francobollo prepagato del mondo — il celebre Penny Black. All’improvviso spedire una lettera non richiese più indovinare le tariffe, pesare le buste con utensili da cucina o corrompere il postino con biscotti. Con un minuscolo adesivo, la comunicazione divenne più economica, veloce e molto meno caotica.",
+        "sk": "Dňa 1. decembra 1840 sa vo Veľkej Británii začala vo väčšom používať vôbec prvá predplatená poštová známka na svete — slávna Penny Black. Zrazu už na odoslanie listu nebolo treba hádať poplatky, vážiť obálky kuchynskými pomôckami ani podplácať poštára koláčmi. Jeden malý papierik dokázal urobiť komunikáciu lacnejšou, rýchlejšou a oveľa menej chaotickou.",
+        "cs": "Dne 1. prosince 1840 se ve Spojeném království začala ve větší míře používat první předplacená poštovní známka na světě — slavná Penny Black. Najednou už k odeslání dopisu nebylo potřeba hádat poplatky, vážit obálky pomocí kuchyňského náčiní ani uplácet pošťáka sušenkami. Jedna drobná nálepka dokázala udělat komunikaci levnější, rychlejší a mnohem méně chaotickou."
+    }
+}
+

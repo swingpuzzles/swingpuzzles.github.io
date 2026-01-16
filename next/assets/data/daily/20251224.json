@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4s8MBa0",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81oHzowPsyL._AC_SY450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81oHzowPsyL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91Q4GtOPMdL._AC_SX466_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3Ledh8N",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91ms4RGCuGL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91ms4RGCuGL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/812WCS+c3kL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On December 24, 1906, engineer Reginald Fessenden made the first known radio broadcast of voice and music. Sailors expecting routine Morse code instead heard a violin, a Bible reading, and a Christmas greeting. For many, it felt almost magical — proof that technology could carry not just signals, but human warmth across the darkness.",
+        "es": "El 24 de diciembre de 1906, el ingeniero Reginald Fessenden realizó la primera transmisión de radio conocida con voz y música. Los marineros, que esperaban señales en código Morse, escucharon un violín, una lectura bíblica y un saludo navideño. Para muchos fue casi mágico: una prueba de que la tecnología podía transmitir no solo señales, sino también cercanía humana en medio de la oscuridad.",
+        "de": "Am 24. Dezember 1906 sendete der Ingenieur Reginald Fessenden die erste bekannte Radiosendung mit Sprache und Musik. Seeleute, die eigentlich Morsezeichen erwarteten, hörten plötzlich eine Geige, eine Bibellesung und einen Weihnachtsgruß. Für viele wirkte es fast magisch — ein Beweis, dass Technik nicht nur Signale, sondern auch menschliche Wärme durch die Dunkelheit tragen kann.",
+        "fr": "Le 24 décembre 1906, l’ingénieur Reginald Fessenden réalisa la première diffusion radiophonique connue de voix et de musique. Des marins, qui s’attendaient à recevoir du morse, entendirent un violon, une lecture biblique et un message de Noël. Pour beaucoup, ce fut presque magique — la preuve que la technologie pouvait transmettre autre chose que des signaux : une chaleur humaine à travers l’obscurité.",
+        "it": "Il 24 dicembre 1906 l’ingegnere Reginald Fessenden realizzò la prima trasmissione radiofonica conosciuta di voce e musica. I marinai, che si aspettavano segnali in codice Morse, udirono invece un violino, una lettura biblica e un augurio natalizio. Per molti fu quasi magico — la dimostrazione che la tecnologia poteva trasmettere non solo segnali, ma anche calore umano nel buio.",
+        "sk": "Dňa 24. decembra 1906 uskutočnil inžinier Reginald Fessenden prvé známe rozhlasové vysielanie hovoreného slova a hudby. Námorníci, ktorí čakali bežné signály v morzeovke, namiesto toho počuli husle, čítanie z Biblie a vianočný pozdrav. Pre mnohých to pôsobilo takmer magicky — ako dôkaz, že technológia dokáže šíriť nielen signály, ale aj ľudské teplo cez tmu.",
+        "cs": "Dne 24. prosince 1906 uskutečnil inženýr Reginald Fessenden první známé rozhlasové vysílání hlasu a hudby. Námořníci, kteří očekávali běžné signály v morseovce, místo toho slyšeli housle, čtení z Bible a vánoční pozdrav. Pro mnohé to bylo téměř kouzelné — důkaz, že technologie dokáže přenášet nejen signály, ale i lidské teplo temnotou."
+    }
+}
+

@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4or0FcT",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91Xc9YoiUkL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91Xc9YoiUkL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91Cvdf5H5bL._AC_SX466_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/49Acc4Y",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71Ps2R5VHBL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71Ps2R5VHBL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81Z28nH2R7L._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On November 8, 1895, German physicist Wilhelm Conrad Röntgen discovered X-rays while experimenting with cathode rays. To his surprise, he found that the mysterious radiation could pass through flesh but not bone — revealing the first-ever shadowy image of a human hand. He had just invented medical imaging… and made privacy a lot more complicated.",
+        "es": "El 8 de noviembre de 1895, el físico alemán Wilhelm Conrad Röntgen descubrió los rayos X mientras experimentaba con rayos catódicos. Para su sorpresa, la misteriosa radiación podía atravesar la carne pero no los huesos, revelando la primera imagen sombría de una mano humana. Acababa de inventar la radiografía… y de complicar bastante el concepto de privacidad.",
+        "de": "Am 8. November 1895 entdeckte der deutsche Physiker Wilhelm Conrad Röntgen die Röntgenstrahlen, als er mit Kathodenstrahlen experimentierte. Zu seiner Überraschung durchdrang die mysteriöse Strahlung Fleisch, aber nicht Knochen – und zeigte das erste schattenhafte Bild einer menschlichen Hand. Damit erfand er die medizinische Bildgebung… und machte die Privatsphäre etwas komplizierter.",
+        "fr": "Le 8 novembre 1895, le physicien allemand Wilhelm Conrad Röntgen découvrit les rayons X en expérimentant avec des rayons cathodiques. À sa grande surprise, cette mystérieuse radiation traversait la chair mais pas les os — révélant la première image spectrale d’une main humaine. Il venait d’inventer l’imagerie médicale… et de rendre la vie privée un peu plus délicate.",
+        "it": "L’8 novembre 1895, il fisico tedesco Wilhelm Conrad Röntgen scoprì i raggi X mentre sperimentava con i raggi catodici. Con sua sorpresa, la misteriosa radiazione attraversava la carne ma non le ossa — rivelando la prima immagine spettrale di una mano umana. Aveva appena inventato la diagnostica per immagini… e complicato un po’ il concetto di privacy.",
+        "sk": "Dňa 8. novembra 1895 objavil nemecký fyzik Wilhelm Conrad Röntgen röntgenové žiarenie počas experimentov s katódovými lúčmi. Na svoje prekvapenie zistil, že tajomné lúče prechádzajú cez tkanivo, ale nie cez kosti — čím vytvoril prvý tieňový obraz ľudskej ruky. Práve vynašiel lekárske zobrazovanie… a trochu skomplikoval pojem súkromia.",
+        "cs": "Dne 8. listopadu 1895 objevil německý fyzik Wilhelm Conrad Röntgen rentgenové záření při experimentech s katodovými paprsky. K svému překvapení zjistil, že tajemné záření prochází tkáněmi, ale ne kostmi — a vytvořil tak první stínový obraz lidské ruky. Právě vynalezl lékařské zobrazování… a trochu zkomplikoval pojem soukromí."
+    }
+}
+

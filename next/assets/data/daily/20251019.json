@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4oqRTeD",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71ME+WzjguL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71ME+WzjguL._AC_SL1000_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81D9ehE3jOL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4oqKH24",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/A1AMFeimpBL._AC_SY879_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/A1AMFeimpBL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91BK+xDtlrL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 19, 1967, the Soviet probe Venera 4 became the first spacecraft to transmit data from another planet — Venus. It confirmed that the planet’s atmosphere was mostly carbon dioxide and hot enough to melt lead, ending any dreams of Venusian vacation homes.",
+        "es": "El 19 de octubre de 1967, la sonda soviética Venera 4 se convirtió en la primera nave espacial en transmitir datos desde otro planeta — Venus. Confirmó que su atmósfera estaba compuesta principalmente de dióxido de carbono y que hacía suficiente calor como para derretir plomo, acabando con cualquier sueño de vacaciones venusianas.",
+        "de": "Am 19. Oktober 1967 wurde die sowjetische Sonde Venera 4 das erste Raumfahrzeug, das Daten von einem anderen Planeten — der Venus — übermittelte. Sie bestätigte, dass die Atmosphäre größtenteils aus Kohlendioxid bestand und heiß genug war, um Blei zu schmelzen – das Ende aller Träume von Ferienhäusern auf der Venus.",
+        "fr": "Le 19 octobre 1967, la sonde soviétique Venera 4 devint la première à transmettre des données depuis une autre planète — Vénus. Elle confirma que l’atmosphère était composée principalement de dioxyde de carbone et assez chaude pour faire fondre le plomb, mettant fin à tout rêve de vacances vénusiennes.",
+        "it": "Il 19 ottobre 1967, la sonda sovietica Venera 4 divenne la prima navicella spaziale a trasmettere dati da un altro pianeta — Venere. Confermò che l’atmosfera era composta principalmente da anidride carbonica e calda abbastanza da sciogliere il piombo, ponendo fine a ogni sogno di vacanze venusiane.",
+        "sk": "Dňa 19. októbra 1967 sa sovietska sonda Venera 4 stala prvou vesmírnou sondou, ktorá odoslala údaje z inej planéty — z Venuše. Potvrdila, že atmosféra je z väčšej časti z oxidu uhličitého a že teplota je taká vysoká, že by roztavila olovo — čím zničila všetky sny o dovolenkových domoch na Venuši.",
+        "cs": "Dne 19. října 1967 se sovětská sonda Venera 4 stala první sondou, která odeslala data z jiné planety — z Venuše. Potvrdila, že atmosféra je převážně z oxidu uhličitého a že je tam horko takové, že by roztavilo olovo — a tím ukončila všechny sny o dovolené na Venuši."
+    }
+}
+

@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/45B7Mb8",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81eXyt8WEEL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81eXyt8WEEL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81y84hvX-SL._AC_SX522_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4behCTW",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71e8LTHbXZL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71e8LTHbXZL._AC_SL1427_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71M5En1VURL._AC_SX522_.jpg"
+    },
+    "story": {
+        "en": "On January 9, 2007, Steve Jobs introduced the first iPhone to the world. It was a phone, a music player, and an internet device — all in one touchscreen gadget. Many people were skeptical at first, but soon pockets everywhere were filled with tiny computers… and slightly fewer physical buttons.",
+        "es": "El 9 de enero de 2007, Steve Jobs presentó al mundo el primer iPhone. Era un teléfono, un reproductor de música y un dispositivo de internet, todo en un solo aparato con pantalla táctil. Al principio muchos dudaron, pero pronto los bolsillos de medio planeta se llenaron de pequeños ordenadores… y de muchos menos botones.",
+        "de": "Am 9. Januar 2007 stellte Steve Jobs der Welt das erste iPhone vor. Es war Telefon, Musikplayer und Internetgerät zugleich — alles in einem Touchscreen. Anfangs waren viele skeptisch, doch bald trugen Millionen kleine Computer in der Hosentasche… und deutlich weniger Tasten.",
+        "fr": "Le 9 janvier 2007, Steve Jobs présenta au monde le tout premier iPhone. C’était un téléphone, un lecteur de musique et un appareil internet réunis dans un écran tactile. Beaucoup étaient sceptiques au début, mais très vite les poches se remplirent de petits ordinateurs… et de beaucoup moins de boutons.",
+        "it": "Il 9 gennaio 2007 Steve Jobs presentò al mondo il primo iPhone. Era un telefono, un lettore musicale e un dispositivo internet — tutto in un unico apparecchio con touchscreen. All’inizio molti erano scettici, ma presto le tasche si riempirono di piccoli computer… e di molti meno pulsanti.",
+        "sk": "Dňa 9. januára 2007 predstavil Steve Jobs svetu prvý iPhone. Bol to telefón, prehrávač hudby aj internetové zariadenie — všetko v jednom dotykovom prístroji. Spočiatku boli mnohí skeptickí, no čoskoro mali ľudia vo vreckách malé počítače… a oveľa menej tlačidiel.",
+        "cs": "Dne 9. ledna 2007 představil Steve Jobs světu první iPhone. Byl to telefon, hudební přehrávač i internetové zařízení — vše v jednom dotykovém přístroji. Zpočátku byli mnozí skeptičtí, ale brzy byly kapsy plné malých počítačů… a mnohem méně tlačítek."
+    }
+}
+

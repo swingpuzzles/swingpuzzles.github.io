@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4ocdcAE",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/818Aml9KarL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/818Aml9KarL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81T1lGnXNwL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4np8HS0",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91GpKSOlF3L._AC_SY300_SX300_QL70_FMwebp_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91GpKSOlF3L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71GbLM88rUL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On October 29, 1969, the first message was sent over ARPANET — the network that would eventually become the internet. The message was supposed to be the word 'LOGIN,' but the system crashed after just two letters. Even the internet started with a typo. Within months, more universities joined, and a quiet revolution began — one that would soon connect the entire world (and a lot of cat pictures).",
+        "es": "El 29 de octubre de 1969 se envió el primer mensaje a través de ARPANET, la red que más tarde se convertiría en Internet. El mensaje debía decir 'LOGIN', pero el sistema se colapsó después de solo dos letras. Incluso Internet empezó con un error tipográfico. En pocos meses se unieron más universidades, iniciando una revolución silenciosa que pronto conectaría al mundo entero (y millones de fotos de gatos).",
+        "de": "Am 29. Oktober 1969 wurde die erste Nachricht über ARPANET gesendet – das Netzwerk, aus dem später das Internet entstand. Eigentlich sollte die Nachricht 'LOGIN' lauten, doch das System stürzte nach nur zwei Buchstaben ab. Selbst das Internet begann also mit einem Tippfehler. Wenige Monate später schlossen sich weitere Universitäten an – der Beginn einer stillen Revolution, die bald die ganze Welt verband (und zahllose Katzenbilder).",
+        "fr": "Le 29 octobre 1969, le premier message fut envoyé sur ARPANET — le réseau qui deviendrait plus tard Internet. Le message devait être 'LOGIN', mais le système s’effondra après seulement deux lettres. Même Internet a commencé par une faute de frappe. Quelques mois plus tard, d’autres universités se connectèrent, lançant une révolution silencieuse qui finirait par relier le monde entier (et beaucoup de photos de chats).",
+        "it": "Il 29 ottobre 1969 fu inviato il primo messaggio su ARPANET — la rete che in seguito sarebbe diventata Internet. Il messaggio doveva essere 'LOGIN', ma il sistema si bloccò dopo solo due lettere. Anche Internet è iniziato con un errore di battitura. In pochi mesi altre università si collegarono, dando inizio a una rivoluzione silenziosa che avrebbe presto connesso il mondo intero (e milioni di foto di gatti).",
+        "sk": "Dňa 29. októbra 1969 bola cez sieť ARPANET odoslaná prvá správa — v sieti, ktorá sa neskôr stala internetom. Správa mala znieť 'LOGIN', no systém spadol po dvoch písmenách. Aj internet teda začal preklepom. O pár mesiacov sa pripojili ďalšie univerzity a začala sa tichá revolúcia, ktorá čoskoro spojila celý svet (a neskôr aj nespočetné množstvo fotiek mačiek).",
+        "cs": "Dne 29. října 1969 byla přes síť ARPANET odeslána první zpráva — v síti, která se později stala internetem. Zpráva měla znít 'LOGIN', ale systém spadl po dvou písmenech. I internet tedy začal překlepem. O pár měsíců se připojily další univerzity a začala tichá revoluce, která brzy propojila celý svět (a později i nespočet fotek koček)."
+    }
+}
+

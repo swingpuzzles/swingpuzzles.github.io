@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4sycPmG",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91bOw-jehoL._AC_SY300_SX300_QL70_FMwebp_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91bOw-jehoL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91VbkOAIjWL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3LuBtUt",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91U+x4+tsEL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91U+x4+tsEL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81m3NVV0ShL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On January 18, 1778, Captain James Cook became the first European to visit the Hawaiian Islands. He arrived during a local festival, which may explain the initially warm welcome. It was a meeting of two very different worlds — curious, cautious, and destined to change the islands’ history forever.",
+        "es": "El 18 de enero de 1778, el capitán James Cook se convirtió en el primer europeo en llegar a las islas Hawái. Arribó durante un festival local, lo que quizá explique la cálida bienvenida inicial. Fue el encuentro de dos mundos muy distintos — curioso, prudente y destinado a cambiar la historia de las islas para siempre.",
+        "de": "Am 18. Januar 1778 erreichte Kapitän James Cook als erster Europäer die Hawaii-Inseln. Er kam während eines lokalen Festes an, was die zunächst freundliche Aufnahme erklären könnte. Es war das Zusammentreffen zweier sehr unterschiedlicher Welten — neugierig, vorsichtig und mit dauerhaften Folgen für die Geschichte der Inseln.",
+        "fr": "Le 18 janvier 1778, le capitaine James Cook devint le premier Européen à visiter les îles Hawaï. Il arriva pendant une fête locale, ce qui explique peut-être l’accueil chaleureux du début. Ce fut la rencontre de deux mondes très différents — curieuse, prudente et destinée à transformer durablement l’histoire des îles.",
+        "it": "Il 18 gennaio 1778 il capitano James Cook divenne il primo europeo a raggiungere le isole Hawaii. Arrivò durante una festa locale, il che potrebbe spiegare l’accoglienza inizialmente calorosa. Fu l’incontro tra due mondi molto diversi — curioso, cauto e destinato a cambiare per sempre la storia delle isole.",
+        "sk": "Dňa 18. januára 1778 sa kapitán James Cook stal prvým Európanom, ktorý dorazil na Havajské ostrovy. Prišiel počas miestneho sviatku, čo mohlo prispieť k spočiatku vľúdnemu prijatiu. Išlo o stretnutie dvoch veľmi odlišných svetov — zvedavé, opatrné a osudové pre ďalšie dejiny ostrovov.",
+        "cs": "Dne 18. ledna 1778 se kapitán James Cook stal prvním Evropanem, který dorazil na Havajské ostrovy. Připlul během místního svátku, což možná vysvětluje zpočátku vřelé přijetí. Šlo o setkání dvou velmi odlišných světů — zvědavé, opatrné a s trvalým dopadem na historii ostrovů."
+    }
+}
+

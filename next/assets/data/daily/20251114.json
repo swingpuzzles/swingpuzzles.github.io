@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/487Uvau",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71+RTQaQ6UL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71+RTQaQ6UL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71s5YK1FpEL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4poo3Yx",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91uL31YepPL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91uL31YepPL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81FSJV3etuL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On November 14, 1903, Samuel Langley attempted to launch his experimental airplane from a floating platform on the Potomac River. The machine shot forward, dipped instantly, and crashed straight into the water — twice. Though the flights were a disaster, they proved one thing: humanity was just stubborn enough to keep trying until the Wright brothers finally got it right a month later.",
+        "es": "El 14 de noviembre de 1903, Samuel Langley intentó lanzar su avión experimental desde una plataforma flotante en el río Potomac. La máquina salió disparada, se hundió de inmediato y cayó al agua… dos veces. Aunque los vuelos fueron un desastre, demostraron algo: la humanidad era lo bastante terca para seguir intentándolo hasta que los hermanos Wright lo lograron un mes después.",
+        "de": "Am 14. November 1903 versuchte Samuel Langley, sein experimentelles Flugzeug von einer schwimmenden Plattform auf dem Potomac zu starten. Die Maschine schoss nach vorne, kippte sofort ab und landete direkt im Wasser – zweimal. Die missglückten Flüge zeigten jedoch eines: Die Menschheit war stur genug, um weiterzumachen, bis die Gebrüder Wright es einen Monat später richtig machten.",
+        "fr": "Le 14 novembre 1903, Samuel Langley tenta de lancer son avion expérimental depuis une plateforme flottante sur le Potomac. L’appareil partit d’un coup, plongea aussitôt et s’écrasa dans l’eau — deux fois. Les essais furent un échec total, mais ils prouvèrent au moins une chose : l’humanité était assez têtue pour continuer jusqu’à ce que les frères Wright réussissent un mois plus tard.",
+        "it": "Il 14 novembre 1903, Samuel Langley tentò di far decollare il suo aereo sperimentale da una piattaforma galleggiante sul fiume Potomac. La macchina balzò in avanti, si inclinò subito e finì direttamente in acqua — due volte. I voli furono un disastro, ma dimostrarono una cosa: l’umanità era abbastanza testarda da continuare finché i fratelli Wright non riuscirono nell’impresa un mese dopo.",
+        "sk": "Dňa 14. novembra 1903 sa Samuel Langley pokúsil odštartovať svoje experimentálne lietadlo z plávajúcej plošiny na rieke Potomac. Stroj vystrelil dopredu, okamžite sa prepadol a skončil priamo vo vode — a to hneď dvakrát. Hoci boli pokusy fiaskom, ukázali jednu vec: ľudstvo je dosť tvrdohlavé na to, aby to skúšalo ďalej, až kým to o mesiac neskôr bratia Wrightovci skutočne nedokázali.",
+        "cs": "Dne 14. listopadu 1903 se Samuel Langley pokusil odstartovat své experimentální letadlo z plovoucí plošiny na řece Potomac. Stroj vyrazil vpřed, okamžitě se propadl a skončil přímo ve vodě — a to dvakrát. Ačkoli byly pokusy fiaskem, ukázaly jednu věc: lidstvo je dost tvrdohlavé, aby to zkoušelo dál, dokud to o měsíc později bratři Wrightové opravdu nedokázali."
+    }
+}
+
