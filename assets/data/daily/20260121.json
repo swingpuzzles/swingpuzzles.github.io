@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3NnTpkq",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71xPrh6yODL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71xPrh6yODL._AC_SL1000_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71ghi5+Yd5S._AC_SX522_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/49oBUsM",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91ucRLDqMoL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91ucRLDqMoL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91OZf-IjkaL._AC_SX522_.jpg"
+    },
+    "story": {
+        "en": "On January 21, 1793, King Louis XVI of France was executed during the French Revolution. The event marked the end of centuries of absolute monarchy and showed that even kings were no longer untouchable. It was a dramatic reminder that political power, once questioned, can disappear very quickly.",
+        "es": "El 21 de enero de 1793, el rey Luis XVI de Francia fue ejecutado durante la Revolución Francesa. El suceso puso fin a siglos de monarquía absoluta y demostró que ni siquiera los reyes eran intocables. Fue un recordatorio contundente de lo rápido que puede desaparecer el poder cuando deja de ser aceptado.",
+        "de": "Am 21. Januar 1793 wurde König Ludwig XVI. von Frankreich während der Französischen Revolution hingerichtet. Damit endeten Jahrhunderte absoluter Monarchie, und selbst Könige galten nicht mehr als unantastbar. Es war eine eindringliche Erinnerung daran, wie schnell politische Macht zerfallen kann.",
+        "fr": "Le 21 janvier 1793, le roi Louis XVI de France fut exécuté pendant la Révolution française. Cet événement mit fin à des siècles de monarchie absolue et montra que même les rois n’étaient plus intouchables. Il rappela avec force que le pouvoir politique peut disparaître très vite lorsqu’il est remis en question.",
+        "it": "Il 21 gennaio 1793 il re Luigi XVI di Francia fu giustiziato durante la Rivoluzione francese. L’evento segnò la fine di secoli di monarchia assoluta e dimostrò che nemmeno i re erano più intoccabili. Fu un chiaro promemoria di quanto rapidamente il potere possa svanire quando viene messo in discussione.",
+        "sk": "Dňa 21. januára 1793 bol počas Francúzskej revolúcie popravený francúzsky kráľ Ľudovít XVI. Táto udalosť ukončila stáročia absolutistickej monarchie a ukázala, že ani králi už neboli nedotknuteľní. Bol to silný dôkaz, že politická moc sa môže rozpadnúť veľmi rýchlo.",
+        "cs": "Dne 21. ledna 1793 byl během Francouzské revoluce popraven francouzský král Ludvík XVI. Událost ukončila staletí absolutní monarchie a ukázala, že ani králové už nebyli nedotknutelní. Byla to silná připomínka toho, jak rychle se může politická moc zhroutit."
+    }
+}
+

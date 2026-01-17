@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4q2Y1Kx",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71VaxrXT7NL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71VaxrXT7NL._AC_SL1024_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/61j-Q73rGpL._AC_SX522_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/45hpTCX",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/61a-J3pR8-L._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/61a-J3pR8-L._AC_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/61a-J3pR8-L._AC_SY741_.jpg"
+    },
+    "story": {
+        "en": "On January 19, 1839, the French Academy of Sciences announced the invention of photography to the world. For the first time, reality could capture itself without a painter’s hand. It quietly changed how people remembered faces, places, and events — and made posing very seriously an international tradition.",
+        "es": "El 19 de enero de 1839, la Academia de Ciencias de Francia anunció al mundo la invención de la fotografía. Por primera vez, la realidad podía capturarse sin la mano de un pintor. Cambió silenciosamente la forma en que las personas recordaban rostros, lugares y momentos — e hizo del posar con cara seria una tradición internacional.",
+        "de": "Am 19. Januar 1839 verkündete die Französische Akademie der Wissenschaften die Erfindung der Fotografie. Zum ersten Mal konnte sich die Realität selbst festhalten, ganz ohne Maler. Das veränderte leise, aber dauerhaft, wie Menschen Gesichter, Orte und Ereignisse erinnerten — und machte ernstes Posieren weltberühmt.",
+        "fr": "Le 19 janvier 1839, l’Académie des sciences française annonça au monde l’invention de la photographie. Pour la première fois, la réalité pouvait se capturer sans pinceau. Cela transforma discrètement la manière de se souvenir des visages, des lieux et des événements — et lança une longue tradition de poses très sérieuses.",
+        "it": "Il 19 gennaio 1839 l’Accademia delle Scienze francese annunciò al mondo l’invenzione della fotografia. Per la prima volta, la realtà poteva fissarsi senza l’aiuto di un pittore. Cambiò silenziosamente il modo di ricordare volti, luoghi ed eventi — e rese universale l’abitudine di posare con aria solenne.",
+        "sk": "Dňa 19. januára 1839 oznámila Francúzska akadémia vied svetu vynález fotografie. Realita sa po prvýkrát dokázala zachytiť sama, bez štetca maliara. Nenápadne to zmenilo spôsob, akým si ľudia pamätali tváre, miesta a udalosti — a odštartovalo tradíciu veľmi vážnych póz.",
+        "cs": "Dne 19. ledna 1839 oznámila Francouzská akademie věd světu vynález fotografie. Poprvé se realita dokázala zachytit sama, bez malířova štětce. Nenápadně to změnilo způsob, jak si lidé pamatovali tváře, místa a události — a založilo tradici velmi vážného pózování."
+    }
+}
+

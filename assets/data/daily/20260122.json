@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/49FNfmZ",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71Sfp096rxL._AC_SX522_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71Sfp096rxL._AC_SL1000_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/816UjBofJtL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4sGGudz",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81osDUPAgEL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81osDUPAgEL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/717oqJk8sbL._AC_SX522_.jpg"
+    },
+    "story": {
+        "en": "On January 22, 1901, Queen Victoria of the United Kingdom died after ruling for more than 63 years. Her reign spanned enormous changes — from horse-drawn carriages to electricity and telephones. The Victorian era ended quietly, leaving behind an empire, a century named after one person, and very high standards for long service.",
+        "es": "El 22 de enero de 1901 murió la reina Victoria del Reino Unido tras gobernar durante más de 63 años. Su reinado abarcó enormes cambios, desde carruajes tirados por caballos hasta la electricidad y el teléfono. La era victoriana terminó en silencio, dejando un imperio, un siglo con su nombre y un listón muy alto de permanencia en el poder.",
+        "de": "Am 22. Januar 1901 starb Königin Victoria des Vereinigten Königreichs nach mehr als 63 Jahren auf dem Thron. Ihre Regentschaft umfasste gewaltige Veränderungen — von Pferdekutschen bis zu Elektrizität und Telefon. Mit ihr endete leise das viktorianische Zeitalter und hinterließ ein Weltreich, einen nach ihr benannten Abschnitt der Geschichte und Maßstäbe für außergewöhnlich lange Amtszeiten.",
+        "fr": "Le 22 janvier 1901, la reine Victoria du Royaume-Uni mourut après plus de 63 ans de règne. Son époque connut d’immenses transformations, des calèches à l’électricité et au téléphone. L’ère victorienne s’acheva discrètement, laissant un empire, un siècle portant son nom et une référence en matière de longévité au pouvoir.",
+        "it": "Il 22 gennaio 1901 morì la regina Vittoria del Regno Unito dopo oltre 63 anni di regno. Il suo periodo vide cambiamenti enormi, dalle carrozze trainate da cavalli all’elettricità e al telefono. L’era vittoriana si concluse in silenzio, lasciando un impero, un’epoca che porta il suo nome e un primato di lunga durata.",
+        "sk": "Dňa 22. januára 1901 zomrela britská kráľovná Viktória po viac než 63 rokoch vlády. Jej éra zahŕňala obrovské zmeny — od konských povozov až po elektrinu a telefón. Viktoriánske obdobie sa skončilo potichu a zanechalo po sebe impérium, storočie nesúce jej meno a mimoriadne vysokú latku dlhého vládnutia.",
+        "cs": "Dne 22. ledna 1901 zemřela britská královna Viktorie po více než 63 letech vlády. Její éra zahrnovala obrovské změny — od koňských povozů až po elektřinu a telefon. Viktoriánské období skončilo tiše a zanechalo po sobě impérium, epochu nesoucí její jméno a mimořádně vysokou laťku dlouhé vlády."
+    }
+}
+

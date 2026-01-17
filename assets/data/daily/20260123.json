@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4b69i92",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/912GxM3NJFS._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/912GxM3NJFS._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81ddMjdGGrS._AC_SX522_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4pKQdN4",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71Pjb8Pc6cL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71Pjb8Pc6cL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71fqU9sz8QL._AC_SX522_.jpg"
+    },
+    "story": {
+        "en": "On January 23, 1556, the deadliest earthquake in recorded history struck China’s Shaanxi province. Entire towns collapsed, and an estimated hundreds of thousands of people lost their lives. The tragedy reminded later generations how powerful nature can be — long before modern instruments existed to measure it.",
+        "es": "El 23 de enero de 1556, el terremoto más mortífero de la historia registrada sacudió la provincia china de Shaanxi. Pueblos enteros se derrumbaron y se estima que murieron cientos de miles de personas. La catástrofe recordó a las generaciones posteriores la enorme fuerza de la naturaleza, mucho antes de que existieran instrumentos modernos para medirla.",
+        "de": "Am 23. Januar 1556 erschütterte das tödlichste Erdbeben der aufgezeichneten Geschichte die chinesische Provinz Shaanxi. Ganze Städte stürzten ein, und schätzungsweise Hunderttausende Menschen kamen ums Leben. Die Katastrophe zeigte schon früh, wie mächtig die Natur ist — lange bevor es moderne Messgeräte gab.",
+        "fr": "Le 23 janvier 1556, le séisme le plus meurtrier de l’histoire connue frappa la province chinoise du Shaanxi. Des villes entières s’effondrèrent et l’on estime que des centaines de milliers de personnes périrent. Cette tragédie rappela aux générations suivantes la puissance de la nature, bien avant l’apparition des instruments modernes de mesure.",
+        "it": "Il 23 gennaio 1556 il terremoto più mortale della storia documentata colpì la provincia cinese dello Shaanxi. Intere città crollarono e si stima che centinaia di migliaia di persone persero la vita. La tragedia mostrò quanto la natura possa essere potente, molto prima dell’esistenza di strumenti moderni per misurarla.",
+        "sk": "Dňa 23. januára 1556 zasiahlo čínsku provinciu Šen-si najsmrteľnejšie zemetrasenie v zaznamenaných dejinách. Zrútili sa celé mestá a odhaduje sa, že zahynuli státisíce ľudí. Táto tragédia pripomenula neskorším generáciám, akú obrovskú silu má príroda — dávno pred vznikom moderných meracích prístrojov.",
+        "cs": "Dne 23. ledna 1556 zasáhlo čínskou provincii Šen-si nejsmrtelnější zemětřesení v zaznamenaných dějinách. Zřítila se celá města a odhaduje se, že zahynuly statisíce lidí. Tragédie ukázala, jak obrovskou sílu má příroda — dávno před vznikem moderních měřicích přístrojů."
+    }
+}
+

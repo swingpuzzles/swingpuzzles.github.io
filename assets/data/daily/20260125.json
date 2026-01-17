@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4t0qWS6",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/910NVaYfg9L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/910NVaYfg9L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81AHqA+UyrL._AC_SX522_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3YKzQFh",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81DQObkDTJL._AC_SY679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81DQObkDTJL._AC_SL1024_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71ML8V6o9NL._AC_SX569_.jpg"
+    },
+    "story": {
+        "en": "On January 25, 1924, the first Winter Olympic Games opened in Chamonix, France. Athletes competed in icy conditions long before high-tech gear, indoor arenas, or artificial snow. It marked the moment when winter officially became a competitive sport — and cold weather gained medals.",
+        "es": "El 25 de enero de 1924 se inauguraron en Chamonix, Francia, los primeros Juegos Olímpicos de Invierno. Los atletas compitieron en condiciones heladas, sin equipamiento moderno ni nieve artificial. Fue el inicio del deporte invernal organizado — y el momento en que el frío empezó a repartir medallas.",
+        "de": "Am 25. Januar 1924 wurden in Chamonix, Frankreich, die ersten Olympischen Winterspiele eröffnet. Die Athleten traten bei eisigen Bedingungen an, lange bevor es moderne Ausrüstung oder künstlichen Schnee gab. Damit wurde der Winter offiziell zum Wettkampfsport — und Kälte gewann olympischen Status.",
+        "fr": "Le 25 janvier 1924 s’ouvrirent à Chamonix, en France, les premiers Jeux olympiques d’hiver. Les athlètes concoururent dans des conditions glaciales, bien avant l’ère des équipements modernes et de la neige artificielle. Ce fut le moment où l’hiver devint officiellement un sport de compétition.",
+        "it": "Il 25 gennaio 1924 si aprirono a Chamonix, in Francia, i primi Giochi Olimpici Invernali. Gli atleti gareggiarono in condizioni gelide, molto prima delle attrezzature moderne e della neve artificiale. Fu l’inizio ufficiale degli sport invernali competitivi.",
+        "sk": "Dňa 25. januára 1924 sa vo francúzskom Chamonix začali prvé zimné olympijské hry. Športovci súťažili v mrazivých podmienkach, dávno pred moderným vybavením či umelým snehom. Bol to moment, keď sa zima oficiálne stala súťažným športom.",
+        "cs": "Dne 25. ledna 1924 byly ve francouzském Chamonix zahájeny první zimní olympijské hry. Sportovci soutěžili v mrazivých podmínkách, dávno před moderním vybavením a umělým sněhem. Byl to okamžik, kdy se zima oficiálně stala soutěžním sportem."
+    }
+}
+

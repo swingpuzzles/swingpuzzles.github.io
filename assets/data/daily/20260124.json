@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3NPBhzV",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/810sYcCQPoL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/810sYcCQPoL._AC_SL1024_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71s-FElQkpL._AC_SX522_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3LkKjEx",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81scp8q-hZL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81scp8q-hZL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81unEg28FOL._AC_SX522_.jpg"
+    },
+    "story": {
+        "en": "On January 24, 1848, gold was discovered at Sutter’s Mill in California. What began as a small find quickly triggered the California Gold Rush, sending hundreds of thousands of people west with big dreams and very mixed results. It proved that a single shiny discovery can move an entire population.",
+        "es": "El 24 de enero de 1848 se descubrió oro en el aserradero de Sutter, en California. Lo que empezó como un hallazgo modesto desató rápidamente la Fiebre del Oro de California y atrajo a cientos de miles de personas hacia el oeste. Demostró que algo pequeño y brillante puede poner en movimiento a toda una población.",
+        "de": "Am 24. Januar 1848 wurde bei Sutter’s Mill in Kalifornien Gold entdeckt. Was als kleiner Fund begann, löste bald den kalifornischen Goldrausch aus und zog Hunderttausende Menschen nach Westen. Es zeigte, dass ein einziges glänzendes Objekt ganze Bevölkerungen in Bewegung setzen kann.",
+        "fr": "Le 24 janvier 1848, de l’or fut découvert à Sutter’s Mill en Californie. Ce qui n’était au départ qu’une trouvaille modeste déclencha rapidement la ruée vers l’or et attira des centaines de milliers de personnes vers l’Ouest. La preuve qu’une petite chose brillante peut déplacer des foules entières.",
+        "it": "Il 24 gennaio 1848 fu scoperto l’oro a Sutter’s Mill, in California. Quella che iniziò come una scoperta modesta diede rapidamente origine alla Corsa all’oro californiana e attirò centinaia di migliaia di persone verso ovest. Dimostrò che un singolo oggetto luccicante può mettere in movimento un’intera popolazione.",
+        "sk": "Dňa 24. januára 1848 objavili v Kalifornii pri Sutterovom mlyne zlato. Z nenápadného nálezu sa rýchlo stala kalifornská zlatá horúčka, ktorá prilákala státisíce ľudí na západ. Ukázalo sa, že jediný lesklý objav dokáže rozhýbať celé obyvateľstvo.",
+        "cs": "Dne 24. ledna 1848 bylo v Kalifornii u Sutterova mlýna objeveno zlato. Z nenápadného nálezu se rychle stala kalifornská zlatá horečka, která přilákala statisíce lidí na západ. Ukázalo se, že jediný lesklý objev dokáže rozhýbat celé obyvatelstvo."
+    }
+}
+
