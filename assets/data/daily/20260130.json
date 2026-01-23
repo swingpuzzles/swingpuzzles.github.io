@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3M1MIEb",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91lVKz7OOkL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91lVKz7OOkL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/712tkUHUYxL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/49F4M08",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/816D0uhxoOL._AC_SY300_SX300_QL70_FMwebp_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/816D0uhxoOL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71sVHvf0hdL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On January 30, 1948, Mahatma Gandhi was assassinated in New Delhi. His commitment to nonviolent resistance had inspired millions and reshaped political protest around the world. The shock of his death underscored how powerful peaceful ideas can be — and how fragile their messengers often are.",
+        "es": "El 30 de enero de 1948, Mahatma Gandhi fue asesinado en Nueva Delhi. Su compromiso con la resistencia no violenta había inspirado a millones y transformado la protesta política en todo el mundo. La conmoción por su muerte subrayó lo poderosas que pueden ser las ideas pacíficas — y lo frágiles que suelen ser quienes las encarnan.",
+        "de": "Am 30. Januar 1948 wurde Mahatma Gandhi in Neu-Delhi ermordet. Sein Einsatz für gewaltlosen Widerstand inspirierte Millionen und prägte politische Proteste weltweit. Der Schock über seinen Tod zeigte, wie mächtig friedliche Ideen sein können — und wie verletzlich ihre Träger oft sind.",
+        "fr": "Le 30 janvier 1948, Mahatma Gandhi fut assassiné à New Delhi. Son engagement pour la résistance non violente inspira des millions de personnes et transforma la protestation politique dans le monde entier. Le choc de sa mort rappela à quel point les idées pacifiques peuvent être puissantes — et leurs porteurs vulnérables.",
+        "it": "Il 30 gennaio 1948 Mahatma Gandhi fu assassinato a Nuova Delhi. Il suo impegno per la resistenza non violenta aveva ispirato milioni di persone e cambiato il modo di protestare in politica. Lo shock della sua morte mostrò quanto le idee pacifiche possano essere forti — e quanto siano fragili coloro che le rappresentano.",
+        "sk": "Dňa 30. januára 1948 bol v Naí Dillí zavraždený Mahátmá Gándhí. Jeho dôraz na nenásilný prístup inšpiroval milióny ľudí a zásadne ovplyvnil politické protesty po celom svete. Šok z jeho smrti ukázal, akú silu môžu mať mierové myšlienky — a akí zraniteľní bývajú tí, ktorí ich nesú.",
+        "cs": "Dne 30. ledna 1948 byl v Novém Dillí zavražděn Mahátmá Gándhí. Jeho důraz na nenásilný přístup inspiroval miliony lidí a zásadně ovlivnil politické protesty po celém světě. Šok z jeho smrti ukázal, jak silné mohou být mírové myšlenky — a jak zranitelní bývají jejich nositelé."
+    }
+}
+

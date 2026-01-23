@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3LUUShw",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81KCC3ilOxL._AC_SX450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81KCC3ilOxL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81dQgrXbbaL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4pQOB4F",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81VlR0lgvNL._AC_SX569_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81VlR0lgvNL._AC_SL1000_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81iFI5LG4-L._AC_SY679_.jpg"
+    },
+    "story": {
+        "en": "On January 29, 1886, Karl Benz patented the Benz Patent-Motorwagen, widely regarded as the first practical automobile. It had three wheels, a modest engine, and absolutely no idea it would change the world. What began as a noisy experiment soon turned roads into something humans would argue about forever.",
+        "es": "El 29 de enero de 1886, Karl Benz patentó el Benz Patent-Motorwagen, considerado el primer automóvil práctico. Tenía tres ruedas, un motor modesto y ninguna sospecha de que transformaría el mundo. Lo que empezó como un experimento ruidoso terminó convirtiendo las carreteras en un tema de discusión eterna.",
+        "de": "Am 29. Januar 1886 ließ Karl Benz den Benz Patent-Motorwagen patentieren, der allgemein als erstes praxistaugliches Automobil gilt. Er hatte drei Räder, einen bescheidenen Motor und keine Ahnung, dass er die Welt verändern würde. Was als lautes Experiment begann, machte Straßen zu einem Dauerstreitthema.",
+        "fr": "Le 29 janvier 1886, Karl Benz déposa le brevet du Benz Patent-Motorwagen, souvent considéré comme la première automobile pratique. Il avait trois roues, un moteur modeste et aucune idée de l’impact qu’il allait avoir. Ce qui n’était qu’une expérience bruyante transforma bientôt les routes en sujet de débat permanent.",
+        "it": "Il 29 gennaio 1886 Karl Benz brevettò il Benz Patent-Motorwagen, considerato la prima automobile pratica. Aveva tre ruote, un motore modesto e nessuna consapevolezza di quanto avrebbe cambiato il mondo. Quello che iniziò come un esperimento rumoroso trasformò presto le strade in un argomento di discussione senza fine.",
+        "sk": "Dňa 29. januára 1886 si Karl Benz dal patentovať Benzov Patent-Motorwagen, ktorý je považovaný za prvý praktický automobil. Mal tri kolesá, skromný motor a ani netušil, že zmení svet. Z hlučného experimentu sa čoskoro stala vec, kvôli ktorej sa ľudia budú o cestách hádať naveky.",
+        "cs": "Dne 29. ledna 1886 si Karl Benz nechal patentovat Benzův Patent-Motorwagen, považovaný za první praktický automobil. Měl tři kola, skromný motor a žádné tušení, že změní svět. Z hlučného experimentu se brzy stalo něco, kvůli čemu se lidé budou o silnice hádat navždy."
+    }
+}
+

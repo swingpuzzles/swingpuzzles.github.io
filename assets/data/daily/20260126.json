@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4qCaS7p",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81av3LnsAhL._AC_SX450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81av3LnsAhL._AC_SL1280_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/51YPlBdeguL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4pVmIIz",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81MIBJSKLeL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81MIBJSKLeL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/815WszDw7AL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On January 26, 1788, the First Fleet arrived at Port Jackson and raised the British flag, marking the beginning of European settlement in Australia. What started as a distant colony would eventually become a nation of cities, beaches, and very confident wildlife. Today the date is remembered in different ways, reflecting the many layers of Australia’s history.",
+        "es": "El 26 de enero de 1788, la Primera Flota llegó a Port Jackson e izó la bandera británica, marcando el inicio del asentamiento europeo en Australia. Lo que comenzó como una colonia lejana acabaría convirtiéndose en un país de ciudades, playas y fauna muy segura de sí misma. Hoy la fecha se recuerda de distintas maneras, reflejando las múltiples capas de la historia australiana.",
+        "de": "Am 26. Januar 1788 traf die First Fleet in Port Jackson ein und hisste die britische Flagge — der Beginn der europäischen Besiedlung Australiens. Aus einer fernen Kolonie entwickelte sich später ein Land mit Städten, Stränden und bemerkenswert selbstbewusster Tierwelt. Heute wird dieses Datum unterschiedlich betrachtet und spiegelt die vielen Ebenen der australischen Geschichte wider.",
+        "fr": "Le 26 janvier 1788, la First Fleet arriva à Port Jackson et hissa le drapeau britannique, marquant le début de la colonisation européenne de l’Australie. Ce qui n’était qu’une colonie lointaine devint plus tard un pays de villes, de plages et d’une faune étonnamment audacieuse. Aujourd’hui, cette date est commémorée de différentes façons, reflétant la complexité de l’histoire australienne.",
+        "it": "Il 26 gennaio 1788 la Prima Flotta arrivò a Port Jackson e issò la bandiera britannica, segnando l’inizio dell’insediamento europeo in Australia. Da lontana colonia sarebbe poi nata una nazione di città, spiagge e fauna decisamente sicura di sé. Oggi questa data viene ricordata in modi diversi, a testimonianza dei molti strati della storia australiana.",
+        "sk": "Dňa 26. januára 1788 dorazila Prvá flotila do prístavu Port Jackson a vztýčila britskú vlajku, čím sa začalo európske osídľovanie Austrálie. Z pôvodne vzdialenej kolónie sa časom stala krajina miest, pláží a sebavedomej divokej prírody. Dnes sa tento dátum vníma rôzne a odráža viacvrstvovú históriu Austrálie.",
+        "cs": "Dne 26. ledna 1788 dorazila První flotila do přístavu Port Jackson a vztyčila britskou vlajku, čím začalo evropské osídlení Austrálie. Z původně vzdálené kolonie se postupně stala země měst, pláží a velmi sebevědomé divoké přírody. Dnes je tento den vnímán různě a odráží mnohovrstevnatou historii Austrálie."
+    }
+}
+

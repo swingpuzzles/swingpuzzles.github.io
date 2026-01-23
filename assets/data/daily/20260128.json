@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/49BkEAF",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71RRvA3VGDL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71RRvA3VGDL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71vhwZEy-cL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3YVBSm3",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91g69E3UvVL._AC_SY450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91g69E3UvVL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/819nZk3lM8L._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On January 28, 1986, the Space Shuttle Challenger broke apart shortly after launch, killing all seven crew members. Watched live by millions, the tragedy halted the space program and led to major changes in safety and decision-making. It was a sobering reminder that exploration always carries risk — and that lessons are sometimes learned at a painful cost.",
+        "es": "El 28 de enero de 1986, el transbordador espacial Challenger se desintegró poco después del lanzamiento, causando la muerte de sus siete tripulantes. La tragedia, seguida en directo por millones de personas, detuvo el programa espacial y provocó importantes cambios en seguridad y toma de decisiones. Fue un duro recordatorio de que la exploración siempre conlleva riesgos.",
+        "de": "Am 28. Januar 1986 zerbrach das Space Shuttle Challenger kurz nach dem Start, wobei alle sieben Besatzungsmitglieder ums Leben kamen. Die live verfolgte Tragödie stoppte das Raumfahrtprogramm und führte zu grundlegenden Änderungen bei Sicherheit und Entscheidungsprozessen. Sie erinnerte eindringlich daran, dass Forschung immer Risiken birgt.",
+        "fr": "Le 28 janvier 1986, la navette spatiale Challenger se désintégra peu après son lancement, entraînant la mort des sept membres d’équipage. Diffusée en direct devant des millions de personnes, la catastrophe interrompit le programme spatial et entraîna d’importantes réformes en matière de sécurité. Un rappel sévère des risques de l’exploration.",
+        "it": "Il 28 gennaio 1986 lo Space Shuttle Challenger si disintegrò poco dopo il decollo, causando la morte dei sette membri dell’equipaggio. La tragedia, seguita in diretta da milioni di persone, fermò il programma spaziale e portò a importanti cambiamenti in termini di sicurezza. Fu un monito sul costo umano dell’esplorazione.",
+        "sk": "Dňa 28. januára 1986 sa raketoplán Challenger krátko po štarte rozpadol a zahynulo všetkých sedem členov posádky. Tragédiu sledovali naživo milióny ľudí, čo viedlo k zastaveniu programu a zásadným zmenám v oblasti bezpečnosti a rozhodovania. Bola to triezva pripomienka rizík, ktoré so sebou prináša objavovanie.",
+        "cs": "Dne 28. ledna 1986 se raketoplán Challenger krátce po startu rozpadl a zahynulo všech sedm členů posádky. Tragédii sledovaly v přímém přenosu miliony lidí, což vedlo k zastavení programu a zásadním změnám v oblasti bezpečnosti a rozhodování. Byla to vážná připomínka rizik spojených s objevováním."
+    }
+}
+

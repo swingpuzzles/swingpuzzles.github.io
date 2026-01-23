@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4r9DmFo",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81QVAlyDnBL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81QVAlyDnBL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71SUTfdepyL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4qNg5co",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71XdCOMJE8L._AC_SY606_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71XdCOMJE8L._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71Wxrq4SuNL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On January 27, 1756, Wolfgang Amadeus Mozart was born in Salzburg. He began composing as a child and went on to create music that still fills concert halls centuries later. It’s a reminder that sometimes extraordinary talent shows up very early — and then never really leaves.",
+        "es": "El 27 de enero de 1756 nació Wolfgang Amadeus Mozart en Salzburgo. Empezó a componer siendo niño y creó música que sigue llenando salas de concierto siglos después. Un recordatorio de que el talento extraordinario a veces aparece muy pronto — y no se va jamás.",
+        "de": "Am 27. Januar 1756 wurde Wolfgang Amadeus Mozart in Salzburg geboren. Schon als Kind begann er zu komponieren und schuf Musik, die noch Jahrhunderte später Konzertsäle füllt. Ein Beweis dafür, dass außergewöhnliches Talent manchmal sehr früh erscheint — und dann bleibt.",
+        "fr": "Le 27 janvier 1756 naquit Wolfgang Amadeus Mozart à Salzbourg. Il commença à composer dès l’enfance et écrivit une musique qui résonne encore dans les salles de concert des siècles plus tard. Un rappel que le talent exceptionnel peut apparaître très tôt — et ne jamais disparaître.",
+        "it": "Il 27 gennaio 1756 nacque Wolfgang Amadeus Mozart a Salisburgo. Iniziò a comporre da bambino e creò musica che riempie ancora oggi le sale da concerto. Un promemoria che il talento straordinario a volte si manifesta molto presto — e non se ne va più.",
+        "sk": "Dňa 27. januára 1756 sa v Salzburgu narodil Wolfgang Amadeus Mozart. S komponovaním začal už ako dieťa a vytvoril hudbu, ktorá dodnes zapĺňa koncertné sály. Je to pripomienka, že výnimočný talent sa niekedy objaví veľmi skoro — a už nezmizne.",
+        "cs": "Dne 27. ledna 1756 se v Salcburku narodil Wolfgang Amadeus Mozart. Skládat začal už jako dítě a vytvořil hudbu, která dodnes zaplňuje koncertní sály. Připomíná to, že výjimečný talent se někdy objeví velmi brzy — a zůstane."
+    }
+}
+

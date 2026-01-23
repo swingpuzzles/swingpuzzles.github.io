@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3NyVSZj",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/814pLnEt63L._AC_SX450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/814pLnEt63L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/810mZQiYk5L._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3YQVsQx",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71EO26eBBtL._AC_SY606_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71EO26eBBtL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81brsw+zsSL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On January 31, 1958, the United States launched Explorer 1, its first successful satellite. Besides reaching orbit, it discovered the Van Allen radiation belts — an unexpected scientific bonus. It showed that even in a race to space, curiosity can bring home the best results.",
+        "es": "El 31 de enero de 1958, Estados Unidos lanzó Explorer 1, su primer satélite exitoso. Además de alcanzar la órbita, descubrió los cinturones de radiación de Van Allen — un inesperado regalo científico. Demostró que incluso en la carrera espacial, la curiosidad puede dar los mejores frutos.",
+        "de": "Am 31. Januar 1958 starteten die USA mit Explorer 1 ihren ersten erfolgreichen Satelliten. Neben dem Erreichen der Umlaufbahn entdeckte er die Van-Allen-Strahlungsgürtel — ein unerwarteter wissenschaftlicher Gewinn. Es zeigte sich, dass Neugier selbst im Wettlauf ins All belohnt wird.",
+        "fr": "Le 31 janvier 1958, les États-Unis lancèrent Explorer 1, leur premier satellite réussi. En plus d’atteindre l’orbite, il permit de découvrir les ceintures de radiation de Van Allen — une surprise scientifique majeure. La preuve que, même dans la course à l’espace, la curiosité mène loin.",
+        "it": "Il 31 gennaio 1958 gli Stati Uniti lanciarono Explorer 1, il loro primo satellite di successo. Oltre a entrare in orbita, scoprì le fasce di radiazione di Van Allen — un inatteso risultato scientifico. Dimostrò che anche nella corsa allo spazio la curiosità porta lontano.",
+        "sk": "Dňa 31. januára 1958 vypustili Spojené štáty družicu Explorer 1, svoj prvý úspešný satelit. Okrem dosiahnutia obežnej dráhy priniesol aj nečakaný vedecký objav — Van Allenove radiačné pásy. Ukázalo sa, že aj v pretekoch do vesmíru dokáže zvedavosť priniesť tie najlepšie výsledky.",
+        "cs": "Dne 31. ledna 1958 vypustily Spojené státy družici Explorer 1, svůj první úspěšný satelit. Kromě dosažení oběžné dráhy přinesla i nečekaný vědecký objev — Van Allenovy radiační pásy. Ukázalo se, že i v závodu do vesmíru může zvědavost přinést nejlepší výsledky."
+    }
+}
+

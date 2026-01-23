@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/45X3H1a",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81kbDtHjTvL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81kbDtHjTvL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81PASn1vsnL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/49SXaWz",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91N8f+6ApkL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91N8f+6ApkL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81E+4pogqmL._AC_SX450_.jpg"
+    },
+    "story": {
+        "en": "On February 1, 1893, Thomas Edison opened the Black Maria, the world’s first movie studio, in New Jersey. The building could rotate to follow the sun, because early film needed as much daylight as possible. It was a humble start for an industry that would later prefer spotlights, premieres, and very dark theaters.",
+        "es": "El 1 de febrero de 1893, Thomas Edison inauguró la Black Maria, el primer estudio cinematográfico del mundo, en Nueva Jersey. El edificio podía girar para seguir al sol, ya que el cine primitivo necesitaba mucha luz natural. Fue un comienzo modesto para una industria que más tarde preferiría focos, alfombras rojas y salas oscuras.",
+        "de": "Am 1. Februar 1893 eröffnete Thomas Edison in New Jersey die Black Maria, das erste Filmstudio der Welt. Das Gebäude konnte sich drehen, um dem Sonnenlicht zu folgen, da frühe Filmaufnahmen möglichst viel Tageslicht brauchten. Ein bescheidener Anfang für eine Branche, die später Scheinwerfer und dunkle Kinos lieben sollte.",
+        "fr": "Le 1er février 1893, Thomas Edison ouvrit le Black Maria dans le New Jersey, le tout premier studio de cinéma au monde. Le bâtiment pivotait pour suivre le soleil, car les premiers films dépendaient fortement de la lumière naturelle. Un début modeste pour une industrie qui allait bientôt préférer projecteurs et salles obscures.",
+        "it": "Il 1º febbraio 1893 Thomas Edison aprì il Black Maria nel New Jersey, il primo studio cinematografico al mondo. L’edificio ruotava per seguire il sole, perché il cinema delle origini aveva bisogno di molta luce naturale. Un inizio semplice per un’industria che in seguito avrebbe amato riflettori e sale buie.",
+        "sk": "Dňa 1. februára 1893 otvoril Thomas Edison v New Jersey Black Mariu, prvé filmové štúdio na svete. Budova sa dokázala otáčať za slnkom, pretože raný film potreboval čo najviac denného svetla. Bol to skromný začiatok odvetvia, ktoré si neskôr obľúbilo reflektory a tmavé kiná.",
+        "cs": "Dne 1. února 1893 otevřel Thomas Edison v New Jersey Black Marii, první filmové studio na světě. Budova se mohla otáčet za sluncem, protože raný film vyžadoval co nejvíce denního světla. Šlo o skromný začátek odvětví, které si později zamilovalo reflektory a temná kina."
+    }
+}
+
