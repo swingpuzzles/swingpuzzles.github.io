@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4rvDTBP",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81eXyt8WEEL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81eXyt8WEEL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/816mVMqpq2L._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4qVslb8",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91bRhQ8XN+S._AC_SY679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91bRhQ8XN+S._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81EkQEzeM0L._AC_SX450_.jpg"
+    },
+    "story": {
+        "en": "On February 3, 1995, the first website went online in the Czech Republic, connecting the country to the global internet. At the time, few people imagined how deeply the web would shape everyday life. It was a quiet step that slowly turned information into something always just a click away.",
+        "es": "El 3 de febrero de 1995 se puso en línea el primer sitio web en la República Checa, conectando al país con internet. En aquel momento, pocos imaginaban cuánto influiría la red en la vida cotidiana. Fue un paso discreto que convirtió la información en algo siempre al alcance de un clic.",
+        "de": "Am 3. Februar 1995 ging die erste Website in der Tschechischen Republik online und verband das Land mit dem Internet. Damals ahnten nur wenige, wie stark das Netz den Alltag prägen würde. Es war ein leiser Schritt, der Informationen dauerhaft greifbar machte.",
+        "fr": "Le 3 février 1995, le premier site web fut mis en ligne en République tchèque, reliant le pays à internet. Peu de gens imaginaient alors à quel point le web allait transformer la vie quotidienne. Ce fut un pas discret qui rendit l’information accessible en permanence.",
+        "it": "Il 3 febbraio 1995 venne pubblicato il primo sito web nella Repubblica Ceca, collegando il paese a internet. All’epoca pochi immaginavano quanto il web avrebbe influenzato la vita quotidiana. Fu un passo silenzioso che rese l’informazione sempre a portata di clic.",
+        "sk": "Dňa 3. februára 1995 bola v Českej republike spustená prvá webová stránka, čím sa krajina pripojila k internetu. Len málokto si vtedy dokázal predstaviť, ako veľmi web ovplyvní každodenný život. Išlo o nenápadný krok, ktorý spravil informácie dostupné na jedno kliknutie.",
+        "cs": "Dne 3. února 1995 byla v České republice spuštěna první webová stránka a země se tak připojila k internetu. Tehdy si jen málokdo dokázal představit, jak zásadně web ovlivní každodenní život. Šlo o tichý krok, který zpřístupnil informace na jedno kliknutí."
+    }
+}
+

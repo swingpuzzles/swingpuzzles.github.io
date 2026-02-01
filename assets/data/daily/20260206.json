@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3NNZ83e",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91R9-XeO2PL._AC_SX450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91R9-XeO2PL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81L1i2w1QXL._AC_SX450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4k8VAo6",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81Vhe4kh0tL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81Vhe4kh0tL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/717oqJk8sbL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On February 6, 1952, Elizabeth II became Queen of the United Kingdom following the death of her father, King George VI. She was only 25 years old, and her reign would last more than seven decades. It was a quiet accession that slowly turned into one of the longest chapters in modern history.",
+        "es": "El 6 de febrero de 1952, Isabel II se convirtió en reina del Reino Unido tras la muerte de su padre, el rey Jorge VI. Tenía solo 25 años y su reinado se extendería por más de siete décadas. Fue una ascensión discreta que acabaría convirtiéndose en uno de los periodos más largos de la historia moderna.",
+        "de": "Am 6. Februar 1952 wurde Elisabeth II. nach dem Tod ihres Vaters, König Georg VI., Königin des Vereinigten Königreichs. Sie war erst 25 Jahre alt, und ihre Regentschaft sollte über sieben Jahrzehnte dauern. Ein stiller Thronwechsel, der zu einem der längsten Kapitel der modernen Geschichte wurde.",
+        "fr": "Le 6 février 1952, Élisabeth II devint reine du Royaume-Uni après la mort de son père, le roi George VI. Elle n’avait que 25 ans et son règne allait durer plus de sept décennies. Une accession discrète qui se transforma en l’un des plus longs règnes de l’histoire moderne.",
+        "it": "Il 6 febbraio 1952 Elisabetta II divenne regina del Regno Unito dopo la morte di suo padre, re Giorgio VI. Aveva solo 25 anni e il suo regno sarebbe durato oltre sette decenni. Un’ascesa silenziosa che si trasformò in uno dei capitoli più lunghi della storia moderna.",
+        "sk": "Dňa 6. februára 1952 sa Alžbeta II. po smrti svojho otca, kráľa Juraja VI., stala kráľovnou Spojeného kráľovstva. Mala iba 25 rokov a jej vláda trvala viac než sedem desaťročí. Išlo o tichý nástup na trón, ktorý sa postupne zapísal ako jedno z najdlhších období modernej histórie.",
+        "cs": "Dne 6. února 1952 se Alžběta II. po smrti svého otce, krále Jiřího VI., stala královnou Spojeného království. Bylo jí pouhých 25 let a její vláda trvala více než sedm desetiletí. Šlo o nenápadný nástup na trůn, který se stal jedním z nejdelších období moderních dějin."
+    }
+}
+

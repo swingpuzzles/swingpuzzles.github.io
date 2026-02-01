@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4a3MLHx",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91mLQpJ4mXL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91mLQpJ4mXL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91dVowktYgL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4kvfoT7",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91N8f+6ApkL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91N8f+6ApkL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81BOqtXvSsL._AC_SX450_.jpg"
+    },
+    "story": {
+        "en": "On February 4, 2004, Facebook was launched by Mark Zuckerberg and his fellow students at Harvard University. What began as a simple way to connect classmates quickly spread far beyond campus. It quietly changed how people share news, photos, opinions — and sometimes far too much about their lunch.",
+        "es": "El 4 de febrero de 2004 se lanzó Facebook, creado por Mark Zuckerberg junto con otros estudiantes de la Universidad de Harvard. Lo que empezó como una forma sencilla de conectar compañeros de clase se expandió rápidamente mucho más allá del campus. Cambió silenciosamente la manera en que la gente comparte noticias, fotos, opiniones… y a veces demasiados detalles sobre su almuerzo.",
+        "de": "Am 4. Februar 2004 wurde Facebook von Mark Zuckerberg und seinen Mitstudenten an der Harvard University gestartet. Was als einfache Plattform für Kommilitonen begann, verbreitete sich schnell weit über den Campus hinaus. Es veränderte leise, aber dauerhaft, wie Menschen Nachrichten, Fotos und Meinungen teilen — und gelegentlich auch ihr Mittagessen.",
+        "fr": "Le 4 février 2004, Facebook fut lancé par Mark Zuckerberg et d’autres étudiants de l’université Harvard. Ce qui n’était au départ qu’un moyen de relier des camarades de classe s’étendit rapidement bien au-delà du campus. Le réseau transforma discrètement la façon de partager des informations, des photos, des opinions — et parfois trop de détails personnels.",
+        "it": "Il 4 febbraio 2004 venne lanciato Facebook, creato da Mark Zuckerberg insieme ad altri studenti dell’Università di Harvard. Quello che iniziò come un semplice strumento per collegare compagni di corso si diffuse rapidamente oltre il campus. Cambiò silenziosamente il modo di condividere notizie, foto, opinioni — e talvolta troppi dettagli della vita quotidiana.",
+        "sk": "Dňa 4. februára 2004 spustil Mark Zuckerberg spolu s ďalšími študentmi Harvardskej univerzity Facebook. Z jednoduchého nástroja na prepojenie spolužiakov sa rýchlo stal fenomén ďaleko za hranicami kampusu. Nenápadne zmenil spôsob, akým ľudia zdieľajú správy, fotografie, názory — a občas aj priveľa detailov zo svojho obeda.",
+        "cs": "Dne 4. února 2004 spustil Mark Zuckerberg spolu s dalšími studenty Harvardovy univerzity Facebook. Z jednoduchého nástroje pro propojení spolužáků se rychle stal fenomén daleko za hranicemi kampusu. Nenápadně změnil způsob, jak lidé sdílejí zprávy, fotografie, názory — a občas i příliš mnoho detailů ze svého oběda."
+    }
+}
+

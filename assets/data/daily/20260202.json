@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4630Fc3",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91AGuEErWjL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91AGuEErWjL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91Du3DmbovL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4tjojLl",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91Uu9KVmC6L._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91Uu9KVmC6L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71S29y-eQkL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On February 2, 1887, Groundhog Day was officially celebrated for the first time in Punxsutawney, Pennsylvania. A groundhog was asked to predict the weather by checking for its own shadow. It proved that humans are perfectly willing to trust long-term forecasts to a sleepy animal with no meteorological training.",
+        "es": "El 2 de febrero de 1887 se celebró oficialmente por primera vez el Día de la Marmota en Punxsutawney, Pensilvania. Se pidió a una marmota que predijera el clima observando su propia sombra. Demostró que los humanos están dispuestos a confiar previsiones a largo plazo a un animal somnoliento sin formación meteorológica.",
+        "de": "Am 2. Februar 1887 wurde der Groundhog Day in Punxsutawney, Pennsylvania, erstmals offiziell gefeiert. Ein Murmeltier sollte das Wetter vorhersagen, indem es nach seinem eigenen Schatten Ausschau hielt. Es zeigte sich, dass Menschen langfristige Prognosen gern einem verschlafenen Tier ohne meteorologische Ausbildung anvertrauen.",
+        "fr": "Le 2 février 1887, le Jour de la marmotte fut célébré officiellement pour la première fois à Punxsutawney, en Pennsylvanie. Une marmotte fut chargée de prédire le temps en observant son ombre. Une preuve que les humains font volontiers confiance aux prévisions d’un animal encore à moitié endormi.",
+        "it": "Il 2 febbraio 1887 si celebrò ufficialmente per la prima volta il Giorno della Marmotta a Punxsutawney, in Pennsylvania. A una marmotta venne affidato il compito di prevedere il tempo controllando la propria ombra. Dimostrò che gli esseri umani sono felici di affidare le previsioni a lungo termine a un animale assonnato.",
+        "sk": "Dňa 2. februára 1887 sa v meste Punxsutawney v Pensylvánii oficiálne po prvý raz slávil Deň svišťa. Svišť mal predpovedať počasie podľa toho, či uvidí svoj tieň. Ukázalo sa, že ľudia sú ochotní zveriť dlhodobú predpoveď počasia ospalému zvieraťu bez meteorologického vzdelania.",
+        "cs": "Dne 2. února 1887 se ve městě Punxsutawney v Pensylvánii poprvé oficiálně slavil Den sviště. Svišť měl předpovědět počasí podle toho, zda uvidí svůj stín. Ukázalo se, že lidé jsou ochotni svěřit dlouhodobou předpověď počasí ospalému zvířeti bez meteorologického vzdělání."
+    }
+}
+

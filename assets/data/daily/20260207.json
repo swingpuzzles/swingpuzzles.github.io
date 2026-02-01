@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4bujoAL",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/913j+uKm6RL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/913j+uKm6RL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91fMPSH0BrL._AC_SX425_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/3NNZMxG",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81BC+vAOV4L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81BC+vAOV4L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71kp0cjBzjL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On February 7, 1947, Anne Frank’s diary was first published. Written by a teenager in hiding during World War II, the book gave a human voice to history’s darkest chapters. Its quiet honesty showed that even in the hardest times, hope and reflection can survive on paper.",
+        "es": "El 7 de febrero de 1947 se publicó por primera vez el diario de Ana Frank. Escrito por una adolescente escondida durante la Segunda Guerra Mundial, el libro dio un rostro humano a uno de los periodos más oscuros de la historia. Su sinceridad tranquila demostró que incluso en tiempos difíciles pueden sobrevivir la esperanza y la reflexión.",
+        "de": "Am 7. Februar 1947 wurde das Tagebuch der Anne Frank erstmals veröffentlicht. Geschrieben von einem versteckten Mädchen während des Zweiten Weltkriegs, gab es den dunkelsten Kapiteln der Geschichte eine menschliche Stimme. Seine stille Ehrlichkeit zeigte, dass Hoffnung selbst unter schwierigsten Umständen bestehen kann.",
+        "fr": "Le 7 février 1947, le journal d’Anne Frank fut publié pour la première fois. Rédigé par une adolescente cachée pendant la Seconde Guerre mondiale, il donna une voix humaine aux pages les plus sombres de l’histoire. Sa sincérité discrète prouva que l’espoir peut survivre même dans les temps les plus durs.",
+        "it": "Il 7 febbraio 1947 venne pubblicato per la prima volta il diario di Anna Frank. Scritto da un’adolescente nascosta durante la Seconda Guerra Mondiale, il libro diede una voce umana a uno dei capitoli più bui della storia. La sua onestà silenziosa dimostrò che la speranza può sopravvivere anche nei momenti più difficili.",
+        "sk": "Dňa 7. februára 1947 bol po prvý raz vydaný denník Anny Frankovej. Napísala ho tínedžerka ukrývajúca sa počas druhej svetovej vojny a dal ľudskú tvár najtemnejším kapitolám dejín. Jeho tichá úprimnosť ukázala, že nádej a zamyslenie dokážu prežiť aj v najťažších časoch.",
+        "cs": "Dne 7. února 1947 byl poprvé vydán deník Anny Frankové. Napsala ho dospívající dívka ukrývající se během druhé světové války a dal lidský hlas nejtemnějším kapitolám dějin. Jeho tichá upřímnost ukázala, že naděje může přežít i v těch nejtěžších dobách."
+    }
+}
+

@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4bvUSiy",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81ePIrijbvL._AC_SX450_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81ePIrijbvL._AC_SL1440_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71zeOEahPuL._AC_SY450_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4qdvt0P",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91S4drI565L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91S4drI565L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81Mj0OxD8bL._AC_SY450_.jpg"
+    },
+    "story": {
+        "en": "On February 5, 1917, Mexico adopted a new constitution that introduced progressive ideas like labor rights, land reform, and limits on church power. It was one of the most forward-looking constitutions of its time. Writing it was hard — making it work would prove even harder.",
+        "es": "El 5 de febrero de 1917, México adoptó una nueva constitución que introdujo ideas progresistas como derechos laborales, reforma agraria y límites al poder de la Iglesia. Fue una de las constituciones más avanzadas de su época. Redactarla fue difícil; aplicarla resultó aún más complejo.",
+        "de": "Am 5. Februar 1917 verabschiedete Mexiko eine neue Verfassung mit fortschrittlichen Ideen wie Arbeitsrechten, Landreformen und einer Begrenzung kirchlicher Macht. Sie galt als eine der modernsten Verfassungen ihrer Zeit. Sie zu schreiben war schwierig — sie umzusetzen noch mehr.",
+        "fr": "Le 5 février 1917, le Mexique adopta une nouvelle constitution introduisant des idées progressistes comme les droits du travail, la réforme agraire et la limitation du pouvoir de l’Église. Elle comptait parmi les constitutions les plus avancées de son époque. La rédiger fut ardu — la faire appliquer le fut encore davantage.",
+        "it": "Il 5 febbraio 1917 il Messico adottò una nuova costituzione che introdusse idee progressiste come i diritti dei lavoratori, la riforma agraria e limiti al potere della Chiesa. Fu una delle costituzioni più avanzate del suo tempo. Scriverla fu difficile — metterla in pratica lo fu ancora di più.",
+        "sk": "Dňa 5. februára 1917 prijalo Mexiko novú ústavu, ktorá zaviedla pokrokové myšlienky ako pracovné práva, pozemkovú reformu a obmedzenie moci cirkvi. Patrila medzi najmodernejšie ústavy svojej doby. Napísať ju bolo náročné — uviesť ju do praxe ešte viac.",
+        "cs": "Dne 5. února 1917 přijalo Mexiko novou ústavu, která zavedla pokrokové myšlenky jako pracovní práva, pozemkovou reformu a omezení moci církve. Patřila k nejmodernějším ústavám své doby. Sepsat ji bylo náročné — uvést ji do praxe ještě víc."
+    }
+}
+
