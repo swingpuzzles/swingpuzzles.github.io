@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4to2Z79",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91zKsHN+S-L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91zKsHN+S-L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81CPgufZf9L._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/402o6OU",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/711pXSKT4QL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/711pXSKT4QL._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/812QBbxGp1L._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On February 12, 1809, Charles Darwin was born in Shrewsbury, England. His observations during the voyage of HMS Beagle would later lead to the theory of evolution by natural selection, changing how humanity understood life itself. At first, his ideas sparked controversy and long debates, but over time they reshaped science, education, and even everyday language about nature. Darwin’s legacy reminds us that curiosity, patience, and careful observation can quietly transform the way the world thinks.",
+        "es": "El 12 de febrero de 1809 nació Charles Darwin en Shrewsbury, Inglaterra. Sus observaciones durante el viaje del HMS Beagle conducirían más tarde a la teoría de la evolución por selección natural, cambiando la forma en que la humanidad entendía la vida. Al principio, sus ideas provocaron controversias y largos debates, pero con el tiempo transformaron la ciencia, la educación e incluso el lenguaje cotidiano sobre la naturaleza. El legado de Darwin recuerda que la curiosidad, la paciencia y la observación cuidadosa pueden cambiar silenciosamente la forma de pensar del mundo.",
+        "de": "Am 12. Februar 1809 wurde Charles Darwin im englischen Shrewsbury geboren. Seine Beobachtungen während der Reise der HMS Beagle führten später zur Theorie der Evolution durch natürliche Selektion und veränderten das Verständnis des Lebens grundlegend. Anfangs lösten seine Ideen heftige Diskussionen aus, doch mit der Zeit prägten sie Wissenschaft, Bildung und sogar die Alltagssprache über die Natur. Darwins Vermächtnis zeigt, dass Neugier, Geduld und genaue Beobachtung die Welt leise verändern können.",
+        "fr": "Le 12 février 1809 naquit Charles Darwin à Shrewsbury, en Angleterre. Ses observations lors du voyage du HMS Beagle menèrent plus tard à la théorie de l’évolution par sélection naturelle, transformant la compréhension de la vie. Ses idées suscitèrent d’abord débats et controverses, avant d’influencer durablement la science, l’éducation et la manière de parler de la nature. L’héritage de Darwin rappelle que la curiosité et l’observation attentive peuvent changer le monde en profondeur.",
+        "it": "Il 12 febbraio 1809 nacque Charles Darwin a Shrewsbury, in Inghilterra. Le sue osservazioni durante il viaggio dell’HMS Beagle portarono in seguito alla teoria dell’evoluzione per selezione naturale, cambiando il modo in cui l’umanità comprendeva la vita. All’inizio le sue idee provocarono discussioni e controversie, ma col tempo influenzarono profondamente la scienza, l’educazione e il linguaggio quotidiano sulla natura. L’eredità di Darwin ricorda che curiosità e osservazione paziente possono trasformare silenziosamente il pensiero umano.",
+        "sk": "Dňa 12. februára 1809 sa v anglickom Shrewsbury narodil Charles Darwin. Jeho pozorovania počas plavby lode HMS Beagle neskôr viedli k teórii evolúcie prirodzeným výberom a zásadne zmenili pohľad ľudstva na život. Spočiatku jeho myšlienky vyvolávali spory a dlhé diskusie, no postupne ovplyvnili vedu, vzdelávanie aj bežný jazyk o prírode. Darwinov odkaz pripomína, že zvedavosť, trpezlivosť a pozorné pozorovanie dokážu potichu zmeniť spôsob, akým svet premýšľa.",
+        "cs": "Dne 12. února 1809 se v anglickém Shrewsbury narodil Charles Darwin. Jeho pozorování během plavby lodi HMS Beagle později vedla k teorii evoluce přirozeným výběrem a zásadně změnila pohled lidstva na život. Zpočátku jeho myšlenky vyvolávaly spory a dlouhé debaty, ale postupně ovlivnily vědu, vzdělávání i každodenní jazyk o přírodě. Darwinův odkaz připomíná, že zvědavost, trpělivost a pečlivé pozorování mohou tiše proměnit způsob, jakým svět přemýšlí."
+    }
+}
+

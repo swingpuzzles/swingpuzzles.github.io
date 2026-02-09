@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/45UzqQP",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81YikSXtKzL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81YikSXtKzL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/61EGHX7pTWL._AC_SX569_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4aqbje5",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91U7CJj8RPL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91U7CJj8RPL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91gmijqM8NL._AC_SX569_.jpg"
+    },
+    "story": {
+        "en": "On February 15, 1898, the USS Maine exploded in Havana Harbor, an event that shocked the United States and quickly became a turning point in international politics. Although the exact cause remained unclear, the incident intensified public opinion and pushed the country toward the Spanish-American War. Newspapers of the time turned the tragedy into dramatic headlines, showing how media can shape history as much as events themselves. The explosion became a reminder that moments of uncertainty can echo far beyond the place where they began.",
+        "es": "El 15 de febrero de 1898, el USS Maine explotó en el puerto de La Habana, un suceso que conmocionó a Estados Unidos y se convirtió en un punto de inflexión político. Aunque la causa exacta nunca quedó clara, el incidente intensificó la opinión pública y empujó al país hacia la guerra hispano-estadounidense. Los periódicos de la época transformaron la tragedia en grandes titulares, mostrando cómo los medios también pueden influir en la historia. La explosión recordó que los momentos de incertidumbre pueden resonar mucho más allá del lugar donde ocurren.",
+        "de": "Am 15. Februar 1898 explodierte die USS Maine im Hafen von Havanna, ein Ereignis, das die Vereinigten Staaten erschütterte und zu einem Wendepunkt der internationalen Politik wurde. Obwohl die genaue Ursache unklar blieb, verstärkte der Vorfall die öffentliche Stimmung und führte zum Spanisch-Amerikanischen Krieg. Zeitungen machten daraus dramatische Schlagzeilen und zeigten, wie sehr Medien Geschichte mitprägen können. Die Explosion wurde zu einer Erinnerung daran, dass Momente der Unsicherheit weit über ihren Ursprung hinaus wirken.",
+        "fr": "Le 15 février 1898, l’USS Maine explosa dans le port de La Havane, un événement qui choqua les États-Unis et devint un tournant politique majeur. Bien que la cause exacte reste incertaine, l’incident attisa l’opinion publique et conduisit à la guerre hispano-américaine. Les journaux transformèrent la tragédie en titres sensationnels, montrant l’influence des médias sur l’histoire. L’explosion rappela que les moments d’incertitude peuvent avoir des répercussions bien au-delà de leur origine.",
+        "it": "Il 15 febbraio 1898 la USS Maine esplose nel porto dell’Avana, un evento che sconvolse gli Stati Uniti e segnò una svolta nella politica internazionale. Anche se la causa esatta rimase incerta, l’incidente alimentò l’opinione pubblica e portò alla guerra ispano-americana. I giornali dell’epoca trasformarono la tragedia in titoli sensazionali, mostrando quanto i media possano influenzare la storia. L’esplosione ricordò che i momenti di incertezza possono avere effetti ben oltre il luogo in cui nascono.",
+        "sk": "Dňa 15. februára 1898 explodovala loď USS Maine v havanskom prístave, čo šokovalo Spojené štáty a stalo sa zlomovým bodom medzinárodnej politiky. Presná príčina zostala nejasná, no udalosť posilnila verejnú mienku a priblížila krajinu k španielsko-americkej vojne. Noviny tej doby premenili tragédiu na dramatické titulky a ukázali, ako médiá dokážu ovplyvniť dejiny rovnako ako samotné udalosti. Výbuch pripomenul, že momenty neistoty môžu rezonovať ďaleko za miestom, kde vznikli.",
+        "cs": "Dne 15. února 1898 explodovala loď USS Maine v havanském přístavu, což otřáslo Spojenými státy a stalo se zlomovým bodem mezinárodní politiky. Přesná příčina zůstala nejasná, ale událost posílila veřejné mínění a přiblížila zemi k španělsko-americké válce. Noviny tehdejší doby proměnily tragédii v dramatické titulky a ukázaly, jak média dokážou ovlivnit dějiny stejně jako samotné události. Výbuch připomněl, že okamžiky nejistoty mohou rezonovat daleko za místem svého vzniku."
+    }
+}
+

@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4rJOI3j",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91-z46K-w5L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91-z46K-w5L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/91IiIFNrbQL._AC_SX569_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4a3j1fi",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91Is5EwdfYL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91Is5EwdfYL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71gzVQPD1cL._AC_SX569_.jpg"
+    },
+    "story": {
+        "en": "On February 14, traditionally linked to the story of Saint Valentine, a Roman priest was said to have been executed in the 3rd century for secretly marrying couples despite imperial orders. Over centuries, the legend blended with poetry and medieval traditions, slowly transforming the date into a celebration of love. What may have begun as a quiet act of defiance eventually turned into a global day filled with letters, flowers, and small gestures of affection. It shows how history sometimes evolves not through power or politics, but through stories people choose to keep telling.",
+        "es": "El 14 de febrero, asociado tradicionalmente con la historia de San Valentín, un sacerdote romano habría sido ejecutado en el siglo III por casar en secreto a parejas pese a las órdenes imperiales. Con el paso de los siglos, la leyenda se mezcló con la poesía y las tradiciones medievales, transformando lentamente la fecha en una celebración del amor. Lo que pudo comenzar como un acto silencioso de desafío terminó convirtiéndose en un día global lleno de cartas, flores y pequeños gestos de cariño. Demuestra que la historia a veces evoluciona más por las historias que contamos que por la política o el poder.",
+        "de": "Der 14. Februar wird traditionell mit der Geschichte des Heiligen Valentin verbunden, eines römischen Priesters, der im 3. Jahrhundert angeblich hingerichtet wurde, weil er trotz kaiserlicher Verbote heimlich Paare traute. Im Laufe der Jahrhunderte vermischte sich die Legende mit Poesie und mittelalterlichen Bräuchen und verwandelte das Datum langsam in ein Fest der Liebe. Was vielleicht als stiller Akt des Widerstands begann, wurde zu einem weltweiten Tag voller Briefe, Blumen und kleiner Gesten. Es zeigt, dass Geschichte manchmal durch Geschichten wächst, die Menschen weitertragen.",
+        "fr": "Le 14 février est traditionnellement lié à l’histoire de saint Valentin, un prêtre romain qui aurait été exécuté au IIIe siècle pour avoir marié des couples en secret malgré les ordres impériaux. Au fil des siècles, la légende se mêla à la poésie et aux traditions médiévales, transformant progressivement cette date en fête de l’amour. Ce qui aurait commencé comme un acte discret de résistance devint une journée mondiale faite de lettres, de fleurs et de gestes d’affection. Une preuve que l’histoire se construit parfois autant par les récits que par les événements politiques.",
+        "it": "Il 14 febbraio è tradizionalmente legato alla storia di San Valentino, un sacerdote romano che sarebbe stato giustiziato nel III secolo per aver celebrato matrimoni segreti nonostante gli ordini imperiali. Nei secoli successivi la leggenda si unì alla poesia e alle tradizioni medievali, trasformando lentamente la data in una festa dell’amore. Ciò che forse iniziò come un gesto silenzioso di sfida è diventato un giorno globale fatto di lettere, fiori e piccoli segni di affetto. Dimostra che la storia a volte cresce attraverso le storie che le persone scelgono di raccontare.",
+        "sk": "Dňa 14. februára, tradične spájaného s príbehom svätého Valentína, mal byť v 3. storočí popravený rímsky kňaz, ktorý napriek cisárskym zákazom tajne sobášil páry. Počas stáročí sa legenda prepojila s poéziou a stredovekými zvykmi a postupne premenila tento dátum na sviatok lásky. To, čo mohlo začať ako tichý akt vzdoru, sa napokon zmenilo na celosvetový deň plný listov, kvetov a drobných prejavov náklonnosti. Ukazuje to, že dejiny sa niekedy formujú skôr príbehmi, ktoré si ľudia uchovávajú, než samotnou politikou.",
+        "cs": "Dne 14. února, tradičně spojovaného s příběhem svatého Valentýna, měl být ve 3. století popraven římský kněz, který navzdory císařským zákazům tajně oddával páry. Během staletí se legenda propojila s poezií a středověkými zvyky a postupně proměnila tento den ve svátek lásky. To, co možná začalo jako tichý čin vzdoru, se nakonec stalo celosvětovým dnem plným dopisů, květin a drobných gest náklonnosti. Ukazuje to, že dějiny někdy formují spíše příběhy, které si lidé předávají, než samotná politika."
+    }
+}
+

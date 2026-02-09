@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/3OgWF1j",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81Hr55wVaYL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81Hr55wVaYL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71OUiHDRmgL._AC_SX569_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4tuGlKI",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/818FMNd6+vL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/818FMNd6+vL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81xJMt8mkKL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On February 10, 1996, the IBM supercomputer Deep Blue defeated world chess champion Garry Kasparov in a game under tournament conditions for the first time. It wasn’t the final match, but it signaled that computers were becoming serious opponents. The moment quietly changed how people thought about intelligence — both human and artificial.",
+        "es": "El 10 de febrero de 1996, la supercomputadora Deep Blue de IBM derrotó por primera vez al campeón mundial de ajedrez Garry Kasparov en una partida oficial. No fue el resultado final del duelo, pero mostró que las computadoras ya eran rivales serios. El momento cambió la forma en que las personas veían la inteligencia humana y artificial.",
+        "de": "Am 10. Februar 1996 besiegte der IBM-Supercomputer Deep Blue erstmals den Schachweltmeister Garri Kasparow unter Turnierbedingungen. Es war noch nicht das Ende des Wettkampfs, doch es zeigte, dass Computer zu ernsthaften Gegnern wurden. Der Moment veränderte leise die Sicht auf menschliche und künstliche Intelligenz.",
+        "fr": "Le 10 février 1996, l’ordinateur Deep Blue d’IBM battit pour la première fois le champion du monde d’échecs Garry Kasparov lors d’une partie officielle. Ce n’était pas encore la victoire finale, mais le signal que les machines devenaient de véritables adversaires. Ce moment transforma la perception de l’intelligence humaine et artificielle.",
+        "it": "Il 10 febbraio 1996 il supercomputer Deep Blue di IBM sconfisse per la prima volta il campione mondiale di scacchi Garry Kasparov in una partita ufficiale. Non fu la fine del confronto, ma dimostrò che i computer stavano diventando avversari seri. Fu un momento che cambiò il modo di vedere l’intelligenza umana e artificiale.",
+        "sk": "Dňa 10. februára 1996 porazil superpočítač Deep Blue od IBM prvýkrát v turnajovej partii majstra sveta v šachu Garriho Kasparova. Nebol to ešte konečný výsledok súboja, no naznačil, že počítače sa stávajú vážnymi súpermi. Tento moment potichu zmenil pohľad na ľudskú aj umelú inteligenciu.",
+        "cs": "Dne 10. února 1996 porazil superpočítač Deep Blue od IBM poprvé v turnajové partii mistra světa v šachu Garriho Kasparova. Nebyl to ještě konečný výsledek souboje, ale ukázal, že počítače se stávají vážnými soupeři. Tento okamžik nenápadně změnil pohled na lidskou i umělou inteligenci."
+    }
+}
+
