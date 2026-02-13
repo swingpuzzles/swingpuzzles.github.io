@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4apLGeR",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/A1yDvbgJuKL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/A1yDvbgJuKL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/A1PVa8zGz4L._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4qDAUGu",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/81ALH8hnseL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/81ALH8hnseL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/819NQIN5dgL._AC_SX522_.jpg"
+    },
+    "story": {
+        "en": "On February 19, 1473, Nicolaus Copernicus was born in Toruń, Poland. His later work would challenge the idea that Earth stood at the center of the universe, proposing instead that our planet moves around the Sun. At first, the concept seemed radical and even unsettling, yet it gradually transformed science, philosophy, and humanity’s sense of place in the cosmos. Copernicus’ legacy reminds us that sometimes the biggest shifts begin with a simple question about how things truly move.",
+        "es": "El 19 de febrero de 1473 nació Nicolás Copérnico en Toruń, Polonia. Sus estudios posteriores cuestionaron la idea de que la Tierra fuera el centro del universo y propusieron que nuestro planeta gira alrededor del Sol. Al principio la idea parecía radical, pero con el tiempo transformó la ciencia, la filosofía y la forma en que la humanidad entiende su lugar en el cosmos. El legado de Copérnico recuerda que los grandes cambios pueden comenzar con una simple pregunta.",
+        "de": "Am 19. Februar 1473 wurde Nikolaus Kopernikus im polnischen Toruń geboren. Seine späteren Arbeiten stellten die Vorstellung infrage, dass die Erde im Mittelpunkt des Universums stehe, und schlugen vor, dass sie sich um die Sonne bewegt. Anfangs wirkte diese Idee radikal, doch sie veränderte Wissenschaft, Philosophie und das menschliche Weltbild nachhaltig. Kopernikus zeigt, dass große Umbrüche oft mit einer einfachen Frage beginnen.",
+        "fr": "Le 19 février 1473 naquit Nicolas Copernic à Toruń, en Pologne. Ses travaux ultérieurs remirent en cause l’idée d’une Terre au centre de l’univers et proposèrent que notre planète tourne autour du Soleil. D’abord perçue comme radicale, cette vision transforma progressivement la science, la philosophie et la place de l’humanité dans le cosmos. L’héritage de Copernic rappelle que les grandes révolutions commencent parfois par une simple question.",
+        "it": "Il 19 febbraio 1473 nacque Niccolò Copernico a Toruń, in Polonia. I suoi studi successivi misero in discussione l’idea di una Terra al centro dell’universo e suggerirono che il nostro pianeta orbitasse attorno al Sole. All’inizio sembrò una teoria audace, ma col tempo cambiò profondamente la scienza, la filosofia e la visione dell’umanità nel cosmo. L’eredità di Copernico ricorda che le grandi trasformazioni nascono spesso da una semplice domanda.",
+        "sk": "Dňa 19. februára 1473 sa v poľskom meste Toruń narodil Mikuláš Kopernik. Jeho neskoršie dielo spochybnilo predstavu, že Zem stojí v strede vesmíru, a ukázalo, že naša planéta obieha okolo Slnka. Spočiatku sa táto myšlienka zdala radikálna, no postupne zmenila vedu, filozofiu aj pohľad ľudstva na vlastné miesto v kozme. Kopernikov odkaz pripomína, že veľké zmeny často začínajú jednoduchou otázkou o tom, ako sa veci skutočne pohybujú.",
+        "cs": "Dne 19. února 1473 se v polském městě Toruń narodil Mikuláš Koperník. Jeho pozdější práce zpochybnila představu, že Zem stojí ve středu vesmíru, a ukázala, že naše planeta obíhá kolem Slunce. Zpočátku působila tato myšlenka radikálně, ale postupně proměnila vědu, filozofii i pohled lidstva na vlastní místo v kosmu. Koperníkův odkaz připomíná, že velké změny často začínají jednoduchou otázkou."
+    }
+}
+

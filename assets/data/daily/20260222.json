@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4axUlug",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91hiovV1cNL._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91hiovV1cNL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/719IZaE4eIL._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4ai8f53",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/814Z2LTnZ+L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/814Z2LTnZ+L._AC_SL1200_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81Wj8vIEsuL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On February 22, 1732, George Washington was born in Virginia, later becoming the first President of the United States. Known for leading the Continental Army during the American Revolutionary War, he eventually helped shape the foundations of a new political system. After two presidential terms he stepped down voluntarily, setting an example of peaceful transfer of power that influenced democratic traditions worldwide. His legacy shows how leadership can shape not only a nation’s beginning but also its long-term political culture.",
+        "es": "El 22 de febrero de 1732 nació George Washington en Virginia, quien más tarde se convirtió en el primer presidente de los Estados Unidos. Conocido por liderar el Ejército Continental durante la Guerra de Independencia, ayudó a sentar las bases de un nuevo sistema político. Tras dos mandatos presidenciales renunció voluntariamente al cargo, estableciendo un ejemplo de transición pacífica del poder que influyó en tradiciones democráticas en todo el mundo. Su legado demuestra cómo el liderazgo puede moldear tanto el inicio de una nación como su cultura política futura.",
+        "de": "Am 22. Februar 1732 wurde George Washington in Virginia geboren, der später der erste Präsident der Vereinigten Staaten wurde. Als Anführer der Kontinentalarmee im Unabhängigkeitskrieg half er, die Grundlagen eines neuen politischen Systems zu schaffen. Nach zwei Amtszeiten trat er freiwillig zurück und setzte damit ein Zeichen für die friedliche Machtübergabe, das demokratische Traditionen weltweit beeinflusste. Sein Vermächtnis zeigt, wie Führung nicht nur den Beginn eines Staates, sondern auch seine politische Kultur prägen kann.",
+        "fr": "Le 22 février 1732 naquit George Washington en Virginie, futur premier président des États-Unis. Connu pour avoir dirigé l’armée continentale pendant la guerre d’indépendance, il contribua à poser les bases d’un nouveau système politique. Après deux mandats, il quitta volontairement le pouvoir, établissant un exemple de transition pacifique qui influença de nombreuses démocraties. Son héritage montre comment le leadership peut façonner à la fois la naissance d’une nation et sa culture politique.",
+        "it": "Il 22 febbraio 1732 nacque in Virginia George Washington, destinato a diventare il primo presidente degli Stati Uniti. Conosciuto per aver guidato l’esercito continentale durante la guerra d’indipendenza americana, contribuì a costruire le basi di un nuovo sistema politico. Dopo due mandati presidenziali si ritirò volontariamente, dando un esempio di passaggio pacifico del potere che influenzò molte democrazie nel mondo. La sua eredità dimostra come la leadership possa modellare non solo la nascita di una nazione ma anche la sua cultura politica.",
+        "sk": "Dňa 22. februára 1732 sa vo Virgínii narodil George Washington, ktorý sa neskôr stal prvým prezidentom Spojených štátov amerických. Preslávil sa vedením Kontinentálnej armády počas americkej revolučnej vojny a pomohol vytvoriť základy nového politického systému. Po dvoch prezidentských obdobiach dobrovoľne odstúpil z funkcie a vytvoril príklad pokojného odovzdania moci, ktorý ovplyvnil demokratické tradície po celom svete. Jeho odkaz ukazuje, že líder môže formovať nielen vznik štátu, ale aj jeho dlhodobú politickú kultúru.",
+        "cs": "Dne 22. února 1732 se ve Virginii narodil George Washington, který se později stal prvním prezidentem Spojených států amerických. Proslavil se vedením Kontinentální armády během americké války za nezávislost a pomohl vytvořit základy nového politického systému. Po dvou prezidentských obdobích dobrovolně odstoupil a nastavil příklad pokojného předání moci, který ovlivnil demokratické tradice po celém světě. Jeho odkaz ukazuje, že vůdce může formovat nejen vznik státu, ale i jeho dlouhodobou politickou kulturu."
+    }
+}
+

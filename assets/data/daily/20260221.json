@@ -1,0 +1,24 @@
+{
+    "horiz": {
+        "link": "https://amzn.to/4aqLWJa",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/71aB0Nft39L._AC_SX679_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/71aB0Nft39L._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/81tuePrlGML._AC_SX679_.jpg"
+    },
+    "vert": {
+        "link": "https://amzn.to/4sa5ysr",
+        "imgSmallUrl": "https://m.media-amazon.com/images/I/91SYoLusEgL._AC_SY741_.jpg",
+        "imgBigUrl": "https://m.media-amazon.com/images/I/91SYoLusEgL._AC_SL1500_.jpg",
+        "imgCoverUrl": "https://m.media-amazon.com/images/I/71IWbuIiIeL._AC_SX679_.jpg"
+    },
+    "story": {
+        "en": "On February 21, 1848, the Communist Manifesto by Karl Marx and Friedrich Engels was first published in London. Written during a time of social change and industrial growth, the short political text quickly spread across Europe and influenced debates about work, class, and society. Whether praised or criticized, it became one of the most discussed publications of the 19th century. Beyond shaping conversations, its ideas later influenced political movements and the policies of numerous countries around the world, leaving a lasting mark on modern history.",
+        "es": "El 21 de febrero de 1848 se publicó por primera vez en Londres el Manifiesto Comunista de Karl Marx y Friedrich Engels. Escrito en una época de cambios sociales y crecimiento industrial, el breve texto político se difundió rápidamente por Europa e influyó en los debates sobre el trabajo, las clases y la sociedad. Tanto admirado como criticado, se convirtió en una de las publicaciones más comentadas del siglo XIX. Más allá de los debates, sus ideas influyeron posteriormente en movimientos políticos y en las políticas de numerosos países en todo el mundo.",
+        "de": "Am 21. Februar 1848 wurde in London erstmals das Kommunistische Manifest von Karl Marx und Friedrich Engels veröffentlicht. In einer Zeit sozialer Veränderungen und industriellen Wachstums verbreitete sich der kurze politische Text schnell in Europa und prägte Diskussionen über Arbeit, Klassen und Gesellschaft. Ob gelobt oder kritisiert – er wurde zu einer der meistdiskutierten Schriften des 19. Jahrhunderts. Darüber hinaus beeinflussten seine Ideen später politische Bewegungen und die Politik zahlreicher Länder weltweit und hinterließen deutliche Spuren in der modernen Geschichte.",
+        "fr": "Le 21 février 1848 fut publiée à Londres la première édition du Manifeste du parti communiste de Karl Marx et Friedrich Engels. Rédigé à une époque de transformations sociales et industrielles, ce court texte se diffusa rapidement en Europe et alimenta les débats sur le travail et la société. Admiré par certains et critiqué par d’autres, il devint l’un des écrits les plus discutés du XIXe siècle. Au-delà des discussions intellectuelles, ses idées influencèrent par la suite des mouvements politiques et les politiques de nombreux pays à travers le monde.",
+        "it": "Il 21 febbraio 1848 fu pubblicato a Londra il Manifesto del Partito Comunista di Karl Marx e Friedrich Engels. Scritto in un periodo di grandi cambiamenti sociali e industriali, il breve testo si diffuse rapidamente in Europa e influenzò i dibattiti su lavoro e società. Lodato da alcuni e criticato da altri, divenne una delle opere più discusse del XIX secolo. Le sue idee andarono oltre il dibattito teorico, influenzando movimenti politici e le politiche di numerosi paesi nel mondo.",
+        "sk": "Dňa 21. februára 1848 vyšiel v Londýne prvýkrát Komunistický manifest Karla Marxa a Friedricha Engelsa. Krátky politický text vznikol v období veľkých spoločenských zmien a priemyselného rastu a rýchlo sa rozšíril po Európe, kde ovplyvnil diskusie o práci, triedach a spoločnosti. Či už bol oslavovaný alebo kritizovaný, stal sa jedným z najdiskutovanejších diel 19. storočia. Jeho myšlienky však neformovali len rozhovory, ale neskôr výrazne ovplyvnili politické hnutia aj politiku mnohých krajín po celom svete.",
+        "cs": "Dne 21. února 1848 vyšel v Londýně poprvé Komunistický manifest Karla Marxe a Friedricha Engelse. Krátký politický text vznikl v době velkých společenských změn a průmyslového růstu a rychle se rozšířil po Evropě, kde ovlivnil debaty o práci a společnosti. Ať už byl chválen nebo kritizován, stal se jedním z nejdiskutovanějších spisů 19. století. Jeho myšlenky však neovlivnily jen rozhovory, ale později i politická hnutí a politiku mnoha zemí po celém světě."
+    }
+}
+
