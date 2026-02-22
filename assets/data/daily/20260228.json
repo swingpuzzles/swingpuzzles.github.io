@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/40nClhz",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/71dKYeBtIAL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/71dKYeBtIAL._AC_SL1200_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81e2lGFL90L._AC_SX679_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4c4pIiF",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/71LmGK7U1rL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/71LmGK7U1rL._AC_SL1200_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/715bj5I7z1L._AC_SX679_.jpg"
+  },
+  "story": {
+    "en": "On February 28, 1953, James Watson and Francis Crick announced they had identified the double-helix structure of DNA at Cambridge. The model revealed two intertwined strands with complementary base pairs, explaining how genetic information is stored and copied. Drawing on crucial X-ray data from Rosalind Franklin, the discovery reshaped biology and laid foundations for modern genetics.",
+    "es": "El 28 de febrero de 1953, James Watson y Francis Crick anunciaron en Cambridge que habían identificado la estructura de doble hélice del ADN. El modelo mostró dos cadenas entrelazadas con bases complementarias, explicando cómo se almacena y copia la información genética. Basado en datos clave de rayos X obtenidos por Rosalind Franklin, el hallazgo transformó la biología moderna.",
+    "de": "Am 28. Februar 1953 verkündeten James Watson und Francis Crick in Cambridge die Entdeckung der Doppelhelix-Struktur der DNA. Das Modell zeigte zwei ineinander gewundene Stränge mit komplementären Basenpaaren und erklärte so die Speicherung und Weitergabe genetischer Information. Wichtige Röntgendaten von Rosalind Franklin trugen wesentlich zu diesem Durchbruch bei.",
+    "fr": "Le 28 février 1953, James Watson et Francis Crick annoncèrent à Cambridge la structure en double hélice de l’ADN. Le modèle décrivait deux brins enroulés avec des bases complémentaires, expliquant le stockage et la réplication de l’information génétique. Appuyée par les données de diffraction de Rosalind Franklin, cette découverte transforma la biologie moderne.",
+    "it": "Il 28 febbraio 1953 James Watson e Francis Crick annunciarono a Cambridge di aver identificato la struttura a doppia elica del DNA. Il modello mostrava due filamenti intrecciati con basi complementari, spiegando come l’informazione genetica venga conservata e replicata. I dati ai raggi X di Rosalind Franklin furono fondamentali per questa svolta scientifica.",
+    "sk": "Dňa 28. februára 1953 oznámili James Watson a Francis Crick v Cambridge objav dvojzávitnicovej štruktúry DNA. Model dvoch prepletených vlákien s komplementárnymi bázami vysvetlil, ako sa genetická informácia uchováva a kopíruje. Kľúčové röntgenové snímky Rosalind Franklin výrazne prispeli k tomuto prelomovému objavu.",
+    "cs": "Dne 28. února 1953 oznámili James Watson a Francis Crick v Cambridge objev dvojité šroubovice DNA. Model dvou propletených vláken s komplementárními bázemi vysvětlil, jak se genetická informace ukládá a kopíruje. Zásadní roli sehrála rentgenová data Rosalind Franklin, která k objevu významně přispěla."
+  }
+}

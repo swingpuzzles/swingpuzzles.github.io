@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4aIlj2r",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81mRKxb3-dL._AC_SX522_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81mRKxb3-dL._AC_SL1398_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81Pe8ezENaL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4tNTY7J",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/71mEI21oL+L._AC_SX569_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/71mEI21oL+L._AC_SL1024_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71LaMpJlpgL._AC_SX679_.jpg"
+  },
+  "story": {
+    "en": "On February 26, 1919, President Woodrow Wilson signed the law establishing Grand Canyon National Park in Arizona. The designation granted permanent federal protection to one of the world’s most dramatic landscapes. Already a national monument since 1908, the canyon was now fully incorporated into the U.S. park system, marking a milestone in the growing conservation movement.",
+    "es": "El 26 de febrero de 1919, el presidente Woodrow Wilson firmó la ley que estableció el Parque Nacional del Gran Cañón en Arizona. La designación otorgó protección federal permanente a uno de los paisajes más impresionantes del mundo. Ya declarado monumento nacional en 1908, el cañón pasó a formar parte oficial del sistema de parques de EE. UU., consolidando el movimiento conservacionista.",
+    "de": "Am 26. Februar 1919 unterzeichnete Präsident Woodrow Wilson das Gesetz zur Gründung des Grand-Canyon-Nationalparks in Arizona. Damit erhielt eine der eindrucksvollsten Landschaften der Welt dauerhaften Bundesschutz. Bereits 1908 war das Gebiet zum Nationaldenkmal erklärt worden, doch 1919 wurde es offiziell Teil des US-Nationalparksystems – ein Meilenstein der Naturschutzbewegung.",
+    "fr": "Le 26 février 1919, le président Woodrow Wilson signa la loi créant le parc national du Grand Canyon en Arizona. Cette décision accorda une protection fédérale permanente à l’un des paysages les plus spectaculaires du monde. Déjà classé monument national en 1908, le canyon intégra officiellement le système des parcs nationaux américains, marquant une étape clé du mouvement de conservation.",
+    "it": "Il 26 febbraio 1919 il presidente Woodrow Wilson firmò la legge che istituì il Parco Nazionale del Grand Canyon in Arizona. La decisione garantì protezione federale permanente a uno dei paesaggi più spettacolari al mondo. Già dichiarato monumento nazionale nel 1908, il canyon entrò ufficialmente nel sistema dei parchi nazionali statunitensi, segnando un passo importante per la tutela ambientale.",
+    "sk": "Dňa 26. februára 1919 podpísal prezident Woodrow Wilson zákon, ktorým vznikol Národný park Grand Canyon v Arizone. Jedna z najpôsobivejších krajín sveta tak získala trvalú federálnu ochranu. Územie bolo národnou pamiatkou už od roku 1908, no v roku 1919 sa oficiálne stalo súčasťou systému národných parkov USA, čo predstavovalo významný míľnik ochrany prírody.",
+    "cs": "Dne 26. února 1919 podepsal prezident Woodrow Wilson zákon o zřízení Národního parku Grand Canyon v Arizoně. Jedna z nejúchvatnějších krajin světa tak získala trvalou federální ochranu. Oblast byla národní památkou již od roku 1908, ale v roce 1919 se oficiálně stala součástí systému národních parků USA, což představovalo důležitý milník ochrany přírody."
+  }
+}

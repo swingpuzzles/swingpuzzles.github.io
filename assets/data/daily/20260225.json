@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4kNuMKt",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/91qjk9XPWKL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/91qjk9XPWKL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71WkybqA5nL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4kLdldw",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/71srO5WuYKL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/71srO5WuYKL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/61OFcW6KGoL._AC_SX522_.jpg"
+  },
+  "story": {
+    "en": "On February 25, 1836, Samuel Colt received a U.S. patent for his revolving-cylinder firearm design. The mechanism allowed multiple shots before reloading by rotating a cylinder with several chambers. While repeating weapons existed earlier, Colt’s system proved more practical for mass production. The patent marked not just a weapon design, but a step toward standardized manufacturing and industrial scale.",
+    "es": "El 25 de febrero de 1836, Samuel Colt recibió una patente en Estados Unidos por su diseño de arma con cilindro giratorio. El mecanismo permitía disparar varias veces antes de recargar al rotar un cilindro con múltiples cámaras. Aunque ya existían armas repetidoras, el sistema de Colt resultó más adecuado para la producción en serie. La patente representó tanto un avance técnico como un paso hacia la fabricación industrial estandarizada.",
+    "de": "Am 25. Februar 1836 erhielt Samuel Colt ein US-Patent für sein Revolversystem mit rotierendem Zylinder. Der Mechanismus erlaubte mehrere Schüsse vor dem Nachladen, indem sich eine Trommel mit mehreren Kammern drehte. Zwar gab es bereits Repetierwaffen, doch Colts Konstruktion eignete sich besser für die Serienfertigung. Das Patent stand nicht nur für ein Waffendesign, sondern auch für einen Schritt zur standardisierten Industrieproduktion.",
+    "fr": "Le 25 février 1836, Samuel Colt reçut un brevet américain pour son arme à barillet rotatif. Le mécanisme permettait de tirer plusieurs coups avant de recharger grâce à un cylindre comportant plusieurs chambres. Bien que des armes répétitives existaient déjà, le système de Colt se prêtait mieux à la production en série. Ce brevet marqua à la fois une innovation technique et une étape vers la fabrication industrielle standardisée.",
+    "it": "Il 25 febbraio 1836 Samuel Colt ottenne un brevetto statunitense per la sua arma con tamburo rotante. Il meccanismo consentiva più colpi prima della ricarica grazie a un cilindro con diverse camere. Anche se esistevano armi ripetitive precedenti, il sistema di Colt era più adatto alla produzione su larga scala. Il brevetto segnò non solo un’innovazione tecnica, ma anche un passo verso la manifattura industriale standardizzata.",
+    "sk": "Dňa 25. februára 1836 získal Samuel Colt americký patent na zbraň s otočným valcom. Mechanizmus umožňoval vystreliť viac rán bez okamžitého prebíjania vďaka valcu s viacerými komorami. Hoci opakovacie zbrane existovali už skôr, Coltov systém bol vhodnejší na sériovú výrobu. Patent tak neznamenal len nový typ zbrane, ale aj krok k štandardizovanej priemyselnej výrobe.",
+    "cs": "Dne 25. února 1836 získal Samuel Colt americký patent na zbraň s otočným válcem. Mechanismus umožňoval vystřelit více ran bez okamžitého nabíjení díky válci s několika komorami. Přestože opakovací zbraně existovaly již dříve, Coltův systém byl vhodnější pro sériovou výrobu. Patent tak znamenal nejen nový typ zbraně, ale i krok ke standardizované průmyslové výrobě."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4qLiYK3",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/91BUgPaL3kL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/91BUgPaL3kL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71+wYN8aTUL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/3OESJHP",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/71Upvp7ptvL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/71Upvp7ptvL._AC_SL1200_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/717aeearSwL._AC_SX522_.jpg"
+  },
+  "story": {
+    "en": "On February 27, 1932, James Chadwick announced the discovery of the neutron at Cambridge’s Cavendish Laboratory. The neutral particle explained why atomic nuclei were heavier than protons alone could account for. By identifying this missing piece, Chadwick clarified atomic structure and reshaped nuclear physics, earning the Nobel Prize in 1935.",
+    "es": "El 27 de febrero de 1932, James Chadwick anunció el descubrimiento del neutrón en el Laboratorio Cavendish de Cambridge. La partícula neutra explicó por qué los núcleos atómicos eran más pesados de lo que los protones podían justificar por sí solos. Al identificar esta pieza faltante, transformó la física nuclear y recibió el Premio Nobel en 1935.",
+    "de": "Am 27. Februar 1932 verkündete James Chadwick im Cavendish-Labor in Cambridge die Entdeckung des Neutrons. Das elektrisch neutrale Teilchen erklärte, warum Atomkerne schwerer sind, als es Protonen allein vermuten lassen. Mit diesem fehlenden Baustein wurde das Atommodell präzisiert und die Kernphysik grundlegend verändert. 1935 erhielt Chadwick dafür den Nobelpreis.",
+    "fr": "Le 27 février 1932, James Chadwick annonça la découverte du neutron au laboratoire Cavendish de Cambridge. Cette particule neutre expliquait pourquoi les noyaux atomiques étaient plus lourds que les protons seuls ne pouvaient l’indiquer. En identifiant cet élément manquant, il transforma la physique nucléaire et reçut le prix Nobel en 1935.",
+    "it": "Il 27 febbraio 1932 James Chadwick annunciò la scoperta del neutrone al laboratorio Cavendish di Cambridge. La particella priva di carica spiegò perché i nuclei atomici fossero più pesanti di quanto i protoni potessero giustificare. Con questa scoperta si chiarì la struttura dell’atomo e si aprì una nuova era nella fisica nucleare. Chadwick ricevette il Nobel nel 1935.",
+    "sk": "Dňa 27. februára 1932 oznámil James Chadwick v Cavendishovom laboratóriu v Cambridge objav neutrónu. Neutrálna častica vysvetlila, prečo sú atómové jadrá ťažšie, než by naznačoval počet protónov. Objav doplnil model atómu a zásadne zmenil jadrovú fyziku. Chadwick zaň získal Nobelovu cenu v roku 1935.",
+    "cs": "Dne 27. února 1932 oznámil James Chadwick v Cavendishově laboratoři v Cambridge objev neutronu. Neutrální částice vysvětlila, proč jsou atomová jádra těžší, než by odpovídalo samotným protonům. Tento chybějící prvek zpřesnil model atomu a zásadně proměnil jadernou fyziku. Chadwick získal Nobelovu cenu v roce 1935."
+  }
+}

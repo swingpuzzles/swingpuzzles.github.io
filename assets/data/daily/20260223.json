@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/3OTQxfE",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/91FQZUAqbzL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/91FQZUAqbzL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/710bUXbykyL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4cNf1B8",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81lKkk4W5fL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81lKkk4W5fL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81k0mfJ4wmL._AC_SX522_.jpg"
+  },
+  "story": {
+    "en": "On February 23, 1455, a legal document in Mainz recorded a financial dispute between Johannes Gutenberg and his investor Johann Fust. The court record, known as the Helmasperger instrument, became one of the earliest dated confirmations of Gutenberg’s movable-type printing press. A lawsuit meant to settle debts ended up preserving proof of a technology that would transform Europe.",
+    "es": "El 23 de febrero de 1455, un documento legal en Maguncia registró una disputa financiera entre Johannes Gutenberg y su inversor Johann Fust. Este acta judicial, conocida como el instrumento de Helmasperger, se convirtió en una de las primeras confirmaciones fechadas de la imprenta de tipos móviles. Un pleito por deudas terminó preservando la prueba de una tecnología que transformaría Europa.",
+    "de": "Am 23. Februar 1455 hielt ein Rechtsdokument in Mainz einen Geldstreit zwischen Johannes Gutenberg und seinem Geldgeber Johann Fust fest. Das sogenannte Helmasperger-Instrument gilt als eine der frühesten datierten Bestätigungen des Buchdrucks mit beweglichen Lettern. Ein Prozess wegen Schulden bewahrte unfreiwillig den Beweis einer Technik, die Europa veränderte.",
+    "fr": "Le 23 février 1455, un document juridique à Mayence consigna un litige financier entre Johannes Gutenberg et son investisseur Johann Fust. L’acte, appelé instrument d’Helmasperger, constitue l’une des premières confirmations datées de l’imprimerie à caractères mobiles. Un procès pour dettes a ainsi conservé la preuve d’une invention qui transforma l’Europe.",
+    "it": "Il 23 febbraio 1455 un documento legale a Magonza registrò una disputa finanziaria tra Johannes Gutenberg e il suo investitore Johann Fust. Il cosiddetto strumento di Helmasperger è una delle prime conferme datate della stampa a caratteri mobili. Una causa per debiti finì per conservare la prova di una tecnologia che avrebbe cambiato l’Europa.",
+    "sk": "Dňa 23. februára 1455 zaznamenal právny dokument v Mainzi finančný spor medzi Johannesom Gutenbergom a jeho investorom Johannom Fustom. Takzvaný Helmaspergerov spis patrí medzi najstaršie datované potvrdenia tlače s pohyblivými literami. Žaloba kvôli dlhom tak nečakane uchovala dôkaz technológie, ktorá zmenila Európu.",
+    "cs": "Dne 23. února 1455 zachytil právní dokument v Mohuči finanční spor mezi Johannem Gutenbergem a jeho investorem Johannem Fustem. Takzvaný Helmaspergerův instrument patří k nejstarším datovaným potvrzením tisku s pohyblivými literami. Spor o dluhy tak nečekaně uchoval důkaz technologie, která proměnila Evropu."
+  }
+}

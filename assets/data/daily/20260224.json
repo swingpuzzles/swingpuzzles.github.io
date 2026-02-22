@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4qVGunP",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/91RhX7LDuLL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/91RhX7LDuLL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/91jWz2nHDNL._AC_SX679_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4kPidyb",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/714jHl8MVfL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/714jHl8MVfL._AC_SL1024_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/61h-3kvWhQL._AC_SX569_.jpg"
+  },
+  "story": {
+    "en": "On February 24, 1923, the first issue of Time magazine was published in the United States. Founded by Henry Luce and Briton Hadden, the weekly aimed to condense scattered news into one structured, readable package. Instead of listing events, it summarized and prioritized them. The format helped shape modern journalism and changed how readers consumed information.",
+    "es": "El 24 de febrero de 1923 se publicó el primer número de la revista Time en Estados Unidos. Fundada por Henry Luce y Briton Hadden, buscaba condensar las noticias dispersas en una edición semanal clara y estructurada. No solo informaba, sino que organizaba y priorizaba los hechos. Su formato influyó decisivamente en el periodismo moderno.",
+    "de": "Am 24. Februar 1923 erschien die erste Ausgabe des Time-Magazins in den USA. Gegründet von Henry Luce und Briton Hadden, wollte das Wochenmagazin verstreute Nachrichten in einer klar strukturierten Form bündeln. Es berichtete nicht nur, sondern ordnete und bewertete Ereignisse. Damit prägte es nachhaltig den modernen Nachrichtenjournalismus.",
+    "fr": "Le 24 février 1923 parut le premier numéro du magazine Time aux États-Unis. Fondé par Henry Luce et Briton Hadden, il visait à condenser l’actualité dispersée en une édition hebdomadaire structurée. Au lieu de simplement rapporter les faits, il les organisait et les hiérarchisait. Ce format a profondément influencé le journalisme moderne.",
+    "it": "Il 24 febbraio 1923 uscì negli Stati Uniti il primo numero della rivista Time. Fondata da Henry Luce e Briton Hadden, mirava a riassumere le notizie sparse in un’unica edizione settimanale strutturata. Non si limitava a riportare i fatti, ma li organizzava e li selezionava. Il suo formato influenzò profondamente il giornalismo moderno.",
+    "sk": "Dňa 24. februára 1923 vyšlo v Spojených štátoch prvé číslo časopisu Time. Založili ho Henry Luce a Briton Hadden s cieľom zhrnúť roztrúsené správy do jedného prehľadného týždenníka. Nielen informoval, ale udalosti aj vyberal a usporadúval. Tento formát výrazne ovplyvnil modernú žurnalistiku.",
+    "cs": "Dne 24. února 1923 vyšlo ve Spojených státech první číslo časopisu Time. Založili jej Henry Luce a Briton Hadden s cílem shrnout roztříštěné zprávy do jednoho přehledného týdeníku. Nejen informoval, ale také vybíral a uspořádával události. Tento formát zásadně ovlivnil moderní žurnalistiku."
+  }
+}

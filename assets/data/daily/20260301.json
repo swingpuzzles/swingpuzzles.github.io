@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/3MYoRpr",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81zkhIW0SUL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81zkhIW0SUL._AC_SL1398_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81NQZDvYVuL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4tKnOtX",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81uCKuYTYrL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81uCKuYTYrL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81lIWxS71tL._AC_SX522_.jpg"
+  },
+  "story": {
+    "en": "On March 1, 1872, President Ulysses S. Grant signed the law establishing Yellowstone as the world’s first national park. More than two million acres of geysers, forests, and wildlife were placed under federal protection. The decision introduced a new idea: preserving land for public benefit rather than private development, shaping conservation efforts worldwide.",
+    "es": "El 1 de marzo de 1872, el presidente Ulysses S. Grant firmó la ley que convirtió a Yellowstone en el primer parque nacional del mundo. Más de dos millones de acres de géiseres, bosques y fauna quedaron bajo protección federal. La decisión introdujo una nueva idea: preservar la naturaleza para el beneficio público en lugar de la explotación privada.",
+    "de": "Am 1. März 1872 unterzeichnete Präsident Ulysses S. Grant das Gesetz zur Gründung des Yellowstone-Nationalparks – des ersten Nationalparks der Welt. Über zwei Millionen Acres mit Geysiren, Wäldern und Tierwelt wurden unter Bundesschutz gestellt. Damit entstand die Idee, Landschaften zum Nutzen der Öffentlichkeit statt zur privaten Nutzung zu bewahren.",
+    "fr": "Le 1er mars 1872, le président Ulysses S. Grant signa la loi faisant de Yellowstone le premier parc national du monde. Plus de deux millions d’acres de geysers, de forêts et de faune furent placés sous protection fédérale. Cette décision introduisit l’idée de préserver des terres pour le bien public plutôt que pour l’exploitation privée.",
+    "it": "Il 1° marzo 1872 il presidente Ulysses S. Grant firmò la legge che istituì Yellowstone come primo parco nazionale al mondo. Oltre due milioni di acri di geyser, foreste e fauna furono posti sotto protezione federale. La decisione introdusse un nuovo principio: preservare la natura per il beneficio pubblico invece che per lo sfruttamento privato.",
+    "sk": "Dňa 1. marca 1872 podpísal prezident Ulysses S. Grant zákon, ktorým sa Yellowstone stal prvým národným parkom na svete. Viac než dva milióny akrov gejzírov, lesov a divokej prírody získali federálnu ochranu. Rozhodnutie prinieslo novú myšlienku: chrániť krajinu pre verejný prospech namiesto súkromného využívania.",
+    "cs": "Dne 1. března 1872 podepsal prezident Ulysses S. Grant zákon, kterým se Yellowstone stal prvním národním parkem na světě. Více než dva miliony akrů gejzírů, lesů a divoké přírody získaly federální ochranu. Toto rozhodnutí zavedlo myšlenku zachování krajiny pro veřejný prospěch místo soukromého využití."
+  }
+}
