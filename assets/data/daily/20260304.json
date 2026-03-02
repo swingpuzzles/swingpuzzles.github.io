@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4rO8ZVM",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/61hA7xjFDxL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/61hA7xjFDxL._AC_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/51fHsSdtHJL._AC_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4u13hBm",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81+w0wsF+hL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81+w0wsF+hL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71nN1UtbFjL._AC_SX569_.jpg"
+  },
+  "story": {
+    "en": "On March 4, 1936, the Hoover Dam was officially dedicated. Located on the Colorado River between Nevada and Arizona, this engineering marvel became a crucial source of hydroelectric power. Built under chief engineer Frank Crowe, the project faced significant challenges, including risk management and the need for innovative construction techniques. The dam, authorized by the Boulder Canyon Project Act, played a pivotal role in transforming regional water and power supply, marking a milestone in American infrastructure history.",
+    "es": "El 4 de marzo de 1936 se inauguró oficialmente la Presa Hoover, ubicada en el río Colorado entre Nevada y Arizona. Esta obra de ingeniería, bajo la dirección del ingeniero Frank Crowe, se convirtió en una fuente clave de energía hidroeléctrica. El proyecto enfrentó desafíos significativos, como la gestión de riesgos y técnicas de construcción innovadoras. Autorizada por el Boulder Canyon Project Act, la presa transformó el suministro de agua y electricidad de la región, representando un hito en la infraestructura estadounidense.",
+    "de": "Am 4. März 1936 wurde der Hoover-Damm offiziell eingeweiht. Er befindet sich am Colorado River zwischen Nevada und Arizona und gilt als Meisterwerk der Ingenieurskunst. Unter der Leitung des Chefingenieurs Frank Crowe stellte das Projekt zahlreiche Herausforderungen, darunter Risikomanagement und innovative Bauweisen. Der Damm, genehmigt durch den Boulder Canyon Project Act, war entscheidend für die Umgestaltung der regionalen Wasser- und Stromversorgung und markiert einen Meilenstein in der US-Infrastrukturgeschichte.",
+    "fr": "Le 4 mars 1936, le barrage Hoover fut officiellement inauguré, situé sur le fleuve Colorado entre le Nevada et l'Arizona. Chef-d'œuvre d'ingénierie dirigé par Frank Crowe, il devint une source essentielle d'énergie hydroélectrique. Le projet, autorisé par le Boulder Canyon Project Act, surmonta des défis importants comme la gestion des risques et des techniques de construction innovantes. Il transforma la gestion régionale de l'eau et de l'électricité, marquant un jalon dans l'histoire des infrastructures américaines.",
+    "it": "Il 4 marzo 1936 si tenne l'inaugurazione ufficiale della Diga Hoover, situata sul fiume Colorado tra il Nevada e l'Arizona. Questo capolavoro di ingegneria, sotto la direzione di Frank Crowe, divenne una fonte cruciale di energia idroelettrica. Il progetto, autorizzato dal Boulder Canyon Project Act, affrontò sfide significative, come la gestione del rischio e l'uso di tecniche costruttive innovative. La diga trasformò la gestione dell'acqua e dell'elettricità nella regione, segnando un traguardo nella storia dell'infrastruttura americana.",
+    "sk": "4. marca 1936 bola oficiálne uvedená do prevádzky priehrada Hoover ležiaca na rieke Colorado medzi Nevadou a Arizonou. Tento inžiniersky zázrak, vedený hlavným inžinierom Frankom Crowem, sa stal dôležitým zdrojom hydroelektrickej energie. Projekt čelil významným výzvam ako manažment rizík a inovatívne stavebné techniky. Autorizovaný zákonom Boulder Canyon Project Act, priehrada zásadne zmenila regionálne vodné a energetické zásobovanie, čo znamenalo míľnik v histórii americkej infraštruktúry.",
+    "cs": "Dne 4. března 1936 byla oficiálně uvedena do provozu přehrada Hoover na řece Colorado mezi Nevadou a Arizonou. Tento inženýrský zázrak, vedený hlavním inženýrem Frankem Crowem, se stal klíčovým zdrojem hydroelektrické energie. Projekt čelil mnoha výzvám, včetně řízení rizik a inovativních stavebních metod. Přehrada, schválená zákonem Boulder Canyon Project Act, transformovala regionální přístup k vodě a elektřině a znamenala důležitý milník v historii americké infrastruktury."
+  }
+}
