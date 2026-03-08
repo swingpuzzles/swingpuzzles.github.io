@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/3OYnPdI",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/714GCO-aA5L._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/714GCO-aA5L._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/61mGBPUS4AL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4buuyF4",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/71rqHpLByxL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/71rqHpLByxL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/61v572d-MVL._AC_SX679_.jpg"
+  },
+  "story": {
+    "en": "On March 15, 44 BCE, Julius Caesar was assassinated in the Roman Senate, marking a crucial turning point in Roman and world history. Caesar's murder was orchestrated by a group of senators, including notable figures like Brutus and Cassius, who feared his concentration of power as dictator for life. This assassination, on the Ides of March, led to the downfall of the Roman Republic and the rise of the Roman Empire under Augustus. The event's implications for governance, power, and betrayal continue to be analyzed and studied in historical and cultural contexts.",
+    "es": "El 15 de marzo del 44 a.C., Julio César fue asesinado en el Senado romano, un momento decisivo para la historia de Roma y del mundo. El asesinato fue planificado por un grupo de senadores, entre ellos Bruto y Casio, que temían el poder centralizado de César como dictador perpetuo. Este suceso en los Idus de marzo provocó la caída de la República romana y el surgimiento del Imperio romano bajo Augusto. Los efectos sobre el gobierno, el poder y la traición siguen siendo objeto de estudio en contextos históricos y culturales.",
+    "de": "Am 15. März 44 v. Chr. wurde Julius Caesar im Römischen Senat ermordet, ein bedeutender Wendepunkt in der römischen und weltweiten Geschichte. Das Attentat wurde von einer Gruppe von Senatoren, darunter Brutus und Cassius, die seine Machtkonzentration als Diktator auf Lebenszeit fürchteten, geplant. Dieser Mord an den Iden des März führte zum Untergang der Römischen Republik und zum Aufstieg des Römischen Reiches unter Augustus. Die Auswirkungen auf Führung, Macht und Verrat werden weiterhin historisch und kulturell untersucht.",
+    "fr": "Le 15 mars 44 av. J.-C., Jules César fut assassiné au Sénat romain, un moment crucial dans l'histoire de Rome et du monde. Le complot fut orchestré par des sénateurs dont Brutus et Cassius, inquiets de sa concentration de pouvoir en tant que dictateur à vie. Cet assassinat aux Ides de mars provoqua la chute de la République romaine et l'émergence de l'Empire sous Auguste. Les répercussions sur le gouvernement, le pouvoir et la trahison continuent d'être analysées dans des contextes historiques et culturels.",
+    "it": "Il 15 marzo 44 a.C., Giulio Cesare fu assassinato nel Senato romano, segnando una svolta cruciale nella storia di Roma e del mondo. La sua uccisione, pianificata da senatori come Bruto e Cassio, che temevano il suo potere come dittatore a vita, avvenne nelle Idi di marzo. Questo evento portò alla caduta della Repubblica romana e alla nascita dell'Impero sotto Augusto. Le implicazioni per il governo, il potere e il tradimento continuano a essere studiate storicamente e culturalmente.",
+    "sk": "Dňa 15. marca 44 pred Kristom bol Julius Caesar zavraždený v Rímskom senáte, čo znamenalo zásadný obrat v dejinách Ríma a sveta. Vraždu zosnovali senátori, vrátane Brutusa a Cassia, obávajúc sa jeho moci ako doživotného diktátora. Tento atentát na Idy marca viedol k pádu Rímskej republiky a vzostupu Rímskeho impéria pod Augustom. Dôsledky na vládu a moc, ako aj zrada, sú naďalej predmetom skúmania v historickom a kultúrnom kontexte.",
+    "cs": "Dne 15. března 44 př. n. l. byl Julius Caesar zavražděn v římském senátu, což znamenalo klíčový obrat v římské a světové historii. Vraždu naplánovali senátoři, včetně Brutuse a Cassia, kteří se obávali jeho moci jako diktátora na doživotí. Tento atentát v Idách březnových vedl k pádu římské republiky a vzestupu římské říše pod Augustem. Dopady na vládu, moc a zradu jsou doposud studovány v historických a kulturních souvislostech."
+  }
+}

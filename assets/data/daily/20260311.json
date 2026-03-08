@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4sxmqZZ",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81IFA17rZRL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81IFA17rZRL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71Ll5d0zyVL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4ri1kxK",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81GAh68sexL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81GAh68sexL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/717OoHOCTpL._AC_SX679_.jpg"
+  },
+  "story": {
+    "en": "On March 11, 1916, Albert Einstein presented his groundbreaking general theory of relativity to the Prussian Academy of Sciences in Berlin. This event marked a turning point in physics, transforming our understanding of gravity and the universe. At the time, Einstein faced resistance from some scientific circles, as his theory challenged established norms. Despite initial skepticism, it gradually gained acceptance and now forms the basis of modern physics, influencing future discoveries and technologies. The original presentation is documented in the Academy's archives.",
+    "es": "El 11 de marzo de 1916, Albert Einstein presentó su revolucionaria teoría general de la relatividad en la Academia Prusiana de Ciencias en Berlín. Este acontecimiento cambió el rumbo de la física, alterando nuestra comprensión de la gravedad y el universo. En ese momento, Einstein encontró resistencia en algunos círculos científicos, ya que su teoría desafiaba las normas establecidas. A pesar de la escepticismo inicial, la teoría fue aceptada paulatinamente y ahora es fundamental en la física moderna, influyendo en descubrimientos y tecnologías futuras.",
+    "de": "Am 11. März 1916 präsentierte Albert Einstein seine wegweisende allgemeine Relativitätstheorie der Preußischen Akademie der Wissenschaften in Berlin. Dieses Ereignis markierte einen Wendepunkt in der Physik, indem es unser Verständnis von Gravitation und Universum veränderte. Trotz anfänglicher Skepsis und Widerstand in wissenschaftlichen Kreisen, da die Theorie etablierte Normen in Frage stellte, wurde sie schließlich akzeptiert. Heute bildet sie die Grundlage der modernen Physik und beeinflusst zukünftige Entdeckungen und Technologien.",
+    "fr": "Le 11 mars 1916, Albert Einstein a présenté sa théorie générale de la relativité à l'Académie prussienne des sciences à Berlin, révolutionnant ainsi la physique. Cet événement a modifié notre compréhension de la gravité et de l'univers. Bien qu'il ait rencontré une certaine résistance des milieux scientifiques, en raison de ses idées novatrices, la théorie a fini par être acceptée. Elle est désormais un pilier de la physique moderne, influençant innovations et nouvelles découvertes scientifiques.",
+    "it": "L'11 marzo 1916, Albert Einstein presentò la sua teoria generale della relatività all'Accademia Prussiana delle Scienze a Berlino, segnando un punto di svolta nella fisica. Questo evento trasformò la nostra comprensione della gravità e dell'universo. Sebbene inizialmente incontrò resistenza da parte di alcuni ambienti scientifici, la teoria fu gradualmente accettata. Oggi, è fondamentale per la fisica moderna e continua a influenzare la scoperta scientifica e le applicazioni tecnologiche.",
+    "sk": "11. marca 1916 predstavil Albert Einstein svoju prelomovú všeobecnú teóriu relativity na Pruskej akadémii vied v Berlíne. Táto udalosť znamenala zlom vo fyzike, meniac naše chápanie gravitácie a vesmíru. Einstein čelil počiatočnému skepticizmu a odporu, keďže jeho teória spochybnila zavedené normy. Postupne však bola prijatá a dnes je základom modernej fyziky, ovplyvňujúcou budúce objavy a technológie. Prezentácia je zdokumentovaná v archívoch akadémie.",
+    "cs": "Dne 11. března 1916 představil Albert Einstein svou revoluční obecnou teorii relativity Pruské akademii věd v Berlíně. Tento okamžik přinesl klíčový zlom ve fyzice a změnil naše chápání gravitace a vesmíru. Přestože se setkal s odporem některých vědeckých kruhů, jeho teorie postupně získala uznání a stala se základem moderní fyziky. Dnes ovlivňuje budoucí objevy a technologie, přičemž její původní prezentace je zaznamenána v archivech akademie."
+  }
+}

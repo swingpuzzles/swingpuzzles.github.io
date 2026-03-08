@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4ubBuhD",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81ukx4pZk-L._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81ukx4pZk-L._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71folzgFLzL._AC_SX679_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/46Kaax8",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/91hgrfNFzTL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/91hgrfNFzTL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81txDeZ5RSL._AC_SX679_.jpg"
+  },
+  "story": {
+    "en": "On March 12, 330, Emperor Constantine the Great established Constantinople, marking a pivotal moment in history. Built on the site of Byzantium, it became a strategic and cultural hub, rivaling Rome. Constantine's choice embedded the city in trade routes and Christianity's spread, influencing European and Asian exchanges. Constantinople's architecture and defenses stood as a model for urban development, playing a crucial role during the Byzantine Empire and its cultural evolution, impacting civilizations for centuries.",
+    "es": "El 12 de marzo de 330, el emperador Constantino el Grande fundó Constantinopla, un evento crucial en la historia. Ubicada sobre Bizancio, se convirtió en un centro estratégico y cultural que rivalizaba con Roma. La elección de Constantino fortaleció su papel en rutas comerciales y la difusión del cristianismo, influyendo en Europa y Asia. La arquitectura y defensas de Constantinopla sirvieron de modelo urbano, siendo clave en el Imperio Bizantino y su evolución cultural, impactando en civilizaciones posteriores.",
+    "de": "Am 12. März 330 gründete Kaiser Konstantin der Große Konstantinopel und schuf damit einen Wendepunkt in der Geschichte. Auf dem Standort von Byzantion errichtet, entwickelte sich die Stadt zu einem strategischen und kulturellen Zentrum, das Rom Konkurrenz machte. Konstantins Wahl festigte die Stadt in Handelsrouten und der Ausbreitung des Christentums, was europäische und asiatische Beziehungen beeinflusste. Konstantinopels Architektur und Verteidigung dienten als Vorbild in der Byzantinischen Zeit, was Zivilisationen über Jahrhunderte prägte.",
+    "fr": "Le 12 mars 330, l'empereur Constantinus le Grand fonda Constantinople, marquant une date clé de l'histoire. Établie sur le site de Byzance, elle devint un centre stratégique et culturel rivalisant avec Rome. Le choix de Constantin fit de la ville un maillon crucial du commerce et de la diffusion du christianisme, influençant les échanges entre Europe et Asie. L'architecture et les défenses de Constantinople devinrent un modèle pour le développement urbain, jouant un rôle central dans l'Empire byzantin et son évolution culturelle.",
+    "it": "Il 12 marzo 330, l'imperatore Costantino il Grande fondò Costantinopoli, segnando un momento cruciale nella storia. Costruita sul sito di Bisanzio, divenne un centro strategico e culturale che rivaleggiava con Roma. La scelta di Costantino inserì la città nelle rotte commerciali e nella diffusione del cristianesimo, influenzando gli scambi tra Europa e Asia. L'architettura e le difese di Costantinopoli servirono da modello per lo sviluppo urbano, giocando un ruolo chiave nell'Impero Bizantino e nella sua evoluzione culturale.",
+    "sk": "12. marca 330 založil cisár Konštantín Veľký Konštantínopol, čo predstavovalo významný historický okamih. Mesto, postavené na mieste Byzantie, sa stalo strategickým a kultúrnym centrom, ktoré súperilo s Rímom. Konštantínova voľba upevnila mesto v obchodných cestách a šírení kresťanstva, ovplyvňujúc európske a ázijské výmeny. Architektúra a obranné stavby Konštantínopola sa stali vzorom pre mestský rozvoj a hrali kľúčovú úlohu počas Byzantskej ríše a jej kultúrnej evolúcie.",
+    "cs": "Dne 12. března 330 založil císař Konstantin Veliký Konstantinopol, což bylo klíčové v dějinách. Město bylo postaveno na místě Byzance a stalo se strategickým a kulturním centrem, které soupeřilo s Římem. Konstantinova volba upevnila jeho význam v obchodních trasách a ve šíření křesťanství, ovlivňující směny mezi Evropou a Asií. Architektura a obranné struktury Konstantinopole se staly vzorem pro městský rozvoj, hrály klíčovou roli během Byzantské říše a její kulturní evoluce."
+  }
+}

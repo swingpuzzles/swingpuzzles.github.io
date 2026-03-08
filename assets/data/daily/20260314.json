@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4sxmqZZ",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81IFA17rZRL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81IFA17rZRL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71Ll5d0zyVL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4ri1kxK",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81GAh68sexL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81GAh68sexL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/717OoHOCTpL._AC_SX679_.jpg"
+  },
+  "story": {
+    "en": "On March 14, 1879, Albert Einstein was born in Ulm, Germany. This marked the beginning of the life of a physicist whose ideas fundamentally transformed scientific understanding in the 20th century. Known primarily for his theory of relativity, Einstein's work significantly advanced physics and cosmology. His contributions remain central in educational curricula and have paved the way for numerous technological and scientific advancements, emphasizing his lasting impact on modern science.",
+    "es": "El 14 de marzo de 1879 nació Albert Einstein en Ulm, Alemania. Este acontecimiento marcó el inicio de la vida de un físico cuyas ideas transformaron radicalmente la comprensión científica en el siglo XX. Ei­nstein, célebre por su teoría de la relatividad, avanzó considerablemente en la física y la cosmología. Sus contribuciones son fundamentales en los planes educativos y han facilitado muchos avances tecnológicos y científicos, destacando su impacto perdurable en la ciencia moderna.",
+    "de": "Am 14. März 1879 wurde Albert Einstein in Ulm, Deutschland, geboren. Dies markierte den Beginn des Lebens eines Physikers, dessen Ideen das wissenschaftliche Verständnis im 20. Jahrhundert grundlegend veränderten. Bekannt vor allem für seine Relativitätstheorie, trug Einsteins Arbeit bedeutend zur Physik und Kosmologie bei. Seine Beiträge sind zentraler Bestandteil der Bildung und haben zahlreiche technologische und wissenschaftliche Fortschritte ermöglicht, was seinen bleibenden Einfluss auf die moderne Wissenschaft unterstreicht.",
+    "fr": "Le 14 mars 1879, Albert Einstein naît à Ulm, en Allemagne. Ce fut le début de la vie d'un physicien dont les idées ont transformé la compréhension scientifique du XXe siècle. Connu principalement pour sa théorie de la relativité, le travail d'Einstein a grandement avancé dans la physique et la cosmologie. Ses contributions demeurent centrales dans les programmes éducatifs et ont ouvert la voie à de nombreux progrès technologiques et scientifiques, soulignant son impact durable sur la science moderne.",
+    "it": "Il 14 marzo 1879 nacque Albert Einstein a Ulm, in Germania. Questo evento segnò l'inizio della vita di un fisico le cui idee cambiarono fondamentalmente la comprensione scientifica nel XX secolo. Conosciuto principalmente per la teoria della relatività, il lavoro di Einstein avanzò significativamente la fisica e la cosmologia. I suoi contributi rimangono fondamentali nei programmi educativi, aprendo la strada a innovazioni tecnologiche e scientifiche e sottolineando il suo impatto duraturo sulla scienza moderna.",
+    "sk": "14. marca 1879 sa narodil Albert Einstein v Ulme v Nemecku. Toto označilo začiatok života fyzika, ktorého myšlienky zásadne zmenili vedecké chápanie v 20. storočí. Einstein, známy najmä svojou teóriou relativity, výrazne prispel k fyzike a kozmológii. Jeho príspevky sú základom vo vzdelávacích osnovách a otvorili cestu pre mnohé technologické a vedecké pokroky, zdôrazňujúc jeho trvalý vplyv na modernú vedu.",
+    "cs": "Dne 14. března 1879 se v německém Ulmu narodil Albert Einstein. Tento okamžik znamenal počátek života fyzika, jehož myšlenky zásadně změnily vědecké poznání 20. století. Einstein, známý hlavně svou teorií relativity, výrazně přispěl k fyzice a kosmologii. Jeho příspěvky zůstávají zásadní ve vzdělávacích osnovách a otevřely cestu k mnoha technologickým a vědeckým pokrokům, podtrhujíc jeho trvalý vliv na moderní vědu."
+  }
+}

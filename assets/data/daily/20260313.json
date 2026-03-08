@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4bbO4oj",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/91BOm6YZCOL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/91BOm6YZCOL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81VtoZFsG4L._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/40ljAvj",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81zkPQBzptL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81zkPQBzptL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81sR8r-ilSL._AC_SX522_.jpg"
+  },
+  "story": {
+    "en": "On March 13, 1781, astronomer William Herschel made a groundbreaking discovery: the planet Uranus. Observing from Bath, England, Herschel initially mistaken the planet for a comet due to the limited technology of the time. His dedication to detailed sky observation led to the first discovery of a new planet in modern human history. This event marked a significant advancement in astronomy, inspiring future exploration and revolutionizing our understanding of the solar system.",
+    "es": "El 13 de marzo de 1781, el astrónomo William Herschel realizó un descubrimiento revolucionario: el planeta Urano. Observando desde Bath, Inglaterra, inicialmente confundió el planeta con un cometa debido a las limitaciones tecnológicas de la época. Su dedicación a la observación detallada del cielo llevó al primer hallazgo de un nuevo planeta en la historia moderna. Este evento significó un avance significativo en la astronomía, inspirando futuras exploraciones y revolucionando nuestra comprensión del sistema solar.",
+    "de": "Am 13. März 1781 machte der Astronom William Herschel eine bahnbrechende Entdeckung: den Planeten Uranus. Von Bath, England, aus beobachtete Herschel zunächst einen Kometen, da die Technik der Zeit begrenzt war. Durch seine Hingabe an die detaillierte Himmelsbeobachtung gelang die erste Entdeckung eines neuen Planeten in der modernen Menschheitsgeschichte. Dieses Ereignis stellte einen bedeutenden Fortschritt in der Astronomie dar und inspirierte künftige Erkundungen des Sonnensystems.",
+    "fr": "Le 13 mars 1781, l'astronome William Herschel fit une découverte révolutionnaire : la planète Uranus. Observant depuis Bath, Angleterre, Herschel confondit initialement la planète avec une comète à cause des limitations technologiques de l'époque. Sa dévotion à l'observation détaillée du ciel permit de découvrir pour la première fois un nouveau planète en histoire moderne. Cet événement marqua une avancée significative en astronomie, inspirant l'exploration future de notre système solaire.",
+    "it": "Il 13 marzo 1781, l'astronomo William Herschel fece una scoperta rivoluzionaria: il pianeta Urano. Osservando da Bath, Inghilterra, inizialmente scambiò il pianeta per una cometa a causa delle limitazioni tecnologiche dell'epoca. La sua dedizione all'osservazione del cielo portò alla prima scoperta di un nuovo pianeta nella storia moderna. Questo evento segnò un significativo passo avanti nell'astronomia, ispirando future esplorazioni e rivoluzionando la nostra comprensione del sistema solare.",
+    "sk": "Dňa 13. marca 1781 objavil astronóm William Herschel planétu Urán. Pozorujúc z Bathu v Anglicku, pôvodne si planétu mýlil s kométou kvôli obmedzenej technológii tej doby. Jeho oddanosť detailnému pozorovaniu oblohy viedla k prvému objavu novej planéty v modernej histórii. Táto udalosť znamenala významný pokrok v astronómii a inšpirovala budúce prieskumy, čím zrevolucionalizovala naše chápanie slnečnej sústavy.",
+    "cs": "Dne 13. března 1781 astronom William Herschel objevil planetu Uran. Pozoroval z Bathu v Anglii a zpočátku si planetu spletl s kometou kvůli omezené technologii své doby. Jeho věnování se detailnímu pozorování oblohy vedlo k prvnímu objevu nové planety v moderních dějinách. Tato událost znamenala významný pokrok v astronomii a inspirovala další průzkum, který přinesl revoluci v našem chápání sluneční soustavy."
+  }
+}

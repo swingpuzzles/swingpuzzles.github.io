@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4lgLxhe",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/71qn3nstjFL._AC_SX569_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/71qn3nstjFL._AC_SL1200_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81RNtVaO33L._AC_SX569_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4rZ2FuM",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/71yK6tZnakL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/71yK6tZnakL._AC_SL1181_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71ikRh4bzcL._AC_SX679_.jpg"
+  },
+  "story": {
+    "en": "On March 9, 1862, the Battle of the Ironclads transpired at Hampton Roads, Virginia, marking the first clash between ironclad warships. The USS Monitor, under John Worden, faced the CSS Virginia commanded by Franklin Buchanan. This transformative event in the American Civil War showcased the advent of ironclad technology, fundamentally altering naval warfare. Though inconclusive, it highlighted the need for adaptation to new technologies, influencing future naval strategies globally.",
+    "es": "El 9 de marzo de 1862 se libró la Batalla de los Acorazados en Hampton Roads, Virginia, siendo el primer enfrentamiento entre buques de guerra acorazados. El USS Monitor, dirigido por John Worden, se enfrentó al CSS Virginia, comandado por Franklin Buchanan. Este evento crucial en la Guerra Civil Estadounidense marcó un cambio en la tecnología naval, transformando el enfoque en las estrategias marítimas. Aunque sin un claro vencedor, dejó claras implicaciones estratégicas a nivel mundial.",
+    "de": "Am 9. März 1862 fand die Schlacht der Panzerschiffe in Hampton Roads, Virginia, statt, der erste Kampf zwischen gepanzerten Kriegsschiffen. Die USS Monitor unter John Worden traf auf die CSS Virginia, kommandiert von Franklin Buchanan. Dieses Ereignis im Amerikanischen Bürgerkrieg kennzeichnete den Beginn der Nutzung von Eisenpanzerschiffen, was die Seekriegsführung revolutionierte. Obwohl der Ausgang unentschieden war, prägte die Schlacht zukünftige marine strategische Überlegungen weltweit.",
+    "fr": "Le 9 mars 1862, la bataille des cuirassés eut lieu à Hampton Roads, Virginie, marquant le premier affrontement entre navires de guerre cuirassés. L'USS Monitor dirigé par John Worden affronta le CSS Virginia, commandé par Franklin Buchanan. Cet événement significatif de la guerre civile américaine démontra l'évolution technologique majeure du temps, modifiant l'approche des stratégies navales. Bien que sans vainqueur décisif, elle eut des implications stratégiques à l’échelle mondiale.",
+    "it": "Il 9 marzo 1862, la battaglia degli Ironclads si svolse a Hampton Roads, in Virginia, segnando il primo scontro tra navi da guerra corazzate. L'USS Monitor, sotto il comando di John Worden, affrontò la CSS Virginia di Franklin Buchanan. Questo evento della Guerra Civile Americana simboleggiò un cambio epocale nella tecnologia navale, trasformando le strategie belliche marittime. Sebbene privo di un vincitore netto, delineò implicazioni strategiche importanti a livello globale.",
+    "sk": "Dňa 9. marca 1862 sa v Hampton Roads vo Virgínii odohrala Bitka o pancierové lode, prvý súboj medzi pancierovými vojnovými loďami. USS Monitor pod vedením Johna Wordena sa stretla so CSS Virginia, ktorú viedol Franklin Buchanan. Táto udalosť počas americkej občianskej vojny symbolizovala významný posun v námornej technológii, meniac náhľad na stratégie námornej vojny. Hoci bez jasného víťaza, mala tento konflikt strategický význam na celosvetovú scénu.",
+    "cs": "9. března 1862 došlo v Hampton Roads ve Virginii k bitvě pancéřových lodí, prvního střetu mezi obrněnými válečnými loděmi. USS Monitor pod vedením Johna Wordena se střetl s CSS Virginia vedenou Franklinem Buchananem. Tato událost během americké občanské války představuje zásadní technologickou změnu v námořní válce. I když bitva neskončila jednoznačným vítězstvím, měla klíčové strategické dopady na budoucí námořní strategie."
+  }
+}
