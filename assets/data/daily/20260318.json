@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/3NuoW4x",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/91fSGfDMytL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/91fSGfDMytL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81BF0kgpRSL._AC_SX679_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4bmlOzB",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/913kRq5CP4L._AC_SX569_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/913kRq5CP4L._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81vIbb2QY8L._AC_SX522_.jpg"
+  },
+  "story": {
+    "en": "On March 18, 1878, Thomas Edison was granted a patent for the phonograph in the United States, marking a pivotal moment in audio technology. Edison's invention, developed at his Menlo Park laboratory, allowed for the recording and playback of sound. This breakthrough was crucial, as there was no prior technology capable of capturing audio. The phonograph laid the groundwork for the modern music and recording industries, influencing subsequent advancements such as the gramophone and digital audio technologies.",
+    "es": "El 18 de marzo de 1878, Thomas Edison recibió la patente para el fonógrafo en Estados Unidos, marcando un momento crucial en la tecnología de audio. La invención de Edison, desarrollada en su laboratorio de Menlo Park, permitía grabar y reproducir sonido, algo inédito hasta entonces. Este avance estableció las bases para las industrias modernas de la música y grabación, influyendo en desarrollos posteriores como el gramófono y la tecnología de audio digital.",
+    "de": "Am 18. März 1878 erhielt Thomas Edison ein Patent für den Phonographen in den Vereinigten Staaten, was einen entscheidenden Moment in der Audiotechnologie darstellte. Edisons Erfindung, entwickelt in seinem Labor in Menlo Park, ermöglichte die Aufnahme und Wiedergabe von Ton. Diese Errungenschaft war grundlegend, da es zuvor keine Technik zur Tonaufzeichnung gab. Der Phonograph legte den Grundstein für moderne Musik- und Aufnahmeindustrien und beeinflusste spätere Entwicklungen wie das Grammophon und digitale Audiotechnologien.",
+    "fr": "Le 18 mars 1878, Thomas Edison obtint un brevet pour le phonographe aux États-Unis, marquant une étape cruciale dans la technologie audio. L'invention d'Edison, développée dans son laboratoire de Menlo Park, permettait l'enregistrement et la reproduction du son, une première à l'époque. Ce progrès fut déterminant pour l'industrie moderne de la musique et de l'enregistrement, influençant des développements ultérieurs tels que le gramophone et les technologies audio numériques.",
+    "it": "Il 18 marzo 1878, Thomas Edison ottenne il brevetto per il fonografo negli Stati Uniti, segnando un momento critico nella tecnologia audio. L'invenzione di Edison, sviluppata nel suo laboratorio di Menlo Park, permetteva la registrazione e la riproduzione del suono, una novità assoluta all'epoca. Questo progresso gettò le basi per le moderne industrie della musica e della registrazione, influenzando sviluppi successivi come il grammofono e le tecnologie audio digitali.",
+    "sk": "Dňa 18. marca 1878 získal Thomas Edison patent na fonograf v Spojených štátoch, čo predstavovalo zásadný moment v audio technológii. Edisonov vynález, vyvinutý v jeho laboratóriu v Menlo Parku, umožňoval nahrávanie a prehrávanie zvuku, čo bolo vtedy bezprecedentné. Tento pokrok položil základy pre moderné hudobné a nahrávacie priemysly, čím ovplyvnil neskoršie vývojové etapy ako gramofón a digitálne audio technológie.",
+    "cs": "Dne 18. března 1878 získal Thomas Edison patent na fonograf ve Spojených státech, což představovalo klíčový moment v audio technologiích. Edisonův vynález, vyvinutý v jeho laboratoři v Menlo Parku, umožnil nahrávání a přehrávání zvuku, což byl tehdy bezprecedentní úspěch. Fonograf položit základy pro moderní hudební a nahrávací průmysl a ovlivnil pozdější vývoj, jako byl gramofon a digitální zvukové technologie."
+  }
+}

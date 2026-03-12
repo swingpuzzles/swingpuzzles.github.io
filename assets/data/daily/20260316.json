@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4sBmR5B",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81NsD5FWWsL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81NsD5FWWsL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/61Mb7K76uwL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4lmQDIS",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/A1oPjUXWk2L._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/A1oPjUXWk2L._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81gd9dIXB1L._AC_SX522_.jpg"
+  },
+  "story": {
+    "en": "On March 16, 1961, the Soviet Union launched the Vostok 3KA-2 spacecraft from Baikonur Cosmodrome, Kazakhstan, as a crucial step before human spaceflight. Carrying a mannequin and a dog named Zvezdochka, this mission was essential for testing the spacecraft systems that would later enable Yuri Gagarin to become the first human in space. This test validated the technology necessary for safe manned missions, reinforcing the Soviet Union's position in the Space Race and paving the way for future space exploration.",
+    "es": "El 16 de marzo de 1961, la Unión Soviética lanzó la nave Vostok 3KA-2 desde el cosmódromo de Baikonur, Kazajistán, en un paso crucial antes del vuelo espacial humano. A bordo había un maniquí y una perra llamada Zvezdochka. Esta misión fue esencial para probar los sistemas que posteriormente permitirían a Yuri Gagarin convertirse en el primer ser humano en el espacio. La prueba validó la tecnología necesaria para misiones tripuladas seguras, fortaleciendo la posición soviética en la Carrera Espacial y allanando el camino para futuras exploraciones espaciales.",
+    "de": "Am 16. März 1961 startete die Sowjetunion das Raumschiff Vostok 3KA-2 vom Kosmodrom Baikonur in Kasachstan, ein entscheidender Schritt vor dem bemannten Raumflug. An Bord waren ein Mannequin und ein Hund namens Zvezdochka. Diese Mission war entscheidend, um die Systeme zu testen, die es Yuri Gagarin später ermöglichten, der erste Mensch im Weltraum zu werden. Der erfolgreiche Test bestätigte die Technologie für sichere bemannte Missionen und stärkte die sowjetische Position im Wettlauf ins All, was den Weg für künftige Erkundungen ebnete.",
+    "fr": "Le 16 mars 1961, l'Union soviétique a lancé le vaisseau spatial Vostok 3KA-2 depuis le cosmodrome de Baïkonour, Kazakhstan, étape cruciale avant le vol spatial humain. Avec un mannequin et un chien nommé Zvezdochka à bord, cette mission était essentielle pour tester les systèmes qui permettraient ensuite à Youri Gagarine de devenir le premier homme dans l'espace. Ce test a validé les technologies nécessaires pour des missions habitées sûres, renforçant la position soviétique dans la course à l'espace et ouvrant la voie à l'exploration spatiale future.",
+    "it": "Il 16 marzo 1961, l'Unione Sovietica lanciò la navicella Vostok 3KA-2 dal cosmodromo di Baikonur, Kazakhstan, un passo cruciale prima del volo spaziale umano. Con a bordo un manichino e un cane di nome Zvezdochka, la missione era essenziale per testare i sistemi che avrebbero successivamente permesso a Yuri Gagarin di diventare il primo umano nello spazio. Il successo del test confermò la tecnologia necessaria per missioni umane sicure, rafforzando la posizione sovietica nella Corsa allo Spazio e aprendo la strada a future esplorazioni.",
+    "sk": "Dňa 16. marca 1961 Sovietsky zväz vypustil z kozmodromu Bajkonur v Kazachstane kozmickú loď Vostok 3KA-2, čo bol kľúčový krok pred pilotovanými letmi do vesmíru. Na palube bol manekýn a pes menom Zvezdochka. Táto misia bola zásadná pre testovanie systémov, ktoré neskôr umožnili Jurijovi Gagarinovi stať sa prvým človekom vo vesmíre. Tento test potvrdil technológiu potrebnú pre bezpečné pilotované misie a posilnil sovietsku pozíciu v konkurencii vesmírnych pretekov, čím otvoril cestu pre budúci vesmírny výskum.",
+    "cs": "Dne 16. března 1961 vypustil Sovětský svaz z kosmodromu Bajkonur v Kazachstánu kosmickou loď Vostok 3KA-2, což byl klíčový krok před pilotovanými lety do vesmíru. Na palubě byl manekýn a pes jménem Zvezdochka. Mise byla zásadní pro testování systémů, které později umožnily Juriji Gagarinovi stát se prvním člověkem ve vesmíru. Úspěšný test potvrdil technologii potřebnou pro bezpečné pilotované mise a posílil sovětskou pozici v závodech do vesmíru, čímž otevřel cestu pro budoucí průzkum."
+  }
+}

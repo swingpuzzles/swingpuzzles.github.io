@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4uqQKaw",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/913Qum7h5oL._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/913Qum7h5oL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/81XtWDgbbEL._AC_SX522_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4blcawW",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/91ahtzlbKOL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/91ahtzlbKOL._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/91LAQDDrdiL._AC_SX522_.jpg"
+  },
+  "story": {
+    "en": "On March 20, 1879, Henrik Ibsen's renowned play 'A Doll's House' premiered at Det Kongelige Teater in Copenhagen, Denmark. This groundbreaking work boldly critiqued the 19th-century societal norms pertaining to gender roles and personal freedom, marking a pivotal moment in the evolution of modern drama. Ibsen's portrayal of a woman navigating the constraints of her marriage challenged audiences and provoked widespread debate. Its impact extended beyond literature, influencing feminist movements worldwide as it encouraged introspection on individual versus societal expectations.",
+    "es": "El 20 de marzo de 1879, se estrenó 'Casa de muñecas', la famosa obra de Henrik Ibsen, en el Teatro Real de Copenhague. Esta obra revolucionaria criticó audazmente las normas sociales del siglo XIX sobre los roles de género y la libertad personal, marcando un momento crucial en la evolución del drama moderno. La representación de una mujer enfrentando las limitaciones de su matrimonio desafió al público y provocó un amplio debate. Su impacto se extendió más allá de la literatura, influyendo en movimientos feministas a nivel mundial al fomentar la reflexión sobre las expectativas individuales frente a las sociales.",
+    "de": "Am 20. März 1879 feierte Henrik Ibsens bekanntes Stück 'Ein Puppenheim' am Det Kongelige Teater in Kopenhagen Premiere. Dieses bahnbrechende Werk kritisierte kühn die gesellschaftlichen Normen des 19. Jahrhunderts in Bezug auf Geschlechterrollen und persönliche Freiheit, was einen entscheidenden Moment in der Entwicklung des modernen Dramas markierte. Ibsens Darstellung einer Frau, die mit den Zwängen ihrer Ehe kämpft, forderte das Publikum heraus und löste breite Debatten aus. Der Einfluss reichte über die Literatur hinaus, indem er feministische Bewegungen weltweit inspiriert hat.",
+    "fr": "Le 20 mars 1879, 'Une maison de poupée', célèbre pièce d'Henrik Ibsen, fut présentée au Det Kongelige Teater de Copenhague. Cette œuvre audacieuse critiquait les normes sociétales du XIXe siècle concernant les rôles de genre et la liberté personnelle, marquant un tournant significatif dans l'évolution du drame moderne. La représentation d'une femme confrontée aux contraintes de son mariage chamboula les spectateurs et déclencha de vives discussions. Son influence s'étendit au-delà de la littérature, inspirant les mouvements féministes à travers le monde.",
+    "it": "Il 20 marzo 1879, 'Casa di bambola' di Henrik Ibsen debuttava al Det Kongelige Teater di Copenaghen. Quest'opera incisiva criticava le norme sociali del XIX secolo, focalizzandosi sui ruoli di genere e la libertà personale, segnando un momento cruciale nell'evoluzione del dramma moderno. La rappresentazione di una donna che affronta le costrizioni matrimoniali sfidò il pubblico e accese dibattiti. Il suo impatto andò oltre la letteratura, influenzando i movimenti femministi globalmente e promuovendo la riflessione sulle aspettative personali e sociali.",
+    "sk": "Dňa 20. marca 1879 mala premiéru známa hra Henrika Ibsena 'Dom bábik' v Divadle kráľovského dánskeho divadla v Kodani. Táto prelomová práca odvážne kritizovala spoločenské normy 19. storočia týkajúce sa rodových rolí a osobnej slobody, čo znamenalo kľúčový moment v rozvoji modernej drámy. Ibsenovo zobrazenie ženy zápasiacej s obmedzeniami manželstva vyzvalo divákov a vyvolalo širokú diskusiu. Jeho vplyv presiahol literatúru a inšpiroval feministické hnutia po celom svete.",
+    "cs": "Dne 20. března 1879 měla premiéru slavná hra Henrika Ibsena 'Domeček pro panenky' v Královském divadle v Kodani. Tato průkopnická práce odvážně kritizovala 19. století normy týkající se rolí pohlaví a osobní svobody, což znamenalo klíčový moment ve vývoji moderního dramatu. Ibsenovo zobrazení ženy čelící omezením manželství vyzvalo diváky a vyvolalo široké debaty. Jeho vliv přesáhl literaturu a inspiroval feministická hnutí po celém světě."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "horiz": {
+    "link": "https://amzn.to/4bEB9g9",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/81gi18yFO5L._AC_SX679_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/81gi18yFO5L._AC_SL1500_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/71fqFnbcm2L._AC_SX679_.jpg"
+  },
+  "vert": {
+    "link": "https://amzn.to/4bh1WxH",
+    "imgSmallUrl": "https://m.media-amazon.com/images/I/711pXSKT4QL._AC_SY741_.jpg",
+    "imgBigUrl": "https://m.media-amazon.com/images/I/711pXSKT4QL._AC_SL1200_.jpg",
+    "imgCoverUrl": "https://m.media-amazon.com/images/I/812QBbxGp1L._AC_SX679_.jpg"
+  },
+  "story": {
+    "en": "On March 19, 2007, the first Earth Hour took place in Sydney, Australia. Initiated by the World Wildlife Fund (WWF), this event encouraged millions to turn off their lights for an hour to draw attention to climate change and energy conservation. This voluntary participation highlighted the potential impact of collective action. The success of Earth Hour in Sydney paved the way for its expansion into a global movement that continues to promote awareness and encourage sustainable practices worldwide.",
+    "es": "El 19 de marzo de 2007, se realizó la primera Hora del Planeta en Sídney, Australia. Iniciada por el Fondo Mundial para la Naturaleza (WWF), el evento invitó a millones a apagar sus luces por una hora para concienciar sobre el cambio climático y la conservación de energía. La participación voluntaria mostró el impacto potencial de la acción colectiva. El éxito en Sídney llevó a la Hora del Planeta a convertirse en un movimiento global que sigue promoviendo la sostenibilidad y la conciencia ambiental mundialmente.",
+    "de": "Am 19. März 2007 fand die erste Earth Hour in Sydney, Australien, statt. Initiiert vom World Wildlife Fund (WWF), nahmen Millionen daran teil, indem sie das Licht für eine Stunde ausschalteten, um auf den Klimawandel und Energieeinsparung aufmerksam zu machen. Diese freiwillige Teilnahme zeigte das Potenzial kollektiven Handelns auf. Der Erfolg in Sydney ebnete den Weg für die globale Ausbreitung der Earth Hour, die weiterhin das Bewusstsein schärft und nachhaltige Praktiken weltweit fördert.",
+    "fr": "Le 19 mars 2007, la première Earth Hour s'est tenue à Sydney, Australie. Initiée par le Fonds mondial pour la nature (WWF), cet événement a vu des millions de personnes éteindre leurs lumières pendant une heure pour sensibiliser au changement climatique et à la conservation de l'énergie. Cette participation volontaire a mis en lumière l'impact potentiel de l'action collective. Le succès à Sydney a permis à Earth Hour de devenir un mouvement mondial continuant à promouvoir la durabilité.",
+    "it": "Il 19 marzo 2007 si è tenuta la prima Earth Hour a Sydney, in Australia. Iniziata dal World Wildlife Fund (WWF), ha coinvolto milioni di persone che hanno spento le luci per un'ora per sensibilizzare sul cambiamento climatico e la conservazione dell'energia. La partecipazione volontaria ha dimostrato l'impatto delle azioni collettive. Il successo di Sydney ha permesso l'espansione di Earth Hour come movimento globale che continua a promuovere la consapevolezza e pratiche sostenibili.",
+    "sk": "Dňa 19. marca 2007 sa v Sydney, Austrália, uskutočnila prvá Hodina Zeme. Akcia iniciovaná Svetovým fondom na ochranu prírody (WWF) vyzvala milióny ľudí, aby na hodinu vypli svetlá na zvýšenie povedomia o klimatických zmenách a úspore energie. Dobrovoľná účasť poukázala na potenciál kolektívnych akcií. Úspech v Sydney umožnil, aby sa z Hodiny Zeme stal globálny pohyb, ktorý naďalej podporuje povedomie a udržateľné praktiky po celom svete.",
+    "cs": "Dne 19. března 2007 proběhla v Sydney, Austrálie, první Hodina Země. Iniciována Světovým fondem na ochranu přírody (WWF), tato akce zapojila miliony, kteří zhasli světla na hodinu, aby upozornili na změny klimatu a úspory energie. Dobrovolná účast ukázala potenciální dopad kolektivního jednání. Úspěch v Sydney umožnil, aby se z Hodiny Země stal globální pohyb, který nadále zvyšuje povědomí a podporuje udržitelné praktiky po celém světě."
+  }
+}
